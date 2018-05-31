@@ -1,0 +1,51 @@
+[color]
+  pager = true
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  showBranch = auto
+  interactive = auto
+  grep = auto
+[color "status"]
+  header = black bold
+  branch = cyan
+  nobranch = red
+  unmerged = red
+  untracked = cyan
+  added = green
+  changed = red bold
+[color "diff"]
+  meta = red bold
+  frag = black bold
+  func = blue
+  old = red strike
+  new = green
+  commit = blue
+  whitespace = red
+  context = normal
+[color "branch"]
+  current = cyan
+  local = blue
+  remote = magenta
+  upstream = magenta
+  plain = normal
+[color "decorate"]
+  branch = blue
+  remoteBranch = magenta
+  tag = magenta
+  stash = cyan
+  HEAD = blue
+[color "interactive"]
+  prompt = red
+  header = red bold
+  error = red
+  help = black bold
+[color "grep"]
+  context = normal
+  match = cyan
+  filename = blue
+  function = blue
+  selected = normal
+  separator = red bold
+  linenumber = normal

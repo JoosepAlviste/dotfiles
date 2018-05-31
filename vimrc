@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
 
 " All Plug commands should be here
 Plug 'joshdick/onedark.vim'
+Plug 'trevordmiller/nova-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
@@ -80,7 +81,7 @@ endif
 syntax on
 
 " Color scheme
-colorscheme onedark
+colorscheme nova
 
 " Highlight columns
 set colorcolumn=80,120
@@ -232,6 +233,15 @@ let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
+
+" Tab-completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \]
 
 " }}}
 " ## Load all plugins from pack {{{
