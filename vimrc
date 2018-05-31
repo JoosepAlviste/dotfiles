@@ -24,6 +24,15 @@ Plug 'tpope/vim-vinegar'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
 " End Plug
 call plug#end()
 
@@ -72,6 +81,9 @@ syntax on
 
 " Color scheme
 colorscheme onedark
+
+" Highlight columns
+set colorcolumn=80,120
 
 " }}}
 " ## Search {{{
@@ -212,6 +224,14 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
             \   'javascript': ['eslint'],
             \}
+
+" }}}
+" ## Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
 
 " }}}
 " ## Load all plugins from pack {{{
