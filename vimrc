@@ -33,6 +33,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'steelsojka/deoplete-flow'
+Plug 'ternjs/tern_for_vim'
 
 " End Plug
 call plug#end()
@@ -124,6 +126,9 @@ set splitright
 "let g:netrw_list_hide = '^.*\.pyc$'
 
 set wildignore+=.*\.pyc$
+
+" Replace the delete dir command in netrw with trash
+let g:netrw_localrmdir='trash'
 
 " }}}
 " ## Keybindings {{{
@@ -242,6 +247,21 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript.jsx',
                 \ 'vue',
                 \]
+
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" Preferrably use flow from node_modules
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
 
 " }}}
 " ## Load all plugins from pack {{{
