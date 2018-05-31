@@ -3,9 +3,9 @@
 ## Installation
 
 ```
-git clone git@github.com:JoosepAlviste/dotfiles.git
+git clone git@github.com:JoosepAlviste/dotfiles.git .dotfiles
 
-cd dotfiles
+cd .dotfiles
 chmod +x makesymlinks.sh
 ./makesymlinks.sh
 ```
