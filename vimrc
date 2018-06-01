@@ -161,11 +161,20 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Redraw 
+" Redraw with alt+r
 nnoremap ® <C-l>
 
 " Allow mouse actions (resize panes, etc.)
 set mouse=a
+
+" Normal backspace behaviour
+set backspace=indent,eol,start
+
+" }}}
+" ## Languages {{{
+
+" Custom tab size for js files
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " }}}
 " # Vim specific {{{
