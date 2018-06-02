@@ -1,4 +1,4 @@
-" # Plug {{{
+" # Plugins {{{
 
 " This needs to be first because if we want to use plugins (e.g., set a color
 " scheme), the plugins aren't available yet. The plug#end method allows us to use plugins.
@@ -14,8 +14,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " All Plug commands should be here
+
+" Color themes
 Plug 'joshdick/onedark.vim'
 Plug 'trevordmiller/nova-vim'
+
+" Plugins
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
@@ -38,6 +42,69 @@ Plug 'ternjs/tern_for_vim'
 
 " End Plug
 call plug#end()
+
+" }}}
+" ## Lightline {{{
+" Use the onedark color scheme
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'percent' ],
+  \              [ 'filetype' ] ],
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'gitbranch#name',
+  \ },
+  \ }
+" }}}
+" ## Ale {{{
+
+" Fixing
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+            \   'javascript': ['eslint'],
+            \}
+
+" }}}
+" ## Deoplete {{{
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+" Tab-completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \]
+
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" Preferrably use flow from node_modules
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
+
+" }}}
+" ## Javascript {{{
+
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 
 " }}}
 " # Editor {{{
@@ -81,7 +148,7 @@ endif
 syntax on
 
 " Color scheme
-colorscheme nova
+colorscheme onedark
 
 " Highlight columns
 set colorcolumn=80,120
@@ -211,65 +278,6 @@ set wildignore+=**/*.pyc
 set wildignore+=**/vendor/**
 set wildignore+=**/public/**
 set wildignore+=**/dist/**
-" }}}
-" # Plugins {{{
-" }}}
-" ## Lightline {{{
-" Use the onedark color scheme
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'filetype' ] ],
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'gitbranch#name',
-  \ },
-  \ }
-" }}}
-" ## Ale {{{
-
-" Fixing
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-            \   'javascript': ['eslint'],
-            \}
-
-" }}}
-" ## Deoplete {{{
-
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-
-" Tab-completion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \]
-
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
-" Preferrably use flow from node_modules
-function! StrTrim(txt)
-  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-endfunction
-
-let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-
-if g:flow_path != 'flow not found'
-  let g:deoplete#sources#flow#flow_bin = g:flow_path
-endif
-
 " }}}
 " # Overview {{{
 set modelines=3
