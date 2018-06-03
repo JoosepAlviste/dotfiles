@@ -27,6 +27,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree'
+Plug 'wincent/command-t', {
+    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+    \ }
+
+" Linting and autocomplete
 Plug 'w0rp/ale'
 
 if has('nvim')
@@ -39,26 +45,49 @@ endif
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'steelsojka/deoplete-flow'
 Plug 'ternjs/tern_for_vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'maximbaz/lightline-ale'
 
 " End Plug
 call plug#end()
 
 " }}}
 " ## Lightline {{{
+  "\              [ 'lineinfo' ],
+  "\              [ 'percent' ],
+  "\              [ 'filetype' ] ],
 " Use the onedark color scheme
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
+  \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings' ],
   \              [ 'percent' ],
   \              [ 'filetype' ] ],
   \ },
   \ 'component_function': {
   \   'gitbranch': 'gitbranch#name',
   \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \ },
+  \ 'component_type': {
+  \     'linter_checking': 'left',
+  \     'linter_warnings': 'warning',
+  \     'linter_errors': 'error',
+  \ },
   \ }
+" }}}
+" ### Ale lightline {{{
+
+" Use font awesome glyphicons for indicators
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+
 " }}}
 " ## Ale {{{
 
@@ -66,6 +95,7 @@ let g:lightline = {
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
             \   'javascript': ['eslint'],
+            \   'typescript': ['tslint'],
             \}
 
 " }}}
@@ -105,6 +135,19 @@ endif
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
+
+" }}}
+" ## NERDTree {{{
+
+" Open NERDTree automatically if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Toggle NERDTree with a shortcut
+map <C-n> :NERDTreeToggle<CR>
+
+" Close NERDTree when it is the only open pane
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " }}}
 " # Editor {{{
@@ -241,7 +284,16 @@ set backspace=indent,eol,start
 " ## Languages {{{
 
 " Custom tab size for js files
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Set filetype as typescript.jsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
+
+" }}}
+" ## Tags {{{
+
+" Set the tags file name
+set tags=.tags
 
 " }}}
 " # Vim specific {{{

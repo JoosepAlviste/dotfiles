@@ -12,6 +12,17 @@
 * [https://github.com/Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
 * [https://github.com/carlitux/deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
 
+### Ctags:
+
+* [Universal ctags](https://github.com/universal-ctags/ctags) for better ctags 
+(React files, etc.). Can just be installed with brew.
+
+### Command T
+
+Fuzzy finder.
+
+* Needs Ruby support (global gem for neovim).
+
 ## Installation
 
 ```
