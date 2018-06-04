@@ -239,7 +239,7 @@ set foldenable
 set foldlevelstart=10
 
 " Space to open/close folds
-"nnoremap <space> za
+nnoremap <S-tab> za
 
 " Fold based on indent level
 set foldmethod=indent
