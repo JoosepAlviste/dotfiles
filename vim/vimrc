@@ -17,7 +17,7 @@ call plug#begin('~/.vim/plugged')
 
 " Color themes
 Plug 'joshdick/onedark.vim'
-Plug 'trevordmiller/nova-vim'
+"Plug 'trevordmiller/nova-vim'
 
 " Plugins
 Plug 'jiangmiao/auto-pairs'
@@ -25,15 +25,18 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
+Plug 'scrooloose/nerdcommenter'
 
-" Linting and autocomplete
+" Linting and syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
+Plug 'maximbaz/lightline-ale'
 
+" Autocomplete
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -43,10 +46,6 @@ else
 endif
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'steelsojka/deoplete-flow'
-Plug 'ternjs/tern_for_vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'maximbaz/lightline-ale'
 
 " End Plug
 call plug#end()
@@ -166,7 +165,13 @@ endif
 " ## Command T {{{
 
 " Shortcut for finding tags
-nmap <silent> <Leader-x> <Plug>(CommandTTag)
+nmap <silent> <Leader>o <Plug>(CommandTTag)
+
+" }}}
+" ## NERDCommenter {{{
+"
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " }}}
 " # Editor {{{
@@ -258,8 +263,11 @@ let g:netrw_localrmdir='trash'
 " }}}
 " ## Keybindings {{{
 
-" Remap leader to comma
-let mapleader=" "
+" Remap leader to space, need Nop maps because otherwise will move cursor to 
+" right
+nnoremap <SPACE> <Nop>
+vnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
 
 " Move visually (in one wrapped line)
 "nnoremap j gj
@@ -305,6 +313,10 @@ nnoremap <silent> <leader>r :call mappings#cycle_numbering()<CR>
 
 " Quit the pane/buffer with <leader>q (space q)
 nnoremap <leader>q :quit<CR>
+
+" Store relative line number jumps in the jumplist if they exceed a threshold.
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 " }}}
 " ## Languages {{{
