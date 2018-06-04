@@ -1,3 +1,4 @@
 tmux*.log
 vim/plugged/
+.netrwhist
 
