@@ -166,13 +166,15 @@ endif
 " ## Command T {{{
 
 " Shortcut for finding tags
-nmap <silent> <Leader>o <Plug>(CommandTTag)
+nmap <silent> <Leader-x> <Plug>(CommandTTag)
 
 " }}}
 " # Editor {{{
 
-" Line numbers
+" Enable line numbers and relative line numbers by default, can be toggled
+" with <leader>r
 set number
+set relativenumber
 
 " Correct indentation
 filetype on
@@ -297,6 +299,12 @@ set backspace=indent,eol,start
 
 " Jump to previous file with <leader><leader> (space space)
 nnoremap <leader><leader> <C-^>
+
+" Cycling through relative line numbers
+nnoremap <silent> <leader>r :call mappings#cycle_numbering()<CR>
+
+" Quit the pane/buffer with <leader>q (space q)
+nnoremap <leader>q :quit<CR>
 
 " }}}
 " ## Languages {{{

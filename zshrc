@@ -56,11 +56,6 @@ export PURE_PROMPT_SYMBOL=λ
 autoload -U promptinit; promptinit
 prompt purer
 
-# Custom title bar for iTerm
-echo -e "\033]6;1;bg;red;brightness;40\a"
-echo -e "\033]6;1;bg;green;brightness;44\a"
-echo -e "\033]6;1;bg;blue;brightness;52\a"
-
 # }}}
 # # Packages {{{
 
