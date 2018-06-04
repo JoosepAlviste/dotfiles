@@ -46,6 +46,8 @@ alias cd..="cd .."
 alias p="vendor/bin/phpunit"
 alias pf="p --filter"
 alias art="php artisan"
+
+alias vim=nvim
 # }}}
 # # Visuals {{{
 
