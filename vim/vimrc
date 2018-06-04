@@ -25,7 +25,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
@@ -149,6 +148,26 @@ map <C-n> :NERDTreeToggle<CR>
 " Close NERDTree when it is the only open pane
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Like vim-vinegar, open the current directory when pressing "-"
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+
+" When hitting "-", can hit C-^ to return to file
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
+" Select last file when opening NERDTree
+if has('autocmd')
+    augroup JoosepNERDTree
+        autocmd!
+        autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+    augroup END
+endif
+
+" }}}
+" ## Command T {{{
+
+" Shortcut for finding tags
+nmap <silent> <Leader>o <Plug>(CommandTTag)
+
 " }}}
 " # Editor {{{
 
@@ -220,7 +239,7 @@ set foldenable
 set foldlevelstart=10
 
 " Space to open/close folds
-nnoremap <space> za
+"nnoremap <space> za
 
 " Fold based on indent level
 set foldmethod=indent
@@ -230,10 +249,6 @@ set splitbelow
 set splitright
 " }}}
 " ## File tree {{{
-" Hide unneeded files and folders
-"let g:netrw_list_hide = '^.*\.pyc$'
-
-set wildignore+=.*\.pyc$
 
 " Replace the delete dir command in netrw with trash
 let g:netrw_localrmdir='trash'
@@ -242,7 +257,7 @@ let g:netrw_localrmdir='trash'
 " ## Keybindings {{{
 
 " Remap leader to comma
-let mapleader=","
+let mapleader=" "
 
 " Move visually (in one wrapped line)
 "nnoremap j gj
@@ -279,6 +294,9 @@ set mouse=a
 
 " Normal backspace behaviour
 set backspace=indent,eol,start
+
+" Jump to previous file with <leader><leader> (space space)
+nnoremap <leader><leader> <C-^>
 
 " }}}
 " ## Languages {{{
