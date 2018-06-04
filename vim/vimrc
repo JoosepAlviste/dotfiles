@@ -30,6 +30,7 @@ Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
 Plug 'scrooloose/nerdcommenter'
+Plug 'craigemery/vim-autotag'
 
 " Linting and syntax
 Plug 'sheerun/vim-polyglot'
@@ -174,7 +175,15 @@ nmap <silent> <Leader>o <Plug>(CommandTTag)
 let g:NERDSpaceDelims = 1
 
 " }}}
+" ## Autotag {{{
+
+" Tags file name
+let g:autotagTagsFile=".tags"
+
+" }}}
 " # Editor {{{
+
+let $NODE_ENV="development"
 
 " Enable line numbers and relative line numbers by default, can be toggled
 " with <leader>r
