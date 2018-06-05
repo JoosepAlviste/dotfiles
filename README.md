@@ -1,5 +1,12 @@
 # My dotfiles
 
+Since this project uses git submodules for some things (tmux plugins), it needs
+to be cloned with submodules.
+
+```
+git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
+```
+
 ## Requirements
 
 * Zsh
