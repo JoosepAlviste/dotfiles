@@ -43,7 +43,7 @@ set mouse=a
 set backspace=indent,eol,start
 
 " Jump to previous file with <leader><leader> (space space)
-nnoremap <leader><leader> <C-^>
+nmap <leader><leader> <C-^>
 
 " Cycling through relative line numbers
 nnoremap <silent> <leader>r :call mappings#cycle_numbering()<CR>
@@ -152,6 +152,13 @@ let g:ale_fixers = {
             \   'javascript': ['eslint'],
             \   'javascript.jsx': ['eslint'],
             \}
+
+let g:ale_javascript_eslint_executable = 'eslint_d'
+
+" Autofix entire buffer with eslint_d:
+nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
+" Autofix visual selection with eslint_d:
+vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
 
 " }}}
 " ## Deoplete {{{
@@ -289,9 +296,6 @@ set incsearch
 
 " Highlight matches
 set hlsearch
-
-" Hide search highlight
-nnoremap <leader><space> :nohlsearch<CR>
 
 " Smart uppercase
 set ignorecase
