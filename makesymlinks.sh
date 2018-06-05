@@ -10,7 +10,7 @@ dir=~/.dotfiles                  # dotfiles directory
 olddir=~/.dotfiles_old           # old dotfiles backup directory
 files="vimrc vim zshrc gitconfig tmux.conf ctags.d"    # list of files/folders to symlink in homedir
 
-dotConfigFiles="nvim"
+dotConfigFiles="nvim tmux.conf.d"
 
 ##########
 
@@ -36,7 +36,9 @@ done
 
 mkdir -p ~/.config/
 for file in $dotConfigFiles; do
-    echo "Creating symlink to $file in .config/."
-    ln -s $dir/$file ~/.config/$file
+    if [ ! -e ~/.config/$file ]; then
+        echo "Creating symlink to $file in .config/."
+        ln -s $dir/$file ~/.config/$file
+    fi
 done
 
