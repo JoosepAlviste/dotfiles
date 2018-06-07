@@ -1,10 +1,20 @@
-" # Keybindings {{{
+" ============================================================================
+" # Pre set up {{{
+" ============================================================================
 
 " Remap leader to space, need Nop maps because otherwise will move cursor to 
 " right
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
+
+" A prefix for all FZF commands, just so that they are namespaced
+let g:fzf_command_prefix = 'Fzf'
+
+" }}}
+" ============================================================================
+" # Keybindings {{{
+" ============================================================================
 
 " Move visually (in one wrapped line)
 "nnoremap j gj
@@ -56,7 +66,9 @@ nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 " }}}
+" ============================================================================
 " # Plugins {{{
+" ============================================================================
 
 " This needs to be first because if we want to use plugins (e.g., set a color
 " scheme), the plugins aren't available yet. The plug#end method allows us to use plugins.
@@ -75,24 +87,34 @@ call plug#begin('~/.vim/plugged')
 
 " Color themes
 Plug 'joshdick/onedark.vim'
-"Plug 'trevordmiller/nova-vim'
 
 " Plugins
+" Automatically add end tag/brace/quote
 Plug 'jiangmiao/auto-pairs'
+" Light-weight status bar at the bottom of the screen
 Plug 'itchyny/lightline.vim'
+" Show git branch info in lightline
 Plug 'itchyny/vim-gitbranch'
+" Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-repeat'
+" Surround stuff with braces, quotes, tags, anything
 Plug 'tpope/vim-surround'
+" File browser
 Plug 'scrooloose/nerdtree'
-Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    \ }
+" Automatically generate ctags when file is saved
 Plug 'craigemery/vim-autotag'
+" Comment stuff out easily
 Plug 'tpope/vim-commentary'
 
-" Linting and syntax
+" Fzf - fuzzy search
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Syntax highlighting for most file types
 Plug 'sheerun/vim-polyglot'
+" Linting
 Plug 'w0rp/ale'
+" Show linting info in lightline
 Plug 'maximbaz/lightline-ale'
 
 " Autocomplete
@@ -103,14 +125,18 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+" Javascript autocomplete
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Flow autocomplete
 Plug 'steelsojka/deoplete-flow'
 
 " End Plug
 call plug#end()
 
 " }}}
+" ============================================================================
 " ## Lightline {{{
+" ============================================================================
 
 " Use the onedark color scheme
 let g:lightline = {
@@ -137,14 +163,18 @@ let g:lightline = {
   \ },
   \ }
 " }}}
+" ============================================================================
 " ### Ale lightline {{{
+" ============================================================================
 
 " Use font awesome glyphicons for indicators
 let g:lightline#ale#indicator_warnings = "\uf071"
 let g:lightline#ale#indicator_errors = "\uf05e"
 
 " }}}
+" ============================================================================
 " ## Ale {{{
+" ============================================================================
 
 " Fixing
 let g:ale_fix_on_save = 1
@@ -153,6 +183,7 @@ let g:ale_fixers = {
             \   'javascript.jsx': ['eslint'],
             \}
 
+" Use eslint_d for faster linting
 let g:ale_javascript_eslint_executable = 'eslint_d'
 
 " Autofix entire buffer with eslint_d:
@@ -161,7 +192,9 @@ nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
 vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
 
 " }}}
+" ============================================================================
 " ## Deoplete {{{
+" ============================================================================
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -193,13 +226,17 @@ if g:flow_path != 'flow not found'
 endif
 
 " }}}
+" ============================================================================
 " ## Javascript {{{
+" ============================================================================
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 
 " }}}
+" ============================================================================
 " ## NERDTree {{{
+" ============================================================================
 
 " Open NERDTree automatically if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -226,19 +263,67 @@ if has('autocmd')
 endif
 
 " }}}
-" ## Command T {{{
+" ============================================================================
+" ## Fzf {{{
+" ============================================================================
 
-" Shortcut for finding tags
-nmap <silent> <Leader>o <Plug>(CommandTTag)
+" Open the FZF buffer and un-focus NERDTree
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+
+" Search files with space-p
+nnoremap <silent> <C-p> :call FZFOpen(':FzfFiles')<CR>
+
+" Search for tags with space-o
+nnoremap <silent> <C-o> :call FZFOpen(':FzfTags')<CR>
+
+" Search all files' contents
+nnoremap <silent> <C-f> :call FZFOpen(':FzfAg')<CR>
+
+" Search buffers by file name
+nnoremap <silent> <C-b> :call FZFOpen(':FzfBuffers')<CR>
+
+" Open small file preview while searching files
+command! -bang -nargs=? -complete=dir FzfFiles
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Customize fzf colors to match the color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Hide the statusline for the FZF window'
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " }}}
+" ============================================================================
 " ## Autotag {{{
+" ============================================================================
 
 " Tags file name
 let g:autotagTagsFile=".tags"
 
 " }}}
+" ============================================================================
 " # Editor {{{
+" ============================================================================
 
 let $NODE_ENV="development"
 
@@ -289,7 +374,9 @@ colorscheme onedark
 set colorcolumn=80,120
 
 " }}}
+" ============================================================================
 " ## Search {{{
+" ============================================================================
 
 " Search as characters are written
 set incsearch
@@ -302,7 +389,9 @@ set ignorecase
 set smartcase
 
 " }}}
+" ============================================================================
 " ## Folding {{{
+" ============================================================================
 set foldenable
 
 " Open most folds by default
@@ -314,17 +403,23 @@ nnoremap <S-tab> za
 " Fold based on indent level
 set foldmethod=indent
 " }}}
+" ============================================================================
 " ## Splits {{{
+" ============================================================================
 set splitbelow
 set splitright
 " }}}
+" ============================================================================
 " ## File tree {{{
+" ============================================================================
 
 " Replace the delete dir command in netrw with trash
 let g:netrw_localrmdir='trash'
 
 " }}}
+" ============================================================================
 " ## Languages {{{
+" ============================================================================
 
 " Custom tab size for js files
 autocmd FileType javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -333,13 +428,17 @@ autocmd FileType javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabst
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
 
 " }}}
+" ============================================================================
 " ## Tags {{{
+" ============================================================================
 
 " Set the tags file name
 set tags=.tags
 
 " }}}
+" ============================================================================
 " # Vim specific {{{
+" ============================================================================
 
 " Visual autocomplete for command menu
 set wildmenu
@@ -364,7 +463,9 @@ set title
 set visualbell
 
 " }}}
+" ============================================================================
 " # File editing {{{
+" ============================================================================
 " Recursive :find
 set path+=**
 " Ignore some folders in find
@@ -374,7 +475,9 @@ set wildignore+=**/vendor/**
 set wildignore+=**/public/**
 set wildignore+=**/dist/**
 " }}}
+" ============================================================================
 " # Overview {{{
+" ============================================================================
 set modelines=3
 " Custom folding for this file
 " vim:foldmethod=marker:foldlevel=0
