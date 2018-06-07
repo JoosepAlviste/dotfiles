@@ -2,3 +2,5 @@ backend
 Django
 tmux
 ESLint
+CommandT
+FZF

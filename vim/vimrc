@@ -87,6 +87,9 @@ call plug#begin('~/.vim/plugged')
 
 " Color themes
 Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'rakr/vim-two-firewatch'
+Plug 'arcticicestudio/nord-vim'
 
 " Plugins
 " Automatically add end tag/brace/quote
@@ -140,7 +143,7 @@ call plug#end()
 
 " Use the onedark color scheme
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
+  \ 'colorscheme': 'nord',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -279,7 +282,7 @@ endfunction
 nnoremap <silent> <C-p> :call FZFOpen(':FzfFiles')<CR>
 
 " Search for tags with space-o
-nnoremap <silent> <C-o> :call FZFOpen(':FzfTags')<CR>
+nnoremap <silent> <C-g>g :call FZFOpen(':FzfTags')<CR>
 
 " Search all files' contents
 nnoremap <silent> <C-f> :call FZFOpen(':FzfAg')<CR>
@@ -367,8 +370,13 @@ endif
 " Syntax highlighting
 syntax on
 
+" Enable italics for the color scheme
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+
 " Color scheme
-colorscheme onedark
+set background=dark
+colorscheme nord
 
 " Highlight columns
 set colorcolumn=80,120
