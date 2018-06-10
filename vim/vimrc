@@ -16,10 +16,6 @@ let g:fzf_command_prefix = 'Fzf'
 " # Keybindings {{{
 " ============================================================================
 
-" Move visually (in one wrapped line)
-"nnoremap j gj
-"nnoremap k gk
-
 " Set jk to esc
 inoremap jk <esc>
 
@@ -33,7 +29,7 @@ set history=100
 " Extended % matching
 runtime macros/matchit.vim
 
-" Scroll viewport faster
+" Faster scrolling
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
@@ -87,8 +83,6 @@ call plug#begin('~/.vim/plugged')
 
 " Color themes
 Plug 'joshdick/onedark.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'rakr/vim-two-firewatch'
 Plug 'arcticicestudio/nord-vim'
 
 " Plugins
@@ -97,7 +91,7 @@ Plug 'jiangmiao/auto-pairs'
 " Light-weight status bar at the bottom of the screen
 Plug 'itchyny/lightline.vim'
 " Show git branch info in lightline
-Plug 'itchyny/vim-gitbranch'
+Plug 'tpope/vim-fugitive'
 " Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-repeat'
 " Surround stuff with braces, quotes, tags, anything
@@ -152,7 +146,7 @@ let g:lightline = {
   \              [ 'filetype' ] ],
   \ },
   \ 'component_function': {
-  \   'gitbranch': 'gitbranch#name',
+  \   'gitbranch': 'fugitive#head',
   \ },
   \ 'component_expand': {
   \   'linter_checking': 'lightline#ale#checking',
@@ -194,6 +188,9 @@ nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
 " Autofix visual selection with eslint_d:
 vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
 
+" Show errors in the quickfix window
+let g:ale_set_quickfix = 1
+
 " }}}
 " ============================================================================
 " ## Deoplete {{{
@@ -212,10 +209,6 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript.jsx',
                 \ 'vue',
                 \]
-
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 
 " Preferrably use flow from node_modules
 function! StrTrim(txt)
@@ -246,7 +239,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Toggle NERDTree with a shortcut
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " Close NERDTree when it is the only open pane
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -278,10 +271,10 @@ function! FZFOpen(command_str)
   exe 'normal! ' . a:command_str . "\<cr>"
 endfunction
 
-" Search files with space-p
+" Search files with Ctrl-p
 nnoremap <silent> <C-p> :call FZFOpen(':FzfFiles')<CR>
 
-" Search for tags with space-o
+" Search for tags with Ctrl-g + g
 nnoremap <silent> <C-g>g :call FZFOpen(':FzfTags')<CR>
 
 " Search all files' contents
@@ -310,11 +303,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Hide the statusline for the FZF window'
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
 " }}}
 " ============================================================================
 " ## Autotag {{{
@@ -327,8 +315,6 @@ let g:autotagTagsFile=".tags"
 " ============================================================================
 " # Editor {{{
 " ============================================================================
-
-let $NODE_ENV="development"
 
 " Enable line numbers and relative line numbers by default, can be toggled
 " with <leader>r
@@ -386,15 +372,15 @@ nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
   if exists('#auto_highlight')
-    au! auto_highlight
+    autocmd! auto_highlight
     augroup! auto_highlight
     setl updatetime=4000
     echo 'Highlight current word: off'
     return 0
   else
     augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+      autocmd!
+      autocmd CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
     augroup end
     setl updatetime=500
     echo 'Highlight current word: ON'
@@ -444,17 +430,6 @@ set splitright
 
 " Replace the delete dir command in netrw with trash
 let g:netrw_localrmdir='trash'
-
-" }}}
-" ============================================================================
-" ## Languages {{{
-" ============================================================================
-
-" Custom tab size for js files
-autocmd FileType javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
-" Set filetype as typescript.jsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
 
 " }}}
 " ============================================================================

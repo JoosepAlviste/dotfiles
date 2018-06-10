@@ -24,11 +24,11 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 * [Universal ctags](https://github.com/universal-ctags/ctags) for better ctags 
 (React files, etc.). Can just be installed with brew.
 
-### Command T
+### Fzf
 
 Fuzzy finder.
 
-* Needs Ruby support (global gem for neovim).
+* Needs fzf installed globally (from brew)
 
 ## Installation
 
