@@ -52,3 +52,5 @@
 [user]
 	name = Joosep Alviste
 	email = joosep.alviste@gmail.com
+[core]
+	excludesfile = /home/joosep/.dotfiles/gitignore_global
