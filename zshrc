@@ -72,7 +72,7 @@ source /usr/local/etc/profile.d/z.sh
 # # Generic {{{
 
 # Use vim as the default editor
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Zsh syntax highlighting. Must be at the end of the file!
@@ -83,7 +83,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # added by travis gem
-[ -f /Users/joosep/.travis/travis.sh ] && source /Users/joosep/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # # Overview {{{
 set modelines=3
