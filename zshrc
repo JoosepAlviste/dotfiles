@@ -4,6 +4,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.composer/vendor/bin:$PATH
 export PATH=/usr/local/opt/python@2/bin:$PATH
 export PATH=/usr/local/opt/gettext/bin:$PATH
 
+export NODE_ENV=development
+
 # }}}
 # ## Env variables {{{
 
@@ -72,7 +74,7 @@ source /usr/local/etc/profile.d/z.sh
 # # Generic {{{
 
 # Use vim as the default editor
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Zsh syntax highlighting. Must be at the end of the file!
