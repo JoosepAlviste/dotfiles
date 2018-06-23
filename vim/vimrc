@@ -61,6 +61,18 @@ nnoremap <leader>q :quit<CR>
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
+" Nvim terminal keybindings
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+    " Pane movements
+    tnoremap <C-J> <C-W><C-J>
+    tnoremap <C-K> <C-W><C-K>
+    tnoremap <C-L> <C-W><C-L>
+    tnoremap <C-H> <C-W><C-H>
+endif
+
 " }}}
 " ============================================================================
 " # Plugins {{{
@@ -126,6 +138,8 @@ endif
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Flow autocomplete
 Plug 'steelsojka/deoplete-flow'
+" Highlight yanked text briefly
+Plug 'machakann/vim-highlightedyank'
 
 " End Plug
 call plug#end()
@@ -465,6 +479,8 @@ set title
 
 " Visual bell
 set visualbell
+
+set inccommand=nosplit
 
 " }}}
 " ============================================================================
