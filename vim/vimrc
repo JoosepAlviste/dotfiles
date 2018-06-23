@@ -67,10 +67,10 @@ if has('nvim')
     tnoremap <M-[> <Esc>
     tnoremap <C-v><Esc> <Esc>
     " Pane movements
-    tnoremap <C-J> <C-W><C-J>
-    tnoremap <C-K> <C-W><C-K>
-    tnoremap <C-L> <C-W><C-L>
-    tnoremap <C-H> <C-W><C-H>
+    "tnoremap <C-J> <C-W><C-J>
+    "tnoremap <C-K> <C-W><C-K>
+    "tnoremap <C-L> <C-W><C-L>
+    "tnoremap <C-H> <C-W><C-H>
 endif
 
 " }}}
@@ -110,8 +110,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " File browser
 Plug 'scrooloose/nerdtree'
-" Automatically generate ctags when file is saved
-Plug 'craigemery/vim-autotag'
+" Generation of ctags
+Plug 'ludovicchabant/vim-gutentags'
 " Comment stuff out easily
 Plug 'tpope/vim-commentary'
 
@@ -149,18 +149,19 @@ call plug#end()
 " ## Lightline {{{
 " ============================================================================
 
-" Use the onedark color scheme
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'onedark',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
   \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings' ],
   \              [ 'percent' ],
-  \              [ 'filetype' ] ],
+  \              [ 'filetype' ],
+  \              [ 'gutentags' ],],
   \ },
   \ 'component_function': {
   \   'gitbranch': 'fugitive#head',
+  \   'gutentags': 'gutentags#statusline',
   \ },
   \ 'component_expand': {
   \   'linter_checking': 'lightline#ale#checking',
@@ -319,14 +320,6 @@ let g:fzf_colors =
 
 " }}}
 " ============================================================================
-" ## Autotag {{{
-" ============================================================================
-
-" Tags file name
-let g:autotagTagsFile=".tags"
-
-" }}}
-" ============================================================================
 " # Editor {{{
 " ============================================================================
 
@@ -373,10 +366,11 @@ syntax on
 " Enable italics for the color scheme
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
+let g:onedark_terminal_italics = 1
 
 " Color scheme
 set background=dark
-colorscheme nord
+colorscheme onedark
 
 " Highlight columns
 set colorcolumn=80,120

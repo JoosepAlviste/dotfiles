@@ -4,4 +4,5 @@
 --exclude=node_modules/*
 --exclude=db/*
 --exclude=log/*
--f .tags
+--exclude=*.json
+--exclude=*.md
