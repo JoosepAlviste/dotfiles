@@ -323,12 +323,12 @@ set relativenumber
 
 " Correct indentation
 filetype on
-filetype plugin on
-filetype indent on
-set tabstop=4
+filetype plugin indent on
+set autoindent
+set tabstop=8
+set softtabstop=4
 set shiftwidth=4
-set expandtab smarttab
-set softtabstop=0
+set expandtab
 
 " Highlight current line
 set cursorline
