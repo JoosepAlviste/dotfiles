@@ -77,6 +77,14 @@ source /usr/local/etc/profile.d/z.sh
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+# Use up/down arrow to search history
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Zsh syntax highlighting. Must be at the end of the file!
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
