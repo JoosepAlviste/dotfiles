@@ -30,8 +30,8 @@ set history=100
 runtime macros/matchit.vim
 
 " Faster scrolling
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
 
 " Easier pane movements
 nnoremap <C-J> <C-W><C-J>
@@ -40,7 +40,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Redraw with alt+r
-nnoremap ® <C-l>
+"nnoremap ® <C-l>
 
 " Allow mouse actions (resize panes, etc.)
 set mouse=a
@@ -111,9 +111,11 @@ Plug 'tpope/vim-surround'
 " File browser
 Plug 'scrooloose/nerdtree'
 " Generation of ctags
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 " Comment stuff out easily
 Plug 'tpope/vim-commentary'
+" Highlight yanked text briefly
+Plug 'machakann/vim-highlightedyank'
 
 " Fzf - fuzzy search
 Plug '/usr/local/opt/fzf'
@@ -134,12 +136,16 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 " Javascript autocomplete
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " Flow autocomplete
-Plug 'steelsojka/deoplete-flow'
-" Highlight yanked text briefly
-Plug 'machakann/vim-highlightedyank'
+"Plug 'steelsojka/deoplete-flow'
 
 " End Plug
 call plug#end()
@@ -287,20 +293,26 @@ function! FZFOpen(command_str)
 endfunction
 
 " Search files with Ctrl-p
-nnoremap <silent> <C-p> :call FZFOpen(':FzfFiles')<CR>
+nnoremap <silent> ∏ :call FZFOpen(':FzfFiles')<CR>
 
-" Search for tags with Ctrl-g + g
-nnoremap <silent> <C-g>g :call FZFOpen(':FzfTags')<CR>
+"
+" Search for tags with Ctrl-g
+nnoremap <silent> ˝ :call FZFOpen(':FzfTags')<CR>
 
-" Search all files' contents
-nnoremap <silent> <C-f> :call FZFOpen(':FzfAg')<CR>
+" Search all files' contents with ctrl f
+nnoremap <silent> Ï :call FZFOpen(':FzfAg')<CR>
 
-" Search buffers by file name
-nnoremap <silent> <C-b> :call FZFOpen(':FzfBuffers')<CR>
+" Search buffers by file name with ctrl e
+nnoremap <silent> ´ :call FZFOpen(':FzfBuffers')<CR>
+
+" Search commands with ctrl a
+nnoremap <silent> Å :FzfCommands<CR>
 
 " Open small file preview while searching files
 command! -bang -nargs=? -complete=dir FzfFiles
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir FzfAg
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " Customize fzf colors to match the color scheme
 let g:fzf_colors =
@@ -317,6 +329,50 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" }}}
+" ============================================================================
+" ## Language client {{{
+" ============================================================================
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+" Map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <C-b> :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <S-F6> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <C-/> :call LanguageClient#textDocument_documentSymbol()<CR>
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Use the language server to format text with 'gq'
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {}
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
+command GoToDefinition call LanguageClient#textDocument_definition()<CR>
+command Hover call LanguageClient#textDocument_hover()<CR>
+command GoToTypeDefinition call LanguageClient#textDocument_typeDefinition()<CR>
+command GoToImlementation call LanguageClient#textDocument_implementation()<CR>
+command Rename call LanguageClient#textDocument_rename()<CR>
+command SymbolsDocument call LanguageClient#textDocument_documentSymbol()<CR>
+command References call LanguageClient#textDocument_references()<CR>
+command CodeAction call LanguageClient#textDocument_codeAction()<CR>
+command Format call LanguageClient#textDocument_formatting()<CR>
+command SymbolsWorkspace call LanguageClient#workspace_symbol()<CR>
 
 " }}}
 " ============================================================================
