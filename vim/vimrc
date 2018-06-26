@@ -1,5 +1,5 @@
 " ============================================================================
-" # Pre set up {{{
+" # General {{{
 " ============================================================================
 
 " Remap leader to space, need Nop maps because otherwise will move cursor to 
@@ -7,6 +7,9 @@
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
+
+" Longer history
+set history=500
 
 " A prefix for all FZF commands, just so that they are namespaced
 let g:fzf_command_prefix = 'Fzf'
@@ -23,24 +26,9 @@ inoremap jk <esc>
 nnoremap ' `
 nnoremap ` '
 
-" Longer history
-set history=100
-
-" Extended % matching
-runtime macros/matchit.vim
-
 " Faster scrolling
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
-
-" Easier pane movements
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Redraw with alt+r
-"nnoremap ® <C-l>
 
 " Allow mouse actions (resize panes, etc.)
 set mouse=a
@@ -57,6 +45,9 @@ nnoremap <silent> <leader>r :call mappings#cycle_numbering()<CR>
 " Quit the pane/buffer with <leader>q (space q)
 nnoremap <leader>q :quit<CR>
 
+" Save with <leader>w
+nnoremap <leader>w :w!<CR>
+
 " Store relative line number jumps in the jumplist if they exceed a threshold.
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
@@ -66,12 +57,46 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
     tnoremap <M-[> <Esc>
     tnoremap <C-v><Esc> <Esc>
-    " Pane movements
-    "tnoremap <C-J> <C-W><C-J>
-    "tnoremap <C-K> <C-W><C-K>
-    "tnoremap <C-L> <C-W><C-L>
-    "tnoremap <C-H> <C-W><C-H>
 endif
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" }}}
+" ============================================================================
+" ## Panes, windows, tabs {{{
+
+" Easier pane movements
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Useful mappings for managing tabs
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove 
+noremap <leader>t<leader> :tabnext 
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nnoremap <Leader>tl :exe "tabn ".g:lasttab<CR>
+autocmd TabLeave * let g:lasttab = tabpagenr()
+
+" Opens a new tab with the current buffer's path. Super useful when editing 
+" files in the same directory
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " }}}
 " ============================================================================
@@ -79,7 +104,11 @@ endif
 " ============================================================================
 
 " This needs to be first because if we want to use plugins (e.g., set a color
-" scheme), the plugins aren't available yet. The plug#end method allows us to use plugins.
+" scheme), the plugins aren't available yet. The plug#end method allows us to 
+" use plugins.
+
+" Extended % matching
+runtime macros/matchit.vim
 
 " Automatically install Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -363,16 +392,36 @@ else
   :cq
 endif
 
-command GoToDefinition call LanguageClient#textDocument_definition()<CR>
-command Hover call LanguageClient#textDocument_hover()<CR>
-command GoToTypeDefinition call LanguageClient#textDocument_typeDefinition()<CR>
-command GoToImlementation call LanguageClient#textDocument_implementation()<CR>
-command Rename call LanguageClient#textDocument_rename()<CR>
-command SymbolsDocument call LanguageClient#textDocument_documentSymbol()<CR>
-command References call LanguageClient#textDocument_references()<CR>
-command CodeAction call LanguageClient#textDocument_codeAction()<CR>
-command Format call LanguageClient#textDocument_formatting()<CR>
-command SymbolsWorkspace call LanguageClient#workspace_symbol()<CR>
+if !exists(':GoToDefinition') 
+    command GoToDefinition call LanguageClient#textDocument_definition()<CR>
+endif
+if !exists(':Hover') 
+    command Hover call LanguageClient#textDocument_hover()<CR>
+endif
+if !exists(':GoToTypeDefinition') 
+    command GoToTypeDefinition call LanguageClient#textDocument_typeDefinition()<CR>
+endif
+if !exists(':GoToImlementation') 
+    command GoToImlementation call LanguageClient#textDocument_implementation()<CR>
+endif
+if !exists(':Rename') 
+    command Rename call LanguageClient#textDocument_rename()<CR>
+endif
+if !exists(':SymbolsDocument') 
+    command SymbolsDocument call LanguageClient#textDocument_documentSymbol()<CR>
+endif
+if !exists(':References') 
+    command References call LanguageClient#textDocument_references()<CR>
+endif
+if !exists(':CodeAction') 
+    command CodeAction call LanguageClient#textDocument_codeAction()<CR>
+endif
+if !exists(':Format') 
+    command Format call LanguageClient#textDocument_formatting()<CR>
+endif
+if !exists(':SymbolsWorkspace') 
+    command SymbolsWorkspace call LanguageClient#workspace_symbol()<CR>
+endif
 
 " }}}
 " ============================================================================
@@ -384,15 +433,6 @@ command SymbolsWorkspace call LanguageClient#workspace_symbol()<CR>
 set number
 set relativenumber
 
-" Correct indentation
-filetype on
-filetype plugin indent on
-set autoindent
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-
 " Highlight current line
 set cursorline
 
@@ -400,7 +440,7 @@ set cursorline
 set showmatch
 
 " Scroll more when at the edge of screen
-set scrolloff=3
+set scrolloff=5
 
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 " If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -416,9 +456,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" Syntax highlighting
-syntax on
-
 " Enable italics for the color scheme
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
@@ -427,6 +464,31 @@ let g:onedark_terminal_italics = 1
 " Color scheme
 set background=dark
 colorscheme onedark
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Visual autocomplete for command menu
+set wildmenu
+
+" Redraw only when need to
+set lazyredraw
+
+" }}}
+" ============================================================================
+" ## Code editing {{{
+
+" Syntax highlighting
+syntax on
+
+" Correct indentation
+filetype on
+filetype plugin indent on
+set autoindent
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 
 " Highlight columns
 set colorcolumn=80,120
@@ -471,6 +533,7 @@ set smartcase
 " ============================================================================
 " ## Folding {{{
 " ============================================================================
+
 set foldenable
 
 " Open most folds by default
@@ -481,12 +544,17 @@ nnoremap <S-tab> za
 
 " Fold based on indent level
 set foldmethod=indent
+
+set foldcolumn=1
+
 " }}}
 " ============================================================================
 " ## Splits {{{
 " ============================================================================
+
 set splitbelow
 set splitright
+
 " }}}
 " ============================================================================
 " ## File tree {{{
@@ -497,22 +565,8 @@ let g:netrw_localrmdir='trash'
 
 " }}}
 " ============================================================================
-" ## Tags {{{
-" ============================================================================
-
-" Set the tags file name
-set tags=.tags
-
-" }}}
-" ============================================================================
 " # Vim specific {{{
 " ============================================================================
-
-" Visual autocomplete for command menu
-set wildmenu
-
-" Redraw only when need to
-set lazyredraw
 
 " Set backups to be written into /tmp
 set backup
@@ -532,24 +586,25 @@ set visualbell
 
 set inccommand=nosplit
 
-" }}}
-" ============================================================================
-" # File editing {{{
-" ============================================================================
 " Recursive :find
 set path+=**
+
 " Ignore some folders in find
 set wildignore+=**/node_modules/**
 set wildignore+=**/*.pyc
 set wildignore+=**/vendor/**
 set wildignore+=**/public/**
 set wildignore+=**/dist/**
+set wildignore+=**/.git/**
+set wildignore+=**/.DS_Store
+
 " }}}
 " ============================================================================
 " # Overview {{{
 " ============================================================================
-set modelines=3
+set modelines=4
 " Custom folding for this file
 " vim:foldmethod=marker:foldlevel=0
 " }}}
+" ============================================================================
 
