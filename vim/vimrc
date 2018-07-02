@@ -176,6 +176,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Flow autocomplete
 "Plug 'steelsojka/deoplete-flow'
 
+" Icons, must be the last plugin loaded!
+Plug 'ryanoasis/vim-devicons'
+
 " End Plug
 call plug#end()
 
@@ -422,6 +425,12 @@ endif
 if !exists(':SymbolsWorkspace') 
     command SymbolsWorkspace call LanguageClient#workspace_symbol()<CR>
 endif
+
+" }}}
+" ============================================================================
+" ## DevIcons {{{
+
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " }}}
 " ============================================================================
