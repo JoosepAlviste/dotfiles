@@ -24,7 +24,10 @@
 
     " General {
 
+        " Colorschemes
         Plug 'joshdick/onedark.vim'
+        Plug 'ayu-theme/ayu-vim'
+        Plug 'dracula/vim', { 'as': 'dracula' }
 
         " File browser
         Plug 'scrooloose/nerdtree'
@@ -71,22 +74,34 @@
         Plug 'SirVer/ultisnips'
 
         " Autocomplete
-        " if has('nvim')
-        "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        " else
-        "   Plug 'Shougo/deoplete.nvim'
-        "   Plug 'roxma/nvim-yarp'
-        "   Plug 'roxma/vim-hug-neovim-rpc'
-        " endif
+        if has('nvim')
+            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        else
+            Plug 'Shougo/deoplete.nvim'
+            Plug 'roxma/nvim-yarp'
+            Plug 'roxma/vim-hug-neovim-rpc'
+        endif
 
-        " Plug 'autozimu/LanguageClient-neovim', {
-        "     \ 'branch': 'next',
-        "     \ 'do': 'bash install.sh',
-        "     \ }
+        " Language server protocol client plugin allowing completion
+        Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
 
     " }
 
-    " TODO: Language specific stuff...
+    " JavaScript {
+    
+        " Nicer syntax highlighting
+        Plug 'maxmellon/vim-jsx-pretty'
+
+    " }
+
+    " CSS {
+    
+        Plug 'hail2u/vim-css3-syntax'
+
+    " }
 
     " Misc {
     

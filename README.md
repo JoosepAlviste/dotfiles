@@ -30,6 +30,8 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 Fuzzy finder.
 
 * Needs fzf installed globally (from brew)
+    - If it is not installed, it will be installed as a vim plugin though
+* Needs `ag` for smarter file searching
 
 ## Installation
 

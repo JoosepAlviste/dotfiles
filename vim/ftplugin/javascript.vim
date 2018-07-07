@@ -7,3 +7,5 @@ set softtabstop=2
 
 " Set node env to develop, for eslint
 let $NODE_ENV="development"
+
+set foldmethod=syntax

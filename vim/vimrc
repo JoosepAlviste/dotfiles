@@ -120,7 +120,7 @@
     
         " Configure lighline set up
         let g:lightline = {
-          \ 'colorscheme': 'onedark',
+          \ 'colorscheme': 'Dracula',
           \ 'active': {
           \   'left': [ [ 'mode', 'paste' ],
           \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -179,6 +179,12 @@
         let g:javascript_plugin_flow = 1
     
     " }
+
+    " JSX Pretty {
+
+        let g:vim_jsx_pretty_colorful_config = 1
+
+    " }
     
     " DevIcons {{{
 
@@ -199,6 +205,53 @@
 
         " :UltiSnipsEdit in new split
         let g:UltiSnipsEditSplit="vertical"
+
+    " }
+
+    " Deoplete {
+
+        " Enable deoplete on startup
+        let g:deoplete#enable_at_startup = 1       
+        " Autocomplete file names from buffer and not the opened directory
+        let g:deoplete#file#enable_buffer_path = 1
+        
+        " Enable full fuzzy matching. Not sure what it does to be honest, but
+        " fuzzyness is nice. The default is standard "fuzzy" matching. Seems to 
+        " give better results.
+        call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+        
+        " Tab-completion
+        " inoremap <expr> <tab> pumvisible() ? "<c-n><c-y>" : "<tab>"
+
+    " }
+
+    " LanguageClient {
+
+        " Automatically start language servers
+        let g:LanguageClient_autoStart = 1
+        
+        " Minimal LSP configuration for JavaScript
+        let g:LanguageClient_serverCommands = {}
+        if executable('javascript-typescript-stdio')
+            let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+            let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
+            " Use LanguageServer for omnifunc completion
+            autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+            autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+        else
+            echo "javascript-typescript-stdio not installed!\n"
+            :cq
+        endif
+        
+        " Minimal LSP configuration for PHP
+        if executable('php-language-server.php')
+            let g:LanguageClient_serverCommands.php = ['php', '~/.composer/vendor/bin/php-language-server.php']
+            " Use LanguageServer for omnifunc completion
+            autocmd FileType php setlocal omnifunc=LanguageClient#complete
+        else
+            echo "php-language-server not installed!\n"
+            :cq
+        endif
 
     " }
 
@@ -261,7 +314,7 @@
 
     " Color scheme
     let g:onedark_terminal_italics = 1
-    colorscheme onedark
+    colorscheme dracula
 
     " Highlight current line
     set cursorline
@@ -319,8 +372,10 @@
     " }
 
     " Folding {
+    
         " Enable folding, auto fold code
         set foldenable
+
     " }
 
 " }
