@@ -1,3 +1,5 @@
+set nospell
+
 " Appropriate tab size
 set tabstop=2 
 set shiftwidth=2 

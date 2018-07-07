@@ -100,3 +100,5 @@ set modelines=3
 # Custom folding for this file
 # vim:foldmethod=marker:foldlevel=0
 # }}}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

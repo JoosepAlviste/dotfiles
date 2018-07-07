@@ -15,6 +15,7 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 * Vim compiled with python 3
 * Globally installed `neovim` package with pip3
+    - `pip3 install neovim`
 * [https://github.com/roxma/vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
 * [https://github.com/Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
 * [https://github.com/carlitux/deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)

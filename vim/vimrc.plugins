@@ -1,0 +1,103 @@
+" Modeline {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" }
+
+" Environment {
+
+    " Set up Plug support {
+
+        " Automatically install Plug
+        if empty(glob('~/.vim/autoload/plug.vim'))
+          silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+          autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        endif
+
+        " Initialize Plug
+        call plug#begin('~/.vim/plugged')
+
+    " }
+
+" }
+
+" Plugins {
+
+    " General {
+
+        Plug 'joshdick/onedark.vim'
+
+        " File browser
+        Plug 'scrooloose/nerdtree'
+        " Allows to make the repeat (.) command smarter
+        Plug 'tpope/vim-repeat'
+        " Surround stuff with braces, quotes, tags, anything
+        Plug 'tpope/vim-surround'
+        " Automatically add end tag/brace/quote
+        Plug 'jiangmiao/auto-pairs'
+        " Light-weight status bar at the bottom of the screen
+        Plug 'itchyny/lightline.vim'
+        " Highlight yanked text briefly
+        Plug 'machakann/vim-highlightedyank'
+        
+        " Fzf - fuzzy search
+        if executable('/usr/local/opt/fzf')
+            Plug '/usr/local/opt/fzf'
+        else
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        endif
+        Plug 'junegunn/fzf.vim'
+
+    " }
+
+    " General Programming {
+
+        " Show git branch info in lightline (or other Git integrations when it 
+        " is configured)
+        Plug 'tpope/vim-fugitive'
+        " Comment stuff out easily
+        Plug 'tpope/vim-commentary'
+        " Syntax highlighting for most file types
+        Plug 'sheerun/vim-polyglot'
+        " Linting
+        Plug 'w0rp/ale'
+        " Show linting info in lightline
+        Plug 'maximbaz/lightline-ale'
+        
+    " }
+
+    " Snippets and Autocomplete {
+    
+        " Snippets engine
+        Plug 'SirVer/ultisnips'
+
+        " Autocomplete
+        " if has('nvim')
+        "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        " else
+        "   Plug 'Shougo/deoplete.nvim'
+        "   Plug 'roxma/nvim-yarp'
+        "   Plug 'roxma/vim-hug-neovim-rpc'
+        " endif
+
+        " Plug 'autozimu/LanguageClient-neovim', {
+        "     \ 'branch': 'next',
+        "     \ 'do': 'bash install.sh',
+        "     \ }
+
+    " }
+
+    " TODO: Language specific stuff...
+
+    " Misc {
+    
+        " Icons, must be the last plugin loaded!
+        Plug 'ryanoasis/vim-devicons'
+    
+    " }
+
+" }
+
+" End Plug {
+    call plug#end()
+" }
+
