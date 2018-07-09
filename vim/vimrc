@@ -83,8 +83,8 @@
             " Search all files' contents with ctrl f
             nnoremap <silent> <C-f> :call FZFOpen(':Ag')<CR>
 
-            " Search buffers by file name with ctrl e
-            nnoremap <silent> <C-e> :call FZFOpen(':Buffers')<CR>
+            " Search buffers by file name with alt e
+            nnoremap <silent> <M-e> :call FZFOpen(':Buffers')<CR>
 
             " Search commands with ctrl a
             nnoremap <silent> <C-a> :Commands<CR>
@@ -467,7 +467,11 @@
     if has('nvim')
 
         " Set python path manually so that the boot up process is faster
-        let g:python3_host_prog = '/usr/local/bin/python3'
+        if executable('/usr/local/bin/python3')
+            let g:python3_host_prog = '/usr/local/bin/python3'
+        elseif executable('/usr/bin/python3')
+            let g:python3_host_prog = '/usr/bin/python3'
+        endif
 
         " Use 24-bit (true-color) mode
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1

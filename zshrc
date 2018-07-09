@@ -38,6 +38,7 @@ plugins=(
   composer
   laravel5
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -67,6 +67,8 @@
         Plug 'w0rp/ale'
         " Show linting info in lightline
         Plug 'maximbaz/lightline-ale'
+        " Configure with .editorconfig
+        Plug 'editorconfig/editorconfig-vim'
         
     " }
 
