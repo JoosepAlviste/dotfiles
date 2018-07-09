@@ -419,6 +419,9 @@
     " Save with <leader>w
     nnoremap <leader>w :w!<CR>
 
+    " Toggle folds with space
+    nnoremap <space> za
+
     " Useful mappings for managing tabs
     noremap <leader>tn :tabnew<cr>
     noremap <leader>to :tabonly<cr>
@@ -432,9 +435,6 @@
     autocmd TabLeave * let g:lasttab = tabpagenr()
 
     " Navigation {
-        " Do not move cursor with space. Useful if we want to define mappings with it.
-        nnoremap <SPACE> <Nop>
-        vnoremap <SPACE> <Nop>
 
         " Move between splits in an easier way with Ctrl-jklh
         nnoremap <C-j> <C-W>j
