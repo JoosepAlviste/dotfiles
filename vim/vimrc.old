@@ -196,18 +196,18 @@ Plug 'arcticicestudio/nord-vim'
 "= Plug 'maximbaz/lightline-ale'
 
 " Autocomplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"= if has('nvim')
+"=   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"= else
+"=   Plug 'Shougo/deoplete.nvim'
+"=   Plug 'roxma/nvim-yarp'
+"=   Plug 'roxma/vim-hug-neovim-rpc'
+"= endif
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+"= Plug 'autozimu/LanguageClient-neovim', {
+"=     \ 'branch': 'next',
+"=     \ 'do': 'bash install.sh',
+"=     \ }
 
 " Javascript autocomplete
 "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }

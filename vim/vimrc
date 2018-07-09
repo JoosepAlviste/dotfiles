@@ -33,9 +33,6 @@
     endif
 
     " NERDTree {
-        " Open NERDTree automatically if no files were specified
-        autocmd StdinReadPre * let s:std_in=1
-        autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
         " Toggle NERDTree with a shortcut
         nnoremap <silent> <C-n> :NERDTreeToggle<CR>
@@ -56,6 +53,7 @@
                 autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
             augroup END
         endif
+
     " }
 
     " Fzf {
@@ -168,9 +166,6 @@
         " Autofix visual selection with eslint_d:
         vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
 
-        " Show errors in the quickfix window
-        let g:ale_set_quickfix = 1
-
     " }
 
     " Javascript {
@@ -216,12 +211,9 @@
         let g:deoplete#file#enable_buffer_path = 1
         
         " Enable full fuzzy matching. Not sure what it does to be honest, but
-        " fuzzyness is nice. The default is standard "fuzzy" matching. Seems to 
+        " fuzziness is nice. The default is standard "fuzzy" matching. Seems to 
         " give better results.
         call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-        
-        " Tab-completion
-        " inoremap <expr> <tab> pumvisible() ? "<c-n><c-y>" : "<tab>"
 
     " }
 
@@ -229,29 +221,26 @@
 
         " Automatically start language servers
         let g:LanguageClient_autoStart = 1
-        
-        " Minimal LSP configuration for JavaScript
-        let g:LanguageClient_serverCommands = {}
-        if executable('javascript-typescript-stdio')
-            let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-            let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
-            " Use LanguageServer for omnifunc completion
-            autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-            autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-        else
-            echo "javascript-typescript-stdio not installed!\n"
-            :cq
-        endif
-        
-        " Minimal LSP configuration for PHP
-        if executable('php-language-server.php')
-            let g:LanguageClient_serverCommands.php = ['php', '~/.composer/vendor/bin/php-language-server.php']
-            " Use LanguageServer for omnifunc completion
-            autocmd FileType php setlocal omnifunc=LanguageClient#complete
-        else
-            echo "php-language-server not installed!\n"
-            :cq
-        endif
+
+        nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+    " }
+
+    " Startify {
+
+        " Set bookmarks
+        let g:startify_bookmarks = [{ 'd': '~/.dotfiles/' }]
+
+        " Change directory to git root on item select
+        let g:startify_change_to_vcs_root = 1
+
+        " Show DevIcons in the list of files
+        function! StartifyEntryFormat()
+            return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+        endfunction
+
+        " Use cursorline
+        autocmd User Startified setlocal cursorline
 
     " }
 

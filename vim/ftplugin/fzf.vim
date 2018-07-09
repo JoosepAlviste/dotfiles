@@ -4,5 +4,5 @@ set noshowmode
 set noruler
 
 " Show the status bar when the buffer gets closed
-autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd BufLeave <buffer> set laststatus=2
 
