@@ -487,6 +487,8 @@
         set termguicolors
     endif
 
+    autocmd TermOpen * setlocal nospell
+
 " }
 
 " Functions {
