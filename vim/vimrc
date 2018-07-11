@@ -115,40 +115,41 @@
     " }
 
     " Lightline {
-    
-        " Configure lighline set up
+
         let g:lightline = {
-          \ 'colorscheme': 'Dracula',
-          \ 'active': {
-          \   'left': [ [ 'mode', 'paste' ],
-          \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-          \   'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings' ],
-          \              [ 'percent' ],
-          \              [ 'filetype' ],
-          \              [ 'gutentags' ],],
-          \ },
-          \ 'component_function': {
-          \   'gitbranch': 'fugitive#head',
-          \   'gutentags': 'gutentags#statusline',
-          \ },
-          \ 'component_expand': {
-          \   'linter_checking': 'lightline#ale#checking',
-          \   'linter_warnings': 'lightline#ale#warnings',
-          \   'linter_errors': 'lightline#ale#errors',
-          \ },
-          \ 'component_type': {
-          \     'linter_checking': 'left',
-          \     'linter_warnings': 'warning',
-          \     'linter_errors': 'error',
-          \ },
-          \ }
+                    \ 'colorscheme': 'nova',
+                    \ 'active': {
+                    \   'left': [ [ 'mode', 'paste' ],
+                    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+                    \   'right': [ [ 'percent' ],
+                    \              [ 'filetype' ] ],
+                    \ },
+                    \ 'component_function': {
+                    \   'readonly': 'LightlineReadonly',
+                    \   'fugitive': 'LightlineFugitive'
+                    \ },
+                    \ 'separator': { 'left': '', 'right': '' },
+                    \ 'subseparator': { 'left': '', 'right': '' }
+                    \ }
+
+        function! LightlineReadonly()
+            return &readonly ? '' : ''
+        endfunction
+
+        function! LightlineFugitive()
+            if exists('*fugitive#head')
+                let branch = fugitive#head()
+                return branch !=# '' ? ''.branch : ''
+            endif
+            return ''
+        endfunction
 
         " Use font awesome glyphicons for indicators
         let g:lightline#ale#indicator_warnings = "\uf071"
         let g:lightline#ale#indicator_errors = "\uf05e"
 
     " }
-    
+
     " ALE {
     
         " Fixing
@@ -156,7 +157,7 @@
         let g:ale_fixers = {
                     \   'javascript': ['eslint'],
                     \   'javascript.jsx': ['eslint'],
-                    \}
+                    \ }
 
         " Use eslint_d for faster linting
         let g:ale_javascript_eslint_executable = 'eslint_d'
@@ -303,7 +304,7 @@
 
     " Color scheme
     let g:onedark_terminal_italics = 1
-    colorscheme dracula
+    colorscheme nova
 
     " Highlight current line
     set cursorline
@@ -334,6 +335,9 @@
 
     " Use visual bell instead of beeping
     set visualbell
+
+    " Show trailing whitespace
+    set list listchars=tab:\|_,trail:·
 
     " Search {
         " Search while typing

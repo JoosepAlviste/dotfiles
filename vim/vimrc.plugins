@@ -28,6 +28,7 @@
         Plug 'joshdick/onedark.vim'
         Plug 'ayu-theme/ayu-vim'
         Plug 'dracula/vim', { 'as': 'dracula' }
+        Plug 'trevordmiller/nova-vim'
 
         " File browser
         Plug 'scrooloose/nerdtree'
