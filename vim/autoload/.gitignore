@@ -1,5 +1,2 @@
-*
-
-!.gitignore
-!autocmds.vim
+plug.vim
 
