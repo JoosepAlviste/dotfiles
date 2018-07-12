@@ -57,11 +57,11 @@
     " }
 
     " Fzf {
-        
+
         if MAC()
             " Search files with Ctrl-p
             nnoremap <silent> ∏ :call FZFOpen(':Files')<CR>
-     
+
             " Search for tags with Ctrl-g
             nnoremap <silent> ˝ :call FZFOpen(':Tags')<CR>
 
@@ -76,7 +76,7 @@
         elseif LINUX()
             " Search files with Ctrl-p
             nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
-     
+
             " Search for tags with Ctrl-g
             nnoremap <silent> <C-g> :call FZFOpen(':Tags')<CR>
 
@@ -89,13 +89,13 @@
             " Search commands with ctrl a
             nnoremap <silent> <C-a> :Commands<CR>
         endif
-       
+
         " Open small file preview while searching files
         command! -bang -nargs=? -complete=dir Files
                     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
         command! -bang -nargs=? -complete=dir Ag
                     \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
-        
+
         " Customize fzf colors to match the color scheme
         let g:fzf_colors =
           \ { 'fg':      ['fg', 'Normal'],
@@ -173,7 +173,7 @@
 
         let g:javascript_plugin_jsdoc = 1
         let g:javascript_plugin_flow = 1
-    
+
     " }
 
     " JSX Pretty {
@@ -181,7 +181,7 @@
         let g:vim_jsx_pretty_colorful_config = 1
 
     " }
-    
+
     " DevIcons {{{
 
         let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -207,12 +207,12 @@
     " Deoplete {
 
         " Enable deoplete on startup
-        let g:deoplete#enable_at_startup = 1       
+        let g:deoplete#enable_at_startup = 1
         " Autocomplete file names from buffer and not the opened directory
         let g:deoplete#file#enable_buffer_path = 1
-        
+
         " Enable full fuzzy matching. Not sure what it does to be honest, but
-        " fuzziness is nice. The default is standard "fuzzy" matching. Seems to 
+        " fuzziness is nice. The default is standard "fuzzy" matching. Seems to
         " give better results.
         call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 
@@ -249,54 +249,54 @@
 
 " General {
 
-	set background=dark
+    set background=dark
 
-	" Automatically detect file types and set indentation
-	filetype plugin indent on
-	" Syntax highlighting
-	syntax on
+    " Automatically detect file types and set indentation
+    filetype plugin indent on
+    " Syntax highlighting
+    syntax on
 
     " Enable mouse usage
     set mouse=a
     " Hide cursor when starting to type
     set mousehide
 
-	" Integration with the system clipboard
-	if has('clipboard')
-		if has('unnamedplus')
-			" When possible, use the + register for copy/paste
-			set clipboard=unnamed,unnamedplus
-		else
-			" On Mac and Windows, use the * register
-			set clipboard=unnamed
-		endif
-	endif
+    " Integration with the system clipboard
+    if has('clipboard')
+        if has('unnamedplus')
+            " When possible, use the + register for copy/paste
+            set clipboard=unnamed,unnamedplus
+        else
+            " On Mac and Windows, use the * register
+            set clipboard=unnamed
+        endif
+    endif
 
     " Longer history
-	set history=1000
-	" Buffer switching without saving
-	set hidden
+    set history=1000
+    " Buffer switching without saving
+    set hidden
 
-	" Spell checking
-	set spell
+    " Spell checking
+    set spell
 
-	" Setting up directories {
-		" Set backups to be written into temp folders
-		set backup
-		set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-		set backupskip=/tmp/*,/private/tmp/*
-		set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-		set writebackup
+    " Setting up directories {
+        " Set backups to be written into temp folders
+        set backup
+        set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+        set backupskip=/tmp/*,/private/tmp/*
+        set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+        set writebackup
 
-		if has('persistent_undo')
-			" Save the undo tree when exiting a buffer
-			set undofile
-			" Number of changes that can be undone
-			set undolevels=1000
-			" Lines to save for undo on a buffer reload
-			set undoreload=10000
-		endif
-	" }
+        if has('persistent_undo')
+            " Save the undo tree when exiting a buffer
+            set undofile
+            " Number of changes that can be undone
+            set undolevels=1000
+            " Lines to save for undo on a buffer reload
+            set undoreload=10000
+        endif
+    " }
 
 " }
 
@@ -365,7 +365,7 @@
     " }
 
     " Folding {
-    
+
         " Enable folding, auto fold code
         set foldenable
 
@@ -519,6 +519,6 @@
       exe 'normal! ' . a:command_str . "\<cr>"
     endfunction
     " }
- 
+
 " }
 
