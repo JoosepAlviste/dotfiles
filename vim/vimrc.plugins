@@ -70,7 +70,9 @@
         Plug 'maximbaz/lightline-ale'
         " Configure with .editorconfig
         Plug 'editorconfig/editorconfig-vim'
-        
+        " Generate tags file automatically
+        Plug 'ludovicchabant/vim-gutentags'
+
     " }
 
     " Snippets and Autocomplete {
