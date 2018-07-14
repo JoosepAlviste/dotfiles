@@ -277,9 +277,6 @@
     " Buffer switching without saving
     set hidden
 
-    " Spell checking
-    set spell
-
     " Setting up directories {
         " Set backups to be written into temp folders
         set backup
@@ -331,7 +328,8 @@
     set lazyredraw
 
     " Highlight columns
-    set colorcolumn=80,120
+    set colorcolumn=81,121
+    set textwidth=120
 
     " Use visual bell instead of beeping
     set visualbell
@@ -490,8 +488,6 @@
     if (has("termguicolors"))
         set termguicolors
     endif
-
-    autocmd TermOpen * setlocal nospell
 
 " }
 

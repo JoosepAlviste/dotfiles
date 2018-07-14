@@ -57,9 +57,8 @@ alias vim=nvim
 ZSH_THEME=""
 
 # Prompt Purer
-export PURE_PROMPT_SYMBOL=λ
 autoload -U promptinit; promptinit
-prompt purer
+prompt pure
 
 # }}}
 # # Packages {{{

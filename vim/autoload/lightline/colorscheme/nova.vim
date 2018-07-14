@@ -6,20 +6,20 @@ let s:p.normal.right = [[["#c5d4dd", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], 
 let s:p.normal.error = [[["#1e272c", 235], ["#df8c8c", 174]]]
 let s:p.normal.warning = [[["#1e272c", 235], ["#dada93", 186]]]
 
-let s:p.inactive.left = [[["#1e272c", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
-let s:p.inactive.middle = [[["#6a7d89", 66], ["#1e272c", 235]]]
-let s:p.inactive.right = [[["#1e272c", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
+let s:p.inactive.left = [[["#c5d4dd", 235], ["#556873", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
+let s:p.inactive.middle = [[["#6a7d89", 66], ["#556873", 235]]]
+let s:p.inactive.right = [[["#c5d4dd", 235], ["#556873", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
 
-let s:p.insert.left = [[["#1e272c", 235], ["#a8ce93", 150]], [["#c5d4dd", 188], ["#556873", 242]]]
-let s:p.insert.middle = [[["#6a7d89", 66], ["#1e272c", 235]]]
-let s:p.insert.right = [[["#1e272c", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
+let s:p.insert.left = [[["#1e272c", 235], ["#a8ce93", 150]], [["#c5d4dd", 188], ["#6a7d89", 242]]]
+let s:p.insert.middle = [[["#6a7d89", 66], ["#556873", 235]]]
+let s:p.insert.right = [[["#c5d4dd", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
 
 let s:p.replace.left = [[["#1e272c", 235], ["#df8c8c", 174]], [["#c5d4dd", 188], ["#556873", 242]]]
 let s:p.replace.middle = [[["#6a7d89", 66], ["#1e272c", 235]]]
 let s:p.replace.right = [[["#1e272c", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
 
-let s:p.visual.left = [[["#1e272c", 235], ["#dada93", 186]], [["#c5d4dd", 188], ["#556873", 242]]]
-let s:p.visual.middle = [[["#6a7d89", 66], ["#1e272c", 235]]]
+let s:p.visual.left = [[["#1e272c", 235], ["#dada93", 186]], [["#c5d4dd", 188], ["#6a7d89", 242]]]
+let s:p.visual.middle = [[["#6a7d89", 66], ["#556873", 235]]]
 let s:p.visual.right = [[["#1e272c", 235], ["#6a7d89", 66]], [["#c5d4dd", 188], ["#556873", 242]]]
 
 let s:p.tabline.left = [[["#c5d4dd", 66], ["#556873", 242]]]
