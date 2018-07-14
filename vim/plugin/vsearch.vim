@@ -24,8 +24,8 @@ function! s:VSetSearch(cmd)
     normal! gV
     call setreg('"', old_reg, old_regtype)
 endfunction
-vnoremap <silent> * :<C-U>call <SID>VSetSearch('/')<CR>/<C-R>/<CR>
-vnoremap <silent> # :<C-U>call <SID>VSetSearch('?')<CR>?<C-R>/<CR>
+vnoremap <silent> * :<c-u>call <SID>VSetSearch('/')<cr>/<c-r>/<cr>
+vnoremap <silent> # :<c-u>call <SID>VSetSearch('?')<cr>?<c-r>/<cr>
 vmap <kMultiply> *
 nmap <silent> <Plug>VLToggle :let g:VeryLiteral = !g:VeryLiteral
             \\| echo "VeryLiteral " . (g:VeryLiteral ? "On" : "Off")<CR>
