@@ -86,7 +86,7 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Use a better command for searching with fzf
-export FZF_DEFAULT_COMMAND='ag -l .'
+export FZF_DEFAULT_COMMAND='ag -l --hidden .'
 
 # Zsh syntax highlighting. Must be at the end of the file!
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
