@@ -8,6 +8,16 @@ let $NODE_ENV="development"
 
 set foldmethod=syntax
 
+" Override the inline variable function so that it fits better for javascript
+function! InlineVariable()
+    normal ^w*''
+    normal 2w
+    normal "zDdd''
+    normal cwz
+    " Replace the semicolon which might be present from the line above
+    execute "s/\\(.\\);\\(.\\)/\\1\\2/g"
+endfunction
+
 if !empty(glob('.flowconfig'))
     " Minimal LSP configuration for Flow
     if executable('flow-language-server')

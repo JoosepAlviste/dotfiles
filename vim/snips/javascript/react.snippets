@@ -56,3 +56,18 @@ export default connect(
 )(${3:`!p snip.rv = snip.basename`});
 endsnippet
 
+snippet reducer "A Redux reducer"
+const ${1:`!p snip.rv = snip.basename`}Reducer = (state = ${2:[]}, action) => {
+	switch (action.type) {
+		${0}
+
+		default:
+			return state;
+	}
+};
+endsnippet
+
+snippet action "A Redux action creator"
+const ${1} = (${2}) => ({ type: ${3} });
+endsnippet
+
