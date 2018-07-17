@@ -60,6 +60,8 @@
         " Show git branch info in lightline (or other Git integrations when it 
         " is configured)
         Plug 'tpope/vim-fugitive'
+        " Show Git status symbols in the gutter
+        Plug 'airblade/vim-gitgutter'
         " Comment stuff out easily
         Plug 'tpope/vim-commentary'
         " Syntax highlighting for most file types
