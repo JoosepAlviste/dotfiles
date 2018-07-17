@@ -30,3 +30,4 @@ eslint
 env
 LSP
 Redux
+colorls

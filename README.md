@@ -41,7 +41,7 @@ Fuzzy finder.
 gem install colorls
 ```
 
-Usable with `cl` or `colorls`.
+Usable with `lc` or `colorls`.
 
 ## Installation
 
