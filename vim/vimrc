@@ -277,6 +277,14 @@
     " Buffer switching without saving
     set hidden
 
+    " Instead of failing a command because of unsaved changes, raise a dialogue
+    " asking if you wish to save changed files.
+    set confirm
+
+    " Set the command window height to 2 lines, to avoid many cases of having to
+    " "press <Enter> to continue"
+    set cmdheight=2
+
     " Setting up directories {
         " Set backups to be written into temp folders
         set backup
