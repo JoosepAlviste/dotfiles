@@ -21,6 +21,9 @@ export ZSH=/Users/joosep/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+
 # }}}
 # # Oh my zsh {{{
 
@@ -51,6 +54,8 @@ alias pf="p --filter"
 alias art="php artisan"
 
 alias vim=nvim
+
+alias lc='colorls -lA --sd'
 # }}}
 # # Visuals {{{
 

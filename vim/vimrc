@@ -327,6 +327,9 @@
     " Redraw only when need to
     set lazyredraw
 
+    " Update faster
+    set updatetime=100
+
     " Highlight columns
     set colorcolumn=81,121
     set textwidth=120

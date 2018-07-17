@@ -33,6 +33,16 @@ Fuzzy finder.
     - If it is not installed, it will be installed as a vim plugin though
 * Needs `ag` for smarter file searching
 
+### Colorls
+
+[Url](https://github.com/athityakumar/colorls). Should be as simple as:
+
+```
+gem install colorls
+```
+
+Usable with `cl` or `colorls`.
+
 ## Installation
 
 ```
