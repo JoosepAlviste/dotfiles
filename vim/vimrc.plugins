@@ -44,7 +44,7 @@
         Plug 'machakann/vim-highlightedyank'
         " Start screen
         Plug 'mhinz/vim-startify'
-        
+
         " Fzf - fuzzy search
         if executable('/usr/local/opt/fzf')
             Plug '/usr/local/opt/fzf'

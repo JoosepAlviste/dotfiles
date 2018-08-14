@@ -55,7 +55,7 @@ alias art="php artisan"
 
 alias vim=nvim
 
-alias lc='colorls -lA --sd'
+alias up="docker-compose up"
 # }}}
 # # Visuals {{{
 
