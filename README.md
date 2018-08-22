@@ -10,6 +10,7 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 ## Requirements
 
 * Zsh
+* Spaceship prompt or pure prompt
 
 ### Autocomplete:
 

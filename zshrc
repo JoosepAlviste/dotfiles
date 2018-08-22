@@ -61,9 +61,9 @@ alias up="docker-compose up"
 
 ZSH_THEME=""
 
-# Prompt Purer
+# Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
-prompt pure
+prompt spaceship
 
 # }}}
 # # Packages {{{
