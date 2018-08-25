@@ -34,7 +34,7 @@ Just useful utilities:
     - `pip3 install neovim`
 * [https://github.com/roxma/vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
 * [https://github.com/Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
-* [https://github.com/carlitux/deoplete-ternjs](https://github.com/carlitux/deoplete-ternjs)
+* Language servers for autocompletion
 
 ### Ctags:
 
@@ -48,16 +48,6 @@ Fuzzy finder.
 * Needs fzf installed globally (from brew)
     - If it is not installed, it will be installed as a vim plugin though
 * Needs `ag` for smarter file searching
-
-### Colorls
-
-[Url](https://github.com/athityakumar/colorls). Should be as simple as:
-
-```
-gem install colorls
-```
-
-Usable with `lc` or `colorls`.
 
 ## Installation
 
@@ -76,4 +66,6 @@ The next time you start `vim`, it will automatically install Plug as well as tri
 ```
 git pull
 ```
+
+Maybe run `./makesymlinks.sh` again.
 
