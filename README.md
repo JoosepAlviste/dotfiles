@@ -13,6 +13,15 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 * Spaceship prompt or pure prompt
 * [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
+### Utilities
+
+If these are installed, will be aliased.
+
+* [bat](https://github.com/sharkdp/bat) - `cat` replacement
+* [prettyping](https://github.com/denilsonsa/prettyping) - `ping` replacement
+* [tldr](http://tldr.sh/) - simpler `man` pages, aliased to `help`
+* [hub](https://github.com/github/hub) - `git` replacement, integrates with github
+
 Just useful utilities:
 
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement

@@ -59,6 +59,27 @@ alias vim=nvim
 alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
+
+# Useful alternatives/aliases
+if type bat > /dev/null; then
+    alias cat='bat'
+fi
+if type prettyping > /dev/null; then
+    alias ping='prettyping --nolegend'
+fi
+if type fzf > /dev/null; then
+    alias preview="fzf --preview 'bat --color \"always\" {}'"
+    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(nvim {})+abort'"
+fi
+if type ncdu > /dev/null; then
+    alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
+fi
+if type tldr > /dev/null; then
+    alias help='tldr'
+fi
+if type hub > /dev/null; then
+    alias git='hub'
+fi
 # }}}
 # # Visuals {{{
 
