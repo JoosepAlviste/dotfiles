@@ -151,7 +151,7 @@
     " }
 
     " ALE {
-    
+
         " Fixing
         let g:ale_fix_on_save = 1
         let g:ale_fixers = {
@@ -212,7 +212,7 @@
         let g:deoplete#file#enable_buffer_path = 1
 
         " Enable full fuzzy matching. Not sure what it does to be honest, but
-        " fuzziness is nice. The default is standard "fuzzy" matching. Seems to
+        " fuzziness is nice. The default is standard \"fuzzy\" matching. Seems to
         " give better results.
         call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 

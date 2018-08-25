@@ -55,8 +55,10 @@ alias art="php artisan"
 
 alias vim=nvim
 
-alias up="docker-compose up"
-alias down="docker-compose down"
+# Docker compose
+alias up='docker-compose up'
+alias down='docker-compose down'
+alias build='docker-compose build'
 # }}}
 # # Visuals {{{
 

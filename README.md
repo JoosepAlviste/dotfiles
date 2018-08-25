@@ -11,6 +11,12 @@ git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 * Zsh
 * Spaceship prompt or pure prompt
+* [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+
+Just useful utilities:
+
+* [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
+* [noti](https://github.com/variadico/noti) - notifications when processes end
 
 ### Autocomplete:
 
