@@ -167,3 +167,8 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Run Spotify automatically
+exec spotify
+
+exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
+

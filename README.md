@@ -53,6 +53,7 @@ Fuzzy finder.
 
 * i3
 * platerctl - media controls
+* feh - wallpaper
 
 
 ## Installation
