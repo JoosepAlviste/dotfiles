@@ -11,7 +11,7 @@ olddir=~/.dotfiles_old           # old dotfiles backup directory
 # list of files/folders to symlink in homedir
 files="vimrc vim zshrc gitconfig tmux.conf ctags.d ideavimrc"
 
-dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global"
+dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3"
 
 ##########
 
