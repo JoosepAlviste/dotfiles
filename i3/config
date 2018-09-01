@@ -93,7 +93,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
+bindsym $mod+1 workspace Terminals
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
@@ -155,6 +155,12 @@ bar {
         status_command i3status
 }
 
+
+# Set up multiple monitors
+exec_always xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --off --output VGA-1-1 --off --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off
+
+# Lock the screen
+bindsym $mod+shift+l i3lock
 
 # Pulse audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
