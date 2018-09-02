@@ -22,7 +22,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display, FontAwesome5Free, FontAwesome5Brands 11
+font pango:System San Francisco Display 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -108,7 +108,7 @@ bindsym $mod+a focus parent
 set $workspace1 "1: Terminals "
 set $workspace2 "2: Spotify "
 set $workspace6 "6: GitKraken "
-set $workspace7 "7: Editor "
+set $workspace7 "7: Editor"
 set $workspace8 "8"
 set $workspace9 "9: Chat "
 set $workspace10 "10: Chrome "
@@ -141,6 +141,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # Windows in workspaces
 assign [class="Spotify"] $workspace2
 assign [class="GitKraken"] $workspace6
+assign [class="jetbrains-pycharm"] $workspace7
 assign [class="Slack"] $workspace9
 assign [class="Skype"] $workspace9
 assign [class="Google-chrome"] $workspace10
@@ -194,6 +195,7 @@ hide_edge_borders both
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         position top
+        font pango:DankMono Nerd Font, FontAwesom5 11
         colors {
             background $bg-color
             separator #757575
@@ -235,7 +237,7 @@ exec spotify
 exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
 
 # Keyboard layout
-exec_always setxkbmap -layout us,ee -option 'grp:alt_shift_toggle'
+exec_always setxkbmap -layout us,ee -option 'grp:alt_space_toggle'
 
 # Compton
 exec_always compton -f
