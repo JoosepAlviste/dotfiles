@@ -60,6 +60,8 @@ alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
 
+alias node=nodejs
+
 # Useful alternatives/aliases
 if type bat > /dev/null; then
     alias cat='bat'

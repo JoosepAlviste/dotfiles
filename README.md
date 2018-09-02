@@ -57,6 +57,8 @@ Fuzzy finder.
 * compton - opacity
 * rofi - better dmenu
 * i3blocks - status bar info
+* xkblayout-state
+    * Probably needs `apt install libx11-dev`
 
 
 ## Installation

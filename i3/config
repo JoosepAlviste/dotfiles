@@ -107,6 +107,7 @@ bindsym $mod+a focus parent
 
 set $workspace1 "1: Terminals "
 set $workspace2 "2: Spotify "
+set $workspace6 "6: GitKraken "
 set $workspace7 "7: Editor "
 set $workspace8 "8"
 set $workspace9 "9: Chat "
@@ -119,7 +120,7 @@ bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
@@ -131,7 +132,7 @@ bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
@@ -139,6 +140,9 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Windows in workspaces
 assign [class="Spotify"] $workspace2
+assign [class="GitKraken"] $workspace6
+assign [class="Slack"] $workspace9
+assign [class="Skype"] $workspace9
 assign [class="Google-chrome"] $workspace10
 
 
@@ -200,6 +204,9 @@ bar {
         }
 
 }
+
+# In case of keyboard layout change, send signal to i3blocks
+bindsym ISO_Next_Group exec pkill -RTMIN+1 i3blocks
 
 
 # Set up multiple monitors
