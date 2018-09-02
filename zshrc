@@ -15,7 +15,7 @@ eval "$(jenv init -)"
 export JAVA_HOME="$(jenv javahome)"
 
 # Oh my zsh
-export ZSH=/Users/joosep/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set language
 export LC_ALL=en_US.UTF-8

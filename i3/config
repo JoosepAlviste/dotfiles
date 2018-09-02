@@ -9,11 +9,20 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
+# Colors
+set $bg-color             #2f343f
+set $inactive-bg-color    #2f343f
+set $text-color           #f3f4f5
+set $inactive-text-color  #676E7D
+set $urgent-bg-color      #E53935
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace, FontAwesome5Free, FontAwesome5Brands 10
+font pango:System San Francisco Display, FontAwesome5Free, FontAwesome5Brands 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -99,6 +108,7 @@ set $workspace1 "1: Terminals "
 set $workspace2 "2: Spotify "
 set $workspace7 "7: Editor "
 set $workspace8 "8"
+set $workspace9 "9: Chat "
 set $workspace10 "10: Chrome "
 
 
@@ -111,7 +121,7 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
@@ -123,8 +133,8 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+0 move container to workspace 9
-bindsym $mod+Shift+9 move container to workspace $workspace10
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Windows in workspaces
 assign [class="Spotify"] $workspace2
@@ -164,10 +174,30 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+hide_edge_borders both
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+        position top
+        colors {
+            background $bg-color
+            separator #757575
+            #                  border             background         text
+            focused_workspace  $bg-color          $bg-color          $text-color
+            inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+            urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
+
 }
 
 
@@ -175,12 +205,15 @@ bar {
 exec_always xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --off --output VGA-1-1 --off --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off
 
 # Lock the screen
-#bindsym $mod+shift+l i3lock
+bindsym $mod+shift+x exec i3lock --color "$bg-color"
 
 # Pulse audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Move workspace to other monitor
+bindsym $mod+x move workspace to output right
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -194,6 +227,6 @@ exec spotify
 exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
 
 # Keyboard layout
-exec setxkbmap -layout us,ee
-exec setxkbmap -option 'grp:alt_shift_toggle'
+exec_always setxkbmap -layout us,ee -option 'grp:alt_shift_toggle'
+
 

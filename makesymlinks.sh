@@ -6,7 +6,7 @@
 
 ########## Variables
 
-dir=~/.dotfiles                  # dotfiles directory
+dir=~/dotfiles                  # dotfiles directory
 olddir=~/.dotfiles_old           # old dotfiles backup directory
 # list of files/folders to symlink in homedir
 files="vimrc vim zshrc gitconfig tmux.conf ctags.d ideavimrc"
