@@ -45,7 +45,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -229,4 +230,6 @@ exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
 # Keyboard layout
 exec_always setxkbmap -layout us,ee -option 'grp:alt_shift_toggle'
 
+# Compton
+exec_always compton -f
 

@@ -1,0 +1,12 @@
+rofi.color-window: argb:c82f343f, argb:c82f343f, argb:c82f343f
+rofi.color-normal: argb:002f343f, #f3f4f5, argb:002f343f, argb:002f343f, #9575cd
+rofi.width: 100
+rofi.lines: 3
+rofi.columns: 1
+rofi.font: System San Francisco Display 16
+rofi.bw: 0
+rofi.padding: 500
+rofi.eh: 2
+rofi.opacity: 85
+rofi.hide-scrollbar: true
+
