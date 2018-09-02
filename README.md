@@ -56,6 +56,7 @@ Fuzzy finder.
 * feh - wallpaper
 * compton - opacity
 * rofi - better dmenu
+* i3blocks - status bar info
 
 
 ## Installation
