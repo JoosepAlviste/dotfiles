@@ -3,8 +3,11 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.composer/vendor/bin:$PATH
 export PATH=/usr/local/opt/python@2/bin:$PATH
 export PATH=/usr/local/opt/gettext/bin:$PATH
+export PATH="$(yarn global bin):$PATH"
 
 export NODE_ENV=development
+
+fpath=($fpath "$HOME/.zfunctions")
 
 # }}}
 # ## Env variables {{{
@@ -20,9 +23,6 @@ export ZSH=~/.oh-my-zsh
 # Set language
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# Colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
 
 # }}}
 # # Oh my zsh {{{
@@ -60,7 +60,7 @@ alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
 
-alias node=nodejs
+alias r=ranger
 
 # Useful alternatives/aliases
 if type bat > /dev/null; then
@@ -99,7 +99,7 @@ VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Z
-source /usr/local/etc/profile.d/z.sh
+source $HOME/Programs/z/z.sh
 
 # }}}
 # # Generic {{{
@@ -119,15 +119,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # Use a better command for searching with fzf
 export FZF_DEFAULT_COMMAND='ag -l --hidden .'
 
-# Zsh syntax highlighting. Must be at the end of the file!
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # }}}
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # # Overview {{{
 set modelines=3
