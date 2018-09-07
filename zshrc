@@ -62,6 +62,9 @@ alias build='docker-compose build'
 
 alias r=ranger
 
+# Map caps to escape and control
+xmodmap ~/.Xmodmap
+
 # Useful alternatives/aliases
 if type bat > /dev/null; then
     alias cat='bat'
