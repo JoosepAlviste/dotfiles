@@ -120,6 +120,9 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+
 # Use a better command for searching with fzf
 export FZF_DEFAULT_COMMAND='ag -l --hidden .'
 
