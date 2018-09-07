@@ -56,9 +56,12 @@ Fuzzy finder.
 * feh - wallpaper
 * compton - opacity
 * rofi - better dmenu
-* i3blocks - status bar info
+* ~i3blocks - status bar info~
 * xkblayout-state
     * Probably needs `apt install libx11-dev`
+* polybar
+* maim + xclip - screenshots with prt screen and copy to clipboard
+* playerctl - control audio
 
 
 ## Installation
