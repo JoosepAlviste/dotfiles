@@ -68,6 +68,8 @@ Fuzzy finder.
 ### Other
 
 * lightdm-webkit2-greeter + Litarvan theme - login screen
+* arc theme
+* Flat remix icon theme
 
 
 ## Installation

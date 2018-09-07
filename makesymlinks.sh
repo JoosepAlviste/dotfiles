@@ -9,9 +9,9 @@
 dir=~/dotfiles                  # dotfiles directory
 olddir=~/.dotfiles_old           # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="vimrc vim zshrc gitconfig tmux.conf ctags.d ideavimrc Xresources"
+files="vimrc vim zshrc gitconfig tmux.conf ctags.d ideavimrc Xresources Xmodmap"
 
-dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3 rofi polybar ranger fontconfig dunst"
+dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3 rofi polybar ranger fontconfig dunst gtk-3.0"
 
 ##########
 
