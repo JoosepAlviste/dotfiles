@@ -310,6 +310,7 @@
     " Color scheme
     let g:onedark_terminal_italics = 1
     " colorscheme nova
+    colorscheme wal
 
     " Highlight current line
     set cursorline
@@ -499,9 +500,9 @@
 
     endif
 
-    if (has("termguicolors"))
-        set termguicolors
-    endif
+    " if (has("termguicolors"))
+    "     set termguicolors
+    " endif
 
 " }
 

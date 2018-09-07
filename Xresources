@@ -36,7 +36,8 @@ Xft.rgba:                       rgb
 !  Font Settings
 !-----------------
 
-URxvt.font: xft:Hack Nerd Font:pixelsize=14, \
+URxvt.font: xft:Hack Nerd Font Mono:pixelsize=14, \
+            xft:Font Awesome 5 Brands:pixelsize=14, \
             xft:DejaVu Sans:pixelsize=14, \
             xft:Noto Emoji
 

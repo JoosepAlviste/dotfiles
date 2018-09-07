@@ -30,6 +30,8 @@
         Plug 'dracula/vim', { 'as': 'dracula' }
         Plug 'trevordmiller/nova-vim'
 
+        Plug 'dylanaraps/wal.vim'
+
         " File browser
         Plug 'scrooloose/nerdtree'
         " Allows to make the repeat (.) command smarter
