@@ -1,3 +1,4 @@
+# Looks
 rofi.color-window: argb:c81d1f21, argb:c81d1f21, argb:c81d1f21
 rofi.color-normal: argb:002f343f, #f3f4f5, argb:002f343f, argb:002f343f, #9575cd
 rofi.width: 100
@@ -9,4 +10,12 @@ rofi.padding: 500
 rofi.eh: 2
 rofi.opacity: 85
 rofi.hide-scrollbar: true
+
+
+# Functionality
+
+rofi.sort: true
+rofi.matching: fuzzy
+rofi.no-levenshtein-sort: true
+rofi.modi: drun
 
