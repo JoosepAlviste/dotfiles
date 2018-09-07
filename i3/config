@@ -216,7 +216,7 @@ bindsym ISO_Next_Group exec pkill -RTMIN+1 i3blocks
 exec_always xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --off --output VGA-1-1 --off --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off
 
 # Lock the screen
-bindsym $mod+shift+x exec i3lock --color "$bg-color"
+bindsym $mod+shift+x exec betterlockscreen -l dim
 
 # Pulse audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume

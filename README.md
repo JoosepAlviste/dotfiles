@@ -62,6 +62,12 @@ Fuzzy finder.
 * polybar
 * maim + xclip - screenshots with prt screen and copy to clipboard
 * playerctl - control audio
+* betterlockscreen - nice lock screen for i3lock
+
+
+### Other
+
+* lightdm-webkit2-greeter + Litarvan theme - login screen
 
 
 ## Installation
