@@ -99,13 +99,13 @@ bindsym $mod+a focus parent
 
 # Workspaces
 
-set $workspace1 "1: Terminals "
-set $workspace2 "2: Spotify "
-set $workspace6 "6: GitKraken "
-set $workspace7 "7: Editor"
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace6 "6: "
+set $workspace7 "7: "
 set $workspace8 "8"
-set $workspace9 "9: Chat "
-set $workspace10 "10: Chrome "
+set $workspace9 "9: "
+set $workspace10 "10: "
 
 
 # switch to workspace
@@ -212,7 +212,7 @@ bindsym ISO_Next_Group exec pkill -RTMIN+1 i3blocks
 
 
 # Set up multiple monitors
-exec_always xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1-1 --off --output VGA-1-1 --off --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off
+exec_always xrandr --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-0 --rate 144.00 --mode 1920x1080 --pos 0x0 --rotate normal
 
 # Lock the screen
 bindsym $mod+shift+x exec betterlockscreen -l dim
