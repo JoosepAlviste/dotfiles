@@ -40,38 +40,40 @@ scrollback_lines = 10000
 
 
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
+# Base16 OneDark
+# Scheme: Lalit Magant (http://github.com/tilal6991)
 
-#foreground = #dcdccc
-#foreground_bold = #ffffff
-#background = #3f3f3f
+foreground      = #abb2bf
+foreground_bold = #abb2bf
+cursor          = #abb2bf
+background      = #282c34
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# 16 color space
+color0  = #282c34
+color1  = #e06c75
+color2  = #98c379
+color3  = #e5c07b
+color4  = #61afef
+color5  = #c678dd
+color6  = #56b6c2
+color7  = #abb2bf
+color8  = #545862
+color9  = #e06c75
+color10 = #98c379
+color11 = #e5c07b
+color12 = #61afef
+color13 = #c678dd
+color14 = #56b6c2
+color15 = #c8ccd4
 
-# If unset, will reverse foreground and background
-highlight = #2f2f2f
+# 256 color space
+color16 = #d19a66
+color17 = #be5046
+color18 = #353b45
+color19 = #3e4451
+color20 = #565c64
+color21 = #b6bdca
 
-# Colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
 
 [hints]
 # font = Hack Nerd Font Mono 14
