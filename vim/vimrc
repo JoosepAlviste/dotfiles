@@ -307,10 +307,11 @@
 
 " Vim UI {
 
+    " Use 256 colors from base16
+    let base16colorspace=256
+
     " Color scheme
-    let g:onedark_terminal_italics = 1
-    " colorscheme nova
-    colorscheme wal
+    colorscheme base16-default-dark
 
     " Highlight current line
     set cursorline

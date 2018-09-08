@@ -31,6 +31,7 @@
         Plug 'trevordmiller/nova-vim'
 
         Plug 'dylanaraps/wal.vim'
+        Plug 'chriskempson/base16-vim'
 
         " File browser
         Plug 'scrooloose/nerdtree'
