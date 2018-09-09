@@ -11,12 +11,37 @@
 
 set $mod Mod4
 
-# Colors
-set $bg-color             #2f343f
 
 # Color variables
 set $unfocused_border #1D1F21
 set $focused_border #CC6666
+
+# Colors from Xresources
+
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+set_from_resource $darkergrey  color18 #000000
+set_from_resource $darkgrey    color19 #000000
+set_from_resource $lightergrey color18 #000000
+
+set_from_resource $background  background #000000
+set_from_resource $foreground  foreground #000000
+
+set_from_resource $lightpink walcolor8
+
 
 # Gaps
 gaps inner 20
@@ -185,19 +210,16 @@ bindsym $mod+r mode "resize"
 # Window colors
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #ffffff #ffffff #ffffff #ffffff   $focused_border
-client.focused_inactive #ffffff #ffffff #ffffff #ffffff   $focused_border
-client.unfocused        #ffffff #ffffff #ffffff #ffffff   $unfocused_border
-client.urgent           #ffffff #ffffff #ffffff #ffffff   $focused_border
+client.focused          #ffffff #ffffff #ffffff #ffffff   $lightpink
+client.focused_inactive #ffffff #ffffff #ffffff #ffffff   $background
+client.unfocused        #ffffff #ffffff #ffffff #ffffff   $background
+client.urgent           #ffffff #ffffff #ffffff #ffffff   $red
 client.placeholder      #ffffff #ffffff #ffffff #ffffff   #ffffff
 
 client.background       #ffffff
 
 
 # Status bar
-
-# Execute polybar on launch
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bar {
     i3bar_command $HOME/.config/polybar/launch.sh
@@ -244,9 +266,7 @@ exec_always compton -f
 # Apply .Xresource
 exec_always --no-startup-id xrdb ~/.Xresources
 
-# Apply the colorscheme
-exec_always --no-startup-id wal -R -n
-
+# Set the desktop background
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jpg
 
 # Screenshotting with maim, copy region to clipboard

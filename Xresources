@@ -1,4 +1,12 @@
 !------------------
+!  Color settings
+!------------------
+
+#include ".Xresources.d/onedark.theme"
+#include ".Xresources.d/wal.theme"
+
+
+!------------------
 !  URxvt Settings
 !------------------
 

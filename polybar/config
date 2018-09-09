@@ -1,10 +1,21 @@
-[bar/bar]
+[colors]
+
+background = ${xrdb:background}
+foreground = ${xrdb:walcolor3}
+
+focused = ${xrdb:walcolor7}
+focused-bg = ${xrdb:color18}
+
+danger = ${xrdb:color1}
+
+
+[bar/base]
+
+pin-workspaces = true
 
 font-0 = "OverpassMono Nerd Font Mono:pixelsize=10"
 font-1 = "Font Awesome 5 Free:pixelsize=10"
 font-2 = "Font Awesome 5 Brands:pixelsize=10"
-
-monitor = "DVI-I-1"
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -12,42 +23,52 @@ scroll-down = i3wm-wsprev
 fixed-center = true
 
 width = 100%
-height = 30
+height = 35
 
-background = #1d1f21
-foreground = #707880
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-radius = 0.0
+radius = 0
 
-padding-left = 1
-padding-right = 1
+padding-left = 4
+padding-right = 4
 module-margin = 0
 
+underline-size = 2
+
 modules-left = i3 
+modules-center = title
 modules-right = date
 
+
+[bar/bar1]
+inherit = bar/base
+monitor = "DVI-I-1"
+
+
+[bar/bar2]
+inherit = bar/base
+monitor = "HDMI-1-2"
+
+
 [module/i3]
-# strip-wsnumbers = true
 type = internal/i3
 # format = <label-state> <label-mode>
+format-underline = ${colors.focused-bg}
 
-# label-focused = %index%
-label-focused-foreground = #cc6666
-label-focused-background = #1d1f21
-label-focused-underline = #fba922
-label-focused-padding = 1
+label-focused-foreground = ${colors.focused}
+label-focused-background = ${colors.focused-bg}
+label-focused-underline = ${colors.focused}
+label-focused-padding = 2
 
-# label-unfocused = %index%
-label-unfocused-padding = 1
+label-unfocused-padding = 2
 
-# label-visible = %index%
-label-visible-underline = #555555
-label-visible-padding = 1
+label-visible-underline = ${colors.foreground}
+label-visible-padding = 2
 
-label-urgent = %index%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-padding = 1
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.danger}
+label-urgent-padding = 2
 
 [module/date]
 type = internal/date
@@ -56,7 +77,8 @@ date = %A, %d %B %H:%M
 
 [module/title]
 type = internal/xwindow
-# format-background = #f00
-format-foreground = #f0c674
+format-foreground = ${colors.foreground}
 format-padding = 1
 label-maxlen = 50
+
+; vim:ft=dosini
