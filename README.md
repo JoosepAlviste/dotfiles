@@ -32,8 +32,8 @@ Just useful utilities:
 * Vim compiled with python 3
 * Globally installed `neovim` package with pip3
     - `pip3 install neovim`
-* [https://github.com/roxma/vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
-* [https://github.com/Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
+* [vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
+* [deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
 * Language servers for autocompletion
 
 ### Ctags:
