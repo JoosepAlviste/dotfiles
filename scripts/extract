@@ -1,0 +1,37 @@
+#!/bin/bash
+# A general, all-purpose extraction script.
+#
+# Default behavior: Extract archive into new directory
+# Behavior with `-c` option: Extract contents into current directory
+
+while getopts "hc" o; do case "${o}" in
+	h) echo -e "Options:\n   -c: Extract archive into current directory rather than a new one." && exit ;;
+	c) dirpref="" && archive=${@:2} ;;
+esac done
+
+[ -z ${dirpref+x} ] && dirpref="../" &&  archive="$@"
+
+if [ -f "$archive" ] ; then
+	[[ "$dirpref" == "../" ]] && NAME=${archive%.*} && mkdir "$NAME" && cd "$NAME"
+	case "$archive" in
+		*.tar.bz2) tar xvjf "$dirpref""$archive" ;;
+		*.tar.gz) tar xvzf "$dirpref""$archive" ;;
+		*.tar.xz) tar xvJf "$dirpref""$archive" ;;
+		*.lzma) unlzma "$dirpref""$archive" ;;
+		*.bz2) bunzip2 "$dirpref""$archive" ;;
+		*.rar) unrar x -ad "$dirpref""$archive" ;;
+		*.gz) gunzip "$dirpref""$archive" ;;
+		*.tar) tar xvf "$dirpref""$archive" ;;
+		*.tbz2) tar xvjf "$dirpref""$archive" ;;
+		*.tgz) tar xvzf "$dirpref""$archive" ;;
+		*.zip) unzip "$dirpref""$archive" ;;
+		*.Z) uncompress "$dirpref""$archive" ;;
+		*.7z) 7z x "$dirpref""$archive" ;;
+		*.xz) unxz "$dirpref""$archive" ;;
+		*.exe) cabextract "$dirpref""$archive" ;;
+		*) echo "extract: '$archive' - unknown archive method" ;;
+	esac
+else
+	echo "File \"$archive\" not found."
+fi
+
