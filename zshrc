@@ -5,6 +5,7 @@ export PATH=/usr/local/opt/python@2/bin:$PATH
 export PATH=/usr/local/opt/gettext/bin:$PATH
 export PATH="$(yarn global bin):$PATH"
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.config/scripts:$PATH
 
 export NODE_ENV=development
 
