@@ -163,6 +163,7 @@ assign [class="GitKraken"] $workspace6
 assign [class="jetbrains-pycharm"] $workspace7
 assign [class="Slack"] $workspace9
 assign [class="Skype"] $workspace9
+assign [class="discord"] $workspace9
 assign [class="Google-chrome"] $workspace10
 
 # Spotify does not want to move automatically!
