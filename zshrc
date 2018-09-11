@@ -68,6 +68,9 @@ alias build='docker-compose build'
 
 alias r=ranger
 
+tsm() { transmission-remote -l ;}
+tsm-add() { transmission-remote -a "$1" ;}
+
 # Map caps to escape and control
 xmodmap ~/.Xmodmap
 
