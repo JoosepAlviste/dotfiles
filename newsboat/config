@@ -10,7 +10,7 @@ bind-key g home
 bind-key d pagedown
 bind-key u pageup
 bind-key l open
-# bind-key h quit
+bind-key h quit
 bind-key a toggle-article-read
 bind-key n next-unread
 bind-key N prev-unread
@@ -18,7 +18,20 @@ bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
 
+
+# Colors
+color listnormal blue default
+color listfocus black yellow standout bold
+color listnormal_unread cyan default
+color listfocus_unread yellow default bold
+color info red black bold
+color article cyan default
+
+
+# Set up the link handler to open things by default
 browser linkhandler
+
+# With "," prefix, these shortcuts open links in specific applications
 macro , open-in-browser
 macro v set browser "i3 exec mpv %u"; open-in-browser ; set browser linkhandler
 macro c set browser "google-chrome-stable"; open-in-browser ; set browser linkhandler
