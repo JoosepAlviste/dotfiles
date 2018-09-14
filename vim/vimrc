@@ -452,6 +452,9 @@
     nnoremap <Leader>tl :exe "tabn ".g:lasttab<CR>
     autocmd TabLeave * let g:lasttab = tabpagenr()
 
+    " Use urlview to choose and open a url
+    nnoremap <Leader>u :w<Home>silent <End> !urlview<CR>
+
     " Navigation {
 
         " Move between splits in an easier way with Ctrl-jklh
