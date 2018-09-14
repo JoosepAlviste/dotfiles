@@ -60,7 +60,7 @@
 
     " General Programming {
 
-        " Show git branch info in lightline (or other Git integrations when it 
+        " Show git branch info in lightline (or other Git integrations when it
         " is configured)
         Plug 'tpope/vim-fugitive'
         " Show Git status symbols in the gutter
@@ -81,7 +81,7 @@
     " }
 
     " Snippets and Autocomplete {
-    
+
         " Snippets engine
         Plug 'SirVer/ultisnips'
 
@@ -115,11 +115,17 @@
 
     " }
 
+    " Text editing {
+
+        Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+    " }
+
     " Misc {
-    
+
         " Icons, must be the last plugin loaded!
         Plug 'ryanoasis/vim-devicons'
-    
+
     " }
 
 " }

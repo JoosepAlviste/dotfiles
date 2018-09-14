@@ -50,6 +50,10 @@ source $ZSH/oh-my-zsh.sh
 
 # }}}
 # # Aliases {{{
+
+# Source the key mapping configuration
+xmodmap ~/.Xmodmap
+
 alias cd..="cd .."
 alias p="vendor/bin/phpunit"
 alias pf="p --filter"
@@ -63,12 +67,6 @@ alias down='docker-compose down'
 alias build='docker-compose build'
 
 alias r=ranger
-
-tsm() { transmission-remote -l ;}
-tsm-add() { transmission-remote -a "$1" ;}
-
-# Map caps to escape and control
-xmodmap ~/.Xmodmap
 
 # Useful alternatives/aliases
 if type bat > /dev/null; then
@@ -90,6 +88,14 @@ fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
+
+# }}}
+# ## Transmission {{{
+
+tsm-start() { transmission-daemon ;}
+tsm() { transmission-remote -l ;}
+tsm-add() { transmission-remote -a "$1" ;}
+
 # }}}
 # # Visuals {{{
 
