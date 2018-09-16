@@ -28,6 +28,9 @@ export LANG=en_US.UTF-8
 
 export BROWSER=google-chrome-stable
 
+# Current user so that it can be used by docker-compose
+export CURRENT_UID=$(id -u):$(id -g)
+
 # }}}
 # # Oh my zsh {{{
 
@@ -52,9 +55,6 @@ source $ZSH/oh-my-zsh.sh
 
 # }}}
 # # Aliases {{{
-
-# Source the key mapping configuration
-xmodmap ~/.Xmodmap
 
 alias cd..="cd .."
 alias p="vendor/bin/phpunit"
