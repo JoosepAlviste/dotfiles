@@ -242,7 +242,7 @@ bindsym ISO_Next_Group exec pkill -RTMIN+1 i3blocks
 
 
 # Set up multiple monitors
-exec_always xrandr --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-0 --rate 144.00 --mode 1920x1080 --pos 0x0 --rotate normal
+exec_always xrandr --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --output DVI-0 --rate 144.00 --mode 1920x1080 --pos 0x0
 
 # Lock the screen
 bindsym $mod+shift+x exec betterlockscreen -l dim
@@ -265,14 +265,8 @@ exec spotify
 
 exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
 
-# Keyboard layout
-exec_always setxkbmap -layout us,ee -option 'grp:alt_space_toggle'
-
 # Compton
 exec_always compton -f
-
-# Apply .Xresource
-exec_always --no-startup-id xrdb ~/.Xresources
 
 # Set the desktop background
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jpg
