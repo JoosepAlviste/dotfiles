@@ -22,6 +22,10 @@ LABELS["apps"]=""
 COMMANDS["bookmarks"]="~/.config/scripts/rofi-scripts-collection/rofi-surfraw-bookmarks.sh"
 LABELS["bookmarks"]=""
 
+# change audio output
+COMMANDS["audio"]="~/.config/scripts/rofi-scripts-collection/rofi-audio-output.sh"
+LABELS["audio"]=""
+
 # open custom web searches
 # COMMANDS["websearch"]="~/.scripts/rofi-scripts-collection/rofi-surfraw-websearch.sh"
 # LABELS["websearch"]=""
