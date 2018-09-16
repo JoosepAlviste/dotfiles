@@ -13,7 +13,7 @@ olddir=~/.dotfiles_old           # old dotfiles backup directory
 # TODO: Please make this look nicer...
 files="vimrc vim zshrc gitconfig tmux.conf ctags.d ideavimrc Xresources Xmodmap Xresources.d newsboat urlview xbindkeysrc xinitrc"
 
-dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3 rofi polybar ranger fontconfig dunst gtk-3.0 termite scripts mpv feh"
+dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3 rofi polybar ranger fontconfig dunst gtk-3.0 termite scripts mpv feh surfraw"
 
 ##########
 
