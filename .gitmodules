@@ -1,0 +1,4 @@
+[submodule "surfraw/bookmarks"]
+	path = surfraw/bookmarks
+	url = git@gitlab.com:zeizig/bookmarks.git
+	branch = master
