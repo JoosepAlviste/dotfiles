@@ -32,13 +32,13 @@ radius = 0
 
 padding-left = 4
 padding-right = 4
-module-margin = 0
+module-margin = 2
 
 underline-size = 2
 
 modules-left = i3 
 modules-center = title
-modules-right = date
+modules-right = keyboard date
 
 
 [bar/bar1]
@@ -53,32 +53,49 @@ monitor = "HDMI-1-2"
 
 [module/i3]
 type = internal/i3
-# format = <label-state> <label-mode>
+
+pin-workspaces = true
+strip-wsnumbers = true
+
 format-underline = ${colors.focused-bg}
 
+label-focused = %name%
 label-focused-foreground = ${colors.focused}
 label-focused-background = ${colors.focused-bg}
 label-focused-underline = ${colors.focused}
-label-focused-padding = 2
+label-focused-padding = 3
 
-label-unfocused-padding = 2
+label-unfocused = %name%
+label-unfocused-padding = 3
 
+label-visible = %name%
 label-visible-underline = ${colors.foreground}
-label-visible-padding = 2
+label-visible-padding = 3
 
+label-urgent = %name%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.danger}
-label-urgent-padding = 2
+label-urgent-padding = 3
+
 
 [module/date]
 type = internal/date
 interval = 1.0
 date = %A, %d %B %H:%M
 
+
 [module/title]
 type = internal/xwindow
 format-foreground = ${colors.foreground}
 format-padding = 1
 label-maxlen = 50
+
+
+[module/keyboard]
+type = internal/xkeyboard
+
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
 
 ; vim:ft=dosini
