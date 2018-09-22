@@ -141,6 +141,14 @@ export FZF_DEFAULT_COMMAND='ag -l --hidden .'
 export TERMINAL="termite"
 
 # }}}
+# ## Startup {{{
+
+# Start graphical server if i3 not already running.
+if [ "$(tty)" = "/dev/tty1" ]; then
+    pgrep -x i3 || exec startx
+fi
+
+# }}}
 # # Overview {{{
 set modelines=3
 # Custom folding for this file
