@@ -16,6 +16,7 @@ pin-workspaces = true
 font-0 = "OverpassMono Nerd Font Mono:pixelsize=10"
 font-1 = "Font Awesome 5 Free:pixelsize=10"
 font-2 = "Font Awesome 5 Brands:pixelsize=10"
+font-3 = "NotoEmoji:size=7"
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -38,7 +39,7 @@ underline-size = 2
 
 modules-left = i3 
 modules-center = title
-modules-right = keyboard date
+modules-right = keyboard pulseaudio date
 
 
 [bar/bar1]
@@ -96,6 +97,22 @@ type = internal/xkeyboard
 
 blacklist-0 = num lock
 blacklist-1 = scroll lock
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+
+; Only allow increasing volume up to 100%
+use-ui-max = false
+
+label-muted = muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 
 ; vim:ft=dosini
