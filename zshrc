@@ -115,8 +115,8 @@ prompt spaceship
 # # Packages {{{
 
 # Python Virtualenv
-VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2
-source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 # Z
 source $HOME/Programs/z/z.sh
