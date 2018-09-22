@@ -26,6 +26,9 @@ LABELS["bookmarks"]=""
 COMMANDS["audio"]="~/.config/scripts/rofi-scripts-collection/rofi-audio-output.sh"
 LABELS["audio"]=""
 
+COMMANDS["power"]="~/.config/scripts/rofi-scripts-collection/rofi-power.sh"
+LABELS["power"]=""
+
 # open custom web searches
 # COMMANDS["websearch"]="~/.scripts/rofi-scripts-collection/rofi-surfraw-websearch.sh"
 # LABELS["websearch"]=""

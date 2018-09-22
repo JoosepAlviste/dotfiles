@@ -46,33 +46,33 @@
 
     # Context menu.
     context = ctrl+shift+period
- 
+
 [urgency_low]
     background = "#ffffff"
     foreground = "#595959"
     timeout = 5
- 
+
 [urgency_normal]
     background = "#ffffff"
     foreground = "#595959"
     timeout = 5
- 
+
 [urgency_critical]
     background = "#ffffff"
     foreground = "#595959"
     timeout = 5
- 
+
 [Discord]
     appname = Discord Canary
     format = "<b>%s</b>\n%b"
     new_icon = Discord
- 
+
 [Spotify]
     appname = Spotify
     format = "<b>Now Playing:</b>\n%s\n%b"
     new_icon = Spotify
     timeout = 10
- 
+
 [Transmission]
     appname = Transmission
     format = "<b>%s</b>\n%b"
