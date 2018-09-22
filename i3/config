@@ -154,7 +154,7 @@ bindsym $mod+Shift+space floating toggle
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q exec --no-startup-id rofi-power
 
 # start rofi
 bindsym $mod+d exec rofi -show drun
@@ -238,4 +238,10 @@ bindsym $mod+Shift+Up move up
 
 bindsym $mod+Right focus right
 bindsym $mod+Shift+Right move right
+
+
+
+# #---Random---# #
+
+bindsym $mod+u exec ~/Downloads/dtest
 
