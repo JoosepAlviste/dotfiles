@@ -37,7 +37,7 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-"~/.config/scripts/rofi-scripts-collection/rofi-bangs.sh"
+'zsh -c "~/.config/scripts/rofi-scripts-collection/rofi-bangs.sh"'
    Mod1+space
 
 # Examples of commands:
