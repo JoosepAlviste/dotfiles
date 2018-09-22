@@ -41,6 +41,8 @@ modules-left = i3
 modules-center = title
 modules-right = keyboard pulseaudio date
 
+tray-position = right
+
 
 [bar/bar1]
 inherit = bar/base
