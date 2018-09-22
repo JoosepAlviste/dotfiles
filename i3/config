@@ -263,6 +263,9 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Run nm-applet
+exec --no-startup-id nm-applet
+
 # Run Spotify automatically
 exec spotify
 
@@ -277,3 +280,5 @@ exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jp
 # Screenshotting with maim, copy region to clipboard
 bindsym --release Print exec maim -s | xclip -selection clipboard -t image/png
 
+# Run Dunst on startup
+exec --no-startup-id dunst
