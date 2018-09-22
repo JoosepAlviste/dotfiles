@@ -152,61 +152,56 @@ bindsym $mod+Shift+space floating toggle
 
 # #---Letter Key Bindings---# #
 
-# kill focused window
-bindsym $mod+q kill
-bindsym $mod+Shift+q exec --no-startup-id rofi-power
+bindsym $mod+q          kill
+bindsym $mod+Shift+q    exec --no-startup-id rofi-power
 
-# start rofi
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d          exec rofi -show drun
 
 # Change gap sizes
-bindsym $mod+s gaps inner current plus 5
-bindsym $mod+Shift+s gaps inner current minus 5
+bindsym $mod+s          gaps inner current plus 5
+bindsym $mod+Shift+s    gaps inner current minus 5
 
-bindsym $mod+h focus left
-bindsym $mod+Shift+h move left
+bindsym $mod+z          gaps outer current plus 5
+bindsym $mod+Shift+z    gaps outer current minus 5
 
-bindsym $mod+j focus down
-bindsym $mod+Shift+j move down
+bindsym $mod+h          focus left
+bindsym $mod+Shift+h    move left
 
-bindsym $mod+k focus up
-bindsym $mod+Shift+k move up
+bindsym $mod+j          focus down
+bindsym $mod+Shift+j    move down
 
-bindsym $mod+l focus right
-bindsym $mod+Shift+l move right
+bindsym $mod+k          focus up
+bindsym $mod+Shift+k    move up
 
-# split in vertical orientation
-bindsym $mod+v split v
-# split in horizontal orientation
-bindsym $mod+Shift+v split h
+bindsym $mod+l          focus right
+bindsym $mod+Shift+l    move right
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+v          split v
+bindsym $mod+Shift+v    split h
 
-bindsym $mod+e layout toggle split
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+f          fullscreen toggle
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+e          layout toggle split
+bindsym $mod+Shift+e    exec --no-startup-id rofi-power
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c    reload
 
-bindsym $mod+Shift+y exec --no-startup-id i3resize left
+bindsym $mod+r          exec $term -e ranger
+bindsym $mod+Shift+r    restart
 
-bindsym $mod+Shift+u exec --no-startup-id i3resize down
+bindsym $mod+Shift+y    exec --no-startup-id i3resize left
 
-bindsym $mod+Shift+i exec --no-startup-id i3resize up
+bindsym $mod+Shift+u    exec --no-startup-id i3resize down
 
-bindsym $mod+Shift+o exec --no-startup-id i3resize right
+bindsym $mod+Shift+i    exec --no-startup-id i3resize up
+
+bindsym $mod+Shift+o    exec --no-startup-id i3resize right
 
 # Move workspace to other monitor
-bindsym $mod+x move workspace to output right
-# Lock the screen
-bindsym $mod+Shift+x exec betterlockscreen -l dim
+bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
+bindsym $mod+Shift+x    exec --no-startup-id rofi-power
 
-
+bindsym $mod+m          move workspace to output right
 
 # #---Media keys---# #
 
