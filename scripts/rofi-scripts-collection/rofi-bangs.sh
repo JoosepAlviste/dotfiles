@@ -15,7 +15,7 @@ declare -A COMMANDS
 # List of defined 'bangs'
 
 # launch programs
-COMMANDS["apps"]="rofi -combi-modi window,drun -show combi"
+COMMANDS["apps"]="zsh -c \"rofi -combi-modi drun -show combi"\"
 LABELS["apps"]=""
 
 # open bookmarks
