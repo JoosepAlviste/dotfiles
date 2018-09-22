@@ -1,6 +1,6 @@
 [global]
     font = Overpass 8
-    allow_markup = yes
+    markup = yes
     format = "%s\n%b"
     sort = yes
     indicate_hidden = yes
@@ -19,19 +19,17 @@
     line_height = 5
     separator_height = 0
     padding = 10
-    horizontal_padding = 10
-    separator_color = #bfbfbf
+    horizontal_padding = 15
+    separator_color = "#bfbfbf"
     startup_notification = false
-    show_indicators = no
+    show_indicators = true
     dmenu = /usr/bin/dmenu -p dunst
     browser = /usr/bin/google-chrome-stable -new-tab
     icon_position = left
-    icon_folders = /usr/share/icons/Notifications
+    icon_path = /usr/share/icons/Notifications
     max_icon_size = 45
-
-[frame]
-    color = "#ffffff"
-    width = 0
+    frame_width = 0
+    frame_color = "#ffffff"
 
 [shortcuts]
     # Close notification.
