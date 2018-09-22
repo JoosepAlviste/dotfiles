@@ -26,6 +26,8 @@ exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 # Set up multiple monitors
 exec_always --no-startup-id xrandr --output HDMI-1-2 --mode 1920x1080 --pos 1920x0 --output DVI-0 --rate 144.00 --mode 1920x1080 --pos 0x0
+# Torrent daemon
+exec --no-startup-id transmission-daemon
 
 # Run Spotify automatically
 exec spotify
