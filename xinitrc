@@ -8,8 +8,9 @@ setxkbmap -layout us,ee -option 'grp:shifts_toggle'
 xbindkeys
 
 # Run GNOME Keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+dbus-update-activation-environment --systemd DISPLAY
 
 # Start our window manager
 exec i3
