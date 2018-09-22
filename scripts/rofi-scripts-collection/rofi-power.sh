@@ -17,6 +17,9 @@ fi
 if [ "$res" = "shutdown" ]; then
     poweroff
 fi
+if [ "$res" = "lock screen" ]; then
+    betterlockscreen -l dim
+fi
 
 exit 0
 
