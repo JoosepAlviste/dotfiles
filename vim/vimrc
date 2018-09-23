@@ -230,7 +230,10 @@
     " Startify {
 
         " Set bookmarks
-        let g:startify_bookmarks = [{ 'd': '~/dotfiles/' }]
+        let g:startify_bookmarks = [
+                    \ { 'd': '~/dotfiles/' },
+                    \ { 'b': '~/.config/surfraw/bookmarks' },
+                    \ ]
 
         " Change directory to git root on item select
         let g:startify_change_to_vcs_root = 1
