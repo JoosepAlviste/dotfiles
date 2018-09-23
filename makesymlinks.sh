@@ -1,19 +1,17 @@
 #!/bin/bash
 ############################
 # .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to any desired dotfiles 
+# in ~/dotfiles
+# Symlinks folders/files from the "dots" directory as dotfiles to "~". Also 
+# symlinks folders/files from the "config" directory to the "~/.config" 
+# directory.
 ############################
 
 ########## Variables
 
 dir=~/dotfiles                  # dotfiles directory
 olddir=~/.dotfiles_old           # old dotfiles backup directory
-
-# list of files/folders to symlink in homedir
-# TODO: Please make this look nicer...
-files="vim zshrc gitconfig tmux.conf ctags.d ideavimrc Xresources Xmodmap Xresources.d newsboat urlview xbindkeysrc xinitrc"
-
-dotConfigFiles="nvim tmux.conf.d karabiner gitignore_global i3 rofi polybar ranger fontconfig dunst gtk-3.0 termite scripts mpv feh surfraw"
 
 ##########
 
@@ -27,21 +25,28 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file $olddir/
-    if [ ! -e ~/.$file ]; then
-        echo "Creating symlink to $file in home directory."
-        ln -s $dir/$file ~/.$file
+# move any existing dotfiles in homedir to dotfiles_old directory, then create 
+# symlinks
+for file in ./dots/*; do
+    filename=$(echo $file | rev | cut -d'/' -f-1 | rev)
+
+    if [ ! -f ~/.$filename ]; then
+        echo "Moving existing file ~/.$filename to $olddir/.$filename"
+        mv ~/.$filename $olddir/
+    fi
+
+    if [ ! -e ~/.$filename ]; then
+        echo "Creating symlink to $filename in home directory."
+        ln -s $dir/dots/$filename ~/.$filename
     fi
 done
 
-mkdir -p ~/.config/
-for file in $dotConfigFiles; do
-    if [ ! -e ~/.config/$file ]; then
-        echo "Creating symlink to $file in .config/."
-        ln -s $dir/$file ~/.config/$file
+# Link folders/files from the config folder to .config
+for file in ./config/*; do
+    filename=$(echo $file | rev | cut -d'/' -f-1 | rev)
+    if [ ! -e ~/.config/$filename ]; then
+        echo "Creating symlink to $filename in .config directory."
+        ln -s $dir/config/$filename ~/.config/$filename
     fi
 done
 

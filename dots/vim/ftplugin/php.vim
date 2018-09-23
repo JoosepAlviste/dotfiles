@@ -4,6 +4,6 @@ if executable('php-language-server.php')
     call LanguageClient_registerServerCommands({'php': ['php', '~/.composer/vendor/bin/php-language-server.php']})
 else
     echo "php-language-server not installed!\n"
-    :cq
+    " :cq
 endif
 

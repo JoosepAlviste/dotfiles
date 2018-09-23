@@ -16,8 +16,8 @@ fpath=($fpath "$HOME/.zfunctions")
 
 # Java
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-export JAVA_HOME="$(jenv javahome)"
+# eval "$(jenv init -)"
+# export JAVA_HOME="$(jenv javahome)"
 
 # Oh my zsh
 export ZSH=~/.oh-my-zsh
