@@ -202,6 +202,7 @@ bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
 bindsym $mod+Shift+x    exec --no-startup-id rofi-power
 
 bindsym $mod+m          move workspace to output right
+bindsym $mod+Shiftm     exec --no-startup-id i3-swap
 
 # #---Media keys---# #
 
