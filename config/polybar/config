@@ -60,7 +60,7 @@ type = internal/i3
 pin-workspaces = true
 strip-wsnumbers = true
 
-format-underline = ${colors.focused-bg}
+format-underline = ${colors.background}
 
 label-focused = %name%
 label-focused-foreground = ${colors.focused}
@@ -78,6 +78,7 @@ label-visible-padding = 3
 label-urgent = %name%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.danger}
+label-urgent-underline = ${colors.danger}
 label-urgent-padding = 3
 
 
