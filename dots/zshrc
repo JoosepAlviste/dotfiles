@@ -1,13 +1,6 @@
 # # PATH {{{
 
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.composer/vendor/bin:$PATH
-export PATH=/usr/local/opt/python@2/bin:$PATH
-export PATH=/usr/local/opt/gettext/bin:$PATH
-export PATH="$(yarn global bin):$PATH"
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.config/scripts:$PATH
-
-export NODE_ENV=development
+source ~/.profile
 
 fpath=($fpath "$HOME/.zfunctions")
 
@@ -21,15 +14,6 @@ export PATH="$HOME/.jenv/bin:$PATH"
 
 # Oh my zsh
 export ZSH=~/.oh-my-zsh
-
-# Set language
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-export BROWSER=google-chrome-stable
-
-# Current user so that it can be used by docker-compose
-export CURRENT_UID=$(id -u):$(id -g)
 
 # }}}
 # # Oh my zsh {{{
@@ -111,7 +95,6 @@ prompt spaceship
 # # Packages {{{
 
 # Python Virtualenv
-export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh
 
 # Z
@@ -119,10 +102,6 @@ source $HOME/Programs/z/z.sh
 
 # }}}
 # # Generic {{{
-
-# Use vim as the default editor
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 # Use up/down arrow to search history
 autoload -U up-line-or-beginning-search
@@ -134,11 +113,6 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 bindkey "[D" backward-word
 bindkey "[C" forward-word
-
-# Use a better command for searching with fzf
-export FZF_DEFAULT_COMMAND='ag -l --hidden .'
-
-export TERMINAL="termite"
 
 # }}}
 # ## Startup {{{
