@@ -6,6 +6,10 @@ export PATH=/usr/local/opt/gettext/bin:$PATH
 
 export NODE_ENV=development
 
+# Pyenv for slightly different python versions
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # }}}
 # ## Env variables {{{
 
