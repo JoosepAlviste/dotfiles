@@ -44,15 +44,20 @@ alias cd..="cd .."
 alias p="vendor/bin/phpunit"
 alias pf="p --filter"
 alias art="php artisan"
+alias sudo='sudo -E'  # Use current user configs
 
-alias vim=nvim
+alias vim='nvim'
 
 # Docker compose
+alias dc='docker-compose'
 alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
 
-alias r=ranger
+alias p='sudo pacman'
+alias v='vim'
+alias sv='sudo vim'
+alias r='ranger'
 
 # Useful alternatives/aliases
 if type bat > /dev/null; then

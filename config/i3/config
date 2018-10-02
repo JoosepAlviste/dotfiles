@@ -4,8 +4,10 @@ set $mod Mod4
 floating_modifier $mod
 
 # Gaps
-gaps inner 20
-gaps outer 10
+gaps inner 0
+gaps outer 0
+# gaps inner 20
+# gaps outer 10
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
