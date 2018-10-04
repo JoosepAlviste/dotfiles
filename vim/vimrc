@@ -230,7 +230,7 @@
     " Startify {
 
         " Set bookmarks
-        let g:startify_bookmarks = [{ 'd': '~/.dotfiles/' }]
+        let g:startify_bookmarks = [{ 'd': '~/dotfiles/' }]
 
         " Change directory to git root on item select
         let g:startify_change_to_vcs_root = 1
@@ -309,7 +309,7 @@
 
     " Color scheme
     let g:onedark_terminal_italics = 1
-    colorscheme nova
+    " colorscheme nova
 
     " Highlight current line
     set cursorline

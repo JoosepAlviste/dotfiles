@@ -1,0 +1,60 @@
+[bar/bar]
+
+font-0 = "Hack Nerd Font Regular:pixelsize=10"
+
+monitor = "DVI-I-1"
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+fixed-center = true
+
+width = 100%
+height = 30
+
+background = #1d1f21
+foreground = #707880
+
+radius = 0.0
+
+padding-left = 1
+padding-right = 1
+module-margin = 0
+
+modules-left = i3 
+modules-right = date
+
+[module/i3]
+# strip-wsnumbers = true
+type = internal/i3
+# format = <label-state> <label-mode>
+
+# label-focused = %index%
+label-focused-foreground = #cc6666
+label-focused-background = #1d1f21
+label-focused-underline = #fba922
+label-focused-padding = 1
+
+# label-unfocused = %index%
+label-unfocused-padding = 1
+
+# label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %A, %d %B %H:%M
+
+[module/title]
+type = internal/xwindow
+# format-background = #f00
+format-foreground = #f0c674
+format-padding = 1
+label-maxlen = 50

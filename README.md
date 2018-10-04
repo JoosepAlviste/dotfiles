@@ -81,9 +81,3 @@ git pull
 
 Maybe run `./makesymlinks.sh` again.
 
-
-## Customizing
-
-* lxappearance - gtk settings (fonts)
-    * Config file `~/.gtkrc-2.0` 
-    * Another config file `.config/gtk-3.0/settings.ini`
