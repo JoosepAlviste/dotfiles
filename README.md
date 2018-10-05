@@ -82,7 +82,8 @@ chmod +x makesymlinks.sh
 ./makesymlinks.sh
 ```
 
-The next time you start `vim`, it will automatically install Plug as well as trigger PlugInstall in order to install plugins.
+The next time you start `vim`, it will automatically install Plug as well as 
+trigger PlugInstall in order to install plugins.
 
 ## Update
 
@@ -91,4 +92,21 @@ git pull
 ```
 
 Maybe run `./makesymlinks.sh` again.
+
+
+## Packages list (very incomplete)
+
+This will maybe one day include all the pacman and AUR packages that should be 
+installed.
+
+```bash
+pacman -S \
+    i3-gaps \
+    htop
+```
+
+```bash
+yay -S \
+    numix-circle-icon-theme
+```
 

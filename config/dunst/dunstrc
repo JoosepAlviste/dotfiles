@@ -26,7 +26,7 @@
     dmenu = /usr/bin/dmenu -p dunst
     browser = /usr/bin/google-chrome-stable -new-tab
     icon_position = left
-    icon_path = /usr/share/icons/Notifications
+    icon_path = /usr/share/icons/Numix-Circle/48/status:/usr/share/icons/Numix-Circle/48/apps
     max_icon_size = 45
     frame_width = 0
     frame_color = "#ffffff"
