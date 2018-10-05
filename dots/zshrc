@@ -37,6 +37,7 @@ plugins=(
   laravel5
   zsh-autosuggestions
   zsh-syntax-highlighting
+  fzf-zsh
 )
 
 source $ZSH/oh-my-zsh.sh
