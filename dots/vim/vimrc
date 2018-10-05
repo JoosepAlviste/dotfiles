@@ -117,7 +117,7 @@
     " Lightline {
 
         let g:lightline = {
-                    \ 'colorscheme': 'nova',
+                    \ 'colorscheme': 'onedark',
                     \ 'active': {
                     \   'left': [ [ 'mode', 'paste' ],
                     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
@@ -310,11 +310,8 @@
 
 " Vim UI {
 
-    " Use 256 colors from base16
-    let base16colorspace=256
-
     " Color scheme
-    colorscheme base16-default-dark
+    colorscheme onedark
 
     " Highlight current line
     set cursorline
@@ -488,28 +485,30 @@
 
 " Neovim {
 
-    if has('nvim')
+    if (empty($TMUX))
+        if has('nvim')
 
-        " Set python path manually so that the boot up process is faster
-        if executable('/usr/local/bin/python3')
-            let g:python3_host_prog = '/usr/local/bin/python3'
-        elseif executable('/usr/bin/python3')
-            let g:python3_host_prog = '/usr/bin/python3'
+            " Set python path manually so that the boot up process is faster
+            if executable('/usr/local/bin/python3')
+                let g:python3_host_prog = '/usr/local/bin/python3'
+            elseif executable('/usr/bin/python3')
+                let g:python3_host_prog = '/usr/bin/python3'
+            endif
+
+            " Use 24-bit (true-color) mode
+            let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+            " Nvim terminal keybindings
+            tnoremap <Esc> <C-\><C-n>
+            tnoremap <M-[> <Esc>
+            tnoremap <C-v><Esc> <Esc>
+
         endif
 
-        " Use 24-bit (true-color) mode
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-        " Nvim terminal keybindings
-        tnoremap <Esc> <C-\><C-n>
-        tnoremap <M-[> <Esc>
-        tnoremap <C-v><Esc> <Esc>
-
+        if (has("termguicolors"))
+            set termguicolors
+        endif
     endif
-
-    " if (has("termguicolors"))
-    "     set termguicolors
-    " endif
 
 " }
 
