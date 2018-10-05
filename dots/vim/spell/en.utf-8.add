@@ -83,3 +83,5 @@ betterlockscreen
 PlugInstall
 pacman
 AUR
+README
+truecolor
