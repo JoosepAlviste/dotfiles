@@ -97,6 +97,11 @@ ZSH_THEME=""
 autoload -U promptinit; promptinit
 prompt spaceship
 
+# Configure spaceship prompt
+export SPACESHIP_DOCKER_SHOW=false
+export SPACESHIP_PACKAGE_SHOW=false
+export SPACESHIP_NODE_SHOW=false
+
 # }}}
 # # Packages {{{
 
