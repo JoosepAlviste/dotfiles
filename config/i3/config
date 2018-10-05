@@ -148,13 +148,13 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 820 500
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
-exec_always --no-startup-id $term --title=dropdown --name=dropdown --class=dropdown
+exec --no-startup-id $term --title=dropdown --name=dropdown --class=dropdown
 # Python
 for_window [instance="python"] floating enable
 for_window [instance="python"] resize set 625 300
 for_window [instance="python"] move scratchpad
 for_window [instance="python"] border pixel 5
-exec_always --no-startup-id $term --title=python --name=python --class=python -e "bpython -q"
+exec --no-startup-id $term --title=python --name=python --class=python -e "bpython -q"
 
 
 
@@ -175,36 +175,8 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+q          kill
 bindsym $mod+Shift+q    exec --no-startup-id rofi-power
 
-bindsym $mod+d          exec rofi -show drun
-
-# Change gap sizes
-bindsym $mod+s          gaps inner current plus 5
-bindsym $mod+Shift+s    gaps inner current minus 5
-
-bindsym $mod+z          gaps outer current plus 5
-bindsym $mod+Shift+z    gaps outer current minus 5
-
-bindsym $mod+h          focus left
-bindsym $mod+Shift+h    move left
-
-bindsym $mod+j          focus down
-bindsym $mod+Shift+j    move down
-
-bindsym $mod+k          focus up
-bindsym $mod+Shift+k    move up
-
-bindsym $mod+l          focus right
-bindsym $mod+Shift+l    move right
-
-bindsym $mod+v          split v
-bindsym $mod+Shift+v    split h
-
-bindsym $mod+f          fullscreen toggle
-
 bindsym $mod+e          layout toggle split
 bindsym $mod+Shift+e    exec --no-startup-id rofi-power
-
-bindsym $mod+Shift+c    reload
 
 bindsym $mod+r          exec $term -e ranger
 bindsym $mod+Shift+r    restart
@@ -220,9 +192,37 @@ bindsym $mod+Shift+o    exec --no-startup-id i3resize right
 
 bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"] move position center
 
+# Change gap sizes
+bindsym $mod+s          gaps inner current plus 5
+bindsym $mod+Shift+s    gaps inner current minus 5
+
+bindsym $mod+d          exec rofi -show drun
+
+bindsym $mod+f          fullscreen toggle
+
+bindsym $mod+h          focus left
+bindsym $mod+Shift+h    move left
+
+bindsym $mod+j          focus down
+bindsym $mod+Shift+j    move down
+
+bindsym $mod+k          focus up
+bindsym $mod+Shift+k    move up
+
+bindsym $mod+l          focus right
+bindsym $mod+Shift+l    move right
+
+bindsym $mod+z          gaps outer current plus 5
+bindsym $mod+Shift+z    gaps outer current minus 5
+
 # Move workspace to other monitor
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
 bindsym $mod+Shift+x    exec --no-startup-id rofi-power
+
+bindsym $mod+Shift+c    reload
+
+bindsym $mod+v          split v
+bindsym $mod+Shift+v    split h
 
 bindsym $mod+m          move workspace to output right
 bindsym $mod+Shiftm     exec --no-startup-id i3-swap
