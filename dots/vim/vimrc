@@ -158,6 +158,9 @@
                     \   'javascript': ['eslint'],
                     \   'javascript.jsx': ['eslint'],
                     \ }
+        let g:ale_linters = {
+                    \   'python': ['pylint'],
+                    \ }
 
         " Use eslint_d for faster linting
         let g:ale_javascript_eslint_executable = 'eslint_d'
@@ -166,6 +169,10 @@
         nnoremap <leader>f mF:%!eslint_d --stdin --fix-to-stdout<CR>`F
         " Autofix visual selection with eslint_d:
         vnoremap <leader>f :!eslint_d --stdin --fix-to-stdout<CR>gv
+
+        " Python
+        let g:ale_python_auto_pipenv = 1
+        let g:ale_python_pylint_auto_pipenv = 1
 
     " }
 
