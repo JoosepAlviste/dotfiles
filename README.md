@@ -103,7 +103,8 @@ installed.
 pacman -S \
     i3-gaps \
     htop \
-    evince
+    evince \
+    ranger
 ```
 
 ```bash
