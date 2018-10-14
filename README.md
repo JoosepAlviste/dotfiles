@@ -102,7 +102,8 @@ installed.
 ```bash
 pacman -S \
     i3-gaps \
-    htop
+    htop \
+    evince
 ```
 
 ```bash
