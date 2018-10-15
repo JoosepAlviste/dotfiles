@@ -4,10 +4,6 @@ source ~/.profile
 
 fpath=($fpath "$HOME/.zfunctions")
 
-# Pyenv for slightly different python versions
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 # }}}
 # ## Env variables {{{
 
