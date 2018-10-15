@@ -1,4 +1,5 @@
 tmux-*.log
 tags
+tags.lock
 *~
 
