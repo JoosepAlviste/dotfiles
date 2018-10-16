@@ -106,7 +106,8 @@ export SPACESHIP_NODE_SHOW=false
 # # Packages {{{
 
 # Python Virtualenv
-source /usr/bin/virtualenvwrapper_lazy.sh
+VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Z
 source $HOME/Programs/z/z.sh
