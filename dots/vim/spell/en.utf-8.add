@@ -112,3 +112,5 @@ dockerhub
 ubuntu
 https
 Ansible
+RabbitMQ
+js
