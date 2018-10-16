@@ -112,6 +112,10 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 # Z
 source $HOME/Programs/z/z.sh
 
+# Pyenv
+# export PYENV_VERSION='3.6.5'
+eval "$(pyenv init -)"
+
 # }}}
 # # Generic {{{
 
