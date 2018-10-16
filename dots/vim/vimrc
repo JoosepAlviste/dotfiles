@@ -255,6 +255,12 @@
 
     " }
 
+    " LaTeX Live Preview {{{
+
+        let g:livepreview_previewer = 'open -a Preview'
+    
+    " }}}
+
 " }
 
 " General {
