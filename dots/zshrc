@@ -99,10 +99,9 @@ prompt spaceship
 
 # Configure spaceship prompt
 export SPACESHIP_PROMPT_SEPARATE_LINE=false
-export SPACESHIP_CHAR_SYMBOL='>'
 export SPACESHIP_CHAR_SUFFIX=' '
 
-# Directories
+# Show just one directory
 export SPACESHIP_DIR_TRUNC=1
 export SPACESHIP_DIR_TRUNC_REPO=false
 
@@ -142,6 +141,11 @@ bindkey "[C" forward-word
 # Start graphical server if i3 not already running.
 if [ "$(tty)" = "/dev/tty1" ]; then
     pgrep -x i3 || exec startx
+fi
+
+# Start a tmux session
+if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
 fi
 
 # }}}
