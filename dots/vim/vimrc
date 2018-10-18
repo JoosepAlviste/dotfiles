@@ -218,6 +218,11 @@
         " Autocomplete file names from buffer and not the opened directory
         let g:deoplete#file#enable_buffer_path = 1
 
+        if !exists('g:deoplete#omni#input_patterns')
+            let g:deoplete#omni#input_patterns = {}
+        endif
+        let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
         " Enable full fuzzy matching. Not sure what it does to be honest, but
         " fuzziness is nice. The default is standard \"fuzzy\" matching. Seems to
         " give better results.
@@ -258,6 +263,18 @@
     " Markdown preview {
 
         let vim_markdown_preview_github=1
+
+    " }
+
+    " Vimtex {
+
+        let g:vimtex_compiler_progname = 'nvr'
+
+    " }
+
+    " Polyglot {
+
+        let g:polyglot_disabled = ['tex']
 
     " }
 
