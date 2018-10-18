@@ -122,6 +122,9 @@
         " LaTeX
         Plug 'lervag/vimtex'
         Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+        " Markdown
+        Plug 'plasticboy/vim-markdown'
         Plug 'JamshedVesuna/vim-markdown-preview'
 
     " }
