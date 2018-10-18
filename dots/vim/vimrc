@@ -128,8 +128,8 @@
                     \   'readonly': 'LightlineReadonly',
                     \   'fugitive': 'LightlineFugitive'
                     \ },
-                    \ 'separator': { 'left': '', 'right': '' },
-                    \ 'subseparator': { 'left': '', 'right': '' }
+                    \ 'separator': { 'left': '', 'right': '' },
+                    \ 'subseparator': { 'left': '|', 'right': '|' }
                     \ }
 
         function! LightlineReadonly()
@@ -297,10 +297,6 @@
     " asking if you wish to save changed files.
     set confirm
 
-    " Set the command window height to 2 lines, to avoid many cases of having to
-    " "press <Enter> to continue"
-    set cmdheight=2
-
     " Setting up directories {
         " Set backups to be written into temp folders
         set backup
@@ -413,6 +409,9 @@
     " Prevent inserting two spaces with J
     set nojoinspaces
 
+    " Conceal allows to turn _italics_ into italicised text
+    set conceallevel=2
+
     " Splits {
         " Open new splits to the right
         set splitright
@@ -459,6 +458,9 @@
     noremap <leader>tc :tabclose<cr>
     noremap <leader>tm :tabmove
     noremap <leader>t<leader> :tabnext
+
+    " Show relative filename
+    nnoremap <leader>k :echo @%<cr>
 
     " Let 'tl' toggle between this and the last accessed tab
     let g:lasttab = 1
