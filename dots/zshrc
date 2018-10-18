@@ -100,7 +100,9 @@ prompt spaceship
 
 # Configure spaceship prompt
 export SPACESHIP_PROMPT_SEPARATE_LINE=false
-export SPACESHIP_CHAR_SYMBOL=''
+export SPACESHIP_CHAR_SYMBOL='>'
+export SPACESHIP_CHAR_SUFFIX=' '
+
 # Directories
 export SPACESHIP_DIR_TRUNC=1
 export SPACESHIP_DIR_TRUNC_REPO=false
