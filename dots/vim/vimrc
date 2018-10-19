@@ -128,8 +128,8 @@
                     \   'readonly': 'LightlineReadonly',
                     \   'fugitive': 'LightlineFugitive'
                     \ },
-                    \ 'separator': { 'left': '', 'right': '' },
-                    \ 'subseparator': { 'left': '', 'right': '' }
+                    \ 'separator': { 'left': '', 'right': '' },
+                    \ 'subseparator': { 'left': '|', 'right': '|' }
                     \ }
 
         function! LightlineReadonly()
@@ -218,6 +218,11 @@
         " Autocomplete file names from buffer and not the opened directory
         let g:deoplete#file#enable_buffer_path = 1
 
+        if !exists('g:deoplete#omni#input_patterns')
+            let g:deoplete#omni#input_patterns = {}
+        endif
+        let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
         " Enable full fuzzy matching. Not sure what it does to be honest, but
         " fuzziness is nice. The default is standard \"fuzzy\" matching. Seems to
         " give better results.
@@ -231,6 +236,16 @@
         let g:LanguageClient_autoStart = 1
 
         nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+    " }
+
+    " GitGutter {
+
+        let g:gitgutter_sign_added='┃'
+        let g:gitgutter_sign_modified='┃'
+        let g:gitgutter_sign_removed='◢'
+        let g:gitgutter_sign_removed_first_line='◥'
+        let g:gitgutter_sign_modified_removed='◢'
 
     " }
 
@@ -258,6 +273,18 @@
     " Markdown preview {
 
         let vim_markdown_preview_github=1
+
+    " }
+
+    " Vimtex {
+
+        let g:vimtex_compiler_progname = 'nvr'
+
+    " }
+
+    " Polyglot {
+
+        let g:polyglot_disabled = ['tex']
 
     " }
 
@@ -296,10 +323,6 @@
     " Instead of failing a command because of unsaved changes, raise a dialogue
     " asking if you wish to save changed files.
     set confirm
-
-    " Set the command window height to 2 lines, to avoid many cases of having to
-    " "press <Enter> to continue"
-    set cmdheight=2
 
     " Setting up directories {
         " Set backups to be written into temp folders
@@ -413,6 +436,9 @@
     " Prevent inserting two spaces with J
     set nojoinspaces
 
+    " Conceal allows to turn _italics_ into italicised text
+    set conceallevel=2
+
     " Splits {
         " Open new splits to the right
         set splitright
@@ -459,6 +485,9 @@
     noremap <leader>tc :tabclose<cr>
     noremap <leader>tm :tabmove
     noremap <leader>t<leader> :tabnext
+
+    " Show relative filename
+    nnoremap <leader>k :echo @%<cr>
 
     " Let 'tl' toggle between this and the last accessed tab
     let g:lasttab = 1

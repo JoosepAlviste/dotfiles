@@ -67,6 +67,8 @@
         Plug 'airblade/vim-gitgutter'
         " Comment stuff out easily
         Plug 'tpope/vim-commentary'
+        " Aligning things
+        Plug 'godlygeek/tabular'
         " Syntax highlighting for most file types
         Plug 'sheerun/vim-polyglot'
         " Linting
@@ -117,7 +119,12 @@
 
     " Text editing {
 
+        " LaTeX
+        Plug 'lervag/vimtex'
         Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+        " Markdown
+        Plug 'plasticboy/vim-markdown'
         Plug 'JamshedVesuna/vim-markdown-preview'
 
     " }
