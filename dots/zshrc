@@ -99,7 +99,6 @@ prompt spaceship
 
 # Configure spaceship prompt
 export SPACESHIP_PROMPT_SEPARATE_LINE=false
-export SPACESHIP_CHAR_SUFFIX=' '
 
 # Show just one directory
 export SPACESHIP_DIR_TRUNC=1
@@ -111,6 +110,7 @@ export SPACESHIP_GIT_PREFIX=''
 export SPACESHIP_DOCKER_SHOW=false
 export SPACESHIP_PACKAGE_SHOW=false
 export SPACESHIP_NODE_SHOW=false
+export SPACESHIP_KUBECONTEXT_SHOW=false
 
 # }}}
 # # Packages {{{
