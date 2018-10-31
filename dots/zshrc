@@ -115,16 +115,33 @@ export SPACESHIP_KUBECONTEXT_SHOW=false
 # }}}
 # # Packages {{{
 
-# Python Virtualenv
-VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2
+# ## Virtualenvwrapper {{{
+
+VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
 source /usr/local/bin/virtualenvwrapper_lazy.sh
+
+# }}}
+
+# ## Pyenv {{{
+
+# Configuration
+export PYENV_VERSION='3.7.0'
+export PYENV_ROOT=$HOME/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Initialize pyenv and pyenv-virtualenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then 
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# }}}
 
 # Z
 source $HOME/Programs/z/z.sh
-
-# Pyenv
-# export PYENV_VERSION='3.6.5'
-eval "$(pyenv init -)"
 
 # }}}
 # # Generic {{{
