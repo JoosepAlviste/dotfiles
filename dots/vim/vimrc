@@ -5,6 +5,8 @@
 
 " Environment {
 
+    let home = $HOME
+
     " Identify platform {
         silent function! MAC()
             return has('macunix')
@@ -159,7 +161,7 @@
                     \   'javascript.jsx': ['eslint'],
                     \ }
         let g:ale_linters = {
-                    \   'python': ['pylint'],
+                    \   'python': [],
                     \ }
 
         " Use eslint_d for faster linting
@@ -218,6 +220,10 @@
         " Autocomplete file names from buffer and not the opened directory
         let g:deoplete#file#enable_buffer_path = 1
 
+        call deoplete#custom#option({
+                    \ 'auto_complete_delay': 10,
+                    \ })
+
         if !exists('g:deoplete#omni#input_patterns')
             let g:deoplete#omni#input_patterns = {}
         endif
@@ -234,8 +240,14 @@
 
         " Automatically start language servers
         let g:LanguageClient_autoStart = 1
+        let g:LanguageClient_rootMarkers = {
+                    \ 'python': ['manage.py'],
+                    \ }
 
         nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+        let g:LanguageClient_serverCommands = { 
+                    \ 'python': [home . '/.pyenv/versions/neovim3/bin/pyls'] }
 
     " }
 
@@ -418,6 +430,20 @@
 
     " }
 
+    " Completion {
+
+        " Do not show ins-completion-menu messages (match 1 of 2, Pattern not
+        " found, etc.)
+        if has("patch-7.4.314")
+            set shortmess+=c
+        endif
+
+
+        " Do not insert first completion option automatically
+        set completeopt+=noinsert
+
+    " }
+
 " }
 
 " Formatting {
@@ -526,17 +552,18 @@
 " }
 
 " Neovim {
+    if has('nvim')
+        " Set python path manually so that the boot up process is faster. 
+        " Also make sure we use the correct virtualenv -- the one that has
+        " neovim installed.
+        let g:python_host_prog = home . '/.pyenv/versions/2.7.15/bin/python'
+        let g:python3_host_prog = home . '/.pyenv/versions/3.7.0/bin/python'
 
-    if (empty($TMUX))
-        if has('nvim')
+        if (has("termguicolors"))
+            set termguicolors
+        endif
 
-            " Set python path manually so that the boot up process is faster
-            if executable('/usr/local/bin/python3')
-                let g:python3_host_prog = '/usr/local/bin/python3'
-            elseif executable('/usr/bin/python3')
-                let g:python3_host_prog = '/usr/bin/python3'
-            endif
-
+        if (empty($TMUX))
             " Use 24-bit (true-color) mode
             let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -544,16 +571,7 @@
             tnoremap <Esc> <C-\><C-n>
             tnoremap <M-[> <Esc>
             tnoremap <C-v><Esc> <Esc>
-
         endif
-
-        if (has("termguicolors"))
-            set termguicolors
-        endif
-    endif
-
-    if (has("termguicolors"))
-        set termguicolors
     endif
 
 " }
