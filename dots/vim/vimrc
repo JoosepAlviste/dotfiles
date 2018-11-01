@@ -61,36 +61,24 @@
     " Fzf {
 
         if MAC()
-            " Search files with Ctrl-p
-            nnoremap <silent> ∏ :call FZFOpen(':Files')<CR>
-
-            " Search for tags with Ctrl-g
-            nnoremap <silent> ˝ :call FZFOpen(':Tags')<CR>
-
-            " Search all files' contents with ctrl f
-            nnoremap <silent> Ï :call FZFOpen(':Ag')<CR>
-
             " Search buffers by file name with ctrl e
             nnoremap <silent> ´ :call FZFOpen(':Buffers')<CR>
-
-            " Search commands with ctrl a
-            nnoremap <silent> Å :Commands<CR>
         elseif LINUX()
-            " Search files with Ctrl-p
-            nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
-
-            " Search for tags with Ctrl-g
-            nnoremap <silent> <C-g> :call FZFOpen(':Tags')<CR>
-
-            " Search all files' contents with ctrl f
-            nnoremap <silent> <C-f> :call FZFOpen(':Ag')<CR>
-
             " Search buffers by file name with alt e
             nnoremap <silent> <M-e> :call FZFOpen(':Buffers')<CR>
-
-            " Search commands with ctrl a
-            nnoremap <silent> <C-a> :Commands<CR>
         endif
+
+        " Search files with Ctrl-p
+        nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
+
+        " Search for tags with Ctrl-g
+        nnoremap <silent> <C-g> :call FZFOpen(':Tags')<CR>
+
+        " Search all files' contents with ctrl f
+        nnoremap <silent> <C-f> :call FZFOpen(':Ag')<CR>
+
+        " Search commands with ctrl a
+        nnoremap <silent> <C-a> :Commands<CR>
 
         " Open small file preview while searching files
         command! -bang -nargs=? -complete=dir Files
@@ -233,6 +221,7 @@
         " fuzziness is nice. The default is standard \"fuzzy\" matching. Seems to
         " give better results.
         call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+        call deoplete#custom#source('_', 'min_pattern_length', 1)
 
     " }
 

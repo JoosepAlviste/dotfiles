@@ -112,3 +112,25 @@ yay -S \
     numix-circle-icon-theme
 ```
 
+
+### MacOS
+
+```bash
+brew install \
+    pyenv \
+    pyenv-virtualenv
+```
+
+
+### Set up
+
+Pyenv virtualenv `neovim3` from Python 3, there:
+
+```bash
+pip install \
+    neovim \
+    'python-language-server[all]' \
+    pyls-mypy \
+    pyls-isort
+```
+
