@@ -5,6 +5,8 @@
 
 " Environment {
 
+    let home = $HOME
+
     " Identify platform {
         silent function! MAC()
             return has('macunix')
@@ -159,7 +161,7 @@
                     \   'javascript.jsx': ['eslint'],
                     \ }
         let g:ale_linters = {
-                    \   'python': ['pylint'],
+                    \   'python': [],
                     \ }
 
         " Use eslint_d for faster linting
@@ -236,6 +238,9 @@
         let g:LanguageClient_autoStart = 1
 
         nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+        let g:LanguageClient_serverCommands = { 
+                    \ 'python': [home . '/.pyenv/versions/neovim3/bin/pyls'] }
 
     " }
 
@@ -526,17 +531,21 @@
 " }
 
 " Neovim {
+    if has('nvim')
+        " Set python path manually so that the boot up process is faster. 
+        " Also make sure we use the correct virtualenv -- the one that has
+        " neovim installed.
+        if executable(home . '/.pyenv/versions/neovim2/bin/python')
+            let g:python_host_prog = home . '/.pyenv/versions/neovim2/bin/python'
+        elseif executable(home . '/.pyenv/versions/neovim3/bin/python')
+            let g:python3_host_prog = home . '/.pyenv/versions/neovim3/bin/python'
+        endif
 
-    if (empty($TMUX))
-        if has('nvim')
+        if (has("termguicolors"))
+            set termguicolors
+        endif
 
-            " Set python path manually so that the boot up process is faster
-            if executable('/usr/local/bin/python3')
-                let g:python3_host_prog = '/usr/local/bin/python3'
-            elseif executable('/usr/bin/python3')
-                let g:python3_host_prog = '/usr/bin/python3'
-            endif
-
+        if (empty($TMUX))
             " Use 24-bit (true-color) mode
             let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -544,16 +553,7 @@
             tnoremap <Esc> <C-\><C-n>
             tnoremap <M-[> <Esc>
             tnoremap <C-v><Esc> <Esc>
-
         endif
-
-        if (has("termguicolors"))
-            set termguicolors
-        endif
-    endif
-
-    if (has("termguicolors"))
-        set termguicolors
     endif
 
 " }
