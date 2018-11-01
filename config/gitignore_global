@@ -2,4 +2,5 @@ tmux-*.log
 tags
 tags.lock
 *~
+.mypy_cache
 
