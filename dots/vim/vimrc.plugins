@@ -29,6 +29,7 @@
         Plug 'ayu-theme/ayu-vim'
         Plug 'dracula/vim', { 'as': 'dracula' }
         Plug 'trevordmiller/nova-vim'
+        Plug 'haishanh/night-owl.vim'
 
         Plug 'dylanaraps/wal.vim'
         Plug 'chriskempson/base16-vim'

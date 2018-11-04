@@ -354,7 +354,7 @@
 " Vim UI {
 
     " Color scheme
-    colorscheme onedark
+    colorscheme night-owl
 
     " Highlight current line
     set cursorline
