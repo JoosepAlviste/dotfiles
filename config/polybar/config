@@ -51,7 +51,7 @@ monitor = "DVI-I-1"
 
 [bar/bar2]
 inherit = bar/base
-monitor = "HDMI-1-2"
+monitor = "HDMI-3"
 
 
 [module/i3]
