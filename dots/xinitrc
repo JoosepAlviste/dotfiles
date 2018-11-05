@@ -6,6 +6,8 @@ setxkbmap -layout us,ee -option 'grp:shifts_toggle'
 # Load keys
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 xbindkeys
+# Set keyboard repeat rate
+xset r rate 225 30
 
 # Run GNOME Keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
