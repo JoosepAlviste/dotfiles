@@ -117,8 +117,8 @@ export SPACESHIP_KUBECONTEXT_SHOW=false
 
 # ## Virtualenvwrapper {{{
 
-VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+# VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 # }}}
 
