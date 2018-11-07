@@ -178,6 +178,8 @@ if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
+attach() { tmux attach -t $1 || tmux new -s $1 ;}
+
 # }}}
 # # Overview {{{
 set modelines=3
