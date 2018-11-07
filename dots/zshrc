@@ -48,6 +48,8 @@ alias art="php artisan"
 alias sudo='sudo -E'  # Use current user configs
 
 alias vim='nvim'
+alias ls='colorls --sort-dirs'
+alias l='colorls -lA --sort-dirs'
 
 # Docker compose
 alias dc='docker-compose'
@@ -142,6 +144,12 @@ fi
 
 # Z
 source $HOME/Programs/z/z.sh
+
+# ## Colorls {{{
+
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+# }}}
 
 # }}}
 # # Generic {{{
