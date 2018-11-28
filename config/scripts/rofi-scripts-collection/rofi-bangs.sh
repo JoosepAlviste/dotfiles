@@ -72,7 +72,7 @@ function print_menu()
 function start()
 {
     # print_menu | rofi -dmenu -p "?=>" 
-    print_menu | sort | rofi -dmenu -mesg ">>> launch your collection of rofi scripts" -i -p "rofi-bangs"
+    print_menu | sort | rofi -dmenu -i -p ":"
 
 }
 

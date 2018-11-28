@@ -1,0 +1,72 @@
+! Night Owl Xresources palette
+
+
+#define border #122d42
+#define cursorline #000300
+
+
+! #define base00 #282c34
+#define base01 #4b6479
+#define base02 #4373c2
+! #define base03 #545862
+#define base04 #000300
+! #define base05 #abb2bf
+! #define base06 #b6bdca
+! #define base07 #c8ccd4
+! #define base08 #e06c75
+#define base09 #f78c6c
+! #define base0A #e5c07b
+! #define base0B #98c379
+! #define base0C #56b6c2
+! #define base0D #61afef
+! #define base0E #c678dd
+#define base0F #637777
+
+
+! Special
+*.foreground:   #d6deeb
+*.background:   #011627
+*.cursorColor:  #7e57c2
+
+! Black
+*.color0:       #011627
+*.color8:       #575656
+
+! Red
+*.color1:       #ef5350
+*.color9:       #ef5350
+
+! Green
+*.color2:       #22da6e
+*.color10:      #22da6e
+
+! Yellow
+*.color3:       #addb67
+*.color11:      #ffeb95
+
+! Blue
+*.color4:       #82aaff
+*.color12:      #82aaff
+
+! Magenta
+*.color5:       #c792ea
+*.color13:      #c792ea
+
+! Cyan
+*.color6:       #21c7a8
+*.color14:      #7fdbca
+
+! White
+*.color7:       #ffffff
+*.color15:      #ffffff
+
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+! *.color21:      base06
+

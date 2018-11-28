@@ -16,4 +16,5 @@ dbus-update-activation-environment --systemd DISPLAY
 
 # Start our window manager
 exec i3
+# exec openbox-session
 

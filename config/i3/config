@@ -58,15 +58,15 @@ set_from_resource $white       color15 #000000
 set_from_resource $darkergrey  color18 #000000
 set_from_resource $darkgrey    color19 #000000
 set_from_resource $lightergrey color18 #000000
+set_from_resource $cursorLine  color19 #000000
 
 set_from_resource $background  background #000000
 set_from_resource $foreground  foreground #000000
 
-set_from_resource $lightpink walcolor8
 
 # Window colors
 # class                 border  backgr. text    indicator    child_border
-client.focused          #ffffff #ffffff #ffffff $lightpink   $lightpink
+client.focused          #ffffff #ffffff #ffffff $cursorLine  $cursorLine
 client.focused_inactive #ffffff #ffffff #ffffff $background  $background
 client.unfocused        #ffffff #ffffff #ffffff $background  $background
 client.urgent           #ffffff #ffffff #ffffff #ffffff      $red

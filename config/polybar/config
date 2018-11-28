@@ -1,10 +1,10 @@
 [colors]
 
 background = ${xrdb:background}
-foreground = ${xrdb:walcolor3}
+foreground = ${xrdb:color18}
 
-focused = ${xrdb:walcolor7}
-focused-bg = ${xrdb:color18}
+focused = ${xrdb:color19}
+focused-bg = ${xrdb:background}
 
 danger = ${xrdb:color1}
 
@@ -13,10 +13,11 @@ danger = ${xrdb:color1}
 
 pin-workspaces = true
 
-font-0 = "OverpassMono Nerd Font Mono:pixelsize=10"
-font-1 = "Font Awesome 5 Free:pixelsize=10"
-font-2 = "Font Awesome 5 Brands:pixelsize=10"
-font-3 = "NotoEmoji:size=7"
+font-0 = "Dank Mono:pixelsize=11"
+font-1 = "OverpassMono Nerd Font Mono:pixelsize=10"
+font-2 = "Font Awesome 5 Free:pixelsize=10"
+font-3 = "Font Awesome 5 Brands:pixelsize=10"
+font-4 = "NotoEmoji:size=7"
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -37,7 +38,7 @@ module-margin = 2
 
 underline-size = 2
 
-modules-left = i3 
+modules-left = i3
 modules-center = title
 modules-right = keyboard pulseaudio date
 
