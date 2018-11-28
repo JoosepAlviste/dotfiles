@@ -11,6 +11,7 @@ gaps outer 0
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
+default_border pixel 2
 
 set $term --no-startup-id $TERMINAL
 
@@ -225,7 +226,7 @@ bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
 bindsym $mod+m          move workspace to output right
-bindsym $mod+Shiftm     exec --no-startup-id i3-swap
+bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 
 # #---Media keys---# #
 
