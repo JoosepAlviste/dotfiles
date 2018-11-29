@@ -15,19 +15,19 @@ declare -A COMMANDS
 # List of defined 'bangs'
 
 # launch programs
-COMMANDS["apps"]="zsh -c \"rofi -combi-modi drun -show combi"\"
-LABELS["apps"]=""
+COMMANDS["Apps"]="zsh -c \"rofi -combi-modi drun -show drun -show-icons"\"
+LABELS["Apps"]=""
 
 # open bookmarks
-COMMANDS["bookmarks"]="~/.config/scripts/rofi-scripts-collection/rofi-surfraw-bookmarks.sh"
-LABELS["bookmarks"]=""
+COMMANDS["Bookmarks"]="~/.config/scripts/rofi-scripts-collection/rofi-surfraw-bookmarks.sh"
+LABELS["Bookmarks"]=""
 
 # change audio output
-COMMANDS["audio"]="~/.config/scripts/rofi-scripts-collection/rofi-audio-output.sh"
-LABELS["audio"]=""
+COMMANDS["Audio"]="~/.config/scripts/rofi-scripts-collection/rofi-audio-output.sh"
+LABELS["Audio"]=""
 
-COMMANDS["power"]="~/.config/scripts/rofi-scripts-collection/rofi-power.sh"
-LABELS["power"]=""
+COMMANDS["Power"]="~/.config/scripts/rofi-scripts-collection/rofi-power.sh"
+LABELS["Power"]=""
 
 # open custom web searches
 # COMMANDS["websearch"]="~/.scripts/rofi-scripts-collection/rofi-surfraw-websearch.sh"
@@ -61,9 +61,9 @@ function print_menu()
 {
     for key in ${!LABELS[@]}
     do
-  echo "$key    ${LABELS}"
-     #   echo "$key    ${LABELS[$key]}"
-     # my top version just shows the first field in labels row, not two words side by side
+        echo "$key    ${LABELS}"
+        #   echo "$key    ${LABELS[$key]}"
+        # my top version just shows the first field in labels row, not two words side by side
     done
 }
 ##
@@ -73,7 +73,6 @@ function start()
 {
     # print_menu | rofi -dmenu -p "?=>" 
     print_menu | sort | rofi -dmenu -i -p ":"
-
 }
 
 
