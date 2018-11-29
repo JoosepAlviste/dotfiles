@@ -29,6 +29,9 @@ LABELS["Audio"]=""
 COMMANDS["Power"]="~/.config/scripts/rofi-scripts-collection/rofi-power.sh"
 LABELS["Power"]=""
 
+COMMANDS["Emoji"]="~/.config/scripts/rofi-scripts-collection/rofi-emojis.sh"
+LABELS["Emoji"]=""
+
 # open custom web searches
 # COMMANDS["websearch"]="~/.scripts/rofi-scripts-collection/rofi-surfraw-websearch.sh"
 # LABELS["websearch"]=""
