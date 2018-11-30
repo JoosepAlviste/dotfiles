@@ -107,7 +107,7 @@
     " Lightline {
 
         let g:lightline = {
-                    \ 'colorscheme': 'onedark',
+                    \ 'colorscheme': 'nightowl',
                     \ 'active': {
                     \   'left': [ [ 'mode', 'paste' ],
                     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
