@@ -479,6 +479,9 @@
     " Yank from the cursor to the end of the line, like C and D
     nnoremap Y y$
 
+    " Paste without yanking
+    vnoremap <leader>p "_dp
+
     " Faster scrolling
     nnoremap <C-e> 3<C-e>
     nnoremap <C-y> 3<C-y>
