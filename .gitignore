@@ -1,4 +1,5 @@
 tmux*.log
 dots/vim/plugged/
+dots/vim/autoload/plug.vim.old
 .netrwhist
 
