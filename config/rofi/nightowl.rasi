@@ -12,7 +12,7 @@
     lightbg:                     rgba(238, 232, 213, 100%);
     selected-active-foreground:  rgba(166, 226, 42, 100%);
     alternate-active-background: rgba(39, 40, 34, 0%);
-    background:                  rgba(1, 22, 39, 85%);
+    background:                  rgba(1, 14, 26, 85%);
     alternate-normal-foreground: @foreground;
     normal-background:           rgba(39, 40, 34, 0%);
     lightfg:                     rgba(88, 104, 117, 100%);
@@ -26,6 +26,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba(39, 40, 34, 0%);
     selected-active-background:  rgba(20, 20, 17, 100%);
+    highlight: none #82aaff;
 }
 
 #window {

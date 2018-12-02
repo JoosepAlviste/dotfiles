@@ -4,16 +4,12 @@ configuration {
 
 	font: "System San Francisco Display 16";
 
-	/* show-icons: true; */
-
 	sort: true;
 	levenshtein-sort: false;
 	modi: "drun";
 	run-command: "zsh -c \"{cmd}\"";
 	matching: "fuzzy";
 	scroll-method: 1;
-
-	show-match: false;
 
     theme: "nightowl";
 
