@@ -37,9 +37,6 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-'zsh -c "rofi -show combi -show-icons"'
-   Mod1+space
-
 # Examples of commands:
 
 # "xbindkeys_show" 

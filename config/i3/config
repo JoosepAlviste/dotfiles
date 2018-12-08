@@ -1,5 +1,6 @@
 # #---Basic Definitions--# #
 set $mod Mod4
+set $alt Mod1
 
 floating_modifier $mod
 
@@ -228,6 +229,8 @@ bindsym $mod+Shift+v    split h
 # Move workspace to other monitor
 bindsym $mod+m          move workspace to output right
 bindsym $mod+Shift+m    exec --no-startup-id i3-swap
+
+bindsym $alt+space      exec --no-startup-id rofi -show combi -show-icons
 
 # #---Media keys---# #
 
