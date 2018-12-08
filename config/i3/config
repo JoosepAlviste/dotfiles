@@ -216,7 +216,6 @@ bindsym $mod+Shift+l    move right
 bindsym $mod+z          gaps outer current plus 5
 bindsym $mod+Shift+z    gaps outer current minus 5
 
-# Move workspace to other monitor
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
 bindsym $mod+Shift+x    exec --no-startup-id rofi-power
 
@@ -225,6 +224,7 @@ bindsym $mod+Shift+c    reload
 bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
+# Move workspace to other monitor
 bindsym $mod+m          move workspace to output right
 bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 

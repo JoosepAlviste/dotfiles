@@ -33,13 +33,12 @@
     background-color: @background;
     padding: 0;
     border: 0;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #mainbox {
     border: 0;
     padding: 0;
-    border-radius: 10px;
 }
 
 #textbox {

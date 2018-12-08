@@ -9,9 +9,13 @@ export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 
+export XDG_USER_CONFIG_DIR=$HOME/.config
+
+
 # Set language
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
 
 # Default programs
 export BROWSER=google-chrome-stable
@@ -20,6 +24,7 @@ export TERMINAL="termite"
 # Use nvim as editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
 
 # Development helpers
 
