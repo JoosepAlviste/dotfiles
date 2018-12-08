@@ -11,24 +11,42 @@ if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
 fi
 
 
+function run_command_in_background {
+    COMMAND=$1
+    new_source=$(mktemp -p /tmp rofi-$MODI_NAME-XXXX)
+    # Ensure it's executable
+    chmod +x "$new_source"
+    # Create the runner
+    cat <<EOF >$new_source
+#!/bin/bash
+
+$COMMAND
+rm -rf "$new_source"
+EOF
+    # Spawn it in the background
+    coproc "$new_source" >/dev/null
+}
+
+
 function print_options {
     echo "$(grep -v "#" ~/dotfiles/emoji)"
 }
 
 
-function set_audio_output {
-    c=$(echo "$1" | sed "s/ .*//")
-    echo "$c" | tr -d '\n' | xclip -selection clipboard
-    pgrep -x dunst >/dev/null && notify-send "'$c' copied to clipboard."
+function copy_emoji {
+    choice=$(echo "$1" | sed "s/ .*//")
 
-    s=$(echo "$chosen" | sed "s/.*; //" | awk '{print $1}')
-    echo "$s" | tr -d '\n' | xclip
-    pgrep -x dunst >/dev/null && notify-send "'$s' copied to primary."
+    run_command_in_background "echo \"$choice\" | tr -d '\n' | xclip -selection clipboard"
+    run_command_in_background "pgrep -x dunst >/dev/null && notify-send \"'$choice' copied to clipboard.\""
+
+    # s=$(echo "$c" | sed "s/.*; //" | awk '{print $1}')
+    # echo "$s" | tr -d '\n' | xclip
+    # pgrep -x dunst >/dev/null && notify-send "'$s' copied to primary."
 }
 
 
 if [[ ! -z $@ ]]; then
-    set_audio_output "$1"
+    copy_emoji "$1"
 else
     print_options
 fi
