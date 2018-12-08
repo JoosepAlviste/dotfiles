@@ -6,6 +6,8 @@ foreground = ${xrdb:color18}
 focused = ${xrdb:color19}
 focused-bg = ${xrdb:background}
 
+clock = ${xrdb:color4}
+
 danger = ${xrdb:color1}
 
 
@@ -36,11 +38,9 @@ padding-left = 4
 padding-right = 4
 module-margin = 2
 
-underline-size = 2
-
 modules-left = i3
 modules-center = title
-modules-right = keyboard pulseaudio date
+modules-right = keyboard date
 
 tray-position = right
 
@@ -86,7 +86,13 @@ label-urgent-padding = 3
 [module/date]
 type = internal/date
 interval = 1.0
-date = %A, %d %B %H:%M
+
+# Only show the time by default
+date = %H:%M
+# When clicked, show the date
+date-alt = %A, %d %B
+
+label-foreground = ${colors.clock}
 
 
 [module/title]
