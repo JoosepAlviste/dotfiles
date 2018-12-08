@@ -197,7 +197,8 @@ bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"]
 bindsym $mod+s          gaps inner current plus 5
 bindsym $mod+Shift+s    gaps inner current minus 5
 
-bindsym $mod+d          exec rofi -show drun -show-icons
+bindsym $mod+d          exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Shift+d    exec --no-startup-id rofi -show combi -show-icons
 
 bindsym $mod+f          fullscreen toggle
 

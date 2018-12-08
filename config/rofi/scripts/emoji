@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+MODI_NAME="emoji"
+
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+
+function print_options {
+    echo "$(grep -v "#" ~/dotfiles/emoji)"
+}
+
+
+function set_audio_output {
+    c=$(echo "$1" | sed "s/ .*//")
+    echo "$c" | tr -d '\n' | xclip -selection clipboard
+    pgrep -x dunst >/dev/null && notify-send "'$c' copied to clipboard."
+
+    s=$(echo "$chosen" | sed "s/.*; //" | awk '{print $1}')
+    echo "$s" | tr -d '\n' | xclip
+    pgrep -x dunst >/dev/null && notify-send "'$s' copied to primary."
+}
+
+
+if [[ ! -z $@ ]]; then
+    set_audio_output "$1"
+else
+    print_options
+fi
+

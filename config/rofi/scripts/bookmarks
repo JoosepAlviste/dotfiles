@@ -1,0 +1,23 @@
+#!/usr/bin/zsh
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+function print_options {
+    # Print all the bookmarks
+    cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sed '/^#/d' | sed '/^\//d' | sort -n
+}
+
+
+# If any arguments were passed, then an option has been selected
+if [[ ! -z $@ ]]; then
+    surfraw -browser="$BROWSER" "${1}" &> /dev/null
+else
+    # Print the output so that rofi can show it
+    print_options
+fi
+

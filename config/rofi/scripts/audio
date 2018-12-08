@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+MODI_NAME="power"
+
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+
+function print_options {
+    echo "$(pactl list short sinks | cut  -f 2)"
+}
+
+
+function set_audio_output {
+    OUTPUT="${1}"
+    pacmd set-default-sink "$OUTPUT" >/dev/null 2>&1
+
+    for playing in $(pacmd list-sink-inputs | awk '$1 == "index:" {print $2}'); do
+        pacmd move-sink-input "$playing" "$OUTPUT" >/dev/null 2>&1
+    done
+}
+
+
+if [[ ! -z $@ ]]; then
+    set_audio_output "$1"
+else
+    print_options
+fi
+
