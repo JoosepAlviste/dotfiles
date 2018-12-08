@@ -11,6 +11,7 @@ gaps outer 0
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
+default_border pixel 2
 
 set $term --no-startup-id $TERMINAL
 
@@ -27,7 +28,7 @@ exec --no-startup-id dunst
 # Network manager applet
 exec --no-startup-id nm-applet
 # Set up multiple monitors
-exec_always --no-startup-id xrandr --output HDMI-3 --mode 1920x1080 --pos 1920x0 --output DVI-0 --rate 144.00 --mode 1920x1080 --pos 0x0
+exec_always --no-startup-id xrandr --output HDMI-3 --mode 1920x1080 --pos 1920x0 --output DVI-I-1 --rate 144.00 --mode 1920x1080 --pos 0x0
 # Torrent daemon
 exec --no-startup-id transmission-daemon
 
@@ -196,7 +197,7 @@ bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"]
 bindsym $mod+s          gaps inner current plus 5
 bindsym $mod+Shift+s    gaps inner current minus 5
 
-bindsym $mod+d          exec rofi -show drun
+bindsym $mod+d          exec rofi -show drun -show-icons
 
 bindsym $mod+f          fullscreen toggle
 
@@ -225,7 +226,7 @@ bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
 bindsym $mod+m          move workspace to output right
-bindsym $mod+Shiftm     exec --no-startup-id i3-swap
+bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 
 # #---Media keys---# #
 

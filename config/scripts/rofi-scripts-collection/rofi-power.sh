@@ -6,18 +6,18 @@
 OPTIONS_FILE=~/.config/scripts/rofi-scripts-collection/dmenu-i3exit
 PROMPT="Power"
 
-res=$(rofi -dmenu < $OPTIONS_FILE -p $PROMPT)
+res=$(rofi -dmenu < $OPTIONS_FILE -p $PROMPT -i)
 
-if [ "$res" = "logout" ]; then
+if [ "$res" = "Logout" ]; then
     i3-msg exit
 fi
-if [ "$res" = "restart" ]; then
+if [ "$res" = "Restart" ]; then
     reboot
 fi
-if [ "$res" = "shutdown" ]; then
+if [ "$res" = "Shut Down" ]; then
     poweroff
 fi
-if [ "$res" = "lock screen" ]; then
+if [ "$res" = "Lock Screen" ]; then
     betterlockscreen -l dim
 fi
 

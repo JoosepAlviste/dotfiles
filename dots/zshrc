@@ -62,6 +62,12 @@ alias v='vim'
 alias sv='sudo vim'
 alias r='ranger'
 
+alias pbcopy='xclip -sel clip'
+
+# TMUX
+attach() { tmux attach -t $1 || tmux new -s $1 ;}
+alias takeover="tmux detach -a"
+
 # Useful alternatives/aliases
 if type bat > /dev/null; then
     alias cat='bat'
@@ -173,12 +179,10 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     pgrep -x i3 || exec startx
 fi
 
-# Start a tmux session
+# Start a tmux session automatically
 if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
-
-attach() { tmux attach -t $1 || tmux new -s $1 ;}
 
 # }}}
 # # Overview {{{

@@ -3,4 +3,8 @@ tags
 tags.lock
 *~
 .mypy_cache
+.vscode/
+.idea/
+
+celerybeat.pid
 

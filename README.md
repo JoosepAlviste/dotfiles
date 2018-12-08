@@ -122,7 +122,7 @@ brew install \
 ```
 
 
-### Set up
+### Pip
 
 Pyenv virtualenv `neovim3` from Python 3, there:
 
@@ -131,6 +131,7 @@ pip install \
     neovim \
     'python-language-server[all]' \
     pyls-mypy \
-    pyls-isort
+    pyls-isort \
+    i3-py
 ```
 
