@@ -198,9 +198,6 @@ bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"]
 bindsym $mod+s          gaps inner current plus 5
 bindsym $mod+Shift+s    gaps inner current minus 5
 
-bindsym $mod+d          exec --no-startup-id rofi -show drun -show-icons
-bindsym $mod+Shift+d    exec --no-startup-id rofi -show combi -show-icons
-
 bindsym $mod+f          fullscreen toggle
 
 bindsym $mod+h          focus left
@@ -219,7 +216,7 @@ bindsym $mod+z          gaps outer current plus 5
 bindsym $mod+Shift+z    gaps outer current minus 5
 
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
-bindsym $mod+Shift+x    exec --no-startup-id rofi-power
+bindsym $mod+Shift+x    exec --no-startup-id rofi -show power
 
 bindsym $mod+Shift+c    reload
 
