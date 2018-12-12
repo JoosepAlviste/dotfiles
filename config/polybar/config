@@ -15,7 +15,7 @@ danger = ${xrdb:color1}
 
 pin-workspaces = true
 
-font-0 = "Dank Mono:pixelsize=11"
+font-0 = "Hack Nerd Font:pixelsize=11"
 font-1 = "OverpassMono Nerd Font Mono:pixelsize=10"
 font-2 = "Font Awesome 5 Free:pixelsize=10"
 font-3 = "Font Awesome 5 Brands:pixelsize=10"
@@ -27,7 +27,7 @@ scroll-down = i3wm-wsprev
 fixed-center = true
 
 width = 100%
-height = 35
+height = 30
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -61,25 +61,20 @@ type = internal/i3
 pin-workspaces = true
 strip-wsnumbers = true
 
-format-underline = ${colors.background}
-
 label-focused = %name%
 label-focused-foreground = ${colors.focused}
 label-focused-background = ${colors.focused-bg}
-label-focused-underline = ${colors.focused}
 label-focused-padding = 3
 
 label-unfocused = %name%
 label-unfocused-padding = 3
 
 label-visible = %name%
-label-visible-underline = ${colors.foreground}
 label-visible-padding = 3
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.danger}
-label-urgent-underline = ${colors.danger}
 label-urgent-padding = 3
 
 
@@ -99,7 +94,7 @@ label-foreground = ${colors.clock}
 type = internal/xwindow
 format-foreground = ${colors.foreground}
 format-padding = 1
-label-maxlen = 50
+label-maxlen = 70
 
 
 [module/keyboard]
