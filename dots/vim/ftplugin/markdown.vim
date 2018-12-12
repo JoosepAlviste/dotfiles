@@ -2,7 +2,7 @@ if has('syntax')
     setlocal spell
 endif
 
-set textwidth=80
+set textwidth=79
 
 " Autoformatting
 " a - audo format paragraph

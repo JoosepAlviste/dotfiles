@@ -11,6 +11,8 @@ export PATH=$HOME/.config/scripts:$PATH
 
 export XDG_USER_CONFIG_DIR=$HOME/.config
 
+export CHROME_PATH=/usr/bin/google-chrome-stable
+
 
 # Set language
 export LC_ALL=en_US.UTF-8
