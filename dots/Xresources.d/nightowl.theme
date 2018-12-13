@@ -34,7 +34,7 @@
 
 ! Red
 *.color1:       #ef5350
-*.color9:       #ef5350
+*.color9:       #ff5874
 
 ! Green
 *.color2:       #22da6e
