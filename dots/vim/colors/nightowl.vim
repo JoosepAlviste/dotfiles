@@ -345,18 +345,15 @@ call s:h("javascriptVariable", { "fg": s:purple })
 
 " Python
 call s:h("pythonInclude", { "fg": s:purple })
-
-
-" call s:h("pythonInclude", { "fg": s:cyan })
-" call s:h("pythonStatement", { "fg": s:blue })
-" call s:h("pythonSelf", { "fg": s:blue })
-" call s:h("pythonFunction", { "fg": s:blue })
-" call s:h("pythonBuiltinObj", { "fg": s:red })
-" call s:h("pythonBuiltinType", { "fg": s:dark_yellow })
-" call s:h("pythonClass", { "fg": s:orange })
-" call s:h("pythonClassParameters", { "fg": s:dark_yellow })
-" call s:h("pythonBrackets", { "fg": s:orange })
-" call s:h("pythonParam", { "fg": s:cyan })
+call s:h("pythonStatement", { "fg": s:blue })
+call s:h("pythonSelf", { "fg": s:blue })
+call s:h("pythonFunction", { "fg": s:blue })
+call s:h("pythonBuiltinObj", { "fg": s:red })
+call s:h("pythonBuiltinType", { "fg": s:dark_yellow })
+call s:h("pythonClass", { "fg": s:orange })
+call s:h("pythonClassParameters", { "fg": s:dark_yellow })
+call s:h("pythonBrackets", { "fg": s:orange })
+call s:h("pythonParam", { "fg": s:cyan })
 
 " }}}
 
