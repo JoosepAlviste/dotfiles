@@ -355,6 +355,11 @@ call s:h("pythonClassParameters", { "fg": s:dark_yellow })
 call s:h("pythonBrackets", { "fg": s:orange })
 call s:h("pythonParam", { "fg": s:cyan })
 
+
+" Git
+call s:h("gitcommitSummary", { "fg": s:white })
+
+
 " }}}
 
 

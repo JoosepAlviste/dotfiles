@@ -344,6 +344,15 @@
     " asking if you wish to save changed files.
     set confirm
 
+    " No splash screen
+    set shortmess+=I
+    " Don't print "written" when writing
+    set shortmess+=W
+    " Use abbreviations in messages ([RO] instead of [readonly])
+    set shortmess+=a
+    " Overwrite file-written messages
+    set shortmess+=o
+
     " Setting up directories {
         " Set backups to be written into temp folders
         set backup
@@ -405,6 +414,11 @@
 
     " Show trailing whitespace
     set list listchars=tab:\|_,trail:·
+
+    " Show cool character on line wrap
+    if has('linebreak')
+        let &showbreak='↳ '
+    endif
 
     " Search {
         " Search while typing
@@ -548,6 +562,9 @@
     " Use urlview to choose and open a url
     nnoremap <Leader>u :w<Home>silent <End> !urlview<CR>
 
+    nnoremap <leader>o :only<CR>
+
+    " Show syntax group under cursor
     map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
     \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
