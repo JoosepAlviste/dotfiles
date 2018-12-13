@@ -269,7 +269,7 @@ call s:h("TabLine", { "fg": s:comment_grey }) " tab pages line, not active tab p
 call s:h("TabLineFill", {}) " tab pages line, where there are no labels
 call s:h("TabLineSel", { "fg": s:white }) " tab pages line, active tab page label
 call s:h("Terminal", { "fg": s:white, "bg": s:black }) " terminal window (see terminal-size-color)
-call s:h("Title", { "fg": s:green }) " titles for output from ":set all", ":autocmd" etc.
+call s:h("Title", { "fg": s:green, "gui": "bold" }) " titles for output from ":set all", ":autocmd" etc.
 call s:h("Visual", { "fg": s:visual_black, "bg": s:visual_grey }) " Visual mode selection
 call s:h("VisualNOS", { "bg": s:visual_grey }) " Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
 call s:h("WarningMsg", { "fg": s:yellow }) " warning messages
@@ -358,6 +358,15 @@ call s:h("pythonParam", { "fg": s:cyan })
 
 " Git
 call s:h("gitcommitSummary", { "fg": s:white })
+
+
+" Markdown
+call s:h("mkdHeading", { "fg": s:comment_grey, "gui": "bold" })
+call s:h("mkdListItem", { "fg": s:orange })
+
+
+" HTML
+call s:h("htmlBold", { "gui": "bold" })
 
 
 " }}}
