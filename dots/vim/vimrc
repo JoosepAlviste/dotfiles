@@ -1,6 +1,6 @@
 " Modeline {
 " Rules only for this file
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldmethod=marker spell:
 " }
 
 " Environment {
@@ -110,17 +110,24 @@
                     \ 'colorscheme': 'nightowl',
                     \ 'active': {
                     \   'left': [ [ 'mode', 'paste' ],
-                    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+                    \             [ 'readonly', 'filename', 'modified' ] ],
                     \   'right': [ [ 'percent' ],
                     \              [ 'filetype' ] ],
                     \ },
                     \ 'component_function': {
                     \   'readonly': 'LightlineReadonly',
-                    \   'fugitive': 'LightlineFugitive'
+                    \   'fugitive': 'LightlineFugitive',
+                    \   'filename': 'LightlineFilename',
                     \ },
                     \ 'separator': { 'left': '', 'right': '' },
                     \ 'subseparator': { 'left': '|', 'right': '|' }
                     \ }
+
+        function! LightlineFilename()
+            let l:folder=expand('%:p:h:t')
+            let l:filename=expand('%:p:t')
+            return l:folder . '/' . l:filename
+        endfunction
 
         function! LightlineReadonly()
             return &readonly ? '' : ''
