@@ -102,9 +102,11 @@ installed.
 ```bash
 pacman -S \
     i3-gaps \
+    rofi \
     htop \
     evince \
-    ranger
+    ranger \
+    alacritty
 ```
 
 ```bash
