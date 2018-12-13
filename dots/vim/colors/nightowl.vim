@@ -1,4 +1,4 @@
-" vim:fdm=marker
+" vim:foldmethod=marker
 " Vim Color File
 
 " Color Reference {{{
@@ -22,6 +22,8 @@
 " |----------------+--------------------+---------|
 " | Dark Yellow    | rgb(209, 154, 102) | #addb67 |
 " |----------------+--------------------+---------|
+" | Light Blue     | rgb(97, 175, 239)  | #78ccf0 |
+" |----------------+--------------------+---------|
 " | Blue           | rgb(97, 175, 239)  | #82aaff |
 " |----------------+--------------------+---------|
 " | Magenta        | rgb(198, 120, 221) | #c792ea |
@@ -43,6 +45,8 @@
 " | Active line nr | rgb(92, 99, 112)   | #c5e4fd |
 " |----------------+--------------------+---------|
 " | Search result  | rgb(92, 99, 112)   | #2e3c68 |
+" |----------------+--------------------+---------|
+" | Paren yellow   | rgb(92, 99, 112)   | #fdd700 |
 " +-----------------------------------------------+
 
 " }}}
@@ -125,6 +129,7 @@ let s:colors = {
       \ "yellow": get(s:overrides, "yellow", { "gui": "#ffeb95", "cterm": "180", "cterm16": "3" }),
       \ "dark_yellow": get(s:overrides, "dark_yellow", { "gui": "#addb67", "cterm": "173", "cterm16": "11" }),
       \ "blue": get(s:overrides, "blue", { "gui": "#82aaff", "cterm": "39", "cterm16": "4" }),
+      \ "light_blue": get(s:overrides, "light_blue", { "gui": "#78ccf0", "cterm": "39", "cterm16": "4" }),
       \ "purple": get(s:overrides, "purple", { "gui": "#c792ea", "cterm": "170", "cterm16": "5" }),
       \ "cyan": get(s:overrides, "cyan", { "gui": "#7fdbca", "cterm": "38", "cterm16": "6" }),
       \ "dark_cyan": get(s:overrides, "dark_cyan", { "gui": "#21c7a8", "cterm": "38", "cterm16": "6" }),
@@ -142,6 +147,7 @@ let s:colors = {
       \ "dark_orange": get(s:overrides, "dark_orange", { "gui": "#f78c6c", "cterm": "114", "cterm16": "2" }),
       \ "active_line_nr": get(s:overrides, "active_line_nr", { "gui": "#c5e4fd", "cterm": "114", "cterm16": "2" }),
       \ "search_result": get(s:overrides, "search_result", { "gui": "#2e3c68", "cterm": "114", "cterm16": "2" }),
+      \ "paren_yellow": get(s:overrides, "paren_yellow", { "gui": "#fdd700", "cterm": "114", "cterm16": "2" }),
       \}
 
 let s:red = s:colors.red
@@ -150,6 +156,7 @@ let s:green = s:colors.green
 let s:yellow = s:colors.yellow
 let s:dark_yellow = s:colors.dark_yellow
 let s:blue = s:colors.blue
+let s:light_blue = s:colors.light_blue
 let s:purple = s:colors.purple
 let s:cyan = s:colors.cyan
 let s:white = s:colors.white
@@ -166,6 +173,7 @@ let s:orange = s:colors.orange
 let s:dark_orange = s:colors.dark_orange
 let s:active_line_nr = s:colors.active_line_nr
 let s:search_result = s:colors.search_result
+let s:paren_yellow = s:colors.paren_yellow
 
 " }}}
 
@@ -287,19 +295,19 @@ call s:h("javaScriptNumber", { "fg": s:dark_orange })
 call s:h("javaScriptRequire", { "fg": s:cyan })
 call s:h("javaScriptReserved", { "fg": s:purple })
 " https://github.com/pangloss/vim-javascript
-call s:h("jsArrowFunction", { "fg": s:blue })
+call s:h("jsArrowFunction", { "fg": s:purple })
 call s:h("jsClassKeyword", { "fg": s:blue })
 call s:h("jsClassMethodType", { "fg": s:purple })
 call s:h("jsClassDefinition", { "fg": s:orange })
 call s:h("jsClassProperty", { "fg": s:white })
-call s:h("jsObjectProp", { "fg": s:cyan })
-call s:h("jsObjectKey", { "fg": s:dark_yellow })
+call s:h("jsObjectProp", { "fg": s:dark_yellow })
+call s:h("jsObjectKey", { "fg": s:white })
 call s:h("jsDocParam", { "fg": s:blue })
 call s:h("jsDocTags", { "fg": s:blue })
 call s:h("jsExport", { "fg": s:cyan })
 call s:h("jsExportDefault", { "fg": s:cyan })
 call s:h("jsExtendsKeyword", { "fg": s:blue })
-call s:h("jsFrom", { "fg": s:cyan })
+call s:h("jsFrom", { "fg": s:purple, "gui": "italic" })
 call s:h("jsFuncCall", { "fg": s:blue })
 call s:h("jsFuncName", { "fg": s:blue })
 call s:h("jsFuncArgs", { "fg": s:white })
@@ -311,16 +319,22 @@ call s:h("jsModuleAs", { "fg": s:cyan })
 call s:h("jsModuleWords", { "fg": s:cyan })
 call s:h("jsModules", { "fg": s:cyan })
 call s:h("jsNull", { "fg": s:red })
-call s:h("jsOperator", { "fg": s:purple })
-call s:h("jsStorageClass", { "fg": s:blue })
+call s:h("jsOperator", { "fg": s:cyan })
+call s:h("jsStorageClass", { "fg": s:purple })
 call s:h("jsSuper", { "fg": s:blue })
 call s:h("jsTemplateBraces", { "fg": s:yellow })
 call s:h("jsTemplateVar", { "fg": s:green })
 call s:h("jsThis", { "fg": s:cyan })
 call s:h("jsUndefined", { "fg": s:yellow })
-call s:h("jsBracket", { "fg": s:yellow })
-call s:h("jsBraces", { "fg": s:yellow })
-call s:h("jsParen", { "fg": s:yellow })
+call s:h("jsBrackets", { "fg": s:paren_yellow })
+call s:h("jsBraces", { "fg": s:paren_yellow })
+call s:h("jsObjectBraces", { "fg": s:paren_yellow })
+call s:h("jsDestructuringBraces", { "fg": s:paren_yellow })
+call s:h("jsModuleBraces", { "fg": s:paren_yellow })
+call s:h("jsParens", { "fg": s:paren_yellow })
+call s:h("jsFuncParens", { "fg": s:paren_yellow })
+call s:h("jsNoise", { "fg": s:cyan })
+call s:h("jsDot", { "fg": s:purple })
 " https://github.com/othree/yajs.vim
 call s:h("javascriptArrowFunc", { "fg": s:purple })
 call s:h("javascriptClassExtends", { "fg": s:purple })
@@ -345,15 +359,17 @@ call s:h("javascriptVariable", { "fg": s:purple })
 
 " Python
 call s:h("pythonInclude", { "fg": s:purple })
-call s:h("pythonStatement", { "fg": s:blue })
-call s:h("pythonSelf", { "fg": s:blue })
+call s:h("pythonStatement", { "fg": s:purple })
+call s:h("pythonSelf", { "fg": s:light_blue })
 call s:h("pythonFunction", { "fg": s:blue })
-call s:h("pythonBuiltinObj", { "fg": s:red })
-call s:h("pythonBuiltinType", { "fg": s:dark_yellow })
-call s:h("pythonClass", { "fg": s:orange })
-call s:h("pythonClassParameters", { "fg": s:dark_yellow })
-call s:h("pythonBrackets", { "fg": s:orange })
+call s:h("pythonBuiltinObj", { "fg": s:purple })
+call s:h("pythonBuiltinType", { "fg": s:light_blue })
+call s:h("pythonClass", { "fg": s:dark_yellow })
+call s:h("pythonClassParameters", { "fg": s:white })
+call s:h("pythonBrackets", { "fg": s:paren_yellow })
 call s:h("pythonParam", { "fg": s:cyan })
+call s:h("pythonExtraOperator", { "fg": s:cyan })
+call s:h("pythonDot", { "fg": s:cyan })
 
 
 " Git
@@ -365,14 +381,33 @@ call s:h("mkdHeading", { "fg": s:comment_grey, "gui": "bold" })
 call s:h("mkdListItem", { "fg": s:orange })
 
 
+" XML
+call s:h("xmlAttrib", { "fg": s:dark_yellow })
+call s:h("xmlTagName", { "fg": s:cyan })
+call s:h("xmlEndTag", { "fg": s:cyan })
+call s:h("xmlEqual", { "fg": s:orange })
+
+
 " HTML
 call s:h("htmlBold", { "gui": "bold" })
 
 
 " }}}
 
+" Plugin Highlighting {{{
 
+" airblade/vim-gitgutter
+call s:h("GitGutterAdd", { "fg": s:green })
+call s:h("GitGutterChange", { "fg": s:yellow })
+call s:h("GitGutterDelete", { "fg": s:red })
 
+" tpope/vim-fugitive
+call s:h("diffAdded", { "fg": s:green })
+call s:h("diffRemoved", { "fg": s:red })
 
+" }}}
+
+" Must appear at the end of the file to work around this oddity:
+" https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
 
