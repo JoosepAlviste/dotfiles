@@ -173,6 +173,12 @@
 
     " }
 
+    " Python {
+
+        let g:python_hightlight_all = 1
+
+    " }
+
     " JSX Pretty {
 
         let g:vim_jsx_pretty_colorful_config = 1
@@ -517,6 +523,10 @@
 
     " Use urlview to choose and open a url
     nnoremap <Leader>u :w<Home>silent <End> !urlview<CR>
+
+    map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
     " Navigation {
 

@@ -106,14 +106,20 @@
     " }
 
     " JavaScript {
-    
+
         " Nicer syntax highlighting
         Plug 'maxmellon/vim-jsx-pretty'
 
     " }
 
+    " Python {
+
+        Plug 'vim-python/python-syntax'
+
+    " }
+
     " CSS {
-    
+
         Plug 'hail2u/vim-css3-syntax'
 
     " }
