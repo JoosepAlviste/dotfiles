@@ -2,14 +2,14 @@
 
 
 #define border #122d42
-#define cursorline #000300
+#define cursorline #000000
 
 
 ! #define base00 #282c34
 #define base01 #4b6479
 #define base02 #4373c2
 ! #define base03 #545862
-#define base04 #000300
+#define base04 #000000
 ! #define base05 #abb2bf
 ! #define base06 #b6bdca
 ! #define base07 #c8ccd4
