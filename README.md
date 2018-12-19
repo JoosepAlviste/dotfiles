@@ -137,3 +137,11 @@ pip install \
     i3-py
 ```
 
+## Utils
+
+Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
+`echo N | sudo tee /sys/module/overlay/parameters/metacopy`
+
+`i3` workspace switching screws up PyCharm focus: 
+`https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
+
