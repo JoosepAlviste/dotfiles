@@ -106,12 +106,18 @@ pacman -S \
     htop \
     evince \
     ranger \
-    alacritty
+    alacritty \
+    xdg-utils \
+    maim \
+    surfraw
 ```
 
 ```bash
 yay -S \
-    numix-circle-icon-theme
+    numix-circle-icon-theme \
+    betterlockscreen \
+    pyenv-virtualenv \
+    system-san-francisco-font-git
 ```
 
 
