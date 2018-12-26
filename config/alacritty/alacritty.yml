@@ -103,20 +103,20 @@ font:
     #style: Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 10
+    y: 16
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 5
+    y: 8
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
@@ -383,8 +383,15 @@ live_config_reload: true
 #   - ~AppKeypad
 #   - AppKeypad
 key_bindings:
-  - { key: V,        mods: Control|Shift,    action: Paste               }
-  - { key: C,        mods: Control|Shift,    action: Copy                }
+  - { key: Comma,    mods: Command,      command:
+      {program: "open", args: ["~/.config/alacritty/alacritty.yml"]}     }
+  - { key: N,        mods: Command,      command:
+      {program: "open", args: ["-n", "/Applications/Alacritty.app"]}     }
+  - { key: V,        mods: Control|Shift,              action: Paste     }
+  - { key: V,        mods: Control,                    action: Paste     }
+  - { key: V,        mods: Command,                    action: Paste     }
+  - { key: C,        mods: Control|Shift,              action: Copy      }
+  - { key: C,        mods: Command,                    action: Copy      }
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
   - { key: Q,        mods: Command, action: Quit                         }
