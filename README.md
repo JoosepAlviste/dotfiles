@@ -104,12 +104,38 @@ pacman -S \
     i3-gaps \
     htop \
     evince \
-    ranger
+    ranger \
+    networkmanager \
+    network-manager-applet \
+    alacritty \
+    compton \
+    feh \
+    xbindkeys \
+    noto-fonts-emoji \
+    gnome-keyring \
+    zsh \
+    tmux \
+    nodejs \
+    npm \
+    yarn \
+    ruby \
+    the_silver_searcher \
+    neovim \
+    flatpak \
+    arc-gtk-theme \
+    dconf-editor (??)
 ```
 
 ```bash
 yay -S \
-    numix-circle-icon-theme
+    numix-circle-icon-theme \
+    rofi \
+    polybar \
+    google-chrome
+```
+
+```bash
+gem install colorls
 ```
 
 
