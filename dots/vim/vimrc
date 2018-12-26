@@ -1,0 +1,113 @@
+" # Modeline {
+" Rules only for this file
+" vim: set sw=2 ts=2 sts=2 tw=78 foldmarker={,} foldmethod=marker spell:
+" }
+" # Environment {
+
+" Automatic, language-dependent indentation, syntax coloring and other functionality.
+filetype indent plugin on
+syntax on
+
+let home = $HOME    " For convenience
+
+" ## Identify platform {
+silent function! MAC()
+	return has('macunix')
+endfunction
+silent function! LINUX()
+	return has('unix') && !has('macunix') && !has('win32unix')
+endfunction
+" }
+
+" }
+" # Plugins {
+
+" ## Plug setup {
+" Automatically install Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Initialize Plug
+call plug#begin('~/.vim/plugged')
+" }
+
+" ## Install plugins {
+
+" NERDTree - file tree
+Plug 'scrooloose/nerdtree'
+
+" Fzf - fuzzy search
+if executable('/usr/local/opt/fzf')
+	Plug '/usr/local/opt/fzf'
+else
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
+Plug 'junegunn/fzf.vim'
+
+" Deoplete - autocompletion
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" LanguageClient - LSP client app
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+
+" End initialization
+call plug#end()
+
+" }
+
+" }
+" # General {
+
+let mapleader="\<Space>"
+let maplocalleader="\\"
+
+" Integration with the system clipboard
+if has('clipboard')
+	if has('unnamedplus')
+		" When possible, use the + register for copy/paste
+		set clipboard=unnamed,unnamedplus
+	else
+		" On Mac and Windows, use the * register
+		set clipboard=unnamed
+	endif
+endif
+
+" }
+" # Vim UI {
+
+colorscheme nightowl
+
+" }
+" # Neovim {
+
+" Neovim specific settings
+if has('nvim')
+	if (has("termguicolors"))
+		set termguicolors
+	endif
+
+	if (empty($TMUX))
+		" Use 24-bit (true-color) mode
+		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+		" Nvim terminal keybindings
+		tnoremap <Esc> <C-\><C-n>
+		tnoremap <M-[> <Esc>
+		tnoremap <C-v><Esc> <Esc>
+	endif
+endif
+
+" }
+
