@@ -112,6 +112,12 @@
 
     " }
 
+    " Typescript {
+
+        Plug 'leafgarland/typescript-vim'
+
+    " }
+
     " Python {
 
         Plug 'vim-python/python-syntax'
