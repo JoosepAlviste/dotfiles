@@ -52,7 +52,7 @@
         if has('autocmd')
             augroup JoosepNERDTree
                 autocmd!
-                autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+                autocmd User NERDTreeInit call joosep#autocmds#attempt_select_last_file()
             augroup END
         endif
 
@@ -480,6 +480,11 @@
 
     " }
 
+    " Autocommands {
+
+        autocmd CursorHold * call joosep#autocmds#highlight_hovered_item()
+
+    " }
 " }
 
 " Formatting {

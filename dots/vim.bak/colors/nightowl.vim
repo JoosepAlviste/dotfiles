@@ -357,6 +357,18 @@ call s:h("javascriptTemplateSB", { "fg": s:dark_red })
 call s:h("javascriptVariable", { "fg": s:purple })
 
 
+" Typescript
+call s:h("typescriptReserved", { "fg": s:purple })
+call s:h("typescriptStorageClass", { "fg": s:purple })
+call s:h("typescriptBraces", { "fg": s:paren_yellow })
+call s:h("typescriptParens", { "fg": s:paren_yellow })
+call s:h("typescriptDecorators", { "fg": s:blue })
+call s:h("typescriptOpSymbols", { "fg": s:light_blue })
+call s:h("typescriptType", { "fg": s:light_blue })
+call s:h("typescriptNull", { "fg": s:red })
+call s:h("typescriptExceptions", { "fg": s:purple })
+
+
 " Python
 call s:h("pythonInclude", { "fg": s:purple })
 call s:h("pythonStatement", { "fg": s:purple })
@@ -406,6 +418,8 @@ call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
 
 " }}}
+
+call s:h("lCursor", { "bg": s:search_result })
 
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
