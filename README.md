@@ -105,11 +105,30 @@ pacman -S \
     rofi \
     htop \
     evince \
-    ranger \
     alacritty \
     xdg-utils \
     maim \
-    surfraw
+    surfraw \
+    ranger \
+    networkmanager \
+    network-manager-applet \
+    alacritty \
+    compton \
+    feh \
+    xbindkeys \
+    noto-fonts-emoji \
+    gnome-keyring \
+    zsh \
+    tmux \
+    nodejs \
+    npm \
+    yarn \
+    ruby \
+    the_silver_searcher \
+    neovim \
+    flatpak \
+    arc-gtk-theme \
+    dconf-editor (??)
 ```
 
 ```bash
@@ -117,7 +136,14 @@ yay -S \
     numix-circle-icon-theme \
     betterlockscreen \
     pyenv-virtualenv \
-    system-san-francisco-font-git
+    system-san-francisco-font-git \
+    rofi \
+    polybar \
+    google-chrome
+```
+
+```bash
+gem install colorls
 ```
 
 
