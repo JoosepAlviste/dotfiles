@@ -8,6 +8,9 @@ let g:NERDTreeWinSize=40
 " Disable display of '?' text and 'Bookmarks' label.
 let g:NERDTreeMinimalUI=1
 
+" Close NERDTree when it is the only open pane
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 "
 " Mappings
