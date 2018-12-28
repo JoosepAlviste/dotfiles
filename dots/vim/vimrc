@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
 
 " ## Install plugins {
 
+" Nicer TMUX pane movements
 Plug 'christoomey/vim-tmux-navigator'
 
 " NERDTree - file tree
@@ -72,6 +73,7 @@ call plug#end()
 " }
 " # General {
 
+nnoremap <space> <nop>
 let mapleader="\<Space>"
 let maplocalleader="\\"
 
