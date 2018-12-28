@@ -39,6 +39,9 @@ call plug#begin('~/.vim/plugged')
 " Nicer TMUX pane movements
 Plug 'christoomey/vim-tmux-navigator'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+
 " NERDTree - file tree
 Plug 'scrooloose/nerdtree'
 
