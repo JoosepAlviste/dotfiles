@@ -36,6 +36,8 @@ call plug#begin('~/.vim/plugged')
 
 " ## Install plugins {
 
+Plug 'christoomey/vim-tmux-navigator'
+
 " NERDTree - file tree
 Plug 'scrooloose/nerdtree'
 
