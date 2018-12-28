@@ -39,13 +39,12 @@ call plug#begin('~/.vim/plugged')
 " Nicer TMUX pane movements
 Plug 'christoomey/vim-tmux-navigator'
 
-" Snippets
 Plug 'SirVer/ultisnips'
+Plug 'mattn/emmet-vim'
 
-" NERDTree - file tree
 Plug 'scrooloose/nerdtree'
 
-" Fzf - fuzzy search
+" FZF - fuzzy search
 if executable('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf'
 else
