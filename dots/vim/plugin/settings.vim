@@ -10,6 +10,9 @@ set mousehide   " Hide cursor when starting to type
 
 set hidden      " Buffer switching without saving
 
+set incsearch   " Search while typing
+set hlsearch    " Highlight search results
+
 
 "
 " Controls
