@@ -12,10 +12,10 @@ let home = $HOME    " For convenience
 
 " ## Identify platform {
 silent function! MAC()
-	return has('macunix')
+  return has('macunix')
 endfunction
 silent function! LINUX()
-	return has('unix') && !has('macunix') && !has('win32unix')
+  return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
 " }
 
@@ -25,9 +25,9 @@ endfunction
 " ## Plug setup {
 " Automatically install Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Initialize Plug
@@ -41,25 +41,25 @@ Plug 'scrooloose/nerdtree'
 
 " Fzf - fuzzy search
 if executable('/usr/local/opt/fzf')
-	Plug '/usr/local/opt/fzf'
+  Plug '/usr/local/opt/fzf'
 else
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 Plug 'junegunn/fzf.vim'
 
 " Deoplete - autocompletion
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " LanguageClient - LSP client app
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 
 " End initialization
@@ -75,13 +75,13 @@ let maplocalleader="\\"
 
 " Integration with the system clipboard
 if has('clipboard')
-	if has('unnamedplus')
-		" When possible, use the + register for copy/paste
-		set clipboard=unnamed,unnamedplus
-	else
-		" On Mac and Windows, use the * register
-		set clipboard=unnamed
-	endif
+  if has('unnamedplus')
+    " When possible, use the + register for copy/paste
+    set clipboard=unnamed,unnamedplus
+  else
+    " On Mac and Windows, use the * register
+    set clipboard=unnamed
+  endif
 endif
 
 " }
@@ -94,19 +94,19 @@ colorscheme nightowl
 
 " Neovim specific settings
 if has('nvim')
-	if (has("termguicolors"))
-		set termguicolors
-	endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 
-	if (empty($TMUX))
-		" Use 24-bit (true-color) mode
-		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  if (empty($TMUX))
+    " Use 24-bit (true-color) mode
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-		" Nvim terminal keybindings
-		tnoremap <Esc> <C-\><C-n>
-		tnoremap <M-[> <Esc>
-		tnoremap <C-v><Esc> <Esc>
-	endif
+    " Nvim terminal keybindings
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+  endif
 endif
 
 " }
