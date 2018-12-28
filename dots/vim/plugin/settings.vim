@@ -6,13 +6,33 @@ set nocompatible    " Do not think about vi, warding off unexpected things
 
 set expandtab       " Always use spaces instead of tabs
 
+set mousehide   " Hide cursor when starting to type 
+
+set hidden      " Buffer switching without saving
+
+
+"
+" Controls
+"
+
 set backspace=indent,eol,start  " Make backspace work normally
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap lines
 
 set mouse=a     " Enable mouse usage
-set mousehide   " Hide cursor when starting to type 
 
-set hidden      " Buffer switching without saving
+" Lines to scroll when cursor leaves screen
+set scrolloff=3
+
+" Integration with the system clipboard
+if has('clipboard')
+  if has('unnamedplus')
+    " When possible, use the + register for copy/paste
+    set clipboard=unnamed,unnamedplus
+  else
+    " On Mac and Windows, use the * register
+    set clipboard=unnamed
+  endif
+endif
 
 
 "
