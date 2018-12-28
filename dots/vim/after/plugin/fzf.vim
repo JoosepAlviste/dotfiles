@@ -29,6 +29,7 @@ command! -bang -nargs=* Ag
         \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
         \                 <bang>0)
 
+
 "
 " Mappings
 " 
@@ -37,4 +38,5 @@ nnoremap <silent> <leader>o :FZF<cr>
 nnoremap <silent> <leader>t :Tags<cr>
 nnoremap <silent> <leader>f :Lines<cr>
 nnoremap <silent> <leader>ff :Ag!<cr>
+nnoremap <silent> <leader>b :Buffer<cr>
 
