@@ -41,6 +41,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'scrooloose/nerdtree'
 
