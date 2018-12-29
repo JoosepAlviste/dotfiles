@@ -1,0 +1,12 @@
+.idea/
+.git/
+tags
+
+.data/
+
+node_modules/
+
+*.pyc
+.pytest_cache/
+.mypy_cache/
+

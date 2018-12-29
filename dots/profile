@@ -37,5 +37,5 @@ export CURRENT_UID=$(id -u):$(id -g)
 export NODE_ENV=development
 
 # Use a better command for searching with fzf
-export FZF_DEFAULT_COMMAND='ag -l --hidden .'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
 
