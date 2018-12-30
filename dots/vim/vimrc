@@ -83,6 +83,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
 
+" Plug 'vim-python/python-syntax'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+
 
 " End initialization
 call plug#end()
