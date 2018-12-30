@@ -190,7 +190,7 @@ let g:terminal_ansi_colors = [
 
 " Syntax Groups (descriptions and ordering from `:h w18`) {{{
 
-call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
+call s:h("Comment", { "fg": s:comment_grey, "gui": "italic" }) " any comment
 call s:h("Constant", { "fg": s:blue }) " any constant
 call s:h("String", { "fg": s:orange }) " a string constant: "this is a string"
 call s:h("Character", { "fg": s:dark_orange }) " a character constant: 'c', '\n'
@@ -295,18 +295,21 @@ call s:h("javaScriptNumber", { "fg": s:dark_orange })
 call s:h("javaScriptRequire", { "fg": s:cyan })
 call s:h("javaScriptReserved", { "fg": s:purple })
 " https://github.com/pangloss/vim-javascript
+call s:h("jsComment", { "fg": s:comment_grey, "gui": "italic" })
 call s:h("jsArrowFunction", { "fg": s:purple })
-call s:h("jsClassKeyword", { "fg": s:blue })
+call s:h("jsClassKeyword", { "fg": s:purple, "gui": "italic" })
 call s:h("jsClassMethodType", { "fg": s:purple })
 call s:h("jsClassDefinition", { "fg": s:orange })
 call s:h("jsClassProperty", { "fg": s:white })
 call s:h("jsObjectProp", { "fg": s:dark_yellow })
 call s:h("jsObjectKey", { "fg": s:white })
-call s:h("jsDocParam", { "fg": s:blue })
-call s:h("jsDocTags", { "fg": s:blue })
+call s:h("jsDocParam", { "fg": s:comment_grey, "gui": "italic" })
+call s:h("jsDocTags", { "fg": s:cyan, "gui": "italic" })
+call s:h("jsDocType", { "fg": s:comment_grey, "gui": "italic" })
+call s:h("jsDocTypeNoParam", { "fg": s:comment_grey, "gui": "italic" })
 call s:h("jsExport", { "fg": s:cyan })
 call s:h("jsExportDefault", { "fg": s:cyan })
-call s:h("jsExtendsKeyword", { "fg": s:blue })
+call s:h("jsExtendsKeyword", { "fg": s:purple, "gui": "italic" })
 call s:h("jsFrom", { "fg": s:purple, "gui": "italic" })
 call s:h("jsFuncCall", { "fg": s:blue })
 call s:h("jsFuncName", { "fg": s:blue })
@@ -314,7 +317,7 @@ call s:h("jsFuncArgs", { "fg": s:white })
 call s:h("jsFunction", { "fg": s:blue })
 call s:h("jsGenerator", { "fg": s:purple })
 call s:h("jsGlobalObjects", { "fg": s:dark_yellow })
-call s:h("jsImport", { "fg": s:cyan })
+call s:h("jsImport", { "fg": s:cyan, "gui": "italic" })
 call s:h("jsModuleAs", { "fg": s:cyan })
 call s:h("jsModuleWords", { "fg": s:cyan })
 call s:h("jsModules", { "fg": s:cyan })
@@ -324,13 +327,16 @@ call s:h("jsStorageClass", { "fg": s:purple })
 call s:h("jsSuper", { "fg": s:blue })
 call s:h("jsTemplateBraces", { "fg": s:yellow })
 call s:h("jsTemplateVar", { "fg": s:green })
-call s:h("jsThis", { "fg": s:cyan })
+call s:h("jsThis", { "fg": s:cyan, "gui": "italic" })
 call s:h("jsUndefined", { "fg": s:yellow })
 call s:h("jsBrackets", { "fg": s:paren_yellow })
 call s:h("jsBraces", { "fg": s:paren_yellow })
+call s:h("jsFuncBraces", { "fg": s:paren_yellow })
+call s:h("jsClassBraces", { "fg": s:paren_yellow })
 call s:h("jsObjectBraces", { "fg": s:paren_yellow })
 call s:h("jsDestructuringBraces", { "fg": s:paren_yellow })
 call s:h("jsModuleBraces", { "fg": s:paren_yellow })
+call s:h("jsIfElseBraces", { "fg": s:paren_yellow })
 call s:h("jsParens", { "fg": s:paren_yellow })
 call s:h("jsFuncParens", { "fg": s:paren_yellow })
 call s:h("jsNoise", { "fg": s:cyan })
@@ -369,6 +375,13 @@ call s:h("typescriptNull", { "fg": s:red })
 call s:h("typescriptExceptions", { "fg": s:purple })
 
 
+" JSON
+call s:h("jsonBraces", { "fg": s:paren_yellow })
+call s:h("jsonQuote", { "fg": s:purple })
+call s:h("jsonKeywordMatch", { "fg": s:cyan })
+call s:h("jsonNoise", { "fg": s:cyan })
+
+
 " Python
 call s:h("pythonInclude", { "fg": s:purple })
 call s:h("pythonStatement", { "fg": s:purple })
@@ -382,6 +395,7 @@ call s:h("pythonBrackets", { "fg": s:paren_yellow })
 call s:h("pythonParam", { "fg": s:cyan })
 call s:h("pythonExtraOperator", { "fg": s:cyan })
 call s:h("pythonDot", { "fg": s:cyan })
+call s:h("pythonClassTag", { "fg": s:orange })
 
 
 " Git
