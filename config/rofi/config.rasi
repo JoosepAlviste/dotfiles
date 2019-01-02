@@ -10,7 +10,7 @@ configuration {
     combi-modi: "drun,power:~/.config/rofi/scripts/power,bookmarks:~/.config/rofi/scripts/bookmarks,modi:~/.config/rofi/scripts/modi";
 	combi-hide-mode-prefix: true;
 	run-command: "zsh -c \"{cmd}\"";
-	matching: "fuzzy";
+	matching: "glob";
 	scroll-method: 1;
 
     theme: "nightowl";
