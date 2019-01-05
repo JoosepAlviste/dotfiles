@@ -1,10 +1,12 @@
 [colors]
 
 background = ${xrdb:background}
-foreground = ${xrdb:color18}
+foreground = ${xrdb:color7}
 
 focused = ${xrdb:color19}
 focused-bg = ${xrdb:background}
+
+icon = ${xrdb:color18}
 
 clock = ${xrdb:color4}
 
@@ -21,25 +23,27 @@ font-2 = "Font Awesome 5 Free:pixelsize=10;1"
 font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
 font-4 = "NotoEmoji:size=7"
 
+font-5 = "sans-serif:pixelsize=12:weight=semibold;1"
+
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 fixed-center = true
 
 width = 100%
-height = 30
+height = 22
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 radius = 0
 
-padding-left = 4
-padding-right = 4
+padding-left = 10
+padding-right = 10
 module-margin = 2
 
-modules-left = i3
-modules-center = title
+modules-left = i3 title
+; modules-center = title
 modules-right = keyboard date
 
 tray-position = right
@@ -67,9 +71,11 @@ label-focused-background = ${colors.focused-bg}
 label-focused-padding = 3
 
 label-unfocused = %name%
+label-unfocused-foreground = ${colors.icon}
 label-unfocused-padding = 3
 
 label-visible = %name%
+label-visible-foreground = ${colors.icon}
 label-visible-padding = 3
 
 label-urgent = %name%
@@ -95,6 +101,7 @@ type = internal/xwindow
 format-foreground = ${colors.foreground}
 format-padding = 1
 label-maxlen = 70
+format = %{T6}<label>%{T-}
 
 
 [module/keyboard]
@@ -102,6 +109,8 @@ type = internal/xkeyboard
 
 blacklist-0 = num lock
 blacklist-1 = scroll lock
+
+label-layout-foreground = ${colors.icon}
 
 
 [module/pulseaudio]
