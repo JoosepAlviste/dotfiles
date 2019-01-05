@@ -2,12 +2,11 @@ configuration {
 	width: 35;
 	lines: 7;
 
-	font: "System San Francisco Display 16";
+	font: "SF Pro Display 16";
 
 	sort: true;
-	levenshtein-sort: false;
 	modi: "combi,drun,power:~/.config/rofi/scripts/power,bookmarks:~/.config/rofi/scripts/bookmarks,modi:~/.config/rofi/scripts/modi,audio:~/.config/rofi/scripts/audio,emoji:~/.config/rofi/scripts/emoji";
-    combi-modi: "drun,power:~/.config/rofi/scripts/power,bookmarks:~/.config/rofi/scripts/bookmarks,modi:~/.config/rofi/scripts/modi";
+    combi-modi: "drun,power,bookmarks,modi";
 	combi-hide-mode-prefix: true;
 	run-command: "zsh -c \"{cmd}\"";
 	matching: "glob";
@@ -60,7 +59,7 @@ configuration {
 /*	color-active: ;*/
 /*	color-window: ;*/
 /*	max-history-size: 25;*/
-/*	combi-hide-mode-prefix: false;*/
+	combi-hide-mode-prefix: true;
 /*	pid: "/run/user/1000/rofi.pid";*/
 /*	display-window: ;*/
 /*	display-windowcd: ;*/

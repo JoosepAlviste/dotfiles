@@ -15,10 +15,10 @@ danger = ${xrdb:color1}
 
 pin-workspaces = true
 
-font-0 = "Hack Nerd Font:pixelsize=11"
-font-1 = "OverpassMono Nerd Font Mono:pixelsize=10"
-font-2 = "Font Awesome 5 Free:pixelsize=10"
-font-3 = "Font Awesome 5 Brands:pixelsize=10"
+font-0 = "sans-serif:pixelsize=12;1"
+font-1 = "OverpassMono Nerd Font Mono:pixelsize=10;1"
+font-2 = "Font Awesome 5 Free:pixelsize=10;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
 font-4 = "NotoEmoji:size=7"
 
 scroll-up = i3wm-wsnext

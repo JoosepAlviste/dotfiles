@@ -133,7 +133,7 @@ pacman -S \
 
 ```bash
 yay -S \
-    numix-circle-icon-theme \
+    flat-remix-git \
     betterlockscreen \
     pyenv-virtualenv \
     system-san-francisco-font-git \
