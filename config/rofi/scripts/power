@@ -30,15 +30,15 @@ eval $(
 
 # Array of options
 OPTIONS=(
-    'Lock Screen'
-    'Logout'
-    'Restart'
-    'Shut Down'
+    "Lock Screen\0icon\x1flock-screen\n"
+    "Logout\0icon\x1fsystem-log-out\n"
+    "Restart\0icon\x1fsystem-reboot\n"
+    "Shut Down\0icon\x1fsystem-shut-down\n"
 )
 
 function print_options {
-    # Print all the options separated by new lines
-    printf '%s\n' "${OPTIONS[@]}"
+    # Print all the options
+    echo -e "${OPTIONS[@]}"
 }
 
 
