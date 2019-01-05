@@ -21,7 +21,7 @@ export LANG=en_US.UTF-8
 
 # Default programs
 export BROWSER=google-chrome-stable
-export TERMINAL="alacritty"
+export TERMINAL="st"
 
 # Use nvim as editor
 export VISUAL=nvim
