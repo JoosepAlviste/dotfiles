@@ -21,7 +21,7 @@ font-0 = "sans-serif:pixelsize=12;1"
 font-1 = "OverpassMono Nerd Font Mono:pixelsize=10;1"
 font-2 = "Font Awesome 5 Free:pixelsize=10;1"
 font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
-font-4 = "NotoEmoji:size=7"
+font-4 = "NotoEmoji:scale=10"
 
 font-5 = "sans-serif:pixelsize=12:weight=semibold;1"
 
