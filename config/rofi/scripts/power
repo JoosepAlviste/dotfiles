@@ -38,7 +38,7 @@ OPTIONS=(
 
 function print_options {
     # Print all the options
-    echo -e "${OPTIONS[@]}"
+    echo -e "${OPTIONS[@]}" | sed 's/^\s//'
 }
 
 
