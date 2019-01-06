@@ -12,7 +12,7 @@
     lightbg:                     rgba(238, 232, 213, 100%);
     selected-active-foreground:  rgba(166, 226, 42, 100%);
     alternate-active-background: rgba(39, 40, 34, 0%);
-    background:                  rgba(1, 14, 26, 85%);
+    background:                  rgba(1, 10, 18, 90%);
     alternate-normal-foreground: @foreground;
     normal-background:           rgba(39, 40, 34, 0%);
     lightfg:                     rgba(88, 104, 117, 100%);
@@ -135,7 +135,7 @@
 #entry {
     spacing:    0;
     text-color: @normal-foreground;
-    font: "System San Francisco Display 30";
+    font: "System San Francisco Display Light 30";
 }
 
 #inputbar {
