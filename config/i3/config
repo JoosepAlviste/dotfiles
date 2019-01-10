@@ -164,10 +164,7 @@ exec --no-startup-id $term -t python -n python -c python -e "bpython -q"
 # start a terminal
 bindsym $mod+Return exec $term
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space exec --no-startup-id rofi -show combi -show-icons
 
 
 
@@ -176,11 +173,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+q          kill
 bindsym $mod+Shift+q    exec --no-startup-id rofi-power
 
+bindsym $mod+w          layout toggle splith tabbed
+
 bindsym $mod+e          layout toggle split
 bindsym $mod+Shift+e    exec --no-startup-id rofi-power
 
 bindsym $mod+r          exec $term -e ranger
 bindsym $mod+Shift+r    restart
+
+# change focus between tiling / floating windows
+bindsym $mod+t          focus mode_toggle
+# toggle tiling / floating
+bindsym $mod+Shift+t    floating toggle
 
 bindsym $mod+Shift+y    exec --no-startup-id i3resize left
 
@@ -199,6 +203,8 @@ bindsym $mod+Shift+s    gaps inner current minus 5
 
 bindsym $mod+f          fullscreen toggle
 
+bindsym $mod+g          exec --no-startup-id gitkraken
+
 bindsym $mod+h          focus left
 bindsym $mod+Shift+h    move left
 
@@ -215,18 +221,21 @@ bindsym $mod+z          gaps outer current plus 5
 bindsym $mod+Shift+z    gaps outer current minus 5
 
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
-bindsym $mod+Shift+x    exec --no-startup-id rofi -show power
+bindsym $mod+Shift+x    exec --no-startup-id rofi -show power -show-icons
 
+bindsym $mod+c          exec --no-startup-id pycharm
 bindsym $mod+Shift+c    reload
 
 bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
+bindsym $mod+b          exec --no-startup-id $BROWSER
+
 # Move workspace to other monitor
 bindsym $mod+m          move workspace to output right
 bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 
-bindsym $alt+space      exec --no-startup-id rofi -show combi -show-icons
+
 
 # #---Media keys---# #
 
