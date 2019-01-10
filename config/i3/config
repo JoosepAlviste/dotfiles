@@ -150,13 +150,13 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 820 500
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
-exec --no-startup-id $term --title=dropdown --name=dropdown --class=dropdown
+exec --no-startup-id $term -t dropdown -n dropdown -c dropdown
 # Python
 for_window [instance="python"] floating enable
 for_window [instance="python"] resize set 625 300
 for_window [instance="python"] move scratchpad
 for_window [instance="python"] border pixel 5
-exec --no-startup-id $term --title=python --name=python --class=python -e "bpython -q"
+exec --no-startup-id $term -t python -n python -c python -e "bpython -q"
 
 
 
