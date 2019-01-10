@@ -17,7 +17,7 @@
     normal-background:           rgba(39, 40, 34, 0%);
     lightfg:                     rgba(88, 104, 117, 100%);
     selected-normal-background:  rgba(67, 115, 194, 100%);
-    spacing:                     2;
+    spacing:                     0;
     separatorcolor:              @background;
     urgent-background:           rgba(39, 40, 34, 0%);
     selected-urgent-background:  rgba(249, 38, 114, 100%);
@@ -39,6 +39,10 @@
 #mainbox {
     border: 0;
     padding: 0;
+}
+
+#message {
+    padding: 10px;
 }
 
 #textbox {
