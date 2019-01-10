@@ -7,8 +7,6 @@ floating_modifier $mod
 # Gaps
 gaps inner 0
 gaps outer 0
-# gaps inner 20
-# gaps outer 10
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
@@ -34,7 +32,8 @@ exec_always --no-startup-id xrandr --output HDMI-3 --mode 1920x1080 --pos 1920x0
 exec --no-startup-id transmission-daemon
 
 # Run Spotify automatically
-exec spotify
+exec --no-startup-id spotify
+exec --no-startup-id slack
 
 
 

@@ -139,7 +139,8 @@ yay -S \
     system-san-francisco-font-git \
     rofi \
     polybar \
-    google-chrome
+    google-chrome \
+    rofi-calc
 ```
 
 ```bash

@@ -6,7 +6,7 @@ configuration {
 
 	sort: true;
 	modi: "combi,drun,power:~/.config/rofi/scripts/power,bookmarks:~/.config/rofi/scripts/bookmarks,modi:~/.config/rofi/scripts/modi,audio:~/.config/rofi/scripts/audio,emoji:~/.config/rofi/scripts/emoji";
-    combi-modi: "drun,power,bookmarks,modi";
+    combi-modi: "drun,power,modi,bookmarks";
 	combi-hide-mode-prefix: true;
 	run-command: "zsh -c \"{cmd}\"";
 	matching: "glob";
