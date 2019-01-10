@@ -65,14 +65,14 @@ set_from_resource $foreground  foreground #000000
 
 
 # Window colors
-# class                 border  backgr. text    indicator    child_border
-client.focused          #ffffff #ffffff #ffffff $cursorLine  $cursorLine
-client.focused_inactive #ffffff #ffffff #ffffff $background  $background
-client.unfocused        #ffffff #ffffff #ffffff $background  $background
-client.urgent           #ffffff #ffffff #ffffff #ffffff      $red
-client.placeholder      #ffffff #ffffff #ffffff #ffffff      #ffffff
+# class                  border       backgr.      text         indicator    child_border
+client.focused           $background  $darkergrey  $white       $cursorLine  $cursorLine
+client.focused_inactive  $background  $background  $darkergrey  $background  $background
+client.unfocused         $background  $background  $darkergrey  $background  $background
+client.urgent            $background  $background  $darkergrey  #ffffff      $red
+client.placeholder       $background  $background  $darkergrey  #ffffff      #ffffff
 
-client.background       #ffffff
+client.background        #ffffff
 
 # Status bar
 bar {
