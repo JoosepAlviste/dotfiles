@@ -83,6 +83,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
 
+
 "
 " Text editing
 "
@@ -92,6 +93,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " LaTeX
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+
+" Always load this last!
+Plug 'ryanoasis/vim-devicons'
 
 
 " End initialization
