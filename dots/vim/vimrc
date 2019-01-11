@@ -47,6 +47,7 @@ Plug 'tpope/vim-surround'   " Surround stuff with braces, quotes, tags, anything
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 
 Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
 
 " FZF - fuzzy search
