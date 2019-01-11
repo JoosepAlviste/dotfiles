@@ -1,4 +1,11 @@
 "
+" NERDTree pane Specific settings
+"
+
+set signcolumn=no
+
+
+"
 " Mappings
 "
 

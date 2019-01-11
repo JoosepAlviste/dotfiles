@@ -1,0 +1,1 @@
+set signcolumn=no
