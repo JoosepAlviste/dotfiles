@@ -33,7 +33,7 @@ exec --no-startup-id transmission-daemon
 
 # Run Spotify automatically
 exec --no-startup-id spotify
-exec --no-startup-id slack
+exec --no-startup-id flatpack run com.slack.Slack
 
 
 
@@ -86,14 +86,14 @@ bar {
 # Workspaces
 set $workspace1 "1: "
 set $workspace2 "2: "
-set $workspace3 "3: "
+set $workspace3 "3: "
 set $workspace4 "4: "
-set $workspace5 "5: "
+set $workspace5 "5: "
 set $workspace6 "6: "
 set $workspace7 "7: "
-set $workspace8 "8: "
-set $workspace9 "9: "
-set $workspace10 "10: "
+set $workspace8 "8: "
+set $workspace9 "9: "
+set $workspace10 "10: "
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -123,18 +123,18 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 assign [class="Spotify"] $workspace2
 assign [class="GitKraken"] $workspace6
 assign [class="jetbrains-pycharm"] $workspace7
-assign [class="Slack"] $workspace9
-assign [class="Skype"] $workspace9
-assign [class="discord"] $workspace9
-assign [class="Google-chrome"] $workspace10
-assign [class="Firefox"] $workspace10
+assign [class="Slack"] $workspace8
+assign [class="Skype"] $workspace8
+assign [class="discord"] $workspace8
+assign [class="Google-chrome"] $workspace9
+assign [class="Firefox"] $workspace9
 
 # Spotify does not want to move automatically!
 for_window [class="Spotify"] move to workspace $workspace2
 
 # Open some workspaces on the second monitor automatically
 workspace $workspace2 output HDMI-3
-workspace $workspace9 output HDMI-3
+workspace $workspace8 output HDMI-3
 
 # Workspace specific gaps
 workspace $workspace1 gaps inner 25

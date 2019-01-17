@@ -181,12 +181,25 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local tags = {
+    [1] = '',
+    [2] = '',
+    [3] = '',
+    [4] = '',
+    [5] = '',
+    [6] = '',
+    [7] = '',
+    [8] = '',
+    [9] = '',
+}
+
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    local names = { "Term", "Spotify", "3", "4", "Media", "Git", "7", "8", "IM", "Browser" }
+    local names = { tags[1], tags[2], tags[3], tags[4], tags[5], tags[6], tags[7], tags[8], tags[9] }
     awful.tag(names, s, awful.layout.suit.tile)
 
     -- Create a promptbox for each screen
@@ -493,8 +506,22 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Spotify" },
+      properties = { screen = 1, tag = tags[8] } },
+    { rule = { class = "GitKraken" },
+      properties = { screen = 1, tag = tags[6] } },
+    { rule = { class = "jetbrains-pycharm" },
+      properties = { screen = 2, tag = tags[7] } },
+    { rule = { class = "Slack" },
+      properties = { screen = 1, tag = tags[2] } },
+    { rule = { class = "Skype" },
+      properties = { screen = 1, tag = tags[2] } },
+    { rule = { class = "discord" },
+      properties = { screen = 1, tag = tags[2] } },
+    { rule = { class = "Google-chrome" },
+      properties = { tag = tags[5] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[5] } },
 }
 -- }}}
 
