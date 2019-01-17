@@ -89,6 +89,17 @@ if type hub > /dev/null; then
     alias git='hub'
 fi
 
+function purge()
+{
+    echo "This will delete the following packages:\n$(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/* \1\n/g')"
+    read -q "REPLY?Are you sure you want to do this? [Y/n]"
+    if [ $? -eq 0 ]; then
+        pacman -Rsu $(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/\1/g')
+    else
+        echo "OK! Won't delete the packages!"
+    fi
+}
+
 # }}}
 # ## Transmission {{{
 
