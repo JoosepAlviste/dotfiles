@@ -352,8 +352,32 @@ globalkeys = gears.table.join(
 
     -- Custom
     awful.key({ modkey  }, "F12", function() xrandr.xrandr() end,
-              { description = "change monitor layout", group = "monitors" })
+              { description = "change monitor layout", group = "monitors" }),
+    awful.key({ modkey }, "d", function() awful.spawn.with_shell("rofi -show combi -show-icons") end)
 )
+
+local function move_client_to_other_screen(c)
+    -- Focus the same tag on the other screen so that when the client is moved,
+    -- it ends up on the same tag on the other screen.
+    --
+    local focused_tag = awful.screen.focused().selected_tag
+    if not focused_tag then return end
+
+    local other_screen = nil
+    for s in screen do
+        if s ~= focused_tag.screen then
+            other_screen = s
+        end
+    end
+
+    local other_screen_tag = awful.tag.find_by_name(
+        other_screen,
+        focused_tag.name
+    )
+    other_screen_tag:view_only()
+
+    c:move_to_screen()
+end
 
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
@@ -362,13 +386,13 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey            }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "m",      function (c) c:move_to_screen()               end,
+    awful.key({ modkey,           }, "m",      move_client_to_other_screen,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
@@ -507,21 +531,21 @@ awful.rules.rules = {
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Spotify" },
-      properties = { screen = 1, tag = tags[8] } },
+      properties = { screen = 1, tag = tags[2] } },
     { rule = { class = "GitKraken" },
       properties = { screen = 1, tag = tags[6] } },
     { rule = { class = "jetbrains-pycharm" },
       properties = { screen = 2, tag = tags[7] } },
     { rule = { class = "Slack" },
-      properties = { screen = 1, tag = tags[2] } },
+      properties = { screen = 1, tag = tags[8] } },
     { rule = { class = "Skype" },
-      properties = { screen = 1, tag = tags[2] } },
+      properties = { screen = 1, tag = tags[8] } },
     { rule = { class = "discord" },
-      properties = { screen = 1, tag = tags[2] } },
+      properties = { screen = 1, tag = tags[8] } },
     { rule = { class = "Google-chrome" },
-      properties = { tag = tags[5] } },
+      properties = { tag = tags[9] } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[5] } },
+      properties = { tag = tags[9] } },
 }
 -- }}}
 
@@ -592,4 +616,19 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+
+-- CUSTOM
+
+client.connect_signal("manage", function (c, startup)
+    -- Enable round corners with the shape api
+    c.shape = function(cr,w,h)
+        gears.shape.rounded_rect(cr,w,h,6)
+    end
+end)
+
+
+-- Startup applications
+awful.spawn.with_shell(os.getenv("HOME") .. "/.config/awesome/autostart.sh")
 -- }}}
