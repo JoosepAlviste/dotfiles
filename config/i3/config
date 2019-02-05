@@ -161,10 +161,13 @@ exec --no-startup-id $term -t python -n python -c python -e "bpython -q"
 
 # #---Basic Bindings---# #
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec $term
 
 bindsym $mod+space exec --no-startup-id rofi -show combi -show-icons
+
+# Middle button over a titlebar kills the window
+bindsym --release button2 kill
 
 
 
