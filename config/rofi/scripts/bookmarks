@@ -9,7 +9,7 @@ fi
 
 function print_options {
     # Print all the bookmarks
-    cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sed '/^#/d' | sed '/^\//d' | sort -n
+    echo -e "$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sed '/^#/d' | sed '/^\//d' | sort -n)"
 }
 
 
