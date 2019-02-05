@@ -5,8 +5,8 @@ set $alt Mod1
 floating_modifier $mod
 
 # Gaps
-gaps inner 0
-gaps outer 0
+gaps inner 16
+gaps outer 16
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
@@ -137,8 +137,8 @@ workspace $workspace2 output HDMI-3
 workspace $workspace8 output HDMI-3
 
 # Workspace specific gaps
-workspace $workspace1 gaps inner 25
-workspace $workspace1 gaps outer 25
+workspace $workspace1 gaps inner 24
+workspace $workspace1 gaps outer 24
 
 
 
@@ -198,8 +198,8 @@ bindsym $mod+Shift+o    exec --no-startup-id i3resize right
 bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"] move position center
 
 # Change gap sizes
-bindsym $mod+s          gaps inner current plus 5
-bindsym $mod+Shift+s    gaps inner current minus 5
+bindsym $mod+s          gaps inner current plus 8
+bindsym $mod+Shift+s    gaps inner current minus 8
 
 bindsym $mod+f          fullscreen toggle
 
@@ -217,8 +217,8 @@ bindsym $mod+Shift+k    move up
 bindsym $mod+l          focus right
 bindsym $mod+Shift+l    move right
 
-bindsym $mod+z          gaps outer current plus 5
-bindsym $mod+Shift+z    gaps outer current minus 5
+bindsym $mod+z          gaps outer current plus 8
+bindsym $mod+Shift+z    gaps outer current minus 8
 
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
 bindsym $mod+Shift+x    exec --no-startup-id rofi -show power -show-icons
