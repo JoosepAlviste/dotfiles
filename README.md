@@ -128,6 +128,8 @@ pacman -S \
     neovim \
     flatpak \
     arc-gtk-theme \
+    mpv \
+    hub \
     dconf-editor (??)
 ```
 
