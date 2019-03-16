@@ -5,22 +5,18 @@
 set nocompatible    " Do not think about vi, warding off unexpected things
 
 set expandtab   " Always use spaces instead of tabs
-set autoindent  " Indent at the same level as the previous file
 set shiftwidth=4        " Use indents of 4 spaces
 set tabstop=4   " Indentation should be 4 spaces
 set softtabstop=4       " Let backspace delete indentation
 
 set mousehide   " Hide cursor when starting to type 
 
-set history=1000        " Longer history
 set hidden      " Buffer switching without saving
 
-set incsearch   " Search while typing
 set hlsearch    " Highlight search results
 set ignorecase  " Search is case insensitive
 set smartcase   " But sensitive when uppercase letters are used
 
-set wildmenu    " Show list of matches instead of just completion
 set wildmode=list:longest,full
 set path+=**    " Recursive find
 " Ignore some folders and files in find
@@ -61,7 +57,6 @@ set foldenable  " Enable folding, auto fold code
 " Controls
 "
 
-set backspace=indent,eol,start  " Make backspace work normally
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap lines
 
 set mouse=a     " Enable mouse usage

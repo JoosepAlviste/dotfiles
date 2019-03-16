@@ -4,10 +4,6 @@
 " }
 " # Environment {
 
-" Automatic, language-dependent indentation, syntax coloring and other functionality.
-filetype indent plugin on
-syntax on
-
 let home = $HOME    " For convenience
 
 " ## Identify platform {
@@ -38,6 +34,8 @@ call plug#begin('~/.vim/plugged')
 
 " Nicer TMUX pane movements
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'tpope/vim-sensible'
 
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
