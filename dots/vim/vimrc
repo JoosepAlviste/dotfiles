@@ -65,10 +65,10 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " LanguageClient - LSP client app
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"       \ 'branch': 'next',
+"       \ 'do': 'bash install.sh',
+"       \ }
 
 
 "
@@ -86,6 +86,7 @@ Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Plug 'pangloss/vim-javascript'
 " Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
