@@ -82,9 +82,13 @@ Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 Plug 'tpope/vim-fugitive'   " Git integrations
 Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
+" Typescript support (client for tsserver)
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+
+" Plug 'pangloss/vim-javascript'
+" Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
 
 Plug 'alvan/vim-closetag'
 
