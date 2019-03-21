@@ -5,4 +5,3 @@ function joosep#autocmds#attempt_select_last_file() abort
     call search('\v<' . l:previous . '>')
   endif
 endfunction
-

@@ -1,7 +1,7 @@
 function! joosep#expand#expand()
   " Make a double new line and indent correctly if the cursor is between a
   " start and end tag
-  
+
   let line   = getline(".")
   let col    = col(".")
   let first  = line[col-2]

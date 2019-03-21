@@ -8,4 +8,3 @@ set norelativenumber
 
 " Show the status bar when the buffer gets closed
 autocmd BufLeave <buffer> set laststatus=2
-
