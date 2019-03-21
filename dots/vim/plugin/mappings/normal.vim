@@ -12,7 +12,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
-nnoremap Y y$   " Yank from the cursor to the end of the line, like C and D
+" Yank from the cursor to the end of the line, like C and D
+nnoremap Y y$
 
 " Faster scrolling
 nnoremap <C-e> 3<C-e>

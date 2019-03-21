@@ -2,7 +2,7 @@
 " NERDTree pane Specific settings
 "
 
-set signcolumn=no
+setlocal signcolumn=no
 
 
 "

@@ -1,1 +1,1 @@
-set signcolumn=no
+setlocal signcolumn=no

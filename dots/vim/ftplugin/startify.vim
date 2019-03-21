@@ -2,5 +2,5 @@
 " Override settings
 "
 
-set cursorline
-set signcolumn=no
+setlocal cursorline
+setlocal signcolumn=no
