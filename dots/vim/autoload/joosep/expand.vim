@@ -8,8 +8,8 @@ function! joosep#expand#expand()
   let second = line[col-1]
   let third  = line[col]
 
-  if first ==# ">"
-    if second ==# "<" && third ==# "/"
+  if first ==# ">" || first ==# "`"
+    if (second ==# "<" && third ==# "/") || (second ==# "`")
       return "\<CR>\<C-o>==\<C-o>O"
     else
       return "\<CR>"
