@@ -13,12 +13,14 @@ endfunction
 silent function! LINUX()
   return has('unix') && !has('macunix') && !has('win32unix')
 endfunction
+
 " }
 
 " }
 " # Plugins {
 
 " ## Plug setup {
+
 " Automatically install Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -28,6 +30,7 @@ endif
 
 " Initialize Plug
 call plug#begin('~/.vim/plugged')
+
 " }
 
 " ## Install plugins {

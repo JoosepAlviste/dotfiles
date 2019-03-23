@@ -2,10 +2,13 @@
 " Leader mappings
 "
 
-nnoremap <Leader><Leader> <C-^> 	" Open last buffer
+" Open last buffer
+nnoremap <Leader><Leader> <C-^>
 
-nnoremap <leader>q :quit<CR> 	" Quit the pane/buffer with <leader>q
-nnoremap <leader>w :w!<CR> 	" Save with <leader>w
+" Quit the pane/buffer with <leader>q
+nnoremap <leader>q :quit<CR>
+" Save with <leader>w
+nnoremap <leader>w :w!<CR>
 
 nnoremap <leader>/ za
 
@@ -19,4 +22,3 @@ noremap <leader>t<leader> :tabnext
 nnoremap <leader>k :echo @%<cr>         " Show relative filename
 
 nnoremap <leader>o :only<CR>
-
