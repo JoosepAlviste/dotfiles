@@ -12,6 +12,8 @@
 " |----------------+--------------------+---------|
 " | White          | rgb(171, 178, 191) | #ffffff |
 " |----------------+--------------------+---------|
+" | Dark White     | rgb(171, 178, 191) | #b2ccd6 |
+" |----------------+--------------------+---------|
 " | Light Red      | rgb(224, 108, 117) | #ff5874 |
 " |----------------+--------------------+---------|
 " | Dark Red       | rgb(190, 80, 70)   | #ef5350 |
@@ -27,6 +29,8 @@
 " | Blue           | rgb(97, 175, 239)  | #82aaff |
 " |----------------+--------------------+---------|
 " | Magenta        | rgb(198, 120, 221) | #c792ea |
+" |----------------+--------------------+---------|
+" | Dark magenta   | rgb(198, 120, 221) | #da70d6 |
 " |----------------+--------------------+---------|
 " | Cyan           | rgb(86, 182, 194)  | #7fdbca |
 " |----------------+--------------------+---------|
@@ -47,6 +51,14 @@
 " | Search result  | rgb(92, 99, 112)   | #2e3c68 |
 " |----------------+--------------------+---------|
 " | Paren yellow   | rgb(92, 99, 112)   | #fdd700 |
+" |----------------+--------------------+---------|
+" | Diff add       | rgb(92, 99, 112)   | #264B33 |
+" |----------------+--------------------+---------|
+" | Diff delete    | rgb(92, 99, 112)   | #4B1515 |
+" |----------------+--------------------+---------|
+" | Diff changed   | rgb(92, 99, 112)   | #12404B |
+" |----------------+--------------------+---------|
+" | Diff changed hl| rgb(92, 99, 112)   | #43698D |
 " +-----------------------------------------------+
 
 " }}}
@@ -131,9 +143,11 @@ let s:colors = {
       \ "blue": get(s:overrides, "blue", { "gui": "#82aaff", "cterm": "39", "cterm16": "4" }),
       \ "light_blue": get(s:overrides, "light_blue", { "gui": "#78ccf0", "cterm": "39", "cterm16": "4" }),
       \ "purple": get(s:overrides, "purple", { "gui": "#c792ea", "cterm": "170", "cterm16": "5" }),
+      \ "dark_purple": get(s:overrides, "dark_purple", { "gui": "#da70d6", "cterm": "170", "cterm16": "5" }),
       \ "cyan": get(s:overrides, "cyan", { "gui": "#7fdbca", "cterm": "38", "cterm16": "6" }),
       \ "dark_cyan": get(s:overrides, "dark_cyan", { "gui": "#21c7a8", "cterm": "38", "cterm16": "6" }),
       \ "white": get(s:overrides, "white", { "gui": "#ffffff", "cterm": "145", "cterm16": "7" }),
+      \ "dark_white": get(s:overrides, "dark_white", { "gui": "#b2ccd6", "cterm": "145", "cterm16": "7" }),
       \ "black": get(s:overrides, "black", { "gui": "#011627", "cterm": "235", "cterm16": "0" }),
       \ "visual_black": get(s:overrides, "visual_black", { "gui": "NONE", "cterm": "NONE", "cterm16": "0" }),
       \ "comment_grey": get(s:overrides, "comment_grey", { "gui": "#637777", "cterm": "59", "cterm16": "15" }),
@@ -148,6 +162,10 @@ let s:colors = {
       \ "active_line_nr": get(s:overrides, "active_line_nr", { "gui": "#c5e4fd", "cterm": "114", "cterm16": "2" }),
       \ "search_result": get(s:overrides, "search_result", { "gui": "#2e3c68", "cterm": "114", "cterm16": "2" }),
       \ "paren_yellow": get(s:overrides, "paren_yellow", { "gui": "#fdd700", "cterm": "114", "cterm16": "2" }),
+      \ "diff_add": get(s:overrides, "diff_add", { "gui": "#264b33", "cterm": "114", "cterm16": "2" }),
+      \ "diff_delete": get(s:overrides, "diff_delete", { "gui": "#4B1515", "cterm": "114", "cterm16": "2" }),
+      \ "diff_changed": get(s:overrides, "diff_changed", { "gui": "#12404B", "cterm": "114", "cterm16": "2" }),
+      \ "diff_changed_highlight": get(s:overrides, "diff_changed_highlight", { "gui": "#43698D", "cterm": "114", "cterm16": "2" }),
       \}
 
 let s:red = s:colors.red
@@ -158,8 +176,10 @@ let s:dark_yellow = s:colors.dark_yellow
 let s:blue = s:colors.blue
 let s:light_blue = s:colors.light_blue
 let s:purple = s:colors.purple
+let s:dark_purple = s:colors.dark_purple
 let s:cyan = s:colors.cyan
 let s:white = s:colors.white
+let s:dark_white = s:colors.dark_white
 let s:black = s:colors.black
 let s:visual_black = s:colors.visual_black " Black out selected text in 16-color visual mode
 let s:comment_grey = s:colors.comment_grey
@@ -174,6 +194,10 @@ let s:dark_orange = s:colors.dark_orange
 let s:active_line_nr = s:colors.active_line_nr
 let s:search_result = s:colors.search_result
 let s:paren_yellow = s:colors.paren_yellow
+let s:diff_add = s:colors.diff_add
+let s:diff_delete = s:colors.diff_delete
+let s:diff_changed = s:colors.diff_changed
+let s:diff_changed_highlight = s:colors.diff_changed_highlight
 
 " }}}
 
@@ -237,15 +261,15 @@ call s:h("CursorIM", {}) " like Cursor, but used when in IME mode
 call s:h("CursorColumn", { "bg": s:cursor_grey }) " the screen column that the cursor is in when 'cursorcolumn' is set
 if &diff
   " Don't change the background color in diff mode
-  call s:h("CursorLine", { "gui": "underline" }) " the screen line that the cursor is in when 'cursorline' is set
+  call s:h("CursorLine", {}) " the screen line that the cursor is in when 'cursorline' is set
 else
   call s:h("CursorLine", { "bg": s:cursor_grey }) " the screen line that the cursor is in when 'cursorline' is set
 endif
 call s:h("Directory", { "fg": s:blue }) " directory names (and other special names in listings)
-call s:h("DiffAdd", { "bg": s:green, "fg": s:black }) " diff mode: Added line
-call s:h("DiffChange", { "fg": s:yellow, "gui": "underline", "cterm": "underline" }) " diff mode: Changed line
-call s:h("DiffDelete", { "bg": s:red, "fg": s:black }) " diff mode: Deleted line
-call s:h("DiffText", { "bg": s:yellow, "fg": s:black }) " diff mode: Changed text within a changed line
+call s:h("DiffAdd", { "bg": s:diff_add }) " diff mode: Added line
+call s:h("DiffChange", { "bg": s:diff_changed }) " diff mode: Changed line
+call s:h("DiffDelete", { "bg": s:diff_delete }) " diff mode: Deleted line
+call s:h("DiffText", { "bg": s:diff_changed_highlight }) " diff mode: Changed text within a changed line
 call s:h("ErrorMsg", { "fg": s:dark_red }) " error messages on the command line
 call s:h("VertSplit", { "fg": s:vertsplit }) " the column separating vertically split windows
 call s:h("Folded", { "fg": s:comment_grey }) " line used for closed folds
@@ -254,7 +278,7 @@ call s:h("SignColumn", {}) " column where signs are displayed
 call s:h("IncSearch", { "bg": s:search_result }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
 call s:h("LineNr", { "fg": s:gutter_fg_grey }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 call s:h("CursorLineNr", { "fg": s:active_line_nr }) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-call s:h("MatchParen", { "bg": s:visual_grey, "gui": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
+call s:h("MatchParen", { "bg": s:visual_grey }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -296,12 +320,12 @@ call s:h("javaScriptRequire", { "fg": s:cyan })
 call s:h("javaScriptReserved", { "fg": s:purple })
 " https://github.com/pangloss/vim-javascript
 call s:h("jsComment", { "fg": s:comment_grey, "gui": "italic" })
-call s:h("jsArrowFunction", { "fg": s:purple })
+call s:h("jsArrowFunction", { "fg": s:dark_purple })
 call s:h("jsClassKeyword", { "fg": s:purple, "gui": "italic" })
 call s:h("jsClassMethodType", { "fg": s:purple })
 call s:h("jsClassDefinition", { "fg": s:orange })
 call s:h("jsClassProperty", { "fg": s:white })
-call s:h("jsObjectProp", { "fg": s:dark_yellow })
+call s:h("jsObjectProp", { "fg": s:white })
 call s:h("jsObjectKey", { "fg": s:white })
 call s:h("jsDocParam", { "fg": s:comment_grey, "gui": "italic" })
 call s:h("jsDocTags", { "fg": s:cyan, "gui": "italic" })
@@ -341,6 +365,8 @@ call s:h("jsParens", { "fg": s:paren_yellow })
 call s:h("jsFuncParens", { "fg": s:paren_yellow })
 call s:h("jsNoise", { "fg": s:cyan })
 call s:h("jsDot", { "fg": s:purple })
+call s:h("jsTernaryIfOperator", { "fg": s:cyan })
+
 " https://github.com/othree/yajs.vim
 call s:h("javascriptArrowFunc", { "fg": s:purple })
 call s:h("javascriptClassExtends", { "fg": s:purple })
@@ -368,14 +394,82 @@ call s:h("typescriptReserved", { "fg": s:purple })
 call s:h("typescriptStorageClass", { "fg": s:purple })
 call s:h("typescriptBraces", { "fg": s:paren_yellow })
 call s:h("typescriptParens", { "fg": s:paren_yellow })
+call s:h("typescriptTypeBracket", { "fg": s:paren_yellow })
 call s:h("typescriptDecorators", { "fg": s:blue })
 call s:h("typescriptOpSymbols", { "fg": s:light_blue })
 call s:h("typescriptType", { "fg": s:light_blue })
 call s:h("typescriptNull", { "fg": s:red })
 call s:h("typescriptExceptions", { "fg": s:purple })
+call s:h("typescriptInterfaceKeyword", { "fg": s:purple })
+call s:h("typescriptInterfaceName", { "fg": s:light_blue })
+call s:h("typescriptPredefinedType", { "fg": s:light_blue, "gui": "italic" })
+call s:h("typescriptMember", { "fg": s:white })
+call s:h("typescriptMemberOptionality", { "fg": s:cyan })
+call s:h("typescriptTypeAnnotation", { "fg": s:cyan })
+call s:h("typescriptImport", { "fg": s:purple })
+call s:h("typescriptCastKeyword", { "fg": s:purple })
+call s:h("typescriptTypeReference", { "fg": s:light_blue })
+call s:h("typescriptVariable", { "fg": s:purple })
+call s:h("typescriptVariableDeclaration", { "fg": s:cyan })
+call s:h("typescriptAssign", { "fg": s:cyan })
+call s:h("typescriptTypeBrackets", { "fg": s:cyan })
+call s:h("typescriptAliasKeyword", { "fg": s:purple })
+call s:h("typescriptUnion", { "fg": s:cyan })
+call s:h("typescriptFuncTypeArrow", { "fg": s:dark_purple })
+call s:h("typescriptFuncType", { "fg": s:white })
+call s:h("typescriptArrowFunc", { "fg": s:purple })
+call s:h("typescriptCall", { "fg": s:white })
+call s:h("typescriptBinaryOp", { "fg": s:cyan })
+call s:h("typescriptObjectLabel", { "fg": s:white })
+call s:h("typescriptExport", { "fg": s:cyan })
+call s:h("typescriptDefault", { "fg": s:cyan })
+call s:h("typescriptObjectColon", { "fg": s:cyan })
+call s:h("typescriptIdentifierName", { "fg": s:dark_yellow })
+call s:h("typescriptDOMEventMethod", { "fg": s:blue })
+call s:h("typescriptResponseMethod", { "fg": s:blue })
+call s:h("typescriptCacheMethod", { "fg": s:blue })
+call s:h("typescriptBoolean", { "fg": s:purple, "gui": "italic" })
+call s:h("typescriptArrayMethod", { "fg": s:blue })
+call s:h("typescriptTernaryOp", { "fg": s:cyan })
+call s:h("typescriptDOMFormProp", { "fg": s:white, "gui": "italic" })
+call s:h("typescriptMappedIn", { "fg": s:purple })
+call s:h("typescriptTypeQuery", { "fg": s:purple })
+call s:h("typescriptAsyncFuncKeyword", { "fg": s:purple, "gui": "italic" })
+call s:h("styledTypescriptPrefix", { "fg": s:cyan })
+call s:h("styledAmpersand", { "fg": s:orange })
+call s:h("styledPrefix", { "fg": s:cyan })
+
+
+" TSX
+
+call s:h("tsxTag", { "fg": s:light_blue })
+call s:h("tsxCloseTag", { "fg": s:light_blue })
+call s:h("tsxTagName", { "fg": s:cyan })
+call s:h("tsxCloseString", { "fg": s:cyan })
+call s:h("tsxAttrib", { "fg": s:dark_yellow })
+call s:h("tsxEqual", { "fg": s:orange })
+call s:h("tsxAttributeBraces", { "fg": s:paren_yellow })
+call s:h("tsxIntrinsicTagName", { "fg": s:cyan })
+
+
+" CSS
+
+call s:h("cssPositioningProp", { "fg": s:dark_white })
+call s:h("cssDimensionProp", { "fg": s:dark_white })
+call s:h("cssBoxProp", { "fg": s:dark_white })
+call s:h("cssBackgroundProp", { "fg": s:dark_white })
+call s:h("cssTextProp", { "fg": s:dark_white })
+call s:h("cssBorderProp", { "fg": s:dark_white })
+call s:h("cssUIProp", { "fg": s:dark_white })
+call s:h("cssFontProp", { "fg": s:dark_white })
+call s:h("cssBraces", { "fg": s:paren_yellow })
+call s:h("cssSelectorOp", { "fg": s:cyan })
+call s:h("cssTagName", { "fg": s:red })
+call s:h("cssPseudoClassId", { "fg": s:dark_orange })
 
 
 " JSON
+
 call s:h("jsonBraces", { "fg": s:paren_yellow })
 call s:h("jsonQuote", { "fg": s:purple })
 call s:h("jsonKeywordMatch", { "fg": s:cyan })
@@ -438,4 +532,3 @@ call s:h("lCursor", { "bg": s:search_result })
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
-

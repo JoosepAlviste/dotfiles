@@ -77,7 +77,7 @@ endif
 " Colors
 "
 
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 
 
 "
@@ -148,15 +148,7 @@ endif
 " }
 " # Vim UI {
 
-" Customize onedark colors (needs to be done BEFORE colorscheme configuration)
-if (has("autocmd"))
-  augroup colorextend
-    autocmd!
-    autocmd ColorScheme * call joosep#colors#CustomizeColors()
-  augroup END
-endif
-
-colorscheme onedark
+colorscheme nightowl
 
 " }
 " # Neovim {
