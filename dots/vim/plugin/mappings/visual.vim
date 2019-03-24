@@ -11,4 +11,3 @@ vnoremap <C-l> <C-w>l
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
-
