@@ -6,11 +6,11 @@
 nnoremap <Leader><Leader> <C-^>
 
 " Quit the pane/buffer with <leader>q
-nnoremap <leader>q :quit<CR>
+nnoremap <silent> <leader>q :quit<CR>
 " Save with <leader>w
-nnoremap <leader>w :w!<CR>
+nnoremap <silent> <leader>w :w!<CR>
 
-nnoremap <leader>/ za
+nnoremap <silent> <leader>/ za
 
 " Useful mappings for managing tabs
 noremap <leader>tn :tabnew<cr>
