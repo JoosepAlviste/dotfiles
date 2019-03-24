@@ -16,9 +16,10 @@ nnoremap <leader>/ za
 noremap <leader>tn :tabnew<cr>
 noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>t<leader> :tabnext
+noremap <leader>tm :tabmove<cr>
+noremap <leader>t<leader> :tabnext<cr>
 
-nnoremap <leader>k :echo @%<cr>         " Show relative filename
+" Show relative filename
+nnoremap <leader>k :echo @%<cr>
 
 nnoremap <leader>o :only<CR>
