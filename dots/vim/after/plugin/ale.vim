@@ -10,7 +10,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
 \    'javascript': ['eslint'],
-\    'typescript': ['prettier'],
+\    'typescript': ['prettier', 'tslint'],
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
 \    'html': ['prettier']
