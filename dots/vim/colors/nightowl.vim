@@ -435,6 +435,8 @@ call s:h("typescriptDOMFormProp", { "fg": s:white, "gui": "italic" })
 call s:h("typescriptMappedIn", { "fg": s:purple })
 call s:h("typescriptTypeQuery", { "fg": s:purple })
 call s:h("typescriptAsyncFuncKeyword", { "fg": s:purple, "gui": "italic" })
+call s:h("typescriptTry", { "fg": s:purple })
+call s:h("typescriptServiceWorkerMethod", { "fg": s:white })
 call s:h("styledTypescriptPrefix", { "fg": s:cyan })
 call s:h("styledAmpersand", { "fg": s:orange })
 call s:h("styledPrefix", { "fg": s:cyan })
@@ -466,6 +468,11 @@ call s:h("cssBraces", { "fg": s:paren_yellow })
 call s:h("cssSelectorOp", { "fg": s:cyan })
 call s:h("cssTagName", { "fg": s:red })
 call s:h("cssPseudoClassId", { "fg": s:dark_orange })
+
+
+" GraphQL
+call s:h("graphqlStructure", { "fg": s:purple })
+call s:h("graphqlType", { "fg": s:light_blue })
 
 
 " JSON
