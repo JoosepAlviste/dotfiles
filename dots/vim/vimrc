@@ -93,7 +93,6 @@ Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
 " Typescript support (client for tsserver)
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
