@@ -180,3 +180,18 @@ Docker fails with error creating new backup file '/var/lib/dpkg/status-old?
 `i3` workspace switching screws up PyCharm focus: 
 `https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
 
+## Default Google Chrome
+
+Edit `~/.config/mimeapps.list` and/or 
+`~/.local/share/applications/mimeapps.list` and make sure that it looks 
+something like this:
+
+```
+[Default Applications]
+x-scheme-handler/mailto=google-chrome.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+```
