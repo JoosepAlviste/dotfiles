@@ -40,9 +40,27 @@ command! -bang -nargs=* Rg
 " Mappings
 " 
 
+" Working directory files
 nnoremap <silent> <C-p> :FZF<cr>
-nnoremap <silent> <leader>t :Tags<cr>
-nnoremap <silent> <leader>f :Lines<cr>
+" Current file's directory files
+nnoremap <silent> <leader>- :FZF <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
+nnoremap <silent> <leader>ft :Tags<cr>
+" Lines in all buffers
+nnoremap <silent> <C-f> :Lines<cr>
+" All lines in all files in the project
 nnoremap <silent> <leader>ff :Rg!<cr>
+" Buffers
 nnoremap <silent> <leader>b :Buffer<cr>
-
+" Vim file editing history
+nnoremap <silent> <leader>fr :History<cr>
+nnoremap <silent> <leader>fh :Helptags<cr>
+" Commands history
+nnoremap <silent> <leader>f: :History:<cr>
+" Search history
+nnoremap <silent> <leader>f/ :History/<cr>
+" Git staged files
+nnoremap <silent> <leader>fs :GFiles?<cr>
+" Commit history
+nnoremap <silent> <leader>fc :Commits<cr>
+" All commands
+nnoremap <silent> <leader>fa :Commands<cr>

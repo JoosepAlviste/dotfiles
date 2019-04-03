@@ -15,3 +15,5 @@ nnoremap <silent> <c-]> :TSDef<cr>
 
 " When pressing Enter, make new line and indent as required
 inoremap <expr> <CR> joosep#expand#expand()
+
+nnoremap <silent> <leader>i :TSImport<cr>
