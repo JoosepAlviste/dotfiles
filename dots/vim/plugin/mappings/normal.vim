@@ -25,3 +25,4 @@ nnoremap ` '
 
 " Show syntax group under cursor
 nnoremap <silent> <F10> :call joosep#syntax#SynStack()<CR>
+" nnoremap <silent> <F10> :call joosep#syntax#MoreSyntaxes()<CR>
