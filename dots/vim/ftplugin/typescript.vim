@@ -14,6 +14,9 @@ setlocal formatprg=prettier\ --parser\ typescript
 nnoremap <silent> <c-]> :TSDef<cr>
 
 " When pressing Enter, make new line and indent as required
-inoremap <expr> <CR> joosep#expand#expand()
+" inoremap <expr> <CR> joosep#expand#expand()
 
 nnoremap <silent> <leader>i :TSImport<cr>
+
+" Disable Deoplete since we have coc.nvim
+call deoplete#custom#buffer_option('auto_complete', v:false)

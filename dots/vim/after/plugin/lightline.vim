@@ -8,13 +8,14 @@ let g:lightline = {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
             \   'right': [ [ 'percent' ],
-            \              [ 'filetype' ] ],
+            \              [ 'cocstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'readonly': 'LightlineReadonly',
             \   'fugitive': 'LightlineFugitive',
             \   'filename': 'LightlineFilename',
             \   'filetype': 'MyFiletype',
+            \   'cocstatus': 'coc#status',
             \ },
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '|', 'right': '|' }

@@ -22,8 +22,8 @@ function! joosep#autocomplete#setup_mappings() abort
         \ ' <Esc>:call joosep#autocomplete#expand_or_jump("P")<CR>'
 
   " One additional mapping of our own: accept completion with <CR>.
-  imap <expr> <buffer> <silent> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-  smap <expr> <buffer> <silent> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+  " imap <expr> <buffer> <silent> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+  " smap <expr> <buffer> <silent> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
   let s:expansion_active = 1
 endfunction
@@ -75,3 +75,22 @@ function! joosep#autocomplete#expand_or_jump(direction) abort
   return ''
 endfunction
 
+" Handle pressing of the tab key. Will either confirm a PUM selection, jump
+" forward in a snippet placeholder, or send a TAB character if nothing else
+" should be done.
+function! joosep#autocomplete#handle_tab() abort
+    if pumvisible()
+        return coc#_select_confirm() 
+    elseif coc#expandableOrJumpable()
+        return coc#rpc#request('doKeymap', ['snippets-expand-jump','']) 
+    elseif <SID>check_back_space()
+        return "\<tab>"
+    else
+        return coc#refresh()
+    endif
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction

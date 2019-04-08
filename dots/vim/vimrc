@@ -40,7 +40,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-sensible'
 
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
@@ -91,8 +91,10 @@ Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 Plug 'tpope/vim-fugitive'   " Git integrations
 Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
 " Typescript support (client for tsserver)
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
