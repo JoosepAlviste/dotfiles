@@ -129,6 +129,8 @@ set lazyredraw  " Redraw only when need to
 
 set visualbell  " Use visual bell instead of beeping
 
+set cmdheight=2
+
 if has('folding')
   set foldmethod=indent         " not as cool as syntax, but faster
   set foldlevelstart=99         " start unfolded

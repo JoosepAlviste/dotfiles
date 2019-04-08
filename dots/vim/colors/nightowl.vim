@@ -50,6 +50,8 @@
 " |----------------+--------------------+---------|
 " | Search result  | rgb(92, 99, 112)   | #2e3c68 |
 " |----------------+--------------------+---------|
+" | Highlight      | rgb(92, 99, 112)   | #2d2c5d |
+" |----------------+--------------------+---------|
 " | Paren yellow   | rgb(92, 99, 112)   | #fdd700 |
 " |----------------+--------------------+---------|
 " | Diff add       | rgb(92, 99, 112)   | #264B33 |
@@ -161,6 +163,7 @@ let s:colors = {
       \ "dark_orange": get(s:overrides, "dark_orange", { "gui": "#f78c6c", "cterm": "114", "cterm16": "2" }),
       \ "active_line_nr": get(s:overrides, "active_line_nr", { "gui": "#c5e4fd", "cterm": "114", "cterm16": "2" }),
       \ "search_result": get(s:overrides, "search_result", { "gui": "#2e3c68", "cterm": "114", "cterm16": "2" }),
+      \ "highlight": get(s:overrides, "highlight", { "gui": "#201f42", "cterm": "114", "cterm16": "2" }),
       \ "paren_yellow": get(s:overrides, "paren_yellow", { "gui": "#fdd700", "cterm": "114", "cterm16": "2" }),
       \ "diff_add": get(s:overrides, "diff_add", { "gui": "#264b33", "cterm": "114", "cterm16": "2" }),
       \ "diff_delete": get(s:overrides, "diff_delete", { "gui": "#4B1515", "cterm": "114", "cterm16": "2" }),
@@ -193,6 +196,7 @@ let s:orange = s:colors.orange
 let s:dark_orange = s:colors.dark_orange
 let s:active_line_nr = s:colors.active_line_nr
 let s:search_result = s:colors.search_result
+let s:highlight = s:colors.highlight
 let s:paren_yellow = s:colors.paren_yellow
 let s:diff_add = s:colors.diff_add
 let s:diff_delete = s:colors.diff_delete
@@ -219,7 +223,7 @@ call s:h("Constant", { "fg": s:blue }) " any constant
 call s:h("String", { "fg": s:orange }) " a string constant: "this is a string"
 call s:h("Character", { "fg": s:dark_orange }) " a character constant: 'c', '\n'
 call s:h("Number", { "fg": s:dark_orange }) " a number constant: 234, 0xff
-call s:h("Boolean", { "fg": s:red }) " a boolean constant: TRUE, false
+call s:h("Boolean", { "fg": s:purple, "gui": "italic" }) " a boolean constant: TRUE, false
 call s:h("Float", { "fg": s:dark_orange }) " a floating point constant: 2.3e10
 call s:h("Identifier", { "fg": s:white }) " any variable name
 call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
@@ -228,17 +232,17 @@ call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc
 call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
 call s:h("Label", { "fg": s:purple }) " case, default, etc.
 call s:h("Operator", { "fg": s:purple }) " sizeof", "+", "*", etc.
-call s:h("Keyword", { "fg": s:red }) " any other keyword
-call s:h("Exception", { "fg": s:cyan }) " try, catch, throw
+call s:h("Keyword", { "fg": s:white }) " any other keyword
+call s:h("Exception", { "fg": s:purple }) " try, catch, throw
 call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
 call s:h("Include", { "fg": s:blue }) " preprocessor #include
 call s:h("Define", { "fg": s:purple }) " preprocessor #define
 call s:h("Macro", { "fg": s:purple }) " same as Define
 call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
-call s:h("Type", { "fg": s:green }) " int, long, char, etc.
-call s:h("StorageClass", { "fg": s:blue }) " static, register, volatile, etc.
-call s:h("Structure", { "fg": s:orange }) " struct, union, enum, etc.
-call s:h("Typedef", { "fg": s:orange }) " A typedef
+call s:h("Type", { "fg": s:purple }) " int, long, char, etc.
+call s:h("StorageClass", { "fg": s:purple }) " static, register, volatile, etc.
+call s:h("Structure", { "fg": s:purple }) " struct, union, enum, etc.
+call s:h("Typedef", { "fg": s:purple }) " A typedef
 call s:h("Special", { "fg": s:dark_orange }) " any special symbol
 call s:h("SpecialChar", {}) " special character in a constant
 call s:h("Tag", {}) " you can use CTRL-] on this
@@ -399,6 +403,7 @@ call s:h("typescriptDecorators", { "fg": s:blue })
 call s:h("typescriptOpSymbols", { "fg": s:light_blue })
 call s:h("typescriptType", { "fg": s:light_blue })
 call s:h("typescriptNull", { "fg": s:red })
+call s:h("typescriptTry", { "fg": s:purple })
 call s:h("typescriptExceptions", { "fg": s:purple })
 call s:h("typescriptInterfaceKeyword", { "fg": s:purple })
 call s:h("typescriptInterfaceName", { "fg": s:light_blue })
@@ -417,6 +422,7 @@ call s:h("typescriptAliasKeyword", { "fg": s:purple })
 call s:h("typescriptUnion", { "fg": s:cyan })
 call s:h("typescriptFuncTypeArrow", { "fg": s:dark_purple })
 call s:h("typescriptFuncType", { "fg": s:white })
+call s:h("typescriptFuncKeyword", { "fg": s:purple })
 call s:h("typescriptArrowFunc", { "fg": s:dark_purple })
 call s:h("typescriptArrowFuncArg", { "fg": s:white })
 call s:h("typescriptCall", { "fg": s:white })
@@ -436,17 +442,14 @@ call s:h("typescriptDOMFormProp", { "fg": s:white, "gui": "italic" })
 call s:h("typescriptMappedIn", { "fg": s:purple })
 call s:h("typescriptTypeQuery", { "fg": s:purple })
 call s:h("typescriptAsyncFuncKeyword", { "fg": s:purple, "gui": "italic" })
-call s:h("typescriptTry", { "fg": s:purple })
 call s:h("typescriptConstraint", { "fg": s:purple })
 call s:h("typescriptTypeParameter", { "fg": s:light_blue })
 call s:h("typescriptStringMethod", { "fg": s:blue })
 call s:h("typescriptES6SetMethod", { "fg": s:blue })
-
-" A few weird highlights
-call s:h("typescriptServiceWorkerMethod", { "fg": s:white })
-call s:h("typescriptFileReaderProp", { "fg": s:white })
-call s:h("typescriptPaymentResponseProp", { "fg": s:white })
-call s:h("typescriptRequestProp", { "fg": s:white })
+call s:h("typescriptGlobal", { "fg": s:dark_yellow })
+call s:h("typescriptObjectStaticMethod", { "fg": s:blue })
+call s:h("typescriptDocTags", { "fg": s:purple })
+call s:h("typescriptDocNotation", { "fg": s:purple })
 
 
 call s:h("styledTypescriptPrefix", { "fg": s:cyan })
@@ -476,10 +479,27 @@ call s:h("cssTextProp", { "fg": s:dark_white })
 call s:h("cssBorderProp", { "fg": s:dark_white })
 call s:h("cssUIProp", { "fg": s:dark_white })
 call s:h("cssFontProp", { "fg": s:dark_white })
+call s:h("cssFlexibleBoxProp", { "fg": s:dark_white })
+call s:h("cssTransitionProp", { "fg": s:dark_white })
+call s:h("cssMediaProp", { "fg": s:dark_white })
+call s:h("cssPageProp", { "fg": s:dark_white })
+call s:h("cssKeyframeProp", { "fg": s:dark_white })
+
 call s:h("cssBraces", { "fg": s:paren_yellow })
 call s:h("cssSelectorOp", { "fg": s:cyan })
 call s:h("cssTagName", { "fg": s:red })
 call s:h("cssPseudoClassId", { "fg": s:dark_orange })
+call s:h("cssFlexibleBoxAttr", { "fg": s:dark_orange })
+call s:h("cssBackgroundAttr", { "fg": s:dark_orange })
+call s:h("cssCommonAttr", { "fg": s:dark_orange })
+call s:h("cssBorderAttr", { "fg": s:dark_orange })
+call s:h("cssTransitionAttr", { "fg": s:dark_orange })
+call s:h("cssPositioningAttr", { "fg": s:dark_orange })
+call s:h("cssBoxAttr", { "fg": s:dark_orange })
+call s:h("cssUIAttr", { "fg": s:dark_orange })
+call s:h("cssTextAttr", { "fg": s:dark_orange })
+call s:h("cssTableAttr", { "fg": s:dark_orange })
+call s:h("cssColor", { "fg": s:dark_orange })
 
 
 " GraphQL
@@ -543,6 +563,18 @@ call s:h("GitGutterDelete", { "fg": s:red })
 " tpope/vim-fugitive
 call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
+
+" neoclide/coc.nvim
+call s:h("CocHighlightText", { "bg": s:highlight })
+call s:h("CocErrorFloat", { "fg": s:dark_red })
+call s:h("CocWarningFloat", { "fg": s:orange })
+call s:h("CocInfoFloat", { "fg": s:blue })
+call s:h("CocErrorSign", { "fg": s:dark_red })
+call s:h("CocWarningSign", { "fg": s:orange })
+call s:h("CocInfoSign", { "fg": s:blue })
+call s:h("CocErrorHighlight", { "fg": s:dark_red, "gui": "underline" })
+call s:h("CocWarningHighlight", { "fg": s:orange, "gui": "underline" })
+call s:h("CocInfoHighlight", { "fg": s:blue, "gui": "underline" })
 
 " }}}
 

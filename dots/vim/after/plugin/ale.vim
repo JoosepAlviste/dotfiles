@@ -2,10 +2,11 @@
 " Configuration
 "
 
+" \   'typescript': ['tsserver', 'tslint'],
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'vue': ['eslint']
+\   'typescript': [],
+\   'vue': ['eslint'],
 \}
 
 let g:ale_fixers = {
@@ -13,7 +14,7 @@ let g:ale_fixers = {
 \    'typescript': ['prettier', 'tslint'],
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
-\    'html': ['prettier']
+\    'html': ['prettier'],
 \}
 
 let g:ale_fix_on_save = 1
