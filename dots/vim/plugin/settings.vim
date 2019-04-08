@@ -122,6 +122,9 @@ if has("patch-7.4.314")
 endif
 
 set cursorline  " Highlight current line
+" Disable cursorline in diff mode
+autocmd OptionSet diff let &cursorline=!v:option_new
+
 set colorcolumn=81,121  " Highlight columns
 set showmatch   " Highlight matching parenthesis, etc.
 
