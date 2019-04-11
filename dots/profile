@@ -1,5 +1,14 @@
 #!/bin/sh
 
+is_linux()
+{
+    if [ "$(uname)" = "Linux" ]; then
+        true
+    else
+        false
+    fi
+}
+
 # Update PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.composer/vendor/bin:$PATH
 export PATH=/usr/local/opt/python@2/bin:$PATH
