@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+MODI_NAME="emoji"
+
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+
+function run_command_in_background {
+    COMMAND=$1
+    new_source=$(mktemp -p /tmp rofi-$MODI_NAME-XXXX)
+    # Ensure it's executable
+    chmod +x "$new_source"
+    # Create the runner
+    cat <<EOF >$new_source
+#!/bin/bash
+
+$COMMAND
+rm -rf "$new_source"
+EOF
+    # Spawn it in the background
+    coproc "$new_source" >/dev/null
+}
+
+
+function print_options {
+    echo "$(grep -v "#" ~/dotfiles/emoji)"
+}
+
+
+function copy_emoji {
+    choice=$(echo "$1" | sed "s/ .*//")
+
+    run_command_in_background "echo \"$choice\" | tr -d '\n' | xclip -selection clipboard"
+    run_command_in_background "pgrep -x dunst >/dev/null && notify-send \"'$choice' copied to clipboard.\""
+
+    # s=$(echo "$c" | sed "s/.*; //" | awk '{print $1}')
+    # echo "$s" | tr -d '\n' | xclip
+    # pgrep -x dunst >/dev/null && notify-send "'$s' copied to primary."
+}
+
+
+if [[ ! -z $@ ]]; then
+    copy_emoji "$1"
+else
+    print_options
+fi
+

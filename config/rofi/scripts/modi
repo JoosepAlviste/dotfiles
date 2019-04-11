@@ -1,0 +1,98 @@
+#!/bin/bash
+
+
+MODI_NAME="modi"
+
+
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+
+# Parse the current config for pid
+eval $(
+    rofi -dump-config \
+        | awk '
+            /\spid:/ {
+                gsub(/\/?\*\/?|;|"/, "");
+                print "ROFI_PID="$2;
+                pid = 1;
+                next;
+            }
+            location && pid {
+                exit;
+            }'
+)
+
+
+CONFIG_FILE="$XDG_USER_CONFIG_DIR/rofi/config.rasi"
+
+if [[ ! -f "$CONFIG_FILE" ]]; then
+    rofi -dump-config > "$CONFIG_FILE"
+fi
+
+function print_options {
+    # Print all the options separated by new lines and capitalized
+    DISCOVERED_MODI=$(
+        rofi --help \
+            | awk '
+                BEGIN {
+                    modi = "";
+                    grabbing = 0;
+                }
+                /Detected modi/ {
+                    grabbing = 1;
+                    next;
+                }
+                !grabbing {
+                    next;
+                }
+                grabbing && !NF {
+                    exit;
+                }
+                grabbing {
+                    gsub("+","");
+                    modi = $2","modi;
+                }
+                END {
+                    print gensub(",$","","g",modi);
+                }'
+    )
+
+    echo "$DISCOVERED_MODI" | tr , '\n' | sed 's/./\u&/'
+}
+
+
+function create_and_spawn_runner {
+    SELECTED_MODI=$1
+
+    # Snag the current command
+    ROFI_COMMAND="$(ps --no-headers -o command -p $(cat "$ROFI_PID") | sed 's/ -show [a-z-]\+//') -show $SELECTED_MODI"
+    # Create a temp file
+    new_source=$(mktemp -p /tmp rofi-$MODI_NAME-XXXX)
+    # Ensure it's executable
+    chmod +x "$new_source"
+    # Create the runner
+    cat <<EOF >$new_source
+#!/bin/bash
+
+$ROFI_COMMAND
+rm -rf "$new_source"
+EOF
+    # Spawn it in the background
+    coproc "$new_source" >/dev/null
+}
+
+
+if [[ ! -z $@ ]]; then
+    DESIRED_MODI=$(echo "${1}" | awk '{print tolower($0)}')
+
+    create_and_spawn_runner $DESIRED_MODI
+else
+    print_options
+fi
+

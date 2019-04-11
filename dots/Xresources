@@ -2,7 +2,8 @@
 !  Color settings
 !------------------
 
-#include ".Xresources.d/onedark.theme"
+! #include ".Xresources.d/onedark.theme"
+#include ".Xresources.d/nightowl.theme"
 #include ".Xresources.d/wal.theme"
 
 
@@ -32,11 +33,11 @@ URxvt.url-launcher:             google-chrome-stable
 !----------------
 
 Xft.dpi:                        96
-Xft.antialias:                  1
-Xft.autohint:                   1
-Xft.hinting:                    1
+Xft.antialias:                  true
+Xft.autohint:                   false
+Xft.hinting:                    true
 Xft.hintstyle:                  hintslight
-Xft.lcdfilter:                  lcdlight
+Xft.lcdfilter:                  lcddefault
 Xft.rgba:                       rgb
 
 

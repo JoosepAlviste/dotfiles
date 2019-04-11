@@ -1,22 +1,22 @@
 [colors]
 
-background = ${xrdb:background}
-foreground = ${xrdb:walcolor3}
+background = #bb000a11
+foreground = ${xrdb:color7}
 
-focused = ${xrdb:walcolor7}
-focused-bg = ${xrdb:color18}
+secondary-foreground = ${xrdb:color18}
 
+primary = ${xrdb:color19}
 danger = ${xrdb:color1}
 
 
 [bar/base]
 
-pin-workspaces = true
-
-font-0 = "OverpassMono Nerd Font Mono:pixelsize=10"
-font-1 = "Font Awesome 5 Free:pixelsize=10"
-font-2 = "Font Awesome 5 Brands:pixelsize=10"
-font-3 = "NotoEmoji:size=7"
+; Main font
+font-0 = "Hack:pixelsize=12;4"
+; Icons font
+font-1 = "mono:pixelsize=18;3"
+; Emojis fallback font
+font-2 = "EmojiOne:scale=9;2"
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -24,24 +24,24 @@ scroll-down = i3wm-wsprev
 fixed-center = true
 
 width = 100%
-height = 35
+height = 40
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 radius = 0
 
-padding-left = 4
-padding-right = 4
-module-margin = 2
+padding-left = 1
+padding-right = 1
+module-margin = 1
 
-underline-size = 2
-
-modules-left = i3 
-modules-center = title
-modules-right = keyboard pulseaudio date
+modules-left = i3
+; modules-center = title
+modules-right = keyboard date powermenu
 
 tray-position = right
+tray-background = ${colors.background}
+tray-padding = 5
 
 
 [bar/bar1]
@@ -60,39 +60,42 @@ type = internal/i3
 pin-workspaces = true
 strip-wsnumbers = true
 
-format-underline = ${colors.background}
-
 label-focused = %name%
-label-focused-foreground = ${colors.focused}
-label-focused-background = ${colors.focused-bg}
-label-focused-underline = ${colors.focused}
-label-focused-padding = 3
+label-focused-foreground = ${colors.primary}
+label-focused-background = ${colors.background}
+label-focused-padding = 1
 
 label-unfocused = %name%
-label-unfocused-padding = 3
+label-unfocused-foreground = ${colors.secondary-foreground}
+label-unfocused-padding = 1
 
 label-visible = %name%
-label-visible-underline = ${colors.foreground}
-label-visible-padding = 3
+label-visible-foreground = ${colors.secondary-foreground}
+label-visible-padding = 1
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.danger}
-label-urgent-underline = ${colors.danger}
-label-urgent-padding = 3
+label-urgent-padding = 1
 
 
 [module/date]
 type = internal/date
 interval = 1.0
-date = %A, %d %B %H:%M
+
+# Only show the time by default
+date = %H:%M
+# When clicked, show the date
+date-alt = %A, %d.%m.%Y
+
+label-foreground = ${colors.foreground}
 
 
 [module/title]
 type = internal/xwindow
 format-foreground = ${colors.foreground}
 format-padding = 1
-label-maxlen = 50
+label-maxlen = 70
 
 
 [module/keyboard]
@@ -100,6 +103,8 @@ type = internal/xkeyboard
 
 blacklist-0 = num lock
 blacklist-1 = scroll lock
+
+label-layout-foreground = ${colors.secondary-foreground}
 
 
 [module/pulseaudio]
@@ -116,6 +121,37 @@ label-muted = muted
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
+
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+label-open = ⏼
+label-open-foreground = ${colors.secondary-foreground}
+label-close = 
+label-close-foreground = ${colors.secondary-foreground}
+label-separator = ┃
+label-separator-foreground = ${colors.secondary-foreground}
+label-open-padding = 1
+
+menu-padding = 1
+menu-0-padding = 1
+
+menu-0-0 = ﰇ
+menu-0-0-exec = menu-open-1
+menu-0-1 = ⏻
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = ﰇ
+menu-1-0-exec = reboot
+menu-1-1 =  ﰇ
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = ⏻
+menu-2-0-exec = poweroff
+menu-2-1 =  ⏻
+menu-2-1-exec = menu-open-0
 
 
 ; vim:ft=dosini

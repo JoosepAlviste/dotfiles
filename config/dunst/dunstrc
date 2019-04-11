@@ -1,5 +1,5 @@
 [global]
-    font = Overpass 8
+    font = Overpass 10
     markup = yes
     format = "%s\n%b"
     sort = yes

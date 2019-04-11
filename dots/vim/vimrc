@@ -127,6 +127,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " }
+" # Vim UI {
 
 " }
 " # General {

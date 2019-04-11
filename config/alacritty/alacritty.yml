@@ -18,23 +18,23 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 0
-    lines: 0
+    columns: 80
+    lines: 24
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 15
+    y: 10
 
   # Window decorations
   #
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  decorations: none
+  decorations: full
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -103,26 +103,26 @@ font:
     #style: Italic
 
   # Point size
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 16
+    y: 12
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 8
+    y: 6
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
   # On X11 it is possible to change the DPI for each instance of alacritty by using
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
-  scale_with_dpi: true
+  # scale_with_dpi: false
 
 # Display the time it takes to redraw each frame.
 render_timer: false

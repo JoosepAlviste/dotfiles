@@ -102,8 +102,12 @@ installed.
 ```bash
 pacman -S \
     i3-gaps \
+    rofi \
     htop \
     evince \
+    xdg-utils \
+    maim \
+    surfraw \
     ranger \
     networkmanager \
     network-manager-applet \
@@ -123,15 +127,21 @@ pacman -S \
     neovim \
     flatpak \
     arc-gtk-theme \
+    mpv \
+    hub \
     dconf-editor (??)
 ```
 
 ```bash
 yay -S \
-    numix-circle-icon-theme \
+    flat-remix-git \
+    betterlockscreen \
+    pyenv-virtualenv \
+    system-san-francisco-font-git \
     rofi \
     polybar \
-    google-chrome
+    google-chrome \
+    rofi-calc
 ```
 
 ```bash
@@ -161,3 +171,26 @@ pip install \
     i3-py
 ```
 
+## Utils
+
+Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
+`echo N | sudo tee /sys/module/overlay/parameters/metacopy`
+
+`i3` workspace switching screws up PyCharm focus: 
+`https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
+
+## Default Google Chrome
+
+Edit `~/.config/mimeapps.list` and/or 
+`~/.local/share/applications/mimeapps.list` and make sure that it looks 
+something like this:
+
+```
+[Default Applications]
+x-scheme-handler/mailto=google-chrome.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+```

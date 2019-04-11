@@ -1,0 +1,79 @@
+#!/usr/bin/bash
+
+
+MODI_NAME="power"
+
+
+# Ensure the process count isn't running out of control
+if [[ 10 -lt $(pgrep -c -f "$0") ]]; then
+    pkill -f rofi
+    pkill -f "$0"
+    exit 1
+fi
+
+
+# Parse the current config for pid
+eval $(
+    rofi -dump-config \
+        | awk '
+            /\spid:/ {
+                gsub(/\/?\*\/?|;|"/, "");
+                print "ROFI_PID="$2;
+                pid = 1;
+                next;
+            }
+            location && pid {
+                exit;
+            }'
+)
+
+
+# Array of options
+OPTIONS=(
+    "Lock Screen\0icon\x1flock-screen\n"
+    "Logout\0icon\x1fsystem-log-out\n"
+    "Restart\0icon\x1fsystem-reboot\n"
+    "Shut Down\0icon\x1fsystem-shut-down\n"
+)
+
+function print_options {
+    # Print all the options
+    echo -e "${OPTIONS[@]}" | sed 's/^\s//'
+}
+
+
+
+# If any arguments were passed, then an option has been selected
+if [[ ! -z $@ ]]; then
+    DESIRED_OPTION="${1}"
+
+    if [ "$DESIRED_OPTION" = "Logout" ]; then
+        i3-msg exit
+    fi
+    if [ "$DESIRED_OPTION" = "Restart" ]; then
+        reboot
+    fi
+    if [ "$DESIRED_OPTION" = "Shut Down" ]; then
+        poweroff
+    fi
+    if [ "$DESIRED_OPTION" = "Lock Screen" ]; then
+        COMMAND="betterlockscreen -l dim"
+
+        new_source=$(mktemp -p /tmp rofi-$MODI_NAME-XXXX)
+        # Ensure it's executable
+        chmod +x "$new_source"
+        # Create the runner
+        cat <<EOF >$new_source
+#!/bin/bash
+
+$COMMAND
+rm -rf "$new_source"
+EOF
+        # Spawn it in the background
+        coproc "$new_source" >/dev/null
+    fi
+else
+    # Print the output so that rofi can show it
+    print_options
+fi
+
