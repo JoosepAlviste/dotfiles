@@ -33,7 +33,11 @@ export LANG=en_US.UTF-8
 
 # Default programs
 export BROWSER=google-chrome-stable
-export TERMINAL="st"
+if is_linux; then
+    export TERMINAL="st"
+else
+    export TERMINAL="iterm"
+fi
 
 # Use nvim as editor
 export VISUAL=nvim

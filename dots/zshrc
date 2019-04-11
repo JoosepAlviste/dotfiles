@@ -1,22 +1,7 @@
 # # Helpers {{{
 
-is_mac()
-{
-    if [ "$(uname)" = "Darwin" ]; then 
-        true
-    else
-        false
-    fi
-}
-
-is_linux()
-{
-    if [ "$(uname)" = "Linux" ]; then
-        true
-    else
-        false
-    fi
-}
+is_mac() { [ "$(uname)" = "Darwin" ] }
+is_linux() { [ "$(uname)" = "Linux" ] }
 
 # }}}
 # # PATH {{{
@@ -86,9 +71,10 @@ if is_linux; then
 fi
 
 # TMUX
-attach() { 
+attach() 
+{
     if [ $# -eq 0 ]; then
-        # If name is passed in, reattach to the last one
+        # If name was not passed in, reattach to the last one
         tmux attach
     else
         # If a name was passed in, create a new session or attach to an existing
@@ -119,7 +105,7 @@ if type hub > /dev/null; then
     alias git='hub'
 fi
 
-function purge()
+purge()
 {
     # Delete pacman packages that are old
     echo "This will delete the following packages:\n$(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/* \1\n/g')"
