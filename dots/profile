@@ -1,13 +1,6 @@
 #!/bin/sh
 
-is_linux()
-{
-    if [ "$(uname)" = "Linux" ]; then
-        true
-    else
-        false
-    fi
-}
+is_linux() { [ "$(uname)" = "Linux" ] }
 
 # Update PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.composer/vendor/bin:$PATH
