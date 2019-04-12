@@ -1,4 +1,4 @@
-if has('syntax')
-    setlocal spell
-endif
-
+" No line numbers
+setlocal norelativenumber
+setlocal nonumber
+setlocal signcolumn=no

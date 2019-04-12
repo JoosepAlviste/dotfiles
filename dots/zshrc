@@ -1,3 +1,9 @@
+# # Helpers {{{
+
+is_mac() { [ "$(uname)" = "Darwin" ] }
+is_linux() { [ "$(uname)" = "Linux" ] }
+
+# }}}
 # # PATH {{{
 
 source ~/.profile
@@ -29,8 +35,6 @@ export ZSH=~/.oh-my-zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  composer
-  laravel5
   zsh-autosuggestions
   zsh-syntax-highlighting
   fzf-zsh
@@ -62,10 +66,22 @@ alias v='vim'
 alias sv='sudo vim'
 alias r='ranger'
 
-alias pbcopy='xclip -sel clip'
+if is_linux; then
+    alias pbcopy='xclip -sel clip'
+fi
 
 # TMUX
-attach() { tmux attach -t $1 || tmux new -s $1 ;}
+attach() 
+{
+    if [ $# -eq 0 ]; then
+        # If name was not passed in, reattach to the last one
+        tmux attach
+    else
+        # If a name was passed in, create a new session or attach to an existing
+        # one
+        tmux attach -t $1 || tmux new -s $1;
+    fi
+}
 alias takeover="tmux detach -a"
 
 # Useful alternatives/aliases
@@ -88,6 +104,18 @@ fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
+
+purge()
+{
+    # Delete pacman packages that are old
+    echo "This will delete the following packages:\n$(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/* \1\n/g')"
+    read -q "REPLY?Are you sure you want to do this? [Y/n]"
+    if [ $? -eq 0 ]; then
+        pacman -Rsu $(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/\1/g')
+    else
+        echo "OK! Won't delete the packages!"
+    fi
+}
 
 # }}}
 # ## Transmission {{{
@@ -125,8 +153,12 @@ export SPACESHIP_KUBECONTEXT_SHOW=false
 
 # ## Virtualenvwrapper {{{
 
-VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+if is_mac; then
+    VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
+    source /usr/local/bin/virtualenvwrapper_lazy.sh
+elif is_linux; then
+    source /usr/bin/virtualenvwrapper_lazy.sh
+fi
 
 # }}}
 
@@ -192,3 +224,6 @@ set modelines=3
 # }}}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+

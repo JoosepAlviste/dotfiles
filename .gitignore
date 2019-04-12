@@ -1,4 +1,7 @@
 tmux*.log
 dots/vim/plugged/
+dots/vim.bak/plugged/
+dots/vim/autoload/plug.vim.old
+dots/emacs.d/elpa/
 .netrwhist
 

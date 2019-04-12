@@ -1,13 +1,12 @@
 # #---Basic Definitions--# #
 set $mod Mod4
+set $alt Mod1
 
 floating_modifier $mod
 
 # Gaps
-gaps inner 0
-gaps outer 0
-# gaps inner 20
-# gaps outer 10
+gaps inner 16
+gaps outer 16
 
 # 2 pixel borders, do not show title bar
 new_window pixel 2
@@ -33,7 +32,8 @@ exec_always --no-startup-id xrandr --output HDMI-3 --mode 1920x1080 --pos 1920x0
 exec --no-startup-id transmission-daemon
 
 # Run Spotify automatically
-exec spotify
+exec --no-startup-id spotify
+exec --no-startup-id flatpak run com.slack.Slack
 
 
 
@@ -58,21 +58,21 @@ set_from_resource $white       color15 #000000
 set_from_resource $darkergrey  color18 #000000
 set_from_resource $darkgrey    color19 #000000
 set_from_resource $lightergrey color18 #000000
+set_from_resource $cursorLine  color19 #000000
 
 set_from_resource $background  background #000000
 set_from_resource $foreground  foreground #000000
 
-set_from_resource $lightpink walcolor8
 
 # Window colors
-# class                 border  backgr. text    indicator    child_border
-client.focused          #ffffff #ffffff #ffffff $lightpink   $lightpink
-client.focused_inactive #ffffff #ffffff #ffffff $background  $background
-client.unfocused        #ffffff #ffffff #ffffff $background  $background
-client.urgent           #ffffff #ffffff #ffffff #ffffff      $red
-client.placeholder      #ffffff #ffffff #ffffff #ffffff      #ffffff
+# class                  border       backgr.      text         indicator    child_border
+client.focused           $background  $darkergrey  $white       $cursorLine  $cursorLine
+client.focused_inactive  $background  $background  $darkergrey  $background  $background
+client.unfocused         $background  $background  $darkergrey  $background  $background
+client.urgent            $background  $background  $darkergrey  #ffffff      $red
+client.placeholder       $background  $background  $darkergrey  #ffffff      #ffffff
 
-client.background       #ffffff
+client.background        #ffffff
 
 # Status bar
 bar {
@@ -84,16 +84,16 @@ bar {
 # #---Workspaces---# #
 
 # Workspaces
-set $workspace1 "1: "
+set $workspace1 "1: "
 set $workspace2 "2: "
-set $workspace3 "3: "
+set $workspace3 "3: "
 set $workspace4 "4: "
 set $workspace5 "5: "
-set $workspace6 "6: "
+set $workspace6 "6: "
 set $workspace7 "7: "
-set $workspace8 "8: "
-set $workspace9 "9: "
-set $workspace10 "10: "
+set $workspace8 "8: "
+set $workspace9 "9: "
+set $workspace10 "10: "
 
 # Switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -123,22 +123,22 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 assign [class="Spotify"] $workspace2
 assign [class="GitKraken"] $workspace6
 assign [class="jetbrains-pycharm"] $workspace7
-assign [class="Slack"] $workspace9
-assign [class="Skype"] $workspace9
-assign [class="discord"] $workspace9
-assign [class="Google-chrome"] $workspace10
-assign [class="Firefox"] $workspace10
+assign [class="Slack"] $workspace8
+assign [class="Skype"] $workspace8
+assign [class="discord"] $workspace8
+assign [class="Google-chrome"] $workspace9
+assign [class="Firefox"] $workspace9
 
 # Spotify does not want to move automatically!
 for_window [class="Spotify"] move to workspace $workspace2
 
 # Open some workspaces on the second monitor automatically
 workspace $workspace2 output HDMI-3
-workspace $workspace9 output HDMI-3
+workspace $workspace8 output HDMI-3
 
 # Workspace specific gaps
-workspace $workspace7 gaps inner 0
-workspace $workspace7 gaps outer 0
+workspace $workspace1 gaps inner 32
+workspace $workspace1 gaps outer 32
 
 
 
@@ -149,25 +149,25 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 820 500
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
-exec --no-startup-id $term --title=dropdown --name=dropdown --class=dropdown
+exec --no-startup-id $term -t dropdown -n dropdown -c dropdown
 # Python
 for_window [instance="python"] floating enable
 for_window [instance="python"] resize set 625 300
 for_window [instance="python"] move scratchpad
 for_window [instance="python"] border pixel 5
-exec --no-startup-id $term --title=python --name=python --class=python -e "bpython -q"
+exec --no-startup-id $term -t python -n python -c python -e "bpython -q"
 
 
 
 # #---Basic Bindings---# #
 
-# start a terminal
+# Start a terminal
 bindsym $mod+Return exec $term
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space exec --no-startup-id rofi -show combi -show-icons
+
+# Middle button over a titlebar kills the window
+bindsym --release button2 kill
 
 
 
@@ -176,11 +176,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+q          kill
 bindsym $mod+Shift+q    exec --no-startup-id rofi-power
 
+bindsym $mod+w          layout toggle splith tabbed
+
 bindsym $mod+e          layout toggle split
 bindsym $mod+Shift+e    exec --no-startup-id rofi-power
 
 bindsym $mod+r          exec $term -e ranger
 bindsym $mod+Shift+r    restart
+
+# change focus between tiling / floating windows
+bindsym $mod+t          focus mode_toggle
+# toggle tiling / floating
+bindsym $mod+Shift+t    floating toggle
 
 bindsym $mod+Shift+y    exec --no-startup-id i3resize left
 
@@ -194,12 +201,12 @@ bindsym $mod+Shift+o    exec --no-startup-id i3resize right
 bindsym $mod+a          [instance="python"] scratchpad show; [instance="python"] move position center
 
 # Change gap sizes
-bindsym $mod+s          gaps inner current plus 5
-bindsym $mod+Shift+s    gaps inner current minus 5
-
-bindsym $mod+d          exec rofi -show drun -show-icons
+bindsym $mod+s          gaps inner current plus 8
+bindsym $mod+Shift+s    gaps inner current minus 8
 
 bindsym $mod+f          fullscreen toggle
+
+bindsym $mod+g          exec --no-startup-id gitkraken
 
 bindsym $mod+h          focus left
 bindsym $mod+Shift+h    move left
@@ -213,20 +220,25 @@ bindsym $mod+Shift+k    move up
 bindsym $mod+l          focus right
 bindsym $mod+Shift+l    move right
 
-bindsym $mod+z          gaps outer current plus 5
-bindsym $mod+Shift+z    gaps outer current minus 5
+bindsym $mod+z          gaps outer current plus 8
+bindsym $mod+Shift+z    gaps outer current minus 8
 
-# Move workspace to other monitor
 bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
-bindsym $mod+Shift+x    exec --no-startup-id rofi-power
+bindsym $mod+Shift+x    exec --no-startup-id rofi -show power -show-icons
 
+bindsym $mod+c          exec --no-startup-id pycharm
 bindsym $mod+Shift+c    reload
 
 bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
+bindsym $mod+b          exec --no-startup-id $BROWSER
+
+# Move workspace to other monitor
 bindsym $mod+m          move workspace to output right
 bindsym $mod+Shift+m    exec --no-startup-id i3-swap
+
+
 
 # #---Media keys---# #
 

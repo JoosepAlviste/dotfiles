@@ -1,5 +1,12 @@
 source ~/.vim/vimrc
 
+source ~/.vim/plugin/mappings/insert.vim
+source ~/.vim/plugin/mappings/normal.vim
+source ~/.vim/plugin/mappings/visual.vim
+source ~/.vim/plugin/mappings/leader.vim
+
+source ~/.vim/plugin/settings.vim
+
 set surround
 set multiple-cursors
 

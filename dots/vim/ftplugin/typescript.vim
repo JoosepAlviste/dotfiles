@@ -1,18 +1,22 @@
 " Appropriate tab size
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
 
-" Set node env to develop, for eslint
-let $NODE_ENV="development"
+" Format with prettier by default
+setlocal formatprg=prettier\ --parser\ typescript
 
-set foldmethod=syntax
+"
+" Mappings
+"
 
-" Minimal LSP configuration for TypeScript
-if executable('javascript-typescript-stdio')
-    call LanguageClient_registerServerCommands({'typescript': ['javascript-typescript-stdio']})
-else
-    echo "javascript-typescript-stdio not installed!\n"
-    :cq
-endif
+" Go to definition
+nnoremap <silent> <c-]> :TSDef<cr>
 
+" When pressing Enter, make new line and indent as required
+" inoremap <expr> <CR> joosep#expand#expand()
+
+nnoremap <silent> <leader>i :TSImport<cr>
+
+" Disable Deoplete since we have coc.nvim
+call deoplete#custom#buffer_option('auto_complete', v:false)

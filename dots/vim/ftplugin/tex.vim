@@ -13,8 +13,3 @@ set textwidth=80
 " q - allow formatting of comments
 set formatoptions=aw2tq
 
-set updatetime=1000
-
-" Autocomplete figure:...
-set iskeyword+=:
-

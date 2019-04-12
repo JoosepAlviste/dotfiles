@@ -1,0 +1,18 @@
+#!/bin/bash
+
+### BREW + FZF
+# mnemonic [B]rew [D]elete [P]ackage (uninstall)
+
+function bdp()
+{
+  local uninst=$(brew leaves | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[brew:clean]'")
+
+  if [[ $uninst ]]; then
+    for prog in $(echo $uninst)
+    do brew uninstall $prog
+    done
+  fi
+}
+
+bdp
+
