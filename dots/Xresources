@@ -7,27 +7,6 @@
 #include ".Xresources.d/wal.theme"
 
 
-!------------------
-!  URxvt Settings
-!------------------
-
-URxvt*termName:                 rxvt-256color
-URxvt.depth:                    32
-URxvt*lineSpace:                1
-URxvt.letterSpace:              0
-URxvt*loginShell:               true
-URxvt.perl-ext:                 default,matcher
-URxvt.matcher.button:           1
-URxvt.internalBorder:           25
-URxvt.scrollBar:                false
-
-! Disable ctrl-shift
-URxvt.iso14755:                 false
-URxvt.iso14755_52:              false
-
-URxvt.url-launcher:             google-chrome-stable
-
-
 !----------------
 !  Xft Settings
 !----------------
@@ -39,14 +18,3 @@ Xft.hinting:                    true
 Xft.hintstyle:                  hintslight
 Xft.lcdfilter:                  lcddefault
 Xft.rgba:                       rgb
-
-
-!-----------------
-!  Font Settings
-!-----------------
-
-URxvt.font: xft:Hack Nerd Font Mono:pixelsize=14, \
-            xft:Font Awesome 5 Brands:pixelsize=14, \
-            xft:DejaVu Sans:pixelsize=14, \
-            xft:Noto Emoji
-
