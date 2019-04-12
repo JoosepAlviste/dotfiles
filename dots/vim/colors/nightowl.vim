@@ -551,6 +551,15 @@ call s:h("xmlEqual", { "fg": s:orange })
 call s:h("htmlBold", { "gui": "bold" })
 
 
+" ZSH
+call s:h("zshFunction", { "fg": s:blue })
+call s:h("zshParenthesis", { "fg": s:paren_yellow })
+call s:h("zshBrackets", { "fg": s:paren_yellow })
+call s:h("zshSubstDelim", { "fg": s:dark_red })
+call s:h("zshSubst", { "fg": s:dark_orange })
+call s:h("zshCommands", { "fg": s:purple })
+
+
 " }}}
 
 " Plugin Highlighting {{{

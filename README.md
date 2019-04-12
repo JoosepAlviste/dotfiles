@@ -105,7 +105,6 @@ pacman -S \
     rofi \
     htop \
     evince \
-    alacritty \
     xdg-utils \
     maim \
     surfraw \
