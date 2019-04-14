@@ -1,4 +1,97 @@
-emulate sh
-. ~/.profile
-emulate zsh
+#
+# Executes commands at login pre-zshrc.
+#
 
+#
+# Utils
+#
+
+is_linux() { [ "$(uname)" = "Linux" ] }
+is_mac() { [ "$(uname)" = "Darwin" ] }
+
+#
+# Applications
+#
+
+if [[ is_mac ]]; then
+    export BROWSER='open'
+else
+    export BROWSER='google-chrome-stable'
+fi
+
+if [[ is_linux ]]; then
+    export TERMINAL="st"
+else
+    export TERMINAL="iterm"
+fi
+
+#
+# Editors
+#
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+export LC_ALL='en_US.UTF-8'
+
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+# Set the list of directories that cd searches.
+# cdpath=(
+#   $cdpath
+# )
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  /usr/local/opt/python@2/bin
+  /usr/local/opt/gettext/bin
+  /usr/local/opt/ruby/bin
+  $HOME/.composer/vendor/bin
+  $HOME/.local/bin
+  $HOME/.config/scripts
+  "$(yarn global bin)"
+  "$(ruby -e 'print Gem.user_dir')/bin"
+  $path
+)
+
+#
+# Less
+#
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+#
+# Package configurations
+#
+
+# Virtualenvwrapper config
+export WORKON_HOME=~/.virtualenvs
+# Current user so that it can be used by docker-compose
+export CURRENT_UID=$(id -u):$(id -g)
+export NODE_ENV=development
+
+# Use a better command for searching with fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'

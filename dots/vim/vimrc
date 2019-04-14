@@ -157,6 +157,10 @@ colorscheme nightowl
 
 " Neovim specific settings
 if has('nvim')
+  " Configure Python manually since we're using Pyenv
+  let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
+  let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
+
   if (has("termguicolors"))
     set termguicolors
   endif

@@ -1,43 +1,31 @@
 # My dotfiles
 
-Since this project uses git submodules for some things (tmux plugins), it needs
-to be cloned with submodules.
-
-```
-git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
-```
-
 ## Requirements
 
 * Zsh
-* Spaceship prompt or pure prompt
+    - [Prezto](https://github.com/sorin-ionescu/prezto/)
 * [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
 ### Utilities
 
 If these are installed, will be aliased.
 
-* [bat](https://github.com/sharkdp/bat) - `cat` replacement
-* [prettyping](https://github.com/denilsonsa/prettyping) - `ping` replacement
-* [tldr](http://tldr.sh/) - simpler `man` pages, aliased to `help`
-* [hub](https://github.com/github/hub) - `git` replacement, integrates with github
+* [`bat`](https://github.com/sharkdp/bat) - `cat` replacement
+* [`prettyping`](https://github.com/denilsonsa/prettyping) - `ping` replacement
+* [`tldr`](http://tldr.sh/) - simpler `man` pages, aliased to `help`
+* [`hub`](https://github.com/github/hub) - `git` replacement, integrates with 
+  github. (Can run `git clone dotfiles` to clone your own dotfiles)
 
 Just useful utilities:
 
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
-### Autocomplete:
+### Vim
 
-* Vim compiled with python 3
-* Globally installed `neovim` package with pip3
-    - `pip3 install neovim`
-* [vim-hug-neovim-rpc](https://github.com/roxma/vim-hug-neovim-rpc)
-* [deoplete.nvim](https://github.com/Shougo/deoplete.nvim)
-* Language servers for autocompletion
-
-### Ctags:
-
+* Neovim compiled with python 3
+* Pyenv virtual environment called `neovim3` and `neovim2`
+    - With `pynvim` package installed
 * [Universal ctags](https://github.com/universal-ctags/ctags) for better ctags 
 (React files, etc.). Can just be installed with brew.
 
@@ -47,27 +35,25 @@ Fuzzy finder.
 
 * Needs fzf installed globally (from brew)
     - If it is not installed, it will be installed as a vim plugin though
-* Needs `ag` for smarter file searching
+* Needs `rg` (`ripgrep`) for smarter file searching
 
 ### i3
 
-* i3
-* platerctl - media controls
-* feh - wallpaper
-* compton - opacity
-* rofi - better dmenu
-* ~i3blocks - status bar info~
-* xkblayout-state
-    * Probably needs `apt install libx11-dev`
-* polybar
-* maim + xclip - screenshots with prt screen and copy to clipboard
-* playerctl - control audio
-* betterlockscreen - nice lock screen for i3lock
+* `i3-gaps`
+* `platerctl` - media controls
+* `feh` - wallpaper
+* `compton` - opacity
+* `rofi` - better dmenu
+* `xkblayout`-state
+    - Probably needs `apt install libx11-dev`
+* `polybar`
+* `maim` + `xclip` - screenshots with prt screen and copy to clipboard
+* `playerctl` - control audio
+* `betterlockscreen` - nice lock screen for i3lock
 
 
 ### Other
 
-* lightdm-webkit2-greeter + Litarvan theme - login screen
 * arc theme
 * Flat remix icon theme
 
@@ -75,15 +61,19 @@ Fuzzy finder.
 ## Installation
 
 ```
-git clone git@github.com:JoosepAlviste/dotfiles.git .dotfiles
+git clone git@github.com:JoosepAlviste/dotfiles.git dotfiles
 
 cd .dotfiles
 chmod +x makesymlinks.sh
 ./makesymlinks.sh
 ```
 
-The next time you start `vim`, it will automatically install Plug as well as 
-trigger PlugInstall in order to install plugins.
+This will symlink all of the files and folders inside `dots/` into your home 
+folder prefixed by `.` and everything from `config/` to your `~/.config/` 
+folder.
+
+The next time you start `vim`, it will automatically install Plug. You might 
+need to manually run `:PlugInstall` in order to install plugins.
 
 ## Update
 
@@ -154,7 +144,8 @@ gem install colorls
 ```bash
 brew install \
     pyenv \
-    pyenv-virtualenv
+    pyenv-virtualenv \
+    fzf
 ```
 
 
@@ -171,7 +162,7 @@ pip install \
     i3-py
 ```
 
-## Utils
+## FAQ (my own reference)
 
 Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
 `echo N | sudo tee /sys/module/overlay/parameters/metacopy`
@@ -179,7 +170,7 @@ Docker fails with error creating new backup file '/var/lib/dpkg/status-old?
 `i3` workspace switching screws up PyCharm focus: 
 `https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
 
-## Default Google Chrome
+## Default Google Chrome with `i3`
 
 Edit `~/.config/mimeapps.list` and/or 
 `~/.local/share/applications/mimeapps.list` and make sure that it looks 

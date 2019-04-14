@@ -1,90 +1,43 @@
-# # Helpers {{{
+#
+# Executes commands at the start of an interactive session.
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Helpers {{{
 
 is_mac() { [ "$(uname)" = "Darwin" ] }
 is_linux() { [ "$(uname)" = "Linux" ] }
 
 # }}}
-# # PATH {{{
 
-source ~/.profile
+# Aliases {{{
 
-fpath=($fpath "$HOME/.zfunctions")
-
-# }}}
-# ## Env variables {{{
-
-# Java
-export PATH="$HOME/.jenv/bin:$PATH"
-# eval "$(jenv init -)"
-# export JAVA_HOME="$(jenv javahome)"
-
-# Oh my zsh
-export ZSH=~/.oh-my-zsh
-
-# }}}
-# # Oh my zsh {{{
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  fzf-zsh
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# }}}
-# # Aliases {{{
-
-alias cd..="cd .."
-alias p="vendor/bin/phpunit"
-alias pf="p --filter"
-alias art="php artisan"
+# Base
+alias cd..='cd ..'
 alias sudo='sudo -E'  # Use current user configs
 
+# Programs
 alias vim='nvim'
-alias ls='colorls --sort-dirs'
-alias l='colorls -lA --sort-dirs'
-
-# Docker compose
-alias dc='docker-compose'
+alias v='vim'
+alias r='ranger'
 alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
+# Some times tmux does weird things, this can help vs that
+alias takeover='tmux detach -a'
 
-alias p='sudo pacman'
-alias v='vim'
-alias sv='sudo vim'
-alias r='ranger'
+# Transmission
+alias tsm-start='transmission-daemon'
+alias tsm='transmission-remote -l'
+tsm-add() { transmission-remote -a "$1" ;}
 
-if is_linux; then
-    alias pbcopy='xclip -sel clip'
-fi
-
-# TMUX
-attach() 
-{
-    if [ $# -eq 0 ]; then
-        # If name was not passed in, reattach to the last one
-        tmux attach
-    else
-        # If a name was passed in, create a new session or attach to an existing
-        # one
-        tmux attach -t $1 || tmux new -s $1;
-    fi
-}
-alias takeover="tmux detach -a"
-
-# Useful alternatives/aliases
+# Utils & alternatives
+alias ls='colorls --sort-dirs'
+alias l='colorls -lA --sort-dirs'
 if type bat > /dev/null; then
     alias cat='bat'
 fi
@@ -104,116 +57,28 @@ fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
-
-purge()
-{
-    # Delete pacman packages that are old
-    echo "This will delete the following packages:\n$(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/* \1\n/g')"
-    read -q "REPLY?Are you sure you want to do this? [Y/n]"
-    if [ $? -eq 0 ]; then
-        pacman -Rsu $(pacman -Qdt | sed -r 's/^([a-z0-9-]+) .*/\1/g')
-    else
-        echo "OK! Won't delete the packages!"
-    fi
-}
-
-# }}}
-# ## Transmission {{{
-
-tsm-start() { transmission-daemon ;}
-tsm() { transmission-remote -l ;}
-tsm-add() { transmission-remote -a "$1" ;}
-
-# }}}
-# # Visuals {{{
-
-ZSH_THEME=""
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
-# Configure spaceship prompt
-export SPACESHIP_PROMPT_SEPARATE_LINE=false
-
-# Show just one directory
-export SPACESHIP_DIR_TRUNC=1
-export SPACESHIP_DIR_TRUNC_REPO=false
-
-export SPACESHIP_GIT_PREFIX=''
-
-# Package info
-export SPACESHIP_DOCKER_SHOW=false
-export SPACESHIP_PACKAGE_SHOW=false
-export SPACESHIP_NODE_SHOW=false
-export SPACESHIP_KUBECONTEXT_SHOW=false
-
-# }}}
-# # Packages {{{
-
-# ## Virtualenvwrapper {{{
-
-if is_mac; then
-    VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3/bin/python3
-    source /usr/local/bin/virtualenvwrapper_lazy.sh
-elif is_linux; then
-    source /usr/bin/virtualenvwrapper_lazy.sh
+if is_linux; then
+    alias pbcopy='xclip -sel clip'
 fi
 
 # }}}
+# Plugins {{{
 
-# ## Pyenv {{{
-
-# Configuration
-export PYENV_VERSION='3.7.0'
-export PYENV_ROOT=$HOME/.pyenv
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# Initialize pyenv and pyenv-virtualenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-if which pyenv-virtualenv-init > /dev/null; then 
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# }}}
+# Load FZF ZSH plugin
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Z
 source $HOME/Programs/z/z.sh
 
-# ## Colorls {{{
-
+# Tab completion for colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 
 # }}}
-
-# }}}
-# # Generic {{{
-
-# Use up/down arrow to search history
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
-
-bindkey "[D" backward-word
-bindkey "[C" forward-word
-
-# }}}
-# ## Startup {{{
+# Startup {{{
 
 # Start graphical server if i3 not already running.
 if [ "$(tty)" = "/dev/tty1" ]; then
     pgrep -x i3 || exec startx
-fi
-
-# Start a tmux session automatically
-if [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
 fi
 
 # }}}
@@ -222,8 +87,3 @@ set modelines=3
 # Custom folding for this file
 # vim:foldmethod=marker:foldlevel=0
 # }}}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
