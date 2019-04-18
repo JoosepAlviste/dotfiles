@@ -13,13 +13,13 @@ is_mac() { [ "$(uname)" = "Darwin" ] }
 # Applications
 #
 
-if [[ is_mac ]]; then
+if is_mac; then
     export BROWSER='open'
 else
     export BROWSER='google-chrome-stable'
 fi
 
-if [[ is_linux ]]; then
+if is_linux; then
     export TERMINAL="st"
 else
     export TERMINAL="iterm"
@@ -95,3 +95,5 @@ export NODE_ENV=development
 
 # Use a better command for searching with fzf
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
+
+[[ -z \$DISPLAY ]] && [[ \$(tty) = /dev/tty1 ]] && exec startx

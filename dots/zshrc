@@ -60,6 +60,9 @@ fi
 if is_linux; then
     alias pbcopy='xclip -sel clip'
 fi
+if is_linux; then
+    alias p='sudo pacman'
+fi
 
 # }}}
 # Plugins {{{
@@ -72,6 +75,10 @@ source $HOME/Programs/z/z.sh
 
 # Tab completion for colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
+
+# Pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # }}}
 # Startup {{{
