@@ -1,10 +1,10 @@
 " Do not show the status bar in the fzf window
-set laststatus=0
-set noshowmode
-set noruler
+setlocal laststatus=0
+setlocal noshowmode
+setlocal noruler
 
-set nonumber
-set norelativenumber
+setlocal nonumber
+setlocal norelativenumber
 
 " Show the status bar when the buffer gets closed
-autocmd BufLeave <buffer> set laststatus=2
+autocmd BufLeave <buffer> setlocal laststatus=2

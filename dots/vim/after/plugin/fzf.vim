@@ -46,7 +46,7 @@ nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <leader>- :FZF <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
 nnoremap <silent> <leader>ft :Tags<cr>
 " Lines in all buffers
-nnoremap <silent> <C-f> :Lines<cr>
+nnoremap <silent> <leader>/ :Lines<cr>
 " All lines in all files in the project
 nnoremap <silent> <leader>ff :Rg!<cr>
 " Buffers
