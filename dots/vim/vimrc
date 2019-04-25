@@ -77,7 +77,8 @@ endif
 " Colors
 "
 
-" Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
 
 
 "
@@ -150,7 +151,7 @@ endif
 " }
 " # Vim UI {
 
-colorscheme nightowl
+colorscheme OceanicNext
 
 " }
 " # Neovim {

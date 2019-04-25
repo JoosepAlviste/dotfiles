@@ -3,7 +3,7 @@
 "
 
 let g:lightline = {
-            \ 'colorscheme': 'nightowl',
+            \ 'colorscheme': 'oceanicnext',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
