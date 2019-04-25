@@ -2,5 +2,7 @@
     "diagnostic.infoSign": "•",
     "diagnostic.warningSign": "•",
     "diagnostic.errorSign": "•",
-    "diagnostic.hintSign": "•"
+    "diagnostic.hintSign": "•",
+    "suggest.timeout": 5000,
+    "typescript.preferences.noSemicolons": true
 }

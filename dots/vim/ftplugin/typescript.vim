@@ -11,12 +11,12 @@ setlocal formatprg=prettier\ --parser\ typescript
 "
 
 " Go to definition
-nnoremap <silent> <c-]> :TSDef<cr>
+nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
 
 " When pressing Enter, make new line and indent as required
 " inoremap <expr> <CR> joosep#expand#expand()
 
-nnoremap <silent> <leader>i :TSImport<cr>
+" nnoremap <silent> <leader>i :TSImport<cr>
 
 " Disable Deoplete since we have coc.nvim
 call deoplete#custom#buffer_option('auto_complete', v:false)
