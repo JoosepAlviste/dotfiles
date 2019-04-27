@@ -40,7 +40,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-sensible'
 
-" Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
@@ -59,19 +58,6 @@ else
 endif
 Plug 'junegunn/fzf.vim'
 
-" Deoplete - autocompletion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" LanguageClient - LSP client app
-" Plug 'autozimu/LanguageClient-neovim', {
-"       \ 'branch': 'next',
-"       \ 'do': 'bash install.sh',
-"       \ }
 
 "
 " Colors
@@ -94,8 +80,6 @@ Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" Typescript support (client for tsserver)
-" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 

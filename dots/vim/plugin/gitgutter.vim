@@ -1,3 +1,5 @@
+" Gitgutter settings cannot be in after/plugin for some reason
+
 "
 " Options
 "

@@ -20,4 +20,3 @@ function! joosep#settings#foldtext() abort
     let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
     return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
 endfunction
-

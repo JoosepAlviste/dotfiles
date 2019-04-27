@@ -12,4 +12,3 @@ set textwidth=80
 " t - auto-wrap text using textwidth
 " q - allow formatting of comments
 set formatoptions=aw2tq
-

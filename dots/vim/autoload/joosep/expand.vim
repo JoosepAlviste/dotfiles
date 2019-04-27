@@ -18,4 +18,3 @@ function! joosep#expand#expand()
     return "\<CR>"
   endif
 endfunction
-
