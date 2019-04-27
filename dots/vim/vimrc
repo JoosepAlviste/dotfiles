@@ -63,7 +63,6 @@ Plug 'junegunn/fzf.vim'
 " Colors
 "
 
-Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 
 
