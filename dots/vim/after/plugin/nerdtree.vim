@@ -32,4 +32,3 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " Like vim-vinegar, open the current directory when pressing "-"
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
-
