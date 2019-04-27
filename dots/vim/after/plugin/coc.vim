@@ -48,11 +48,25 @@ nnoremap <leader>ac :call CocAction('codeAction')<cr>
 " Fix autofix problem of current line
 nnoremap <leader>af  <Plug>(coc-fix-current)
 
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Typescript
+command! -nargs=0 TSLint :call CocAction('runCommand', 'tslint.lintProject')
+
+" Jest
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+" Init jest in cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
 
 
 " Using CocList

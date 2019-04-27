@@ -10,6 +10,8 @@ nnoremap <silent> <leader>q :quit<CR>
 " Save with <leader>w
 nnoremap <silent> <leader>w :w!<CR>
 
+nnoremap <leader>e :e <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<CR>
+
 nnoremap <silent> <leader>/ za
 
 " Useful mappings for managing tabs
