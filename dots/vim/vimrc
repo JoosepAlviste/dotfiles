@@ -32,7 +32,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " }
-
 " ## Install plugins {
 
 " Nicer TMUX pane movements
@@ -112,14 +111,13 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " }
-" # Vim UI {
 
 " }
 " # General {
 
 nnoremap <space> <nop>
-let mapleader="\<Space>"
-let maplocalleader="\\"
+let mapleader='\<Space>'
+let maplocalleader='\\'
 
 " Integration with the system clipboard
 if has('clipboard')
@@ -146,7 +144,7 @@ if has('nvim')
   let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
   let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
-  if (has("termguicolors"))
+  if (has('termguicolors'))
     set termguicolors
   endif
 
