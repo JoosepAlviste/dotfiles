@@ -89,6 +89,10 @@ if is_linux; then
     alias p='sudo pacman'
 fi
 
+function take() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
 # }}}
 # Plugins {{{
 
