@@ -52,22 +52,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control",
-                                        "modifiers": {
-                                            "optional": [
-                                                "any"
-                                            ]
-                                        }
+                                        "key_code": "left_control"
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape",
-                                        "modifiers": {
-                                            "optional": [
-                                                "any"
-                                            ]
-                                        }
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
