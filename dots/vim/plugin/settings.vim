@@ -80,6 +80,9 @@ set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap lines
 
 set completeopt+=noinsert       " Do not insert first completion option automatically
 
+set complete-=i   " disable scanning included files
+set complete-=t   " disable searching tags
+
 set nojoinspaces        " Prevent inserting two spaces with J
 
 set splitright  " Open new splits to the right
