@@ -149,4 +149,3 @@ endif
 if has('nvim-0.3.1')
   set fillchars+=eob:\  " suppress ~ at EndOfBuffer
 endif
-

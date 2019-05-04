@@ -13,3 +13,5 @@ command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
 " Init jest in cwd, require global jest command exists
 command! JestInit :call CocAction('runCommand', 'jest.init')
+
+command! Focus :call joosep#interface#ToggleFocused()
