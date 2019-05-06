@@ -4,5 +4,11 @@
     "diagnostic.errorSign": "•",
     "diagnostic.hintSign": "•",
     "suggest.timeout": 5000,
-    "typescript.preferences.noSemicolons": true
+    "typescript.preferences.noSemicolons": true,
+    "git.addedSign.text": "▌",
+    "git.changedSign.text": "▌",
+    "git.removedSign.text": "◢",
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete"
 }

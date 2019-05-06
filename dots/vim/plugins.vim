@@ -53,7 +53,7 @@ Plug 'sheerun/vim-polyglot'   " Syntax highlighting for most file types
 Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 
 Plug 'tpope/vim-fugitive'   " Git integrations
-Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
+" Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 

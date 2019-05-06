@@ -88,6 +88,15 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
+" === coc-git === "
+
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
+nmap <leader>hp <Plug>(coc-git-chunkinfo)
+nnoremap <leader>hs :CocCommand git.chunkStage<cr>
+nnoremap <leader>hu :CocCommand git.chunkUndo<cr>
+
+
 "
 " Helper functions
 "
