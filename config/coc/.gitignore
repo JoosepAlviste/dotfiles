@@ -1,0 +1,9 @@
+extensions/node_modules/
+extensions/db.json
+
+commands
+lists
+snippets-mru
+db.json
+history.json
+memos.json
