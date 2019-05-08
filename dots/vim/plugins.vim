@@ -24,6 +24,8 @@ Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-surround'   " Surround stuff with braces, quotes, tags, anything
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 
+Plug 'dhruvasagar/vim-zoom'  " TMUX-like zooming of panes
+
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
