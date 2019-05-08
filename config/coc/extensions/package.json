@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "coc-git": "^1.0.2",
+    "coc-git": "^1.0.3",
     "coc-jest": "^1.0.1",
     "coc-json": "^1.0.15",
     "coc-python": "^1.1.6",
