@@ -1,3 +1,7 @@
+" # Modeline {
+" Rules only for this file
+" vim: set sw=2 ts=2 sts=2 tw=78 foldmarker={,} foldmethod=marker spell:
+" }
 " # Plug setup {
 
 " Automatically install Plug
