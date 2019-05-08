@@ -1,5 +1,6 @@
 tmux-*.log
 tags
+tags.temp
 tags.lock
 *~
 .mypy_cache
