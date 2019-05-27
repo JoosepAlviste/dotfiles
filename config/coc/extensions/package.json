@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "coc-git": "^1.0.3",
+    "coc-git": "^1.1.2",
     "coc-jest": "^1.0.1",
-    "coc-json": "^1.0.15",
-    "coc-python": "^1.1.6",
+    "coc-json": "^1.0.17",
+    "coc-python": "^1.1.8",
     "coc-snippets": "^2.0.10",
     "coc-tslint": "^1.0.15",
     "coc-tsserver": "^1.2.1",
