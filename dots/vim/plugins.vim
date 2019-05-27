@@ -69,6 +69,8 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'pangloss/vim-javascript'
 " Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
 
+Plug 'jparise/vim-graphql'
+
 Plug 'ap/vim-css-color'
 
 Plug 'alvan/vim-closetag'
