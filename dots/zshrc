@@ -71,7 +71,7 @@ if type prettyping > /dev/null; then
 fi
 if type fzf > /dev/null; then
     alias preview="fzf --preview 'bat --color \"always\" {}'"
-    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(nvim {})+abort'"
+    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(nvim {})+abort' --inline-info"
 fi
 if type ncdu > /dev/null; then
     alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
