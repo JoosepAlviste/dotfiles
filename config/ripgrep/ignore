@@ -12,3 +12,5 @@ node_modules/
 
 .next/
 db/postgres/
+build/
+coverage/
