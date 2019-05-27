@@ -66,4 +66,7 @@ if has('nvim')
   endif
 endif
 
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
 " }
