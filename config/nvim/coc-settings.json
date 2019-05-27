@@ -7,8 +7,10 @@
     "typescript.preferences.noSemicolons": true,
     "git.addedSign.text": "▌",
     "git.changedSign.text": "▌",
+    "git.changeRemovedSign.text": "▌",
     "git.removedSign.text": "◢",
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
-    "git.removedSign.hlGroup": "GitGutterDelete"
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChange"
 }
