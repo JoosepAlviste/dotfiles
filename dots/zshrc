@@ -118,6 +118,16 @@ if type pyenv > /dev/null; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# Apply NVM when moving around
+precmd() {
+    if [ "$PWD" != "$PREV_PWD" ]; then
+        PREV_PWD="$PWD";
+        if [ -e ".nvmrc" ]; then
+            nvm use;
+        fi
+    fi
+}
+
 # }}}
 # Startup {{{
 
