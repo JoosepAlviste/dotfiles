@@ -96,4 +96,12 @@ export NODE_ENV=development
 # Use a better command for searching with fzf
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
 
+# Set up Pipedrive Git directory
+export PIPEDRIVE_GIT_DIR="$HOME/Devel/Work"
+
+#
+# Boot
+#
+
+# Start i3 if it makes sense to
 [[ -z \$DISPLAY ]] && [[ \$(tty) = /dev/tty1 ]] && exec startx
