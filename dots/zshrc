@@ -61,8 +61,10 @@ alias tsm='transmission-remote -l'
 tsm-add() { transmission-remote -a "$1" ;}
 
 # Utils & alternatives
-alias ls='colorls --sort-dirs'
-alias l='colorls -lA --sort-dirs'
+if type colorls > /dev/null; then
+    alias ls='colorls --sort-dirs'
+    alias l='colorls -lA --sort-dirs'
+fi
 if type bat > /dev/null; then
     alias cat='bat'
 fi
@@ -105,12 +107,16 @@ function take() {
 # Z
 source $HOME/Programs/z/z.sh
 
-# Tab completion for colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
+if type colorls > /dev/null; then
+    # Tab completion for colorls
+    source $(dirname $(gem which colorls))/tab_complete.sh
+fi
 
 # Pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if type pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # }}}
 # Startup {{{
