@@ -91,6 +91,8 @@ if is_linux; then
     alias p='sudo pacman'
 fi
 
+alias ctags="`brew --prefix`/bin/ctags"
+
 function take() {
   mkdir -p $@ && cd ${@:$#}
 }
