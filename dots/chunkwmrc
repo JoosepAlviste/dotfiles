@@ -1,0 +1,142 @@
+#!/bin/bash
+
+#
+# NOTE: any 'chunkc' command that is run from this config file
+#       that is NOT 'chunkc core::<..>' or 'chunkc set ..'
+#       MUST be put in the background using &
+#
+#       e.g:
+#       chunkc tiling::rule --owner Finder --name Copy --state float &
+#
+
+#
+# NOTE: specify the absolutepath of the file to use for logging.
+#       'stdout' or 'stderr' can be used instead of an actual filepath.
+#
+
+chunkc core::log_file stdout
+
+#
+# NOTE: specify the desired level of logging.
+#
+#       - none, debug, profile, warn, error
+#
+
+chunkc core::log_level warn
+
+#
+# NOTE: specify the absolutepath to the directory to use when loading a plugin.
+#
+
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
+
+#
+# NOTE: if enabled, chunkwm will monitor the specified plugin_dir
+#       and automatically reload any '.so' file that is changed.
+#
+
+chunkc core::hotload 0
+
+#
+# NOTE: the following are config variables for the chunkwm-tiling plugin.
+#
+
+chunkc set custom_bar_enabled            0
+chunkc set custom_bar_all_monitors       0
+chunkc set custom_bar_offset_top         22
+chunkc set custom_bar_offset_bottom      0
+chunkc set custom_bar_offset_left        0
+chunkc set custom_bar_offset_right       0
+
+chunkc set global_desktop_mode           bsp
+chunkc set global_desktop_offset_top     20
+chunkc set global_desktop_offset_bottom  20
+chunkc set global_desktop_offset_left    20
+chunkc set global_desktop_offset_right   20
+chunkc set global_desktop_offset_gap     15
+
+#
+# NOTE: syntax for desktop-specific settings
+#
+# chunkc set 2_desktop_mode                monocle
+# chunkc set 5_desktop_mode                float
+# chunkc set 3_desktop_offset_top          190
+# chunkc set 3_desktop_offset_bottom       190
+# chunkc set 3_desktop_offset_left         190
+# chunkc set 3_desktop_offset_right        190
+# chunkc set 3_desktop_offset_gap          30
+#
+
+chunkc set desktop_padding_step_size     10.0
+chunkc set desktop_gap_step_size         5.0
+
+chunkc set bsp_spawn_left                1
+chunkc set bsp_optimal_ratio             1.618
+chunkc set bsp_split_mode                optimal
+chunkc set bsp_split_ratio               0.5
+
+chunkc set monitor_focus_cycle           1
+chunkc set window_focus_cycle            all
+
+chunkc set mouse_follows_focus           intrinsic
+chunkc set window_float_next             0
+chunkc set window_region_locked          1
+
+chunkc set mouse_move_window             \"fn 1\"
+chunkc set mouse_resize_window           \"fn 2\"
+chunkc set mouse_motion_interval         35
+
+chunkc set preselect_border_color        0xffd75f5f
+chunkc set preselect_border_width        5
+chunkc set preselect_border_radius       0
+chunkc set preselect_border_outline      0
+
+#
+# NOTE: these settings require chwm-sa.
+#       (https://github.com/koekeishiya/chwm-sa)
+#
+
+chunkc set window_float_topmost          0
+chunkc set window_fade_inactive          0
+chunkc set window_fade_alpha             0.85
+chunkc set window_fade_duration          0.25
+chunkc set window_use_cgs_move           0
+
+#
+# NOTE: the following are config variables for the chunkwm-border plugin.
+#
+# NOTE: syntax for `focused_border_outline` setting
+#       0 = false, inline border
+#       1 = true, outline border
+#
+
+chunkc set focused_border_color          0xff0f6288
+chunkc set focused_border_width          5
+chunkc set focused_border_radius         0
+chunkc set focused_border_outline        0
+chunkc set focused_border_skip_floating  0
+chunkc set focused_border_skip_monocle   0
+
+#
+# NOTE: the following are config variables for the chunkwm-ffm plugin.
+#
+
+chunkc set ffm_bypass_modifier           fn
+chunkc set ffm_standby_on_float          1
+
+#
+# NOTE: specify plugins to load when chunkwm starts.
+#
+
+chunkc core::load border.so
+chunkc core::load tiling.so
+chunkc core::load ffm.so
+
+#
+# NOTE: sample rules for the tiling plugin
+#
+
+chunkc tiling::rule --owner Finder --name Copy --state float &
+chunkc tiling::rule --owner \"App Store\" --state float &
+chunkc tiling::rule --owner Emacs --except "^$" --state tile &
+chunkc tiling::rule --owner \"Cisco AnyConnect Secure Mobility Client\" --state float &
