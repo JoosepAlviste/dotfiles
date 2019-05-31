@@ -179,10 +179,10 @@ charenc@~0.0.1:
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
-coc-git@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/coc-git/-/coc-git-1.1.2.tgz#e7d51b201923ba6a7fcccb1af649a60f4e050eb5"
-  integrity sha512-NHWUcxCspxOb7KY4xhZwq32RJaIZOVR54zoxLNiy/U9NvvOYiMpxO0y6moIG+VxX2aA1cpYEKCqe7NQjDZBBhA==
+coc-git@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/coc-git/-/coc-git-1.1.4.tgz#34b76a7017f839ac1a1978cd6e31a89915c7ebcb"
+  integrity sha512-X94avRCBgMLQGLjt/xZqurk20f0m6RfVHLsNbP2HrFN0P4E6pySgJ1vfAmbNdsQhlNuT+R68vnQSU/wUEEB05g==
   dependencies:
     colors "^1.3.3"
     debounce "^1.2.0"
@@ -212,10 +212,10 @@ coc-json@^1.0.17:
     vscode-languageserver "^5.3.0-next.6"
     vscode-uri "^1.0.6"
 
-coc-python@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/coc-python/-/coc-python-1.1.8.tgz#bf800b8dfe067f98e74ad2d43b98e7fd6e9c3674"
-  integrity sha512-0HeaVvhxPKYCPJC3PR0xBq1aembCBBRYy7VfaJ45+JIZI3NWWE+i1lTDsWn6+ukrO7x19k786ECT4PYOHiIOJg==
+coc-python@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/coc-python/-/coc-python-1.1.14.tgz#77f78b97b4f0b2ea16924a0e316831ea2c4b23e4"
+  integrity sha512-7ZGtwsMlaGCm08zPzxv8TP9xuneDiyAW3jryJE+tOrCgMbe1+BLCcmBCFd9B5Z9uu2fkoHtdsNc+MMdpTi88eA==
   dependencies:
     arch "^2.1.1"
     azure-storage "^2.10.3"
@@ -252,10 +252,10 @@ coc-python@^1.1.8:
     winreg "^1.2.4"
     xml2js "^0.4.19"
 
-coc-snippets@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/coc-snippets/-/coc-snippets-2.0.10.tgz#557c86027eb7d1e545290da675ccff17e7b5fe63"
-  integrity sha512-1/XuDOD7KpJDxeGiUQZvC6KfNXZOKaBw45ZSgjYPm+olxynx8RoT5Sn+Ar/o6KGpoNQraYEUtATndumdkhA+MA==
+coc-snippets@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/coc-snippets/-/coc-snippets-2.0.11.tgz#94e804f1a49e11bdb5444d8a6d248acd14dee6cb"
+  integrity sha512-+rA+8zNxhoMa0YONbTFP+qTlV14iw1GQSDKy+IDfgkcplQ3O7nUw4gjbeCePFyfacsErd3xis1G0YA+JzxeHRw==
   dependencies:
     jsonc-parser "^2.0.3"
     pify "^4.0.1"
@@ -284,10 +284,10 @@ coc-tslint@^1.0.15:
     vscode-uri "^1.0.6"
     which "^1.3.1"
 
-coc-tsserver@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/coc-tsserver/-/coc-tsserver-1.2.1.tgz#7dc1f777e61582e2f389cce289f986f60019012e"
-  integrity sha512-4MRaiCQJiz7/vVgLJ9BxSpwCbwCZRJmk8O3usbyfki3YXVUzh5UrO+bz3cZpZqT2e3r5WIRz6ty3l4jOestLTw==
+coc-tsserver@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/coc-tsserver/-/coc-tsserver-1.2.2.tgz#ae5b3ae15801c2e8cfc818c42b1755e37cc17fe2"
+  integrity sha512-Dh2Qs9plNEjYI1yQo1WbKHx3SX7rGPi0VUfNbmgOiOevpHRM4bFOM7OUwyv2kCSPI/tyEPsKmWdS2Jy6KEczxA==
   dependencies:
     fast-diff "^1.2.0"
     find-up "^3.0.0"

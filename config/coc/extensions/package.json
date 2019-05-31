@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "coc-git": "^1.1.2",
+    "coc-git": "^1.1.4",
     "coc-jest": "^1.0.1",
     "coc-json": "^1.0.17",
-    "coc-python": "^1.1.8",
-    "coc-snippets": "^2.0.10",
+    "coc-python": "^1.1.14",
+    "coc-snippets": "^2.0.11",
     "coc-tslint": "^1.0.15",
-    "coc-tsserver": "^1.2.1",
+    "coc-tsserver": "^1.2.2",
     "coc-vimtex": "^1.0.1"
   }
 }
