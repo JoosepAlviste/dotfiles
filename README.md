@@ -21,22 +21,6 @@ Just useful utilities:
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
-### Vim
-
-* Neovim compiled with python 3
-* Pyenv virtual environment called `neovim3` and `neovim2`
-    - With `pynvim` package installed
-* [Universal ctags](https://github.com/universal-ctags/ctags) for better ctags 
-(React files, etc.). Can just be installed with brew.
-
-### Fzf
-
-Fuzzy finder.
-
-* Needs fzf installed globally (from brew)
-    - If it is not installed, it will be installed as a vim plugin though
-* Needs `rg` (`ripgrep`) for smarter file searching
-
 ### i3
 
 * `i3-gaps`
@@ -51,19 +35,25 @@ Fuzzy finder.
 * `playerctl` - control audio
 * `betterlockscreen` - nice lock screen for i3lock
 
+### macOS
 
-### Other
-
-* arc theme
-* Flat remix icon theme
+* Fix slow `chunkwm` controls by using `dash` as the shell
+    * `zsh` is the default shell and is horribly slow, so let's use a faster 
+        shell for running `skhd`
+    * Edit `/usr/local/Cellar/skhd/0.3.4/homebrew.mxcl.skhd.plist`
+    * Add environment variable `SHELL = /usr/local/bin/dash`
+    * More info at [this GitHub issue](https://github.com/koekeishiya/chunkwm/issues/232)
+* Start `chunkwm` services
+    * `brew services start chunkwm`
+    * `brew services start skhd`
 
 
 ## Installation
 
 ```
-git clone git@github.com:JoosepAlviste/dotfiles.git dotfiles
+git clone git@github.com:JoosepAlviste/dotfiles.git
 
-cd .dotfiles
+cd dotfiles
 chmod +x makesymlinks.sh
 ./makesymlinks.sh
 ```
@@ -143,34 +133,45 @@ gem install colorls
 
 ```bash
 brew install \
+    zsh-completions \
+    tmux \
+    fzf \
+    hub \
+    bat \
+    dash \
+    diff-so-fancy \
+    htop \
+    ranger \
+    neovim \
+    ripgrep \
+    yarn \
     pyenv \
     pyenv-virtualenv \
-    fzf
+    koekeishiya/formulae/chunkwm \
+    koekeishiya/formulae/skhd \
+    universal-ctags/universal-ctags/universal-ctags
 ```
 
 
 ### Pip
 
-Pyenv virtualenv `neovim3` from Python 3, there:
+Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from Python 2, there:
 
 ```bash
 pip install \
     neovim \
-    'python-language-server[all]' \
-    pyls-mypy \
-    pyls-isort \
     i3-py
 ```
 
 ## FAQ (my own reference)
 
-Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
+### Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
 `echo N | sudo tee /sys/module/overlay/parameters/metacopy`
 
-`i3` workspace switching screws up PyCharm focus: 
+### `i3` workspace switching screws up PyCharm focus: 
 `https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
 
-## Default Google Chrome with `i3`
+### Default Google Chrome with `i3`
 
 Edit `~/.config/mimeapps.list` and/or 
 `~/.local/share/applications/mimeapps.list` and make sure that it looks 
