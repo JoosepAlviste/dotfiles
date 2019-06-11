@@ -179,15 +179,17 @@ charenc@~0.0.1:
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
 
-coc-git@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/coc-git/-/coc-git-1.1.4.tgz#34b76a7017f839ac1a1978cd6e31a89915c7ebcb"
-  integrity sha512-X94avRCBgMLQGLjt/xZqurk20f0m6RfVHLsNbP2HrFN0P4E6pySgJ1vfAmbNdsQhlNuT+R68vnQSU/wUEEB05g==
+coc-git@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/coc-git/-/coc-git-1.3.8.tgz#db60171ab6dc2e00dc2270700ddaf3eea57854fc"
+  integrity sha512-gXut1hno9snVprAK1pZNmrVHoDudkYpXJCoAfsf3UKouXixpeN1KaX31oP67IRw3CoSMO4t3aK03N/JkIyLxaA==
   dependencies:
     colors "^1.3.3"
     debounce "^1.2.0"
+    request-light "^0.2.4"
     tslib "^1.9.3"
     uuid "^3.3.2"
+    vscode-languageserver-types "^3.14.0"
     which "^1.3.1"
 
 coc-jest@^1.0.1:
@@ -252,10 +254,10 @@ coc-python@^1.1.14:
     winreg "^1.2.4"
     xml2js "^0.4.19"
 
-coc-snippets@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/coc-snippets/-/coc-snippets-2.0.11.tgz#94e804f1a49e11bdb5444d8a6d248acd14dee6cb"
-  integrity sha512-+rA+8zNxhoMa0YONbTFP+qTlV14iw1GQSDKy+IDfgkcplQ3O7nUw4gjbeCePFyfacsErd3xis1G0YA+JzxeHRw==
+coc-snippets@^2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/coc-snippets/-/coc-snippets-2.0.16.tgz#e69a04294bb6fdf4a02e180cea88b4afb9a5c426"
+  integrity sha512-zcVw7fsTDI6l6LkRvRy/xTzhhpXGBtmAUNXm26NDtX2q9uYLF59QmSa9H28P1FtakPz34VaWLineEfbrFZymCA==
   dependencies:
     jsonc-parser "^2.0.3"
     pify "^4.0.1"
@@ -284,10 +286,10 @@ coc-tslint@^1.0.15:
     vscode-uri "^1.0.6"
     which "^1.3.1"
 
-coc-tsserver@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/coc-tsserver/-/coc-tsserver-1.2.2.tgz#ae5b3ae15801c2e8cfc818c42b1755e37cc17fe2"
-  integrity sha512-Dh2Qs9plNEjYI1yQo1WbKHx3SX7rGPi0VUfNbmgOiOevpHRM4bFOM7OUwyv2kCSPI/tyEPsKmWdS2Jy6KEczxA==
+coc-tsserver@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/coc-tsserver/-/coc-tsserver-1.2.4.tgz#35a9f298e695efa7398f631d05cc01e65feb4e08"
+  integrity sha512-KesMMH/D5dWJehNFAniKuQW9JcQ26e1QclZ3vPiNyLu4BtgJEeJWcjHcIix5IHkEY5tc9KLIXmTrtlBEPOivWg==
   dependencies:
     fast-diff "^1.2.0"
     find-up "^3.0.0"

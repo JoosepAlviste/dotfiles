@@ -23,6 +23,18 @@ nnoremap <C-y> 3<C-y>
 nnoremap ' `
 nnoremap ` '
 
+" Repurpose arrow keys for quickfix list movement
+nnoremap <silent> <Up> :cprevious<CR>
+nnoremap <silent> <Down> :cnext<CR>
+nnoremap <silent> <Left> :cpfile<CR>
+nnoremap <silent> <Right> :cnfile<CR>
+
+" And shift + arrow keys for moving in the location list
+nnoremap <silent> <S-Up> :lprevious<CR>
+nnoremap <silent> <S-Down> :lnext<CR>
+nnoremap <silent> <S-Left> :lpfile<CR>
+nnoremap <silent> <S-Right> :lnfile<CR>
+
 " Show syntax group under cursor
 nnoremap <silent> <F10> :call joosep#syntax#SynStack()<CR>
 " nnoremap <silent> <F10> :call joosep#syntax#MoreSyntaxes()<CR>
