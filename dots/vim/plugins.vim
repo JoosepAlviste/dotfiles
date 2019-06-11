@@ -67,8 +67,8 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
-" Plug 'pangloss/vim-javascript'
-" Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
+Plug 'othree/yajs.vim'
+Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
 
 Plug 'jparise/vim-graphql'
 
