@@ -22,7 +22,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-sensible'
 
-Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-surround'   " Surround stuff with braces, quotes, tags, anything

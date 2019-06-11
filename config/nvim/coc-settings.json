@@ -12,5 +12,6 @@
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterChange"
+    "git.changeRemovedSign.hlGroup": "GitGutterChange",
+    "emmet.includeLanguages": {"javascript": "javascriptreact"}
 }
