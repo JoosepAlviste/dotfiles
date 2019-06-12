@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "coc-css": "^1.0.7",
     "coc-emmet": "^1.0.9",
     "coc-eslint": "^1.1.3",
     "coc-git": "^1.3.9",

@@ -19,5 +19,6 @@
         "javascriptreact",
         "typescript"
     ],
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "snippets.priority": 999
 }
