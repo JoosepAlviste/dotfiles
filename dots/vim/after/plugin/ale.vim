@@ -7,11 +7,12 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': [],
 \   'vue': ['eslint'],
+\   'java': [],
 \}
 
 let g:ale_fixers = {
 \    'javascript': ['eslint'],
-\    'typescript': ['prettier', 'tslint'],
+\    'typescript': [],
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
 \    'html': ['prettier'],

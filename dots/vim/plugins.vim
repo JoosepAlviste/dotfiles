@@ -54,7 +54,6 @@ Plug 'mhartington/oceanic-next'
 "
 
 Plug 'tpope/vim-commentary'   " Comment stuff out easily
-Plug 'sheerun/vim-polyglot'   " Syntax highlighting for most file types
 Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 
 Plug 'tpope/vim-fugitive'   " Git integrations
@@ -68,13 +67,13 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'othree/yajs.vim'
-Plug 'maxmellon/vim-jsx-pretty'   " Nicer JSX syntax highlighting
+" Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
 
 Plug 'jparise/vim-graphql'
 
 Plug 'ap/vim-css-color'
 
-Plug 'alvan/vim-closetag'
+Plug 'sheerun/vim-polyglot'   " Syntax highlighting for most file types
 
 Plug 'w0rp/ale'
 

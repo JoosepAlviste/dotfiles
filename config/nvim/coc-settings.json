@@ -13,5 +13,11 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChange",
-    "emmet.includeLanguages": {"javascript": "javascriptreact"}
+    "emmet.includeLanguages": {"javascript": "javascriptreact"},
+    "eslint.filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript"
+    ],
+    "eslint.autoFixOnSave": true
 }
