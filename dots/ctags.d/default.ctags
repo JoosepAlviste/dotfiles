@@ -8,6 +8,9 @@
 --exclude=*.md
 --exclude=**/.next/**/*
 --exclude=**/build/**/*
+--exclude=dist/*
+--exclude=dist/**/*
+--exclude=**/dist/**/*
 --langdef=bib
 --langmap=bib:.bib
 --regex-bib=/^@[A-Za-z]+\{([^,]*)/\1/b,bib/
