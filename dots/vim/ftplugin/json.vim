@@ -1,1 +1,1 @@
-nnoremap o :call joosep#expand#insertComma()<cr>
+nnoremap <buffer> o :call joosep#expand#insertComma()<cr>
