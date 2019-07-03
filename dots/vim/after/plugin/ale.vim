@@ -4,15 +4,15 @@
 
 " \   'typescript': ['tsserver', 'tslint'],
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': [],
 \   'typescript': [],
 \   'vue': ['eslint'],
 \   'java': [],
 \}
 
 let g:ale_fixers = {
-\    'javascript': ['eslint'],
-\    'typescript': [],
+\    'javascript': [],
+\    'typescript': ['tslint', 'prettier'],
 \    'vue': ['eslint'],
 \    'scss': ['prettier'],
 \    'html': ['prettier'],
