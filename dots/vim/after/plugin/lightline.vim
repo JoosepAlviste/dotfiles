@@ -3,7 +3,7 @@
 "
 
 let g:lightline = {
-            \ 'colorscheme': 'oceanicnext',
+            \ 'colorscheme': 'myoceanicnext',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
