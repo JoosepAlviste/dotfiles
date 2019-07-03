@@ -68,6 +68,8 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'othree/yajs.vim'
 " Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
+Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
 Plug 'jparise/vim-graphql'
 

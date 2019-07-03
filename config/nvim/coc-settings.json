@@ -20,5 +20,6 @@
         "typescript"
     ],
     "eslint.autoFixOnSave": true,
-    "snippets.priority": 999
+    "snippets.priority": 999,
+    "codeLens.enable": true
 }
