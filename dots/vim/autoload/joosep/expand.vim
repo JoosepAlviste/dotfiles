@@ -24,7 +24,7 @@ function! joosep#expand#insertComma()
     " the current line
 
     " Add the trailing comma if it doesn't exist
-    substitute/\(.*[^,]\)$/\1,/g
+    substitute/\(.*[^{[][^,{[]\)$/\1,/g
     " And add the new line
     call feedkeys("A\<cr>")
 endfunction
