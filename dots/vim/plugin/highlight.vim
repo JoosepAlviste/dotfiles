@@ -31,22 +31,33 @@ endfunction
 let s:bg = { "gui": "#17252c", "cterm": "235", "cterm16": "0" }
 let s:slightly_brighter = { "gui": "#1b2b34", "cterm": "234", "cterm16": "1" }
 
-" Make some backgrounds transparent
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
-hi! LineNr ctermbg=NONE guibg=NONE
-hi! CursorLineNr ctermbg=NONE guibg=NONE
-hi! SignColumn ctermfg=NONE guibg=NONE
+function! s:modify_highlights()
+    " Make some backgrounds transparent
+    hi! Normal ctermbg=NONE guibg=NONE
+    hi! NonText ctermbg=NONE guibg=NONE
+    hi! LineNr ctermbg=NONE guibg=NONE
+    hi! CursorLineNr ctermbg=NONE guibg=NONE
+    hi! SignColumn ctermfg=NONE guibg=NONE
 
-hi! GitGutterAdd ctermfg=NONE guibg=NONE
-hi! GitGutterChange ctermfg=NONE guibg=NONE
-hi! GitGutterRemove ctermfg=NONE guibg=NONE
+    hi! GitGutterAdd ctermfg=NONE guibg=NONE
+    hi! GitGutterChange ctermfg=NONE guibg=NONE
+    hi! GitGutterRemove ctermfg=NONE guibg=NONE
 
-" Customize NERDTree directory
-hi! NERDTreeCWD guifg=#99c794
+    " Customize NERDTree directory
+    hi! NERDTreeCWD guifg=#99c794
 
-call s:h("EndOfBuffer", { "bg": s:bg })
-call s:h("CursorLine", { "bg": s:slightly_brighter })
-call s:h("ColorColumn", { "bg": s:slightly_brighter })
+    call s:h("EndOfBuffer", { "bg": s:bg })
+    call s:h("CursorLine", { "bg": s:slightly_brighter })
+    call s:h("ColorColumn", { "bg": s:slightly_brighter })
 
-hi link jsonBraces Function
+    hi link jsonBraces Function
+endfunction
+
+call s:modify_highlights()
+
+" Need to re-modify colorscheme after ColorScheme change (when reloading
+" vimrc, for example)
+augroup modify_colorscheme
+    autocmd!
+    autocmd ColorScheme * call s:modify_highlights()
+augroup END
