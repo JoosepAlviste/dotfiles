@@ -33,6 +33,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
 
+Plug 'metakirby5/codi.vim'
+
 " FZF - fuzzy search
 if executable('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf'
