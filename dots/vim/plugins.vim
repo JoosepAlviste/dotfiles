@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
 
 " Nicer TMUX pane movements
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'tpope/vim-sensible'
 

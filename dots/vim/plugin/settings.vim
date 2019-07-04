@@ -52,6 +52,8 @@ set updatetime=100      " Update faster
 
 set foldenable  " Enable folding, auto fold code
 
+set autoread    " Automatically update buffer when file changes
+
 
 "
 " Controls
