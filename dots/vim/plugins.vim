@@ -57,7 +57,6 @@ Plug 'tpope/vim-commentary'   " Comment stuff out easily
 Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 
 Plug 'tpope/vim-fugitive'   " Git integrations
-" Plug 'airblade/vim-gitgutter'   " Show Git modified lines in the gutter
 
 Plug 'editorconfig/editorconfig-vim'
 

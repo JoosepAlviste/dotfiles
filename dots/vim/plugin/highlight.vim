@@ -32,6 +32,7 @@ let s:bg = { "gui": "#17252c", "cterm": "235", "cterm16": "0" }
 let s:slightly_brighter = { "gui": "#1b2b34", "cterm": "234", "cterm16": "1" }
 
 function! s:modify_highlights()
+    " TODO: Move this to plugin/oceanicnext.vim
     " Make some backgrounds transparent
     hi! Normal ctermbg=NONE guibg=NONE
     hi! NonText ctermbg=NONE guibg=NONE

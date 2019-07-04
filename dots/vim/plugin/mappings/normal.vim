@@ -24,20 +24,20 @@ nnoremap ' `
 nnoremap ` '
 
 " Repurpose arrow keys for quickfix list movement
-nnoremap <silent> <Up> :cprevious<CR>
-nnoremap <silent> <Down> :cnext<CR>
-nnoremap <silent> <Left> :cpfile<CR>
-nnoremap <silent> <Right> :cnfile<CR>
+nnoremap <silent> <Up> :cprevious<cr>
+nnoremap <silent> <Down> :cnext<cr>
+nnoremap <silent> <Left> :cpfile<cr>
+nnoremap <silent> <Right> :cnfile<cr>
 
 " And shift + arrow keys for moving in the location list
-nnoremap <silent> <S-Up> :lprevious<CR>
-nnoremap <silent> <S-Down> :lnext<CR>
-nnoremap <silent> <S-Left> :lpfile<CR>
-nnoremap <silent> <S-Right> :lnfile<CR>
+nnoremap <silent> <S-Up> :lprevious<cr>
+nnoremap <silent> <S-Down> :lnext<cr>
+nnoremap <silent> <S-Left> :lpfile<cr>
+nnoremap <silent> <S-Right> :lnfile<cr>
 
 " Show syntax group under cursor
-nnoremap <silent> <F10> :call joosep#syntax#SynStack()<CR>
-" nnoremap <silent> <F10> :call joosep#syntax#MoreSyntaxes()<CR>
+nnoremap <silent> <F10> :call joosep#syntax#SynStack()<cr>
+" nnoremap <silent> <F10> :call joosep#syntax#MoreSyntaxes()<cr>
 
 " Always search forward with n
 nnoremap <expr> n 'Nn'[v:searchforward]
