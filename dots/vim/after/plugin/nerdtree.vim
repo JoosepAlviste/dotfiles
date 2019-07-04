@@ -11,6 +11,16 @@ let g:NERDTreeMinimalUI=1
 " When hitting "-", can hit C-^ to return to file
 let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
 
+" Show hidden files/directories by default
+let g:NERDTreeShowHidden = 1
+
+" Hide certain files and directories from NERDTree
+let g:NERDTreeIgnore = [
+            \ '^\.DS_Store$', '^tags$', '^tags.temp$', '^tags.lock$', 
+            \ '\.git$[[dir]]', '\.idea$[[dir]]', '^tmux-client-.*\.log',
+            \ '\.vscode$[[dir]]',
+            \ ]
+
 " Close NERDTree when it is the only open pane
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
