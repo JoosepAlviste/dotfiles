@@ -44,6 +44,8 @@ else
 endif
 Plug 'junegunn/fzf.vim'
 
+Plug 'blueyed/vim-diminactive'  " Dim inactive panes
+
 
 "
 " Colors
