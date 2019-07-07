@@ -25,3 +25,15 @@ noremap <silent> <leader>t<leader> :tabnext<cr>
 nnoremap <leader>k :echo @%<cr>
 
 nnoremap <leader>o :only<cr>
+
+function! s:editConfig()
+    " Open the vimrc in a split
+    vsplit $MYVIMRC
+    " And set the working directory in that split to ~/dotfiles
+    " TODO: Currently hard coded, would be nice if it weren't
+    execute 'lcd ' . $HOME . '/dotfiles'
+endfunction
+
+" Edit and source the configuration file
+nnoremap <silent> <leader>ev :call <sid>editConfig()<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
