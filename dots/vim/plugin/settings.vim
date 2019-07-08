@@ -126,10 +126,14 @@ if has("patch-7.4.314")
 endif
 
 set cursorline  " Highlight current line
-augroup diffModeCursorline
+augroup modifyCursorline
     autocmd!
     " Disable cursorline in diff mode
     autocmd OptionSet diff let &cursorline=!v:option_new
+
+    " Hide and show cursorline in inactive buffers
+    autocmd InsertLeave,WinEnter * set cursorline
+    autocmd InsertEnter,WinLeave * set nocursorline
 augroup END
 
 set colorcolumn=81,121  " Highlight columns
