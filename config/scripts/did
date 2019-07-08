@@ -8,8 +8,7 @@ function did()
 
     if [ "$containerId" != "CONTAINER" ] && [ "x$containerId" != "x" ]
     then
-        echo $containerId | pbcopy
-        echo "\"$containerId\" copied to clipboard"
+        echo $containerId
     fi
 }
 
