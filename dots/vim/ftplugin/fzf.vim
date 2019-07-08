@@ -6,5 +6,8 @@ setlocal noruler
 setlocal nonumber
 setlocal norelativenumber
 
-" Show the status bar when the buffer gets closed
-autocmd BufLeave <buffer> setlocal laststatus=2
+augroup fzfBufferLeave
+    autocmd!
+    " Show the status bar when the buffer gets closed
+    autocmd BufLeave <buffer> setlocal laststatus=2
+augroup END

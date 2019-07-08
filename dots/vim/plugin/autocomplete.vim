@@ -1,7 +1,3 @@
-"
-" Autocmds
-"
-
 if has('nvim')
   " inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
   " inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-j>"
