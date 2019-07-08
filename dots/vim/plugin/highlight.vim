@@ -30,6 +30,7 @@ endfunction
 " Colors
 let s:bg = { "gui": "#17252c", "cterm": "235", "cterm16": "0" }
 let s:slightly_brighter = { "gui": "#1b2b34", "cterm": "234", "cterm16": "1" }
+let s:slightly_brighterer = { "gui": "#233843", "cterm": "234", "cterm16": "1" }
 
 function! s:modify_highlights()
     " TODO: Move this to plugin/oceanicnext.vim
@@ -50,6 +51,8 @@ function! s:modify_highlights()
     call s:h("EndOfBuffer", { "bg": s:bg })
     call s:h("CursorLine", { "bg": s:slightly_brighter })
     call s:h("ColorColumn", { "bg": s:slightly_brighter })
+
+    call s:h("NonText", { "fg": s:slightly_brighterer })
 
     hi link jsonBraces Function
 endfunction
