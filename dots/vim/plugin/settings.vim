@@ -54,6 +54,9 @@ set foldenable  " Enable folding, auto fold code
 
 set autoread    " Automatically update buffer when file changes
 
+set nowrap  " Do not wrap lines by default
+set sidescroll=5    " Scroll by 5 characters horizontally
+
 
 "
 " Controls
