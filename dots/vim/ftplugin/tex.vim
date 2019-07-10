@@ -2,7 +2,7 @@ if has('syntax')
     setlocal spell
 endif
 
-set textwidth=80
+setlocal textwidth=80
 
 " Autoformatting
 " a - audo format paragraph
@@ -11,4 +11,4 @@ set textwidth=80
 " indented first line)
 " t - auto-wrap text using textwidth
 " q - allow formatting of comments
-set formatoptions=aw2tq
+setlocal formatoptions=aw2tq
