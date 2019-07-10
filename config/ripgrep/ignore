@@ -10,6 +10,7 @@ vendor/
 *.pyc
 .pytest_cache/
 .mypy_cache/
+*.class
 
 .next/
 db/postgres/
