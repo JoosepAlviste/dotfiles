@@ -50,12 +50,32 @@ let s:base10=['#ffffff', '15']
 let s:none=['NONE', 'NONE']
 
 " Custom colors
+let s:bg=["#17252c", "235"]
 let s:highlight = ['#1F3446', '235']
 let s:search = ['#0F4767', '235']
+let s:slightly_brighterer = ["#233843", "234"]
 
-call <sid>hi('Normal',    s:base05, s:none,   '',     '')
-call <sid>hi('IncSearch', s:none,   s:search, 'NONE', '')
-call <sid>hi('Search',    s:none,   s:search, 'NONE', '')
+function! s:ModifyColorscheme()
+    " General
+    call <sid>hi('Normal',      s:base05, s:none,   '',     '')
+    call <sid>hi('IncSearch',   s:none,   s:search, 'NONE', '')
+    call <sid>hi('Search',      s:none,   s:search, 'NONE', '')
+    call <sid>hi('VertSplit',   s:base00, s:base00, 'NONE', '')
+    call <sid>hi('EndOfBuffer', s:none,   s:bg,     '',     '')
+    call <sid>hi('CursorLine',  s:none,   s:base00, '',     '')
+    call <sid>hi('ColorColumn', s:none,   s:base00, '',     '')
+    call <sid>hi('NonText',     s:slightly_brighterer, s:none, '', '')
 
-" coc.nvim
-call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
+    " coc.nvim
+    call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
+
+    " Customize NERDTree directory
+    call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
+endfunction
+
+call s:ModifyColorscheme()
+
+augroup ModifyColorscheme
+    autocmd!
+    autocmd ColorScheme * call s:ModifyColorscheme()
+augroup END

@@ -9,10 +9,12 @@
     "git.changedSign.text": "▌",
     "git.changeRemovedSign.text": "▌",
     "git.removedSign.text": "◢",
+    "git.topRemovedSign.text": "◥",
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterChange",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "emmet.includeLanguages": {"javascript": "javascriptreact"},
     "eslint.filetypes": [
         "javascript",
