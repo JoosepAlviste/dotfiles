@@ -26,7 +26,7 @@ nnoremap <leader>k :echo @%<cr>
 
 nnoremap <leader>o :only<cr>
 
-function! s:editConfig()
+function! s:EditConfig()
     " Open the vimrc in a split
     vsplit $MYVIMRC
     " And set the working directory in that split to ~/dotfiles
@@ -35,5 +35,5 @@ function! s:editConfig()
 endfunction
 
 " Edit and source the configuration file
-nnoremap <silent> <leader>ev :call <sid>editConfig()<cr>
+nnoremap <silent> <leader>ev :call <sid>EditConfig()<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>

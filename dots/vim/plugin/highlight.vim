@@ -32,7 +32,7 @@ let s:bg = { "gui": "#17252c", "cterm": "235", "cterm16": "0" }
 let s:slightly_brighter = { "gui": "#1b2b34", "cterm": "234", "cterm16": "1" }
 let s:slightly_brighterer = { "gui": "#233843", "cterm": "234", "cterm16": "1" }
 
-function! s:modify_highlights()
+function! s:ModifyHighlights()
     " TODO: Move this to plugin/oceanicnext.vim
     " Make some backgrounds transparent
     hi! Normal ctermbg=NONE guibg=NONE
@@ -57,11 +57,11 @@ function! s:modify_highlights()
     hi link jsonBraces Function
 endfunction
 
-call s:modify_highlights()
+call s:ModifyHighlights()
 
 " Need to re-modify colorscheme after ColorScheme change (when reloading
 " vimrc, for example)
-augroup modify_colorscheme
+augroup ModifyColorscheme
     autocmd!
-    autocmd ColorScheme * call s:modify_highlights()
+    autocmd ColorScheme * call s:ModifyHighlights()
 augroup END

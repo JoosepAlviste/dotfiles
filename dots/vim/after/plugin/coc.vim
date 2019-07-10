@@ -23,7 +23,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 " Format selected region
 vmap <leader>cf <Plug>(coc-format-selected)
@@ -100,7 +100,7 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
 " Helper functions
 "
 
-function! s:show_documentation()
+function! s:ShowDocumentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
   else

@@ -6,14 +6,14 @@ function! joosep#autocomplete#handle_tab() abort
         return coc#_select_confirm() 
     elseif coc#expandableOrJumpable()
         return coc#rpc#request('doKeymap', ['snippets-expand-jump','']) 
-    elseif <SID>check_back_space()
+    elseif <SID>CheckBackspace()
         return "\<tab>"
     else
         return coc#refresh()
     endif
 endfunction
 
-function! s:check_back_space() abort
+function! s:CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
