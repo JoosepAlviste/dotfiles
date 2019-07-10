@@ -1,0 +1,5 @@
+"
+" Settings
+"
+
+setlocal foldmethod=marker
