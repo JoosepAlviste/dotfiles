@@ -5,6 +5,7 @@ tags
 .data/
 
 node_modules/
+vendor/
 
 *.pyc
 .pytest_cache/
