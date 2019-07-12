@@ -54,6 +54,7 @@ let s:bg=["#17252c", "235"]
 let s:highlight = ['#1F3446', '235']
 let s:search = ['#0F4767', '235']
 let s:slightly_brighterer = ["#233843", "234"]
+let s:error_red = ["#E83B45", "203"]
 
 function! s:ModifyColorscheme()
     " General
@@ -68,6 +69,15 @@ function! s:ModifyColorscheme()
 
     " coc.nvim
     call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
+    call <sid>hi("CocErrorFloat", s:error_red, s:none, '', '')
+    call <sid>hi("CocErrorSign", s:error_red, s:none, '', '')
+    call <sid>hi("CocErrorHighlight", s:error_red, s:none, 'underline', '')
+    call <sid>hi("CocWarningFloat", s:base09, s:none, '', '')
+    call <sid>hi("CocWarningSign", s:base09, s:none, '', '')
+    call <sid>hi("CocWarningHighlight", s:base09, s:none, 'underline', '')
+    call <sid>hi("CocInfoFloat", s:base0D, s:none, '', '')
+    call <sid>hi("CocInfoSign", s:base0D, s:none, '', '')
+    call <sid>hi("CocInfoHighlight", s:base0D, s:none, 'underline', '')
 
     " Customize NERDTree directory
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
