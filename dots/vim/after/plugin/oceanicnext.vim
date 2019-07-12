@@ -66,6 +66,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('CursorLine',  s:none,   s:base00, '',     '')
     call <sid>hi('ColorColumn', s:none,   s:base00, '',     '')
     call <sid>hi('NonText',     s:slightly_brighterer, s:none, '', '')
+    call <sid>hi('Visual',      '',       s:base01, '',     '')
 
     " coc.nvim
     call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
