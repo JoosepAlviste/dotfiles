@@ -126,16 +126,6 @@ if has("patch-7.4.314")
 endif
 
 set cursorline  " Highlight current line
-augroup modifyCursorline
-    autocmd!
-    " Disable cursorline in diff mode
-    autocmd OptionSet diff let &cursorline=!v:option_new
-
-    " Hide and show cursorline in inactive buffers
-    autocmd InsertLeave,WinEnter * set cursorline
-    autocmd InsertEnter,WinLeave * set nocursorline
-augroup END
-
 set colorcolumn=81,121  " Highlight columns
 set showmatch   " Highlight matching parenthesis, etc.
 
@@ -160,16 +150,3 @@ endif
 if has('nvim-0.3.1')
   set fillchars+=eob:\  " suppress ~ at EndOfBuffer
 endif
-
-augroup detectFileChanged
-    autocmd!
-    " Automatically update changed file in Vim
-    " Triger `autoread` when files changes on disk
-    " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-    " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-    " Notification after file change
-    " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-    autocmd FileChangedShellPost *
-      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-augroup END

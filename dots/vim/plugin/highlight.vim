@@ -15,6 +15,10 @@ function! s:ModifyHighlights()
     hi! GitGutterChangeDelete ctermfg=NONE guibg=NONE
 
     hi link jsonBraces Function
+
+    " Custom highlight group to dim inactive windows
+    hi link MyInactiveWin ColorColumn
+    hi link MyNormalWin Normal
 endfunction
 
 call s:ModifyHighlights()

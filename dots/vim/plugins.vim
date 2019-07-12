@@ -47,8 +47,6 @@ else
 endif
 Plug 'junegunn/fzf.vim'
 
-Plug 'blueyed/vim-diminactive'  " Dim inactive panes
-
 
 "
 " Colors
@@ -74,7 +72,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'othree/yajs.vim'
-" Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
+Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
