@@ -11,6 +11,8 @@ vendor/
 .pytest_cache/
 .mypy_cache/
 *.class
+coc-java-data/
+coc-phpls-data/
 
 .next/
 db/postgres/
