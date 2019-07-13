@@ -8,14 +8,14 @@ if exists('loaded_fzf')
     let g:fzf_colors = { 
                 \ 'fg':      ['fg', 'Normal'],
                 \ 'bg':      ['bg', 'Normal'],
-                \ 'hl':      ['fg', 'Comment'],
+                \ 'hl':      ['fg', 'Function'],
                 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-                \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-                \ 'hl+':     ['fg', 'Statement'],
+                \ 'bg+':     ['bg', 'Normal', 'CursorColumn'],
+                \ 'hl+':     ['fg', 'Keyword'],
                 \ 'info':    ['fg', 'PreProc'],
                 \ 'border':  ['fg', 'Ignore'],
                 \ 'prompt':  ['fg', 'Conditional'],
-                \ 'pointer': ['fg', 'Exception'],
+                \ 'pointer': ['fg', 'Keyword'],
                 \ 'marker':  ['fg', 'Keyword'],
                 \ 'spinner': ['fg', 'Label'],
                 \ 'header':  ['fg', 'Comment'], }
@@ -54,6 +54,7 @@ if exists('loaded_fzf')
     nnoremap <silent> <leader>ff :Rg!<cr>
     " Buffers
     nnoremap <silent> <leader>b :Buffer<cr>
+    nnoremap <silent> <C-b> :Buffer<cr>
     " Vim file editing history
     nnoremap <silent> <leader>fr :History<cr>
     nnoremap <silent> <leader>fh :Helptags<cr>
@@ -67,6 +68,28 @@ if exists('loaded_fzf')
     nnoremap <silent> <leader>fc :Commits<cr>
     " All commands
     nnoremap <silent> <leader>fa :Commands<cr>
+
+    let $FZF_DEFAULT_OPTS='--layout=reverse'
+    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+    function! FloatingFZF()
+        let buf = nvim_create_buf(v:false, v:true)
+        " call setbufvar(buf, '&signcolumn', 'no')
+
+        let height = &lines / 2
+        let width = float2nr(&columns - (&columns * 2 / 10))
+        let col = float2nr((&columns - width) / 2)
+
+        let opts = {
+                    \ 'relative': 'editor',
+                    \ 'row': &lines / 4,
+                    \ 'col': col,
+                    \ 'width': width,
+                    \ 'height': height
+                    \ }
+
+        call nvim_open_win(buf, v:true, opts)
+    endfunction
 else
     echo 'FZF not installed. It should work after running :PlugInstall'
 endif
