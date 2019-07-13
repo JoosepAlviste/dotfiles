@@ -54,8 +54,8 @@ Just useful utilities:
 git clone git@github.com:JoosepAlviste/dotfiles.git
 
 cd dotfiles
-chmod +x makesymlinks.sh
-./makesymlinks.sh
+chmod +x bin/makesymlinks.sh
+./bin/makesymlinks.sh
 ```
 
 This will symlink all of the files and folders inside `dots/` into your home 
@@ -71,7 +71,7 @@ need to manually run `:PlugInstall` in order to install plugins.
 git pull
 ```
 
-Maybe run `./makesymlinks.sh` again.
+Maybe run `./bin/makesymlinks.sh` again.
 
 
 ## Packages list (very incomplete)

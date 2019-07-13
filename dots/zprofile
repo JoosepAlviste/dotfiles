@@ -62,7 +62,7 @@ path=(
   /usr/local/opt/ruby/bin
   $HOME/.composer/vendor/bin
   $HOME/.local/bin
-  $HOME/.config/scripts
+  $HOME/dotfiles/bin
   "$(yarn global bin)"
   "$(ruby -e 'print Gem.user_dir')/bin"
   $path

@@ -29,7 +29,7 @@ EOF
 
 
 function print_options {
-    echo "$(grep -v "#" ~/dotfiles/emoji)"
+    echo "$(grep -v "#" ~/dotfiles/resources/emoji)"
 }
 
 

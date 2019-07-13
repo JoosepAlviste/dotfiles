@@ -49,4 +49,3 @@ for file in ./config/*; do
         ln -s $dir/config/$filename ~/.config/$filename
     fi
 done
-
