@@ -65,6 +65,7 @@ path=(
   $HOME/dotfiles/bin
   "$(yarn global bin)"
   "$(ruby -e 'print Gem.user_dir')/bin"
+  /usr/local/Cellar/maven@3.2/3.2.5/bin
   $path
 )
 
@@ -97,6 +98,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/
 
 # Set up Pipedrive Git directory
 export PIPEDRIVE_GIT_DIR="$HOME/Devel/Work"
+
+#
+# Java
+#
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
 
 #
 # Boot
