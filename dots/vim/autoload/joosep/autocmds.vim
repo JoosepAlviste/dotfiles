@@ -1,9 +1,21 @@
 " Open last selected file in NERDTree when possible
 function! joosep#autocmds#attempt_select_last_file() abort
-  let l:previous=expand('#:t')
-  if l:previous != ''
-    call search('\v<' . l:previous . '>')
-  endif
+    let l:previous=expand('#:t')
+    if l:previous != ''
+        call search('\v<' . l:previous . '>')
+    endif
+endfunction
+
+" Prevent opening files in NERDTree view
+function! joosep#autocmds#prevent_buffers_in_nerd_tree()
+    if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree'
+                \ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr
+                \ && &buftype == '' && !exists('g:launching_fzf')
+        let bufnum = bufnr('%')
+        close
+        exe 'b ' . bufnum
+    endif
+    if exists('g:launching_fzf') | unlet g:launching_fzf | endif
 endfunction
 
 function! joosep#autocmds#blur_window() abort
@@ -13,7 +25,7 @@ function! joosep#autocmds#blur_window() abort
         let bt = &buftype
         let ft = &filetype
         if index(disabledBufTypes, bt) == -1 
-            \ && index(disabledFileTypes, ft) == -1
+                    \ && index(disabledFileTypes, ft) == -1
             set winhighlight=CursorLineNr:LineNr,EndOfBuffer:ColorColumn,Normal:ColorColumn,SignColumn:ColorColumn
         endif
     endif

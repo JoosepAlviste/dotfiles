@@ -22,5 +22,8 @@ if has('autocmd')
         " Dim inactive windows
         autocmd FocusLost,WinLeave * call joosep#autocmds#blur_window()
         autocmd BufEnter,FocusGained,VimEnter,WinEnter * call joosep#autocmds#focus_window()
+
+        autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
+        autocmd BufWinEnter * call joosep#autocmds#prevent_buffers_in_nerd_tree()
     augroup END
 endif

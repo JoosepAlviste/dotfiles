@@ -38,7 +38,7 @@ if exists('loaded_fzf')
                 \   <bang>0)
 
     command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+                \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 
     " === FZF Mappings ==="
