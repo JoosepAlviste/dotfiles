@@ -7,16 +7,6 @@
 " Read plugins
 source ~/.vim/plugins.vim
 
-" ## Identify platform {
-silent function! MAC()
-  return has('macunix')
-endfunction
-silent function! LINUX()
-  return has('unix') && !has('macunix') && !has('win32unix')
-endfunction
-
-" }
-
 " }
 " # General {
 
