@@ -68,6 +68,10 @@ function! s:ModifyColorscheme()
     call <sid>hi('NonText',     s:slightly_brighterer, s:none, '', '')
     call <sid>hi('Visual',      '',       s:base01, '',     '')
 
+    " Markdown
+    call <sid>hi('mkdLink',      s:base0D, '', '', '')
+    call <sid>hi('mkdInlineURL', s:base0D, '', '', '')
+
     " coc.nvim
     call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
     call <sid>hi("CocErrorFloat", s:error_red, s:none, '', '')
