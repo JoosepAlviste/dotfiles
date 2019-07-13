@@ -71,9 +71,11 @@ augroup myCocAuGroup
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " Disable colorcolumn in floating windows
+  autocmd User CocOpenFloat setlocal colorcolumn=
 augroup end
 
 
