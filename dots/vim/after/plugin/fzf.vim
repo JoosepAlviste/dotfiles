@@ -74,7 +74,6 @@ if exists('loaded_fzf')
 
     function! FloatingFZF()
         let buf = nvim_create_buf(v:false, v:true)
-        " call setbufvar(buf, '&signcolumn', 'no')
 
         let height = &lines / 2
         let width = float2nr(&columns - (&columns * 2 / 10))
