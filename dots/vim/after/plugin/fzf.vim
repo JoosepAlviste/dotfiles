@@ -89,6 +89,29 @@ if exists('loaded_fzf')
 
         call nvim_open_win(buf, v:true, opts)
     endfunction
+
+    nnoremap <leader>fg :set operatorfunc=<SID>GrepOperator<cr>g@
+    vnoremap <leader>fg :<c-u>call <SID>GrepOperator(visualmode())<cr>
+
+    function! s:GrepOperator(type)
+        " Save previously copied text
+        let saved_unnamed_register = @@
+
+        " Copy the motion-ed or visually selected text
+        if a:type ==# 'v'
+            execute "normal! `<v`>y"
+        elseif a:type ==# 'char'
+            execute "normal! `[v`]y"
+        else
+            return
+        endif
+
+        " Open Ripgrep search with the term
+        silent execute "Rg! " . @@
+
+        " Restore previously copied text
+        let @@ = saved_unnamed_register
+    endfunction
 else
     echo 'FZF not installed. It should work after running :PlugInstall'
 endif
