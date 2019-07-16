@@ -12,7 +12,11 @@ function! joosep#autocmds#prevent_buffers_in_nerd_tree()
                 \ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr
                 \ && &buftype == '' && !exists('g:launching_fzf')
         let bufnum = bufnr('%')
-        close
+        try
+            " Do not close the buffer if it is the only one
+            close
+        catch
+        endtry
         exe 'b ' . bufnum
     endif
     if exists('g:launching_fzf') | unlet g:launching_fzf | endif
