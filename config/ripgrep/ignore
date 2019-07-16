@@ -3,6 +3,7 @@
 tags
 
 .data/
+dev-utils/*/data/
 
 node_modules/
 vendor/
