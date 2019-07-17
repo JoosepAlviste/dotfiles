@@ -19,6 +19,14 @@ function! s:ModifyHighlights()
     " Custom highlight group to dim inactive windows
     hi link MyInactiveWin ColorColumn
     hi link MyNormalWin Normal
+
+    " GraphQL
+    hi link graphqlTemplateString Normal
+    hi link graphqlConstant Normal
+    hi link graphqlVariable Constant
+    hi link graphqlBraces Special
+    hi link graphqlOperator Special
+    hi link graphqlName Function
 endfunction
 
 call s:ModifyHighlights()
