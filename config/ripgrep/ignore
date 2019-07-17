@@ -4,6 +4,8 @@ tags
 
 .data/
 dev-utils/*/data/
+_volumes/
+.nyc_output/
 
 node_modules/
 vendor/
