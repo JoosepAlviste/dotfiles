@@ -23,5 +23,7 @@
     ],
     "eslint.autoFixOnSave": true,
     "snippets.priority": 999,
-    "codeLens.enable": true
+    "codeLens.enable": true,
+    "typescript.referencesCodeLens.enable": false,
+    "typescript.implementationsCodeLens.enable": false
 }
