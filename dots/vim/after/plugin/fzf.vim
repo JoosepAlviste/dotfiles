@@ -75,13 +75,13 @@ if exists('loaded_fzf')
     function! FloatingFZF()
         let buf = nvim_create_buf(v:false, v:true)
 
-        let height = &lines / 3
-        let width = float2nr(&columns - (&columns * 6 / 10))
+        let height = &lines / 2
+        let width = float2nr(&columns - (&columns * 4 / 10))
         let col = float2nr((&columns - width) / 2)
 
         let opts = {
                     \ 'relative': 'editor',
-                    \ 'row': &lines * 2 / 6,
+                    \ 'row': &lines / 4,
                     \ 'col': col,
                     \ 'width': width,
                     \ 'height': height
