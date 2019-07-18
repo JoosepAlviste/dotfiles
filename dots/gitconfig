@@ -8,7 +8,7 @@
     interactive = auto
     grep = auto
 [color "status"]
-    header = black bold
+    header = dim white
     branch = cyan
     nobranch = red
     unmerged = red
