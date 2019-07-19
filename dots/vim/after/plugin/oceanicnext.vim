@@ -38,15 +38,15 @@ let s:base04=['#a7adba', '145']
 let s:base05=['#c0c5ce', '251']
 let s:base06=['#cdd3de', '252']
 let s:base07=['#d8dee9', '253']
-let s:base08=['#ec5f67', '203']
-let s:base09=['#f99157', '209']
-let s:base0A=['#fac863', '221']
-let s:base0B=['#99c794', '114']
-let s:base0C=['#62b3b2', '73']
-let s:base0D=['#6699cc', '68']
-let s:base0E=['#c594c5', '176']
-let s:base0F=['#ab7967', '137']
-let s:base10=['#ffffff', '15']
+let s:base08=['#ec5f67', '203'] " red
+let s:base09=['#f99157', '209'] " orange
+let s:base0A=['#fac863', '221'] " yellow
+let s:base0B=['#99c794', '114'] " green
+let s:base0C=['#62b3b2', '73'] " cyan
+let s:base0D=['#6699cc', '68'] " blue
+let s:base0E=['#c594c5', '176'] " magenta
+let s:base0F=['#ab7967', '137'] " brown
+let s:base10=['#ffffff', '15'] " white
 let s:none=['NONE', 'NONE']
 
 " Custom colors
@@ -55,6 +55,8 @@ let s:highlight = ['#1F3446', '235']
 let s:search = ['#0F4767', '235']
 let s:slightly_brighterer = ["#233843", "234"]
 let s:error_red = ["#E83B45", "203"]
+let s:diff_green = ["#355E31", "114"]
+let s:diff_red = ["#720E13", "203"]
 
 function! s:ModifyColorscheme()
     " General
@@ -86,6 +88,10 @@ function! s:ModifyColorscheme()
 
     " Customize NERDTree directory
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
+
+    " tpope/vim-fugitive
+    call <sid>hi('diffAdded', '', s:diff_green, '', '')
+    call <sid>hi('diffRemoved', '', s:diff_red, '', '')
 endfunction
 
 call s:ModifyColorscheme()
