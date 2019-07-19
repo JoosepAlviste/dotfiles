@@ -55,8 +55,8 @@ let s:highlight = ['#1F3446', '235']
 let s:search = ['#0F4767', '235']
 let s:slightly_brighterer = ["#233843", "234"]
 let s:error_red = ["#E83B45", "203"]
-let s:diff_green = ["#355E31", "114"]
-let s:diff_red = ["#720E13", "203"]
+let s:diff_green = ["#637E6B", "114"]
+let s:diff_red = ["#7F4B54", "203"]
 
 function! s:ModifyColorscheme()
     " General
@@ -90,8 +90,10 @@ function! s:ModifyColorscheme()
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
 
     " tpope/vim-fugitive
-    call <sid>hi('diffAdded', '', s:diff_green, '', '')
-    call <sid>hi('diffRemoved', '', s:diff_red, '', '')
+    " call <sid>hi('diffAdded', '', s:diff_green, '', '')
+    " call <sid>hi('diffRemoved', '', s:diff_red, '', '')
+    call <sid>hi('diffAdded', s:base0B, s:none, '', '')
+    call <sid>hi('diffRemoved', s:base08, s:none, '', '')
 endfunction
 
 call s:ModifyColorscheme()
