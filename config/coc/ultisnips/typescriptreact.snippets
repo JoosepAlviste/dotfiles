@@ -23,3 +23,21 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet fc "A React function component"
+import React, { FunctionComponent } from 'react';
+
+interface Props {
+    ${3}
+}
+
+const ${1:`!p snip.rv = snip.basename`}: FunctionComponent<Props> = (${2}) => (
+  $0
+);
+
+export default $1;
+endsnippet
+
+snippet scp "Styled components prop theme"
+${props => props.theme.$0};
+endsnippet
