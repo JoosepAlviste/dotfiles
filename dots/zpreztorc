@@ -34,7 +34,6 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt' \
   'autosuggestions' \
-  'tmux' \
   'git' \
   'syntax-highlighting' \
   'history-substring-search' \
