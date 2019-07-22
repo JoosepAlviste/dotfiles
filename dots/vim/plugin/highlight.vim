@@ -27,6 +27,9 @@ function! s:ModifyHighlights()
     hi link graphqlBraces Special
     hi link graphqlOperator Special
     hi link graphqlName Function
+
+    " YATS
+    hi link tsxIntrinsicTagName Identifier
 endfunction
 
 call s:ModifyHighlights()
