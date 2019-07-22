@@ -7,6 +7,7 @@ function! joosep#autocmds#attempt_select_last_file() abort
 endfunction
 
 " Prevent opening files in NERDTree view
+" TODO: Delete this if it id not useful?
 function! joosep#autocmds#prevent_buffers_in_nerd_tree()
     if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree'
                 \ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr

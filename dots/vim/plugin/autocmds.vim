@@ -24,6 +24,7 @@ if has('autocmd')
         autocmd BufEnter,FocusGained,VimEnter,WinEnter * call joosep#autocmds#focus_window()
 
         autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
-        autocmd BufWinEnter * call joosep#autocmds#prevent_buffers_in_nerd_tree()
+        " TODO: Delete this if it is not useful?
+        " autocmd BufWinEnter * call joosep#autocmds#prevent_buffers_in_nerd_tree()
     augroup END
 endif
