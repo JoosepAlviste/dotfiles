@@ -16,13 +16,13 @@
     added = green
     changed = red bold
 [color "diff"]
-    meta = yellow
+    meta = "11"
     frag = magenta bold
-    func = blue
+    commit = yellow bold
     old = red bold
     new = green bold
-    commit = yellow bold
     whitespace = red reverse
+    func = blue
     context = normal
 [color "branch"]
     current = cyan
@@ -55,14 +55,20 @@
 [core]
     excludesfile = ~/.config/gitignore_global
 [pager]
-    diff = diff-so-fancy | less --tabs=1,5 -RFX
-    show = diff-so-fancy | less --tabs=1,5 -RFX
+    diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+    show = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [diff]
 	algorithm = patience
+[diff-so-fancy]
+	markEmptyLines = false
+[alias]
+    patch = !git --no-pager diff --no-color
+    push-this = git push -u origin HEAD
+    bb = !sh -c 'git rev-parse --abbrev-ref HEAD | pbcopy' 
