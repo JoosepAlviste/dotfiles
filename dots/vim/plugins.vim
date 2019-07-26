@@ -70,10 +70,13 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
+Plug 'neomake/neomake'
+Plug 'janko/vim-test'
+
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 Plug 'othree/yajs.vim'
+
 Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }

@@ -8,7 +8,7 @@ let g:lightline = {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
             \   'right': [ [ 'percent' ],
-            \              [ 'zoom', 'gutentags', 'cocstatus', 'filetype' ] ],
+            \              [ 'testingstatus', 'zoom', 'gutentags', 'cocstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'readonly': 'LightlineReadonly',
@@ -18,6 +18,7 @@ let g:lightline = {
             \   'cocstatus': 'coc#status',
             \   'gutentags': 'gutentags#statusline',
             \   'zoom': 'zoom#statusline',
+            \   'testingstatus': 'TestingStatus',
             \ },
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -52,4 +53,14 @@ function! MyFiletype()
                 \       ? WebDevIconsGetFileTypeSymbol() . ' ' . &filetype
                 \       : 'no ft')
                 \ : ''
+endfunction
+
+function! TestingStatus() abort
+  if g:TESTING_STATUS == 'passing'
+    return "\ue342"
+  elseif g:TESTING_STATUS == 'running'
+    return "\uf499"
+  elseif g:TESTING_STATUS == 'failing'
+    return "\uf528"
+  endif
 endfunction
