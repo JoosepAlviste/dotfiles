@@ -64,6 +64,7 @@ Plug 'tpope/vim-commentary'   " Comment stuff out easily
 Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 
 Plug 'tpope/vim-fugitive'   " Git integrations
+Plug 'tpope/vim-rhubarb'
 
 Plug 'editorconfig/editorconfig-vim'
 
