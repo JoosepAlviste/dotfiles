@@ -30,6 +30,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-surround'   " Surround stuff with braces, quotes, tags, anything
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
+Plug 'tpope/vim-projectionist'
 
 Plug 'dhruvasagar/vim-zoom'  " TMUX-like zooming of panes
 
