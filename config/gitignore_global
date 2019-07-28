@@ -8,4 +8,4 @@ tags.lock
 .idea/
 
 celerybeat.pid
-
+yarn-error.log

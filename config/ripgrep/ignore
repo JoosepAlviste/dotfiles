@@ -9,6 +9,8 @@ _volumes/
 
 node_modules/
 vendor/
+yarn.lock
+package-lock.json
 
 *.pyc
 .pytest_cache/
