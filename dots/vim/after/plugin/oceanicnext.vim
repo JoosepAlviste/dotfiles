@@ -69,10 +69,14 @@ function! s:ModifyColorscheme()
     call <sid>hi('ColorColumn', s:none,   s:base00, '',     '')
     call <sid>hi('NonText',     s:slightly_brighterer, s:none, '', '')
     call <sid>hi('Visual',      '',       s:base01, '',     '')
+    call <sid>hi('SpellBad',    '',       '',       '',     s:base09)
 
     " Markdown
-    call <sid>hi('mkdLink',      s:base0D, '', '', '')
-    call <sid>hi('mkdInlineURL', s:base0D, '', '', '')
+    call <sid>hi('mkdLink',      '',           '', 'underline', s:base0D)
+    call <sid>hi('mkdInlineURL', '',           '', 'underline', s:base0D)
+    call <sid>hi('mkdURL',       s:base0D,     '', 'underline', s:base0D)
+    call <sid>hi('mkdCode',      s:base0E,     '', '',          '')
+    call <sid>hi('mkdCodeDelimiter', s:base0E, '', '',          '')
 
     " coc.nvim
     call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
@@ -90,8 +94,6 @@ function! s:ModifyColorscheme()
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
 
     " tpope/vim-fugitive
-    " call <sid>hi('diffAdded', '', s:diff_green, '', '')
-    " call <sid>hi('diffRemoved', '', s:diff_red, '', '')
     call <sid>hi('diffAdded', s:base0B, s:none, '', '')
     call <sid>hi('diffRemoved', s:base08, s:none, '', '')
 endfunction
