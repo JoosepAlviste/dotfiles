@@ -143,6 +143,9 @@ precmd() {
     fi
 }
 
+# Kitty
+kitty + complete setup zsh | source /dev/stdin
+
 # }}}
 # Startup {{{
 

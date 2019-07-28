@@ -57,6 +57,9 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  $path
+)
+path=(
   /usr/local/opt/python@2/bin
   /usr/local/opt/gettext/bin
   /usr/local/opt/ruby/bin
@@ -98,6 +101,9 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/
 
 # Set up Pipedrive Git directory
 export PIPEDRIVE_GIT_DIR="$HOME/Devel/Work"
+
+# Kitty terminal
+export KITTY_LISTEN_ON=/tmp/mykitty
 
 #
 # Java

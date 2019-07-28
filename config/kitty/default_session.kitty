@@ -1,0 +1,13 @@
+cd ~/dotfiles
+title dotfiles
+launch zsh
+
+new_tab code
+cd ~/Devel
+launch zsh
+
+new_tab server
+cd ~/Devel
+launch zsh
+launch zsh
+launch zsh
