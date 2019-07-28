@@ -73,6 +73,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neomake/neomake'
 Plug 'janko/vim-test'
 
+Plug 'tpope/vim-dispatch'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'othree/yajs.vim'
