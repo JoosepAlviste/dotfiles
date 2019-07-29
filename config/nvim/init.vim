@@ -16,6 +16,7 @@ if (empty($TMUX))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     " Nvim terminal keybindings
+    " TODO: Fix V
     " tnoremap <Esc> <C-\><C-n>
     tnoremap <M-[> <Esc>
     tnoremap <C-v><Esc> <Esc>

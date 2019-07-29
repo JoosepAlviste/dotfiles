@@ -60,16 +60,17 @@ let s:diff_red = ["#7F4B54", "203"]
 
 function! s:ModifyColorscheme()
     " General
-    call <sid>hi('Normal',      s:base05, s:none,   '',     '')
-    call <sid>hi('IncSearch',   s:none,   s:search, 'NONE', '')
-    call <sid>hi('Search',      s:none,   s:search, 'NONE', '')
-    call <sid>hi('VertSplit',   s:base00, s:base00, 'NONE', '')
-    call <sid>hi('EndOfBuffer', s:none,   s:bg,     '',     '')
-    call <sid>hi('CursorLine',  s:none,   s:base00, '',     '')
-    call <sid>hi('ColorColumn', s:none,   s:base00, '',     '')
+    call <sid>hi('Normal',      s:base05, s:none,   '',       '')
+    call <sid>hi('IncSearch',   s:none,   s:search, 'NONE',   '')
+    call <sid>hi('Search',      s:none,   s:search, 'NONE',   '')
+    call <sid>hi('VertSplit',   s:base00, s:base00, 'NONE',   '')
+    call <sid>hi('EndOfBuffer', s:none,   s:bg,     '',       '')
+    call <sid>hi('CursorLine',  s:none,   s:base00, '',       '')
+    call <sid>hi('ColorColumn', s:none,   s:base00, '',       '')
     call <sid>hi('NonText',     s:slightly_brighterer, s:none, '', '')
-    call <sid>hi('Visual',      '',       s:base01, '',     '')
-    call <sid>hi('SpellBad',    '',       '',       '',     s:base09)
+    call <sid>hi('Visual',      '',       s:base01, '',       '')
+    call <sid>hi('SpellBad',    '',       '',       '',       s:base09)
+    call <sid>hi('Folded',      s:base03, s:base00, 'italic', '')
 
     " Markdown
     call <sid>hi('mkdLink',      '',           '', 'underline', s:base0D)
