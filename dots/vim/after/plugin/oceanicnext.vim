@@ -70,10 +70,11 @@ function! s:ModifyColorscheme()
     call <sid>hi('CursorLine',  s:none,   s:base00, '',       '')
     call <sid>hi('ColorColumn', s:none,   s:base00, '',       '')
     call <sid>hi('NonText',     s:base03, s:none,   '',       '')
-    call <sid>hi('Visual',      '',       s:base01, '',       '')
+    call <sid>hi('Visual',      '',       s:slightly_brighterer, '', '')
     call <sid>hi('SpellBad',    '',       '',       '',       s:base09)
     call <sid>hi('Folded',      s:base03, s:base00, 'italic', '')
     call <sid>hi('PMenu',       '',       s:base00, '',       '')
+    call <sid>hi('ErrorMsg',    s:error_red, s:none, '',      '')
 
     " Markdown
     call <sid>hi('mkdLink',      '',           '', 'underline', s:base0D)
