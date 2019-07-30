@@ -58,6 +58,8 @@ let s:error_red = ["#E83B45", "203"]
 let s:diff_green = ["#637E6B", "114"]
 let s:diff_red = ["#7F4B54", "203"]
 
+let s:statusline = ["#1F323C", "235"]
+
 function! s:ModifyColorscheme()
     " General
     call <sid>hi('Normal',      s:base05, s:none,   '',       '')
@@ -71,6 +73,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('Visual',      '',       s:base01, '',       '')
     call <sid>hi('SpellBad',    '',       '',       '',       s:base09)
     call <sid>hi('Folded',      s:base03, s:base00, 'italic', '')
+    call <sid>hi('PMenu',       '',       s:base00, '',       '')
 
     " Markdown
     call <sid>hi('mkdLink',      '',           '', 'underline', s:base0D)

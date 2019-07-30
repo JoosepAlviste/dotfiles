@@ -8,7 +8,13 @@ let g:lightline = {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
             \   'right': [ [ 'percent' ],
-            \              [ 'testingstatus', 'zoom', 'gutentags', 'cocstatus', 'filetype' ] ],
+            \              [ 'testingstatus', 'zoom', 'gutentags', 'cocstatus' ],
+            \              [ 'filetype' ] ],
+            \ },
+            \ 'inactive': {
+            \   'left': [ [ 'readonly', 'filename', 'modified' ] ],
+            \   'right': [ [ 'percent' ],
+            \              [ 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'readonly': 'LightlineReadonly',
