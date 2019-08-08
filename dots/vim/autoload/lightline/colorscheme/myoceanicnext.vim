@@ -6,7 +6,7 @@
 
 let s:p = {"normal": {}, "inactive": {}, "insert": {}, "replace": {}, "visual": {}, "tabline": {} }
 
-let s:darkest = [["#65737e", 15], ["#17252c", 235]]
+let s:darkest = [["#65737e", 15], ["#16242c", 235]]
 let s:dark = [["#cdd3de", 15], ["#1b2b34", 235]]
 let s:lighter = [["#cdd3de", 15], ["#1F323C", 243]]
 let s:light = [["#ffffff", 15], ["#65737e", 243]]

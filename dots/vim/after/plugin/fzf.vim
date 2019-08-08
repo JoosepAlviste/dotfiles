@@ -10,7 +10,7 @@ if exists('loaded_fzf')
                 \ 'bg':      ['bg', 'Normal'],
                 \ 'hl':      ['fg', 'Function'],
                 \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-                \ 'bg+':     ['bg', 'Normal', 'CursorColumn'],
+                \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
                 \ 'hl+':     ['fg', 'Keyword'],
                 \ 'info':    ['fg', 'PreProc'],
                 \ 'border':  ['fg', 'Ignore'],

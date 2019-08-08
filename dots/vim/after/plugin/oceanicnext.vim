@@ -50,7 +50,7 @@ let s:base10=['#ffffff', '15'] " white
 let s:none=['NONE', 'NONE']
 
 " Custom colors
-let s:bg=["#17252c", "235"]
+let s:bg=["#16242c", "235"]
 let s:highlight = ['#1F3446', '235']
 let s:search = ['#0F4767', '235']
 let s:slightly_brighterer = ["#233843", "234"]
