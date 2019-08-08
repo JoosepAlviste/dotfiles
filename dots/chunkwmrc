@@ -48,7 +48,7 @@ chunkc set custom_bar_offset_bottom      0
 chunkc set custom_bar_offset_left        0
 chunkc set custom_bar_offset_right       0
 
-chunkc set global_desktop_mode           bsp
+chunkc set global_desktop_mode           monocle
 chunkc set global_desktop_offset_top     20
 chunkc set global_desktop_offset_bottom  20
 chunkc set global_desktop_offset_left    20
