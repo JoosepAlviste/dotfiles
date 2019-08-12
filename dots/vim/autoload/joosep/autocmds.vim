@@ -29,7 +29,7 @@ function! joosep#autocmds#blur_window() abort
         let disabledFileTypes = ['startify']
         let bt = &buftype
         let ft = &filetype
-        if index(disabledBufTypes, bt) == -1 
+        if index(disabledBufTypes, bt) == -1
                     \ && index(disabledFileTypes, ft) == -1
             set winhighlight=CursorLineNr:LineNr,EndOfBuffer:ColorColumn,Normal:ColorColumn,SignColumn:ColorColumn
         endif

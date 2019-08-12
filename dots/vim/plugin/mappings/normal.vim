@@ -37,7 +37,7 @@ nnoremap <silent> <S-Right> :lnfile<cr>
 
 " Show syntax group under cursor
 nnoremap <silent> <F10> :call joosep#syntax#SynStack()<cr>
-" nnoremap <silent> <F10> :call joosep#syntax#MoreSyntaxes()<cr>
+nnoremap <silent> <F9> :call joosep#syntax#MoreSyntaxes()<cr>
 
 " Always search forward with n
 nnoremap <expr> n 'Nn'[v:searchforward]
