@@ -4,3 +4,5 @@ setlocal noruler
 
 setlocal nonumber
 setlocal norelativenumber
+
+tunmap <buffer> <esc>
