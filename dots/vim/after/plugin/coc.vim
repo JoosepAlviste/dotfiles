@@ -115,8 +115,8 @@ endfunction
 " coc-git
 "
 
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
+nmap <silent> <expr> [c &diff ? '[c' : '<Plug>(coc-git-prevchunk)'
+nmap <silent> <expr> ]c &diff ? ']c' : '<Plug>(coc-git-nextchunk)'
 nmap <leader>hp <Plug>(coc-git-chunkinfo)
 nnoremap <leader>hs :CocCommand git.chunkStage<cr>
 nnoremap <leader>hu :CocCommand git.chunkUndo<cr>
