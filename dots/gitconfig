@@ -64,8 +64,17 @@
 	newHighlight = green bold 22
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[merge]
+    tool = vimdiff
+[mergetool]
+    prompt = true
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+    prompt = false
 [diff]
 	algorithm = patience
+    tool = vimdiff
 [diff-so-fancy]
 	markEmptyLines = false
 [alias]
