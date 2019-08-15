@@ -79,5 +79,5 @@
 	markEmptyLines = false
 [alias]
     patch = !git --no-pager diff --no-color
-    push-this = git push -u origin HEAD
+    push-this = push -u origin HEAD
     bb = !sh -c 'git rev-parse --abbrev-ref HEAD | pbcopy' 
