@@ -28,6 +28,7 @@ augroup END
 function! s:EnableTerminal()
     setlocal nonumber
     setlocal norelativenumber
+    setlocal signcolumn=no
 
     tnoremap <buffer> <Esc> <C-\><C-n>
 endfunction
