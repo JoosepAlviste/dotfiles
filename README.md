@@ -1,5 +1,7 @@
 # My dotfiles
 
+![Busy](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Busy.png)
+
 ## Requirements
 
 * Zsh
@@ -186,3 +188,9 @@ x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 ```
+
+## More screenshots
+
+![Split](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Split.png)
+
+![FZF](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/FZF.png)
