@@ -20,8 +20,8 @@ if has('autocmd')
                     \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
         " Dim inactive windows
-        autocmd FocusLost,WinLeave * call joosep#autocmds#blur_window()
-        autocmd BufEnter,FocusGained,VimEnter,WinEnter * call joosep#autocmds#focus_window()
+        " autocmd FocusLost,WinLeave * call joosep#autocmds#blur_window()
+        " autocmd BufEnter,FocusGained,VimEnter,WinEnter * call joosep#autocmds#focus_window()
 
         autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
         " TODO: Delete this if it is not useful?
