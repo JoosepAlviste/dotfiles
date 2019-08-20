@@ -2,28 +2,37 @@
 
 ![Busy](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Busy.png)
 
-## Requirements
+Some of the configuration includes:
 
-* Zsh
-    - [Prezto](https://github.com/sorin-ionescu/prezto/)
-* [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+* Editor - [neovim](https://neovim.io)
+* Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
+* Shell - [Zsh](https://www.zsh.org)
+    * With [Prezto](https://github.com/sorin-ionescu/prezto)
+* Window manager on macOS - [yabai](https://github.com/koekeishiya/yabai)
+* Window manager on Linux - [i3-gaps](https://github.com/Airblader/i3)
+    * With [Polybar](https://github.com/polybar/polybar) and 
+      [Rofi](https://github.com/davatorium/rofi)
 
-### Utilities
 
-If these are installed, will be aliased.
+## Utilities
+
+If some of these utilities are installed, they will be aliased:
 
 * [`bat`](https://github.com/sharkdp/bat) - `cat` replacement
 * [`prettyping`](https://github.com/denilsonsa/prettyping) - `ping` replacement
 * [`tldr`](http://tldr.sh/) - simpler `man` pages, aliased to `help`
 * [`hub`](https://github.com/github/hub) - `git` replacement, integrates with 
-  github. (Can run `git clone dotfiles` to clone your own dotfiles)
+  GitHub. (Can run `git clone dotfiles` to clone your own dotfiles)
 
-Just useful utilities:
+Just useful utilities that aren't aliased:
 
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
-### i3
+
+## Linux
+
+Just some notes and things I use on Linux:
 
 * `i3-gaps`
 * `platerctl` - media controls
@@ -37,7 +46,10 @@ Just useful utilities:
 * `playerctl` - control audio
 * `betterlockscreen` - nice lock screen for i3lock
 
-### macOS
+
+## macOS
+
+Just some notes and things I use on macOS:
 
 * Fix slow `chunkwm` controls by using `dash` as the shell
     * `zsh` is the default shell and is horribly slow, so let's use a faster 
@@ -66,6 +78,10 @@ folder.
 
 The next time you start `vim`, it will automatically install Plug. You might 
 need to manually run `:PlugInstall` in order to install plugins.
+
+The utility scripts in `bin/` are automatically added to the Zsh path so you can 
+run `makesymlinks` anywhere.
+
 
 ## Update
 
@@ -155,15 +171,19 @@ brew install \
 ```
 
 
-### Pip
+### Python
 
-Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from Python 2, there:
+Neovim plugins require that there's a virtualenv with the `neovim` package 
+installed. Create a Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from 
+Python 2, there:
 
 ```bash
 pip install \
     neovim \
     i3-py
 ```
+
+The location of this virtualenv is configured in `nvim/init.vim`.
 
 ## FAQ (my own reference)
 
