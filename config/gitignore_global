@@ -7,5 +7,7 @@ tags.lock
 .vscode/
 .idea/
 
+.DS_Store
+
 celerybeat.pid
 yarn-error.log
