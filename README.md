@@ -5,6 +5,7 @@
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
+    * See `dots/vim/plugins.vim` for the used plugins
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
     * With [Prezto](https://github.com/sorin-ionescu/prezto)
@@ -12,6 +13,7 @@ Some of the configuration includes:
 * Window manager on Linux - [i3-gaps](https://github.com/Airblader/i3)
     * With [Polybar](https://github.com/polybar/polybar) and 
       [Rofi](https://github.com/davatorium/rofi)
+* `tmux` (not used by me anymore)
 
 
 ## Utilities
@@ -60,6 +62,33 @@ Just some notes and things I use on macOS:
 * Start `chunkwm` services
     * `brew services start chunkwm`
     * `brew services start skhd`
+
+# Vim configuration structure
+
+The (neo)vim configuration is split into many files since there is quite a bit 
+of configuration and it would be crazy to have it all in one file. I try to 
+leverage as much of Vims built-in logic for splitting files.
+
+Neovim specific configuration is located in `config/nvim/init.vim`, everything 
+else vim-related is in `dots/vim/`.
+
+* `after/plugin/` - configuration related to plugins (settings, mappings, etc.)
+* `autoload/` - functions that are used in other files
+    * `lightline/` - custom color schemes for Lightline
+* `colors/` - custom color schemes (currently includes `nightowl` but I don't 
+    use it anymore)
+* `ftdetect/` - logic for detecting file types
+* `ftplugin/` - configuration for specific file types
+* `plugin/` - configuration split into files, kind of like *"my own plugins"*. 
+    File names should be pretty descriptive
+    * `mappings/` - mappings not related to any plugins
+    * `highlight.vim` - some non-colorscheme-related highlighting syntax 
+        improvements
+    * `settings.vim` - most global `set XYZ` calls are here. I would like to 
+        split this even more but it works OK for now
+* `plugins.vim` - declaring used plugins using `Plug`
+* `vimrc` - settings that don't really fit into anywhere else (aim is to have as 
+    little as possible here)
 
 
 ## Installation
