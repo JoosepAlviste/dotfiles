@@ -37,6 +37,7 @@ Plug 'dhruvasagar/vim-zoom'  " TMUX-like zooming of panes
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
+Plug 'Yggdroot/indentLine'
 
 Plug 'metakirby5/codi.vim'
 
