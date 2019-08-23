@@ -57,6 +57,10 @@ set autoread    " Automatically update buffer when file changes
 set nowrap  " Do not wrap lines by default
 set sidescroll=5    " Scroll by 5 characters horizontally
 
+if has('nvim')
+    set inccommand=nosplit  " Show preview of ex commands
+endif
+
 
 "
 " Controls
@@ -92,6 +96,8 @@ set nojoinspaces        " Prevent inserting two spaces with J
 
 set splitright  " Open new splits to the right
 set splitbelow  " Open new splits below
+
+set suffixesadd=.md,.js,.ts,.tsx  " File extensions not required when opening with `gf`
 
 
 "
@@ -150,4 +156,8 @@ endif
 
 if has('nvim-0.3.1')
   set fillchars+=eob:\  " suppress ~ at EndOfBuffer
+endif
+
+if (has('termguicolors'))
+    set termguicolors
 endif

@@ -70,7 +70,10 @@ if exists('loaded_fzf')
     nnoremap <silent> <leader>fa :Commands<cr>
 
     let $FZF_DEFAULT_OPTS='--layout=reverse'
-    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+    if has('nvim')
+        let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+    endif
 
     function! FloatingFZF()
         let buf = nvim_create_buf(v:false, v:true)
