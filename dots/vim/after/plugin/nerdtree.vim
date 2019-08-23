@@ -3,13 +3,14 @@
 "
 
 " The default of 31 is just a little too narrow.
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize = 35
 
 " Disable display of '?' text and 'Bookmarks' label.
-let g:NERDTreeMinimalUI=1
+let g:NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " When hitting "-", can hit C-^ to return to file
-let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+let g:NERDTreeCreatePrefix = 'silent keepalt keepjumps'
 
 " Show hidden files/directories by default
 let g:NERDTreeShowHidden = 1
@@ -20,6 +21,12 @@ let g:NERDTreeIgnore = [
             \ '\.git$[[dir]]', '\.idea$[[dir]]', '^tmux-client-.*\.log',
             \ '\.vscode$[[dir]]',
             \ ]
+
+" Automatically close NERDTree when a file is opened/selected
+let NERDTreeQuitOnOpen = 1
+
+" Automatically delete buffer after deleting file
+let NERDTreeAutoDeleteBuffer = 1
 
 " Select last file when opening NERDTree
 if has('autocmd')
