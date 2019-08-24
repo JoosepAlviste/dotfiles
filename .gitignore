@@ -7,3 +7,6 @@ dots/vim.test/
 
 dots/emacs.d/elpa/
 .netrwhist
+
+*.pyo
+*.pyc
