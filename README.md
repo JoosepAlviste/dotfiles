@@ -94,12 +94,14 @@ else vim-related is in `dots/vim/`.
 ## Installation
 
 ```
-git clone git@github.com:JoosepAlviste/dotfiles.git
+git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 cd dotfiles
 chmod +x bin/makesymlinks.sh
 ./bin/makesymlinks.sh
 ```
+
+(Submodules are required since `ranger` theme is a cloned repository).
 
 This will symlink all of the files and folders inside `dots/` into your home 
 folder prefixed by `.` and everything from `config/` to your `~/.config/` 

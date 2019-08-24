@@ -1,0 +1,7 @@
+--theme="Oceanic Next"
+
+--style="numbers"
+
+--italic-text=always
+
+--map-syntax .ignore:.gitignore

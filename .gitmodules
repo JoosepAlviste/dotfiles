@@ -1,0 +1,3 @@
+[submodule "config/bat/themes/oceanic-next-color-scheme"]
+	path = config/bat/themes/oceanic-next-color-scheme
+	url = https://github.com/voronianski/oceanic-next-color-scheme
