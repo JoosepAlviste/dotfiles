@@ -63,6 +63,5 @@ nnoremap ]e :<c-u>execute 'move +'. v:count1<cr>
 nnoremap [<space> :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space> :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
-" Quit with <C-q>
-nnoremap <C-q> :q<cr>
-nnoremap <C-w> :w<cr>
+" Ex-mode is weird and not useful so it seems better to repeat the last macro
+nnoremap Q @@
