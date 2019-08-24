@@ -25,5 +25,7 @@
     "snippets.priority": 999,
     "codeLens.enable": true,
     "typescript.referencesCodeLens.enable": false,
-    "typescript.implementationsCodeLens.enable": false
+    "typescript.implementationsCodeLens.enable": false,
+    "javascript.referencesCodeLens.enable": false,
+    "javascript.implementationsCodeLens.enable": false
 }
