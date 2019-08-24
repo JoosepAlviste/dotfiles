@@ -20,24 +20,19 @@ call plug#begin('~/.vim/plugged')
 " }
 " # Install plugins {
 
-" Nicer TMUX pane movements
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
 Plug 'tpope/vim-sensible'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'   " Allows to make the repeat (.) command smarter
 Plug 'tpope/vim-surround'   " Surround stuff with braces, quotes, tags, anything
+Plug 'tpope/vim-dispatch'
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 Plug 'tpope/vim-projectionist'
 
-Plug 'dhruvasagar/vim-zoom'  " TMUX-like zooming of panes
-
-Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
-Plug 'Yggdroot/indentLine'
 
 Plug 'metakirby5/codi.vim'
 
@@ -62,6 +57,7 @@ Plug 'mhartington/oceanic-next'
 "
 
 Plug 'tpope/vim-commentary'   " Comment stuff out easily
+Plug 'suy/vim-context-commentstring'  " commentstring based on file location
 Plug 'ludovicchabant/vim-gutentags'   " Manage tags file
 
 Plug 'tpope/vim-fugitive'   " Git integrations
@@ -74,11 +70,9 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neomake/neomake'
 Plug 'janko/vim-test'
 
-Plug 'tpope/vim-dispatch'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'othree/yajs.vim'
-
 Plug 'maxmellon/vim-jsx-pretty'  " This cannot be active when in TS files
 Plug 'meain/vim-package-info', { 'do': 'npm install' }
 Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
