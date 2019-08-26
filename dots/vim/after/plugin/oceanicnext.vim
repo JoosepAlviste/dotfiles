@@ -76,6 +76,11 @@ function! s:ModifyColorscheme()
     call <sid>hi('PMenu',       '',       s:base00, '',       '')
     call <sid>hi('ErrorMsg',    s:error_red, s:none, '',      '')
 
+    " Git
+    call <sid>hi('DiffFile',    s:base08, s:none, '', '')
+    call <sid>hi('DiffNewFile', s:base0B, s:none, '', '')
+    call <sid>hi('DiffLine',    s:base0D, s:none, '', '')
+
     " Markdown
     call <sid>hi('mkdLink',      '',           '', 'underline', s:base0D)
     call <sid>hi('mkdInlineURL', '',           '', 'underline', s:base0D)
