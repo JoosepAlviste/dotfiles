@@ -6,7 +6,7 @@ setlocal softtabstop=2
 " Format with prettier by default
 setlocal formatprg=prettier
 
-setlocal formatoptions=ca2qw
+setlocal formatoptions=ca2qwj
 
 "
 " Mappings
