@@ -69,6 +69,7 @@ if exists('loaded_fzf')
     " All commands
     nnoremap <silent> <leader>fa :Commands<cr>
 
+    let g:fzf_history_dir = '~/.local/share/fzf-history'
     let $FZF_DEFAULT_OPTS='--layout=reverse'
 
     if has('nvim')
