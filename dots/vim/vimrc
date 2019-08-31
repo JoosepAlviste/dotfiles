@@ -4,26 +4,19 @@
 " }
 " # Environment {
 
+" Polyglot disabled needs to be set before the plugin is loaded because
+" otherwise ftdetection is not disabled
+let g:polyglot_disabled = ['typescript', 'typescript.tsx', 'jsx', 'jenkins']
+
 " Read plugins
 source ~/.vim/plugins.vim
 
 " }
-" # General {
+" # Leader {
 
 nnoremap <space> <nop>
 let mapleader="\<Space>"
 let maplocalleader="\\"
-
-" Integration with the system clipboard
-if has('clipboard')
-  if has('unnamedplus')
-    " When possible, use the + register for copy/paste
-    set clipboard=unnamed,unnamedplus
-  else
-    " On Mac and Windows, use the * register
-    set clipboard=unnamed
-  endif
-endif
 
 " }
 " # Vim UI {
