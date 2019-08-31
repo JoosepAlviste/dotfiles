@@ -53,14 +53,14 @@ Just some notes and things I use on Linux:
 
 Just some notes and things I use on macOS:
 
-* Fix slow `chunkwm` controls by using `dash` as the shell
+* Fix slow `yabai` controls by using `dash` as the shell
     * `zsh` is the default shell and is horribly slow, so let's use a faster 
         shell for running `skhd`
     * Edit `/usr/local/Cellar/skhd/0.3.4/homebrew.mxcl.skhd.plist`
     * Add environment variable `SHELL = /usr/local/bin/dash`
     * More info at [this GitHub issue](https://github.com/koekeishiya/chunkwm/issues/232)
-* Start `chunkwm` services
-    * `brew services start chunkwm`
+* Start `yabai` services
+    * `brew services start yabai`
     * `brew services start skhd`
 
 # Vim configuration structure
