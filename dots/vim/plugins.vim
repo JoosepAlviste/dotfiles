@@ -20,6 +20,8 @@ call plug#begin('~/.vim/plugged')
 " }
 " # Install plugins {
 
+Plug 'knubie/vim-kitty-navigator'
+
 Plug 'tpope/vim-sensible'
 
 Plug 'jiangmiao/auto-pairs'
