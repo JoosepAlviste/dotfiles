@@ -30,6 +30,17 @@ function! s:ModifyHighlights()
 
     " YATS
     hi link tsxIntrinsicTagName Identifier
+    hi link typescriptExport Include
+    hi link typescriptImport Include
+    hi link typescriptDefault Include
+    hi link typescriptSymbols Operator
+
+    " YAJS
+    hi link javascriptArrowFunc Type
+    hi link javascriptOpSymbol Operator
+
+    " JSX
+    hi link jsxComponentName Identifier
 endfunction
 
 call s:ModifyHighlights()

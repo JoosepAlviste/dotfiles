@@ -75,6 +75,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('Folded',      s:base03, s:base00, 'italic', '')
     call <sid>hi('PMenu',       '',       s:base00, '',       '')
     call <sid>hi('ErrorMsg',    s:error_red, s:none, '',      '')
+    call <sid>hi('Include',     s:base0C, '',       '',       '')
 
     " Git
     call <sid>hi('DiffFile',    s:base08, s:none, '', '')
