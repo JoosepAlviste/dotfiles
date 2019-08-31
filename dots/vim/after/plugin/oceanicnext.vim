@@ -108,9 +108,11 @@ function! s:ModifyColorscheme()
     call <sid>hi('diffRemoved', s:base08, s:none, '', '')
 endfunction
 
-call s:ModifyColorscheme()
+if g:colors_name ==# 'OceanicNext'
+    call s:ModifyColorscheme()
 
-augroup ModifyColorscheme
-    autocmd!
-    autocmd ColorScheme * call s:ModifyColorscheme()
-augroup END
+    augroup ModifyColorscheme
+        autocmd!
+        autocmd ColorScheme * call s:ModifyColorscheme()
+    augroup END
+endif
