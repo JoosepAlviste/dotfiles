@@ -30,7 +30,12 @@ alias dps='docker ps'
 alias takeover='tmux detach -a'
 
 # FZF visited directories (with Z) and cd into it
-alias zfz='cd $(z | sed ''1!G;h;$!d'' | awk ''{print $2}'' | fzf --height=40% --layout=reverse)'
+function zf() {
+    local directory="$(z | sed '1!G;h;$!d' | awk '{print $2}' | fzf --height=40% --layout=reverse)"
+    if [ "x$directory" != "x" ]; then
+        cd "$directory"
+    fi
+}
 
 # Git
 alias g='git'
