@@ -55,14 +55,16 @@ typeset -gU cdpath fpath mailpath path
 # )
 
 # Set the list of directories that Zsh searches for programs.
+# Some directories should be added before others because they are dependencies
+# of the others
 path=(
   /usr/local/{bin,sbin}
+  /usr/local/opt/ruby/bin
   $path
 )
 path=(
   /usr/local/opt/python@2/bin
   /usr/local/opt/gettext/bin
-  /usr/local/opt/ruby/bin
   $HOME/.composer/vendor/bin
   $HOME/.local/bin
   $HOME/dotfiles/bin
