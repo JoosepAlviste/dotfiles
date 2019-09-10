@@ -8,7 +8,7 @@ let g:lightline = {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
             \   'right': [ [ 'percent' ],
-            \              [ 'testingstatus', 'zoom', 'gutentags', 'cocstatus' ],
+            \              [ 'zoom', 'gutentags', 'cocstatus' ],
             \              [ 'filetype' ] ],
             \ },
             \ 'inactive': {
@@ -24,7 +24,6 @@ let g:lightline = {
             \   'cocstatus': 'coc#status',
             \   'gutentags': 'gutentags#statusline',
             \   'zoom': 'zoom#statusline',
-            \   'testingstatus': 'TestingStatus',
             \ },
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '|', 'right': '|' }
