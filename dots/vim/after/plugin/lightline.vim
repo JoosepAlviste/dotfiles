@@ -25,7 +25,7 @@ let g:lightline = {
             \   'gutentags': 'gutentags#statusline',
             \   'zoom': 'zoom#statusline',
             \ },
-            \ 'separator': { 'left': '', 'right': '' },
+            \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '|', 'right': '|' }
             \ }
 
