@@ -11,8 +11,9 @@ setlocal signcolumn=no
 
 " Open commit message vertically so that status and commit splits have more
 " vertical room
-nnoremap <buffer> <silent> ca :<C-U>vertical Gcommit --amend<CR>
+nnoremap <buffer> <silent> ca        :<C-U>vertical Gcommit --amend<CR>
 nnoremap <buffer> <silent> <expr> cc <SID>Commit()
+nnoremap <buffer> <silent> cw        :<C-U>vertical Gcommit --amend --only<CR>
 
 
 "
