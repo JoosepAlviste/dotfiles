@@ -21,7 +21,7 @@ yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                on
 yabai -m config window_border                on
 yabai -m config window_border_width          2
-yabai -m config active_window_border_color   0xffcd23b9
+yabai -m config active_window_border_color   0xff6699cc
 yabai -m config normal_window_border_color   0xff16242c
 yabai -m config insert_window_border_color   0xffd75f5f
 yabai -m config active_window_opacity        1.0
