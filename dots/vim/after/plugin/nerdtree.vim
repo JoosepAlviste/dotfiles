@@ -28,6 +28,8 @@ let NERDTreeQuitOnOpen = 1
 " Automatically delete buffer after deleting file
 let NERDTreeAutoDeleteBuffer = 1
 
+let NERDTreeStatusline="%8*%=%7*%#MyStatuslineValueAccent#%#MyStatuslineValue#NERDTree%#MyStatuslineValueAccent#%8*%="
+
 " Select last file when opening NERDTree
 if has('autocmd')
     augroup JoosepNERDTree

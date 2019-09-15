@@ -142,6 +142,7 @@ set visualbell  " Use visual bell instead of beeping
 
 set cmdheight=1
 
+set noshowmode  " Don't need to show mode since it is shown in the statusline
 if has('folding')
   set foldmethod=indent         " not as cool as syntax, but faster
   set foldlevelstart=99         " start unfolded
