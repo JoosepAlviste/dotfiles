@@ -56,6 +56,7 @@ set autoread    " Automatically update buffer when file changes
 
 set nowrap  " Do not wrap lines by default
 set sidescroll=5    " Scroll by 5 characters horizontally
+set linebreak  " Break lines by spaces or tabs
 
 if has('nvim')
     set inccommand=nosplit  " Show preview of ex commands
@@ -141,8 +142,8 @@ set lazyredraw  " Redraw only when need to
 set visualbell  " Use visual bell instead of beeping
 
 set cmdheight=1
-
 set noshowmode  " Don't need to show mode since it is shown in the statusline
+
 if has('folding')
   set foldmethod=indent         " not as cool as syntax, but faster
   set foldlevelstart=99         " start unfolded
