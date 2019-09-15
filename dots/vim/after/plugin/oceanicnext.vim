@@ -1,27 +1,12 @@
 let g:oceanic_next_terminal_bold = 1
-" let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_italic = 1
 
 "
 " Highlight function
 "
 
 function! <sid>hi(group, fg, bg, attr, attrsp)
-  " fg, bg, attr, attrsp
-  if !empty(a:fg)
-    exec "hi " . a:group . " guifg=" .  a:fg[0]
-    exec "hi " . a:group . " ctermfg=" . a:fg[1]
-  endif
-  if !empty(a:bg)
-    exec "hi " . a:group . " guibg=" .  a:bg[0]
-    exec "hi " . a:group . " ctermbg=" . a:bg[1]
-  endif
-  if a:attr != ""
-    exec "hi " . a:group . " gui=" .   a:attr
-    exec "hi " . a:group . " cterm=" . a:attr
-  endif
-  if !empty(a:attrsp)
-    exec "hi " . a:group . " guisp=" . a:attrsp[0]
-  endif
+    call joosep#colors#hi(a:group, a:fg, a:bg, a:attr, a:attrsp)
 endfunction
 
 
@@ -29,36 +14,38 @@ endfunction
 " Customize some highlights
 "
 
+let s:colors = g:joosep#colors#oceanicnext#GetColors()
+
 " Default colors
-let s:base00=['#1b2b34', '235']
-let s:base01=['#343d46', '237']
-let s:base02=['#4f5b66', '240']
-let s:base03=['#65737e', '243']
-let s:base04=['#a7adba', '145']
-let s:base05=['#c0c5ce', '251']
-let s:base06=['#cdd3de', '252']
-let s:base07=['#d8dee9', '253']
-let s:base08=['#ec5f67', '203'] " red
-let s:base09=['#f99157', '209'] " orange
-let s:base0A=['#fac863', '221'] " yellow
-let s:base0B=['#99c794', '114'] " green
-let s:base0C=['#62b3b2', '73'] " cyan
-let s:base0D=['#6699cc', '68'] " blue
-let s:base0E=['#c594c5', '176'] " magenta
-let s:base0F=['#ab7967', '137'] " brown
-let s:base10=['#ffffff', '15'] " white
-let s:none=['NONE', 'NONE']
+let s:base00=s:colors.base00
+let s:base01=s:colors.base01
+let s:base02=s:colors.base02
+let s:base03=s:colors.base03
+let s:base04=s:colors.base04
+let s:base05=s:colors.base05
+let s:base06=s:colors.base06
+let s:base07=s:colors.base07
+let s:base08=s:colors.base08 " red
+let s:base09=s:colors.base09 " orange
+let s:base0A=s:colors.base0A " yellow
+let s:base0B=s:colors.base0B " green
+let s:base0C=s:colors.base0C " cyan
+let s:base0D=s:colors.base0D " blue
+let s:base0E=s:colors.base0E " magenta
+let s:base0F=s:colors.base0F " brown
+let s:base10=s:colors.base10 " white
+let s:none=s:colors.none
 
 " Custom colors
-let s:bg=["#16242c", "235"]
-let s:highlight = ['#1F3446', '235']
-let s:search = ['#0F4767', '235']
-let s:slightly_brighterer = ["#233843", "234"]
-let s:error_red = ["#E83B45", "203"]
-let s:diff_green = ["#637E6B", "114"]
-let s:diff_red = ["#7F4B54", "203"]
+let s:bg=s:colors.bg
+let s:highlight = s:colors.highlight
+let s:search = s:colors.search
+let s:slightly_brighterer = s:colors.slightly_brighterer
+let s:error_red = s:colors.error_red
+let s:diff_green = s:colors.diff_green
+let s:diff_red = s:colors.diff_red
 
-let s:statusline = ["#1F323C", "235"]
+let s:statusline = s:colors.statusline
 
 function! s:ModifyColorscheme()
     " General
