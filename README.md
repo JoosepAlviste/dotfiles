@@ -6,6 +6,8 @@ Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
     * See `dots/vim/plugins.vim` for the used plugins
+    * Slightly modified [OceanicNext 
+        colorscheme](https://github.com/mhartington/oceanic-next)
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
     * With [Prezto](https://github.com/sorin-ionescu/prezto)
@@ -13,7 +15,10 @@ Some of the configuration includes:
 * Window manager on Linux - [i3-gaps](https://github.com/Airblader/i3)
     * With [Polybar](https://github.com/polybar/polybar) and 
       [Rofi](https://github.com/davatorium/rofi)
-* `tmux` (not used by me anymore)
+* `tmux` (I don't use it anymore but left the configuration since it might be 
+    useful)
+* Wallpaper - https://mikaelgustafsson.artstation.com/projects/Y2Wew (I haven't 
+    updated the screenshots to this one yet)
 
 
 ## Utilities

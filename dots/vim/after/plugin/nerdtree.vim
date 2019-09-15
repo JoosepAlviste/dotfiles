@@ -28,6 +28,7 @@ let NERDTreeQuitOnOpen = 1
 " Automatically delete buffer after deleting file
 let NERDTreeAutoDeleteBuffer = 1
 
+" More minimal statusline in NERDTree
 let NERDTreeStatusline="%8*%=%7*%#MyStatuslineValueAccent#%#MyStatuslineValue#NERDTree%#MyStatuslineValueAccent#%8*%="
 
 " Select last file when opening NERDTree
