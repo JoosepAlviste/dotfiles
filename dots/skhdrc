@@ -2,20 +2,18 @@
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # focus window
-alt - h : yabai -m window --focus prev \
+alt - h : yabai -m window --focus west \
     || yabai -m window --focus "$( \
-        (yabai -m query --spaces --display prev || yabai -m query --spaces --display last) \
+        (yabai -m query --spaces --display prev) \
             | jq -re '.[] | select(.visible == 1)."last-window"')" \
-    || yabai -m display --focus prev \
-    || yabai -m display --focus last
+    || yabai -m display --focus prev
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus next \
+alt - l : yabai -m window --focus east \
     || yabai -m window --focus "$( \
-        (yabai -m query --spaces --display next || yabai -m query --spaces --display first) \
+        (yabai -m query --spaces --display next) \
             | jq -re '.[] | select(.visible == 1)."first-window"')" \
-    || yabai -m display --focus next \
-    || yabai -m display --focus first
+    || yabai -m display --focus next
 
 # swap window
 shift + cmd - h : yabai -m window --swap west
