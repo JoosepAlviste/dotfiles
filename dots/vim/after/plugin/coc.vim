@@ -69,7 +69,7 @@ nnoremap <silent> <leader>ck :<C-u>CocPrev<CR>
 augroup myCocAuGroup
   autocmd!
   " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent! call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
