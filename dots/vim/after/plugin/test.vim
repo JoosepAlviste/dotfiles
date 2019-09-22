@@ -1,7 +1,6 @@
 let g:test#strategy = 'neomake'
 
 let g:test#javascript#jest#options = '--reporters ' . $HOME . '/.config/yarn/global/node_modules/jest-vim-reporter'
-" let g:TESTING_STATUS = ''
 
 " " let g:root_markers = ['package.json', '.git/']
 " " function! s:RunVimTest(cmd)
@@ -45,40 +44,3 @@ let g:test#javascript#jest#options = '--reporters ' . $HOME . '/.config/yarn/glo
 
 " " " let g:test#custom_transformations = {'javascript': function('JavascriptTransform')}
 " " " let g:test#transformation = 'javascript'
-
-let g:neomake_warning_sign = {
-  \     'text': '◉',
-  \     'texthl': 'CocWarningSign',
-  \ }
-let g:neomake_error_sign = {
-  \     'text': '◉',
-  \     'texthl': 'CocErrorSign',
-  \ }
-
-let g:neomake_open_list = 1
-
-" " " Show message that tests have started
-" function! MyOnNeomakeJobStarted() abort
-"     let g:TESTING_STATUS = 'running'
-"     echo 'Running tests...'
-" endfunction
-
-" " Show message when all tests are passing
-" function! MyOnNeomakeJobFinished() abort
-"     let context = g:neomake_hook_context
-"     echo context.jobinfo
-"     if context.jobinfo.exit_code == 0
-"         let g:TESTING_STATUS = 'passing'
-"         echo 'Tests passed!'
-"     endif
-"     if context.jobinfo.exit_code == 1
-"         let g:TESTING_STATUS = 'failing'
-"         echo 'Tests failed!'
-"     endif
-" endfunction
-
-" augroup my_neomake_hooks
-"     au!
-"     autocmd User NeomakeJobFinished call MyOnNeomakeJobFinished()
-"     autocmd User NeomakeJobStarted call MyOnNeomakeJobStarted()
-" augroup END
