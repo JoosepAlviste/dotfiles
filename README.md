@@ -203,7 +203,8 @@ brew install \
     pyenv-virtualenv \
     koekeishiya/formulae/chunkwm \
     koekeishiya/formulae/skhd \
-    universal-ctags/universal-ctags/universal-ctags
+    universal-ctags/universal-ctags/universal-ctags \
+    jq
 ```
 
 

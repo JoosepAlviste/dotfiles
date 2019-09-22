@@ -169,3 +169,6 @@ linters
 Pipedrive
 Pipedrive's
 cursorline
+testbox
+cli
+microservice
