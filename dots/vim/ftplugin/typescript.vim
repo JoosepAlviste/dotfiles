@@ -6,6 +6,12 @@ setlocal softtabstop=2
 " Format with prettier by default
 setlocal formatprg=prettier\ --parser\ typescript
 
+" Set errorformat for working with vim-test, neomake, and the
+" jest-vim-reporter
+" TODO: This should probably NOT be set like this -- maybe vim-test can be
+" improved somehow
+setlocal errorformat=%f:%l:%c:\ %m
+
 "
 " Mappings
 "
