@@ -132,13 +132,13 @@ function! Filetype(filetype)
 endfunction
 
 function! TestStatus() abort
-    if g:TESTING_STATUS ==# 'passing'
-        call <sid>hi('MyStatuslineTestStatus', s:insert, s:none, '', '')
+    if g:TestingStatus ==# 'passing'
+        call <sid>hi('MyStatuslineTestStatus', s:insert, s:value_bg, '', '')
         return '  '
-    elseif g:TESTING_STATUS ==# 'running'
+    elseif g:TestingStatus ==# 'running'
         return '  '
-    elseif g:TESTING_STATUS ==# 'failing'
-        call <sid>hi('MyStatuslineTestStatus', s:error_red, s:none, '', '')
+    elseif g:TestingStatus ==# 'failing'
+        call <sid>hi('MyStatuslineTestStatus', s:error_red, s:value_bg, '', '')
         return '  '
     else
         return ''
@@ -198,10 +198,10 @@ set statusline+=%#MyStatuslineValue#%{strlen(coc#status())?coc#status():''}
 set statusline+=%#MyStatuslineValueAccent#%{strlen(coc#status())?'\ ':''}
 
 " Test status
-" set statusline+=%#MyStatuslineLabelAccent#
-" set statusline+=%#MyStatuslineLabel#Tests\ "
-" set statusline+=%#MyStatuslineTestStatus#%{TestStatus()}
-" set statusline+=%#MyStatuslineValueAccent#\ "
+set statusline+=%#MyStatuslineLabelAccent#%{g:TestingStatus!='waiting'?'':''}
+set statusline+=%#MyStatuslineLabel#%{g:TestingStatus!='waiting'?'Tests\ ':''}
+set statusline+=%#MyStatuslineTestStatus#%{g:TestingStatus!='waiting'?'\ '.TestStatus():''}
+set statusline+=%#MyStatuslineValueAccent#%{g:TestingStatus!='waiting'?'\ ':''}
 " Line number in percentage
 set statusline+=%#MyStatuslineValueAccent#
 set statusline+=%#MyStatuslineLineValue#%p%%
