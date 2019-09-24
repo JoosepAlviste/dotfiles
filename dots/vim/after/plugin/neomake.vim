@@ -24,7 +24,6 @@ let g:TestingStatus = 'waiting'
 " Show message that tests have started
 function! MyOnNeomakeJobStarted() abort
     let g:TestingStatus = 'running'
-    echo 'Running tests...'
 endfunction
 
 " Show message when all tests are passing
@@ -32,11 +31,9 @@ function! MyOnNeomakeJobFinished() abort
     let context = g:neomake_hook_context
     if context.jobinfo.exit_code == 0
         let g:TestingStatus = 'passing'
-        echo 'Tests passed!'
     endif
     if context.jobinfo.exit_code == 1
         let g:TestingStatus = 'failing'
-        echo 'Tests failed!'
     endif
 endfunction
 
