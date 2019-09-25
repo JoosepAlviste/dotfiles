@@ -36,6 +36,10 @@ Just useful utilities that aren't aliased:
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
+Firefox color theme
+
+https://color.firefox.com/?theme=XQAAAAIYAQAAAAAAAABBqYhm849SCia2CaaEGccwS-xNKlhRZV3WyJgLznIpdqgXIgRu0RnvYWDfkxQOiMDH8G8w62UzSuCTn9Qe_JwV3pZBx_N-ipogfdGTdWX2NYbkjKNS776KDnbhCxvRIO8nuk0VpvP7UJS3lKCGWH6lt2oOfxAu0aoFfUXvameh8PYAVmISMbtpuyoFBaYYNVExt7dhQV7BY97wc4ZfgWK4W989hbRFoMqL8D-WtdSlXcT_kNixlkwu_-24HJ8
+
 
 ## Linux
 
@@ -183,7 +187,7 @@ gem install colorls
 ```
 
 
-### MacOS
+### macOS
 
 ```bash
 brew install \
