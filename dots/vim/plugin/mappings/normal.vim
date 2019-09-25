@@ -65,3 +65,7 @@ nnoremap ]<space> :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 " Ex-mode is weird and not useful so it seems better to repeat the last macro
 nnoremap Q @@
+
+" Faster splits
+nnoremap <C-w> :vsplit<cr>
+nnoremap <C-q> :split<cr>
