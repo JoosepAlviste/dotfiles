@@ -228,3 +228,5 @@ zstyle ':prezto:module:prompt' theme 'damoekri'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+
+zstyle ':prezto:module:utility' correct 'no'
