@@ -7,7 +7,6 @@ let g:NERDTreeWinSize = 35
 
 " Disable display of '?' text and 'Bookmarks' label.
 let g:NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
 
 " When hitting "-", can hit C-^ to return to file
 let g:NERDTreeCreatePrefix = 'silent keepalt keepjumps'
@@ -30,6 +29,8 @@ let NERDTreeAutoDeleteBuffer = 1
 
 " More minimal statusline in NERDTree
 let NERDTreeStatusline="%8*%=%7*%#MyStatuslineValueAccent#%#MyStatuslineValue#NERDTree%#MyStatuslineValueAccent#%8*%="
+
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 
 " Select last file when opening NERDTree
 if has('autocmd')
