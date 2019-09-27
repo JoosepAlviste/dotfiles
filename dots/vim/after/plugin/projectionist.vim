@@ -14,6 +14,7 @@ let g:projectionist_heuristics = {
       \     '*.test.js': {
       \       'alternate': [
       \         '{dirname}/{basename}.js',
+      \         '{dirname}/../{basename}.js',
       \       ],
       \       'type': 'test',
       \     },
@@ -30,6 +31,8 @@ let g:projectionist_heuristics = {
       \       'alternate': [
       \         '{dirname}/{basename}.ts',
       \         '{dirname}/{basename}.tsx',
+      \         '{dirname}/../{basename}.ts',
+      \         '{dirname}/../{basename}.tsx',
       \       ],
       \       'type': 'test',
       \     },
@@ -46,6 +49,8 @@ let g:projectionist_heuristics = {
       \       'alternate': [
       \         '{dirname}/{basename}.ts',
       \         '{dirname}/{basename}.tsx',
+      \         '{dirname}/../{basename}.ts',
+      \         '{dirname}/../{basename}.tsx',
       \       ],
       \       'type': 'test',
       \     },
