@@ -12,6 +12,7 @@
     "coc-tslint": ">=1.0.17",
     "coc-tsserver": ">=1.4.1",
     "coc-vimtex": "^1.0.2",
-    "coc-phpls": ">=2.0.7"
+    "coc-phpls": ">=2.0.7",
+    "coc-prettier": ">=1.1.7"
   }
 }
