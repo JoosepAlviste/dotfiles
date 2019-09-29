@@ -83,8 +83,7 @@ Plug 'meain/vim-package-info', { 'do': 'npm install' }
 " JavaScript & friends
 Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'othree/yajs.vim'  " Fancier JavaScript syntax
-Plug 'maxmellon/vim-jsx-pretty'  " JSX syntax, this cannot be active in TS files
+Plug 'neoclide/vim-jsx-improve'  " Javascript, JSX & indentation
 
 Plug 'jparise/vim-graphql'  " GraphQL highlighting
 

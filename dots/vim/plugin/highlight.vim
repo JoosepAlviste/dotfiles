@@ -41,6 +41,14 @@ function! s:ModifyHighlights()
 
     " JSX
     hi link jsxComponentName Identifier
+
+    " vim-jsx-improve
+    hi link jsStorageClass Identifier
+    hi link jsClassMethodType Keyword
+    hi link jsxTagName Identifier
+    hi link jsxEndString Identifier
+    hi link jsFunction Keyword
+    hi link jsExportDefault Include
 endfunction
 
 call s:ModifyHighlights()

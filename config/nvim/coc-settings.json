@@ -22,6 +22,8 @@
         "typescript"
     ],
     "eslint.autoFixOnSave": true,
+    "eslint.packageManager": "yarn",
+    "eslint.nodePath": "/Users/joosep/.config/yarn/global/node_modules",
     "snippets.priority": 999,
     "codeLens.enable": true,
     "typescript.referencesCodeLens.enable": false,
