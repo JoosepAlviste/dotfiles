@@ -44,7 +44,7 @@ if exists('loaded_fzf')
     " === FZF Mappings ==="
 
     " Working directory files
-    nnoremap <silent> <C-p> :Files<cr>
+    nnoremap <silent> <C-p> :FZF<cr>
     " Current file's directory files
     nnoremap <silent> <leader>- :FZF <c-r>=fnameescape(expand('%:p:h'))<cr>/<cr>
     nnoremap <silent> <leader>ft :Tags<cr>
