@@ -24,6 +24,7 @@ coc-java-data/
 coc-phpls-data/
 coc-python-data/
 .cache/
+env/
 
 .next/
 db/postgres/

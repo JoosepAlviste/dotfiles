@@ -89,6 +89,9 @@ Plug 'jparise/vim-graphql'  " GraphQL highlighting
 
 Plug 'ap/vim-css-color'  " Show hex code color as background
 
+" Python
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 
 " }
 " ## Text editing {

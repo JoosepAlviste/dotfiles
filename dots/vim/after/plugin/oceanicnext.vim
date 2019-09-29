@@ -90,12 +90,33 @@ function! s:ModifyColorscheme()
     call <sid>hi("CocInfoSign", s:base0D, s:none, '', '')
     call <sid>hi("CocInfoHighlight", '', s:none, 'undercurl', s:base0D)
 
-    " Customize NERDTree directory
+    " NERDTree
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
 
     " tpope/vim-fugitive
     call <sid>hi('diffAdded', s:base0B, s:none, '', '')
     call <sid>hi('diffRemoved', s:base08, s:none, '', '')
+
+    " Python
+    call <sid>hi('pythonDecorator', s:base0D, '', '', '')
+    call <sid>hi('pythonDecoratorName', s:base0D, '', '', '')
+
+    " numirias/semshi
+    call <sid>hi('semshiLocal',           s:base0A, '', 'NONE',      '')
+    call <sid>hi('semshiGlobal',          s:base0A, '', 'NONE',      '')
+    call <sid>hi('semshiImported',        s:base0A, '', 'NONE',      '')
+    call <sid>hi('semshiParameter',       s:base0D, '', 'NONE',      '')
+    call <sid>hi('semshiParameterUnused', s:base03, '', 'undercurl', '')
+    " call <sid>hi('semshiFree            ctermfg=218 guifg=#ffafd7')
+    call <sid>hi('semshiBuiltin',         s:base0E, '', '', '')
+    call <sid>hi('semshiAttribute',       s:base0C, '', '', '')
+    call <sid>hi('semshiSelf',            s:base0E, '', '', '')
+    call <sid>hi('semshiUnresolved',      s:none,   '', 'undercurl', s:base09)
+    call <sid>hi('semshiSelected',        s:none,   s:highlight, '', '')
+
+    " call <sid>hi('semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000')
+    " call <sid>hi('semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000')
+    " sign define semshiError text=E> texthl=semshiErrorSign
 endfunction
 
 if g:colors_name ==# 'OceanicNext'

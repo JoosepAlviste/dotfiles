@@ -6,7 +6,11 @@
 
 " Polyglot disabled needs to be set before the plugin is loaded because
 " otherwise ftdetection is not disabled
-let g:polyglot_disabled = ['typescript', 'typescript.tsx', 'jsx', 'jenkins']
+let g:polyglot_disabled = [
+      \ 'jsx', 
+      \ 'jenkins',
+      \ 'python',
+      \ ]
 
 " Read plugins
 source ~/.vim/plugins.vim
