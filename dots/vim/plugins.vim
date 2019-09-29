@@ -68,7 +68,7 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 Plug 'ludovicchabant/vim-gutentags'  " Manage tags file automagically
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}  " VSCode features
-Plug 'w0rp/ale'  " Automatic linting
+" Plug 'w0rp/ale'  " Automatic linting
 
 Plug 'neomake/neomake'  " Show tests output with virtualtext (with vim-test)
 Plug 'janko/vim-test'  " Easily run test file/suite & show result with Neomake
