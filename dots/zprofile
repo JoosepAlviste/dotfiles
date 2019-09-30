@@ -16,13 +16,13 @@ is_mac() { [ "$(uname)" = "Darwin" ] }
 if is_mac; then
     export BROWSER='open'
 else
-    export BROWSER='google-chrome-stable'
+    export BROWSER='firefox-developer-edition'
 fi
 
 if is_linux; then
-    export TERMINAL="st"
+    export TERMINAL="kitty --single-instance --listen-on unix:/tmp/mykitty -o allow_remote_control=yes"
 else
-    export TERMINAL="iterm"
+    export TERMINAL="kitty"
 fi
 
 #
