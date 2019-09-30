@@ -112,6 +112,27 @@ endfunction
 
 
 "
+" Extensions
+"
+
+" Coc will automatically install these extensions. Specific extensions can
+" still be installed using :CocInstall
+let g:coc_global_extensions = [
+            \ "coc-css",
+            \ "coc-emmet",
+            \ "coc-eslint",
+            \ "coc-git",
+            \ "coc-jest",
+            \ "coc-python",
+            \ "coc-snippets",
+            \ "coc-tslint",
+            \ "coc-tsserver",
+            \ "coc-vimtex",
+            \ "coc-prettier",
+            \ ]
+
+
+"
 " coc-git
 "
 
