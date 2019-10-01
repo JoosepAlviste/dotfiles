@@ -128,6 +128,7 @@ assign [class="Skype"] $workspace8
 assign [class="discord"] $workspace8
 assign [class="Google-chrome"] $workspace9
 assign [class="Firefox"] $workspace9
+assign [class="firefoxdeveloperedition"] $workspace9
 
 # Spotify does not want to move automatically!
 for_window [class="Spotify"] move to workspace $workspace2
@@ -137,8 +138,8 @@ workspace $workspace2 output HDMI-3
 workspace $workspace8 output HDMI-3
 
 # Workspace specific gaps
-workspace $workspace1 gaps inner 32
-workspace $workspace1 gaps outer 32
+workspace $workspace1 gaps inner 8
+workspace $workspace1 gaps outer 0
 
 
 
