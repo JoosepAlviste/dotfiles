@@ -11,3 +11,5 @@ tags.lock
 
 celerybeat.pid
 yarn-error.log
+
+.pytest_cache/
