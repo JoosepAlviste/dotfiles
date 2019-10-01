@@ -26,12 +26,12 @@ function! s:Commit()
 
     " Capture group with 2-6 letters and some numbers. For example, matches
     " 'ABC-123' in 'ABC-123-make-it-better'
-    let regex = '^\(\w\{2,6}-\d\+\).*$'
+    let regex = '^\(feature/\)\?\(\w\{2,6}-\d\+\).*$'
     let branch = fugitive#head()
     let issue = ''
 
     if branch =~# regex
-        let issue = toupper(matchlist(branch, regex)[1]) . ' '
+        let issue = toupper(matchlist(branch, regex)[2]) . ' '
     endif
 
     return ":\<C-u>vertical Gcommit\<cr>O" . issue
