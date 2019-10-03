@@ -114,9 +114,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('semshiUnresolved',      s:none,   '', 'undercurl', s:base09)
     call <sid>hi('semshiSelected',        s:none,   s:highlight, '', '')
 
-    " call <sid>hi('semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000')
-    " call <sid>hi('semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000')
-    " sign define semshiError text=E> texthl=semshiErrorSign
+    sign define semshiError text=• texthl=CocErrorSign
 endfunction
 
 if g:colors_name ==# 'OceanicNext'

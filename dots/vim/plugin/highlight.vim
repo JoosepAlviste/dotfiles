@@ -49,6 +49,10 @@ function! s:ModifyHighlights()
     hi link jsxEndString Identifier
     hi link jsFunction Keyword
     hi link jsExportDefault Include
+
+    " Python
+    hi link pythonInclude Include
+    hi link pythonStatement Keyword
 endfunction
 
 call s:ModifyHighlights()
