@@ -34,6 +34,7 @@
     "python.linting.enabled": true,
     "python.linting.prospectorEnabled": true,
     "python.linting.prospectorArgs": [],
+    "python.formatting.provider": "black",
     "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "typescript"],
     "prettier.onlyUseLocalVersion": true,
     "prettier.disableSuccessMessage": false,
