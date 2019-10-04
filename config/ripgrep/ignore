@@ -10,6 +10,7 @@ tmux-*.log
 dev-utils/*/data/
 _volumes/
 .nyc_output/
+_build/
 
 node_modules/
 vendor/
