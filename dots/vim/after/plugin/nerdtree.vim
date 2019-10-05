@@ -19,7 +19,7 @@ let g:NERDTreeIgnore = [
             \ '^\.DS_Store$', '^tags$', '^tags.temp$', '^tags.lock$', 
             \ '\.git$[[dir]]', '\.idea$[[dir]]', '^tmux-client-.*\.log',
             \ '\.vscode$[[dir]]', '__pycache__$[[dir]]',
-            \ '.pytest_cache$[[dir]]',
+            \ '.pytest_cache$[[dir]]', '.pyc$', '.mypy_cache$[[dir]]',
             \ ]
 
 " Automatically close NERDTree when a file is opened/selected
