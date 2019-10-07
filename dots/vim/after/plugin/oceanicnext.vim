@@ -65,6 +65,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('Include',      s:base0C, '',       '',       '')
     call <sid>hi('StatusLine',   s:bg,     s:bg,     '',       '')
     call <sid>hi('StatusLineNC', s:bg,     s:bg,     '',       '')
+    call <sid>hi('Operator',     s:base0C, s:none,   '',       '')
+    call <sid>hi('Noise',        s:base04, s:none,   '',       '')
 
     " Git
     call <sid>hi('DiffFile',    s:base08, s:none, '', '')

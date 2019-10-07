@@ -46,6 +46,7 @@ function! s:ModifyHighlights()
     hi link jsStorageClass Identifier
     hi link jsClassMethodType Keyword
     hi link jsxTagName Identifier
+    hi link jsxEndComponentName Identifier
     hi link jsxEndString Identifier
     hi link jsFunction Keyword
     hi link jsExportDefault Include
