@@ -129,6 +129,7 @@ let g:coc_global_extensions = [
             \ "coc-tsserver",
             \ "coc-vimtex",
             \ "coc-prettier",
+            \ "coc-yaml",
             \ ]
 
 
