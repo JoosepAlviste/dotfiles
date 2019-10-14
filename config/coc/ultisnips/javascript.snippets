@@ -23,3 +23,19 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet scp "Styled components prop theme"
+${props => props.theme.$0};
+endsnippet
+
+snippet fc "React functional component file"
+import React from 'react';
+
+const `!v expand('%:t:r')` = () => {
+    return (
+        $0
+    )
+}
+
+export default `!v expand('%:t:r')`;
+endsnippet
