@@ -125,11 +125,12 @@ let g:coc_global_extensions = [
             \ "coc-jest",
             \ "coc-python",
             \ "coc-snippets",
-            \ "coc-tslint",
+            \ "coc-tslint-plugin",
             \ "coc-tsserver",
             \ "coc-vimtex",
             \ "coc-prettier",
             \ "coc-yaml",
+            \ "coc-stylelint",
             \ ]
 
 
