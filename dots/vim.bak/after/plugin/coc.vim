@@ -2,7 +2,7 @@
 " Mappings
 "
 
-" inoremap <expr> <tab> joosep#autocomplete#handle_tab()
+inoremap <expr> <tab> joosep#autocomplete#handle_tab()
 inoremap <expr> <S-tab> "\<C-h>"
 
 " Use <c-space> to trigger completion.
@@ -26,8 +26,8 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 " Format selected region
-" vmap <leader>cf <Plug>(coc-format-selected)
-" nmap <leader>cf <Plug>(coc-format-selected)
+vmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf <Plug>(coc-format-selected)
 
 " CodeAction of selected region, ex: `<leader>aap` for current paragraph
 " vmap <leader>ca  <Plug>(coc-codeaction-selected)
@@ -55,6 +55,11 @@ nnoremap <silent> <leader>cc :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>fo :<C-u>CocList outline<cr>
 " Find workspace symbols
 nnoremap <silent> <leader>fs :<C-u>CocList -I symbols<cr>
+
+" Do default action for next item.
+nnoremap <silent> <leader>cj :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <leader>ck :<C-u>CocPrev<CR>
 
 
 "
