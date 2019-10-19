@@ -14,3 +14,7 @@ nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
 
 " When pressing Enter, make new line and indent as required
 inoremap <expr> <CR> joosep#expand#expand()
+
+" Fix some highlighting problems in files with styled components
+" See https://github.com/HerringtonDarkholme/yats.vim/issues/109
+syntax sync fromstart

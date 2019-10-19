@@ -30,6 +30,7 @@ function! s:ModifyHighlights()
 
     " YATS
     hi link tsxIntrinsicTagName Identifier
+    hi link tsxTagName Identifier
     hi link typescriptExport Include
     hi link typescriptImport Include
     hi link typescriptDefault Include
