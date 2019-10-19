@@ -30,9 +30,6 @@ nnoremap <leader>ca :call CocAction('codeAction')<cr>
 " Fix autofix problem of current line
 nmap <leader>cf <Plug>(coc-fix-current)
 
-" Run jest for current test
-nnoremap <leader>ct :call CocAction('runCommand', 'jest.singleTest')<CR>
-
 " Rename the word under the cursor
 nnoremap <leader>rn :call CocAction('rename')<cr>
 

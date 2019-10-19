@@ -27,6 +27,15 @@ Plug 'mhartington/oceanic-next'  " This colorscheme is customized a bit
 " Utilities
 "
 
+" FZF - fuzzy search everything - files, lines, commits, etc.
+if executable('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf'
+else
+  " Install FZF if it is not installed already
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
+Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
+
 
 "
 " Programming
