@@ -9,12 +9,12 @@
     "coc-json": ">=1.2.3",
     "coc-python": ">=1.2.6",
     "coc-snippets": ">=2.1.13",
-    "coc-tsserver": ">=1.4.4",
     "coc-vimtex": "^1.0.2",
     "coc-phpls": ">=2.0.7",
     "coc-prettier": ">=1.1.10",
-    "coc-stylelint": ">=1.1.0",
     "coc-tslint-plugin": ">=1.1.1",
-    "coc-yaml": ">=1.0.2"
+    "coc-yaml": ">=1.0.2",
+    "coc-tsserver": ">=1.4.4",
+    "coc-pairs": ">=1.2.18"
   }
 }

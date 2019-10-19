@@ -2,7 +2,7 @@
 " Mappings
 "
 
-" inoremap <expr> <tab> joosep#autocomplete#handle_tab()
+inoremap <expr> <tab> joosep#autocomplete#handle_tab()
 inoremap <expr> <S-tab> "\<C-h>"
 
 " Use <c-space> to trigger completion.
@@ -24,14 +24,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Show documentation in preview window
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
-
-" Format selected region
-" vmap <leader>cf <Plug>(coc-format-selected)
-" nmap <leader>cf <Plug>(coc-format-selected)
-
-" CodeAction of selected region, ex: `<leader>aap` for current paragraph
-" vmap <leader>ca  <Plug>(coc-codeaction-selected)
-" nmap <leader>ca  <Plug>(coc-codeaction-selected)
 
 " CodeAction of current line
 nnoremap <leader>ca :call CocAction('codeAction')<cr>
@@ -125,7 +117,7 @@ let g:coc_global_extensions = [
             \ "coc-vimtex",
             \ "coc-prettier",
             \ "coc-yaml",
-            \ "coc-stylelint",
+            \ "coc-pairs",
             \ ]
 
 
