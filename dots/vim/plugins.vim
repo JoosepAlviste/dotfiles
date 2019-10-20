@@ -78,6 +78,16 @@ Plug 'cakebaker/scss-syntax.vim'
 
 
 "
+" Text editing
+"
+
+" LaTeX
+
+Plug 'lervag/vimtex'  " LaTeX writing utilities
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }  " LaTeX preview `:LLP`
+
+
+"
 " DevIcons must be the last loaded plugin
 "
 
