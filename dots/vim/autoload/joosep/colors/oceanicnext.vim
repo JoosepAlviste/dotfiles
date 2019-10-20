@@ -27,7 +27,7 @@ let s:error_red = ["#E83B45", "203"]
 let s:diff_green = ["#637E6B", "114"]
 let s:diff_red = ["#7F4B54", "203"]
 
-let s:statusline = ["#1F323C", "235"]
+let s:statusline = ["#131f26", "235"]
 
 let s:colors = {
             \ "base00": s:base00,

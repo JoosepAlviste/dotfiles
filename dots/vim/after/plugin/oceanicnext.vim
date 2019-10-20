@@ -63,8 +63,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('PMenu',        '',       s:base00, '',       '')
     call <sid>hi('ErrorMsg',     s:error_red, s:none, '',      '')
     call <sid>hi('Include',      s:base0C, '',       '',       '')
-    call <sid>hi('StatusLine',   s:bg,     s:base06, '',       '')
-    call <sid>hi('StatusLineNC', s:bg,     s:bg,     '',       '')
+    call <sid>hi('StatusLine',   s:statusline, s:base06, '',   '')
+    call <sid>hi('StatusLineNC', s:statusline, s:base06, '',   '')
     call <sid>hi('Operator',     s:base0C, s:none,   '',       '')
     call <sid>hi('Noise',        s:base04, s:none,   '',       '')
 
@@ -117,6 +117,10 @@ function! s:ModifyColorscheme()
     call <sid>hi('semshiSelected',        s:none,   s:highlight, '', '')
 
     sign define semshiError text=• texthl=CocErrorSign
+
+    " Custom colors
+    call <sid>hi('StatuslineAccent', s:base0C, s:statusline, '', '')
+    call <sid>hi('StatuslineBoolean', s:base09, s:statusline, '', '')
 endfunction
 
 if g:colors_name ==# 'OceanicNext'
