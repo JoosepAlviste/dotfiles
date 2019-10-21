@@ -110,6 +110,12 @@ if exists('loaded_fzf')
         " Restore previously copied text
         let @@ = saved_unnamed_register
     endfunction
+
+    function! s:FzfStatusline()
+      setlocal statusline=%#StatuslineAccent#\ »\ %*fz%#StatuslineAccent#\ «%*%=%{getcwd()}\ 
+    endfunction
+
+    autocmd! User FzfStatusLine call <SID>FzfStatusline()
 else
     echo 'FZF not installed. It should work after running :PlugInstall'
 endif
