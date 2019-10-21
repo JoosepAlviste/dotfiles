@@ -11,6 +11,7 @@ nnoremap <silent> <leader>q :quit<cr>
 nnoremap <silent> <leader>w :w!<cr>
 
 nnoremap <leader>e :e <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<cr>
+nnoremap <leader>ee :e <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<cr>
 
 nnoremap <silent> <leader>/ za
 
