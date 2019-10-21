@@ -68,6 +68,10 @@ function! s:ModifyColorscheme()
     call <sid>hi('Operator',     s:base0C, s:none,   '',       '')
     call <sid>hi('Noise',        s:base04, s:none,   '',       '')
 
+    call <sid>hi('TabLine',      s:base04, s:statusline, 'NONE', '')
+    call <sid>hi('TabLineFill',  s:base06, s:statusline, '', '')
+    call <sid>hi('TabLineSel',   s:base0C, s:bg,         '', '')
+
     " Git
     call <sid>hi('DiffFile',    s:base08, s:none, '', '')
     call <sid>hi('DiffNewFile', s:base0B, s:none, '', '')
