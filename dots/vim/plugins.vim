@@ -76,6 +76,10 @@ Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 
 Plug 'cakebaker/scss-syntax.vim'
 
+" Python
+
+Plug 'numirias/semshi'
+
 
 "
 " Text editing
