@@ -24,8 +24,8 @@ set wildignore+=**/dist/**
 set wildignore+=**/.git/**
 set wildignore+=**/.DS_Store
 
-" Instead of failing a command because of unsaved changes, raise
-" a dialogue asking if you wish to save changed files.
+" Instead of failing a command because of unsaved changes, raise a dialogue 
+" asking if you wish to save changed files.
 set confirm
 
 " Set backups to be written into temp folders
