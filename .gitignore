@@ -7,6 +7,7 @@ dots/vim.bak/plugged/
 dots/vim.bak/autoload/plug.vim
 dots/vim.bak/autoload/plug.vim.old
 dots/vim.test/
+dots/vim/spell/*.spl
 
 dots/emacs.d/elpa/
 .netrwhist
