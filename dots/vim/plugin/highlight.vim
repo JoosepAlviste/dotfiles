@@ -51,6 +51,7 @@ function! s:ModifyHighlights()
     hi link jsxEndString Identifier
     hi link jsFunction Keyword
     hi link jsExportDefault Include
+    hi link jsLabel Conditional
 
     " Python
     hi link pythonInclude Include
