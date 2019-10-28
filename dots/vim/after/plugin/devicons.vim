@@ -8,6 +8,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {
       \ '.prettierrc': '',
       \ '.gitignore': '',
       \ '.gitattributes': '',
+      \ '.gitmodules': '',
       \ 'yarn.lock': '',
       \ '.dockerignore': '',
       \ '.babelrc': '',
@@ -18,4 +19,5 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {
       \ 'docker-compose.*\.yml$': '',
       \ '\.env': '',
       \ '^dockerfile': '',
+      \ 'vimrc': '',
       \ }

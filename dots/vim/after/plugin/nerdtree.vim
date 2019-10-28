@@ -17,6 +17,7 @@ let g:NERDTreeIgnore = [
             \ '\.git$[[dir]]', '\.idea$[[dir]]', '^tmux-client-.*\.log',
             \ '\.vscode$[[dir]]', '__pycache__$[[dir]]',
             \ '.pytest_cache$[[dir]]', '.pyc$', '.mypy_cache$[[dir]]',
+            \ '\.netrwhist$',
             \ ]
 
 " Automatically close NERDTree when a file is opened/selected
@@ -62,7 +63,7 @@ let s:git_orange = 'F54D27'
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 " Enable just these default extensions
 let g:NERDTreeSyntaxEnabledExtensions = [
-      \ 'ts', 'json', 'md', 'js', 'css', 'html', 'png', 'py',
+      \ 'ts', 'json', 'md', 'js', 'css', 'html', 'png', 'py', 'vim',
       \ ]
 
 " Custom highlights
@@ -73,6 +74,7 @@ let g:NERDTreeExtensionHighlightColor = {
 let g:NERDTreeExactMatchHighlightColor = {
       \ '.gitignore': s:git_orange,
       \ '.gitattributes': s:git_orange,
+      \ '.gitmodules': s:git_orange,
       \ '.prettierrc': s:yellow,
       \ '.gitlab-ci.yml': s:orange,
       \ '.dockerignore': s:blue,
@@ -83,6 +85,7 @@ let g:NERDTreeExactMatchHighlightColor = {
 let g:NERDTreePatternMatchHighlightColor = {
       \ 'docker-compose.*\.yml$': s:blue,
       \ '^dockerfile': s:blue,
+      \ 'vimrc': s:green,
       \ }
 
 
