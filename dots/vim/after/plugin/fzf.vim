@@ -62,6 +62,7 @@ if exists('loaded_fzf')
     nnoremap <silent> <leader>fc :Commits!<cr>
     " All commands
     nnoremap <silent> <leader>fa :Commands<cr>
+    nnoremap <silent> <leader>fx :GFiles!?<cr>
 
     let g:fzf_history_dir = '~/.local/share/fzf-history'
     let $FZF_DEFAULT_OPTS='--layout=reverse'
