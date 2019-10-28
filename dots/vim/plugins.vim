@@ -81,6 +81,7 @@ Plug 'cakebaker/scss-syntax.vim'
 " Python
 
 Plug 'numirias/semshi'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 
 "
