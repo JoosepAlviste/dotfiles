@@ -24,6 +24,8 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
+extends javascript, typescript
+
 snippet fc "A React function component"
 import React, { FunctionComponent } from 'react';
 
@@ -36,8 +38,4 @@ const ${1:`!p snip.rv = snip.basename`}: FunctionComponent<Props> = (${2}) => (
 );
 
 export default $1;
-endsnippet
-
-snippet scp "Styled components prop theme"
-${props => props.theme.$0};
 endsnippet

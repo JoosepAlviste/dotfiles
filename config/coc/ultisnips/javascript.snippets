@@ -24,40 +24,9 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet scp "Styled components prop theme"
-${props => props.theme.$0};
-endsnippet
-
-snippet fc "React functional component file"
-import React from 'react';
-
-const `!v expand('%:t:r')` = () => {
-    return (
-        $0
-    )
-}
-
-export default `!v expand('%:t:r')`;
-endsnippet
+# Generic snippets
+# ================
 
 snippet log "console.log statement"
 console.log($0);
-endsnippet
-
-snippet describe "Describe block for Jest tests" b
-describe('$1', () => {
-    $0
-});
-endsnippet
-
-snippet it "It block for Jest tests" b
-it('$1', () => {
-    $0
-});
-endsnippet
-
-snippet test "Test block for Jest tests" b
-test('$1', () => {
-    $0
-});
 endsnippet
