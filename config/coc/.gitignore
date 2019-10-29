@@ -1,5 +1,4 @@
-extensions/node_modules/
-extensions/db.json
+extensions/
 
 commands
 lists
