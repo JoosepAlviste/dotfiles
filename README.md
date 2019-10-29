@@ -139,9 +139,28 @@ installed.
 
 ```bash
 pacman -S \
-    i3-gaps \
+    xorg \  # Display server
+    xorg-xinit \  # startx
+    xorg-xrdb \  # Xresources
+    xorg-xmodmap \
+    xbindkeys \
+    i3-gaps \  # Window manager
+    feh \
+    compton \
+    zsh \  # Default shell
+    kitty \  # Terminal
+    gnome-keyring \
+    vim \
+    neovim \
+    fzf \
+    polybar \
     rofi \
+    firefox-developer-edition \
+    bat \
+    hub \
     htop \
+    ripgrep \
+
     evince \
     xdg-utils \
     maim \
@@ -149,35 +168,27 @@ pacman -S \
     ranger \
     networkmanager \
     network-manager-applet \
-    alacritty \
-    compton \
-    feh \
-    xbindkeys \
     noto-fonts-emoji \
-    gnome-keyring \
-    zsh \
-    tmux \
     nodejs \
     npm \
     yarn \
     ruby \
     the_silver_searcher \
-    neovim \
     flatpak \
     arc-gtk-theme \
     mpv \
-    hub \
     dconf-editor (??)
 ```
 
 ```bash
 yay -S \
+    polybar \
+
     flat-remix-git \
     betterlockscreen \
     pyenv-virtualenv \
     system-san-francisco-font-git \
     rofi \
-    polybar \
     google-chrome \
     rofi-calc
 ```
