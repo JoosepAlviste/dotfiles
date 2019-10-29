@@ -63,7 +63,8 @@ let s:git_orange = 'F54D27'
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 " Enable just these default extensions
 let g:NERDTreeSyntaxEnabledExtensions = [
-      \ 'ts', 'json', 'md', 'js', 'css', 'html', 'png', 'py', 'vim',
+      \ 'ts', 'json', 'md', 'js', 'css', 'html', 'png', 'py', 'vim', 'lua',
+      \ 'sh',
       \ ]
 
 " Custom highlights
@@ -75,6 +76,8 @@ let g:NERDTreeExactMatchHighlightColor = {
       \ '.gitignore': s:git_orange,
       \ '.gitattributes': s:git_orange,
       \ '.gitmodules': s:git_orange,
+      \ 'gitconfig': s:git_orange,
+      \ 'gitignore_global': s:git_orange,
       \ '.prettierrc': s:yellow,
       \ '.gitlab-ci.yml': s:orange,
       \ '.dockerignore': s:blue,
@@ -86,6 +89,14 @@ let g:NERDTreePatternMatchHighlightColor = {
       \ 'docker-compose.*\.yml$': s:blue,
       \ '^dockerfile': s:blue,
       \ 'vimrc': s:green,
+      \ 'zlogin': s:green,
+      \ 'zlogout': s:green,
+      \ 'zpreztorc': s:green,
+      \ 'zprofile': s:green,
+      \ 'zshenv': s:green,
+      \ 'zshrc': s:green,
+      \ 'profile': s:green,
+      \ 'bash_profile': s:green,
       \ }
 
 
