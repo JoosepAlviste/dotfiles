@@ -55,6 +55,7 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 Plug 'tpope/vim-fugitive'  " Git integration
 Plug 'tpope/vim-rhubarb'  " GitHub integration - use `hub` cli instead of `git`
+Plug 'tpope/vim-git'  " Git related files' syntax
 
 Plug 'editorconfig/editorconfig-vim'  " Read .editorconfig file for settings
 
@@ -80,8 +81,9 @@ Plug 'cakebaker/scss-syntax.vim'
 
 " Python
 
-Plug 'numirias/semshi'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-python/python-syntax'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Semantic highlighting
+Plug 'Vimjas/vim-python-pep8-indent'  " Better indentation
 
 
 "
