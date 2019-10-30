@@ -4,6 +4,7 @@
 
 setlocal signcolumn=no
 setlocal colorcolumn=
+setlocal nocursorline
 
 
 "
