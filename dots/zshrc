@@ -95,6 +95,9 @@ fi
 if type tldr > /dev/null; then
     alias help='tldr'
 fi
+if type brew > /dev/null; then
+    alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
