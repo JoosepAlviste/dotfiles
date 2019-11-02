@@ -28,6 +28,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {
       \ 'zprofile': '',
       \ 'zshenv': '',
       \ 'zshrc': '',
-      \ 'profile': '',
+      \ '\.?profile$': '',
       \ 'bash_profile': '',
       \ }

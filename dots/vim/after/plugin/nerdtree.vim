@@ -64,7 +64,7 @@ let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 " Enable just these default extensions
 let g:NERDTreeSyntaxEnabledExtensions = [
       \ 'ts', 'json', 'md', 'js', 'css', 'html', 'png', 'py', 'vim', 'lua',
-      \ 'sh',
+      \ 'sh', 'scss',
       \ ]
 
 " Custom highlights
@@ -95,7 +95,7 @@ let g:NERDTreePatternMatchHighlightColor = {
       \ 'zprofile': s:green,
       \ 'zshenv': s:green,
       \ 'zshrc': s:green,
-      \ 'profile': s:green,
+      \ '\.?profile$': s:green,
       \ 'bash_profile': s:green,
       \ }
 
