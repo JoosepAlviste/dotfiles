@@ -48,5 +48,6 @@
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",
     "https://gist.githubusercontent.com/JoosepAlviste/5e806ca470e37eb442b839945d9ef359/raw/9b8f10cdaa5537822338f35a48902c5ef21a5068/schema-1.0.0.json": "tg-project.yaml"
   },
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"]
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "coc.preferences.colorSupport": false
 }

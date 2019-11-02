@@ -77,7 +77,9 @@ Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 
 " CSS
 
+Plug 'hail2u/vim-css3-syntax'  " Improved CSS3 syntax
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Python
 
