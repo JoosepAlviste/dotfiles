@@ -1,6 +1,17 @@
+"
+" Settings
+"
+
+" Appropriate tab size
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
+
+
+"
+" Mappings
+"
+
 nnoremap <buffer> o :call joosep#expand#insertComma()<cr>
 
 inoremap <expr> <CR> joosep#expand#expand()
-
-" Support comments in JSON
-autocmd FileType json syntax match Comment +\/\/.\+$+
