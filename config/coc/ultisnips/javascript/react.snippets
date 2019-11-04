@@ -16,3 +16,49 @@ endsnippet
 snippet scp "Styled components prop theme"
 ${props => props.theme.$0};
 endsnippet
+
+snippet pt "React prop types declaration"
+$1.propTypes = {
+    $0
+};
+endsnippet
+
+snippet pta "PropTypes.arrayOf()" b
+PropTypes.arrayOf($1),$0
+endsnippet
+
+snippet ptar "PropTypes.arrayOf().isRequired" b
+PropTypes.arrayOf($1).isRequired,$0
+endsnippet
+
+snippet ptb "PropTypes.bool" b
+PropTypes.bool,$0
+endsnippet
+
+snippet ptbr "PropTypes.bool.isRequired" b
+PropTypes.bool.isRequired,$0
+endsnippet
+
+snippet ptf "PropTypes.func" b
+PropTypes.func,$0
+endsnippet
+
+snippet ptfr "PropTypes.func.isRequired" b
+PropTypes.func.isRequired,$0
+endsnippet
+
+snippet ptn "PropTypes.number" b
+PropTypes.number,$0
+endsnippet
+
+snippet ptnr "PropTypes.number.isRequired" b
+PropTypes.number.isRequired,$0
+endsnippet
+
+snippet pts "PropTypes.string" b
+PropTypes.string,$0
+endsnippet
+
+snippet ptsr "PropTypes.string.isRequired" b
+PropTypes.string.isRequired,$0
+endsnippet
