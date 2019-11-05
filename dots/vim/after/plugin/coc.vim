@@ -70,9 +70,6 @@ augroup end
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" Typescript
-command! -nargs=0 TSLint :call CocAction('runCommand', 'tslint.lintProject')
-
 " Jest
 " Run jest for current project
 command! -nargs=0 Jest :call CocAction('runCommand', 'jest.projectTest')
@@ -109,7 +106,6 @@ let g:coc_global_extensions = [
             \ "coc-jest",
             \ "coc-python",
             \ "coc-snippets",
-            \ "coc-tslint-plugin",
             \ "coc-tsserver",
             \ "coc-vimtex",
             \ "coc-prettier",

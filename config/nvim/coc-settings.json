@@ -16,7 +16,12 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "git.realtimeGutters": false,
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript"],
+  "eslint.filetypes": [
+    "javascript", 
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": "~/.config/yarn/global/node_modules",
