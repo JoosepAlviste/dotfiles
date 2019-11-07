@@ -160,6 +160,7 @@ pacman -S \
     hub \
     htop \
     ripgrep \
+    bibata-cursor-theme \
 
     evince \
     xdg-utils \
