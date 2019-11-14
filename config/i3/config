@@ -27,7 +27,7 @@ exec --no-startup-id dunst
 # Network manager applet
 exec --no-startup-id nm-applet
 # Set up multiple monitors
-exec_always --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rate 144.00 --output HDMI-1 --mode 1920x1080 --pos 0x0
+exec_always --no-startup-id xrandr --output $MONITOR_RIGHT --output $MONITOR_LEFT --left-of $MONITOR_RIGHT
 # Torrent daemon
 exec --no-startup-id transmission-daemon
 
@@ -134,8 +134,8 @@ assign [class="firefoxdeveloperedition"] $workspace9
 for_window [class="Spotify"] move to workspace $workspace2
 
 # Open some workspaces on the second monitor automatically
-workspace $workspace2 output HDMI-3
-workspace $workspace8 output HDMI-3
+workspace $workspace2 output $MONITOR_SECONDARY
+workspace $workspace8 output $MONITOR_SECONDARY
 
 # Workspace specific gaps
 workspace $workspace1 gaps inner 8
@@ -245,6 +245,7 @@ bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 
 # Screenshotting with maim, copy region to clipboard
 bindsym --release Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+# Save region to ~/Pictures/screenshots
 bindsym --release Shift+Print exec --no-startup-id maim -s ~/Pictures/screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ").png
 
 # Pulse audio controls

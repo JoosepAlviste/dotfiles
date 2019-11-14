@@ -34,6 +34,15 @@ export VISUAL='nvim'
 export PAGER='less'
 
 #
+# Monitors
+#
+
+export MONITOR_PRIMARY='DVI-D-0'
+export MONITOR_SECONDARY='HDMI-1'
+export MONITOR_RIGHT=$MONITOR_PRIMARY
+export MONITOR_LEFT=$MONITOR_SECONDARY
+
+#
 # Language
 #
 
