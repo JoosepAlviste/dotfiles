@@ -13,3 +13,6 @@ app
 OAuth
 auth
 URIs
+TypeORM
+GraphQL
+TravelIOU
