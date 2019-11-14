@@ -34,7 +34,8 @@ export VISUAL='nvim'
 export PAGER='less'
 
 #
-# Monitors
+# Monitors, you can easily override them by overriding the environment 
+# variables in `~/.zprofile.local` (check readme FAQ for how to do this)
 #
 
 export MONITOR_PRIMARY='DVI-D-0'
@@ -134,6 +135,12 @@ if [[ -d "/usr/share/nvm" ]]; then
     export NVM_SOURCE="/usr/share/nvm"
 fi
 
+
+#
+# Read overrides from zprofile.local
+#
+
+[[ -f ~/.zprofile.local ]] && source ~/.zprofile.local
 
 #
 # Boot

@@ -9,6 +9,8 @@ dots/vim.bak/autoload/plug.vim.old
 dots/vim.test/
 dots/vim/spell/*.spl
 
+dots/zprofile.local
+
 dots/emacs.d/elpa/
 .netrwhist
 

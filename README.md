@@ -262,6 +262,13 @@ x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 ```
 
+### Overriding environment variables
+
+If you want to override environment variables without polluting the Git status, 
+then you can create a new file `dots/zprofile.local` and run `makesymlinks`. 
+This will link that file to `~/.zprofile.local` and source it inside `zprofile`. 
+Feel free to override any environment variables here (for example, monitors).
+
 ## More screenshots
 
 ![Split](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Split.png)
