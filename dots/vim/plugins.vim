@@ -48,6 +48,8 @@ else
 endif
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
+Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
+
 
 "
 " Programming
