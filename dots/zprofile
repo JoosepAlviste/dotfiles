@@ -116,6 +116,17 @@ if [ -f /usr/libexec/java_home ]; then
 fi
 
 #
+# NVM
+#
+
+export NVM_DIR="$HOME/.nvm"
+# Only set this source in Arch Linux
+if [[ -d "/usr/share/nvm" ]]; then
+    export NVM_SOURCE="/usr/share/nvm"
+fi
+
+
+#
 # Boot
 #
 

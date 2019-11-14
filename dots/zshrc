@@ -153,6 +153,9 @@ if type pyenv > /dev/null; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# NVM
+[ -s "$NVM_SOURCE/nvm.sh" ] && . "$NVM_SOURCE/nvm.sh"
+
 # Apply NVM when moving around
 precmd() {
     if [ "$PWD" != "$PREV_PWD" ]; then
