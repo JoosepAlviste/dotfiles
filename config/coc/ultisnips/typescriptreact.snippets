@@ -27,13 +27,13 @@
 extends javascript, typescript
 
 snippet fc "A React function component"
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 interface Props {
     ${3}
 }
 
-const ${1:`!p snip.rv = snip.basename`}: FunctionComponent<Props> = (${2}) => (
+const ${1:`!p snip.rv = snip.basename`}: FC<Props> = (${2}) => (
   $0
 );
 

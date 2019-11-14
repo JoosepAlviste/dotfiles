@@ -1,7 +1,7 @@
 # React snippets
 # ==============
 
-snippet fc "React functional component file"
+snippet fc "React functional component file" b
 import React from 'react';
 
 const `!v expand('%:t:r')` = () => {
@@ -17,48 +17,54 @@ snippet scp "Styled components prop theme"
 ${props => props.theme.$0};
 endsnippet
 
-snippet pt "React prop types declaration"
+snippet pt "React prop types declaration" b
 $1.propTypes = {
     $0
 };
 endsnippet
 
-snippet pta "PropTypes.arrayOf()" b
+snippet pta "PropTypes.arrayOf()"
 PropTypes.arrayOf($1),$0
 endsnippet
 
-snippet ptar "PropTypes.arrayOf().isRequired" b
+snippet ptar "PropTypes.arrayOf().isRequired"
 PropTypes.arrayOf($1).isRequired,$0
 endsnippet
 
-snippet ptb "PropTypes.bool" b
+snippet ptb "PropTypes.bool"
 PropTypes.bool,$0
 endsnippet
 
-snippet ptbr "PropTypes.bool.isRequired" b
+snippet ptbr "PropTypes.bool.isRequired"
 PropTypes.bool.isRequired,$0
 endsnippet
 
-snippet ptf "PropTypes.func" b
+snippet ptf "PropTypes.func"
 PropTypes.func,$0
 endsnippet
 
-snippet ptfr "PropTypes.func.isRequired" b
+snippet ptfr "PropTypes.func.isRequired"
 PropTypes.func.isRequired,$0
 endsnippet
 
-snippet ptn "PropTypes.number" b
+snippet ptn "PropTypes.number"
 PropTypes.number,$0
 endsnippet
 
-snippet ptnr "PropTypes.number.isRequired" b
+snippet ptnr "PropTypes.number.isRequired"
 PropTypes.number.isRequired,$0
 endsnippet
 
-snippet pts "PropTypes.string" b
+snippet pts "PropTypes.string"
 PropTypes.string,$0
 endsnippet
 
-snippet ptsr "PropTypes.string.isRequired" b
+snippet ptsr "PropTypes.string.isRequired"
 PropTypes.string.isRequired,$0
+endsnippet
+
+snippet sc "Styled component declaration" b
+const $1 = styled.${2:div}\`
+  $0
+\`
 endsnippet
