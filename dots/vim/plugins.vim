@@ -89,6 +89,10 @@ Plug 'vim-python/python-syntax'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Semantic highlighting
 Plug 'Vimjas/vim-python-pep8-indent'  " Better indentation
 
+" GraphQL
+
+Plug 'jparise/vim-graphql'
+
 
 "
 " Text editing
