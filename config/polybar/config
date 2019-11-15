@@ -38,6 +38,10 @@ module-margin = 1
 modules-left = i3
 modules-right = keyboard date powermenu
 
+tray-position = right
+tray-background = ${colors.background}
+tray-padding = 5
+
 
 [bar/bar1]
 inherit = bar/base
