@@ -1,0 +1,44 @@
+#!/bin/sh
+# changeVolume
+
+getDefaultSinkName() {
+    pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
+}
+
+getDefaultSinkVol() {
+    res=$(pacmd list-sinks |
+        awk '/^\s+name: /{indefault = $2 == "<'$(getDefaultSinkName)'>"}
+            /^\s+volume: / && indefault {print $5; exit}')
+    resWithoutPercent=${res::${#res}-1}
+    echo $resWithoutPercent
+}
+
+setDefaultSinkVol() {
+    pactl set-sink-volume $(getDefaultSinkName) $1
+}
+
+# Arbitrary but unique message id
+msgId="991049"
+
+# SINK=$(pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | head -n 1)
+
+# Change the volume using alsa(might differ if you use pulseaudio)
+# amixer -c $src set Master "$@" > /dev/null
+# pactl set-sink-volume $SINK "$@" > /dev/null
+setDefaultSinkVol "$@" > /dev/null
+
+# VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+VOLUME=$(getDefaultSinkVol)
+# Query amixer for the current volume and whether or not the speaker is muted
+# mute="$(amixer -c $sink get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
+if [[ $VOLUME == 0 ]]; then
+    # Show the sound muted notification
+    dunstify -a "changeVolume" -u low -i audio-volume-muted -r "$msgId" "Volume muted" 
+else
+    # Show the volume notification
+    dunstify -a "changeVolume" -u low -i audio-volume-high -r "$msgId" \
+    "Volume: ${VOLUME}%" "$(getProgressString 10 "#" "- " $VOLUME)"
+fi
+
+# Play the volume changed sound
+canberra-gtk-play -i audio-volume-change -d "changeVolume"

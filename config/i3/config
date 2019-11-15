@@ -253,8 +253,8 @@ bindsym --release Print exec --no-startup-id maim -s | xclip -selection clipboar
 bindsym --release Shift+Print exec --no-startup-id maim -s ~/Pictures/screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ").png
 
 # Pulse audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id changeVolume +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id changeVolume -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Media player controls

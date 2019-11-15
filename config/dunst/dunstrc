@@ -1,7 +1,7 @@
 [global]
     font = Overpass 10
     markup = yes
-    format = "%s\n%b"
+    format = "<b>%s</b>\n%b"
     sort = yes
     indicate_hidden = yes
     alignment = left
@@ -23,10 +23,10 @@
     separator_color = "#bfbfbf"
     startup_notification = false
     show_indicators = true
-    dmenu = /usr/bin/dmenu -p dunst
-    browser = /usr/bin/google-chrome-stable -new-tab
+    dmenu = rofi -dmenu -p dunst
+    browser = firefox-developer-edition --new-tab
     icon_position = left
-    icon_path = /usr/share/icons/Numix-Circle/48/status:/usr/share/icons/Numix-Circle/48/apps
+    icon_path = /usr/share/icons/Flat-Remix-Light/apps/scalable:/usr/share/icons/Flat-Remix-Light/status/scalable
     max_icon_size = 45
     frame_width = 0
     frame_color = "#ffffff"
@@ -64,7 +64,6 @@
 
 [Discord]
     appname = Discord Canary
-    format = "<b>%s</b>\n%b"
     new_icon = Discord
 
 [Spotify]
@@ -73,9 +72,13 @@
     new_icon = Spotify
     timeout = 10
 
+[Slack]
+    appname = Slack
+    new_icon = slack
+    timeout = 20
+
 [Transmission]
     appname = Transmission
-    format = "<b>%s</b>\n%b"
     new_icon = Transmission
     timeout = 2000
 
