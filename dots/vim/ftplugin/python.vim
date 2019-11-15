@@ -1,11 +1,4 @@
 "
-" Settings
-"
-
-setlocal formatoptions=ca2qwj
-
-
-"
 " Mappings
 "
 

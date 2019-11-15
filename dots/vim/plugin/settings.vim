@@ -142,3 +142,19 @@ endif
 if (has('termguicolors'))
   set termguicolors  " Enable true colors
 endif
+
+
+"
+" Editing
+"
+
+" Autoformatting
+set formatoptions=
+set formatoptions+=c  " Auto-wrap comments
+set formatoptions+=a  " Auto format paragraph
+set formatoptions+=2  " Use the second line's indent value when indenting (allows indented first line)
+set formatoptions+=q  " Formatting comments with `gq`
+set formatoptions+=w  " Trailing whitespace indicates a paragraph
+set formatoptions+=j  " Remove comment leader when makes sense (joining lines)
+set formatoptions+=r  " Insert comment leader after hitting Enter
+set formatoptions+=o  " Insert comment leader after hitting `o` or `O`

@@ -10,7 +10,8 @@ setlocal signcolumn=no
 setlocal textwidth=72
 setlocal colorcolumn=73,51
 
-setlocal formatoptions=aw2tq
+" Autoformatting
+setlocal formatoptions-=c  " Enable formatting everywhere, not just comments
 
 setlocal spell
 setlocal iskeyword+=-
