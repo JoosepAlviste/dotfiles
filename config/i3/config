@@ -142,7 +142,7 @@ workspace $workspace8 output $MONITOR_SECONDARY
 workspace $workspace9 output $MONITOR_SECONDARY
 
 # Workspace specific gaps
-workspace $workspace1 gaps inner 8
+workspace $workspace1 gaps inner 0
 workspace $workspace1 gaps outer 0
 
 
