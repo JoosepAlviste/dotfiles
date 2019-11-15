@@ -211,7 +211,7 @@ bindsym $mod+Shift+s    gaps inner current minus 8
 
 bindsym $mod+f          fullscreen toggle
 
-bindsym $mod+g          exec --no-startup-id gitkraken
+bindsym $mod+g          exec --no-startup-id flatpak run com.axosoft.GitKraken
 
 bindsym $mod+h          focus left
 bindsym $mod+Shift+h    move left
