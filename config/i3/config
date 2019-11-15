@@ -133,9 +133,13 @@ assign [class="firefoxdeveloperedition"] $workspace9
 # Spotify does not want to move automatically!
 for_window [class="Spotify"] move to workspace $workspace2
 
+# Make sure some workspaces open on the first monitor
+workspace $workspace1 output $MONITOR_PRIMARY
+
 # Open some workspaces on the second monitor automatically
 workspace $workspace2 output $MONITOR_SECONDARY
 workspace $workspace8 output $MONITOR_SECONDARY
+workspace $workspace9 output $MONITOR_SECONDARY
 
 # Workspace specific gaps
 workspace $workspace1 gaps inner 8

@@ -36,22 +36,17 @@ padding-right = 1
 module-margin = 1
 
 modules-left = i3
-; modules-center = title
 modules-right = keyboard date powermenu
-
-tray-position = right
-tray-background = ${colors.background}
-tray-padding = 5
 
 
 [bar/bar1]
 inherit = bar/base
-monitor = ${env:MONITOR_LEFT}
+monitor = ${env:MONITOR_PRIMARY}
 
 
 [bar/bar2]
 inherit = bar/base
-monitor = ${env:MONITOR_RIGHT}
+monitor = ${env:MONITOR_SECONDARY}
 
 
 [module/i3]
