@@ -14,6 +14,19 @@ augroup myStatusline
   autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusline()
 augroup END
 
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
 function! Status(winnum)
   let active = a:winnum == winnr()
   let bufnum = winbufnr(a:winnum)
@@ -37,7 +50,6 @@ function! Status(winnum)
   " File name
   let stat .= Color(active, 'StatuslineAccent', active ? ' »' : ' «')
   let stat .= ' %<'
-  " let stat .= '%f'
   let stat .= '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
   let stat .= ' ' . Color(active, 'StatuslineAccent', active ? '«' : '»')
 
@@ -58,7 +70,7 @@ function! Status(winnum)
   let stat .= '%='
 
   " CoC status
-  let stat .= Color(active, 'Statusline', '%{coc#status()} ')
+  let stat .= Color(active, 'Statusline', '%{StatusDiagnostic()} ')
 
   return stat
 endfunction
