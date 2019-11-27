@@ -68,3 +68,22 @@ const $1 = styled.${2:div}\`
   $0
 \`
 endsnippet
+
+snippet reducer "A Redux reducer definition" b
+const $1Reducer = (state = $2, action) => {
+	switch (action.type) {
+		$0
+
+		default:
+			return state;
+	}
+};
+endsnippet
+
+snippet action "A Redux action creator" b
+const $1 = ($2) => ({ type: $3, $2 });
+endsnippet
+
+snippet selector "A Redux selector" b
+export const get$1 = state => state[STATE_KEY].$2;
+endsnippet
