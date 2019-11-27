@@ -69,3 +69,6 @@ nnoremap Q @@
 " Faster splits
 nnoremap <C-w> :vsplit<cr>
 nnoremap <C-q> :split<cr>
+
+" Split line with S
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
