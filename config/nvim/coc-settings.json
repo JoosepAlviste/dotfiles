@@ -41,13 +41,14 @@
     "markdown",
     "javascript",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
-  "prettier.disableSuccessMessage": true,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "prettier.semi": false,
   "prettier.onlyUseLocalVersion": true,
+  "prettier.eslintIntegration": true,
   "yaml.schemas": {
     "http://json.schemastore.org/composer": "composer.yaml",
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",
