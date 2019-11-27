@@ -66,8 +66,10 @@ function! Status(winnum)
     let stat .= Color(active, 'StatuslineBoolean', ' P')
   endif
 
-  " Right side (currently empty)
+  " Right side
   let stat .= '%='
+
+  let stat .= Color(active, 'StatusLine', '%{LineNoIndicator()} ')
 
   " CoC status
   let stat .= Color(active, 'Statusline', '%{StatusDiagnostic()} ')
