@@ -238,6 +238,18 @@ pip install \
 
 The location of this virtualenv is configured in `nvim/init.vim`.
 
+
+### Global NPM packages
+
+Some packages that are useful and should probably be installed into the global 
+node modules.
+
+```bash
+yarn global add \
+    bash-language-server
+```
+
+
 ## FAQ (my own reference)
 
 ### Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
