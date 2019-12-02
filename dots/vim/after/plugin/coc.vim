@@ -110,6 +110,7 @@ let g:coc_global_extensions = [
             \ "coc-vimtex",
             \ "coc-prettier",
             \ "coc-yaml",
+            \ "coc-json",
             \ "coc-pairs",
             \ ]
 
