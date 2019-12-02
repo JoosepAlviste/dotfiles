@@ -67,7 +67,7 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'suy/vim-context-commentstring'
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}  " VSCode features
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
 
 " JavaScript
 
