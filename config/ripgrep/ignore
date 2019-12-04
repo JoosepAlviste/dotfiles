@@ -31,4 +31,5 @@ env/
 db/postgres/
 build/
 coverage/
+coverage_html/
 dist/
