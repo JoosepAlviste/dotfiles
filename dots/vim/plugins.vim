@@ -51,6 +51,12 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 
+" Custom text objects
+Plug 'kana/vim-textobj-user'  " Library for custom text objects
+Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
+Plug 'kana/vim-textobj-line'  " Entire line al/il
+Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
+
 
 "
 " Programming
@@ -89,6 +95,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'vim-python/python-syntax'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Semantic highlighting
 Plug 'Vimjas/vim-python-pep8-indent'  " Better indentation
+Plug 'bps/vim-textobj-python'
 
 " GraphQL
 
