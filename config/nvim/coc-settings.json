@@ -14,8 +14,10 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-  "git.realtimeGutters": false,
-  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "htmldjango": "html"
+  },
   "eslint.filetypes": [
     "javascript", 
     "javascriptreact",
