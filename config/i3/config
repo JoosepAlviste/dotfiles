@@ -33,7 +33,7 @@ exec --no-startup-id transmission-daemon
 
 # Run Spotify automatically
 exec --no-startup-id spotify
-exec --no-startup-id flatpak run com.slack.Slack
+exec --no-startup-id slack
 
 
 
@@ -211,7 +211,7 @@ bindsym $mod+Shift+s    gaps inner current minus 8
 
 bindsym $mod+f          fullscreen toggle
 
-bindsym $mod+g          exec --no-startup-id flatpak run com.axosoft.GitKraken
+bindsym $mod+g          exec --no-startup-id gitkraken
 
 bindsym $mod+h          focus left
 bindsym $mod+Shift+h    move left
@@ -238,6 +238,8 @@ bindsym $mod+v          split v
 bindsym $mod+Shift+v    split h
 
 bindsym $mod+b          exec --no-startup-id $BROWSER
+
+bindsym $mod+n          exec --no-startup-id nautilus
 
 # Move workspace to other monitor
 bindsym $mod+m          move workspace to output right
