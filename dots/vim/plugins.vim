@@ -57,6 +57,8 @@ Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
 Plug 'kana/vim-textobj-line'  " Entire line al/il
 Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
 
+Plug 'tmsvg/pear-tree'  " Better auto-pairs
+
 
 "
 " Programming

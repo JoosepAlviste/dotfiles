@@ -13,5 +13,3 @@ setlocal softtabstop=2
 "
 
 nnoremap <buffer> o :call joosep#expand#insertComma()<cr>
-
-inoremap <expr> <CR> joosep#expand#expand()
