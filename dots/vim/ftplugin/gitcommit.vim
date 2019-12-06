@@ -21,5 +21,6 @@ setlocal iskeyword+=-
 " Mappings
 "
 
+" Navigate between changed files
 nnoremap <silent> <buffer> { ?^@@<CR>
 nnoremap <silent> <buffer> } /^@@<CR>

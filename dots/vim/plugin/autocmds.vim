@@ -24,5 +24,8 @@ if has('autocmd')
         " Fix styled-components highlighting issue, not sure why this does not
         " work in the ftplugin/javascript.vim file
         autocmd BufReadPost *.tsx,*.ts,*.jsx,*.js :syntax sync fromstart
+
+        " Automatically insert issue number as Git commit message prefix
+        autocmd FileType gitcommit call joosep#git#insert_issue_prefix()
     augroup END
 endif
