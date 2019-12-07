@@ -28,3 +28,5 @@ ESLint
 linting
 Formik
 linters
+intellisense
+graphql

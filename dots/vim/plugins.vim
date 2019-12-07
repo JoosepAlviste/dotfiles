@@ -56,6 +56,7 @@ Plug 'kana/vim-textobj-user'  " Library for custom text objects
 Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
 Plug 'kana/vim-textobj-line'  " Entire line al/il
 Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
+Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
 
