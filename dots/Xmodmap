@@ -6,7 +6,7 @@ add control = Control_L Control_R
 
 ! Map Left Control + hjkl to arrow keys
 keycode 37 = Mode_switch
-keysym h = h H Left 
+keysym h = h H Left
 keysym l = l L Right
 keysym k = k K Up
 keysym j = j J Down

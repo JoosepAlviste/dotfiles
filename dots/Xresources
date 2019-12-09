@@ -2,8 +2,7 @@
 !  Color settings
 !------------------
 
-! #include ".Xresources.d/onedark.theme"
-#include ".Xresources.d/nightowl.theme"
+#include ".Xresources.d/oceanicnext.theme"
 #include ".Xresources.d/wal.theme"
 
 
