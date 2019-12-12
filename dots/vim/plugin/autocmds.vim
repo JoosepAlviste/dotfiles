@@ -30,5 +30,9 @@ if has('autocmd')
 
     " Save buffer when focus lost (not sure if this works in terminal Vim)
     autocmd FocusLost * silent! wa
+
+    " Automatically open quickfix window
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
   augroup END
 endif
