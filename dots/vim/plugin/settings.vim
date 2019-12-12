@@ -15,6 +15,7 @@ set ignorecase  " Search is case insensitive
 set smartcase  " But sensitive when uppercase letters are used
 
 set path+=**  " Recursive find
+set path-=/usr/include
 " Ignore some folders and files with find
 set wildignore+=**/node_modules/**
 set wildignore+=**/*.pyc
@@ -23,6 +24,11 @@ set wildignore+=**/public/**
 set wildignore+=**/dist/**
 set wildignore+=**/.git/**
 set wildignore+=**/.DS_Store
+
+set wildcharm=<C-z>
+
+set grepprg=ag\ --ignore-case\ --vimgrep
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " Instead of failing a command because of unsaved changes, raise a dialogue 
 " asking if you wish to save changed files.
