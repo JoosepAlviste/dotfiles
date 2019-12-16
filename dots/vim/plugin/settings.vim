@@ -49,7 +49,6 @@ set autoread    " Automatically update buffer when file changes
 
 set nowrap  " Do not wrap lines by default
 set linebreak  " Break lines by spaces or tabs
-set sidescroll=5  " Scroll by 5 characters horizontally
 
 if has('nvim')
   set inccommand=nosplit  " Show preview of ex commands
@@ -63,6 +62,7 @@ endif
 set mouse=a  " Enable mouse usage
 
 set scrolloff=3  " Lines to scroll when cursor leaves screen
+set sidescrolloff=5  " Lines to scroll horizontally when cursor leaves screen
 
 " Integration with the system clipboard
 if has('clipboard')
