@@ -36,8 +36,6 @@ Plug 'tpope/vim-dispatch'  " Asynchronous jobs used by some plugins
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 
-Plug 'drzel/vim-line-no-indicator'
-
 Plug 'scrooloose/nerdtree'  " File browser
 
 " FZF - fuzzy search everything - files, lines, commits, etc.

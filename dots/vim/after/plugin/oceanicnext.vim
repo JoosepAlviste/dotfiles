@@ -123,8 +123,10 @@ function! s:ModifyColorscheme()
     sign define semshiError text=• texthl=CocErrorSign
 
     " Custom colors
-    call <sid>hi('StatuslineAccent', s:base0C, s:statusline, '', '')
-    call <sid>hi('StatuslineBoolean', s:base09, s:statusline, '', '')
+    call <sid>hi('StatuslineAccent',    s:base0C,    s:statusline, '', '')
+    call <sid>hi('StatuslineBoolean',   s:base09,    s:statusline, '', '')
+    call <sid>hi('StatuslineError',     s:error_red, s:statusline, '', '')
+    call <sid>hi('StatuslineWarning',   s:base09,    s:statusline, '', '')
 endfunction
 
 if g:colors_name ==# 'OceanicNext'

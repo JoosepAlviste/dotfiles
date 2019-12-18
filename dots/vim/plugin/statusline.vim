@@ -18,13 +18,27 @@ function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
   if empty(info) | return '' | endif
   let msgs = []
+
   if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
+    call add(msgs, Color(1, 'StatuslineError', 'E' . info['error']))
   endif
+
   if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
+    call add(msgs, Color(1, 'StatuslineWarning', 'W' . info['warning']))
   endif
+
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
+" This function just outputs the content colored by the supplied colorgroup 
+" number, e.g. num = 2 -> User2 it only colors the input if the window is 
+" the currently focused one
+function! Color(active, num, content)
+  if a:active
+    return '%#' . a:num . '#' . a:content . '%*'
+  else
+    return a:content
+  endif
 endfunction
 
 function! Status(winnum)
@@ -35,17 +49,6 @@ function! Status(winnum)
   let name = bufname(bufnum)
 
   let stat = ''
-
-  " This function just outputs the content colored by the supplied colorgroup 
-  " number, e.g. num = 2 -> User2 it only colors the input if the window is 
-  " the currently focused one
-  function! Color(active, num, content)
-    if a:active
-      return '%#' . a:num . '#' . a:content . '%*'
-    else
-      return a:content
-    endif
-  endfunction
 
   " File name
   let stat .= Color(active, 'StatuslineAccent', active ? ' »' : ' «')
@@ -69,10 +72,8 @@ function! Status(winnum)
   " Right side
   let stat .= '%='
 
-  let stat .= Color(active, 'StatusLine', '%{LineNoIndicator()} ')
-
   " CoC status
-  let stat .= Color(active, 'Statusline', '%{StatusDiagnostic()} ')
+  let stat .= Color(active, 'Statusline', StatusDiagnostic() . ' ')
 
   return stat
 endfunction
