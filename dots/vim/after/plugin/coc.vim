@@ -39,6 +39,8 @@ nnoremap <silent> <leader>cd :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>ce :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <leader>cc :<C-u>CocList commands<cr>
+" Restart CoC
+nnoremap <silent> <leader>cr :<C-u>CocRestart<cr>
 
 " Find symbol of current document
 nnoremap <silent> <leader>fo :<C-u>CocList outline<cr>
