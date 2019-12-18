@@ -26,10 +26,9 @@ let NERDTreeQuitOnOpen = 1
 " Automatically delete buffer after deleting file
 let NERDTreeAutoDeleteBuffer = 1
 
-" Make arrows invisible & make directories look better
-let NERDTreeDirArrowExpandable = "\u00a0"
-let NERDTreeDirArrowCollapsible = "\u00a0"
-let g:DevIconsEnableFoldersOpenClose = 1
+" Make arrows invisible
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
 
 " Remove some unneeded padding from DevIcons glyphs
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
