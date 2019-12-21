@@ -71,8 +71,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('TabLineSel',   s:cyan, s:bg,       '',     '')
 
     " Git
-    call <sid>hi('DiffFile',    'none', s:red,   'none', '')
-    call <sid>hi('DiffNewFile', 'none', s:green, 'none', '')
+    call <sid>hi('DiffFile',    s:green,   'none', '', '')
+    call <sid>hi('DiffNewFile', s:red, 'none', '', '')
     " Special tinted dark background colors for diff hunks
     call <sid>hi('DiffAdd',     'none',  '#22330A', 'none', '')
     call <sid>hi('DiffDelete',  'none',  '#3D000A', 'none', '')
