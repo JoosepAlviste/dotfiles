@@ -73,7 +73,7 @@ function! Status(winnum)
   let stat .= '%='
 
   " CoC status
-  let stat .= Color(active, 'Statusline', StatusDiagnostic() . ' ')
+  let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
 
   return stat
 endfunction

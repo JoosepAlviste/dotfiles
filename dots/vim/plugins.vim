@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 "
 
 Plug 'mhartington/oceanic-next'  " This colorscheme is customized a bit
+Plug 'kaicataldo/material.vim'
 
 
 "

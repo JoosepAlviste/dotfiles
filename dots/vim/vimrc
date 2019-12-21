@@ -19,4 +19,5 @@ let maplocalleader="\\"
 " Vim UI
 "
 
-colorscheme OceanicNext
+let g:material_theme_style = 'palenight'
+colorscheme material

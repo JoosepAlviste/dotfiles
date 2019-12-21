@@ -281,6 +281,19 @@ then you can create a new file `dots/zprofile.local` and run `makesymlinks`.
 This will link that file to `~/.zprofile.local` and source it inside `zprofile`. 
 Feel free to override any environment variables here (for example, monitors).
 
+### To change the color scheme in Vim & terminal
+
+1. Change the Vim color scheme in `dots/vim/vimrc`
+2. Change the terminal color scheme in `config/kitty/kitty.conf`, find the 
+   `include themes/*.conf` file & change the theme file name
+
+Available themes include:
+
+* `OceanicNext`
+* `palenight` -- in `dots/vim/vimrc` change to `colorscheme material` and add 
+  `let g:material_theme_style = 'palenight'` before the `colorscheme` 
+  setting).
+
 ## More screenshots
 
 ![Split](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Split.png)
