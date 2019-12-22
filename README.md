@@ -6,8 +6,8 @@ Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
     * See `dots/vim/plugins.vim` for the used plugins
-    * Slightly modified [OceanicNext 
-        colorscheme](https://github.com/mhartington/oceanic-next)
+    * Slightly modified [Material Palenight 
+      colorscheme](https://github.com/kaicataldo/material.vim/)
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
     * With [Prezto](https://github.com/sorin-ionescu/prezto)
@@ -17,8 +17,7 @@ Some of the configuration includes:
       [Rofi](https://github.com/davatorium/rofi)
 * `tmux` (I don't use it anymore but left the configuration since it might be 
     useful)
-* Wallpaper - https://mikaelgustafsson.artstation.com/projects/Y2Wew (I haven't 
-    updated the screenshots to this one yet)
+* Wallpaper - https://mikaelgustafsson.artstation.com/projects/nA9Lr
 
 
 ## Utilities
