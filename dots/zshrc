@@ -82,13 +82,24 @@ fi
 if type fzf > /dev/null; then
     alias preview="fzf --preview 'bat --color \"always\" {}'"
 fi
-export FZF_DEFAULT_OPTS="
-    --bind='ctrl-o:execute(nvim {})+abort' 
-    --inline-info
-    --color=bg+:#1b2b34,bg:#16242c,spinner:#c594c5,hl:#6699cc
-    --color=fg:#c0c5ce,header:#586e75,info:#fac863,pointer:#c594c5
-    --color=marker:#fac863,fg+:#c0c5ce,prompt:#c594c5,hl+:#c594c5
-"
+THEME="palenight"
+if [ "$THEME" = "OceanicNext" ]; then
+    export FZF_DEFAULT_OPTS="
+        --bind='ctrl-o:execute(nvim {})+abort' 
+        --inline-info
+        --color=bg+:#1b2b34,bg:#16242c,spinner:#c594c5,hl:#6699cc
+        --color=fg:#c0c5ce,header:#586e75,info:#fac863,pointer:#c594c5
+        --color=marker:#fac863,fg+:#c0c5ce,prompt:#c594c5,hl+:#c594c5
+    "
+elif [ "$THEME" = "palenight" ]; then
+    export FZF_DEFAULT_OPTS="
+        --bind='ctrl-o:execute(nvim {})+abort' 
+        --inline-info
+        --color=bg+:#212331,bg:#252837,spinner:#c594c5,hl:#82aaff
+        --color=fg:#a6accd,header:#7982B4,info:#ffcb6b,pointer:#c792ea
+        --color=marker:#ffcb6b,fg+:#a6accd,prompt:#c792ea,hl+:#c792ea
+    "
+fi
 if type ncdu > /dev/null; then
     alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
 fi

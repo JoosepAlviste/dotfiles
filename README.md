@@ -286,6 +286,8 @@ Feel free to override any environment variables here (for example, monitors).
 1. Change the Vim color scheme in `dots/vim/vimrc`
 2. Change the terminal color scheme in `config/kitty/kitty.conf`, find the 
    `include themes/*.conf` file & change the theme file name
+3. Change the `THEME` variable in `dots/zshrc` in order to customize the FZF 
+   colors
 
 Available themes include:
 
