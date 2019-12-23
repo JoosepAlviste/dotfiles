@@ -44,6 +44,15 @@ export MONITOR_RIGHT=$MONITOR_PRIMARY
 export MONITOR_LEFT=$MONITOR_SECONDARY
 
 #
+# Various settings used to tweak the behavior
+# Can be overridden in `~/.zprofile.local`, for example
+#
+
+# If your computer is a potato, enable this by setting to 'true'. This disables 
+# some fancier Vim plugins
+export POTATO_MODE='false'
+
+#
 # Language
 #
 

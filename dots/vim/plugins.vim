@@ -38,6 +38,11 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 
 Plug 'scrooloose/nerdtree'  " File browser
+if (empty($POTATO_MODE) || $POTATO_MODE ==# 'false')
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  let g:NERDTreeGitStatusWithFlags = 0
+  Plug 'tsony-tsonev/nerdtree-git-plugin'
+endif
 
 " FZF - fuzzy search everything - files, lines, commits, etc.
 if executable('/usr/local/opt/fzf')

@@ -1,0 +1,1 @@
+let NERDTreeHighlightCursorline = 0

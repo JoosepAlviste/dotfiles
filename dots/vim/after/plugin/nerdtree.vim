@@ -59,3 +59,21 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 " Like vim-vinegar, open the current directory when pressing "-"
 nnoremap <silent><unique> <Plug>NERDTreeGoUp :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 nmap <silent> - <Plug>NERDTreeGoUp
+
+
+"
+" NERDTree Git status plugin
+"
+
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeShowIgnoredStatus = 1
+
+let s:colors = g:joosep#colors#palenight#GetColors()
+let g:NERDTreeColorMapCustom = {
+    \ 'Modified': s:colors.blue,
+    \ 'Staged': s:colors.green,
+    \ 'Untracked': s:colors.orange,
+    \ 'Dirty': s:colors.purple,
+    \ 'Clean': '#87939A',
+    \ 'Ignored': s:colors.darker_fg
+    \ }
