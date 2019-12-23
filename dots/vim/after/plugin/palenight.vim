@@ -83,6 +83,11 @@ function! s:ModifyColorscheme()
     call <sid>hi('markdownCode',   s:darker_fg, '', '',       '')
     call <sid>hi('markdownItalic', s:blue,      '', 'italic', '')
 
+    " reStructuredText
+    call <sid>hi('rstInlineLiteral', s:darker_fg, '', '', '')
+    call <sid>hi('rstLiteralBlock', s:darker_fg, '', '', '')
+    call <sid>hi('rstInterpretedTextOrHyperlinkReference', s:blue, '', '', '')
+
     " HTML
     call <sid>hi('htmlLink',    s:blue,   '', 'underline', s:blue)
     call <sid>hi('htmlTagName', s:yellow, '', '',          '')
@@ -132,6 +137,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('jsTemplateExpression', 'none', '', '', '')
     call <sid>hi('jsNoise', s:cyan, '', '', '')
     call <sid>hi('jsFuncArgCommas', s:cyan, '', '', '')
+    call <sid>hi('jsOperatorKeyword', s:purple, '', '', '')
+    call <sid>hi('jsThis', s:purple, '', '', '')
     call <sid>hi('jsDocTypeBrackets', s:cyan, '', '', '')
     call <sid>hi('jsDocParam', s:yellow, '', '', '')
     call <sid>hi('jsDocTags', s:purple, '', '', '')
@@ -143,9 +150,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('jsxEndString', s:yellow, '', '', '')
     call <sid>hi('jsxAttrib', s:orange, '', '', '')
 
-    " " Python
+    " Python
     call <sid>hi('pythonDecorator', s:cyan, '', '', '')
-    " call <sid>hi('pythonDecoratorName', s:base0D, '', '', '')
 
     " numirias/semshi
     call <sid>hi('semshiLocal',           s:yellow, '', 'NONE',      '')
@@ -166,7 +172,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('vimFuncVar',  s:paleblue, '', '', '')
     call <sid>hi('vimFunction', s:blue,     '', '', '')
 
-    " " Custom colors
+    " Custom colors
     call <sid>hi('StatuslineAccent',  s:cyan,   s:statusline, '', '')
     call <sid>hi('StatuslineBoolean', s:orange, s:statusline, '', '')
     call <sid>hi('StatuslineError',   s:red,    s:statusline, '', '')
