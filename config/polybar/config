@@ -1,6 +1,6 @@
 [colors]
 
-background = #bb000a11
+background = #77000a11
 foreground = ${xrdb:color7}
 
 secondary-foreground = ${xrdb:color18}

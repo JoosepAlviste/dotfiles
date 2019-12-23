@@ -21,7 +21,7 @@ set $term --no-startup-id $TERMINAL
 # Set the desktop background
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jpg
 # Composite manager
-exec_always --no-startup-id compton -f
+exec_always --no-startup-id picom --experimental-backends -f
 # Dunst for notifications
 exec --no-startup-id dunst
 # Network manager applet
