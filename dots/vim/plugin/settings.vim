@@ -27,7 +27,7 @@ set wildignore+=**/.DS_Store
 
 set wildcharm=<C-z>
 
-set grepprg=ag\ --ignore-case\ --vimgrep
+set grepprg=rg\ --ignore-case\ --vimgrep
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " Instead of failing a command because of unsaved changes, raise a dialogue 
