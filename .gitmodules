@@ -1,3 +1,6 @@
 [submodule "config/bat/themes/oceanic-next-color-scheme"]
 	path = config/bat/themes/oceanic-next-color-scheme
 	url = https://github.com/voronianski/oceanic-next-color-scheme
+[submodule "config/bat/themes/material-theme"]
+	path = config/bat/themes/material-theme
+	url = https://github.com/equinusocio/material-theme.git
