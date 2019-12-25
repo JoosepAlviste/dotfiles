@@ -91,7 +91,10 @@ function! s:ModifyColorscheme()
     " HTML
     call <sid>hi('htmlLink',    s:blue,   '', 'underline', s:blue)
     call <sid>hi('htmlTagName', s:yellow, '', '',          '')
-    call <sid>hi('htmlArg',     s:orange, '', '',          '')
+    call <sid>hi('htmlArg',     s:fg, '', '',          '')
+
+    " Django
+    call <sid>hi('djangoFilter', s:blue, '', '', '')
 
     " coc.nvim
     call <sid>hi('CocHighlightText', 'none', s:line_numbers, '',     '')
@@ -112,6 +115,7 @@ function! s:ModifyColorscheme()
     " " tpope/vim-fugitive
     call <sid>hi('diffAdded',   s:green, 'none', 'none', '')
     call <sid>hi('diffRemoved', s:red,   'none', 'none', '')
+    call <sid>hi('fugitiveHash', s:orange, '', '', '')
 
     " YATS
     call <sid>hi('typescriptMember', s:fg, '', '', '')
@@ -129,7 +133,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('tsxTagName', s:yellow, '', '', '')
     call <sid>hi('tsxIntrinsicTagName', s:yellow, '', '', '')
     call <sid>hi('tsxCloseString', s:cyan, '', '', '')
-    call <sid>hi('tsxAttrib', s:orange, '', '', '')
+    call <sid>hi('tsxAttrib', s:fg, '', '', '')
     call <sid>hi('tsxEqual', s:purple, '', '', '')
 
     " JavaScript
@@ -148,10 +152,11 @@ function! s:ModifyColorscheme()
     call <sid>hi('jsxComponentName', s:yellow, '', '', '')
     call <sid>hi('jsxEndComponentName', s:yellow, '', '', '')
     call <sid>hi('jsxEndString', s:yellow, '', '', '')
-    call <sid>hi('jsxAttrib', s:orange, '', '', '')
+    call <sid>hi('jsxAttrib', s:fg, '', '', '')
 
     " Python
-    call <sid>hi('pythonDecorator', s:cyan, '', '', '')
+    call <sid>hi('pythonDecorator', s:violet, '', '', '')
+    call <sid>hi('pythonDot', s:cyan, '', '', '')
 
     " numirias/semshi
     call <sid>hi('semshiLocal',           s:yellow, '', 'NONE',      '')
@@ -171,6 +176,22 @@ function! s:ModifyColorscheme()
     call <sid>hi('vimVar',      s:paleblue, '', '', '')
     call <sid>hi('vimFuncVar',  s:paleblue, '', '', '')
     call <sid>hi('vimFunction', s:blue,     '', '', '')
+
+    " CSS
+    call <sid>hi('cssTagName', s:blue, '', '', '')
+    call <sid>hi('cssValueLength', s:green, '', '', '')
+
+    " YAML
+    call <sid>hi('yamlBlockMappingKey', s:blue, '', '', '')
+    call <sid>hi('yamlKeyValueDelimiter', s:cyan, '', '', '')
+
+    " JSON
+    call <sid>hi('jsonQuote', s:cyan, '', '', '')
+    call <sid>hi('jsonKeywordMatch', s:cyan, '', '', '')
+    call <sid>hi('jsonBraces', s:cyan, '', '', '')
+
+    " Shell
+    call <sid>hi('shVariable', s:blue, '', '', '')
 
     " Custom colors
     call <sid>hi('StatuslineAccent',  s:cyan,   s:statusline, '', '')

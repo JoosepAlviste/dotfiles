@@ -6,8 +6,8 @@
 # Utils
 #
 
-is_linux() { [ "$(uname)" = "Linux" ] }
-is_mac() { [ "$(uname)" = "Darwin" ] }
+is_linux() { [ "$(uname)" = "Linux" ]; }
+is_mac() { [ "$(uname)" = "Darwin" ]; }
 
 #
 # Applications
