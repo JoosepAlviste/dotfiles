@@ -1,48 +1,7 @@
-# # Main Colors
-# unrecognized_file: gold
-# recognized_file:   lime
-# dir:               dodgerblue
-
-# # Link
-# dead_link: red
-# link:      cyan
-
-# # Access Modes
-# write:     darkkhaki
-# read:      limegreen
-# exec:      red
-# no_access: indianred
-
-# # Age
-# day_old:     mediumspringgreen
-# hour_old:    lime
-# no_modifier: seagreen
-
-# # File Size
-# file_large:  orange
-# file_medium: gold
-# file_small:  peachpuff
-
-# # Random
-# report: white
-# user:   moccasin
-# tree:   cyan
-# empty:  yellow
-# error:  red
-# normal: darkkhaki
-
-# # Git
-# addition:     chartreuse
-# modification: darkkhaki
-# deletion:     darkred
-# untracked:    darkorange
-# unchanged:    forestgreen
-
-
-## Main Colors
+# Main Colors
 unrecognized_file: lightgray
 recognized_file:   white
-dir:               green
+dir:               blue
 
 # Link
 dead_link: red
@@ -55,9 +14,9 @@ exec:      red
 no_access: dimgray
 
 # Age
-day_old:     lightgray
+day_old:     lightblue
 hour_old:    white
-no_modifier: darkgray
+no_modifier: lightgray
 
 # File Size
 file_large:  white
@@ -77,4 +36,4 @@ addition:     green
 modification: yellow
 deletion:     red
 untracked:    darkgray
-unchanged:    white 
+unchanged:    white
