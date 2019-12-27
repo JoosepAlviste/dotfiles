@@ -30,3 +30,7 @@
 snippet log "console.log statement"
 console.log($0);
 endsnippet
+
+snippet indexport "export from index.js file"
+export {default} from './`!v expand('%:h:t')`';
+endsnippet
