@@ -45,39 +45,40 @@ let s:darker_fg = s:colors.darker_fg
 
 function! s:ModifyColorscheme()
     " " General
-    call <sid>hi('Normal',       s:fg,         'none',         '',     '')
-    call <sid>hi('IncSearch',    'none',       s:line_numbers, 'none', '')
-    call <sid>hi('Search',       'none',       s:line_numbers, 'none', '')
-    call <sid>hi('VertSplit',    s:bg,         s:background,   'none', '')
-    call <sid>hi('CursorLine',   'none',       s:cursorline,   '',     '')
+    call <sid>hi('Normal',       s:fg,         'NONE',         '',     '')
+    call <sid>hi('IncSearch',    'NONE',       s:line_numbers, 'NONE', '')
+    call <sid>hi('Search',       'NONE',       s:line_numbers, 'NONE', '')
+    call <sid>hi('VertSplit',    s:bg,         s:background,   'NONE', '')
+    call <sid>hi('CursorLine',   'NONE',       s:cursorline,   '',     '')
     call <sid>hi('CursorLineNr', s:darker_fg,  '',             '',     '')
-    call <sid>hi('ColorColumn',  'none',       s:cursorline,   '',     '')
-    call <sid>hi('Visual',       'none',       s:selection,    '',     '')
-    call <sid>hi('SpellBad',     'none',       '',  'undercurl', s:orange)
+    call <sid>hi('ColorColumn',  'NONE',       s:cursorline,   '',     '')
+    call <sid>hi('Visual',       'NONE',       s:selection,    '',     '')
+    call <sid>hi('SpellBad',     'NONE',       '',  'undercurl', s:orange)
     call <sid>hi('Folded',       s:comments,   s:bg,     'italic',     '')
     call <sid>hi('PMenu',        '',           s:bg,           '',     '')
     call <sid>hi('Include',      s:purple,     '',             '',     '')
-    call <sid>hi('StatusLine',   s:fg,         s:statusline,   'none', '')
-    call <sid>hi('StatusLineNC', s:darker_fg,  s:statusline,   'none', '')
+    call <sid>hi('StatusLine',   s:fg,         s:statusline,   'NONE', '')
+    call <sid>hi('StatusLineNC', s:darker_fg,  s:statusline,   'NONE', '')
     call <sid>hi('Noise',        s:cyan,       '',             '',     '')
-    call <sid>hi('Todo',         s:orange,     'none',         '',     '')
+    call <sid>hi('Todo',         s:orange,     'NONE',         '',     '')
     call <sid>hi('Title',        s:yellow,     '',             '',     '')
     call <sid>hi('LineNr',       s:invisibles, '',             '',     '')
     call <sid>hi('Comment',      '',           '',       'italic',     '')
-    call <sid>hi('MatchParen',   'none',       s:invisibles,   '',     '')
+    call <sid>hi('MatchParen',   'NONE',       s:invisibles,   '',     '')
 
-    call <sid>hi('TabLine',      s:fg, s:statusline, 'none', '')
+    call <sid>hi('TabLine',      s:fg, s:statusline, 'NONE', '')
     call <sid>hi('TabLineFill',  s:fg, s:statusline, '',     '')
     call <sid>hi('TabLineSel',   s:cyan, s:bg,       '',     '')
 
     " Git
-    call <sid>hi('DiffFile',    s:green,   'none', '', '')
-    call <sid>hi('DiffNewFile', s:red, 'none', '', '')
+    call <sid>hi('gitcommitOverflow', s:red, '', '', '')
+    call <sid>hi('DiffFile',    s:green,   'NONE', '', '')
+    call <sid>hi('DiffNewFile', s:red, 'NONE', '', '')
     " Special tinted dark background colors for diff hunks
-    call <sid>hi('DiffAdd',     'none',  '#22330A', 'none', '')
-    call <sid>hi('DiffDelete',  'none',  '#3D000A', 'none', '')
-    call <sid>hi('DiffChange',  'none',  '#002C3D', 'none', '')
-    call <sid>hi('DiffText',    'none',  '#3D2800', 'none', '')
+    call <sid>hi('DiffAdd',     'NONE',  '#22330A', 'NONE', '')
+    call <sid>hi('DiffDelete',  'NONE',  '#3D000A', 'NONE', '')
+    call <sid>hi('DiffChange',  'NONE',  '#002C3D', 'NONE', '')
+    call <sid>hi('DiffText',    'NONE',  '#3D2800', 'NONE', '')
 
     " Markdown
     call <sid>hi('markdownCode',   s:darker_fg, '', '',       '')
@@ -97,24 +98,24 @@ function! s:ModifyColorscheme()
     call <sid>hi('djangoFilter', s:blue, '', '', '')
 
     " coc.nvim
-    call <sid>hi('CocHighlightText', 'none', s:line_numbers, '',     '')
-    call <sid>hi('CocErrorFloat', s:red, 'none', '', '')
-    call <sid>hi('CocErrorSign', s:red, 'none', '', '')
-    call <sid>hi('CocErrorHighlight', '', 'none', 'undercurl', s:red)
-    call <sid>hi('CocWarningFloat', s:orange, 'none', '', '')
-    call <sid>hi('CocWarningSign', s:orange, 'none', '', '')
-    call <sid>hi('CocWarningHighlight', '', 'none', 'undercurl', s:orange)
-    call <sid>hi('CocInfoFloat', s:cyan, 'none', '', '')
-    call <sid>hi('CocInfoSign', s:cyan, 'none', '', '')
-    call <sid>hi('CocInfoHighlight', '', 'none', 'undercurl', s:cyan)
+    call <sid>hi('CocHighlightText', 'NONE', s:line_numbers, '',     '')
+    call <sid>hi('CocErrorFloat', s:red, 'NONE', '', '')
+    call <sid>hi('CocErrorSign', s:red, 'NONE', '', '')
+    call <sid>hi('CocErrorHighlight', '', 'NONE', 'undercurl', s:red)
+    call <sid>hi('CocWarningFloat', s:orange, 'NONE', '', '')
+    call <sid>hi('CocWarningSign', s:orange, 'NONE', '', '')
+    call <sid>hi('CocWarningHighlight', '', 'NONE', 'undercurl', s:orange)
+    call <sid>hi('CocInfoFloat', s:cyan, 'NONE', '', '')
+    call <sid>hi('CocInfoSign', s:cyan, 'NONE', '', '')
+    call <sid>hi('CocInfoHighlight', '', 'NONE', 'undercurl', s:cyan)
 
     " NERDTree
     call <sid>hi('NERDTreeDirSlash', s:cyan, '', '', '')
     call <sid>hi('NERDTreeFlags', s:blue, '', '', '')
 
     " " tpope/vim-fugitive
-    call <sid>hi('diffAdded',   s:green, 'none', 'none', '')
-    call <sid>hi('diffRemoved', s:red,   'none', 'none', '')
+    call <sid>hi('diffAdded',   s:green, 'NONE', 'NONE', '')
+    call <sid>hi('diffRemoved', s:red,   'NONE', 'NONE', '')
     call <sid>hi('fugitiveHash', s:orange, '', '', '')
 
     " YATS
@@ -138,7 +139,7 @@ function! s:ModifyColorscheme()
 
     " JavaScript
     call <sid>hi('jsTemplateBraces', s:purple, '', '', '')
-    call <sid>hi('jsTemplateExpression', 'none', '', '', '')
+    call <sid>hi('jsTemplateExpression', 'NONE', '', '', '')
     call <sid>hi('jsNoise', s:cyan, '', '', '')
     call <sid>hi('jsFuncArgCommas', s:cyan, '', '', '')
     call <sid>hi('jsOperatorKeyword', s:purple, '', '', '')
@@ -167,8 +168,8 @@ function! s:ModifyColorscheme()
     call <sid>hi('semshiBuiltin',         s:purple, '', '', '')
     call <sid>hi('semshiAttribute',       s:cyan, '', '', '')
     call <sid>hi('semshiSelf',            s:purple, '', '', '')
-    call <sid>hi('semshiUnresolved',      'none',   '', 'undercurl', s:orange)
-    call <sid>hi('semshiSelected',        'none',   s:line_numbers, '', '')
+    call <sid>hi('semshiUnresolved',      'NONE',   '', 'undercurl', s:orange)
+    call <sid>hi('semshiSelected',        'NONE',   s:line_numbers, '', '')
 
     sign define semshiError text=• texthl=CocErrorSign
 
@@ -180,6 +181,9 @@ function! s:ModifyColorscheme()
     " CSS
     call <sid>hi('cssTagName', s:blue, '', '', '')
     call <sid>hi('cssValueLength', s:green, '', '', '')
+
+    " SCSS
+    call <sid>hi('scssSelectorName', s:yellow, '', '', '')
 
     " YAML
     call <sid>hi('yamlBlockMappingKey', s:blue, '', '', '')
