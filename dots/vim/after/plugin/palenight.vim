@@ -184,6 +184,7 @@ function! s:ModifyColorscheme()
 
     " SCSS
     call <sid>hi('scssSelectorName', s:yellow, '', '', '')
+    call <sid>hi('scssVariable', s:blue, '', '', '')
 
     " YAML
     call <sid>hi('yamlBlockMappingKey', s:blue, '', '', '')
