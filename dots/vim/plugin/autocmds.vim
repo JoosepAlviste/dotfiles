@@ -28,6 +28,11 @@ if has('autocmd')
     " Automatically insert issue number as Git commit message prefix
     autocmd FileType gitcommit call joosep#git#insert_issue_prefix()
 
+    " Open some files with `xdg-open` or `open` automatically
+    autocmd FileType pdf silent call joosep#specialfiles#openspecial()
+    autocmd FileType video silent call joosep#specialfiles#openspecial()
+    autocmd FileType image silent call joosep#specialfiles#openspecial()
+
     " Save buffer when focus lost (not sure if this works in terminal Vim)
     autocmd FocusLost * silent! wa
 
