@@ -53,6 +53,8 @@ else
 endif
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 
 " Custom text objects
