@@ -24,3 +24,11 @@ setlocal iskeyword+=-
 " Navigate between changed files
 nnoremap <silent> <buffer> { ?^@@<CR>
 nnoremap <silent> <buffer> } /^@@<CR>
+
+
+"
+" Run commands when file is loaded
+"
+
+" Automatically insert issue number as Git commit message prefix
+autocmd FileType gitcommit call joosep#git#insert_issue_prefix()
