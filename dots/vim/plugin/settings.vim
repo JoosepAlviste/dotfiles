@@ -24,6 +24,8 @@ set wildignore+=**/public/**
 set wildignore+=**/dist/**
 set wildignore+=**/.git/**
 set wildignore+=**/.DS_Store
+set wildignore+=**/build/**
+set wildignore+=**/_build/**
 
 set wildcharm=<C-z>
 

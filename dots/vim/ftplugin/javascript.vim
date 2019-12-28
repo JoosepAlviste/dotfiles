@@ -4,6 +4,7 @@ setlocal shiftwidth=2
 setlocal softtabstop=2
 
 setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+setlocal define=\\(class\\s\\\|const\\s\\\|function\\s\\)
 
 "
 " Mappings
