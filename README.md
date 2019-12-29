@@ -35,10 +35,6 @@ Just useful utilities that aren't aliased:
 * [fd](https://github.com/sharkdp/fd/) - simpler `find` replacement
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
-Firefox color theme
-
-https://color.firefox.com/?theme=XQAAAAIYAQAAAAAAAABBqYhm849SCia2CaaEGccwS-xNKlhRZV3WyJgLznIpdqgXIgRu0RnvYWDfkxQOiMDH8G8w62UzSuCTn9Qe_JwV3pZBx_N-ipogfdGTdWX2NYbkjKNS776KDnbhCxvRIO8nuk0VpvP7UJS3lKCGWH6lt2oOfxAu0aoFfUXvameh8PYAVmISMbtpuyoFBaYYNVExt7dhQV7BY97wc4ZfgWK4W989hbRFoMqL8D-WtdSlXcT_kNixlkwu_-24HJ8
-
 
 ## Linux
 
@@ -120,6 +116,22 @@ need to manually run `:PlugInstall` in order to install plugins.
 
 The utility scripts in `bin/` are automatically added to the Zsh path so you can 
 run `makesymlinks` anywhere.
+
+
+### Custom Firefox theme
+
+![Firefox custom 
+theme](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Firefox-Theme.png)
+
+I have some custom CSS which makes my Firefox look a bit better and have the 
+Material Palenight color scheme. If you want to install the theme, copy or 
+symlink the files from `resources/firefox/` to your [Firefox profile 
+folder](https://www.howtogeek.com/255587/how-to-find-your-firefox-profile-folder-on-windows-mac-and-linux/):
+
+```bash
+ln -s ~/dotfiles/resources/firefox/userChrome.css $PROFILE_DIR/chrome
+ln -s ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
+```
 
 
 ## Update
