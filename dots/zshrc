@@ -108,6 +108,12 @@ if type tldr > /dev/null; then
 fi
 if type brew > /dev/null; then
     alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+    steep() {
+        brew update
+        brew upgrade
+        brew cask upgrade
+        brew cleanup
+    }
 fi
 if type hub > /dev/null; then
     alias git='hub'
