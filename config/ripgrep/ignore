@@ -33,3 +33,4 @@ build/
 coverage/
 coverage_html/
 dist/
+public/
