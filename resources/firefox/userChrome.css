@@ -86,6 +86,17 @@ toolbar .toolbarbutton-1:not([disabled="true"]):-moz-any([open],
     background-color: var(--color-bg-active) !important;
 }
 
+/**
+ * Back button
+ */
+:root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
+    padding: var(--toolbarbutton-inner-padding) !important;
+    height: initial !important;
+    width: initial !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+
 /* Hacky way to make the url input bar centered */
 #urlbar-input {
 	text-align: center !important;
@@ -95,11 +106,15 @@ toolbar .toolbarbutton-1:not([disabled="true"]):-moz-any([open],
     color: var(--color-fg);
 }
 
+.tab-background {
+    border: none !important;
+}
+
 /**
  * Inactive tabs
  */
 #navigator-toolbox {
-    background-color: var(--color-darker-bg);
+    background-color: var(--color-darker-bg) !important;
     border: none !important;
 }
 
