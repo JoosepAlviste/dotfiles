@@ -48,7 +48,6 @@ Just some notes and things I use on Linux:
 * `xkblayout`-state
     - Probably needs `apt install libx11-dev`
 * `polybar`
-* `maim` + `xclip` - screenshots with prt screen and copy to clipboard
 * `playerctl` - control audio
 * `betterlockscreen` - nice lock screen for i3lock
 
@@ -172,10 +171,10 @@ pacman -S \
     htop \
     ripgrep \
     bibata-cursor-theme \
+    flameshot \
 
     evince \
     xdg-utils \
-    maim \
     surfraw \
     ranger \
     networkmanager \

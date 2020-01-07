@@ -30,6 +30,8 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id xrandr --output $MONITOR_RIGHT --output $MONITOR_LEFT --left-of $MONITOR_RIGHT
 # Torrent daemon
 exec --no-startup-id transmission-daemon
+# Flameshot tray icon for taking screenshots
+exec --no-startup-id flameshot
 
 # Run Spotify automatically
 exec --no-startup-id spotify
@@ -250,9 +252,9 @@ bindsym $mod+Shift+m    exec --no-startup-id i3-swap
 # #---Media keys---# #
 
 # Screenshotting with maim, copy region to clipboard
-bindsym --release Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym --release Print exec --no-startup-id flameshot gui
 # Save region to ~/Pictures/screenshots
-bindsym --release Shift+Print exec --no-startup-id maim -s ~/Pictures/screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ").png
+bindsym --release Shift+Print exec --no-startup-id flameshot gui -p ~/Pictures/screenshots
 
 # Pulse audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id changeVolume +5%
