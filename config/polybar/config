@@ -1,11 +1,12 @@
 [colors]
 
 background = #77000a11
-foreground = ${xrdb:color7}
+foreground = ${xrdb:foreground}
 
-secondary-foreground = ${xrdb:color18}
+secondary-foreground = ${xrdb:color7}
+secondary-icons = ${xrdb:color8}
 
-primary = ${xrdb:color19}
+primary = ${xrdb:color4}
 danger = ${xrdb:color1}
 
 
@@ -24,7 +25,7 @@ scroll-down = i3wm-wsprev
 fixed-center = true
 
 width = 100%
-height = 40
+height = 30
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -65,11 +66,11 @@ label-focused-background = ${colors.background}
 label-focused-padding = 1
 
 label-unfocused = %name%
-label-unfocused-foreground = ${colors.secondary-foreground}
+label-unfocused-foreground = ${colors.secondary-icons}
 label-unfocused-padding = 1
 
 label-visible = %name%
-label-visible-foreground = ${colors.secondary-foreground}
+label-visible-foreground = ${colors.secondary-icons}
 label-visible-padding = 1
 
 label-urgent = %name%

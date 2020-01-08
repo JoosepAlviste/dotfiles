@@ -1,0 +1,72 @@
+! Palenight Xresources palette
+
+
+#define border #252837
+#define cursorline #000000
+
+
+! #define base00 #282c34
+#define base01 #4b6479
+#define base02 #4373c2
+! #define base03 #545862
+#define base04 #000000
+! #define base05 #abb2bf
+! #define base06 #b6bdca
+! #define base07 #c8ccd4
+! #define base08 #e06c75
+#define base09 #f78c6c
+! #define base0A #e5c07b
+! #define base0B #98c379
+! #define base0C #56b6c2
+! #define base0D #61afef
+! #define base0E #c678dd
+#define base0F #637777
+
+
+! Special
+*.foreground:   #a6accd
+*.background:   #252837
+*.cursorColor:  #7e57c2
+
+! Black
+*.color0:       #292D3E
+*.color8:       #4e5579
+
+! Red
+*.color1:       #F07178
+*.color9:       #FF8B92
+
+! Green
+*.color2:       #C3E88D
+*.color10:      #DDFFA7
+
+! Yellow
+*.color3:       #FFCB6B
+*.color11:      #FFE585
+
+! Blue
+*.color4:       #82AAFF
+*.color12:      #9CC4FF
+
+! Magenta
+*.color5:       #C792EA
+*.color13:      #E1ACFF
+
+! Cyan
+*.color6:       #89DDFF
+*.color14:      #A3F7FF
+
+! White
+*.color7:       #7982B4
+*.color15:      #FFFFFF
+
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+! *.color21:      base06
+
