@@ -307,9 +307,8 @@ toolbar .toolbarbutton-1:not([disabled="true"]):-moz-any([open],
     cursor: default;
 }
 
-/* Hide bookmark button, page actions, security labels and extension icons */
+/* Hide page actions, security labels and extension icons */
 .urlbar-history-dropmarker,
-#star-button-box,
 #pageActionButton,
 #blocked-permissions-container,
 #identity-icon-labels,
