@@ -13,9 +13,17 @@ const `!v expand('%:t:r')` = () => {
 export default `!v expand('%:t:r')`;
 endsnippet
 
+snippet sc "Styled component declaration" b
+const $1 = styled.${2:div}\`
+  $0
+\`
+endsnippet
+
 snippet scp "Styled components prop theme"
 ${props => props.theme.$0};
 endsnippet
+
+# Prop types
 
 snippet pt "React prop types declaration" b
 $1.propTypes = {
@@ -63,11 +71,23 @@ snippet ptsr "PropTypes.string.isRequired"
 PropTypes.string.isRequired,$0
 endsnippet
 
-snippet sc "Styled component declaration" b
-const $1 = styled.${2:div}\`
-  $0
-\`
+snippet pto "PropTypes.object"
+PropTypes.object,$0
 endsnippet
+
+snippet ptor "PropTypes.object.isRequired"
+PropTypes.object.isRequired,$0
+endsnippet
+
+snippet ptsh "PropTypes.shape"
+PropTypes.shape({$1}),$0
+endsnippet
+
+snippet ptshr "PropTypes.shape.isRequired"
+PropTypes.shape({$1}).isRequired,$0
+endsnippet
+
+# Redux
 
 snippet reducer "A Redux reducer definition" b
 const $1Reducer = (state = $2, action) => {
