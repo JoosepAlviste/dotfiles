@@ -13,7 +13,6 @@ if (empty($TMUX))
 
     " Nvim terminal keybindings
     tnoremap <M-[> <Esc>
-    tnoremap <C-v><Esc> <Esc>
 endif
 
 augroup TerminalStuff
