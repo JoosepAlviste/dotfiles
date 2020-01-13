@@ -80,7 +80,7 @@ Plug 'editorconfig/editorconfig-vim'  " Read .editorconfig file for settings
 Plug 'alvan/vim-closetag'  " Automatically close tags
 Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
-Plug 'suy/vim-context-commentstring'
+Plug 'JoosepAlviste/vim-context-commentstring'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
 
