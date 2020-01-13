@@ -45,5 +45,6 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
 yabai -m rule --add app="^Microsoft AutoUpdate$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
+yabai -m rule --add app="^Firefox Developer Edition$" title="^Opening .*$" manage=off
 
 echo "yabai configuration loaded.."
