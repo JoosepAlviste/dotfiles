@@ -198,6 +198,10 @@ function! s:ModifyColorscheme()
     " Shell
     call <sid>hi('shVariable', s:blue, '', '', '')
 
+    " LaTeX
+    call <sid>hi('texSection', s:purple, '', '', '')
+    call <sid>hi('texZone', s:darker_fg, '', '', '')
+
     " Custom colors
     call <sid>hi('StatuslineAccent',  s:cyan,   s:statusline, '', '')
     call <sid>hi('StatuslineBoolean', s:orange, s:statusline, '', '')
