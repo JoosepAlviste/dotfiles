@@ -62,6 +62,8 @@ augroup myCocAuGroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   " Disable colorcolumn in floating windows
   autocmd User CocOpenFloat setlocal colorcolumn=
+  " Disable folds in the floating window -- do not show symbols in foldcolumn
+  autocmd User CocOpenFloat setlocal nofoldenable
 augroup end
 
 
