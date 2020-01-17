@@ -92,7 +92,7 @@ if exists('loaded_fzf')
         let lines = [top] + repeat([mid], height - 2) + [bot]
         call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
         call nvim_open_win(s:buf, v:true, opts)
-        set winhl=Normal:Floating
+        set winhl=Normal:CursorLineNr
         let opts.row += 1
         let opts.height -= 2
         let opts.col += 2
