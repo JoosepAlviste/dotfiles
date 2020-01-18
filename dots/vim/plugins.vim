@@ -83,6 +83,7 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 Plug 'JoosepAlviste/vim-context-commentstring'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
+Plug 'liuchengxu/vista.vim'  " Tag-bar
 
 " JavaScript
 

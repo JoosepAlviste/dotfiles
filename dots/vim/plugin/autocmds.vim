@@ -36,5 +36,7 @@ if has('autocmd')
     " Automatically open quickfix window
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
+
+    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
   augroup END
 endif

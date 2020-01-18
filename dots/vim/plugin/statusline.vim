@@ -41,6 +41,10 @@ function! Color(active, num, content)
   endif
 endfunction
 
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
 function! Status(winnum)
   let active = a:winnum == winnr()
   let bufnum = winbufnr(a:winnum)
@@ -74,6 +78,8 @@ function! Status(winnum)
 
   " CoC status
   let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
+
+  let stat .= Color(active, 'Statusline', NearestMethodOrFunction() . '  ')
 
   return stat
 endfunction
