@@ -35,6 +35,13 @@ function! s:ModifyHighlights()
     hi link typescriptImport Include
     hi link typescriptDefault Include
     hi link typescriptSymbols Operator
+    hi link typescriptTypeReference Type
+    hi link typescriptTypeParameter Type
+    hi link typescriptAliasDeclaration Type
+    hi link typescriptObjectLabel Normal
+    hi link typescriptArrowFunc Keyword
+    hi link typescriptTypeBrackets Noise
+    hi link typescriptTypeBraces Noise
 
     " YAJS
     hi link javascriptArrowFunc Type
