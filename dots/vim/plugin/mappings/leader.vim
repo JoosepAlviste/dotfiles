@@ -20,7 +20,7 @@ noremap <silent> <leader>tm :tabmove<cr>
 noremap <silent> <leader>t<leader> :tabnext<cr>
 
 " Show relative filename
-nnoremap <leader>k :echo @%<cr>
+nnoremap <leader>k :echohl Identifier \| echon @% \| echohl None<cr>
 
 nnoremap <leader>o :only<cr>
 
