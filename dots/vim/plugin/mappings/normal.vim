@@ -26,14 +26,12 @@ nnoremap ` '
 " Repurpose arrow keys for quickfix list movement
 nnoremap <silent> <Up> :cprevious<cr>
 nnoremap <silent> <Down> :cnext<cr>
-nnoremap <silent> <Left> :cpfile<cr>
-nnoremap <silent> <Right> :cnfile<cr>
+nnoremap <silent> <Left> :call joosep#quickfixed#older()<CR>
+nnoremap <silent> <Right> :call joosep#quickfixed#newer()<CR>
 
 " And shift + arrow keys for moving in the location list
 nnoremap <silent> <S-Up> :lprevious<cr>
 nnoremap <silent> <S-Down> :lnext<cr>
-nnoremap <silent> <S-Left> :lpfile<cr>
-nnoremap <silent> <S-Right> :lnfile<cr>
 
 " Show syntax group under cursor
 nnoremap <silent> <F10> :call joosep#syntax#SynStack()<cr>
