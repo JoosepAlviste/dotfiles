@@ -167,3 +167,33 @@ set formatoptions+=w  " Trailing whitespace indicates a paragraph
 set formatoptions+=j  " Remove comment leader when makes sense (joining lines)
 set formatoptions+=r  " Insert comment leader after hitting Enter
 set formatoptions+=o  " Insert comment leader after hitting `o` or `O`
+
+
+"
+" Terminal
+"
+
+if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
+  set termwinkey=<c-_>
+endif
+
+" Fix the colors of the terminal
+if has('nvim')
+  " Copied colors from Palenight Kitty theme
+  let g:terminal_color_0  = '#292D3E'
+  let g:terminal_color_1  = '#F07178'
+  let g:terminal_color_2  = '#C3E88D'
+  let g:terminal_color_3  = '#FFCB6B'
+  let g:terminal_color_4  = '#82AAFF'
+  let g:terminal_color_5  = '#C792EA'
+  let g:terminal_color_6  = '#89DDFF'
+  let g:terminal_color_7  = '#7982B4'
+  let g:terminal_color_8  = '#4e5579'
+  let g:terminal_color_9  = '#FF8B92'
+  let g:terminal_color_10 = '#DDFFA7'
+  let g:terminal_color_11 = '#FFE585'
+  let g:terminal_color_12 = '#9CC4FF'
+  let g:terminal_color_13 = '#E1ACFF'
+  let g:terminal_color_14 = '#A3F7FF'
+  let g:terminal_color_15 = '#FFFFFF'
+endif

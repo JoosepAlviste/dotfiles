@@ -66,6 +66,7 @@ Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
 
+Plug 'skywind3000/vim-terminal-help'
 
 "
 " Programming
