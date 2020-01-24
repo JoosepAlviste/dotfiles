@@ -133,9 +133,9 @@ zinit light pyenv/pyenv
 # FZF
 zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
     atclone"cp shell/completion.zsh _fzf_completion; \
-      cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
-    atload'source shell/key-bindings.zsh' \
-    make"PREFIX=$ZPFX install"
+      cp bin/(fzf|fzf-tmux) $ZPFX/bin; \
+      PREFIX=$ZPFX ./install" \
+    atload"source $HOME/.fzf.zsh; source shell/key-bindings.zsh"
 zinit light junegunn/fzf
 
 # Z
