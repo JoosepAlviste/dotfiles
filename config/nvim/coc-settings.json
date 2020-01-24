@@ -61,7 +61,7 @@
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
-      "filetypes": ["sh", "zsh"],
+      "filetypes": ["sh"],
       "ignoredRootPaths": ["~"],
       "trace.server": "verbose"
     }

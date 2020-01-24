@@ -79,12 +79,12 @@ precmd() {
 zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
-zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
+zinit ice wait lucid atinit'zpcompinit; zpcdreplay' nocd
 zinit light zdharma/fast-syntax-highlighting
 
 # history-substring-search for smarter up/down arrow
 # MUST be after fast-syntax-highlighting
-zinit ice wait lucid atload'setup_history_substring_search'
+zinit ice wait lucid atload'setup_history_substring_search' nocd
 zinit light zsh-users/zsh-history-substring-search
 setup_history_substring_search() {
     export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
@@ -92,8 +92,18 @@ setup_history_substring_search() {
     bindkey '^[[B' history-substring-search-down
 }
 
-zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit ice wait lucid atload'_zsh_autosuggest_start' nocd
 zinit light zsh-users/zsh-autosuggestions
+
+# Completions...
+
+# Completion for Docker
+zinit ice wait lucid as'completion'
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+# Docker Compose
+zinit ice wait lucid as'completion'
+zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
 # }}}
 # Programs {{{
@@ -126,11 +136,11 @@ zinit ice wait as'null' lucid \
 zinit light pyenv/pyenv
 
 # FZF
-zinit ice wait lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
-    atclone="cp shell/completion.zsh _fzf_completion; \
+zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
+    atclone"cp shell/completion.zsh _fzf_completion; \
       cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
     atload'source shell/key-bindings.zsh' \
-    make="PREFIX=$ZPFX install"
+    make"PREFIX=$ZPFX install"
 zinit light junegunn/fzf
 
 # Z
@@ -156,13 +166,13 @@ alias down='docker-compose down'
 alias build='docker-compose build'
 alias dps='docker ps'
 
-function take() {
+take() {
     # Create a directory and cd into it
     mkdir -p $@ && cd ${@:$#}
 }
 
 # FZF visited directories (with Z) and cd into it
-function zf() {
+zf() {
     directory=''
     if [ "x$1" != "x" ]; then
         directory="$(z | sed '1!G;h;$!d' | awk '{print $2}' | fzf --height=40% --layout=reverse --query $1)"
@@ -215,15 +225,11 @@ setup_ls_alias() {
         alias l='ls -1'
     fi
 }
-if type bat > /dev/null; then
-    alias cat='bat'
-fi
-if type prettyping > /dev/null; then
-    alias ping='prettyping --nolegend'
-fi
-if type fzf > /dev/null; then
-    alias preview="fzf --preview 'bat --color \"always\" {}'"
-fi
+
+alias cat='bat'
+alias ping='prettyping --nolegend'
+
+alias preview="fzf --preview 'bat --color \"always\" {}'"
 THEME="palenight"
 if [ "$THEME" = "OceanicNext" ]; then
     export FZF_DEFAULT_OPTS="
