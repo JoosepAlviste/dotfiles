@@ -63,18 +63,23 @@ zinit snippet OMZ::plugins/vi-mode
 zinit ice depth=1 atload'!source ~/.p10k.zsh; _p9k_precmd' nocd
 zinit light romkatv/powerlevel10k
 
-zinit ice svn wait lucid
-zinit snippet PZT::modules/node
-
 # Apply NVM when moving around
 precmd() {
     if [ "$PWD" != "$PREV_PWD" ]; then
         PREV_PWD="$PWD";
         if [ -e ".nvmrc" ]; then
-            nvm use;
+            nvm use &> /dev/null;
         fi
     fi
 }
+
+# Completion for Docker
+zinit ice wait lucid as'completion'
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+# Docker Compose
+zinit ice wait lucid as'completion'
+zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
 zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
@@ -94,16 +99,6 @@ setup_history_substring_search() {
 
 zinit ice wait lucid atload'_zsh_autosuggest_start' nocd
 zinit light zsh-users/zsh-autosuggestions
-
-# Completions...
-
-# Completion for Docker
-zinit ice wait lucid as'completion'
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-# Docker Compose
-zinit ice wait lucid as'completion'
-zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
 # }}}
 # Programs {{{
@@ -288,6 +283,31 @@ alias p='sudo pacman'
 if [[ -d "$HOME/Programs/temposync" ]]; then
     alias temposync='(cd ~/Programs/temposync && pipenv run python main.py)'
 fi
+
+# NVM
+# Function to set up NVM
+setup_nvm() {
+    # Load manually installed NVM into the shell session.
+    if [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
+        source "${NVM_DIR}/nvm.sh"
+
+    # Load package manager installed NVM into the shell session.
+    elif (( $+commands[brew] )) && \
+      [[ -d "${nvm_prefix::="$(brew --prefix 2> /dev/null)"/opt/nvm}" ]]; then
+      source "$(brew --prefix nvm)/nvm.sh"
+      unset nvm_prefix
+    fi
+}
+# NVM is not loaded on shell startup since it's slow. Also, loading it in turbo 
+# mode freezes the command prompt for a bit. So, we need to set up NVM only 
+# when actually required -- when the `nvm` command is used or any other Node 
+# commands.
+declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+NODE_GLOBALS+=("node")
+NODE_GLOBALS+=("nvm")
+for cmd in "${NODE_GLOBALS[@]}"; do
+    eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
+done
 
 # }}}
 # Startup {{{
