@@ -6,17 +6,14 @@ Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
     * See `dots/vim/plugins.vim` for the used plugins
-    * Slightly modified [Material Palenight 
-      colorscheme](https://github.com/kaicataldo/material.vim/)
+    * Slightly modified [Material Palenight colorscheme](https://github.com/kaicataldo/material.vim/)
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
-    * With [Prezto](https://github.com/sorin-ionescu/prezto)
+    * With [Zinit](https://github.com/zdharma/zinit/)
 * Window manager on macOS - [yabai](https://github.com/koekeishiya/yabai)
 * Window manager on Linux - [i3-gaps](https://github.com/Airblader/i3)
     * With [Polybar](https://github.com/polybar/polybar) and 
       [Rofi](https://github.com/davatorium/rofi)
-* `tmux` (I don't use it anymore but left the configuration since it might be 
-    useful)
 * Wallpaper - https://mikaelgustafsson.artstation.com/projects/nA9Lr
 
 
@@ -24,8 +21,10 @@ Some of the configuration includes:
 
 If some of these utilities are installed, they will be aliased:
 
-* [`bat`](https://github.com/sharkdp/bat) - `cat` replacement
-* [`prettyping`](https://github.com/denilsonsa/prettyping) - `ping` replacement
+* [`bat`](https://github.com/sharkdp/bat) - `cat` replacement (installed 
+  automatically with Zinit)
+* [`prettyping`](https://github.com/denilsonsa/prettyping) - `ping` 
+  replacement (installed automatically with Zinit)
 * [`tldr`](http://tldr.sh/) - simpler `man` pages, aliased to `help`
 * [`hub`](https://github.com/github/hub) - `git` replacement, integrates with 
   GitHub. (Can run `git clone dotfiles` to clone your own dotfiles)
@@ -142,6 +141,22 @@ git pull
 Maybe run `./bin/makesymlinks.sh` again.
 
 
+## Automatically installed through Zinit
+
+These packages will be automatically installed when zsh is started.
+
+They are installed & set up asynchronously with Zinit's turbo mode, so it's 
+probably best to not use `pacman` or `homebrew` versions of those packages.
+
+* [`bat`](https://github.com/sharkdp/bat)
+* [`exa`](https://github.com/ogham/exa)
+* [`pyenv`](https://github.com/pyenv/pyenv)
+* [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv)
+* [`fzf`](https://github.com/junegunn/fzf)
+* [`zsh-z`](https://github.com/agkozak/zsh-z)
+* [`diff-so-fancy`](https://github.com/zdharma/zsh-diff-so-fancy)
+* [`prettyping`](https://github.com/denilsonsa/prettyping)
+
 ## Packages list (very incomplete)
 
 This will maybe one day include all the pacman and AUR packages that should be 
@@ -162,11 +177,9 @@ pacman -S \
     gnome-keyring \
     vim \
     neovim \
-    fzf \
     polybar \
     rofi \
     firefox-developer-edition \
-    bat \
     hub \
     htop \
     ripgrep \
@@ -197,36 +210,24 @@ yay -S \
 
     flat-remix-git \
     betterlockscreen \
-    pyenv-virtualenv \
     system-san-francisco-font-git \
     rofi \
     google-chrome \
     rofi-calc
 ```
 
-```bash
-gem install colorls
-```
-
-
 ### macOS
 
 ```bash
 brew install \
-    zsh-completions \
     tmux \
-    fzf \
     hub \
-    bat \
     dash \
-    diff-so-fancy \
     htop \
     ranger \
     neovim \
     ripgrep \
     yarn \
-    pyenv \
-    pyenv-virtualenv \
     koekeishiya/formulae/chunkwm \
     koekeishiya/formulae/skhd \
     universal-ctags/universal-ctags/universal-ctags \
@@ -235,6 +236,8 @@ brew install \
 
 
 ### Python
+
+Zinit automatically installs `pyenv` and `pyenv-virtualenv`!
 
 Neovim plugins require that there's a virtualenv with the `neovim` package 
 installed. Create a Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from 

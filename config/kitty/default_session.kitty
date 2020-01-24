@@ -1,13 +1,13 @@
 cd ~/dotfiles
 title dotfiles
-launch zsh
+launch /usr/local/bin/zsh
 
 new_tab code
 cd ~/Devel
-launch zsh
+launch /usr/local/bin/zsh
 
 new_tab server
 cd ~/Devel
-launch zsh
-launch zsh
-launch zsh
+launch /usr/local/bin/zsh
+launch /usr/local/bin/zsh
+launch /usr/local/bin/zsh
