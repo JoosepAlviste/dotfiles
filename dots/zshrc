@@ -151,6 +151,7 @@ zinit load zdharma/zsh-diff-so-fancy
 
 # Base
 alias sudo='sudo -E'  # Use current user configs
+alias  grep='grep  --color=auto --exclude-dir={.git}'
 
 # Programs
 alias vim='nvim'
