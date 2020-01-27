@@ -34,6 +34,13 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory
 
+# Suspend and foreground vim
+foreground-nvim() {
+  fg %nvim
+}
+zle -N foreground-nvim
+bindkey '^Z' foreground-nvim
+
 # }}}
 # Programs {{{
 
