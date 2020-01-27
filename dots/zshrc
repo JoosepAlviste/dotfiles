@@ -28,6 +28,58 @@ bindkey \^U backward-kill-line
 
 export KEYTIMEOUT=1
 
+# Save commands to the history
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
+
+# }}}
+# Programs {{{
+
+# Use Zinit to automatically install some useful programs (might not be such a 
+# good idea but eeh)
+
+# sharkdp/bat
+zinit ice wait lucid as'command' from'gh-r' mv'bat* -> bat' pick'bat/bat'
+zinit light sharkdp/bat
+
+# ogham/exa, replacement for ls
+zinit ice wait lucid as'program' from'gh-r' mv'exa* -> exa'
+zinit light ogham/exa
+
+# denilsonsa/prettyping
+zinit ice wait lucid as'program' mv'prettyping* -> prettyping' \
+    atload'alias ping=prettyping'
+zinit light denilsonsa/prettyping
+
+# Pyenv
+zinit ice wait as'null' lucid \
+    atclone'./bin/pyenv-virtualenv-init init - > zpyenv-virtualenv.zsh' \
+    atpull'%atclone' src'zpyenv-virtualenv.zsh' nocompile'!' sbin'bin/*'
+zinit light pyenv/pyenv-virtualenv
+zinit ice wait as'null' lucid \
+    atinit'export PYENV_ROOT="$PWD"' \
+    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+    atpull'%atclone' src'zpyenv.zsh' nocompile'!' sbin'bin/pyenv'
+zinit light pyenv/pyenv
+
+# FZF
+zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
+    atclone"cp shell/completion.zsh _fzf_completion; \
+      cp bin/(fzf|fzf-tmux) $ZPFX/bin; \
+      PREFIX=$ZPFX ./install" \
+    atload"source $HOME/.fzf.zsh; source shell/key-bindings.zsh"
+zinit light junegunn/fzf
+
+# Z
+zinit ice wait lucid
+zinit load agkozak/zsh-z
+
+# diff-so-fancy
+zinit ice wait lucid as'program' pick'bin/git-dsf'
+zinit load zdharma/zsh-diff-so-fancy
+
 # }}}
 # Plugins {{{
 # Use Zinit's way of installing plugins (in  T U R B O  mode)
@@ -49,7 +101,7 @@ zinit snippet PZT::modules/spectrum
 # Since the `utility` plugin adds aliases for `ls`, `l`, etc., then we need to 
 # re-define those after the `utility` plugin has been loaded. So, call 
 # `setup_ls_alias` callback
-zinit ice svn wait lucid atload'!setup_ls_alias'
+zinit ice svn wait lucid atload'!setup_after_utility_loaded'
 zinit snippet PZT::modules/utility
 zinit ice svn wait lucid
 zinit snippet PZT::modules/directory
@@ -99,52 +151,6 @@ setup_history_substring_search() {
 
 zinit ice wait lucid atload'_zsh_autosuggest_start' nocd
 zinit light zsh-users/zsh-autosuggestions
-
-# }}}
-# Programs {{{
-
-# Use Zinit to automatically install some useful programs (might not be such a 
-# good idea but eeh)
-
-# sharkdp/bat
-zinit ice wait lucid as'command' from'gh-r' mv'bat* -> bat' pick'bat/bat'
-zinit light sharkdp/bat
-
-# ogham/exa, replacement for ls
-zinit ice wait lucid as'program' from'gh-r' mv'exa* -> exa'
-zinit light ogham/exa
-
-# denilsonsa/prettyping
-zinit ice wait lucid as'program' mv'prettyping* -> prettyping' \
-    atload'alias ping=prettyping'
-zinit light denilsonsa/prettyping
-
-# Pyenv
-zinit ice wait as'null' lucid \
-    atclone'./bin/pyenv-virtualenv-init init - > zpyenv-virtualenv.zsh' \
-    atpull'%atclone' src'zpyenv-virtualenv.zsh' nocompile'!' sbin'bin/*'
-zinit light pyenv/pyenv-virtualenv
-zinit ice wait as'null' lucid \
-    atinit'export PYENV_ROOT="$PWD"' \
-    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atpull'%atclone' src'zpyenv.zsh' nocompile'!' sbin'bin/pyenv'
-zinit light pyenv/pyenv
-
-# FZF
-zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
-    atclone"cp shell/completion.zsh _fzf_completion; \
-      cp bin/(fzf|fzf-tmux) $ZPFX/bin; \
-      PREFIX=$ZPFX ./install" \
-    atload"source $HOME/.fzf.zsh; source shell/key-bindings.zsh"
-zinit light junegunn/fzf
-
-# Z
-zinit ice wait lucid
-zinit load agkozak/zsh-z
-
-# diff-so-fancy
-zinit ice wait lucid as'program' pick'bin/git-dsf'
-zinit load zdharma/zsh-diff-so-fancy
 
 # }}}
 # Aliases {{{
@@ -213,6 +219,13 @@ alias tsm='transmission-remote -l'
 tsm-add() { transmission-remote -a "$1" ;}
 
 # Utils & alternatives
+# Should be called after the Prezto `utility` module is loaded
+setup_after_utility_loaded() {
+    setup_ls_alias
+
+    alias p='sudo pacman'
+}
+
 setup_ls_alias() {
     # Should be called after Prezto utilities are set up asynchronously
     if type exa > /dev/null; then
@@ -276,9 +289,6 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
 }
-
-# Linux specific
-alias p='sudo pacman'
 
 # Thorgate
 if [[ -d "$HOME/Programs/temposync" ]]; then
