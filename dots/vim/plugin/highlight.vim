@@ -63,6 +63,10 @@ function! s:ModifyHighlights()
     " Python
     hi link pythonInclude Include
     hi link pythonStatement Keyword
+
+    " Markdown
+    hi link mkdBold htmlBold
+    hi link mkdItalic htmlItalic
 endfunction
 
 call s:ModifyHighlights()
