@@ -69,7 +69,7 @@ zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
     atclone"cp shell/completion.zsh _fzf_completion; \
       cp bin/(fzf|fzf-tmux) $ZPFX/bin; \
       PREFIX=$ZPFX ./install" \
-    atload"source $HOME/.fzf.zsh; source shell/key-bindings.zsh"
+    atload"source $HOME/.fzf.zsh"
 zinit light junegunn/fzf
 
 # Z
@@ -108,7 +108,9 @@ zinit snippet PZT::modules/directory
 zinit ice svn wait lucid
 zinit snippet PZT::modules/completion
 
-zinit ice svn wait lucid
+# Need to re-bind Ctrl+R to search history since vi-mode overwrites it with its 
+# bindings
+zinit ice svn wait lucid atload"bindkey '^r' fzf-history-widget"
 zinit snippet OMZ::plugins/vi-mode
 
 # Do not load the prompt asynchronously since it's super fast anyways!
