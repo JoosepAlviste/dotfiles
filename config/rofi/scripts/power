@@ -48,7 +48,11 @@ if [[ ! -z $@ ]]; then
     DESIRED_OPTION="${1}"
 
     if [ "$DESIRED_OPTION" = "Logout" ]; then
-        i3-msg exit
+        if [ "$XDG_CURRENT_DESKTOP" == "KDE" ]; then
+            qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+        else
+            i3-msg exit
+        fi
     fi
     if [ "$DESIRED_OPTION" = "Restart" ]; then
         reboot
