@@ -122,6 +122,12 @@ Plug 'jparise/vim-graphql'
 Plug 'lervag/vimtex'  " LaTeX writing utilities
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }  " LaTeX preview `:LLP`
 
+" Markdown
+
+
+Plug 'godlygeek/tabular'  " Required by markdown
+Plug 'plasticboy/vim-markdown'
+
 
 "
 " DevIcons must be the last loaded plugin
