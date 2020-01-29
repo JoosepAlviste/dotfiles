@@ -14,18 +14,20 @@ default_border pixel 2
 
 set $term --no-startup-id $TERMINAL
 
+# Read Xresources just in case -- if it doesn't get read in xinitrc for some 
+# reason
+exec_always --no-startup-id xrdb ~/.Xresources
+
 
 
 # #---Starting External Scripts---# #
+
+exec --no-startup-id $HOME/dotfiles/bin/autostart.sh
 
 # Set the desktop background
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jpg
 # Composite manager
 exec_always --no-startup-id picom --experimental-backends -f
-# Dunst for notifications
-exec --no-startup-id dunst
-# Network manager applet
-exec --no-startup-id nm-applet
 # Set up multiple monitors
 exec_always --no-startup-id xrandr --output $MONITOR_RIGHT --output $MONITOR_LEFT --left-of $MONITOR_RIGHT
 # Torrent daemon
@@ -281,6 +283,29 @@ bindsym $mod+Shift+Up move up
 
 bindsym $mod+Right focus right
 bindsym $mod+Shift+Right move right
+
+
+
+# #---Plasma---# #
+
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable
+for_window [class="krunner"] floating enable
+for_window [class="Kmix"] floating enable
+for_window [class="Klipper"] floating enable
+for_window [class="Plasmoidviewer"] floating enable
+
+# for_window [class="plasmashell" window_type="notification"] move position 1600 50;
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable 
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 
 
