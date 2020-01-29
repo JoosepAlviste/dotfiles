@@ -147,7 +147,7 @@ function! s:ModifyColorscheme()
     call <sid>hi('jsThis', s:purple, '', '', '')
     call <sid>hi('jsDocTypeBrackets', s:cyan, '', '', '')
     call <sid>hi('jsDocParam', s:yellow, '', '', '')
-    call <sid>hi('jsDocTags', s:purple, '', '', '')
+    call <sid>hi('jsDocTags', s:purple, '', 'italic', '')
 
     " JSX
     call <sid>hi('jsxTagName', s:yellow, '', '', '')

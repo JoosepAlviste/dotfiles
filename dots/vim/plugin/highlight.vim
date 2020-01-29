@@ -42,6 +42,8 @@ function! s:ModifyHighlights()
     hi link typescriptArrowFunc Keyword
     hi link typescriptTypeBrackets Noise
     hi link typescriptTypeBraces Noise
+    hi link typescriptBinaryOp Noise
+    hi link typescriptTernaryOp Noise
 
     " YAJS
     hi link javascriptArrowFunc Type
