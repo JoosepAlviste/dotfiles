@@ -11,5 +11,6 @@ tags.lock
 
 celerybeat.pid
 yarn-error.log
+.nvimlog
 
 .pytest_cache/
