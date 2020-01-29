@@ -44,6 +44,9 @@ bindkey '^Z' foreground-nvim
 # }}}
 # Programs {{{
 
+# Allows setting up shims & stuff for Pyenv
+zinit light zinit-zsh/z-a-bin-gem-node
+
 # Use Zinit to automatically install some useful programs (might not be such a 
 # good idea but eeh)
 
@@ -65,10 +68,10 @@ zinit ice wait as'null' lucid \
     atclone'./bin/pyenv-virtualenv-init init - > zpyenv-virtualenv.zsh' \
     atpull'%atclone' src'zpyenv-virtualenv.zsh' nocompile'!' sbin'bin/*'
 zinit light pyenv/pyenv-virtualenv
-zinit ice wait as'null' lucid \
+zinit ice wait as'command' lucid \
     atinit'export PYENV_ROOT="$PWD"' \
     atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atpull'%atclone' src'zpyenv.zsh' nocompile'!' sbin'bin/pyenv'
+    atpull'%atclone' src'zpyenv.zsh' nocompile'!' pick'bin/pyenv'
 zinit light pyenv/pyenv
 
 # FZF
@@ -92,9 +95,6 @@ zinit load zdharma/zsh-diff-so-fancy
 # Use Zinit's way of installing plugins (in  T U R B O  mode)
 
 # Zinit annexes (plugins)...
-
-# Allows setting up shims & stuff for Pyenv
-zinit light zinit-zsh/z-a-bin-gem-node
 
 # Actual Zsh plugins...
 
