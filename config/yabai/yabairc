@@ -1,5 +1,17 @@
 #!/usr/bin/env sh
 
+# set names for spaces
+yabai -m space 1 --label i
+yabai -m space 2 --label ii
+yabai -m space 3 --label iii
+yabai -m space 4 --label iv
+yabai -m space 5 --label v
+yabai -m space 6 --label vi
+yabai -m space 7 --label vii
+yabai -m space 8 --label viii
+yabai -m space 9 --label ix
+yabai -m space 10 --label x
+
 # bar settings
 yabai -m config status_bar                   off
 yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
