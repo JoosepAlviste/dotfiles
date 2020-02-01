@@ -5,6 +5,16 @@ tags.temp
 tags.lock
 .DS_Store
 tmux-*.log
+# Weird LaTeX files
+*.blg
+*.fls
+*.log
+*.aux
+*.dvi
+*.bcf
+*.bbl
+*.run.xml
+*.fdb_latexmk
 
 .data/
 dev-utils/*/data/
