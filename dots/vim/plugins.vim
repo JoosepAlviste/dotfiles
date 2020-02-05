@@ -67,6 +67,9 @@ Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'skywind3000/vim-terminal-help'
 Plug 'farmergreg/vim-lastplace'  " Restore cursor position when opening a file
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+
 "
 " Programming
 "
@@ -82,7 +85,9 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'JoosepAlviste/vim-context-commentstring'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
+if !exists('g:started_by_firenvim')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
+endif
 Plug 'liuchengxu/vista.vim'  " Tag-bar
 
 " JavaScript
