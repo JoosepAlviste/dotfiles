@@ -119,7 +119,6 @@ Plug 'jparise/vim-graphql'
 " LaTeX
 
 Plug 'lervag/vimtex'  " LaTeX writing utilities
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }  " LaTeX preview `:LLP`
 
 " Markdown
 

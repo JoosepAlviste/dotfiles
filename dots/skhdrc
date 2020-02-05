@@ -54,6 +54,9 @@ shift + alt - 8 : yabai -m window --space viii; yabai -m space --focus viii
 shift + alt - 9 : yabai -m window --space   ix; yabai -m space --focus   ix
 shift + alt - 0 : yabai -m window --space    x; yabai -m space --focus    x
 
+# Move window to monitor and follow focus
+alt - m : yabai -m space --display recent; yabai -m display --focus recent
+
 # move window
 alt - a : yabai -m window --move rel:-20:0
 alt - s : yabai -m window --move rel:0:20
