@@ -1,8 +1,6 @@
 {
-  "diagnostic.infoSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.errorSign": "•",
-  "diagnostic.hintSign": "•",
+  "diagnostic.enableSign": false,
+  "list.indicator": "❯",
   "suggest.timeout": 5000,
   "git.addedSign.text": "▌",
   "git.changedSign.text": "▌",
