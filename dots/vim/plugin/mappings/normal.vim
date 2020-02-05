@@ -65,4 +65,4 @@ nnoremap ]<space> :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 nnoremap Q @@
 
 " Split line with S
-nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
