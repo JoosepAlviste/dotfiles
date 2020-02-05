@@ -32,7 +32,7 @@ Plug 'kaicataldo/material.vim'
 Plug 'knubie/vim-kitty-navigator'
 
 Plug 'tpope/vim-repeat'  " Make the repeat (.) command smarter
-Plug 'tpope/vim-surround'  " Surround stuff with braces, quotes, tags, anything
+Plug 'machakann/vim-sandwich'  " Surround stuff with things
 Plug 'tpope/vim-dispatch'  " Asynchronous jobs used by some plugins
 Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
