@@ -64,7 +64,7 @@ set_from_resource $white       color15 #000000
 set_from_resource $darkergrey  color18 #000000
 set_from_resource $darkgrey    color19 #000000
 set_from_resource $lightergrey color18 #000000
-set_from_resource $cursorLine  color19 #000000
+set_from_resource $cursorLine  color4 #000000
 
 set_from_resource $background  background #000000
 set_from_resource $foreground  foreground #000000
