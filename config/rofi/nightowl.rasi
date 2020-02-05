@@ -12,11 +12,11 @@
     lightbg:                     rgba(238, 232, 213, 100%);
     selected-active-foreground:  rgba(166, 226, 42, 100%);
     alternate-active-background: rgba(39, 40, 34, 0%);
-    background:                  rgba(1, 10, 18, 90%);
+    background:                  rgba(1, 10, 18, 70%);
     alternate-normal-foreground: @foreground;
     normal-background:           rgba(39, 40, 34, 0%);
     lightfg:                     rgba(88, 104, 117, 100%);
-    selected-normal-background:  rgba(67, 115, 194, 100%);
+    selected-normal-background:  rgba(67, 115, 194, 70%);
     spacing:                     0;
     separatorcolor:              @background;
     urgent-background:           rgba(39, 40, 34, 0%);
