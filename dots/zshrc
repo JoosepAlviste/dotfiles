@@ -161,6 +161,9 @@ setup_history_substring_search() {
 zinit ice wait lucid atload'_zsh_autosuggest_start' nocd
 zinit light zsh-users/zsh-autosuggestions
 
+zinit ice wait lucid
+zinit light MichaelAquilina/zsh-autoswitch-virtualenv
+
 # }}}
 # Aliases {{{
 
