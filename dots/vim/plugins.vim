@@ -31,13 +31,20 @@ Plug 'kaicataldo/material.vim'
 " Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
 Plug 'knubie/vim-kitty-navigator'
 
+" Core improvements
 Plug 'tpope/vim-repeat'  " Make the repeat (.) command smarter
-Plug 'machakann/vim-sandwich'  " Surround stuff with things
 Plug 'tpope/vim-dispatch'  " Asynchronous jobs used by some plugins
-Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
-Plug 'tpope/vim-projectionist'  " Easily move between alternate files
+Plug 'farmergreg/vim-lastplace'  " Restore cursor position when opening a file
 
-Plug 'scrooloose/nerdtree'  " File browser
+" Useful mapping improvements
+Plug 'machakann/vim-sandwich'  " Surround stuff with things
+Plug 'tpope/vim-projectionist'  " Easily move between alternate files
+Plug 'justinmk/vim-sneak'  " Improved `f` mapping
+Plug 'tmsvg/pear-tree'  " Better auto-pairs
+
+" UI extras
+Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
+Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeGitStatusWithFlags = 0
 Plug 'tsony-tsonev/nerdtree-git-plugin'
@@ -51,9 +58,12 @@ else
 endif
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
-Plug 'ludovicchabant/vim-gutentags'
-
+" External programs
+Plug 'skywind3000/vim-terminal-help'
+Plug 'ludovicchabant/vim-gutentags'  " Generate ctags automatically
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
+" Embed neovim to text fields in browser
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " Custom text objects
 Plug 'kana/vim-textobj-user'  " Library for custom text objects
@@ -62,18 +72,12 @@ Plug 'kana/vim-textobj-line'  " Entire line al/il
 Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
 Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
-Plug 'tmsvg/pear-tree'  " Better auto-pairs
-
-Plug 'skywind3000/vim-terminal-help'
-Plug 'farmergreg/vim-lastplace'  " Restore cursor position when opening a file
-
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
 
 "
 " Programming
 "
 
+" Git related things
 Plug 'tpope/vim-fugitive'  " Git integration
 Plug 'tpope/vim-rhubarb'  " GitHub integration - use `hub` cli instead of `git`
 Plug 'tpope/vim-git'  " Git related files' syntax
