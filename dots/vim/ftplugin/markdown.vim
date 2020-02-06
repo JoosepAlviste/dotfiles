@@ -21,6 +21,9 @@ setlocal indentexpr=
 " Mappings
 "
 
+nnoremap <buffer> o A<cr>
+nnoremap <buffer> O kA<cr>
+
 function! s:HandleTab() abort
   if match(getline('.'), "\\s*[*-+]\\s") != -1
     return "\<esc>>>A"
@@ -28,7 +31,7 @@ function! s:HandleTab() abort
     return "\<tab>"
   endif
 endfunction
-inoremap <expr> <tab> <SID>HandleTab()
+inoremap <buffer> <expr> <tab> <SID>HandleTab()
 
 function! s:HandleTabBack() abort
   if match(getline('.'), "\\s*[*-+]\\s") != -1
@@ -37,4 +40,4 @@ function! s:HandleTabBack() abort
     return "\<tab>"
   endif
 endfunction
-inoremap <expr> <s-tab> <SID>HandleTabBack()
+inoremap <buffer> <expr> <s-tab> <SID>HandleTabBack()
