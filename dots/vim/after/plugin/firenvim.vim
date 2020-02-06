@@ -1,3 +1,17 @@
+let g:firenvim_config = {
+      \ 'globalSettings': {
+      \   'alt': 'all',
+      \  },
+      \ 'localSettings': {
+      \   '.*': {
+      \     'cmdline': 'neovim',
+      \     'priority': 0,
+      \     'selector': 'textarea',
+      \     'takeover': 'never',
+      \   },
+      \ },
+      \ }
+
 function! s:IsFirenvimActive(event) abort
   if !exists('*nvim_get_chan_info')
     return 0
