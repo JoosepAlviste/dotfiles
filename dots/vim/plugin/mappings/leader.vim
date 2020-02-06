@@ -26,3 +26,5 @@ nnoremap <leader>o :only<cr>
 
 " Source the configuration file
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <localleader>x :nohlsearch<cr>
