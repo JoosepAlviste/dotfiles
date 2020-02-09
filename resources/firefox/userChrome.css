@@ -81,6 +81,8 @@ arrowscrollbox[scrolledtoend="true"]::part(arrowscrollbox-overflow-end-indicator
 arrowscrollbox[scrolledtostart="true"]::part(arrowscrollbox-overflow-start-indicator),
 arrowscrollbox[notoverflowing="true"]::part(scrollbutton-up),
 arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
+/* New tab button */
+#tabs-newtab-button,
 #alltabs-button {
     display: none;
 }
@@ -130,6 +132,9 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
 #urlbar[focused="true"] {
     box-shadow: none !important;
 }
+#urlbar:not(.megabar) {
+    box-shadow: none !important;
+}
 
 
 
@@ -177,6 +182,68 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
 }
 .toolbarbutton-1:not([disabled="true"]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-icon {
     fill-opacity: 1;
+}
+
+
+
+/**
+ * Hide tab bar when there is only one tab open.
+ * https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/hide_tabs_with_one_tab.css
+ */
+
+:root[sizemode="normal"] #nav-bar{
+    --uc-window-drag-space-width: 20px;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox{ 
+    min-height: 0 !important;
+}
+
+:root:not([customizing]) #TabsToolbar-customization-target > .toolbarbutton-1,
+:root:not([customizing]) #TabsToolbar .titlebar-button{
+  -moz-appearance: none !important;
+  height: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  -moz-box-align: stretch;
+  margin: 0 !important;
+}
+
+:root:not([customizing]) #TabsToolbar-customization-target > .toolbarbutton-1 > .toolbarbutton-icon{
+  padding-block: 0 !important;
+  max-height: 28px;
+  height: 20px !important;
+}
+
+#tabbrowser-tabs .tabbrowser-tab {
+    height: var(--tab-min-height);
+}
+
+#tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"] {
+  visibility: collapse !important;
+}
+
+#tabs-newtab-button > .toolbarbutton-icon,
+#tabbrowser-tabs .tabs-newtab-button > .toolbarbutton-icon {
+  padding: 0 !important;
+  transform: scale(0.6);
+  background-color: transparent !important;
+}
+/* Extra top padding in maximized window */
+:root[sizemode="maximized"] #navigator-toolbox {
+    padding-top:7px !important;
+}
+
+/* Fix window controls not being clickable */
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive] {
+  transition: height 0ms steps(1) 80ms;
+}
+#nav-bar{
+  border-inline: var(--uc-window-drag-space-width) solid var(--toolbar-bgcolor);
+}
+toolbar {
+    min-height: 0 !important;
 }
 
 
