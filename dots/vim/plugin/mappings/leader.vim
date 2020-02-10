@@ -19,8 +19,8 @@ noremap <silent> <leader>tc :tabclose<cr>
 noremap <silent> <leader>tm :tabmove<cr>
 noremap <silent> <leader>t<leader> :tabnext<cr>
 
-" Show relative filename
-nnoremap <leader>k :echohl Identifier \| echon @% \| echohl None<cr>
+" Mapping to get rid of muscle memory :P
+nnoremap <leader>k :echo "Use <C-g> to get this information!"<cr>
 
 nnoremap <leader>o :only<cr>
 
