@@ -37,7 +37,7 @@ padding-right = 1
 module-margin = 1
 
 modules-left = i3
-modules-right = keyboard date powermenu
+modules-right = keyboard date
 
 tray-position = right
 tray-background = ${colors.background}
@@ -121,37 +121,6 @@ label-muted = muted
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-label-open = ⏼
-label-open-foreground = ${colors.secondary-foreground}
-label-close = 
-label-close-foreground = ${colors.secondary-foreground}
-label-separator = ┃
-label-separator-foreground = ${colors.secondary-foreground}
-label-open-padding = 1
-
-menu-padding = 1
-menu-0-padding = 1
-
-menu-0-0 = ﰇ
-menu-0-0-exec = menu-open-1
-menu-0-1 = ⏻
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = ﰇ
-menu-1-0-exec = reboot
-menu-1-1 =  ﰇ
-menu-1-1-exec = menu-open-0
-
-menu-2-0 = ⏻
-menu-2-0-exec = poweroff
-menu-2-1 =  ⏻
-menu-2-1-exec = menu-open-0
 
 
 ; vim:ft=dosini
