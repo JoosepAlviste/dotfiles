@@ -20,4 +20,8 @@ let maplocalleader="\\"
 "
 
 let g:material_theme_style = 'palenight'
+augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call joosep#colors#palenight#ModifyColorscheme()
+augroup END
 colorscheme material
