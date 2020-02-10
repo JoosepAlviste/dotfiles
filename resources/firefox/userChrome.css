@@ -6,7 +6,9 @@
 
 
 /**
- * UI customizations.
+ * UI customizations. These can be copied to create a similar layout to mine. 
+ * This block does not include actual style changes so it should be pretty 
+ * simple to copy to other setups.
  */
 
 /**
@@ -100,6 +102,8 @@ arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
 .searchbar-textbox,
 #urlbar:hover,
 .searchbar-textbox:hover,
+.tab-background[selected="true"],
+.urlbarView,
 #tracking-protection-icon-container {
     border: none !important;
 }
@@ -169,7 +173,7 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
  * Set blank page background-color.
  */
 #tabbrowser-tabpanels{
-  background-color: transparent;
+    background-color: transparent;
 }
 
 
@@ -202,18 +206,18 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
 
 :root:not([customizing]) #TabsToolbar-customization-target > .toolbarbutton-1,
 :root:not([customizing]) #TabsToolbar .titlebar-button{
-  -moz-appearance: none !important;
-  height: 0;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  -moz-box-align: stretch;
-  margin: 0 !important;
+    -moz-appearance: none !important;
+    height: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    -moz-box-align: stretch;
+    margin: 0 !important;
 }
 
 :root:not([customizing]) #TabsToolbar-customization-target > .toolbarbutton-1 > .toolbarbutton-icon{
-  padding-block: 0 !important;
-  max-height: 28px;
-  height: 20px !important;
+    padding-block: 0 !important;
+    max-height: 28px;
+    height: 20px !important;
 }
 
 #tabbrowser-tabs .tabbrowser-tab {
@@ -221,26 +225,26 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
 }
 
 #tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"] {
-  visibility: collapse !important;
+    visibility: collapse !important;
 }
 
 #tabs-newtab-button > .toolbarbutton-icon,
 #tabbrowser-tabs .tabs-newtab-button > .toolbarbutton-icon {
-  padding: 0 !important;
-  transform: scale(0.6);
-  background-color: transparent !important;
+    padding: 0 !important;
+    transform: scale(0.6);
+    background-color: transparent !important;
 }
 /* Extra top padding in maximized window */
 :root[sizemode="maximized"] #navigator-toolbox {
-    padding-top:7px !important;
+    padding-top: 7px !important;
 }
 
 /* Fix window controls not being clickable */
 :root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive] {
-  transition: height 0ms steps(1) 80ms;
+    transition: height 0ms steps(1) 80ms;
 }
 #nav-bar{
-  border-inline: var(--uc-window-drag-space-width) solid var(--toolbar-bgcolor);
+    border-inline: var(--uc-window-drag-space-width) solid var(--toolbar-bgcolor);
 }
 toolbar {
     min-height: 0 !important;
@@ -257,6 +261,7 @@ toolbar {
 
 
 :root {
+    --color-lighter-fg: #b9c0e5;
     --color-fg: #a6accd;
     --color-darker-fg: #7982B4;
 
@@ -265,34 +270,39 @@ toolbar {
     --color-bg-hover: #343A51;
     --color-bg-active: #4e5579;
 
-    --color-bg-transparent: transparent;
+    --color-blue: #82AAFF;
 
     --toolbar-bgcolor: var(--color-bg) !important;
-	--toolbar-color: var(--color-fg) !important;
- 	--toolbarbutton-hover-background: var(--color-bg-hover) !important;
-	--toolbarbutton-active-background: var(--color-bg-active) !important;
+    --toolbar-color: var(--color-fg) !important;
+    --toolbarbutton-hover-background: var(--color-bg-hover) !important;
+    --toolbarbutton-active-background: var(--color-bg-active) !important;
 
     --arrowpanel-background: var(--color-bg) !important;
-	--arrowpanel-border-color: var(--color-bg) !important;
+    --arrowpanel-border-color: var(--color-bg) !important;
 
-    
     --toolbar-color: var(--color-fg) !important;
 
-    --lwt-toolbar-field-background-color: var(--color-bg-transparent) !important;
-    --lwt-toolbar-field-focus: var(--color-bg-transparent) !important;
-    --lwt-toolbar-field-color: var(--color-darker-fg) !important;
+    --lwt-toolbar-field-background-color: transparent !important;
+    --lwt-toolbar-field-focus: transparent !important;
+    --lwt-toolbar-field-color: var(--color-lighter-fg) !important;
 
     --lwt-toolbarbutton-icon-fill: var(--color-fg) !important;
     --toolbarbutton-icon-fill-opacity: 0.6 !important;
-    
-    --tab-line-color: #82AAFF !important;
+
+    --autocomplete-popup-background: var(--color-darker-bg) !important;
 }
 
 
 
 /**
- * Add macOS style blur to as much of the UI as possible.
+ * Add macOS style blur to as much of the UI as possible. Note that 
+ * `-moz-appearance: -moz-mac-vibrancy-dark` only works on macOS!
+ *
+ * In order to get a similar effect on Linux, I set the background colors to be 
+ * a bit transparent and use a compositor to get a blur effect (using dual 
+ * kawase blur fork of picom).
  */
+
 /* Tab bar & URL bar */
 #TabsToolbar, #nav-bar, #PersonalToolbar, .theme-body, 
 .theme-dark, .theme-light, slider, .CodeMirror, 
@@ -309,6 +319,48 @@ browser[type=content] > html,
     -moz-appearance: -moz-mac-vibrancy-dark !important;
 }
 
+/**
+ * On Linux, the loading page cannot be transparent, so let's add a better 
+ * background color to it.
+ */
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content] > html {
+    background-color: var(--color-darker-bg) !important;
+}
+
+/**
+ * Make it possible to have transparent bars & see wallpaper under the bars on 
+ * Linux. Requires Compositing: WebRender.
+ */
+#main-window {
+    background-color: transparent !important;
+}
+
+/**
+ * Make some bars a bit transparent on Linux.
+ */
+#nav-bar,
+#titlebar,
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content] > html {
+    background-color: rgba(0, 10, 17, 0.2);
+}
+
+
+
+/**
+ * Get rid of the linear gradient background on selected tabs.
+ */
+.tab-background[selected="true"]:-moz-lwtheme {
+    background-image: none !important;
+}
+
 
 
 /**
@@ -320,13 +372,18 @@ browser[type=content] > html,
 
 
 
+/**
+ * Make the tab line color match with palenight colors.
+ */
+#tabbrowser-tabs {
+    --tab-line-color: var(--color-blue) !important;
+}
+
+
+
+/**
+ * Make URLbar text color a bit brighter.
+ */
 #urlbar-input:focus-within::placeholder {
     color: var(--color-fg);
 }
-
-
-
-#TabsToolbar[brighttext] .tabbrowser-tab:hover > .tab-stack > .tab-background > .tab-line:not([selected="true"]):not([multiselected]) {
-    background-color: rgba(156, 196, 255, 0.2) !important;
-}
-
