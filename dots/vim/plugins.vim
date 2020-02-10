@@ -114,7 +114,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'vim-python/python-syntax'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Semantic highlighting
 Plug 'Vimjas/vim-python-pep8-indent'  " Better indentation
-Plug 'bps/vim-textobj-python'
+Plug 'jeetsukumaran/vim-pythonsense'  " Python text objects & motions
 
 " GraphQL
 
