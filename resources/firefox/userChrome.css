@@ -269,6 +269,7 @@ toolbar {
     --color-darker-bg: #212331;
     --color-bg-hover: #343A51;
     --color-bg-active: #4e5579;
+    --color-bg-transparent: rgba(0, 10, 17, 0.5) !important;
 
     --color-blue: #82AAFF;
 
@@ -281,6 +282,7 @@ toolbar {
     --arrowpanel-border-color: var(--color-bg) !important;
 
     --toolbar-color: var(--color-fg) !important;
+    --toolbar-bgcolor: var(--color-bg-transparent) !important;
 
     --lwt-toolbar-field-background-color: transparent !important;
     --lwt-toolbar-field-focus: transparent !important;
@@ -349,7 +351,7 @@ browser[type=content] > html {
 #tabbrowser-tabpanels,
 browser[type=content-primary],
 browser[type=content] > html {
-    background-color: rgba(0, 10, 17, 0.2);
+    background-color: var(--color-bg-transparent);
 }
 
 
