@@ -1,20 +1,18 @@
-" Load the standard .vimrc file
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vim/vimrc
+"
+" Environment settings
+"
 
 " Configure Python manually since we're using Pyenv
 let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
-if (empty($TMUX))
-    " Use 24-bit (true-color) mode
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" Use 24-bit (true-color) mode
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
-    " Nvim terminal keybindings
-    tnoremap <M-[> <Esc>
-    tnoremap jk <C-\><C-n>
-endif
+" Nvim terminal keybindings
+tnoremap <M-[> <Esc>
+tnoremap jk <C-\><C-n>
+
 
 augroup TerminalStuff
     au!
@@ -28,3 +26,27 @@ function! s:EnableTerminal()
 
     tnoremap <buffer> <Esc> <C-\><C-n>
 endfunction
+
+" Read plugins
+source ~/.config/nvim/plugins.vim
+
+
+"
+" Leader
+"
+
+nnoremap <space> <nop>
+let mapleader="\<Space>"
+let maplocalleader="\\"
+
+
+"
+" Vim UI
+"
+
+let g:material_theme_style = 'palenight'
+augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call joosep#colors#palenight#ModifyColorscheme()
+augroup END
+colorscheme material

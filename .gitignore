@@ -1,13 +1,6 @@
 tmux*.log
 
-dots/vim/plugged/
-dots/vim/autoload/plug.vim
-dots/vim/autoload/plug.vim.old
-dots/vim.bak/plugged/
-dots/vim.bak/autoload/plug.vim
-dots/vim.bak/autoload/plug.vim.old
-dots/vim.test/
-dots/vim/spell/*.spl
+config/nvim/spell/*.spl
 
 dots/zprofile.local
 

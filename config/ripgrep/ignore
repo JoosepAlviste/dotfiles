@@ -5,6 +5,7 @@ tags.temp
 tags.lock
 .DS_Store
 tmux-*.log
+.nvimlog
 # Weird LaTeX files
 *.blg
 *.fls
@@ -15,6 +16,7 @@ tmux-*.log
 *.bbl
 *.run.xml
 *.fdb_latexmk
+*.synctex.gz
 
 .data/
 dev-utils/*/data/

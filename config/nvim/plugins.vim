@@ -3,38 +3,41 @@
 "
 
 " Automatically install Plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  augroup installPlugins
-    autocmd!
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  augroup END
+if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Initialize Plug
-call plug#begin('~/.vim/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 
 "
 " Colors
 "
 
-Plug 'mhartington/oceanic-next'  " This colorscheme is customized a bit
 Plug 'kaicataldo/material.vim'
 
 
 "
-" Utilities
+" Vim core utilities
+" ==================
+" These plugins should improve Vim in subtle ways.
 "
-
-" Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
-Plug 'knubie/vim-kitty-navigator'
 
 " Core improvements
 Plug 'tpope/vim-repeat'  " Make the repeat (.) command smarter
 Plug 'tpope/vim-dispatch'  " Asynchronous jobs used by some plugins
 Plug 'farmergreg/vim-lastplace'  " Restore cursor position when opening a file
+Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
+
+" Custom text objects
+Plug 'kana/vim-textobj-user'  " Library for custom text objects
+Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
+Plug 'kana/vim-textobj-line'  " Entire line al/il
+Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
+Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
 " Useful mapping improvements
 Plug 'machakann/vim-sandwich'  " Surround stuff with things
@@ -42,12 +45,14 @@ Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 Plug 'justinmk/vim-sneak'  " Improved `f` mapping
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
 
-" UI extras
-Plug 'machakann/vim-highlightedyank'  " Highlight yanked text briefly
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-let g:NERDTreeGitStatusWithFlags = 0
-Plug 'tsony-tsonev/nerdtree-git-plugin'
+
+"
+" Big plugins
+" ===========
+" These plugins have big effects on how I use Vim.
+" For example, this includes things like language servers, file navigation,
+" etc.
+"
 
 " FZF - fuzzy search everything - files, lines, commits, etc.
 if executable('/usr/local/opt/fzf')
@@ -58,23 +63,32 @@ else
 endif
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
+
+if !exists('g:started_by_firenvim')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
+endif
+
+" UI extras
+Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeGitStatusWithFlags = 0
+Plug 'tsony-tsonev/nerdtree-git-plugin'
+
 " External programs
 Plug 'skywind3000/vim-terminal-help'
 Plug 'ludovicchabant/vim-gutentags'  " Generate ctags automatically
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
+" Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
+Plug 'knubie/vim-kitty-navigator'
 " Embed neovim to text fields in browser
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-" Custom text objects
-Plug 'kana/vim-textobj-user'  " Library for custom text objects
-Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
-Plug 'kana/vim-textobj-line'  " Entire line al/il
-Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
-Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
 
 "
 " Programming
+" ===========
+" Things related to programming. Mostly filetype plugins but also some that 
+" are relevant to programming in general.
 "
 
 " Git related things
@@ -89,15 +103,10 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'JoosepAlviste/vim-context-commentstring'
 
-if !exists('g:started_by_firenvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features
-endif
-Plug 'liuchengxu/vista.vim'  " Tag-bar
-
 " JavaScript
 
 Plug 'neoclide/vim-jsx-improve'  " Javascript, JSX & indentation
-Plug 'styled-components/vim-styled-components', {'branch': 'main'}
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Typescript
 
@@ -129,8 +138,8 @@ Plug 'jparise/vim-graphql'
 
 Plug 'lervag/vimtex'  " LaTeX writing utilities
 
-" Markdown
 
+" Markdown
 
 Plug 'godlygeek/tabular'  " Required by markdown
 Plug 'plasticboy/vim-markdown'
@@ -143,8 +152,5 @@ Plug 'plasticboy/vim-markdown'
 Plug 'ryanoasis/vim-devicons'
 
 
-"
 " End initialization
-"
-
 call plug#end()
