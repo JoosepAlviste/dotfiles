@@ -51,8 +51,6 @@ endif
 
 set updatetime=100  " Trigger cursorhold faster, save swap file faster
 
-set foldenable  " Enable folding, auto fold code
-
 set autoread    " Automatically update buffer when file changes
 
 set nowrap  " Do not wrap lines by default
@@ -133,6 +131,7 @@ set showmatch  " Highlight matching parenthesis, etc.
 set lazyredraw  " Redraw only when need to
 
 if has('folding')
+  set foldenable  " Enable folding, auto fold code
   set foldmethod=indent  " Not as cool as syntax, but faster
   set foldlevelstart=99  " Start unfolded
   set foldtext=joosep#settings#foldtext()
