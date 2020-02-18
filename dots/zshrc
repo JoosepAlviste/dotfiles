@@ -41,6 +41,10 @@ foreground-nvim() {
 zle -N foreground-nvim
 bindkey '^Z' foreground-nvim
 
+# Set word boundaries to `/` and `.` so that C-w can delete until folder
+autoload -U select-word-style
+select-word-style bash
+
 # }}}
 # Programs {{{
 
