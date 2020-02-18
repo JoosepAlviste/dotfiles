@@ -17,6 +17,7 @@ tmux-*.log
 *.run.xml
 *.fdb_latexmk
 *.synctex.gz
+*.xdv
 
 .data/
 dev-utils/*/data/
