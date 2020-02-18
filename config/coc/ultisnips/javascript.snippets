@@ -28,7 +28,11 @@
 # ================
 
 snippet log "console.log statement"
-console.log($0);
+console.log($1);$0
+endsnippet
+
+snippet "([a-zA-Z][a-zA-Z0-9]*)\.log" "log" riA
+console.log(`!p snip.rv=match.group(1)`);
 endsnippet
 
 snippet indexport "export from index.js file"
