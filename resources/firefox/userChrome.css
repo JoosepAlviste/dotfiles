@@ -104,6 +104,9 @@ arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
 .searchbar-textbox:hover,
 .tab-background[selected="true"],
 .urlbarView,
+#urlbar-background,
+#urlbar-input-container,
+.urlbarView.megabar .urlbarView-body-inner,
 #tracking-protection-icon-container {
     border: none !important;
 }
@@ -157,7 +160,7 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
 .titlebar-buttonbox-container {
     position: absolute;
     display: block;
-    margin-top: -35px
+    margin-top: -24px
 }
 
 /**
@@ -234,10 +237,6 @@ toolbar toolbarbutton > .toolbarbutton-badge-stack {
     transform: scale(0.6);
     background-color: transparent !important;
 }
-/* Extra top padding in maximized window */
-:root[sizemode="maximized"] #navigator-toolbox {
-    padding-top: 7px !important;
-}
 
 /* Fix window controls not being clickable */
 :root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive] {
@@ -310,6 +309,7 @@ toolbar {
 .theme-dark, .theme-light, slider, .CodeMirror, 
 .devtools-toolbar, .message, .table-widget-empty-text,
 .tab-background-inner, .table-widget-empty-text,
+#titlebar,
 /* "Loading page" when the website page hasn't quite loaded yet */
 #browser vbox#appcontent tabbrowser,
 #content,
@@ -388,4 +388,10 @@ browser[type=content] > html {
  */
 #urlbar-input:focus-within::placeholder {
     color: var(--color-fg);
+}
+
+
+
+#urlbar-background {
+    box-shadow: none !important;
 }
