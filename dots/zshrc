@@ -40,9 +40,15 @@ export KEYTIMEOUT=1
 
 # Save commands to the history
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt appendhistory
+HISTSIZE=1000000000
+SAVEHIST=1000000000
+setopt EXTENDED_HISTORY        # Write timestamps to history
+setopt HIST_EXPIRE_DUPS_FIRST  # If history needs to be trimmed, evict dups first
+setopt HIST_FIND_NO_DUPS       # Don't show dups when searching history
+setopt HIST_IGNORE_DUPS        # Don't add consecutive dups to history
+setopt HIST_IGNORE_SPACE       # Don't add commands starting with space to history
+setopt HIST_VERIFY             # If a command triggers history expansion, show it instead of running
+setopt SHARE_HISTORY           # Write and import history on every command
 
 # Suspend and foreground vim
 foreground-nvim() {
