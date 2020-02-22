@@ -6,6 +6,7 @@ tags.lock
 .mypy_cache
 .vscode/
 .idea/
+.venv
 
 .DS_Store
 
