@@ -24,7 +24,17 @@ autoload -Uz _zinit
 # }}}
 # Settings {{{
 
-bindkey \^U backward-kill-line
+bindkey -e  # Use emacs mode
+
+bindkey '\^U' backward-kill-line
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey ';3C' forward-word
+bindkey ';3D' backward-word
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 export KEYTIMEOUT=1
 
@@ -112,17 +122,10 @@ zinit snippet PZT::modules/spectrum
 # Since the `utility` plugin adds aliases for `ls`, `l`, etc., then we need to 
 # re-define those after the `utility` plugin has been loaded. So, call 
 # `setup_ls_alias` callback
-zinit ice svn wait lucid atload'!setup_after_utility_loaded'
-zinit snippet PZT::modules/utility
 zinit ice svn wait lucid
 zinit snippet PZT::modules/directory
 zinit ice svn wait lucid
 zinit snippet PZT::modules/completion
-
-# Need to re-bind Ctrl+R to search history since vi-mode overwrites it with its 
-# bindings
-zinit ice svn wait lucid atload"bindkey '^r' fzf-history-widget"
-zinit snippet OMZ::plugins/vi-mode
 
 # Do not load the prompt asynchronously since it's super fast anyways!
 zinit ice depth=1 atload'!source ~/.p10k.zsh; _p9k_precmd' nocd
@@ -173,16 +176,19 @@ zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Base
 alias sudo='sudo -E'  # Use current user configs
-alias  grep='grep  --color=auto --exclude-dir={.git}'
+alias grep='grep  --color=auto --exclude-dir={.git}'
 
 # Programs
 alias vim='nvim'
 alias v='vim'
 alias r='ranger'
+
 alias up='docker-compose up'
 alias down='docker-compose down'
 alias build='docker-compose build'
 alias dps='docker ps'
+
+alias tree='tree -aC -I .git -I node_modules'
 
 take() {
     # Create a directory and cd into it
@@ -234,22 +240,14 @@ alias tsm-start='transmission-daemon'
 alias tsm='transmission-remote -l'
 tsm-add() { transmission-remote -a "$1" ;}
 
+
 # Utils & alternatives
-# Should be called after the Prezto `utility` module is loaded
-setup_after_utility_loaded() {
-    setup_ls_alias
 
-    alias p='sudo pacman'
-}
+alias ls='exa --group-directories-first'
+alias ll='ls -la'
+alias l='ls -1'
 
-setup_ls_alias() {
-    # Should be called after Prezto utilities are set up asynchronously
-    if type exa > /dev/null; then
-        alias ls='exa --group-directories-first'
-        alias ll='ls -la'
-        alias l='ls -1'
-    fi
-}
+alias p='sudo pacman'
 
 alias cat='bat'
 alias ping='prettyping --nolegend'
