@@ -107,6 +107,7 @@ function! joosep#colors#palenight#ModifyColorscheme()
     call <sid>hi('Comment',      '',           '',       'italic',     '')
     call <sid>hi('MatchParen',   'NONE',       s:invisibles,   '',     '')
     call <sid>hi('Identifier',   s:purple,     'NONE',         '',     '')
+    call <sid>hi('Conceal',      s:brown,      'NONE',         '',     '')
 
     call <sid>hi('TabLine',      s:fg, s:statusline, 'NONE', '')
     call <sid>hi('TabLineFill',  s:fg, s:statusline, '',     '')
