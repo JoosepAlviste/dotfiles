@@ -85,8 +85,9 @@ arrowscrollbox[notoverflowing="true"]::part(scrollbutton-up),
 arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
 /* New tab button */
 #tabs-newtab-button,
+#new-tab-button,
 #alltabs-button {
-    display: none;
+    display: none !important;
 }
 
 
@@ -107,6 +108,9 @@ arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
 #urlbar-background,
 #urlbar-input-container,
 .urlbarView.megabar .urlbarView-body-inner,
+.tabbrowser-arrowscrollbox:not([scrolledtoend])::part(arrowscrollbox-overflow-end-indicator),
+.tabbrowser-arrowscrollbox:not([scrolledtostart])::part(arrowscrollbox-overflow-start-indicator),
+.tabbrowser-arrowscrollbox:not([scrolledtostart])::part(arrowscrollbox-overflow-start-indicator),
 #tracking-protection-icon-container {
     border: none !important;
 }
