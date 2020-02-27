@@ -107,3 +107,18 @@ endsnippet
 snippet selector "A Redux selector" b
 export const get$1 = state => state[STATE_KEY].$2;
 endsnippet
+
+snippet connect "Connect a React component to the Redux store" b
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = {
+};
+
+const $1Connector = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)($1);
+
+export default $1Connector;
+endsnippet
