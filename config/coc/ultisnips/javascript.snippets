@@ -38,3 +38,13 @@ endsnippet
 snippet indexport "export from index.js file"
 export {default} from './`!v expand('%:h:t')`';
 endsnippet
+
+snippet if "if statement" bA
+if ($1) {
+	$0
+}
+endsnippet
+
+snippet import "import statement" bA
+import ${0:\{\}} from '$1';
+endsnippet
