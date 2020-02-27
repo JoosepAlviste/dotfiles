@@ -114,8 +114,6 @@ export CURRENT_UID=$(id -u):$(id -g)
 # Use a better command for searching with fzf
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
 
-# Kitty terminal
-export KITTY_LISTEN_ON=/tmp/mykitty
 
 #
 # Java
