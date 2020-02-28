@@ -10,4 +10,6 @@ setlocal formatoptions-=c
 setlocal conceallevel=1
 
 " Correct the last spelling error to the first option
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <buffer> <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+nnoremap <buffer> <silent> go :VimtexView<cr>
