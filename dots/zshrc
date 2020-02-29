@@ -155,6 +155,10 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 zinit ice wait lucid as'completion'
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
+# Completion for Pipenv
+zinit ice wait lucid atclone"cp pipenv.plugin.zsh _pipenv"
+zinit snippet https://github.com/gangleri/pipenv/blob/master/pipenv.plugin.zsh
+
 zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
