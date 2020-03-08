@@ -84,6 +84,7 @@ path=(
   $HOME/.local/bin
   $HOME/dotfiles/bin
   /usr/local/Cellar/maven@3.2/3.2.5/bin
+  $HOME/.cargo/bin
   $path
 )
 

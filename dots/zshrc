@@ -102,10 +102,6 @@ zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
     atload"source $HOME/.fzf.zsh"
 zinit light junegunn/fzf
 
-# Z
-zinit ice wait lucid
-zinit load agkozak/zsh-z
-
 # diff-so-fancy
 zinit ice wait lucid as'program' pick'bin/git-dsf'
 zinit load zdharma/zsh-diff-so-fancy
@@ -181,6 +177,11 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
+# Zoxide - fast Z alternative
+# `cargo install zoxide`
+zinit ice wait lucid
+zinit light ajeetdsouza/zoxide
+
 # }}}
 # Aliases {{{
 
@@ -203,20 +204,6 @@ alias tree='tree -aC -I .git -I node_modules'
 take() {
     # Create a directory and cd into it
     mkdir -p $@ && cd ${@:$#}
-}
-
-# FZF visited directories (with Z) and cd into it
-zf() {
-    directory=''
-    if [ "x$1" != "x" ]; then
-        directory="$(z | sed '1!G;h;$!d' | awk '{print $2}' | fzf --height=40% --layout=reverse --query $1)"
-    else
-        directory="$(z | sed '1!G;h;$!d' | awk '{print $2}' | fzf --height=40% --layout=reverse)"
-    fi
-
-    if [ "x$directory" != "x" ]; then
-        cd "$directory"
-    fi
 }
 
 # Git
