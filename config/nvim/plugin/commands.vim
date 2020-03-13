@@ -8,3 +8,11 @@ function! SearchMultiLine(bang, ...)
 endfunction
 
 command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR>
+
+" Change the project in a convenient way
+command! -bang Project call fzf#run(fzf#wrap(
+			\ 'project',
+			\ { 'source':  'ls -d ~/Devel/Work/* ~/Devel/Projects/*',
+			\   'sink':    'cd',
+			\   'options': '--prompt "Project> " -d / --with-nth=-1 --preview="bat --style=plain --color=always {..}/README{.md,.org,.txt,} 2>/dev/null"' },
+			\ <bang>0))

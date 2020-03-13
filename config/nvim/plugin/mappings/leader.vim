@@ -28,3 +28,6 @@ nnoremap <leader>o :only<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <silent> <localleader>x :nohlsearch<cr>
+
+" Change the open project quickly
+nnoremap <leader>p :Project!<cr>
