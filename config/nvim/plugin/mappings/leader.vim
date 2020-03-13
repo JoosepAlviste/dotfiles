@@ -29,5 +29,8 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <silent> <localleader>x :nohlsearch<cr>
 
+" Search & replace word under cursor
+nnoremap <leader>sr :%s/\<<C-r><C-w>\>/
+
 " Change the open project quickly
 nnoremap <leader>p :Project!<cr>
