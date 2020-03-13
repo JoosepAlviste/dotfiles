@@ -302,7 +302,7 @@ codi() {
 
 # Thorgate
 if [[ -d "$HOME/Programs/temposync" ]]; then
-    alias temposync='(cd ~/Programs/temposync && pipenv run python main.py)'
+    alias temposync='(cd ~/Programs/temposync && pipenv run python main.py clockify)'
 fi
 
 # NVM
