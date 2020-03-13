@@ -37,21 +37,9 @@ nnoremap <silent> <S-Down> :lnext<cr>
 nnoremap <silent> <F10> :call joosep#syntax#SynStack()<cr>
 nnoremap <silent> <F9> :call joosep#syntax#MoreSyntaxes()<cr>
 
-" Always search forward with n and center afterwards
-nnoremap <expr> n 'Nn'[v:searchforward] . 'zz'
-xnoremap <expr> n 'Nn'[v:searchforward] . 'zz'
-onoremap <expr> n 'Nn'[v:searchforward] . 'zz'
-
-" And backwards with N and center afterwards
-nnoremap <expr> N 'nN'[v:searchforward] . 'zz'
-xnoremap <expr> N 'nN'[v:searchforward] . 'zz'
-onoremap <expr> N 'nN'[v:searchforward] . 'zz'
-
 " Make many of the jump commands also center on search term
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
-nnoremap * *zz
-nnoremap # #zz
 
 " Move current line
 nnoremap [e :<c-u>execute 'move -1-'. v:count1<cr>
