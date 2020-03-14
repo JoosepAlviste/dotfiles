@@ -33,7 +33,11 @@ else
 fi
 
 # Use nvim as editor
-export VISUAL=nvim
+if [ -e "$NVIM_LISTEN_ADDRESS" ]; then
+	export EDITOR=nvr
+else
+	export EDITOR=nvim
+fi
 export EDITOR="$VISUAL"
 
 

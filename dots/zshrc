@@ -61,6 +61,12 @@ bindkey '^Z' foreground-nvim
 autoload -U select-word-style
 select-word-style bash
 
+if [ -e "$NVIM_LISTEN_ADDRESS" ]; then
+	export EDITOR=nvr
+else
+	export EDITOR=nvim
+fi
+
 # }}}
 # Programs {{{
 
@@ -193,6 +199,7 @@ alias grep='grep  --color=auto --exclude-dir={.git}'
 alias vim='nvim'
 alias v='vim'
 alias r='ranger'
+alias e=$EDITOR
 
 alias up='docker-compose up'
 alias down='docker-compose down'
