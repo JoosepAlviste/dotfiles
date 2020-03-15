@@ -74,6 +74,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeGitStatusWithFlags = 0
 Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
 Plug 'skywind3000/vim-terminal-help'
