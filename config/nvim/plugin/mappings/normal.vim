@@ -54,3 +54,6 @@ nnoremap Q @@
 
 " Split line with S
 nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
+
+" Browse buffers more conveniently
+nnoremap <silent> ; :Buffers<CR>
