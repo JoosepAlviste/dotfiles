@@ -150,6 +150,9 @@ if (has('termguicolors'))
   set termguicolors  " Enable true colors
 endif
 
+" Make PUM a bit transparent
+set pumblend=9
+
 
 "
 " Editing
