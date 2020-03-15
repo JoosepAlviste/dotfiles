@@ -43,6 +43,13 @@ export MONITOR_SECONDARY='HDMI-1'
 export MONITOR_RIGHT=$MONITOR_PRIMARY
 export MONITOR_LEFT=$MONITOR_SECONDARY
 
+# Jira settings that work with the `jiraopen` command
+# Customize in `~/.zprofile.local`
+# E.g., `https://mycompany.atlassian.net`
+export JIRA_URL=''
+# E.g., `123` (from `rapidView` key in URL)
+export JIRA_TEAM_ID=''
+
 #
 # Various settings used to tweak the behavior
 # Can be overridden in `~/.zprofile.local`, for example
