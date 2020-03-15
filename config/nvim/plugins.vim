@@ -95,6 +95,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " Git related things
 Plug 'tpope/vim-fugitive'  " Git integration
 Plug 'tpope/vim-rhubarb'  " GitHub integration - use `hub` cli instead of `git`
+Plug 'shumphrey/fugitive-gitlab.vim'  " GitLab integration for Fugitive
 Plug 'tpope/vim-git'  " Git related files' syntax
 
 Plug 'editorconfig/editorconfig-vim'  " Read .editorconfig file for settings
