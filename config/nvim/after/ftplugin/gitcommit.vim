@@ -31,4 +31,4 @@ nnoremap <silent> <buffer> } /^@@<CR>
 "
 
 " Automatically insert issue number as Git commit message prefix
-autocmd FileType gitcommit call joosep#git#insert_issue_prefix()
+call joosep#git#insert_issue_prefix()
