@@ -156,6 +156,13 @@ fi
 
 
 #
+# Pyenv
+#
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+
+#
 # Read overrides from zprofile.local
 #
 

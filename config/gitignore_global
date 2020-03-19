@@ -4,8 +4,8 @@ tags.temp
 tags.lock
 *~
 .mypy_cache
-.vscode/
-.idea/
+.vscode
+.idea
 .venv
 
 .DS_Store
@@ -14,4 +14,5 @@ celerybeat.pid
 yarn-error.log
 .nvimlog
 
-.pytest_cache/
+.pytest_cache
+.python-version
