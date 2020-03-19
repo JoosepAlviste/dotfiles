@@ -1,5 +1,8 @@
 # open terminal
-alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+alt - return : /Applications/Kitty.app/Contents/MacOS/kitty \
+    --single-instance \
+    --listen-on unix:/tmp/mykitty \
+    -d ~
 
 # focus window
 alt - h : yabai -m window --focus west \
