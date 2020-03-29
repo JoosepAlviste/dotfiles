@@ -30,11 +30,18 @@ if has('autocmd')
     autocmd FileType video silent call joosep#specialfiles#openspecial()
     autocmd FileType image silent call joosep#specialfiles#openspecial()
 
-    " Save buffer when focus lost (not sure if this works in terminal Vim)
+    " Save buffer when focus lost
     autocmd FocusLost * silent! wa
 
     " Automatically open quickfix window
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
+
+    " Automatically set some marks when leaving files so that it's easy to 
+    " return
+    autocmd BufLeave *.css,*.scss    normal! mC
+    autocmd BufLeave *.html          normal! mH
+    autocmd BufLeave *.js,*.ts,*.tsx normal! mJ
+    autocmd BufLeave *.py            normal! mP
   augroup END
 endif
