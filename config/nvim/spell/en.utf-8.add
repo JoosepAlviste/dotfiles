@@ -141,3 +141,5 @@ pacman
 virtualenv
 virtualenvs
 PyCharm
+YAML
+frontmatter
