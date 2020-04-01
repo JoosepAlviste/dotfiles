@@ -153,7 +153,7 @@ endif
 " Use fancier cursor shapes
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0
 set guicursor+=i-ci:ver25-Cursor/lCurso
-set guicursor+=r-cr:hor20-Cursor/lCursor
+set guicursor+=r-cr-o:hor20-Cursor/lCursor
 
 " Make PUM a bit transparent
 set pumblend=9
