@@ -5,8 +5,9 @@
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
-    * See `dots/vim/plugins.vim` for the used plugins
-    * Slightly modified [Material Palenight colorscheme](https://github.com/kaicataldo/material.vim/)
+    * See `config/nvim/plugins.vim` for the used plugins
+    * Slightly modified [Material Palenight color 
+        scheme](https://github.com/kaicataldo/material.vim/)
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
     * With [Zinit](https://github.com/zdharma/zinit/)
@@ -71,31 +72,33 @@ The (neo)vim configuration is split into many files since there is quite a bit
 of configuration and it would be crazy to have it all in one file. I try to 
 leverage as much of Vims built-in logic for splitting files.
 
-Neovim specific configuration is located in `config/nvim/init.vim`, everything 
-else vim-related is in `dots/vim/`.
+Neovim configuration is located in `config/nvim/`.
 
-* `after/plugin/` - configuration related to plugins (settings, mappings, etc.)
-* `autoload/` - functions that are used in other files
-    * `lightline/` - custom color schemes for Lightline
-* `colors/` - custom color schemes (currently includes `nightowl` but I don't 
-    use it anymore)
+* `after/` - overriding configuration related to plugins (settings, mappings, 
+    etc.)
+* `autoload/` - functions that are used in other files and can be autoloaded
+    * `joosep/colors/` - custom color schemes (improving plugin color schemes)
 * `ftdetect/` - logic for detecting file types
 * `ftplugin/` - configuration for specific file types
 * `plugin/` - configuration split into files, kind of like *"my own plugins"*. 
     File names should be pretty descriptive
+    * Also includes configuring some external plugins if the `after/` directory 
+        does not work for some reason
     * `mappings/` - mappings not related to any plugins
-    * `highlight.vim` - some non-colorscheme-related highlighting syntax 
-        improvements
+    * `autocmds.vim` + `autoload/joosep/autocmds.vim` - generic useful 
+        autocommands
+    * `highlight.vim` - some non-color-scheme-related highlighting syntax 
+        improvements (linking highlight groups in a more logical way)
     * `settings.vim` - most global `set XYZ` calls are here. I would like to 
         split this even more but it works OK for now
 * `plugins.vim` - declaring used plugins using `Plug`
-* `vimrc` - settings that don't really fit into anywhere else (aim is to have as 
-    little as possible here)
+* `init.vim` - settings that don't really fit into anywhere else (aim is to have 
+    as little as possible here)
 
 
 ## Installation
 
-```
+```bash
 git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 cd dotfiles
@@ -103,7 +106,7 @@ chmod +x bin/makesymlinks.sh
 ./bin/makesymlinks.sh
 ```
 
-(Submodules are required since `ranger` theme is a cloned repository).
+(Submodules are required since `bat` theme is a cloned repository).
 
 This will symlink all of the files and folders inside `dots/` into your home 
 folder prefixed by `.` and everything from `config/` to your `~/.config/` 
@@ -127,6 +130,7 @@ symlink the files from `resources/firefox/` to your [Firefox profile
 folder](https://www.howtogeek.com/255587/how-to-find-your-firefox-profile-folder-on-windows-mac-and-linux/):
 
 ```bash
+export PROFILE_DIR="..."
 ln -s ~/dotfiles/resources/firefox/userChrome.css $PROFILE_DIR/chrome
 ln -s ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
 ```
@@ -134,7 +138,7 @@ ln -s ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
 
 ## Update
 
-```
+```bash
 git pull
 ```
 
@@ -143,7 +147,7 @@ Maybe run `./bin/makesymlinks.sh` again.
 
 ## Automatically installed through Zinit
 
-These packages will be automatically installed when zsh is started.
+These packages will be automatically installed when Zsh is started.
 
 They are installed & set up asynchronously with Zinit's turbo mode, so it's 
 probably best to not use `pacman` or `homebrew` versions of those packages.
@@ -241,7 +245,7 @@ Zinit automatically installs `pyenv` and `pyenv-virtualenv`! Zinit installs
 `pyenv` to `~/.zinit/plugins/pyenv---pyenv/` and Pyenv versions will end up in 
 `~/.zinit/plugins/pyenv---pyenv/versions/`. This means that if you delete the 
 `~/.zinit/plugins/` folder for whatever reason (debugging, etc.), then your 
-pyenv virtualenvs would also be destroyed (this is bad). So, it might make 
+Pyenv virtualenvs would also be destroyed (this is bad). So, it might make 
 sense to symlink the versions folder so some other folder. For example, 
 something like this: `rm -rf ~/.zinit/plugins/pyenv---pyenv/versions && ln -s 
 ~/.pyenv/versions ~/.zinit/plugins/pyenv---pyenv/versions`.
@@ -253,6 +257,8 @@ Python 2, there:
 ```bash
 pip install \
     neovim \
+    neovim-remote \
+    pynvim \
     i3-py
 ```
 
@@ -284,7 +290,7 @@ Edit `~/.config/mimeapps.list` and/or
 `~/.local/share/applications/mimeapps.list` and make sure that it looks 
 something like this:
 
-```
+```ini
 [Default Applications]
 x-scheme-handler/mailto=google-chrome.desktop
 text/html=google-chrome.desktop
@@ -303,7 +309,7 @@ Feel free to override any environment variables here (for example, monitors).
 
 ### To change the color scheme in Vim & terminal
 
-1. Change the Vim color scheme in `dots/vim/vimrc`
+1. Change the Vim color scheme in `config/nvim/init.vim`
 2. Change the terminal color scheme in `config/kitty/kitty.conf`, find the 
    `include themes/*.conf` file & change the theme file name
 3. Change the `THEME` variable in `dots/zshrc` in order to customize the FZF 
@@ -312,9 +318,9 @@ Feel free to override any environment variables here (for example, monitors).
 Available themes include:
 
 * `OceanicNext`
-* `palenight` -- in `dots/vim/vimrc` change to `colorscheme material` and add 
-  `let g:material_theme_style = 'palenight'` before the `colorscheme` 
-  setting).
+* `palenight` -- in `config/nvim/init.vim` change to `colorscheme material` and 
+    add `let g:material_theme_style = 'palenight'` before the `colorscheme` 
+    setting).
 
 ## More screenshots
 
