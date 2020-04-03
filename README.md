@@ -224,15 +224,13 @@ yay -S \
 
 ```bash
 brew install \
-    tmux \
     hub \
     dash \
     htop \
-    ranger \
     neovim \
     ripgrep \
     yarn \
-    koekeishiya/formulae/chunkwm \
+    koekeishiya/formulae/yabai \
     koekeishiya/formulae/skhd \
     universal-ctags/universal-ctags/universal-ctags \
     jq
