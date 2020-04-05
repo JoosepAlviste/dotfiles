@@ -2,7 +2,9 @@ tmux*.log
 
 config/nvim/spell/*.spl
 
-dots/zprofile.local
+config/zsh/zprofile.local
+config/zsh/.zsh_history
+config/zsh/.zcompdump
 
 dots/emacs.d/elpa/
 .netrwhist

@@ -301,9 +301,9 @@ x-scheme-handler/unknown=google-chrome.desktop
 ### Overriding environment variables
 
 If you want to override environment variables without polluting the Git status, 
-then you can create a new file `dots/zprofile.local` and run `makesymlinks`. 
-This will link that file to `~/.zprofile.local` and source it inside `zprofile`. 
-Feel free to override any environment variables here (for example, monitors).
+then you can create a new file `config/zsh/zprofile.local`. This will link that 
+file to `~/.config/zsh/zprofile.local` and source it inside `profile`. Feel free 
+to override any environment variables here (for example, monitors).
 
 ### To change the color scheme in Vim & terminal
 
