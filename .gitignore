@@ -3,6 +3,7 @@ tmux*.log
 config/nvim/spell/*.spl
 
 config/zsh/zprofile.local
+config/zsh/zsh_history
 config/zsh/.zsh_history
 config/zsh/.zcompdump
 

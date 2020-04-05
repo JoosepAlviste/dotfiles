@@ -39,7 +39,7 @@ bindkey "^X^E" edit-command-line
 export KEYTIMEOUT=1
 
 # Save commands to the history
-HISTFILE=~/.zsh_history
+HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1000000000
 SAVEHIST=1000000000
 setopt EXTENDED_HISTORY        # Write timestamps to history
@@ -49,6 +49,8 @@ setopt HIST_IGNORE_DUPS        # Don't add consecutive dups to history
 setopt HIST_IGNORE_SPACE       # Don't add commands starting with space to history
 setopt HIST_VERIFY             # If a command triggers history expansion, show it instead of running
 setopt SHARE_HISTORY           # Write and import history on every command
+
+zstyle ':completion:*' menu select
 
 # Suspend and foreground vim
 foreground-nvim() {
@@ -186,7 +188,8 @@ zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 # Zoxide - fast Z alternative
 # `cargo install zoxide`
 zinit ice wait lucid
-zinit light ajeetdsouza/zoxide
+zinit light agkozak/zsh-z
+
 
 # }}}
 # Aliases {{{
@@ -347,6 +350,8 @@ done
 if [ "$(tty)" = "/dev/tty1" ]; then
     pgrep -x i3 || exec startx
 fi
+
+(( ! ${+functions[p10k]} )) || p10k finalize
 
 # }}}
 # Overview {{{
