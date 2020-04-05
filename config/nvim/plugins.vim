@@ -58,12 +58,7 @@ Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 "
 
 " FZF - fuzzy search everything - files, lines, commits, etc.
-if executable('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf'
-else
-  " Install FZF if it is not installed already
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-endif
+Plug $HOME . '/.config/fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 

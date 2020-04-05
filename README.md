@@ -244,9 +244,9 @@ Zinit automatically installs `pyenv` and `pyenv-virtualenv`! Zinit installs
 `~/.zinit/plugins/pyenv---pyenv/versions/`. This means that if you delete the 
 `~/.zinit/plugins/` folder for whatever reason (debugging, etc.), then your 
 Pyenv virtualenvs would also be destroyed (this is bad). So, it might make 
-sense to symlink the versions folder so some other folder. For example, 
+sense to symlink the versions folder to some other folder. For example, 
 something like this: `rm -rf ~/.zinit/plugins/pyenv---pyenv/versions && ln -s 
-~/.pyenv/versions ~/.zinit/plugins/pyenv---pyenv/versions`.
+~/.config/pyenv/versions ~/.zinit/plugins/pyenv---pyenv/versions`.
 
 Neovim plugins require that there's a virtualenv with the `neovim` package 
 installed. Create a Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from 
