@@ -333,7 +333,7 @@ setup_nvm() {
 # mode freezes the command prompt for a bit. So, we need to set up NVM only 
 # when actually required -- when the `nvm` command is used or any other Node 
 # commands.
-declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
 for cmd in "${NODE_GLOBALS[@]}"; do

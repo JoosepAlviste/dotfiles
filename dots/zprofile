@@ -110,6 +110,26 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+
+#
+# Clean up ~
+#
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
+    XDG_RUNTIME_DIR=/tmp
+fi
+export XDG_RUNTIME_DIR
+
+export JUPYTER_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/jupyter
+export MPLCONFIGDIR=${XDG_CONFIG_HOME:-$HOME/.config}/matplotlib
+
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+
+
 #
 # Package configurations
 #
@@ -148,7 +168,7 @@ fi
 # NVM
 #
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR=$XDG_CONFIG_HOME/nvm
 # Only set this source in Arch Linux
 if [[ -d "/usr/share/nvm" ]]; then
     export NVM_SOURCE="/usr/share/nvm"
