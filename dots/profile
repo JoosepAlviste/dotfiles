@@ -51,6 +51,9 @@ export JIRA_URL=''
 # E.g., `123` (from `rapidView` key in URL)
 export JIRA_TEAM_ID=''
 
+# GitLab Vim integration
+export FUGITIVE_GITLAB_TOKEN=''
+
 #
 # Various settings used to tweak the behavior
 # Can be overridden in `~/.config/zsh/zprofile.local`, for example
