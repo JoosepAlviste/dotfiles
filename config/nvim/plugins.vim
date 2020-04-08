@@ -145,6 +145,11 @@ Plug 'godlygeek/tabular'  " Required by markdown
 Plug 'plasticboy/vim-markdown'
 
 
+" CSV
+
+Plug 'chrisbra/csv.vim'
+
+
 "
 " DevIcons must be the last loaded plugin
 "
