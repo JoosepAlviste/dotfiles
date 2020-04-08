@@ -14,6 +14,8 @@ inoremap <buffer> <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 nnoremap <buffer> <silent> go :VimtexView<cr>
 
+nnoremap <buffer> <silent> <C-t> :VimtexTocToggle<cr>
+
 " Continue lists when pressing creating a new line with `o`, `O` or `<cr>`
 function! AddItem()
   let [end_lnum, end_col] = searchpairpos('\\begin{', '', '\\end{', 'nW')
