@@ -210,7 +210,7 @@ alias build='docker-compose build'
 alias dps='docker ps'
 
 # Add `--directory XYZ` if needed
-alias server='python -m http.server 8080'
+alias server='python -m http.server 3030'
 
 alias tree='tree -aC -I .git -I node_modules'
 
