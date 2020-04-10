@@ -37,6 +37,9 @@ if has('autocmd')
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 
+    " Automatically close Vim if the quickfix window is the only one open
+    autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+
     " Automatically set some marks when leaving files so that it's easy to 
     " return
     autocmd BufLeave *.css,*.scss    normal! mC
