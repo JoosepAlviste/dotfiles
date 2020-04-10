@@ -14,7 +14,7 @@ inoremap <buffer> <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 nnoremap <buffer> <silent> go :VimtexView<cr>
 
-nnoremap <buffer> <silent> <C-t> :VimtexTocToggle<cr>
+nnoremap <buffer> <silent> <c-t> :call vimtex#fzf#run()<cr>
 
 " Continue lists when pressing creating a new line with `o`, `O` or `<cr>`
 function! AddItem()
