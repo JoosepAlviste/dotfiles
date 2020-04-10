@@ -251,4 +251,6 @@ function! joosep#colors#palenight#ModifyColorscheme()
     call <sid>hi('StatuslineBoolean', s:orange, s:statusline, '', '')
     call <sid>hi('StatuslineError',   s:red,    s:statusline, '', '')
     call <sid>hi('StatuslineWarning', s:orange, s:statusline, '', '')
+    call <sid>hi('StatuslineSuccess', s:green,  s:statusline, '', '')
+    call <sid>hi('StatuslinePending', s:yellow, s:statusline, '', '')
 endfunction

@@ -9,7 +9,7 @@ function! s:RefreshStatusline()
   endfor
 endfunction
 
-augroup myStatusline
+augroup MyStatusline
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusline()
 augroup END
@@ -30,6 +30,18 @@ function! StatusDiagnostic() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 
+function! TestStatus() abort
+  if g:TestingStatus ==# 'passing'
+    return Color(1, 'StatuslineSuccess', ' ')
+  elseif g:TestingStatus ==# 'running'
+    return Color(1, 'StatuslinePending', ' ')
+  elseif g:TestingStatus ==# 'failing'
+    return Color(1, 'StatuslineError', ' ')
+  else
+    return ''
+  endif
+endfunction
+
 " This function just outputs the content colored by the supplied colorgroup 
 " number, e.g. num = 2 -> User2 it only colors the input if the window is 
 " the currently focused one
@@ -39,10 +51,6 @@ function! Color(active, num, content)
   else
     return a:content
   endif
-endfunction
-
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 function! Status(winnum)
@@ -78,9 +86,9 @@ function! Status(winnum)
 
   " CoC status
   if active
-    let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
+    let stat .= TestStatus() . ' '
 
-    let stat .= Color(active, 'Statusline', NearestMethodOrFunction() . '  ')
+    let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
   endif
 
   return stat
