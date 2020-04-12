@@ -264,32 +264,37 @@ toolbar {
 
 
 :root {
-    --bg-color: #1d1f2b;
-    --bg-hover-color: #292d3e;
-    --bg-active-color: #343A51;
+    --color-lighter-fg: #b9c0e5;
+    --color-fg: #a6accd;
+    --color-darker-fg: #7982B4;
 
-    --fg-lighter-color: #b9c0e5;
-    --fg-color: #a6accd;
-    --fg-darker-color: #7982B4;
+    --color-bg: #292d3e;
+    --color-darker-bg: #212331;
+    --color-bg-hover: #343A51;
+    --color-bg-active: #4e5579;
+    --color-bg-transparent: rgba(0, 10, 17, 0.5) !important;
 
-    --purple-color: #C792EA;
+    --color-blue: #82AAFF;
 
-    --toolbar-bgcolor: var(--bg-color) !important;
-    --toolbar-color: var(--fg-color) !important;
-    --toolbarbutton-hover-background: var(--bg-hover-color) !important;
-    --toolbarbutton-active-background: var(--bg-active-color) !important;
+    --toolbar-bgcolor: var(--color-bg) !important;
+    --toolbar-color: var(--color-fg) !important;
+    --toolbarbutton-hover-background: var(--color-bg-hover) !important;
+    --toolbarbutton-active-background: var(--color-bg-active) !important;
 
-    --arrowpanel-background: var(--bg-color) !important;
-    --arrowpanel-border-color: var(--bg-color) !important;
+    --arrowpanel-background: var(--color-bg) !important;
+    --arrowpanel-border-color: var(--color-bg) !important;
 
-    --lwt-toolbar-field-background-color: var(--bg-hover-color) !important;
-    --lwt-toolbar-field-focus: var(--bg-hover-color) !important;
-    --lwt-toolbar-field-color: var(--fg-lighter-color) !important;
+    --toolbar-color: var(--color-fg) !important;
+    --toolbar-bgcolor: var(--color-bg-transparent) !important;
 
-    --lwt-toolbarbutton-icon-fill: var(--fg-color) !important;
+    --lwt-toolbar-field-background-color: transparent !important;
+    --lwt-toolbar-field-focus: transparent !important;
+    --lwt-toolbar-field-color: var(--color-lighter-fg) !important;
+
+    --lwt-toolbarbutton-icon-fill: var(--color-fg) !important;
     --toolbarbutton-icon-fill-opacity: 0.6 !important;
 
-    --autocomplete-popup-background: var(--bg-color) !important;
+    --autocomplete-popup-background: var(--color-darker-bg) !important;
 }
 
 
@@ -314,8 +319,10 @@ toolbar {
 #content,
 #tabbrowser-tabpanels,
 browser[type=content-primary],
-browser[type=content] > html {
-    background-color: var(--bg-color) !important;
+browser[type=content] > html,
+/* URL bar dropdown */
+.urlbarView {
+    -moz-appearance: -moz-mac-vibrancy-dark !important;
 }
 
 /**
@@ -327,7 +334,7 @@ browser[type=content] > html {
 #tabbrowser-tabpanels,
 browser[type=content-primary],
 browser[type=content] > html {
-    background-color: var(--bg-color) !important;
+    background-color: var(--color-darker-bg) !important;
 }
 
 /**
@@ -335,7 +342,7 @@ browser[type=content] > html {
  * Linux. Requires Compositing: WebRender.
  */
 #main-window {
-    background-color: var(--bg-color) !important;
+    background-color: transparent !important;
 }
 
 /**
@@ -348,7 +355,7 @@ browser[type=content] > html {
 #tabbrowser-tabpanels,
 browser[type=content-primary],
 browser[type=content] > html {
-    background-color: var(--bg-color) !important;
+    background-color: var(--color-bg-transparent);
 }
 
 
@@ -375,5 +382,20 @@ browser[type=content] > html {
  * Make the tab line color match with palenight colors.
  */
 #tabbrowser-tabs {
-    --tab-line-color: var(--purple-color) !important;
+    --tab-line-color: var(--color-blue) !important;
+}
+
+
+
+/**
+ * Make URLbar text color a bit brighter.
+ */
+#urlbar-input:focus-within::placeholder {
+    color: var(--color-fg);
+}
+
+
+
+#urlbar-background {
+    box-shadow: none !important;
 }
