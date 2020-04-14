@@ -96,6 +96,7 @@ path=(
   $HOME/dotfiles/bin
   /usr/local/Cellar/maven@3.2/3.2.5/bin
   $HOME/.cargo/bin
+  $HOME/.poetry/bin
   $path
 )
 

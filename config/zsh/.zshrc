@@ -190,6 +190,10 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
+# Auto-activate environment
+zinit ice wait lucid
+zinit light darvid/zsh-poetry
+
 # Zoxide - fast Z alternative
 # `cargo install zoxide`
 zinit ice wait lucid
