@@ -11,6 +11,18 @@ setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
 " improved somehow
 setlocal errorformat=%f:%l:%c:\ %m
 
+" Fix some highlighting problems in files with styled components
+" See https://github.com/HerringtonDarkholme/yats.vim/issues/109
+syntax sync fromstart
+
+
+" Plugin settings
+
+let b:pear_tree_pairs = {
+      \ '<*>': {'closer': '</*>', 'not_like': '/$'},
+      \ }
+
+
 "
 " Mappings
 "
@@ -18,12 +30,9 @@ setlocal errorformat=%f:%l:%c:\ %m
 " Go to definition
 nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
 
-" Fix some highlighting problems in files with styled components
-" See https://github.com/HerringtonDarkholme/yats.vim/issues/109
-syntax sync fromstart
 
-" Plugin settings
+"
+" Commands
+"
 
-let b:pear_tree_pairs = {
-      \ '<*>': {'closer': '</*>', 'not_like': '/$'},
-      \ }
+command! -bang AddReturn call joosep#javascript#add_return()
