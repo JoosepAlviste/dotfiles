@@ -132,8 +132,12 @@ folder](https://www.howtogeek.com/255587/how-to-find-your-firefox-profile-folder
 ```bash
 export PROFILE_DIR="..."
 ln -s ~/dotfiles/resources/firefox/userChrome.css $PROFILE_DIR/chrome
-ln -s ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
+ln ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
 ```
+
+**Note:** Make sure that you do NOT use `-s` when linking `userContent.css`.
+
+There are also other themes in the `resources/firefox/` that could be used.
 
 
 ## Update
