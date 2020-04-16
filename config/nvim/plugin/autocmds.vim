@@ -46,5 +46,9 @@ if has('autocmd')
     autocmd BufLeave *.html          normal! mH
     autocmd BufLeave *.js,*.ts,*.tsx normal! mJ
     autocmd BufLeave *.py            normal! mP
+
+    " Automatically activate Limelight
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
   augroup END
 endif
