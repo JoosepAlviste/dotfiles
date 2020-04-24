@@ -18,6 +18,7 @@ call plug#begin(stdpath('data') . '/plugged')
 "
 
 Plug 'kaicataldo/material.vim'
+Plug 'jacoborus/tender.vim'
 
 
 "

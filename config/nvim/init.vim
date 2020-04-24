@@ -44,9 +44,8 @@ let maplocalleader="\\"
 " Vim UI
 "
 
-let g:material_theme_style = 'palenight'
 augroup MyColors
   autocmd!
-  autocmd ColorScheme * call joosep#colors#palenight#ModifyColorscheme()
+  autocmd ColorScheme * call joosep#colors#tender#ModifyColorscheme()
 augroup END
-colorscheme material
+colorscheme tender
