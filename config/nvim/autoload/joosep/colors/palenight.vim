@@ -1,6 +1,5 @@
 "
-" Export colors used in Material Theme's Palenight variant so that customizing 
-" the colorscheme is easier. Also export some custom colors.
+" Customize the Material palenight color theme.
 "
 
 " Default colors from Material theme
@@ -30,7 +29,7 @@ let s:violet = '#bb80b3'
 " Custom colors
 let s:background = '#252837'  " A bit darker background color
 let s:statusline = '#1d1f2b'  " Statusline should be dark
-let s:cursorline = '#212331'  " Cursorline should be a bit darker than bg
+let s:cursorline = '#232534'  " Cursorline should be a bit darker than bg
 let s:darker_fg = '#7982B4'  " Some text should be a bit darker than normal fg
 
 let s:colors = {
@@ -84,7 +83,7 @@ endfunction
 "
 
 function! joosep#colors#palenight#ModifyColorscheme()
-    " " General
+    " General
     call <sid>hi('Normal',       s:fg,         'NONE',         '',     '')
     call <sid>hi('IncSearch',    'NONE',       s:line_numbers, 'NONE', '')
     call <sid>hi('Search',       'NONE',       s:line_numbers, 'NONE', '')
