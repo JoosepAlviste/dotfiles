@@ -68,12 +68,12 @@ nmap <silent> - <Plug>NERDTreeGoUp
 let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeShowIgnoredStatus = 1
 
-let s:colors = g:joosep#colors#tender#GetColors()
+let s:colors = g:joosep#colors#material#GetColors()
 let g:NERDTreeColorMapCustom = {
-    \ 'Modified': s:colors.blue2,
-    \ 'Staged': s:colors.green2,
-    \ 'Untracked': s:colors.yellow2,
-    \ 'Dirty': s:colors.blue2,
-    \ 'Clean': '#87939A',
-    \ 'Ignored': s:colors.grey2,
-    \ }
+      \ 'Modified': s:colors.blue,
+      \ 'Staged': s:colors.green,
+      \ 'Untracked': s:colors.orange,
+      \ 'Dirty': s:colors.purple,
+      \ 'Clean': '#87939A',
+      \ 'Ignored': s:colors.darker_fg,
+      \ }
