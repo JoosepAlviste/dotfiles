@@ -69,6 +69,9 @@ function! s:ModifyHighlights()
     " Markdown
     hi link mkdBold htmlBold
     hi link mkdItalic htmlItalic
+
+    " YAML
+    hi link yamlBool Boolean
 endfunction
 
 call s:ModifyHighlights()
