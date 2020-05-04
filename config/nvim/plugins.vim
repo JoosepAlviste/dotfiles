@@ -109,14 +109,15 @@ Plug 'neomake/neomake'
 Plug 'janko/vim-test'
 
 
-" JavaScript
-
-Plug 'neoclide/vim-jsx-improve'  " Javascript, JSX & indentation
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
 " Typescript
 
 Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
+
+" JavaScript
+
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " CSS
 
