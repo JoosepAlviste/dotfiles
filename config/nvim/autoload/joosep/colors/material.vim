@@ -3,28 +3,28 @@
 "
 
 " Copy colors to local variables so that it's easier to use them
-let s:bg = g:material_colorscheme_map.bg
-let s:fg = g:material_colorscheme_map.fg
-let s:invisibles = g:material_colorscheme_map.invisibles
-let s:comments = g:material_colorscheme_map.comments
-let s:caret = g:material_colorscheme_map.caret
-let s:selection = g:material_colorscheme_map.selection
-let s:guides = g:material_colorscheme_map.guides
-let s:line_numbers = g:material_colorscheme_map.line_numbers
-let s:line_highlight = g:material_colorscheme_map.line_highlight
-let s:white = g:material_colorscheme_map.white
-let s:black = g:material_colorscheme_map.black
-let s:red = g:material_colorscheme_map.red
-let s:orange = g:material_colorscheme_map.orange
-let s:yellow = g:material_colorscheme_map.yellow
-let s:green = g:material_colorscheme_map.green
-let s:cyan = g:material_colorscheme_map.cyan
-let s:blue = g:material_colorscheme_map.blue
-let s:paleblue = g:material_colorscheme_map.paleblue
-let s:purple = g:material_colorscheme_map.purple
-let s:brown = g:material_colorscheme_map.brown
-let s:pink = g:material_colorscheme_map.pink
-let s:violet = g:material_colorscheme_map.violet
+let s:bg = '#292d3e'
+let s:fg = '#a6accd'
+let s:invisibles = '#4e5579'
+let s:comments = '#676e95'
+let s:selection = '#343A51'
+let s:guides = '#4e5579'
+let s:line_numbers = '#3a3f58'
+let s:caret = '#ffcc00'
+let s:line_highlight = '#000000'
+let s:white = '#ffffff'
+let s:black = '#000000'
+let s:red = '#ff5370'
+let s:orange = '#f78c6c'
+let s:yellow = '#ffcb6b'
+let s:green = '#c3e88d'
+let s:cyan = '#89ddff'
+let s:blue = '#82aaff'
+let s:paleblue = '#b2ccd6'
+let s:purple = '#c792ea'
+let s:brown = '#c17e70'
+let s:pink = '#f07178'
+let s:violet = '#bb80b3'
 
 " Custom colors (defaults)
 let s:background = '#252837'  " A bit darker background color
@@ -40,12 +40,34 @@ if g:material_theme_style == 'palenight'
   let s:darker_fg = '#7982B4'  " Some text should be a bit darker than normal fg
 endif
 
-let s:colors = extend({
+let s:colors = {
+      \ "bg": s:bg,
+      \ "fg": s:fg,
+      \ "invisibles": s:invisibles,
+      \ "comments": s:comments,
+      \ "selection": s:selection,
+      \ "guides": s:guides,
+      \ "line_numbers": s:line_numbers,
+      \ "caret": s:caret,
+      \ "line_highlight": s:line_highlight,
+      \ "white": s:white,
+      \ "black": s:black,
+      \ "red": s:red,
+      \ "orange": s:orange,
+      \ "yellow": s:yellow,
+      \ "green": s:green,
+      \ "cyan": s:cyan,
+      \ "blue": s:blue,
+      \ "paleblue": s:paleblue,
+      \ "purple": s:purple,
+      \ "brown": s:brown,
+      \ "pink": s:pink,
+      \ "violet": s:violet,
       \ "background": s:background,
       \ "statusline": s:statusline,
       \ "cursorline": s:cursorline,
       \ "darker_fg": s:darker_fg,
-      \ }, g:material_colorscheme_map)
+      \ }
 
 function! g:joosep#colors#material#GetColors()
     return s:colors
