@@ -39,14 +39,15 @@ let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 "
 
 " Select last file when opening NERDTree
-if has('autocmd')
-    augroup JoosepNERDTree
-        autocmd!
-        autocmd User NERDTreeInit call joosep#autocmds#attempt_select_last_file()
-        " Close NERDTree when it is the only open pane
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    augroup END
-endif
+augroup JoosepNERDTree
+  autocmd!
+  autocmd User NERDTreeInit call joosep#autocmds#attempt_select_last_file()
+  " Close NERDTree when it is the only open pane
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+  autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
+augroup END
 
 
 "
