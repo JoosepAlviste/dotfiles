@@ -20,9 +20,6 @@ let g:NERDTreeIgnore = [
             \ '\.netrwhist$',
             \ ]
 
-" Automatically close NERDTree when a file is opened/selected
-let NERDTreeQuitOnOpen = 1
-
 " Automatically delete buffer after deleting file
 let NERDTreeAutoDeleteBuffer = 1
 
