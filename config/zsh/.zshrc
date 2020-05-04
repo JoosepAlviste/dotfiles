@@ -272,7 +272,7 @@ alias cat='bat'
 alias ping='prettyping --nolegend'
 
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-THEME="tender"
+THEME="material-palenight"
 if [ "$THEME" = "OceanicNext" ]; then
     export FZF_DEFAULT_OPTS="
         --bind='ctrl-o:execute(nvim {})+abort' 
@@ -281,7 +281,7 @@ if [ "$THEME" = "OceanicNext" ]; then
         --color=fg:#c0c5ce,header:#586e75,info:#fac863,pointer:#c594c5
         --color=marker:#fac863,fg+:#c0c5ce,prompt:#c594c5,hl+:#c594c5
     "
-elif [ "$THEME" = "palenight" ]; then
+elif [ "$THEME" = "material-palenight" ]; then
     export FZF_DEFAULT_OPTS="
         --bind='ctrl-o:execute(nvim {})+abort' 
         --inline-info
