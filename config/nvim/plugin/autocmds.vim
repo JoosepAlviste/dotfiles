@@ -5,7 +5,7 @@ if has('autocmd')
     " Disable cursorline in diff mode
     autocmd OptionSet diff let &cursorline=!v:option_new
 
-    " Hide and show cursorline in inactive buffers
+    " Hide cursorline in insert mode
     autocmd InsertLeave,WinEnter * set cursorline
     autocmd InsertEnter,WinLeave * set nocursorline
 
@@ -18,8 +18,6 @@ if has('autocmd')
     " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
     autocmd FileChangedShellPost *
           \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-    autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
 
     " Fix styled-components highlighting issue, not sure why this does not
     " work in the ftplugin/javascript.vim file
