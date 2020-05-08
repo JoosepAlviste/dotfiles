@@ -103,11 +103,6 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'JoosepAlviste/vim-context-commentstring'
 
-" Testing
-
-Plug 'neomake/neomake'
-Plug 'janko/vim-test'
-
 
 " Typescript
 

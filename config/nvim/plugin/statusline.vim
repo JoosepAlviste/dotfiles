@@ -30,21 +30,9 @@ function! StatusDiagnostic() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 
-function! TestStatus() abort
-  if g:TestingStatus ==# 'passing'
-    return Color(1, 'StatuslineSuccess', ' ')
-  elseif g:TestingStatus ==# 'running'
-    return Color(1, 'StatuslinePending', ' ')
-  elseif g:TestingStatus ==# 'failing'
-    return Color(1, 'StatuslineError', ' ')
-  else
-    return ''
-  endif
-endfunction
-
 " This function just outputs the content colored by the supplied colorgroup 
-" number, e.g. num = 2 -> User2 it only colors the input if the window is 
-" the currently focused one
+" number, e.g. num = 2 -> User2 it only colors the input if the window is the 
+" currently focused one
 function! Color(active, num, content)
   if a:active
     return '%#' . a:num . '#' . a:content . '%*'
@@ -86,8 +74,6 @@ function! Status(winnum)
 
   " CoC status
   if active
-    let stat .= TestStatus() . ' '
-
     let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
   endif
 
