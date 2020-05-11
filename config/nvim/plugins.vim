@@ -53,7 +53,7 @@ Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 " Big plugins
 " ===========
 " These plugins have big effects on how I use Vim.
-" For example, this includes things like language servers, file navigation,
+" For example, this includes things like language servers, file navigation, 
 " etc.
 "
 
@@ -61,10 +61,7 @@ Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 Plug $HOME . '/.config/fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
-
-if !exists('g:started_by_firenvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
-endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 " UI extras
 Plug 'scrooloose/nerdtree'
@@ -79,8 +76,6 @@ Plug 'ludovicchabant/vim-gutentags'  " Generate ctags automatically
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 " Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
 Plug 'knubie/vim-kitty-navigator'
-" Embed neovim to text fields in browser
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 
 "
