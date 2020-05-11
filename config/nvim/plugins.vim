@@ -93,7 +93,6 @@ Plug 'tpope/vim-git'  " Git related files' syntax
 
 Plug 'editorconfig/editorconfig-vim'  " Read .editorconfig file for settings
 
-Plug 'alvan/vim-closetag'  " Automatically close tags
 Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'JoosepAlviste/vim-context-commentstring'
