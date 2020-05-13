@@ -199,6 +199,9 @@ zinit light darvid/zsh-poetry
 zinit ice wait lucid
 zinit light agkozak/zsh-z
 
+zinit ice wait lucid src"manydots-magic"
+zinit light knu/zsh-manydots-magic
+
 
 # }}}
 # Aliases {{{
