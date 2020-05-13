@@ -143,7 +143,7 @@ zinit ice svn wait lucid
 zinit snippet PZT::modules/completion
 
 # Do not load the prompt asynchronously since it's super fast anyways!
-zinit ice depth=1 atload'!source $ZDOTDIR/p10k.zsh; _p9k_precmd' nocd
+zinit ice depth=1 atload'!source $ZDOTDIR/p10k.zsh' nocd lucid
 zinit light romkatv/powerlevel10k
 
 # Apply NVM when moving around
