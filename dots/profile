@@ -97,6 +97,7 @@ path=(
   /usr/local/Cellar/maven@3.2/3.2.5/bin
   $HOME/.cargo/bin
   $HOME/.poetry/bin
+  "$(ruby -r rubygems -e 'puts Gem.dir')/bin"
   $path
 )
 
