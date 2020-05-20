@@ -209,6 +209,7 @@ zinit light knu/zsh-manydots-magic
 # Base
 alias sudo='sudo -E'  # Use current user configs
 alias grep='grep  --color=auto --exclude-dir={.git}'
+alias c='clear'
 
 # Programs
 alias vim='nvim'
