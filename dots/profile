@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #
 # Executes commands at login pre-zshrc.
 #
@@ -161,20 +163,21 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/
 # Java
 #
 
-if [ -f /usr/libexec/java_home ]; then
-    export JAVA_HOME="$(/usr/libexec/java_home)"
+if [[ -d "/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home" ]]; then
+    export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
 fi
 
 # Android
-if [[ -d "/usr/local/share/android-sdk" ]]; then
-    export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-    export ANDROID_HOME=/usr/local/share/android-sdk
+if [[ -d "$HOME/Library/Android/sdk" ]]; then
+    export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+    export ANDROID_HOME=$HOME/Library/Android/sdk
 
     path=(
       $path
       $ANDROID_SDK_ROOT/emulator
+      $ANDROID_SDK_ROOT/tools
+      $ANDROID_SDK_ROOT/tools/bin
       $ANDROID_SDK_ROOT/platform-tools
-      $ANDROID_SDK_ROOT/build-tools/$(ls $ANDROID_HOME/build-tools | sort | tail -1)
     )
 fi
 
