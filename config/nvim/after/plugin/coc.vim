@@ -60,10 +60,6 @@ augroup myCocAuGroup
   autocmd FileType typescript,json setlocal formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-  " Disable colorcolumn in floating windows
-  autocmd User CocOpenFloat setlocal colorcolumn=
-  " Disable folds in the floating window -- do not show symbols in foldcolumn
-  autocmd User CocOpenFloat setlocal nofoldenable
 augroup end
 
 
