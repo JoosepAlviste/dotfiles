@@ -1,7 +1,7 @@
 function! joosep#git#issue()
     " Capture group with 2-6 letters and some numbers. For example, matches
     " 'ABC-123' in 'ABC-123-make-it-better'
-    let regex = '^\(feature/\)\?\(fix/\)\?\(\w\{2,6}-\d\+\).*$'
+    let regex = '^\(feature/\|bugfix/\)\?\(fix/\)\?\(\w\{2,6}-\d\+\).*$'
     let branch = fugitive#head()
     let issue = ''
 
