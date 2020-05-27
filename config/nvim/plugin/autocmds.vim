@@ -48,5 +48,10 @@ if has('autocmd')
     " Automatically activate Limelight
     autocmd! User GoyoEnter Limelight
     autocmd! User GoyoLeave Limelight!
+
+    if exists('##TextYankPost')
+      " The TextYankPost autocmd is available from Neovim's `master` branch
+      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 200)
+    endif
   augroup END
 endif
