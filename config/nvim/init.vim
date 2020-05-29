@@ -51,3 +51,6 @@ augroup MyColors
   autocmd ColorScheme * call joosep#colors#material#ModifyColorscheme()
 augroup END
 colorscheme material
+
+" Do not load netrw since we use Dirvish
+let g:loaded_netrwPlugin = 1

@@ -63,10 +63,8 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 " UI extras
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-let g:NERDTreeGitStatusWithFlags = 0
-Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
@@ -146,13 +144,6 @@ Plug 'plasticboy/vim-markdown'
 " CSV
 
 Plug 'chrisbra/csv.vim'
-
-
-"
-" DevIcons must be the last loaded plugin
-"
-
-Plug 'ryanoasis/vim-devicons'
 
 
 " End initialization
