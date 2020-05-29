@@ -170,6 +170,13 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('NERDTreeDirSlash', s:cyan, '', '', '')
   call <sid>hi('NERDTreeFlags', s:blue, '', '', '')
 
+  " Dirvish
+  call <sid>hi('DirvishGitModified', s:yellow, '', '', '')
+  call <sid>hi('DirvishGitStaged', s:green, '', '', '')
+  call <sid>hi('DirvishGitRenamed', s:yellow, '', '', '')
+  call <sid>hi('DirvishGitUnmerged', s:red, '', '', '')
+  call <sid>hi('DirvishGitIgnored', s:comments, '', '', '')
+
   " " tpope/vim-fugitive
   call <sid>hi('diffAdded',   s:green, 'NONE', 'NONE', '')
   call <sid>hi('diffRemoved', s:red,   'NONE', 'NONE', '')
