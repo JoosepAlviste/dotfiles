@@ -20,7 +20,7 @@ let g:dirvish_git_show_icons = 0
 "
 
 " Open a Dirvish split on the left side
-nnoremap <C-n> :leftabove 40vsplit \| silent Dirvish<cr>
+nnoremap <silent> <C-n> :leftabove 40vsplit \| silent Dirvish<cr>
 
 
 "
