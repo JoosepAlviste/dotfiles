@@ -211,6 +211,11 @@ alias sudo='sudo -E'  # Use current user configs
 alias grep='grep  --color=auto --exclude-dir={.git}'
 alias c='clear'
 
+# Navigation
+alias dev='cd ~/Devel'
+alias projects='cd ~/Devel/Projects'
+alias work='cd ~/Devel/Work'
+
 # Programs
 alias vim='nvim'
 alias v='vim'
