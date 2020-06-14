@@ -157,14 +157,11 @@ function! joosep#colors#material#ModifyColorscheme()
   " coc.nvim
   call <sid>hi('CocHighlightText', 'NONE', s:line_numbers, '',     '')
   call <sid>hi('CocErrorFloat', s:red, 'NONE', '', '')
-  call <sid>hi('CocErrorSign', s:red, 'NONE', '', '')
   call <sid>hi('CocErrorHighlight', '', 'NONE', 'undercurl', s:red)
   call <sid>hi('CocWarningFloat', s:orange, 'NONE', '', '')
-  call <sid>hi('CocWarningSign', s:orange, 'NONE', '', '')
   call <sid>hi('CocWarningHighlight', '', 'NONE', 'undercurl', s:orange)
   call <sid>hi('CocInfoFloat', s:cyan, 'NONE', '', '')
-  call <sid>hi('CocInfoSign', s:cyan, 'NONE', '', '')
-  call <sid>hi('CocInfoHighlight', '', 'NONE', 'undercurl', s:cyan)
+  call <sid>hi('CocInfoHighlight', s:comments, 'NONE', 'undercurl', s:comments)
 
   " NERDTree
   call <sid>hi('NERDTreeDirSlash', s:cyan, '', '', '')
