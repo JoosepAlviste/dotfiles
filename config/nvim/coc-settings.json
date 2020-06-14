@@ -13,7 +13,6 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
     "htmldjango": "html"
   },
   "eslint.filetypes": [
