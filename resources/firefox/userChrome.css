@@ -111,6 +111,7 @@ arrowscrollbox[notoverflowing="true"]::part(scrollbutton-down),
 .tabbrowser-arrowscrollbox:not([scrolledtoend])::part(arrowscrollbox-overflow-end-indicator),
 .tabbrowser-arrowscrollbox:not([scrolledtostart])::part(arrowscrollbox-overflow-start-indicator),
 .tabbrowser-arrowscrollbox:not([scrolledtostart])::part(arrowscrollbox-overflow-start-indicator),
+#PanelUI-button,
 #tracking-protection-icon-container {
     border: none !important;
 }
