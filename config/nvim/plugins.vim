@@ -69,7 +69,6 @@ Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
 Plug 'skywind3000/vim-terminal-help'
-Plug 'ludovicchabant/vim-gutentags'  " Generate ctags automatically
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 " Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
 Plug 'knubie/vim-kitty-navigator'
