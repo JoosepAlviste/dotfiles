@@ -17,11 +17,11 @@ syntax sync fromstart
 
 
 "
-" Mappings
+" Plugin settings
 "
 
-" Go to definition
-nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
+let b:ale_linters = []
+let b:ale_fixers = ['eslint']
 
 
 "

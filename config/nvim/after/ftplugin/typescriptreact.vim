@@ -20,15 +20,16 @@ syntax sync fromstart
 
 let b:pear_tree_pairs = {
       \ '<*>': {'closer': '</*>', 'not_like': '/$'},
+      \ '(': {'closer': ')'},
+      \ '[': {'closer': ']'},
+      \ '{': {'closer': '}'},
+      \ "'": {'closer': "'"},
+      \ '"': {'closer': '"'},
+      \ '`': {'closer': '`', 'not_at': ['^\s*']},
       \ }
 
-
-"
-" Mappings
-"
-
-" Go to definition
-nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
+let b:ale_linters = []
+let b:ale_fixers = ['eslint']
 
 
 "

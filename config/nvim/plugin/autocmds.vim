@@ -38,19 +38,13 @@ if has('autocmd')
     " Automatically close Vim if the quickfix window is the only one open
     autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
 
-    " Automatically set some marks when leaving files so that it's easy to 
-    " return
-    autocmd BufLeave *.css,*.scss    normal! mC
-    autocmd BufLeave *.html          normal! mH
-    autocmd BufLeave *.js,*.ts,*.tsx normal! mJ
-    autocmd BufLeave *.py            normal! mP
-
     " Automatically activate Limelight
     autocmd! User GoyoEnter Limelight
     autocmd! User GoyoLeave Limelight!
 
     if exists('##TextYankPost')
       " The TextYankPost autocmd is available from Neovim's `master` branch
+      " Highlight yanked text temporarily
       autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 200)
     endif
   augroup END

@@ -12,8 +12,16 @@ let s:small_l='ℓ'
 function! joosep#settings#foldtext() abort
   let indent_level = indent(v:foldstart)
   let indent = repeat(' ',indent_level)
-  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
-  let l:first=substitute(getline(v:foldstart), '\v *', '', '')
-  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
-  return indent . s:raquo . ' ' . l:first . ' ' . s:middot . s:middot . l:lines . l:dashes
+  let l:lines = '[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
+  let l:first = substitute(getline(v:foldstart), '\v *', '', '')
+  let l:dashes = substitute(v:folddashes, '-', s:middot, 'g')
+
+  " Add info about changed lines within the fold
+  let l:before_lines = s:middot .. s:middot
+  let l:changed = gitgutter#fold#is_changed()
+  if l:changed > 0
+    let l:before_lines = l:before_lines .. '(*)' .. s:middot
+  endif
+
+  return indent . s:raquo . ' ' . l:first . ' ' . l:before_lines . l:lines . l:dashes
 endfunction

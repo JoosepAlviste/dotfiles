@@ -158,6 +158,9 @@ set guicursor+=r-cr-o:hor20-Cursor/lCursor
 " Make PUM a bit transparent
 set pumblend=9
 
+" Improve completion UX a bit
+set completeopt=menuone,noinsert,noselect
+
 
 "
 " Editing

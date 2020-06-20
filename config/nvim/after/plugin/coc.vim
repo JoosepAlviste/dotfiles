@@ -1,3 +1,7 @@
+if !has_key(plugs, 'coc.nvim')
+  finish
+endif
+
 "
 " Mappings
 "

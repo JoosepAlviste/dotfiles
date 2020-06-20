@@ -121,6 +121,23 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('TabLineFill',  s:fg, s:statusline, '',     '')
   call <sid>hi('TabLineSel',   s:cyan, s:bg,       '',     '')
 
+  " LSP
+  call <sid>hi('LspDiagnosticsError', s:red, 'NONE', '', '')
+  call <sid>hi('LspDiagnosticsUnderlineError', 'NONE', '', 'undercurl', s:red)
+  call <sid>hi('LspDiagnosticsWarning', s:yellow, 'NONE', '', '')
+  call <sid>hi('LspDiagnosticsUnderlineWarning', 'NONE', '', 'undercurl', s:yellow)
+  call <sid>hi('LspDiagnosticsInformation', s:blue, 'NONE', '', '')
+  call <sid>hi('LspDiagnosticsUnderlineInformation', 'NONE', '', 'undercurl', s:blue)
+  call <sid>hi('LspDiagnosticsHint', s:darker_fg, 'NONE', '', '')
+  call <sid>hi('LspDiagnosticsUnderlineHint', s:comments, '', 'undercurl', s:comments)
+  call <sid>hi('LspReferenceText', '', s:line_numbers, '', '')
+  call <sid>hi('LspReferenceRead', '', s:line_numbers, '', '')
+  call <sid>hi('LspReferenceWrite', '', s:line_numbers, '', '')
+
+  " ALE
+  call <sid>hi('ALEError', 'NONE', 'NONE', 'undercurl', s:red)
+  call <sid>hi('ALEWarning', 'NONE', 'NONE', 'undercurl', s:orange)
+
   " Git
   call <sid>hi('gitcommitOverflow', s:red, '', '', '')
   call <sid>hi('DiffFile',    s:green,   'NONE', '', '')
