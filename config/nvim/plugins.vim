@@ -71,6 +71,8 @@ Plug 'dense-analysis/ale'
 " Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
 Plug 'SirVer/ultisnips'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " UI extras
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
@@ -111,7 +113,6 @@ Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 " JavaScript
 
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 
 " CSS

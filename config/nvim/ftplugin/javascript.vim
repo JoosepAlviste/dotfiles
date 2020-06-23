@@ -31,11 +31,13 @@ let b:pear_tree_pairs = {
 
 
 "
-" Mappings
+" Plugin settings
 "
 
 let b:ale_linters = ['eslint']
 let b:ale_fixers = ['eslint']
+
+TSBufEnable highlight
 
 
 "
