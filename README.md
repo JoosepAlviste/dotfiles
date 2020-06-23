@@ -68,8 +68,8 @@ Just some notes and things I use on macOS:
 
 # Vim configuration structure
 
-The (neo)vim configuration is split into many files since there is quite a bit 
-of configuration and it would be crazy to have it all in one file. I try to 
+The neovim configuration is split into many files since there is quite a bit of 
+configuration and it would be crazy to have it all in one file. I try to 
 leverage as much of Vims built-in logic for splitting files.
 
 Neovim configuration is located in `config/nvim/`.
@@ -138,6 +138,17 @@ ln ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
 **Note:** Make sure that you do NOT use `-s` when linking `userContent.css`.
 
 There are also other themes in the `resources/firefox/` that could be used.
+
+
+### BetterTouchTool
+
+This repository also includes my BetterTouchTool presets in the `resources/` 
+folder.
+
+The touch bar looks like so:
+
+![Touch Bar 
+preset](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/TouchBar.png)
 
 
 ## Update
