@@ -31,6 +31,8 @@ let b:pear_tree_pairs = {
 let b:ale_linters = []
 let b:ale_fixers = ['eslint']
 
+TSBufEnable highlight
+
 
 "
 " Commands

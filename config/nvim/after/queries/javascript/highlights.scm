@@ -70,8 +70,3 @@
 
 (unary_expression
   operator: (["!" "+" "-" "~"]) @operator)
-
-
-; JSX
-
-(jsx_text) @function
