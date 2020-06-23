@@ -66,6 +66,10 @@ Plug 'neovim/nvim-lsp'
 Plug 'haorenW1025/completion-nvim'
 Plug 'dense-analysis/ale'
 
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
+
 " UI extras
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'

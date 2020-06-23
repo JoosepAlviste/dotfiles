@@ -1,13 +1,11 @@
 lua <<EOF
   local nvim_lsp = require('nvim_lsp')
   local nvim_command = vim.api.nvim_command
-  local completion = require('completion')
   local completion_utils = require('completion_utils')
 
   completion_utils.configure_lsp()
 
   local on_attach = function(client, bufnr)
-    completion.on_attach(client, bufnr)
     -- Show diagnostics details on cursor hold
     -- nvim_command('autocmd CursorHold <buffer> lua require"completion_utils".show_line_diagnostics()')
 
@@ -46,6 +44,37 @@ lua <<EOF
   end
 EOF
 
+
+"
+" Options
+"
+
 let g:completion_enable_auto_paren = 1
-let g:completion_confirm_key = "\<C-y>"
 let g:completion_matching_ignore_case = 1
+let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_sorting = 'none'
+let g:completion_customize_lsp_label = {
+      \ 'Function': ' ',
+      \ 'Method': ' ',
+      \ 'Reference': ' ',
+      \ 'Enum': ' ',
+      \ 'Field': 'ﰠ ',
+      \ 'Keyword': ' ',
+      \ 'Variable': ' ',
+      \ 'Constant': ' ',
+      \ 'Folder': ' ',
+      \ 'Snippet': ' ',
+      \ 'Operator': ' ',
+      \ 'Module': ' ',
+      \ 'Text': 'ﮜ ',
+      \ 'Buffers': ' ',
+      \ 'Class': ' ',
+      \ 'Interface': ' ',
+      \}
+let g:completion_chain_complete_list = {
+      \'default' : [
+      \    {'complete_items': ['snippet', 'lsp']},
+      \    {'mode': '<c-p>'},
+      \    {'mode': '<c-n>'}
+      \]
+      \}
