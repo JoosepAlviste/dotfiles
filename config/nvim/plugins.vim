@@ -46,6 +46,7 @@ Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'junegunn/vim-slash'  " Improve searching
 Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
+Plug 'tpope/vim-unimpaired'
 
 
 "
