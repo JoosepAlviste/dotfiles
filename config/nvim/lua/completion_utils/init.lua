@@ -1,7 +1,9 @@
+local util = require 'vim.lsp.util'
+local nvim_lsp = require('nvim_lsp')
 local split = vim.split
 local api = vim.api
 local validate = vim.validate
-local util = require 'vim.lsp.util'
+local nvim_command = vim.api.nvim_command
 
 -- These functions are copied from Neovim source 
 -- (https://github.com/neovim/neovim/blob/44fe8828f06a22bc9aa3617a6fd8aae447a838de/runtime/lua/vim/lsp/util.lua)
@@ -53,7 +55,7 @@ end
 -- https://github.com/neovim/neovim/tree/master/src/runtime/lua/vim/lsp/callback.lua
 -- Removed the lines where the virtual text is shown as well as where the signs 
 -- are shown
-local function configure_lsp()
+local function customize_diagnostics()
     local method = 'textDocument/publishDiagnostics'
     local default_callback = vim.lsp.callbacks[method]
     vim.lsp.callbacks[method] = function(err, method, result, client_id)
@@ -91,7 +93,50 @@ local function configure_lsp()
         util.buf_diagnostics_underline(bufnr, result.diagnostics)
         -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
         -- util.buf_diagnostics_signs(bufnr, result.diagnostics)
-        vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
+        nvim_command("doautocmd User LspDiagnosticsChanged")
+    end
+end
+
+-- Called when an LSP is attached to a buffer
+local on_attach = function(client, bufnr)
+    -- Show diagnostics details on cursor hold
+    -- nvim_command('autocmd CursorHold <buffer> lua require"completion_utils".show_line_diagnostics()')
+
+    -- Highlight symbol on cursor hold
+    nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+    nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+    nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'i', '<c-space>', 'completion#trigger_completion()', {
+        noremap = true, silent = true, expr = true,
+    })
+    api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua require"completion_utils".show_line_diagnostics()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+end
+
+local function configure_lsp()
+    customize_diagnostics()
+
+    -- Attach language servers
+    local servers = {
+        'tsserver',
+        -- 'flow',
+    }
+    for _, lsp in ipairs(servers) do
+        nvim_lsp[lsp].setup {
+            on_attach = on_attach,
+        }
     end
 end
 
