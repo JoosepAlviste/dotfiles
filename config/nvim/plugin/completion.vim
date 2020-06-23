@@ -11,7 +11,7 @@ lua require'completion_utils'.configure_lsp()
 
 let g:completion_enable_auto_paren = 1
 let g:completion_matching_ignore_case = 1
-let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_sorting = 'none'
 let g:completion_customize_lsp_label = {
       \ 'Function': ' ',
