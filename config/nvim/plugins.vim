@@ -43,7 +43,6 @@ Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 Plug 'machakann/vim-sandwich'  " Surround stuff with things
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
-Plug 'junegunn/vim-slash'  " Improve searching
 Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 Plug 'tpope/vim-unimpaired'
