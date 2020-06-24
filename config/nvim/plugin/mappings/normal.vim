@@ -44,3 +44,9 @@ nnoremap Q @@
 
 " Split line with S
 nnoremap <silent> S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
+
+" Open the file under the cursor with the default file handler for that file 
+" type (e.g., Firefox for `http` links, etc.)
+" This mapping normally comes from `netrw`, but since we disable that (for 
+" dirvish), then we need to manually configure the mapping again
+nnoremap <silent> gx :call system('open ' . expand('%'))<CR>
