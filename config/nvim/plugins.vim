@@ -71,6 +71,7 @@ Plug 'dense-analysis/ale'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
 Plug 'SirVer/ultisnips'
+Plug 'mattn/emmet-vim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
