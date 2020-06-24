@@ -18,15 +18,10 @@ syntax sync fromstart
 
 " Plugin settings
 
-let b:pear_tree_pairs = {
+let b:pear_tree_pairs = extend(deepcopy(g:pear_tree_pairs), {
       \ '<*>': {'closer': '</*>', 'not_like': '/$'},
-      \ '(': {'closer': ')'},
-      \ '[': {'closer': ']'},
-      \ '{': {'closer': '}'},
-      \ "'": {'closer': "'"},
-      \ '"': {'closer': '"'},
-      \ '`': {'closer': '`', 'not_at': ['^\s*']},
-      \ }
+      \ '/\*\*': {'closer': '\*/'},
+      \ }, 'keep')
 
 let b:ale_linters = []
 let b:ale_fixers = ['eslint']
