@@ -13,3 +13,14 @@ function! joosep#filesystem#create_file_or_folder(path)
     execute 'silent !touch %/' .. a:path
   endif
 endfunction
+
+" Move the given file (`a:from`) to the given destination (`a:to`) and create 
+" folders as necessary
+" `a:from` is assumed to be a shell-escaped relative path from `pwd`
+" `a:to` is assumed to be a shell-escaped absolute path
+function! joosep#filesystem#move(from, to)
+  let l:to = trim(a:to, "'")
+  let l:folder = shellescape(fnamemodify(l:to, ':h'))
+  execute 'silent !mkdir -p ' .. l:folder
+  execute 'silent !mv ' .. a:from .. ' ' .. a:to
+endfunction

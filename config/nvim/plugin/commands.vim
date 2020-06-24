@@ -18,3 +18,5 @@ command! -bang Project call fzf#run(fzf#wrap(
 			\ <bang>0))
 
 command! -nargs=1 NewFile call joosep#filesystem#create_file_or_folder(<f-args>)
+
+command! -nargs=+ Move call joosep#filesystem#move(<f-args>)
