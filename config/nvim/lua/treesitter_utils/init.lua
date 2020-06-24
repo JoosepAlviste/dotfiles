@@ -16,8 +16,6 @@ local function customize_highlights()
 end
 
 local function configure_treesitter()
-    print('hello')
-
     treesitter_configs.setup {
         highlight = {
             enable = false,

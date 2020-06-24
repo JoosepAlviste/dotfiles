@@ -43,4 +43,4 @@ nnoremap <C-i> <C-i>zz
 nnoremap Q @@
 
 " Split line with S
-nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
+nnoremap <silent> S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
