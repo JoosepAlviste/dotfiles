@@ -107,6 +107,8 @@ Plug 'tpope/vim-commentary'  " Comment stuff out easily
 " Commentstring based on location in file - JSX & TSX have different comments
 Plug 'JoosepAlviste/vim-context-commentstring'
 
+Plug 'AndrewRadev/tagalong.vim'  " Automatically change tags
+
 
 " Typescript
 
