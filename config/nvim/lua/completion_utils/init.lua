@@ -138,6 +138,19 @@ local function configure_lsp()
             on_attach = on_attach,
         }
     end
+
+    nvim_lsp.pyls_ms.setup {
+        on_attach = on_attach;
+        root_dir = nvim_lsp.util.root_pattern('requirements.txt', 'Pipfile', '.git');
+        settings = {
+            python = {
+                envFile = './.env';
+                -- autoComplete = {
+                --     extraPaths = {'./subfolder'};
+                -- };
+            };
+        };
+    }
 end
 
 return {
