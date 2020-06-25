@@ -30,7 +30,9 @@ local function configure_treesitter()
                 node_decremental = "grm",      -- decrement to the previous node
             },
         },
-        ensure_installed = {'typescript', 'javascript', 'tsx', 'python'},
+        ensure_installed = {
+            'typescript', 'javascript', 'tsx', 'python', 'json',
+        },
     }
 
     customize_highlights()

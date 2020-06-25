@@ -102,12 +102,20 @@ local on_attach = function(client, bufnr)
     -- Show diagnostics details on cursor hold
     -- nvim_command('autocmd CursorHold <buffer> lua require"completion_utils".show_line_diagnostics()')
 
+    local can = client.resolved_capabilities
+
     -- Highlight symbol on cursor hold
-    nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+    if can.document_highlight then
+        nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+        nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+        nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+    end
 
     -- Mappings.
+    api.nvim_buf_set_keymap(bufnr, 'i', '<c-space>', 'completion#trigger_completion()', {
+        noremap = true, silent = true, expr = true,
+    })
+
     local opts = { noremap=true, silent=true }
     api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     api.nvim_buf_set_keymap(bufnr, 'n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
@@ -117,12 +125,9 @@ local on_attach = function(client, bufnr)
     api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
     api.nvim_buf_set_keymap(bufnr, 'n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
     api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    api.nvim_buf_set_keymap(bufnr, 'i', '<c-space>', 'completion#trigger_completion()', {
-        noremap = true, silent = true, expr = true,
-    })
-    api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua require"completion_utils".show_line_diagnostics()<cr>', opts)
     api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua require"completion_utils".show_line_diagnostics()<cr>', opts)
 end
 
 local function configure_lsp()
@@ -148,6 +153,36 @@ local function configure_lsp()
                 -- autoComplete = {
                 --     extraPaths = {'./subfolder'};
                 -- };
+            };
+        };
+    }
+
+    nvim_lsp.jsonls.setup {
+        on_attach = on_attach;
+        settings = {
+            json = {
+                schemas = {
+                    {
+                        fileMatch = {'package.json'};
+                        url = 'https://json.schemastore.org/package';
+                    };
+                    {
+                        fileMatch = {'tsconfig.json'};
+                        url = 'https://json.schemastore.org/tsconfig';
+                    };
+                    {
+                        fileMatch = {'jsconfig.json'};
+                        url = 'https://json.schemastore.org/jsconfig';
+                    };
+                    {
+                        fileMatch = {'.eslintrc'};
+                        url = 'https://json.schemastore.org/eslintrc';
+                    };
+                    {
+                        fileMatch = {'.prettierrc', '.prettierrc.json'};
+                        url = 'https://json.schemastore.org/prettierrc';
+                    };
+                };
             };
         };
     }
