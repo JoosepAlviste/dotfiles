@@ -96,17 +96,6 @@ function! joosep#colors#tender#ModifyColorscheme()
   call <sid>hi('jsDocIdentifier', s:yellow3, '', '', '')
   call <sid>hi('jsDocTags', s:green3, '', '', '')
 
-  " coc.nvim
-  call <sid>hi('CocErrorFloat', s:red1, 'NONE', '', '')
-  call <sid>hi('CocErrorSign', s:red1, 'NONE', '', '')
-  call <sid>hi('CocErrorHighlight', '', 'NONE', 'undercurl', s:red1)
-  call <sid>hi('CocWarningFloat', s:yellow2, 'NONE', '', '')
-  call <sid>hi('CocWarningSign', s:yellow2, 'NONE', '', '')
-  call <sid>hi('CocWarningHighlight', '', 'NONE', 'undercurl', s:yellow2)
-  call <sid>hi('CocInfoFloat', s:blue2, 'NONE', '', '')
-  call <sid>hi('CocInfoSign', s:blue2, 'NONE', '', '')
-  call <sid>hi('CocInfoHighlight', '', 'NONE', 'undercurl', s:blue2)
-
   " Custom colors
   call <sid>hi('StatuslineAccent',  s:blue2,   s:dark, '', '')
   call <sid>hi('StatuslineBoolean', s:yellow1, s:dark, '', '')

@@ -61,7 +61,6 @@ Plug $HOME . '/.config/fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 " Autocompletion
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 Plug 'neovim/nvim-lsp'
 Plug 'haorenW1025/completion-nvim'
 Plug 'dense-analysis/ale'
