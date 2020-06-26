@@ -127,21 +127,6 @@ function! joosep#colors#oceanicnext#ModifyColorscheme()
     call <sid>hi('pythonDecorator', s:base0D, '', '', '')
     call <sid>hi('pythonDecoratorName', s:base0D, '', '', '')
 
-    " numirias/semshi
-    call <sid>hi('semshiLocal',           s:base0A, '', 'NONE',      '')
-    call <sid>hi('semshiGlobal',          s:base0A, '', 'NONE',      '')
-    call <sid>hi('semshiImported',        s:base0A, '', 'NONE',      '')
-    call <sid>hi('semshiParameter',       s:base0D, '', 'NONE',      '')
-    call <sid>hi('semshiParameterUnused', s:base03, '', 'undercurl', '')
-    " call <sid>hi('semshiFree            ctermfg=218 guifg=#ffafd7')
-    call <sid>hi('semshiBuiltin',         s:base0E, '', '', '')
-    call <sid>hi('semshiAttribute',       s:base0C, '', '', '')
-    call <sid>hi('semshiSelf',            s:base0E, '', '', '')
-    call <sid>hi('semshiUnresolved',      s:none,   '', 'undercurl', s:base09)
-    call <sid>hi('semshiSelected',        s:none,   s:highlight, '', '')
-
-    sign define semshiError text=• texthl=CocErrorSign
-
     " Custom colors
     call <sid>hi('StatuslineAccent',    s:base0C,    s:statusline, '', '')
     call <sid>hi('StatuslineBoolean',   s:base09,    s:statusline, '', '')

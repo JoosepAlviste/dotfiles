@@ -223,20 +223,6 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('pythonDecorator', s:violet, '', '', '')
   call <sid>hi('pythonDot', s:cyan, '', '', '')
 
-  " numirias/semshi
-  call <sid>hi('semshiLocal',           s:yellow, '', 'NONE',      '')
-  call <sid>hi('semshiGlobal',          s:yellow, '', 'NONE',      '')
-  call <sid>hi('semshiImported',        s:yellow, '', 'NONE',      '')
-  call <sid>hi('semshiParameter',       s:blue, '', 'NONE',      '')
-  call <sid>hi('semshiParameterUnused', s:darker_fg, '', 'undercurl', '')
-  call <sid>hi('semshiBuiltin',         s:purple, '', '', '')
-  call <sid>hi('semshiAttribute',       s:cyan, '', '', '')
-  call <sid>hi('semshiSelf',            s:purple, '', '', '')
-  call <sid>hi('semshiUnresolved',      'NONE',   '', 'undercurl', s:orange)
-  call <sid>hi('semshiSelected',        'NONE',   s:line_numbers, '', '')
-
-  sign define semshiError text=• texthl=CocErrorSign
-
   " Vimscript
   call <sid>hi('vimVar',      s:paleblue, '', '', '')
   call <sid>hi('vimFuncVar',  s:paleblue, '', '', '')
