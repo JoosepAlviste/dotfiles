@@ -14,26 +14,30 @@ augroup MyStatusline
   autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusline()
 augroup END
 
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-
-  if get(info, 'error', 0)
-    call add(msgs, Color(1, 'StatuslineError', 'E' . info['error']))
+function! s:LspStatus(bufnum) abort
+  let l:sl = ''
+  let l:ale_diagnostics = ale#statusline#Count(a:bufnum)
+  let l:errors = luaeval('vim.lsp.util.buf_diagnostics_count("Error")')
+  " Add ALE errors
+  let l:errors = l:errors + l:ale_diagnostics.error
+  let l:errors = l:errors + l:ale_diagnostics.style_error
+  if l:errors
+    let l:sl .= '%#StatuslineError#E:' .. l:errors
   endif
-
-  if get(info, 'warning', 0)
-    call add(msgs, Color(1, 'StatuslineWarning', 'W' . info['warning']))
+  let l:warnings = luaeval('vim.lsp.util.buf_diagnostics_count("Warning")')
+  " Add ALE warnings
+  let l:warnings = l:warnings + l:ale_diagnostics.warning
+  let l:warnings = l:warnings + l:ale_diagnostics.style_warning
+  if l:warnings
+    let l:sl .= '%#StatuslineWarning# W:' .. l:warnings
   endif
-
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  return l:sl
 endfunction
 
 " This function just outputs the content colored by the supplied colorgroup 
 " number, e.g. num = 2 -> User2 it only colors the input if the window is the 
 " currently focused one
-function! Color(active, num, content)
+function! s:Color(active, num, content)
   if a:active
     return '%#' . a:num . '#' . a:content . '%*'
   else
@@ -51,30 +55,30 @@ function! Status(winnum)
   let stat = ''
 
   " File name
-  let stat .= Color(active, 'StatuslineAccent', active ? ' »' : ' «')
+  let stat .= <SID>Color(active, 'StatuslineAccent', active ? ' »' : ' «')
   let stat .= ' %<'
   let stat .= '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
-  let stat .= ' ' . Color(active, 'StatuslineAccent', active ? '«' : '»')
+  let stat .= ' ' . <SID>Color(active, 'StatuslineAccent', active ? '«' : '»')
 
   " File modified
   let modified = getbufvar(bufnum, '&modified')
-  let stat .= Color(active, 'StatuslineBoolean', modified ? ' +' : '')
+  let stat .= <SID>Color(active, 'StatuslineBoolean', modified ? ' +' : '')
 
   " Read only
   let readonly = getbufvar(bufnum, '&readonly')
-  let stat .= Color(active, 'StatuslineBoolean', readonly ? ' ‼' : '')
+  let stat .= <SID>Color(active, 'StatuslineBoolean', readonly ? ' ‼' : '')
 
   " Paste
   if active && &paste
-    let stat .= Color(active, 'StatuslineBoolean', ' P')
+    let stat .= <SID>Color(active, 'StatuslineBoolean', ' P')
   endif
 
   " Right side
   let stat .= '%='
 
-  " CoC status
+  " LSP & ALE status
   if active
-    let stat .= Color(active, 'Statusline', StatusDiagnostic() . '  ')
+    let stat .= <SID>Color(active, 'Statusline', <SID>LspStatus(bufnum) . '  ')
   endif
 
   return stat
