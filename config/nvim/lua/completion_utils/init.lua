@@ -135,7 +135,7 @@ local function configure_lsp()
 
     -- Attach language servers
     local servers = {
-        'tsserver',
+        'tsserver', 'html',
         -- 'flow',
     }
     for _, lsp in ipairs(servers) do
