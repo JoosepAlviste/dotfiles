@@ -30,6 +30,7 @@ let s:loaded_conf = 0
 let s:conf = {
       \ 'flow.enabled': v:false,
       \ 'tsserver.enabled': v:true,
+      \ 'python.prospector.args': '',
       \ }
 
 " It is possible to create a file in `.vim/vim-settings.json` which can be 

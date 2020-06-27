@@ -6,7 +6,8 @@
   "description": "This schema specifies the custom Vim configuration thingy that my Vim set up can read.",
   "default": {
     "flow.enabled": false,
-    "tsserver.enabled": true
+    "tsserver.enabled": true,
+    "python.prospector.args": ""
   },
   "examples": [
     {
@@ -37,6 +38,16 @@
       "examples": [
         true,
         false
+      ]
+    },
+    "python.prospector.args": {
+      "$id": "#/properties/python.prospector.args",
+      "type": "string",
+      "title": "Arguments for Prospector",
+      "descriptions": "CLI arguments to pass to prospector",
+      "default": "",
+      "examples": [
+        "--profile subfolder/.prospector.yaml"
       ]
     }
   }
