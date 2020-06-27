@@ -192,6 +192,10 @@ local function configure_lsp()
                         fileMatch = {'.prettierrc', '.prettierrc.json'};
                         url = 'https://json.schemastore.org/prettierrc';
                     };
+                    {
+                        fileMatch = {'.vim/vim-settings.json'};
+                        url = 'https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/resources/vim/vim-settings.schema.json';
+                    };
                 };
             };
         };
