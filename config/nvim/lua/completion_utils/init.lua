@@ -160,9 +160,9 @@ local function configure_lsp()
         settings = {
             python = {
                 envFile = './.env';
-                -- autoComplete = {
-                --     extraPaths = {'./subfolder'};
-                -- };
+                autoComplete = {
+                    extraPaths = conf['python.autoComplete.extraPaths'];
+                };
             };
         };
     }
@@ -195,6 +195,10 @@ local function configure_lsp()
                     {
                         fileMatch = {'.vim/vim-settings.json'};
                         url = 'https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/resources/vim/vim-settings.schema.json';
+                    };
+                    {
+                        fileMatch = {'.schema.json'};
+                        url = 'https://json-schema.org/draft/2019-09/schema';
                     };
                 };
             };

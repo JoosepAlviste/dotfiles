@@ -31,6 +31,7 @@ let s:conf = {
       \ 'flow.enabled': v:false,
       \ 'tsserver.enabled': v:true,
       \ 'python.prospector.args': '',
+      \ 'python.autoComplete.extraPaths': [],
       \ }
 
 " It is possible to create a file in `.vim/vim-settings.json` which can be 

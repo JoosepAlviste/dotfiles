@@ -7,7 +7,8 @@
   "default": {
     "flow.enabled": false,
     "tsserver.enabled": true,
-    "python.prospector.args": ""
+    "python.prospector.args": "",
+    "python.autoComplete.extraPaths": []
   },
   "examples": [
     {
@@ -48,6 +49,20 @@
       "default": "",
       "examples": [
         "--profile subfolder/.prospector.yaml"
+      ]
+    },
+    "python.autoComplete.extraPaths": {
+      "$id": "#/properties/python.autoComplete.extraPaths",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "uniqueItems": true
+      },
+      "title": "Extra paths for Python",
+      "descriptions": "Extra paths that will be considered for Python autocompletion. Useful if your project root is not the same as the Python project root.",
+      "default": [],
+      "examples": [
+        ["./subfolder"]
       ]
     }
   }
