@@ -131,13 +131,23 @@ local on_attach = function(client, bufnr)
 end
 
 local function configure_lsp()
+    local conf = vim.fn['joosep#settings#get_conf']()
+
     customize_diagnostics()
 
     -- Attach language servers
     local servers = {
-        'tsserver', 'html', 'dockerls', 'cssls',
-        -- 'flow',
+        'html', 'dockerls', 'cssls',
     }
+    -- Check if the language servers should be enabled from the configuration 
+    -- file
+    if conf['flow.enabled'] then
+        table.insert(servers, 'flow')
+    end
+    if conf['tsserver.enabled'] then
+        table.insert(servers, 'tsserver')
+    end
+
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup {
             on_attach = on_attach,

@@ -25,3 +25,31 @@ function! joosep#settings#foldtext() abort
 
   return indent . s:raquo . ' ' . l:first . ' ' . l:before_lines . l:lines . l:dashes
 endfunction
+
+let s:loaded_conf = 0
+let s:conf = {
+      \ 'flow.enabled': v:false,
+      \ 'tsserver.enabled': v:true,
+      \ }
+
+" It is possible to create a file in `.vim/vim-settings.json` which can be 
+" used to configure some things per-project. For example, which LSP settings 
+" to use or which linter settings to use. The format of the file can be seen 
+" from the default configuration in `s:conf`.
+function! joosep#settings#get_conf() abort
+  if s:loaded_conf
+    return s:conf
+  endif
+
+  let l:settings_file_name = '.vim/vim-settings.json'
+  if !file_readable(l:settings_file_name)
+    let s:loaded_conf = 1
+    return s:conf
+  endif
+
+  let l:settings = json_decode(readfile(l:settings_file_name))
+  call extend(s:conf, l:settings, 'force')
+
+  let s:loaded_conf = 1
+  return s:conf
+endfunction
