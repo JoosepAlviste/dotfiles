@@ -119,6 +119,10 @@ zinit light junegunn/fzf
 zinit ice wait lucid as'program' pick'bin/git-dsf'
 zinit load zdharma/zsh-diff-so-fancy
 
+# fd
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+
 # }}}
 # Plugins {{{
 # Use Zinit's way of installing plugins (in  T U R B O  mode)
