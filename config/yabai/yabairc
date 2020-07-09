@@ -44,6 +44,10 @@ yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
+yabai -m config window_border_width 3
+yabai -m config active_window_border_color 0xff82AAff
+yabai -m config normal_window_border_color 0xff171717
+
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config top_padding                  20
