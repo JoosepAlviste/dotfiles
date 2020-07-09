@@ -69,11 +69,6 @@ else
 	export EDITOR=nvim
 fi
 
-# Use <C-p> outside of Vim to open files
-function zle-fzf { nvim "$(rg --files | fzf)" }
-zle -N zle-fzf
-bindkey '^P' zle-fzf
-
 # }}}
 # Programs {{{
 
