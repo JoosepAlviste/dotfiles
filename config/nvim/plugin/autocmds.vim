@@ -45,7 +45,7 @@ if has('autocmd')
     if exists('##TextYankPost')
       " The TextYankPost autocmd is available from Neovim's `master` branch
       " Highlight yanked text temporarily
-      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 200)
+      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'Substitute', timeout = 200 })
     endif
 
     " Set up `completion-nvim` for all types of buffers (not just LSP-enabled 
