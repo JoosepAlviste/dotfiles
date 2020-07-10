@@ -24,12 +24,17 @@ nnoremap <buffer><silent> <C-p> :FZF<cr>
 
 " Show a prompt to move the file that the cursor is currently on
 function! s:Move()
-  let l:extension = fnamemodify(getline('.'), ':e')
+  let l:file = fnameescape(getline('.'))
+
+  " The files to populate the prompt with
+  let l:current_file = shellescape(fnamemodify(l:file, ':.'))
+  let l:destination = shellescape(l:file)
+
+  " Calculate how many times to go left to position the cursor in a 
+  " comfortable place for editing (before the file extension)
+  let l:extension = fnamemodify(l:file, ':e')
   let l:extension_len = strlen(l:extension) + 2  " Add `'` and `.`
   let l:go_left = repeat("\<left>", l:extension_len)
 
-  let l:current_file = shellescape(fnamemodify(getline('.'), ':.'))
-  let l:destination = shellescape(getline('.'))
-
-  return ":\<C-u>Move " . l:current_file . ' ' . l:destination . l:go_left
+  return ":\<C-u>Move " .. l:current_file .. ' ' .. l:destination .. l:go_left
 endfunction

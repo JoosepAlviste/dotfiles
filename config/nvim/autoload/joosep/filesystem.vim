@@ -20,7 +20,15 @@ endfunction
 " `a:to` is assumed to be a shell-escaped absolute path
 function! joosep#filesystem#move(from, to)
   let l:to = trim(a:to, "'")
-  let l:folder = shellescape(fnamemodify(l:to, ':h'))
-  execute 'silent !mkdir -p ' .. l:folder
+  if l:to[strlen(l:to) - 1] ==# '/'
+    " Remove the trailing slash from the string so that `fnamemodify` 
+    " correctly gives the parent directoy
+    let l:to = l:to[:-2]
+  endif
+
+  " Create the parent directory if required
+  let l:parent_directory = shellescape(fnamemodify(l:to, ':h'))
+  execute 'silent !mkdir -p ' .. l:parent_directory
+
   execute 'silent !mv ' .. a:from .. ' ' .. a:to
 endfunction
