@@ -67,8 +67,8 @@ Plug 'haorenW1025/completion-nvim'
 Plug 'dense-analysis/ale'
 
 " Snippets
-" Plug 'hrsh7th/vim-vsnip'
-" Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 
