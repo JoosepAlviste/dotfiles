@@ -18,8 +18,7 @@ end
 local function configure_treesitter()
     treesitter_configs.setup {
         highlight = {
-            enable = false,
-            disable = {},
+            enable = true,
         },
         incremental_selection = {
             enable = true,

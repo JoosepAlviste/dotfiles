@@ -13,10 +13,3 @@ setlocal softtabstop=2
 "
 
 nnoremap <silent> <buffer> o :call joosep#expand#insertComma()<cr>
-
-
-"
-" Plugin settings
-"
-
-TSBufEnable highlight
