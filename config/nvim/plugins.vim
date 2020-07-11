@@ -149,10 +149,5 @@ Plug 'godlygeek/tabular'  " Required by markdown
 Plug 'plasticboy/vim-markdown'
 
 
-" CSV
-
-Plug 'chrisbra/csv.vim'
-
-
 " End initialization
 call plug#end()
