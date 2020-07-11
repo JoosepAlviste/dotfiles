@@ -47,9 +47,5 @@ if has('autocmd')
       " Highlight yanked text temporarily
       autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'Substitute', timeout = 200 })
     endif
-
-    " Set up `completion-nvim` for all types of buffers (not just LSP-enabled 
-    " ones)
-    autocmd BufEnter * lua require'completion'.on_attach()
   augroup END
 endif

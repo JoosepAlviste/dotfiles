@@ -116,6 +116,18 @@ function! joosep#colors#oceanicnext#ModifyColorscheme()
     call <sid>hi('mkdCode',      s:base0E,     '', '',          '')
     call <sid>hi('mkdCodeDelimiter', s:base0E, '', '',          '')
 
+    " coc.nvim
+    call <sid>hi('CocHighlightText', '', s:highlight, '',     '')
+    call <sid>hi("CocErrorFloat", s:error_red, s:none, '', '')
+    call <sid>hi("CocErrorSign", s:error_red, s:none, '', '')
+    call <sid>hi("CocErrorHighlight", '', s:none, 'undercurl', s:error_red)
+    call <sid>hi("CocWarningFloat", s:base09, s:none, '', '')
+    call <sid>hi("CocWarningSign", s:base09, s:none, '', '')
+    call <sid>hi("CocWarningHighlight", '', s:none, 'undercurl', s:base09)
+    call <sid>hi("CocInfoFloat", s:base0D, s:none, '', '')
+    call <sid>hi("CocInfoSign", s:base0D, s:none, '', '')
+    call <sid>hi("CocInfoHighlight", '', s:none, 'undercurl', s:base0D)
+
     " NERDTree
     call <sid>hi('NERDTreeCWD', s:base0B, s:none, '', '')
 

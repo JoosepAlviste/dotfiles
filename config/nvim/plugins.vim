@@ -62,15 +62,7 @@ Plug $HOME . '/.config/fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 " Autocompletion
-Plug 'neovim/nvim-lsp'
-Plug 'haorenW1025/completion-nvim'
-Plug 'dense-analysis/ale'
-
-" Snippets
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'  " Currently this seems to be a bit broken
-Plug 'SirVer/ultisnips'
-Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 Plug 'nvim-treesitter/nvim-treesitter'
 

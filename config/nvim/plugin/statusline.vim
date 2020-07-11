@@ -14,24 +14,20 @@ augroup MyStatusline
   autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusline()
 augroup END
 
-function! s:LspStatus(bufnum) abort
-  let l:sl = ''
-  let l:ale_diagnostics = ale#statusline#Count(a:bufnum)
-  let l:errors = luaeval('vim.lsp.util.buf_diagnostics_count("Error")')
-  " Add ALE errors
-  let l:errors = l:errors + l:ale_diagnostics.error
-  let l:errors = l:errors + l:ale_diagnostics.style_error
-  if l:errors
-    let l:sl .= '%#StatuslineError#E:' .. l:errors
+function! s:LspStatus() abort
+ let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+
+  if get(info, 'error', 0)
+    call add(msgs, <SID>Color(1, 'StatuslineError', 'E' . info['error']))
   endif
-  let l:warnings = luaeval('vim.lsp.util.buf_diagnostics_count("Warning")')
-  " Add ALE warnings
-  let l:warnings = l:warnings + l:ale_diagnostics.warning
-  let l:warnings = l:warnings + l:ale_diagnostics.style_warning
-  if l:warnings
-    let l:sl .= '%#StatuslineWarning# W:' .. l:warnings
+
+  if get(info, 'warning', 0)
+    call add(msgs, <SID>Color(1, 'StatuslineWarning', 'W' . info['warning']))
   endif
-  return l:sl
+
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 
 " This function just outputs the content colored by the supplied colorgroup 
@@ -78,7 +74,7 @@ function! Status(winnum)
 
   " LSP & ALE status
   if active
-    let stat .= <SID>Color(active, 'Statusline', <SID>LspStatus(bufnum) . '  ')
+    let stat .= <SID>LspStatus() .. '  '
   endif
 
   return stat
