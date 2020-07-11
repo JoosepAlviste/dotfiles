@@ -138,9 +138,6 @@ Plug 'jparise/vim-graphql'
 " Text editing
 "
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
 " LaTeX
 
 Plug 'lervag/vimtex'  " LaTeX writing utilities
