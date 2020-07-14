@@ -32,3 +32,11 @@ let b:ale_fixers = ['eslint']
 "
 
 command! -bang AddReturn call joosep#javascript#add_return()
+
+
+"
+" Mappings
+"
+
+" Go to definition
+nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
