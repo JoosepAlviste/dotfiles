@@ -102,6 +102,8 @@ shift + alt - f : yabai -m window --toggle native-fullscreen
 alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
+alt - v : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.visible == 1 and .subrole != \"AXUnknown\")) | reverse | nth(index(map(select(.focused == 1))) - 1).id")"
+
 # toggle sticky
 alt - s : yabai -m window --toggle sticky
 
