@@ -45,6 +45,13 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang Directories call fzf#run(fzf#wrap({'source': 'fd --type d'}))
 
+command! -bang CWDHistory call fzf#run(fzf#wrap({
+  \ 'source': s:DirectoryHistory(),
+  \ 'options': [
+  \   '--prompt', 'CWDHistory> ',
+  \   '--multi',
+  \ ]}, <bang>0)) 
+
 
 "
 " Mappings
@@ -63,7 +70,7 @@ nnoremap <silent> <leader>ff :Rg!<cr>
 nnoremap <silent> <leader>b :Buffer<cr>
 nnoremap <silent> <C-b> :Buffer<cr>
 " Vim file editing history
-nnoremap <silent> <leader>fr :History<cr>
+nnoremap <silent> <leader>fr :CWDHistory<cr>
 nnoremap <silent> <leader>fh :Helptags<cr>
 " Commands history
 nnoremap <silent> <leader>f: :History:<cr>
@@ -98,6 +105,19 @@ function! s:GrepOperator(type)
   let @@ = saved_unnamed_register
 endfunction
 
+function! s:DirectoryHistory()
+  return fzf#vim#_uniq(map(
+    \ filter([expand('%')], 'len(v:val)')
+    \   + filter(map(s:buflisted_sorted(), 'bufname(v:val)'), 'len(v:val)')
+    \   + filter(copy(v:oldfiles), "s:FileIsInCWD(fnamemodify(v:val, ':p'))"),
+    \ 'fnamemodify(v:val, ":~:.")'))
+endfunction 
+
+function! s:FileIsInCWD(file)
+  return filereadable(a:file) && match(a:file, getcwd() . '/') == 0
+endfunction 
+
+
 "
 " Statusline in FZF window
 "
@@ -107,3 +127,22 @@ function! s:FzfStatusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>FzfStatusline()
+
+
+"
+" Script functions copied from fzf.vim to make things work
+"
+
+function! s:buflisted_sorted()
+  return sort(s:buflisted(), 's:sort_buffers')
+endfunction
+
+function! s:sort_buffers(...)
+  let [b1, b2] = map(copy(a:000), 'get(g:fzf#vim#buffers, v:val, v:val)')
+  " Using minus between a float and a number in a sort function causes an error
+  return b1 < b2 ? 1 : -1
+endfunction
+
+function! s:buflisted()
+  return filter(range(1, bufnr('$')), 'buflisted(v:val) && getbufvar(v:val, "&filetype") != "qf"')
+endfunction 
