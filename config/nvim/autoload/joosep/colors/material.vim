@@ -261,6 +261,11 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('texSection', s:purple, '', '', '')
   call <sid>hi('texZone', s:darker_fg, '', '', '')
 
+  " vim-package-info
+  call <sid>hi('VimPackageInfoPatch', s:green, '', '', '')
+  call <sid>hi('VimPackageInfoMinor', s:cyan, '', '', '')
+  call <sid>hi('VimPackageInfoMajor', s:red, '', '', '')
+
   " Custom colors
   call <sid>hi('StatuslineAccent',  s:cyan,   s:statusline, '', '')
   call <sid>hi('StatuslineBoolean', s:orange, s:statusline, '', '')
