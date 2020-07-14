@@ -24,30 +24,25 @@ yabai -m config status_bar_space_icon        
 yabai -m config status_bar_clock_icon        
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
+yabai -m config window_topmost               on
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config window_shadow                on
 yabai -m config window_border                on
 yabai -m config window_border_width          2
-yabai -m config active_window_border_color   0xff6699cc
-yabai -m config normal_window_border_color   0xff16242c
+yabai -m config active_window_border_color   0xff82AAff
+yabai -m config normal_window_border_color   0xff171717
 yabai -m config insert_window_border_color   0xffd75f5f
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.90
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
-
-# Borders
-yabai -m config window_border_width 3
-yabai -m config active_window_border_color 0xff82AAff
-yabai -m config normal_window_border_color 0xff171717
+yabai -m config mouse_action1                off
+yabai -m config mouse_action2                off
 
 # general space settings
 yabai -m config layout                       bsp
@@ -66,5 +61,6 @@ yabai -m rule --add app="^Firefox Developer Edition$" title="^Opening .*$" manag
 yabai -m rule --add app="^Firefox$" title="^Opening .*$" manage=off
 yabai -m rule --add app="^Finder$" title="^.*\.app Info$" manage=off
 yabai -m rule --add app="Simulator" border=off
+yabai -m rule --add app="qemu-system-x86_64" manage=on
 
 echo "yabai configuration loaded.."
