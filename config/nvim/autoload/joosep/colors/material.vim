@@ -197,6 +197,10 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('diffRemoved', s:red,   'NONE', 'NONE', '')
   call <sid>hi('fugitiveHash', s:orange, '', '', '')
 
+  " quick-scope
+  call <sid>hi('QuickScopePrimary', s:blue, '', 'underline', '')
+  call <sid>hi('QuickScopeSecondary', s:orange, '', 'underline', '')
+
   " YATS
   call <sid>hi('typescriptMember', s:fg, '', '', '')
   call <sid>hi('typescriptAssign', s:purple, '', '', '')
