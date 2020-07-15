@@ -42,8 +42,8 @@ nnoremap <C-i> <C-i>zz
 " Ex-mode is weird and not useful so it seems better to repeat the last macro
 nnoremap Q @@
 
-" Split line with S
-nnoremap <silent> S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
+" Split line with X
+nnoremap <silent> X :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==^<CR>
 
 " Open the file under the cursor with the default file handler for that file 
 " type (e.g., Firefox for `http` links, etc.)

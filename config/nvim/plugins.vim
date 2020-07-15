@@ -48,6 +48,7 @@ Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 Plug 'tpope/vim-unimpaired'
 Plug 'unblevable/quick-scope'  " Improved f/t/F/T
+Plug 'justinmk/vim-sneak'
 
 
 "
