@@ -6,3 +6,5 @@
 
 (jsx_closing_element
  name: (identifier) @constructor)
+
+(undefined) @constant.builtin
