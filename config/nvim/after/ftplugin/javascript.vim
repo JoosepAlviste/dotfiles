@@ -26,14 +26,6 @@ let b:pear_tree_pairs = extend(deepcopy(g:pear_tree_pairs), {
 
 
 "
-" Plugin settings
-"
-
-let b:ale_linters = ['eslint']
-let b:ale_fixers = ['eslint']
-
-
-"
 " Commands
 "
 
