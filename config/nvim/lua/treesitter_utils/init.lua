@@ -1,24 +1,17 @@
 local treesitter_configs = require('nvim-treesitter.configs')
 
-local function customize_highlights()
-    -- Import this file before customizing the highlights since that customizes 
-    -- the `hl_map` as well and would override our changes
-    require('nvim-treesitter.highlight')
-
-    -- Customize the highlights
-    local hlmap = vim.treesitter.TSHighlighter.hl_map
-    hlmap['variable'] = 'Normal'
-    hlmap['tag'] = 'Type'
-    hlmap["constructor"] = "Type"
-    hlmap["constant.builtin"] = "Constant"
-    hlmap["punctuation.special"] = "Special"
-    hlmap["variable.builtin"] = "Constant"
-end
-
 local function configure_treesitter()
     treesitter_configs.setup {
         highlight = {
             enable = true,
+            custom_captures = {
+                ['variable'] = 'Normal',
+                ['tag'] = 'Type',
+                ['constructor'] = 'Type',
+                ['constant.builtin'] = 'Constant',
+                ['puctuation.special'] = 'Special',
+                ['variable.builtin'] = 'Constant',
+            }
         },
         incremental_selection = {
             enable = true,
@@ -33,8 +26,6 @@ local function configure_treesitter()
             'typescript', 'javascript', 'tsx', 'python', 'json',
         },
     }
-
-    customize_highlights()
 end
 
 return {
