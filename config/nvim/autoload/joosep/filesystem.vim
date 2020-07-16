@@ -12,6 +12,9 @@ function! joosep#filesystem#create_file_or_folder(path)
   if !l:is_directory
     execute 'silent !touch %/' .. a:path
   endif
+
+  " Try to find the new file in the Dirvish buffer
+  execute "silent normal /" .. a:path .. "\<cr>n"
 endfunction
 
 " Move the given file (`a:from`) to the given destination (`a:to`) and create 
@@ -31,4 +34,8 @@ function! joosep#filesystem#move(from, to)
   execute 'silent !mkdir -p ' .. l:parent_directory
 
   execute 'silent !mv ' .. a:from .. ' ' .. a:to
+
+  " Try to find the new file in the Dirvish buffer
+  execute 'silent! normal /' .. fnamemodify(trim(a:to, "'"), ':t') .. "\<cr>"
+  execute 'silent! normal n'
 endfunction
