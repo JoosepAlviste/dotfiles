@@ -60,6 +60,9 @@ if has('nvim')
   set inccommand=nosplit  " Show preview of ex commands
 endif
 
+" Increase the shadafile size so that the history is longer
+set shada=!,'1000,<50,s10,h
+
 
 "
 " Controls
