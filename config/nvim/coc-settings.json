@@ -2,16 +2,7 @@
   "diagnostic.enableSign": false,
   "list.indicator": "❯",
   "suggest.timeout": 5000,
-  "git.addedSign.text": "▌",
-  "git.changedSign.text": "▌",
-  "git.changeRemovedSign.text": "▌",
-  "git.removedSign.text": "◢",
-  "git.topRemovedSign.text": "◥",
-  "git.addedSign.hlGroup": "GitGutterAdd",
-  "git.changedSign.hlGroup": "GitGutterChange",
-  "git.removedSign.hlGroup": "GitGutterDelete",
-  "git.topRemovedSign.hlGroup": "GitGutterDelete",
-  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "git.enableGutters": false,
   "emmet.includeLanguages": {
     "htmldjango": "html"
   },
