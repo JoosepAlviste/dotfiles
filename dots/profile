@@ -93,7 +93,7 @@ path=(
 path=(
   /usr/local/opt/python@2/bin
   /usr/local/opt/gettext/bin
-  $HOME/.composer/vendor/bin
+  $HOME/.config/composer/vendor/bin
   $HOME/.local/bin
   $HOME/dotfiles/bin
   /usr/local/Cellar/maven@3.2/3.2.5/bin
