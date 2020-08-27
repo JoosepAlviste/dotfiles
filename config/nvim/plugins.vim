@@ -126,6 +126,10 @@ Plug 'jeetsukumaran/vim-pythonsense'  " Python text objects & motions
 
 Plug 'jparise/vim-graphql'
 
+" Vue
+
+Plug 'posva/vim-vue'
+
 
 "
 " Text editing
