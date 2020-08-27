@@ -29,7 +29,7 @@ exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpapers/wallpaper.jp
 # Composite manager (use dual kawase blur from 
 # https://github.com/tryone144/compton/tree/feature/dual_kawase and just build 
 # it (do not install system-wide since it's temporary))
-exec_always --no-startup-id $HOME/Programs/compton/build/src/picom --experimental-backends -f
+exec_always --no-startup-id picom --experimental-backends -f
 # Set up multiple monitors
 exec_always --no-startup-id xrandr --output $MONITOR_RIGHT --output $MONITOR_LEFT --left-of $MONITOR_RIGHT
 # Torrent daemon
