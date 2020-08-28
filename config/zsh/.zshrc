@@ -367,6 +367,9 @@ for cmd in "${NODE_GLOBALS[@]}"; do
     eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
 done
 
+# Cleaning up ~
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+
 # }}}
 # Startup {{{
 

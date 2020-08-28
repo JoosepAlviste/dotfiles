@@ -133,6 +133,9 @@ if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
 fi
 export XDG_RUNTIME_DIR
 
+# Xorg
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZINIT_HOME=$XDG_CONFIG_HOME/zinit
 
