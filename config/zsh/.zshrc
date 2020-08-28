@@ -345,11 +345,15 @@ fi
 # NVM
 # Function to set up NVM
 setup_nvm() {
+    # On Arch Linux, NVM gets installed here
+    if [[ -f "/usr/share/nvm/init-nvm.sh" ]]; then
+        source "/usr/share/nvm/init-nvm.sh"
+
     # Load manually installed NVM into the shell session.
-    if [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
+    elif [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
         source "${NVM_DIR}/nvm.sh"
 
-    # Load package manager installed NVM into the shell session.
+    # Load Homebrew installed NVM into the shell session.
     elif (( $+commands[brew] )) && \
       [[ -d "${nvm_prefix::="$(brew --prefix 2> /dev/null)"/opt/nvm}" ]]; then
       source "$(brew --prefix nvm)/nvm.sh"
@@ -363,6 +367,7 @@ setup_nvm() {
 declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
+NODE_GLOBALS+=("nvim")
 for cmd in "${NODE_GLOBALS[@]}"; do
     eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
 done
