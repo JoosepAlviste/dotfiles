@@ -143,6 +143,8 @@ export npm_config_devdir=$XDG_CONFIG_HOME/node-gyp
 
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
 
 #
 # Package configurations
@@ -205,5 +207,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # Boot
 #
 
-# Start i3 if it makes sense to
-[[ -z \$DISPLAY ]] && [[ \$(tty) = /dev/tty1 ]] && exec startx
+# Start Xorg if it makes sense to
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    exec startx "$XDG_CONFIG_HOME/X11/xinitrc" vt
+fi

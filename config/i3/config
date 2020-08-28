@@ -16,7 +16,7 @@ set $term --no-startup-id $TERMINAL
 
 # Read Xresources just in case -- if it doesn't get read in xinitrc for some 
 # reason
-exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id xrdb ~/.config/X11/Xresources
 
 
 

@@ -360,11 +360,6 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 # }}}
 # Startup {{{
 
-# Start graphical server if i3 not already running.
-if [ "$(tty)" = "/dev/tty1" ]; then
-    pgrep -x i3 || exec startx
-fi
-
 (( ! ${+functions[p10k]} )) || p10k finalize
 
 # }}}
