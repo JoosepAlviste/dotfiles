@@ -7,6 +7,7 @@ config/zsh/zsh_history
 config/zsh/.zsh_history
 config/zsh/.zcompdump
 config/zsh/.zcompcache
+config/zsh/.zinit
 
 dots/emacs.d/elpa/
 .netrwhist
