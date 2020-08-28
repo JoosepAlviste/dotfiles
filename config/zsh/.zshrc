@@ -135,9 +135,6 @@ zinit ice svn wait lucid
 zinit snippet PZT::modules/helper
 zinit ice svn wait lucid
 zinit snippet PZT::modules/spectrum
-# Since the `utility` plugin adds aliases for `ls`, `l`, etc., then we need to 
-# re-define those after the `utility` plugin has been loaded. So, call 
-# `setup_ls_alias` callback
 zinit ice svn wait lucid
 zinit snippet PZT::modules/directory
 zinit ice svn wait lucid
@@ -191,12 +188,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
-# Auto-activate environment
-zinit ice wait lucid
-zinit light darvid/zsh-poetry
-
-# Zoxide - fast Z alternative
-# `cargo install zoxide`
 zinit ice wait lucid
 zinit light agkozak/zsh-z
 
@@ -212,16 +203,10 @@ alias sudo='sudo -E'  # Use current user configs
 alias grep='grep  --color=auto --exclude-dir={.git}'
 alias c='clear'
 
-# Navigation
-alias dev='cd ~/Devel'
-alias projects='cd ~/Devel/Projects'
-alias work='cd ~/Devel/Work'
-
 # Programs
 alias vim='nvim'
-alias v='vim'
+alias v='nvim'
 alias r='ranger'
-alias e=$EDITOR
 
 alias up='docker-compose up'
 alias down='docker-compose down'
@@ -304,9 +289,6 @@ elif [ "$THEME" = "tender" ]; then
         --bind='ctrl-o:execute(nvim {})+abort' 
         --inline-info
     "
-fi
-if type ncdu > /dev/null; then
-    alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
 fi
 if type tldr > /dev/null; then
     alias help='tldr'
