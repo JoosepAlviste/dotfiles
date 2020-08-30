@@ -140,11 +140,6 @@ Plug 'hashivim/vim-terraform'
 " Text editing
 "
 
-" LaTeX
-
-Plug 'lervag/vimtex'  " LaTeX writing utilities
-
-
 " Markdown
 
 Plug 'godlygeek/tabular'  " Required by markdown
