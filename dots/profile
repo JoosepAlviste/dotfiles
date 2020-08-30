@@ -77,11 +77,6 @@ export LC_ALL='en_US.UTF-8'
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
 # Set the list of directories that Zsh searches for programs.
 # Some directories should be added before others because they are dependencies
 # of the others
@@ -99,7 +94,6 @@ path=(
   /usr/local/Cellar/maven@3.2/3.2.5/bin
   $HOME/.cargo/bin
   $HOME/.poetry/bin
-  "$(ruby -r rubygems -e 'puts Gem.dir')/bin"
   $path
 )
 
@@ -133,6 +127,9 @@ if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
 fi
 export XDG_RUNTIME_DIR
 
+# Xorg
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZINIT_HOME=$XDG_CONFIG_HOME/zinit
 
@@ -145,13 +142,16 @@ export npm_config_devdir=$XDG_CONFIG_HOME/node-gyp
 
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+# Z
+export ZSHZ_DATA="$XDG_DATA_HOME/z/z"
+
 
 #
 # Package configurations
 #
 
-# Virtualenvwrapper config
-export WORKON_HOME=~/.virtualenvs
 # Current user so that it can be used by docker-compose
 export CURRENT_UID=$(id -u):$(id -g)
 
@@ -209,5 +209,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # Boot
 #
 
-# Start i3 if it makes sense to
-[[ -z \$DISPLAY ]] && [[ \$(tty) = /dev/tty1 ]] && exec startx
+# Start Xorg if it makes sense to
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    exec startx "$XDG_CONFIG_HOME/X11/xinitrc" vt
+fi

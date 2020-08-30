@@ -9,14 +9,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
     print -P '%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f'
-    command mkdir -p $HOME/.zinit
-    command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
+    command mkdir -p $ZINIT_HOME
+    command git clone https://github.com/zdharma/zinit $ZINIT_HOME/bin && \
         print -P '%F{33}▓▒░ %F{34}Installation successful.%f' || \
         print -P '%F{160}▓▒░ The clone has failed.%f'
 fi
-source "$HOME/.zinit/bin/zinit.zsh"
+source "$ZINIT_HOME/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
@@ -135,9 +135,6 @@ zinit ice svn wait lucid
 zinit snippet PZT::modules/helper
 zinit ice svn wait lucid
 zinit snippet PZT::modules/spectrum
-# Since the `utility` plugin adds aliases for `ls`, `l`, etc., then we need to 
-# re-define those after the `utility` plugin has been loaded. So, call 
-# `setup_ls_alias` callback
 zinit ice svn wait lucid
 zinit snippet PZT::modules/directory
 zinit ice svn wait lucid
@@ -191,12 +188,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-autoswitch-virtualenv
 
-# Auto-activate environment
-zinit ice wait lucid
-zinit light darvid/zsh-poetry
-
-# Zoxide - fast Z alternative
-# `cargo install zoxide`
 zinit ice wait lucid
 zinit light agkozak/zsh-z
 
@@ -212,16 +203,10 @@ alias sudo='sudo -E'  # Use current user configs
 alias grep='grep  --color=auto --exclude-dir={.git}'
 alias c='clear'
 
-# Navigation
-alias dev='cd ~/Devel'
-alias projects='cd ~/Devel/Projects'
-alias work='cd ~/Devel/Work'
-
 # Programs
 alias vim='nvim'
-alias v='vim'
+alias v='nvim'
 alias r='ranger'
-alias e=$EDITOR
 
 alias up='docker-compose up'
 alias down='docker-compose down'
@@ -305,9 +290,6 @@ elif [ "$THEME" = "tender" ]; then
         --inline-info
     "
 fi
-if type ncdu > /dev/null; then
-    alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
-fi
 if type tldr > /dev/null; then
     alias help='tldr'
 fi
@@ -345,11 +327,15 @@ fi
 # NVM
 # Function to set up NVM
 setup_nvm() {
+    # On Arch Linux, NVM gets installed here
+    if [[ -f "/usr/share/nvm/init-nvm.sh" ]]; then
+        source "/usr/share/nvm/init-nvm.sh"
+
     # Load manually installed NVM into the shell session.
-    if [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
+    elif [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
         source "${NVM_DIR}/nvm.sh"
 
-    # Load package manager installed NVM into the shell session.
+    # Load Homebrew installed NVM into the shell session.
     elif (( $+commands[brew] )) && \
       [[ -d "${nvm_prefix::="$(brew --prefix 2> /dev/null)"/opt/nvm}" ]]; then
       source "$(brew --prefix nvm)/nvm.sh"
@@ -363,17 +349,16 @@ setup_nvm() {
 declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
+NODE_GLOBALS+=("nvim")
 for cmd in "${NODE_GLOBALS[@]}"; do
     eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
 done
 
+# Cleaning up ~
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+
 # }}}
 # Startup {{{
-
-# Start graphical server if i3 not already running.
-if [ "$(tty)" = "/dev/tty1" ]; then
-    pgrep -x i3 || exec startx
-fi
 
 (( ! ${+functions[p10k]} )) || p10k finalize
 

@@ -1,6 +1,0 @@
-!------------------
-!  Color settings
-!------------------
-
-#include ".Xresources.d/palenight.theme"
-#include ".Xresources.d/wal.theme"

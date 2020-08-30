@@ -59,7 +59,7 @@ Plug 'justinmk/vim-sneak'
 "
 
 " FZF - fuzzy search everything - files, lines, commits, etc.
-Plug $HOME . '/.config/fzf'
+Plug $HOME . '/.config/zsh/.zinit/plugins/junegunn---fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 " Autocompletion
