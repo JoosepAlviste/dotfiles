@@ -1,1 +1,1 @@
-lua require'treesitter_utils'.configure_treesitter()
+" lua require'treesitter_utils'.configure_treesitter()

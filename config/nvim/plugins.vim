@@ -65,7 +65,7 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 " Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter'
 
 " UI extras
 Plug 'justinmk/vim-dirvish'
