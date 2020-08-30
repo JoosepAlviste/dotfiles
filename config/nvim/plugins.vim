@@ -69,7 +69,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 " UI extras
 Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
+Plug 'JoosepAlviste/vim-dirvish-git', {'branch': 'fix/ignored-folders'}
 Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
