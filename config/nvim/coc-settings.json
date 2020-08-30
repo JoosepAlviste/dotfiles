@@ -54,6 +54,11 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"],
       "trace.server": "verbose"
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
     }
   }
 }

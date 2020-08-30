@@ -131,6 +131,11 @@ Plug 'jparise/vim-graphql'
 Plug 'posva/vim-vue'
 
 
+" Terraform
+
+Plug 'hashivim/vim-terraform'
+
+
 "
 " Text editing
 "
