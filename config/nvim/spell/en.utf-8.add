@@ -207,3 +207,6 @@ Bootloader
 bootloader
 rEFInd
 EFI
+SDK
+TOS
+treesitter
