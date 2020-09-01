@@ -216,6 +216,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 #
 
 # Start Xorg if it makes sense to
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if type systemctl > /dev/null && systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     exec startx "$XDG_CONFIG_HOME/X11/xinitrc" vt
 fi
