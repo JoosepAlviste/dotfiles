@@ -309,6 +309,9 @@ for_window [window_role="About"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
+# Android Emulator is glitching and flickering if it's not floating...
+for_window [title="Android Emulator - Pixel_3a_API_29:5554"] floating enable
+
 
 
 # #---Random---# #
