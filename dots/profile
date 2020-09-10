@@ -149,10 +149,13 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export ZSHZ_DATA="$XDG_DATA_HOME/z/z"
 
 # Android
+export ANDROID_SDK_ROOT="$XDG_CONFIG_HOME/android"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
-export ANDROID_AVD_HOME="$XDG_DATA_HOME/android/"
 export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME/android/"
+export ANDROID_AVD_HOME="$XDG_DATA_HOME/android/avd/"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
+
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
 
 #
@@ -178,15 +181,15 @@ fi
 if [[ -d "$HOME/Library/Android/sdk" ]]; then
     export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
     export ANDROID_HOME=$HOME/Library/Android/sdk
-
-    path=(
-      $path
-      $ANDROID_SDK_ROOT/emulator
-      $ANDROID_SDK_ROOT/tools
-      $ANDROID_SDK_ROOT/tools/bin
-      $ANDROID_SDK_ROOT/platform-tools
-    )
 fi
+
+path=(
+  $path
+  $ANDROID_SDK_ROOT/emulator
+  $ANDROID_SDK_ROOT/tools
+  $ANDROID_SDK_ROOT/tools/bin
+  $ANDROID_SDK_ROOT/platform-tools
+)
 
 #
 # NVM
