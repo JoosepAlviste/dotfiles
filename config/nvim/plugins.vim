@@ -108,7 +108,7 @@ Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 
 " JavaScript
 
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'maxmellon/vim-jsx-pretty'
 
 " CSS
