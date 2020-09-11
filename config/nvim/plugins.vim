@@ -41,13 +41,14 @@ Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
 " Useful mapping improvements
 Plug 'machakann/vim-sandwich'  " Surround stuff with things
+Plug 'tpope/vim-unimpaired'  " Bunch of small useful mappings
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
-Plug 'tpope/vim-unimpaired'
 Plug 'unblevable/quick-scope'  " Improved f/t/F/T
-Plug 'justinmk/vim-sneak'
+
+Plug 'justinmk/vim-sneak'  " Additional vertical navigation pattern
 
 
 "
@@ -58,22 +59,24 @@ Plug 'justinmk/vim-sneak'
 " etc.
 "
 
-" FZF - fuzzy search everything - files, lines, commits, etc.
+" FZF - fuzzy search everything - files, lines, commits, etc. This is 
+" installed from the Zinit directory because my Zinit set up automatically 
+" installs FZF to an expected location.
 Plug $ZDOTDIR . '/.zinit/plugins/junegunn---fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
-" Autocompletion
+" Smarts
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 " Plug 'nvim-treesitter/nvim-treesitter'
 
 " UI extras
-Plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-dirvish'  " Minimalistic file browser
 Plug 'JoosepAlviste/vim-dirvish-git', {'branch': 'fix/ignored-folders'}
 Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
-Plug 'skywind3000/vim-terminal-help'
+Plug 'skywind3000/vim-terminal-help'  " Use alt+= to toggle a small terminal
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 " Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
 Plug 'knubie/vim-kitty-navigator'
@@ -109,13 +112,13 @@ Plug 'HerringtonDarkholme/yats.vim'  " TypeScript syntax
 " JavaScript
 
 " Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'maxmellon/vim-jsx-pretty'  " JSX syntax
 
 " CSS
 
 Plug 'hail2u/vim-css3-syntax'  " Improved CSS3 syntax
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }  " Preview of colors
 
 " Python
 
@@ -129,7 +132,6 @@ Plug 'jparise/vim-graphql'
 " Vue
 
 Plug 'posva/vim-vue'
-
 
 " Terraform
 
