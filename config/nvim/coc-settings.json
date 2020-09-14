@@ -4,7 +4,8 @@
   "suggest.timeout": 5000,
   "git.enableGutters": false,
   "emmet.includeLanguages": {
-    "htmldjango": "html"
+    "htmldjango": "html",
+    "vue": "css"
   },
   "eslint.filetypes": [
     "javascript", 
@@ -41,6 +42,7 @@
   "prettier.semi": false,
   "prettier.onlyUseLocalVersion": true,
   "prettier.eslintIntegration": true,
+  "vetur.experimental.templateInterpolationService": true,
   "yaml.schemas": {
     "http://json.schemastore.org/composer": "composer.yaml",
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",

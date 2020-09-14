@@ -8,3 +8,4 @@ let g:context#commentstring#table.typescriptreact = g:context#commentstring#tabl
 let g:context#commentstring#table.typescriptreact['typescriptBlock'] = '// %s'
 let g:context#commentstring#table.typescriptreact['tsxAttrib'] = '// %s'
 let g:context#commentstring#table.typescriptreact['styledDefinition'] = '/* %s */'
+let g:context#commentstring#table.vue['vue_typescript'] = '// %s'
