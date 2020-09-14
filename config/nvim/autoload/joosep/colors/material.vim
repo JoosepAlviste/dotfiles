@@ -255,8 +255,11 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('vimFunction', s:blue,     '', '', '')
 
   " CSS
-  call <sid>hi('cssTagName', s:blue, '', '', '')
+  call <sid>hi('cssTagName', s:orange, '', '', '')
   call <sid>hi('cssValueLength', s:green, '', '', '')
+  call <sid>hi('cssUIAttr', s:fg, '', '', '')
+  call <sid>hi('cssFontAttr', s:fg, '', '', '')
+  call <sid>hi('cssBackgroundAttr', s:fg, '', '', '')
 
   " SCSS
   call <sid>hi('scssSelectorName', s:yellow, '', '', '')
