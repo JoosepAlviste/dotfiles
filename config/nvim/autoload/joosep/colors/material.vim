@@ -217,7 +217,10 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('typescriptDotNotation', s:cyan, '', '', '')
   call <sid>hi('typescriptFuncType', s:fg, '', '', '')
   call <sid>hi('typescriptDestructureComma', s:cyan, '', '', '')
+  call <sid>hi('typescriptDestructureAs', s:cyan, '', '', '')
+  call <sid>hi('typescriptDestructureLabel', s:fg, '', '', '')
   call <sid>hi('typescriptTemplateSB', s:violet, '', '', '')
+  call <sid>hi('typescriptDefaultParam', s:purple, '', '', '')
 
   call <sid>hi('typescriptDateMethod', s:blue, '', '', '')
 
