@@ -25,7 +25,7 @@ nnoremap <buffer> o A<cr>
 nnoremap <buffer> O kA<cr>
 
 function! s:HandleTab() abort
-  if match(getline('.'), "\\s*[*-+]\\s") != -1
+  if match(getline('.'), "\\s*[*\\-+]\\s") != -1
     return "\<esc>>>A"
   else
     return "\<tab>"
@@ -34,7 +34,7 @@ endfunction
 inoremap <buffer> <expr> <tab> <SID>HandleTab()
 
 function! s:HandleTabBack() abort
-  if match(getline('.'), "\\s*[*-+]\\s") != -1
+  if match(getline('.'), "\\s*[*\\-+]\\s") != -1
     return "\<esc><<A"
   else
     return "\<tab>"
