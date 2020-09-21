@@ -34,10 +34,6 @@ if has('autocmd')
     " Automatically close Vim if the quickfix window is the only one open
     autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
 
-    " Automatically activate Limelight
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-
     if exists('##TextYankPost')
       " The TextYankPost autocmd is available from Neovim's `master` branch
       " Highlight yanked text temporarily
