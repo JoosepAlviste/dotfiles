@@ -43,6 +43,8 @@
   "prettier.onlyUseLocalVersion": true,
   "prettier.eslintIntegration": true,
   "vetur.experimental.templateInterpolationService": true,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.validation.templateProps": true,
   "yaml.schemas": {
     "http://json.schemastore.org/composer": "composer.yaml",
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",
