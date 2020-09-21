@@ -19,10 +19,6 @@ if has('autocmd')
     autocmd FileChangedShellPost *
           \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-    " Fix styled-components highlighting issue, not sure why this does not
-    " work in the ftplugin/javascript.vim file
-    autocmd BufReadPost *.tsx,*.ts,*.jsx,*.js :syntax sync fromstart
-
     " Open some files with `xdg-open` or `open` automatically
     autocmd FileType pdf silent call joosep#specialfiles#openspecial()
     autocmd FileType video silent call joosep#specialfiles#openspecial()
