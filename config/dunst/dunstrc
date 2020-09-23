@@ -26,7 +26,7 @@
     dmenu = rofi -dmenu -p dunst
     browser = firefox-developer-edition --new-tab
     icon_position = left
-    icon_path = /usr/share/icons/Flat-Remix-Light/apps/scalable:/usr/share/icons/Flat-Remix-Light/status/scalable
+    icon_path = /usr/share/icons/Flat-Remix-Blue-Light/apps/scalable:/usr/share/icons/Flat-Remix-Blue-Light/status/scalable
     max_icon_size = 45
     frame_width = 0
     frame_color = "#ffffff"
