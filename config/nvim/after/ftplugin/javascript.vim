@@ -30,3 +30,11 @@ let b:pear_tree_pairs = extend(deepcopy(g:pear_tree_pairs), {
 "
 
 command! -bang AddReturn call joosep#javascript#add_return()
+
+
+"
+" Mappings
+"
+
+" Go to definition
+nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
