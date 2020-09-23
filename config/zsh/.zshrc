@@ -293,14 +293,6 @@ fi
 if type tldr > /dev/null; then
     alias help='tldr'
 fi
-if type brew > /dev/null; then
-    steep() {
-        brew update
-        brew upgrade
-        brew cask upgrade
-        brew cleanup
-    }
-fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
