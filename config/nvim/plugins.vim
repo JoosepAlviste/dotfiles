@@ -46,7 +46,6 @@ Plug 'tpope/vim-projectionist'  " Easily move between alternate files
 Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
-Plug 'unblevable/quick-scope'  " Improved f/t/F/T
 
 Plug 'justinmk/vim-sneak'  " Additional vertical navigation pattern
 
