@@ -296,6 +296,10 @@ fi
 if type hub > /dev/null; then
     alias git='hub'
 fi
+# `trash-put` can be installed from `trash-cli`
+if type trash-put > /dev/null; then
+    alias trash='trash-put'
+fi
 
 # Codi
 # Usage: codi [filetype] [filename]
