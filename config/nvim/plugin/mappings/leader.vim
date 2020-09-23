@@ -7,6 +7,8 @@ nnoremap <leader><leader> <C-^>
 
 " Quit the pane/buffer with <leader>q
 nnoremap <silent> <leader>q :quit<cr>
+" Quit Vim without closing windows (useful for keeping a session)
+nnoremap <silent> <leader>x :quitall<cr>
 " Save with <leader>w
 nnoremap <silent> <leader>w :w!<cr>
 

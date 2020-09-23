@@ -39,5 +39,10 @@ if has('autocmd')
       " Highlight yanked text temporarily
       autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = 'Substitute', timeout = 200 })
     endif
+
+    if argc() == 0
+     " Load a session file if it exists
+      autocmd VimEnter * nested call joosep#session#continue_session()
+    endif
   augroup END
 endif

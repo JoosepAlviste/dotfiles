@@ -31,6 +31,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'tpope/vim-repeat'  " Make the repeat (.) command smarter
 Plug 'tpope/vim-dispatch'  " Asynchronous jobs used by some plugins
 Plug 'farmergreg/vim-lastplace'  " Restore cursor position when opening a file
+Plug 'tpope/vim-obsession'  " Saner session management
 
 " Custom text objects
 Plug 'kana/vim-textobj-user'  " Library for custom text objects

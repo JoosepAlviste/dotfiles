@@ -14,3 +14,5 @@ dots/emacs.d/elpa/
 
 *.pyo
 *.pyc
+
+.vim
