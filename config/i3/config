@@ -234,7 +234,7 @@ bindsym $mod+Shift+l    move right
 bindsym $mod+z          gaps outer current plus 8
 bindsym $mod+Shift+z    gaps outer current minus 8
 
-bindsym $mod+x          exec --no-startup-id betterlockscreen -l dim
+bindsym $mod+x          exec --no-startup-id betterlockscreen -l dimblur
 bindsym $mod+Shift+x    exec --no-startup-id rofi -show power -show-icons
 
 bindsym $mod+c          exec --no-startup-id pycharm
