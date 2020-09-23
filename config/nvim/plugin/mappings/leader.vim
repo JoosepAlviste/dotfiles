@@ -17,10 +17,6 @@ noremap <silent> <leader>tn :tabnew<cr>
 noremap <silent> <leader>to :tabonly<cr>
 noremap <silent> <leader>tc :tabclose<cr>
 noremap <silent> <leader>tm :tabmove<cr>
-noremap <silent> <leader>t<leader> :tabnext<cr>
-
-" Mapping to get rid of muscle memory :P
-nnoremap <leader>k :echo "Use <C-g> to get this information!"<cr>
 
 nnoremap <leader>o :only<cr>
 
