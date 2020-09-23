@@ -3,9 +3,9 @@ title dotfiles
 launch
 
 new_tab code
-cd ~/Devel
+cd ~/Code
 launch
 
 new_tab server
-cd ~/Devel
+cd ~/Code
 launch
