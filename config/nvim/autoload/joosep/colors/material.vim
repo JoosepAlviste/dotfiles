@@ -218,9 +218,14 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('typescriptFuncType', s:fg, '', '', '')
   call <sid>hi('typescriptDestructureComma', s:cyan, '', '', '')
   call <sid>hi('typescriptDestructureAs', s:cyan, '', '', '')
+  call <sid>hi('typescriptObjectColon', s:cyan, '', '', '')
   call <sid>hi('typescriptDestructureLabel', s:fg, '', '', '')
   call <sid>hi('typescriptTemplateSB', s:violet, '', '', '')
   call <sid>hi('typescriptDefaultParam', s:purple, '', '', '')
+  call <sid>hi('typescriptEnumKeyword', s:purple, '', '', '')
+  call <sid>hi('typescriptEnum', s:yellow, '', '', '')
+  call <sid>hi('typescriptClassName', s:yellow, '', '', '')
+  call <sid>hi('typescriptClassHeritage', s:yellow, '', '', '')
 
   call <sid>hi('typescriptDateMethod', s:blue, '', '', '')
 
@@ -266,6 +271,7 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('jsBrackets', s:blue, '', '', '')
   call <sid>hi('jsBuiltinFunctions', s:blue, '', '', '')
   call <sid>hi('jsDocIdentifier', s:comments, '', '', '')
+  call <sid>hi('jsDocTypeBlock', s:comments, '', '', '')
 
   " JSX
   call <sid>hi('jsxTagName', s:yellow, '', '', '')
@@ -273,6 +279,7 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('jsxEndComponentName', s:yellow, '', '', '')
   call <sid>hi('jsxEndString', s:yellow, '', '', '')
   call <sid>hi('jsxAttrib', s:fg, '', '', '')
+  call <sid>hi('jsxExpressionBlock', s:cyan, '', '', '')
 
   " Python
   call <sid>hi('pythonDecorator', s:violet, '', '', '')
@@ -289,10 +296,12 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('cssUIAttr', s:fg, '', '', '')
   call <sid>hi('cssFontAttr', s:fg, '', '', '')
   call <sid>hi('cssBackgroundAttr', s:fg, '', '', '')
+  call <sid>hi('cssBraces', s:blue, '', '', '')
 
   " SCSS
   call <sid>hi('scssSelectorName', s:yellow, '', '', '')
   call <sid>hi('scssVariable', s:blue, '', '', '')
+  call <sid>hi('scssAttribute', s:cyan, '', '', '')
 
   " YAML
   call <sid>hi('yamlBlockMappingKey', s:blue, '', '', '')
