@@ -319,6 +319,10 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('texSection', s:purple, '', '', '')
   call <sid>hi('texZone', s:darker_fg, '', '', '')
 
+  " PHP
+  call <sid>hi('phpInclude', s:purple, '', '', '')
+  call <sid>hi('phpType', s:purple, '', '', '')
+
   " vim-package-info
   call <sid>hi('VimPackageInfoPatch', s:green, '', '', '')
   call <sid>hi('VimPackageInfoMinor', s:cyan, '', '', '')

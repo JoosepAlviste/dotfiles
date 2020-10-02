@@ -113,6 +113,7 @@ let g:coc_global_extensions = [
             \ "coc-actions",
             \ "coc-vimlsp",
             \ "coc-git",
+            \ "coc-phpls",
             \ "coc-vetur",
             \ ]
 

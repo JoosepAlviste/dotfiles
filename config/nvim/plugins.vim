@@ -138,6 +138,10 @@ Plug 'posva/vim-vue'
 
 Plug 'hashivim/vim-terraform'
 
+" PHP
+
+Plug 'StanAngeloff/php.vim'
+
 
 "
 " Text editing
