@@ -223,11 +223,15 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('typescriptTemplateSB', s:violet, '', '', '')
   call <sid>hi('typescriptDefaultParam', s:purple, '', '', '')
   call <sid>hi('typescriptEnumKeyword', s:purple, '', '', '')
+  call <sid>hi('typescriptOperator', s:purple, '', '', '')
+  call <sid>hi('typescriptCastKeyword', s:purple, '', '', '')
   call <sid>hi('typescriptEnum', s:yellow, '', '', '')
   call <sid>hi('typescriptClassName', s:yellow, '', '', '')
   call <sid>hi('typescriptClassHeritage', s:yellow, '', '', '')
 
   call <sid>hi('typescriptDateMethod', s:blue, '', '', '')
+  call <sid>hi('typescriptConsoleMethod', s:blue, '', '', '')
+  call <sid>hi('typescriptBOM', s:fg, '', '', '')
 
   call <sid>hi('tsxTagName', s:yellow, '', '', '')
   call <sid>hi('tsxIntrinsicTagName', s:yellow, '', '', '')
@@ -279,7 +283,6 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('jsxEndComponentName', s:yellow, '', '', '')
   call <sid>hi('jsxEndString', s:yellow, '', '', '')
   call <sid>hi('jsxAttrib', s:fg, '', '', '')
-  call <sid>hi('jsxExpressionBlock', s:cyan, '', '', '')
 
   " Python
   call <sid>hi('pythonDecorator', s:violet, '', '', '')
