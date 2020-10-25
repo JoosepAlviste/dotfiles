@@ -76,7 +76,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 " UI extras
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser
 Plug 'JoosepAlviste/vim-dirvish-git', {'branch': 'fix/ignored-folders'}
-Plug 'psliwka/vim-smoothie'  " Smooth scrolling
 
 " External programs
 Plug 'skywind3000/vim-terminal-help'  " Use alt+= to toggle a small terminal
