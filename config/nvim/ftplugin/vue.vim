@@ -11,4 +11,6 @@ setlocal iskeyword+=-
 "
 
 " Go to definition
-nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
+if has_key(plugs, 'coc.nvim')
+  nnoremap <silent> <c-]> :call CocAction('jumpDefinition')<cr>
+endif
