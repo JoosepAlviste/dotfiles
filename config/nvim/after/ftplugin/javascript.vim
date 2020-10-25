@@ -10,11 +10,15 @@ setlocal softtabstop=2
 setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
 setlocal define=\\(class\\s\\\|const\\s\\\|function\\s\\)
 
-setlocal foldmethod=syntax
-
 " Fix some highlighting problems in files with styled components
 " See https://github.com/HerringtonDarkholme/yats.vim/issues/109
 syntax sync fromstart
+if has_key(plugs, 'nvim-treesitter')
+  setlocal foldmethod=expr
+  setlocal foldexpr=nvim_treesitter#foldexpr()
+else
+  setlocal foldmethod=syntax
+endif
 
 
 " Plugin settings

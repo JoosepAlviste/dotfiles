@@ -40,14 +40,15 @@ Plug 'kana/vim-textobj-line'  " Entire line al/il
 Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
 Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 
-" Useful mapping improvements
-Plug 'machakann/vim-sandwich'  " Surround stuff with things
+" Useful small mapping improvements
 Plug 'tpope/vim-unimpaired'  " Bunch of small useful mappings
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
-Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'andymass/vim-matchup'  " Improved %
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 
+" Larger mapping improvements
+Plug 'machakann/vim-sandwich'  " Surround stuff with things
+Plug 'tmsvg/pear-tree'  " Better auto-pairs
 Plug 'justinmk/vim-sneak'  " Additional vertical navigation pattern
 
 
@@ -59,6 +60,10 @@ Plug 'justinmk/vim-sneak'  " Additional vertical navigation pattern
 " etc.
 "
 
+" Treesitter for syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+
 " FZF - fuzzy search everything - files, lines, commits, etc. This is 
 " installed from the Zinit directory because my Zinit set up automatically 
 " installs FZF to an expected location.
@@ -67,8 +72,6 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 " Smarts
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
-
-" Plug 'nvim-treesitter/nvim-treesitter'
 
 " UI extras
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser

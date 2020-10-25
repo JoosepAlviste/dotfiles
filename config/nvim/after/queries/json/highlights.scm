@@ -1,0 +1,2 @@
+(pair
+  ":" @punctuation.delimiter)

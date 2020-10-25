@@ -172,6 +172,13 @@ function! joosep#colors#material#ModifyColorscheme()
   " Django
   call <sid>hi('djangoFilter', s:blue, '', '', '')
 
+  " Treesitter
+  call <sid>hi('TSConstructor',     s:yellow, '', '', '')
+  call <sid>hi('TSVariableBuiltin', s:orange, '', '', '')
+  call <sid>hi('TSConstBuiltin',    s:orange, '', '', '')
+  call <sid>hi('TSVariable',        s:fg,     '', '', '')
+  call <sid>hi('TSKeywordOperator', s:purple, '', '', '')
+
   " coc.nvim
   call <sid>hi('CocHighlightText', 'NONE', s:line_numbers, '',     '')
   call <sid>hi('CocErrorFloat', s:red, 'NONE', '', '')

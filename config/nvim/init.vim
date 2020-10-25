@@ -32,6 +32,15 @@ source ~/.config/nvim/plugins.vim
 
 
 "
+" Lua plugins
+"
+
+lua << EOF
+require('treesitter_utils')
+EOF
+
+
+"
 " Leader
 "
 
