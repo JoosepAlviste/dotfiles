@@ -11,10 +11,6 @@ setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
 " improved somehow
 setlocal errorformat=%f:%l:%c:\ %m
 
-" Fix some highlighting problems in files with styled components
-" See https://github.com/HerringtonDarkholme/yats.vim/issues/109
-syntax sync fromstart
-
 
 " Plugin settings
 
