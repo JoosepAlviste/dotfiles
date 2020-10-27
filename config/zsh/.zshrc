@@ -317,11 +317,6 @@ codi() {
     Codi $syntax" "$@"
 }
 
-# Thorgate
-if [[ -d "$HOME/Programs/temposync" ]]; then
-    alias temposync='(cd ~/Programs/temposync && pipenv run python main.py clockify)'
-fi
-
 # NVM
 # Function to set up NVM
 setup_nvm() {
