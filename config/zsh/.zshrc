@@ -249,6 +249,8 @@ alias gp='git push'
 
 alias gst='git status'
 
+alias lg='lazygit'
+
 # Transmission
 alias tsm-start='transmission-daemon'
 alias tsm='transmission-remote -l'
