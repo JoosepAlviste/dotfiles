@@ -5,7 +5,8 @@
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
-    * See `config/nvim/plugins.vim` for the used plugins
+    * See [`config/nvim/plugins.vim`](./config/nvim/plugins.vim) for the used 
+        plugins
     * Slightly modified [Material Palenight color 
         scheme](https://github.com/kaicataldo/material.vim/)
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
@@ -16,6 +17,55 @@ Some of the configuration includes:
     * With [Polybar](https://github.com/polybar/polybar) and 
       [Rofi](https://github.com/davatorium/rofi)
 * Wallpaper - https://mikaelgustafsson.artstation.com/projects/nA9Lr
+
+
+## Installation
+
+```sh
+git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
+
+cd dotfiles
+chmod +x bin/makesymlinks.sh
+./bin/makesymlinks.sh
+```
+
+(Submodules are required since `bat` theme is a cloned repository).
+
+This will symlink all of the files and folders inside `dots/` into your home 
+folder prefixed by `.` and everything from `config/` to your `~/.config/` 
+folder.
+
+The next time you start `vim`, it will automatically install Plug. You might 
+need to manually run `:PlugInstall` in order to install plugins.
+
+The utility scripts in `bin/` are automatically added to the Zsh path so you can 
+run `makesymlinks` anywhere.
+
+
+### Custom Firefox theme
+
+I use the [MaterialFox](https://github.com/muckSponge/MaterialFox) Firefox 
+theme. Follow the installation instructions in their README.
+
+
+### BetterTouchTool
+
+This repository also includes my BetterTouchTool presets in the `resources/` 
+folder.
+
+The touch bar looks like so:
+
+![Touch Bar 
+preset](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/TouchBar.png)
+
+
+## Update
+
+```bash
+git pull
+```
+
+Maybe run `./bin/makesymlinks.sh` again.
 
 
 ## Utilities
@@ -36,43 +86,13 @@ Just useful utilities that aren't aliased:
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
 
-## Linux
-
-Just some notes and things I use on Linux:
-
-* `i3-gaps`
-* `platerctl` - media controls
-* `feh` - wallpaper
-* `compton` - opacity
-* `rofi` - better dmenu
-* `xkblayout`-state
-    - Probably needs `apt install libx11-dev`
-* `polybar`
-* `playerctl` - control audio
-* `betterlockscreen` - nice lock screen for i3lock
-
-
-## macOS
-
-Just some notes and things I use on macOS:
-
-* Fix slow `yabai` controls by using `dash` as the shell
-    * `zsh` is the default shell and is horribly slow, so let's use a faster 
-        shell for running `skhd`
-    * Edit `/usr/local/Cellar/skhd/0.3.4/homebrew.mxcl.skhd.plist`
-    * Add environment variable `SHELL = /usr/local/bin/dash`
-    * More info at [this GitHub issue](https://github.com/koekeishiya/chunkwm/issues/232)
-* Start `yabai` services
-    * `brew services start yabai`
-    * `brew services start skhd`
-
-# Vim configuration structure
+## Vim configuration structure
 
 The neovim configuration is split into many files since there is quite a bit of 
 configuration and it would be crazy to have it all in one file. I try to 
 leverage as much of Vims built-in logic for splitting files.
 
-Neovim configuration is located in `config/nvim/`.
+Neovim configuration is located in [`config/nvim/`](./config/nvim).
 
 * `after/` - overriding configuration related to plugins (settings, mappings, 
     etc.)
@@ -96,71 +116,9 @@ Neovim configuration is located in `config/nvim/`.
     as little as possible here)
 
 
-## Installation
+## Packages
 
-```bash
-git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
-
-cd dotfiles
-chmod +x bin/makesymlinks.sh
-./bin/makesymlinks.sh
-```
-
-(Submodules are required since `bat` theme is a cloned repository).
-
-This will symlink all of the files and folders inside `dots/` into your home 
-folder prefixed by `.` and everything from `config/` to your `~/.config/` 
-folder.
-
-The next time you start `vim`, it will automatically install Plug. You might 
-need to manually run `:PlugInstall` in order to install plugins.
-
-The utility scripts in `bin/` are automatically added to the Zsh path so you can 
-run `makesymlinks` anywhere.
-
-
-### Custom Firefox theme
-
-![Firefox custom 
-theme](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Firefox-Theme.png)
-
-I have some custom CSS which makes my Firefox look a bit better and have the 
-Material Palenight color scheme. If you want to install the theme, copy or 
-symlink the files from `resources/firefox/` to your [Firefox profile 
-folder](https://www.howtogeek.com/255587/how-to-find-your-firefox-profile-folder-on-windows-mac-and-linux/):
-
-```bash
-export PROFILE_DIR="..."
-ln -s ~/dotfiles/resources/firefox/userChrome.css $PROFILE_DIR/chrome
-ln ~/dotfiles/resources/firefox/userContent.css $PROFILE_DIR/chrome
-```
-
-**Note:** Make sure that you do NOT use `-s` when linking `userContent.css`.
-
-There are also other themes in the `resources/firefox/` that could be used.
-
-
-### BetterTouchTool
-
-This repository also includes my BetterTouchTool presets in the `resources/` 
-folder.
-
-The touch bar looks like so:
-
-![Touch Bar 
-preset](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/TouchBar.png)
-
-
-## Update
-
-```bash
-git pull
-```
-
-Maybe run `./bin/makesymlinks.sh` again.
-
-
-## Automatically installed through Zinit
+### Automatically installed through Zinit
 
 These packages will be automatically installed when Zsh is started.
 
@@ -175,81 +133,6 @@ probably best to not use `pacman` or `homebrew` versions of those packages.
 * [`zsh-z`](https://github.com/agkozak/zsh-z)
 * [`diff-so-fancy`](https://github.com/zdharma/zsh-diff-so-fancy)
 * [`prettyping`](https://github.com/denilsonsa/prettyping)
-
-## Packages list (very incomplete)
-
-This will maybe one day include all the pacman and AUR packages that should be 
-installed.
-
-```bash
-pacman -S \
-    xorg \  # Display server
-    xorg-xinit \  # startx
-    xorg-xrdb \  # Xresources
-    xorg-xmodmap \
-    xbindkeys \
-    i3-gaps \  # Window manager
-    feh \
-    compton \
-    zsh \  # Default shell
-    kitty \  # Terminal
-    gnome-keyring \
-    vim \
-    neovim \
-    polybar \
-    rofi \
-    firefox-developer-edition \
-    hub \
-    htop \
-    ripgrep \
-    bibata-cursor-theme \
-    flameshot \
-
-    evince \
-    xdg-utils \
-    surfraw \
-    ranger \
-    networkmanager \
-    network-manager-applet \
-    noto-fonts-emoji \
-    nodejs \
-    npm \
-    yarn \
-    ruby \
-    the_silver_searcher \
-    flatpak \
-    arc-gtk-theme \
-    mpv \
-    dconf-editor (??)
-```
-
-```bash
-yay -S \
-    polybar \
-
-    flat-remix-git \
-    betterlockscreen \
-    system-san-francisco-font-git \
-    rofi \
-    google-chrome \
-    rofi-calc
-```
-
-### macOS
-
-```bash
-brew install \
-    hub \
-    dash \
-    htop \
-    neovim \
-    ripgrep \
-    yarn \
-    koekeishiya/formulae/yabai \
-    koekeishiya/formulae/skhd \
-    universal-ctags/universal-ctags/universal-ctags \
-    jq
-```
 
 
 ### Python
@@ -282,63 +165,6 @@ pip install \
 
 The location of this virtualenv is configured in `nvim/init.vim`.
 
-
-### Global NPM packages
-
-Some packages that are useful and should probably be installed into the global 
-node modules.
-
-```bash
-yarn global add \
-    bash-language-server
-```
-
-
-## FAQ (my own reference)
-
-### Docker fails with error creating new backup file '/var/lib/dpkg/status-old? 
-`echo N | sudo tee /sys/module/overlay/parameters/metacopy`
-
-### `i3` workspace switching screws up PyCharm focus: 
-`https://intellij-support.jetbrains.com/hc/en-us/community/posts/360001411659-Lose-Focus-after-Switching-Workspace-in-i3wm`
-
-### Default Google Chrome with `i3`
-
-Edit `~/.config/mimeapps.list` and/or 
-`~/.local/share/applications/mimeapps.list` and make sure that it looks 
-something like this:
-
-```ini
-[Default Applications]
-x-scheme-handler/mailto=google-chrome.desktop
-text/html=google-chrome.desktop
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
-x-scheme-handler/about=google-chrome.desktop
-x-scheme-handler/unknown=google-chrome.desktop
-```
-
-### Overriding environment variables
-
-If you want to override environment variables without polluting the Git status, 
-then you can create a new file `config/zsh/zprofile.local`. This will link that 
-file to `~/.config/zsh/zprofile.local` and source it inside `profile`. Feel free 
-to override any environment variables here (for example, monitors).
-
-### To change the color scheme in Vim & terminal
-
-1. Change the Vim color scheme in `config/nvim/init.vim`
-2. Change the terminal color scheme in `config/kitty/kitty.conf`, find the 
-   `include themes/*.conf` file & change the theme file name
-3. Change the `THEME` variable in `dots/zshrc` in order to customize the FZF 
-   colors
-
-Available themes include:
-
-* `OceanicNext`
-* `palenight` -- in `config/nvim/init.vim` change to `colorscheme material` and 
-    add `let g:material_theme_style = 'palenight'` before the `colorscheme` 
-    setting).
 
 ## More screenshots
 
