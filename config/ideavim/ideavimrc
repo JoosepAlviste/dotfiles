@@ -1,12 +1,13 @@
-source ~/.vim/vimrc
+source ~/.config/nvim/init.vim
 
-source ~/.vim/plugin/mappings/insert.vim
-source ~/.vim/plugin/mappings/normal.vim
-source ~/.vim/plugin/mappings/visual.vim
-source ~/.vim/plugin/mappings/leader.vim
+source ~/.config/nvim/plugin/mappings/insert.vim
+source ~/.config/nvim/plugin/mappings/normal.vim
+source ~/.config/nvim/plugin/mappings/visual.vim
+source ~/.config/nvim/plugin/mappings/leader.vim
 
-source ~/.vim/plugin/settings.vim
+source ~/.config/nvim/plugin/settings.vim
 
 set surround
 set multiple-cursors
 
+set ideajoin
