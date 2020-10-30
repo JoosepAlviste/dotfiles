@@ -63,4 +63,7 @@ yabai -m rule --add app="^Finder$" title="^.*\.app Info$" manage=off
 yabai -m rule --add app="Simulator" border=off
 yabai -m rule --add app="qemu-system-x86_64" manage=on
 
+yabai -m rule --add app="PhpStorm" manage=off
+yabai -m rule --add app="PhpStorm" title="scoro-base" manage=on
+
 echo "yabai configuration loaded.."
