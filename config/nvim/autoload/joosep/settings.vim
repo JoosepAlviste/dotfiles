@@ -11,7 +11,7 @@ let s:small_l='ℓ'
 "
 function! joosep#settings#foldtext() abort
   let indent_level = indent(v:foldstart)
-  let indent = repeat(' ',indent_level)
+  let indent = repeat(' ',indent_level - 2)
   let l:lines = '[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
   let l:first = substitute(getline(v:foldstart), '\v *', '', '')
   let l:dashes = substitute(v:folddashes, '-', s:middot, 'g')
