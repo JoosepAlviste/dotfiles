@@ -1,1 +1,1 @@
-let g:vue_pre_processors = ['typescript']
+let g:vue_pre_processors = ['typescript', 'scss']
