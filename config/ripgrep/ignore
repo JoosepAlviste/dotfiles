@@ -27,7 +27,8 @@ _build/
 .terraform
 
 node_modules/
-vendor/
+vendor
+composer.lock
 yarn.lock
 package-lock.json
 
@@ -43,6 +44,7 @@ env/
 .jest
 
 .next/
+.nuxt/
 db/postgres/
 build/
 coverage/

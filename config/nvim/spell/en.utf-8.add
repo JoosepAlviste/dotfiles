@@ -222,3 +222,5 @@ apps
 workflow
 typecheck
 plugin
+tooltip
+checkbox
