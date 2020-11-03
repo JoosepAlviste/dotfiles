@@ -124,11 +124,6 @@ Plug 'hail2u/vim-css3-syntax'  " Improved CSS3 syntax
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }  " Preview of colors
 
-" Python
-
-Plug 'Vimjas/vim-python-pep8-indent'  " Better indentation
-Plug 'jeetsukumaran/vim-pythonsense'  " Python text objects & motions
-
 " GraphQL
 
 Plug 'jparise/vim-graphql'
