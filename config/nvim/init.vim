@@ -24,6 +24,9 @@ function! s:EnableTerminal()
     setlocal norelativenumber
     setlocal signcolumn=no
 
+    setlocal nottimeout
+    setlocal ttimeoutlen=10
+
     tnoremap <buffer> <Esc> <C-\><C-n>
 endfunction
 
