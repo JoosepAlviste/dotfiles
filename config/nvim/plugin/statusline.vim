@@ -14,20 +14,32 @@ augroup MyStatusline
   autocmd VimEnter,WinEnter,BufWinEnter * call <SID>RefreshStatusline()
 augroup END
 
-function! s:LspStatus() abort
- let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
+" Show the number of errors and warnings from coc, ALE & Neovim built-in LSP.
+function! s:LspStatus(bufnum) abort
+  let l:errors = 0
+  let l:warnings = 0
+  let l:extra = ''
+
+  if has_key(g:plugs, 'coc.nvim')
+    let l:info = get(b:, 'coc_diagnostic_info', {})
+
+    let l:extra = ' ' .. get(g:, 'coc_status', '')
+
+    if !empty(info)
+      let l:errors += l:info['error']
+      let l:warnings += l:info['warning']
+    endif
+  endif
+
   let msgs = []
-
-  if get(info, 'error', 0)
-    call add(msgs, <SID>Color(1, 'StatuslineError', 'E' . info['error']))
+  if l:errors
+    call add(msgs, <SID>Color(1, 'StatuslineError', 'E' . l:errors))
+  endif
+  if l:warnings
+    call add(msgs, <SID>Color(1, 'StatuslineWarning', 'W' . l:warnings))
   endif
 
-  if get(info, 'warning', 0)
-    call add(msgs, <SID>Color(1, 'StatuslineWarning', 'W' . info['warning']))
-  endif
-
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  return join(msgs, ' ') .. l:extra
 endfunction
 
 " This function just outputs the content colored by the supplied colorgroup 
@@ -74,7 +86,7 @@ function! Status(winnum)
 
   " LSP & ALE status
   if active
-    let stat .= <SID>LspStatus() .. '  '
+    let stat .= <SID>LspStatus(bufnum) .. '  '
   endif
 
   return stat
