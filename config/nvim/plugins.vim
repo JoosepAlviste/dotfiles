@@ -91,7 +91,7 @@ Plug 'knubie/vim-kitty-navigator'
 " are relevant to programming in general.
 "
 
-Plug 'JoosepAlviste/scoro.vim'
+Plug 'JoosepAlviste/scoro.vim', { 'branch': 'main' }
 
 " Git related things
 Plug 'tpope/vim-fugitive'  " Git integration
