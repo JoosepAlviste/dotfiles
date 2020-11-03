@@ -7,5 +7,6 @@ db.json
 history.json
 memos.json
 list-location-history.json
+list-issues-history.json
 
 mru
