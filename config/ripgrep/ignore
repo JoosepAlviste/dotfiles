@@ -58,3 +58,7 @@ Libraries
 *.xcodeproj
 *.xcworkspace
 *.xcassets
+
+# Minified files
+*.min.js
+*.min.css
