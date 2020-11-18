@@ -84,6 +84,19 @@ function! Status(winnum)
   " Right side
   let stat .= '%='
 
+  if active && has_key(g:plugs, 'scoro.vim')
+    let scoro_status = scoro#status()
+    if len(scoro_status)
+      if scoro_status =~# 'loading'
+        let stat .= <SID>Color(active, 'StatuslinePending', 'S:~ ') .. ' '
+      elseif scoro_status =~# 'done'
+        let stat .= <SID>Color(active, 'StatuslineSuccess', 'S: ') .. ' '
+      elseif scoro_status =~# 'error'
+        let stat .= <SID>Color(active, 'StatuslineError', 'S:E ') .. ' '
+      endif
+    endif
+  endif
+
   " LSP & ALE status
   if active
     let stat .= <SID>LspStatus(bufnum) .. '  '
