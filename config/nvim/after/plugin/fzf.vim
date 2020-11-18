@@ -35,7 +35,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'highlight': 'Curs
 " pressed, then show small preview on the right.
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+      \   'rg --column --line-number --no-heading --color=always --smart-case --ignore-file ~/.config/ripgrep/ignore -- '.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview({ 'options': '--delimiter : --nth 4..' }, 'up:60%'), <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
