@@ -10,6 +10,6 @@ require'nvim-treesitter.configs'.setup {
     persist_queries = false,
   },
   ensure_installed = {
-    'query', 'javascript', 'typescript', 'tsx', 'json', 'php', 'python',
+    'query', 'javascript', 'typescript', 'tsx', 'json', 'php', 'python', 'html',
   },
 }

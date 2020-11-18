@@ -179,6 +179,7 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('TSConstBuiltin',    s:orange, '', '', '')
   call <sid>hi('TSVariable',        s:fg,     '', '', '')
   call <sid>hi('TSKeywordOperator', s:purple, '', '', '')
+  call <sid>hi('TSTag',             s:yellow, '', '', '')
 
   " coc.nvim
   call <sid>hi('CocHighlightText', 'NONE', s:line_numbers, '',     '')
