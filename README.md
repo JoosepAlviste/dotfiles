@@ -137,6 +137,7 @@ probably best to not use `pacman` or `homebrew` versions of those packages.
 * [`zsh-z`](https://github.com/agkozak/zsh-z)
 * [`diff-so-fancy`](https://github.com/zdharma/zsh-diff-so-fancy)
 * [`prettyping`](https://github.com/denilsonsa/prettyping)
+* [ripgrep (`rg`)](https://github.com/BurntSushi/ripgrep)
 
 
 ### Python

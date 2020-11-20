@@ -120,6 +120,10 @@ zinit load zdharma/zsh-diff-so-fancy
 zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
 zinit light sharkdp/fd
 
+# BurntSushi/ripgrep
+zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
+
 # }}}
 # Plugins {{{
 # Use Zinit's way of installing plugins (in  T U R B O  mode)
