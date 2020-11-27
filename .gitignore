@@ -9,6 +9,8 @@ config/zsh/.zcompdump
 config/zsh/.zcompcache
 config/zsh/.zinit
 
+config/kitty/kitty.local.conf
+
 dots/emacs.d/elpa/
 .netrwhist
 
