@@ -6,7 +6,6 @@ snippets-mru
 db.json
 history.json
 memos.json
-list-location-history.json
-list-issues-history.json
+list-*-history.json
 
 mru
