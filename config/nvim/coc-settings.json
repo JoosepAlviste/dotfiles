@@ -42,6 +42,7 @@
   "prettier.semi": false,
   "prettier.onlyUseLocalVersion": true,
   "prettier.eslintIntegration": true,
+  "intelephense.environment.shortOpenTag": true,
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.validation.templateProps": true,
