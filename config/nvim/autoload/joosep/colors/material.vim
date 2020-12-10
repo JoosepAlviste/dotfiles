@@ -31,6 +31,7 @@ let s:background = '#252837'  " A bit darker background color
 let s:statusline = '#1d1f2b'  " Statusline should be dark
 let s:cursorline = '#232534'  " Cursorline should be a bit darker than bg
 let s:darker_fg = '#7982B4'  " Some text should be a bit darker than normal fg
+let s:symbol_highlight = '#2B2F40'  " Highlighting of the symbol under the cursor
 
 if g:material_theme_style == 'palenight'
   " Custom colors
@@ -38,6 +39,7 @@ if g:material_theme_style == 'palenight'
   let s:statusline = '#1d1f2b'  " Statusline should be dark
   let s:cursorline = '#232534'  " Cursorline should be a bit darker than bg
   let s:darker_fg = '#7982B4'  " Some text should be a bit darker than normal fg
+  let s:symbol_highlight = '#2B2F40'
 endif
 
 let s:colors = {
@@ -67,6 +69,7 @@ let s:colors = {
       \ "statusline": s:statusline,
       \ "cursorline": s:cursorline,
       \ "darker_fg": s:darker_fg,
+      \ "symbol_highlight": s:symbol_highlight,
       \ }
 
 function! g:joosep#colors#material#GetColors()
@@ -114,7 +117,8 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('Title',        s:yellow,     '',             '',     '')
   call <sid>hi('LineNr',       s:invisibles, '',             '',     '')
   call <sid>hi('Comment',      '',           '',       'italic',     '')
-  call <sid>hi('MatchParen',   'NONE',       s:invisibles,   '',     '')
+  call <sid>hi('MatchParen',   'NONE',       s:line_numbers, '',     '')
+  call <sid>hi('MatchWord',    'NONE',       s:symbol_highlight, '', '')
   call <sid>hi('Identifier',   s:fg,         'NONE',         '',     '')
   call <sid>hi('Conceal',      s:brown,      'NONE',         '',     '')
   call <sid>hi('Delimiter',    s:cyan,       'NONE',         '',     '')
@@ -182,7 +186,7 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('TSTag',             s:yellow, '', '', '')
 
   " coc.nvim
-  call <sid>hi('CocHighlightText', 'NONE', s:line_numbers, '',     '')
+  call <sid>hi('CocHighlightText', 'NONE', s:symbol_highlight, '',     '')
   call <sid>hi('CocErrorFloat', s:red, 'NONE', '', '')
   call <sid>hi('CocErrorHighlight', '', 'NONE', 'undercurl', s:red)
   call <sid>hi('CocWarningFloat', s:orange, 'NONE', '', '')
