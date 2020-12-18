@@ -30,7 +30,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 " CodeAction of current line
-" nnoremap <leader>ca :call CocAction('codeAction')<cr>
+nnoremap <leader>ca :call CocAction('codeAction')<cr>
 " Fix autofix problem of current line
 nmap <leader>cf <Plug>(coc-fix-current)
 
@@ -110,7 +110,6 @@ let g:coc_global_extensions = [
             \ "coc-yaml",
             \ "coc-json",
             \ "coc-cssmodules",
-            \ "coc-actions",
             \ "coc-vimlsp",
             \ "coc-git",
             \ "coc-phpls",
@@ -123,11 +122,3 @@ let g:coc_global_extensions = [
 "
 
 let g:coc_snippet_next = '<tab>'
-
-
-"
-" coc-actions
-"
-
-xmap <silent> <leader>ca :<C-u>execute 'CocCommand actions.open ' . visualmode()<cr>
-nmap <silent> <leader>ca :<C-u>CocCommand actions.open<cr>
