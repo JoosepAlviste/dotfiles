@@ -17,6 +17,7 @@
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": "~/.config/yarn/global/node_modules",
+  "eslint.run": "onSave",
   "snippets.priority": 999,
   "codeLens.enable": true,
   "typescript.referencesCodeLens.enable": false,
