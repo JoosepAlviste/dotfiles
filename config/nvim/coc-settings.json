@@ -47,6 +47,7 @@
   "vetur.experimental.templateInterpolationService": true,
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.validation.templateProps": true,
+  "vetur.completion.tagCasing": "initial",
   "yaml.schemas": {
     "http://json.schemastore.org/composer": "composer.yaml",
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",
