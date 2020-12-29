@@ -234,3 +234,5 @@ username
 nameservers
 Nginx
 entrypoint
+Nuxt
+SAPI

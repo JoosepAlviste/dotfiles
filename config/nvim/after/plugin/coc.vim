@@ -114,6 +114,7 @@ let g:coc_global_extensions = [
             \ "coc-git",
             \ "coc-phpls",
             \ "coc-vetur",
+            \ "coc-graphql",
             \ ]
 
 

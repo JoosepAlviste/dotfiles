@@ -52,7 +52,8 @@
     "http://json.schemastore.org/composer": "composer.yaml",
     "http://json.schemastore.org/gitlab-ci": ".gitlab-ci.yml",
     "https://gist.githubusercontent.com/JoosepAlviste/5e806ca470e37eb442b839945d9ef359/raw/9b8f10cdaa5537822338f35a48902c5ef21a5068/schema-1.0.0.json": "tg-project.yaml",
-    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.0.json": "docker-compose.yml"
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.0.json": "docker-compose.yml",
+    "https://raw.githubusercontent.com/kamilkisiela/graphql-config/v3.0.3/config-schema.json": ".graphqlrc.yml"
   },
   "coc.preferences.colorSupport": false,
   "languageserver": {
