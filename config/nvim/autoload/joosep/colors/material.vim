@@ -122,6 +122,7 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('Identifier',   s:fg,         'NONE',         '',     '')
   call <sid>hi('Conceal',      s:brown,      'NONE',         '',     '')
   call <sid>hi('Delimiter',    s:cyan,       'NONE',         '',     '')
+  call <sid>hi('ErrorMsg',     s:red,        'NONE',         '',     '')
 
   call <sid>hi('TabLine',      s:fg, s:statusline, 'NONE', '')
   call <sid>hi('TabLineFill',  s:fg, s:statusline, '',     '')
