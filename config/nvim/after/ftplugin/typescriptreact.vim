@@ -5,12 +5,6 @@ setlocal softtabstop=2
 
 setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
 
-" Set errorformat for working with vim-test, neomake, and the
-" jest-vim-reporter
-" TODO: This should probably NOT be set like this -- maybe vim-test can be
-" improved somehow
-setlocal errorformat=%f:%l:%c:\ %m
-
 
 " Plugin settings
 
