@@ -4,6 +4,8 @@ let g:gitgutter_sign_removed = '▌'
 let g:gitgutter_sign_removed_first_line = '▌'
 let g:gitgutter_sign_modified_removed = '▌'
 
+let g:gitgutter_grep = 'rg'
+
 " Mappings for text objects
 omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
