@@ -31,6 +31,9 @@ function! s:LspStatus(bufnum) abort
     endif
   endif
 
+  let l:errors += luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")
+  let l:warnings += luaeval("vim.lsp.diagnostic.get_count(0, [[Warning]])")
+
   let msgs = []
   if l:errors
     call add(msgs, <SID>Color(1, 'StatuslineError', 'E' . l:errors))

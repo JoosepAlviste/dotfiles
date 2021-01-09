@@ -65,14 +65,19 @@ Plug 'justinmk/vim-sneak'  " Additional vertical navigation pattern
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
+" Smarts
+Plug 'neovim/nvim-lspconfig'  " Configurations for the built-in LSP client
+Plug 'nvim-lua/completion-nvim'  " Autocomplete
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'hrsh7th/vim-vsnip'  " Snippets
+Plug 'hrsh7th/vim-vsnip-integ'  " Handle autocompletion snippets from the LSP
+
 " FZF - fuzzy search everything - files, lines, commits, etc. This is 
 " installed from the Zinit directory because my Zinit set up automatically 
 " installs FZF to an expected location.
 Plug $ZDOTDIR . '/.zinit/plugins/junegunn---fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
-
-" Smarts
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  " VSCode features into Vim
 
 " UI extras
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser

@@ -40,6 +40,7 @@ source ~/.config/nvim/plugins.vim
 
 lua << EOF
 require('treesitter_utils')
+require('lsp_utils')
 EOF
 
 

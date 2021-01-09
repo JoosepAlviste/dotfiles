@@ -72,12 +72,11 @@ brew install \
     dash \
     htop \
     neovim \
-    ripgrep \
     yarn \
     koekeishiya/formulae/yabai \
     koekeishiya/formulae/skhd \
-    universal-ctags/universal-ctags/universal-ctags \
-    jq
+    jq \
+    efm-langserver
 ```
 
 
@@ -87,6 +86,7 @@ Some packages that are useful and should probably be installed into the global
 node modules.
 
 ```bash
-yarn global add \
-    bash-language-server
+npm i -g \
+    bash-language-server \
+    typescript-language-server
 ```
