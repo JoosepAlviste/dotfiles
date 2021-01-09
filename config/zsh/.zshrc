@@ -211,6 +211,9 @@ alias c='clear'
 alias vim='nvim'
 alias v='nvim'
 alias r='ranger'
+if type /Applications/love.app/Contents/MacOS/love > /dev/null; then
+    alias love='/Applications/love.app/Contents/MacOS/love'
+fi
 
 alias up='docker-compose up'
 alias down='docker-compose down'
