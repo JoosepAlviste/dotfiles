@@ -8,6 +8,7 @@ config/zsh/.zsh_history
 config/zsh/.zcompdump
 config/zsh/.zcompcache
 config/zsh/.zinit
+config/zsh/.zsh_sessions
 
 config/kitty/kitty.local.conf
 
