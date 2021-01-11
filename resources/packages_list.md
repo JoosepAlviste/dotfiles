@@ -90,3 +90,28 @@ npm i -g \
     bash-language-server \
     typescript-language-server
 ```
+
+
+## Python packages
+
+These packages should be installed with the global `pip`:
+
+```sh
+pip install \
+    Pillow
+```
+
+Neovim plugins require that there's a virtualenv with the `neovim` package 
+installed. Create a Pyenv virtualenv `neovim3` from Python 3 and `neovim2` from 
+Python 2, there:
+
+```bash
+pip install \
+    neovim \
+    neovim-remote \
+    pynvim \
+    i3-py
+```
+
+The location of this virtualenv is configured in 
+[`nvim/init.vim`](../config/nvim/init.vim).
