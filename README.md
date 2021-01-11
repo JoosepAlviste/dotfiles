@@ -9,7 +9,7 @@ Some of the configuration includes:
         plugins
     * Slightly modified [Material Palenight color 
         scheme](https://github.com/kaicataldo/material.vim/)
-    * [`coc.nvim`](https://github.com/neoclide/coc.nvim) for smarts
+    * Neovim's built-in LSP client
     * [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/) 
         for highlighting
     * [`fzf`](https://github.com/junegunn/fzf) for navigation

@@ -68,7 +68,6 @@ Plug 'nvim-treesitter/playground'
 " Smarts
 Plug 'neovim/nvim-lspconfig'  " Configurations for the built-in LSP client
 Plug 'nvim-lua/completion-nvim'  " Autocomplete
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'hrsh7th/vim-vsnip'  " Snippets
 Plug 'hrsh7th/vim-vsnip-integ'  " Handle autocompletion snippets from the LSP
