@@ -31,6 +31,9 @@ let g:completion_chain_complete_list = {
 
 imap <silent> <c-space> <Plug>(completion_trigger)
 
+" If enter is pressed, always create a new line (even when pum open)
+imap <expr> <cr> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
+
 
 "
 " Autocmds

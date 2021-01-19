@@ -23,7 +23,7 @@ let g:pear_tree_smart_backspace = 0
 "
 
 " Disable automatic mapping of keys so that it's easier to remap the keys
-let g:pear_tree_map_special_keys = 1
+let g:pear_tree_map_special_keys = 0
 
 imap jk <Plug>(PearTreeFinishExpansion)
 imap <space> <Plug>(PearTreeSpace)
