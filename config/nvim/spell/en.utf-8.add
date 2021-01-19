@@ -240,3 +240,7 @@ LÖVE
 BYTEPATH
 geolocation
 Neovim's
+Lerna
+monorepo
+changelog
+stylelint
