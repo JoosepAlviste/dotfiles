@@ -8,6 +8,7 @@ tags.lock
 .idea
 .venv
 Session.vim
+.vim
 
 .DS_Store
 
