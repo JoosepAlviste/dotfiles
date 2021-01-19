@@ -18,6 +18,13 @@ setlocal iskeyword+=-
 
 
 "
+" Plugin settings
+"
+
+let b:EditorConfig_disable = 1
+
+
+"
 " Mappings
 "
 
