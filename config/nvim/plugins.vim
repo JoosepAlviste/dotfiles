@@ -80,7 +80,6 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
 " UI extras
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser
-Plug 'JoosepAlviste/vim-dirvish-git', {'branch': 'fix/ignored-folders'}
 
 " External programs
 Plug 'skywind3000/vim-terminal-help'  " Use alt+= to toggle a small terminal
