@@ -5,5 +5,21 @@
       "console.log($1)$0"
     ],
     "description": "A console.log statement"
+  },
+  "Jest describe": {
+    "prefix": "describe",
+    "body": [
+      "describe('$1', () => {",
+      "\t$0",
+      "});"
+    ]
+  },
+  "Jest it": {
+    "prefix": "it",
+    "body": [
+      "it('$1', () => {",
+      "\t$0",
+      "});"
+    ]
   }
 }
