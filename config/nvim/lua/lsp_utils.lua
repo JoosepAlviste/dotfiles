@@ -202,6 +202,7 @@ local eslint = {
 lspconfig.efm.setup {
   on_attach = on_attach,
   root_dir = lspconfig.util.root_pattern('package.json'),
+  filetypes = {'typescript', 'typescriptreact', 'vue', 'javascript'},
   init_options = {
     documentFormatting = true,
   },
