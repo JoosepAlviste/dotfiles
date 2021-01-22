@@ -33,7 +33,16 @@ let g:completion_chain_complete_list = {
 imap <silent> <c-space> <Plug>(completion_trigger)
 
 " If enter is pressed, always create a new line (even when pum open)
-imap <expr> <cr> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
+inoremap <expr> <cr> <sid>NewLine()
+
+function! s:NewLine()
+  let res = ""
+  if pumvisible()
+    let res .= "\<c-e>"
+  endif
+
+  return res . pear_tree#insert_mode#PrepareExpansion()
+endfunction
 
 
 "
