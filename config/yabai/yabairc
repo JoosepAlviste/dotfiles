@@ -65,6 +65,7 @@ yabai -m rule --add app="^Firefox$" title="^Opening .*$" manage=off
 yabai -m rule --add app="^Finder$" title="^.*\.app Info$" manage=off
 yabai -m rule --add app="Simulator" border=off
 yabai -m rule --add app="qemu-system-x86_64" manage=on
+yabai -m rule --add app="^Pritunl$" manage=off
 yabai -m rule --add app="^IINA$" border=off
 
 yabai -m rule --add app="PhpStorm" manage=off
