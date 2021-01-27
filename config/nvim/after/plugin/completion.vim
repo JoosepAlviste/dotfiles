@@ -6,7 +6,7 @@ endif
 " Settings
 "
 
-let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_sorting = 'none'
 let g:completion_matching_smart_case = 1
 let g:completion_confirm_key = "\<C-y>"
@@ -24,7 +24,7 @@ let g:completion_chain_complete_list = {
       \ ],
       \ 'default': [
       \   {'complete_items': ['path'], 'triggered_only': ['/']},
-      \   {'complete_items': ['lsp', 'snippet']},
+      \   {'complete_items': ['snippet', 'lsp']},
       \ ],
       \ }
 
