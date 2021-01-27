@@ -6,27 +6,32 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- `vim-vsnip-integ` adds support for them.
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
+  local function buf_map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   -- Set up keymaps
-  vim.api.nvim_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', { noremap = true })
+  local opts = { noremap = true, silent = true }
+  buf_map('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+  buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+  buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  buf_map('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', opts)
+  buf_map('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', opts)
 
-  vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { noremap = true })
+  buf_map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
-  vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { noremap = true })
+  buf_map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+
+  buf_map('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
   -- Navigate diagnostics
-  vim.api.nvim_set_keymap('n', '[g', '<cmd> lua vim.lsp.diagnostic.goto_prev()<cr>', { noremap = true })
-  vim.api.nvim_set_keymap('n', ']g', '<cmd> lua vim.lsp.diagnostic.goto_next()<cr>', { noremap = true })
+  buf_map('n', '[g', '<cmd> lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
+  buf_map('n', ']g', '<cmd> lua vim.lsp.diagnostic.goto_next()<cr>', opts)
 
   -- Show diagnostics popup with <leader>d
-  vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', { noremap = true })
+  buf_map('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
 
   -- Format on save
   if client.resolved_capabilities.document_formatting then
@@ -76,12 +81,12 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 
 -- https://github.com/theia-ide/typescript-language-server
 lspconfig.tsserver.setup{
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     -- Disable the document formatting for tsserver because we want to use efm 
     -- with ESLint
     client.resolved_capabilities.document_formatting = false
 
-    on_attach(client)
+    on_attach(client, bufnr)
   end,
   capabilities = capabilities,
 }
