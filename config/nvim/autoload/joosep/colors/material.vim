@@ -157,12 +157,14 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('DiffText',    'NONE',  '#0e43a5', 'NONE', '')
 
   " Markdown
-  call <sid>hi('markdownCode',     s:darker_fg, '', '',       '')
-  call <sid>hi('markdownItalic',   s:blue,      '', 'italic', '')
-  call <sid>hi('mkdHeading',       s:green,     '', '',       '')
-  call <sid>hi('mkdCode',          s:darker_fg, '', '',       '')
-  call <sid>hi('mkdCodeDelimiter', s:darker_fg, '', '',       '')
-  call <sid>hi('mkdCodeDelimiter', s:darker_fg, '', '',       '')
+  call <sid>hi('markdownCode',     s:darker_fg,  '', '',       '')
+  call <sid>hi('markdownItalic',   s:blue,       '', 'italic', '')
+  call <sid>hi('mkdHeading',       s:green,      '', '',       '')
+  call <sid>hi('mkdCode',          s:darker_fg,  '', '',       '')
+  call <sid>hi('mkdCodeDelimiter', s:darker_fg,  '', '',       '')
+  call <sid>hi('mkdCodeDelimiter', s:darker_fg,  '', '',       '')
+  " Fix weird linebreaks in LSP hover docs
+  call <sid>hi('mkdLineBreak',     s:background, '', '',       '')
 
   " reStructuredText
   call <sid>hi('rstInlineLiteral', s:darker_fg, '', '', '')
