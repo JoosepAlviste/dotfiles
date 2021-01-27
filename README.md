@@ -17,9 +17,6 @@ Some of the configuration includes:
 * Shell - [Zsh](https://www.zsh.org)
     * With [Zinit](https://github.com/zdharma/zinit/)
 * Window manager on macOS - [yabai](https://github.com/koekeishiya/yabai)
-* Window manager on Linux - [i3-gaps](https://github.com/Airblader/i3)
-    * With [Polybar](https://github.com/polybar/polybar) and 
-      [Rofi](https://github.com/davatorium/rofi)
 * Wallpaper - https://mikaelgustafsson.artstation.com/projects/nA9Lr
 
 
