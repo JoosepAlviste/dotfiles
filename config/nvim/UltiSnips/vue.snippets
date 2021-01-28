@@ -1,1 +1,19 @@
-extends javascript
+extends typescript
+
+snippet comp "A Vue component" b
+<template>
+	<div></div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
+	setup() {$0
+		return {};
+	},
+});
+</script>
+
+<style lang="scss" scoped></style>
+endsnippet
