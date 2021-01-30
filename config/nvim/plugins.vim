@@ -35,7 +35,6 @@ Plug 'tpope/vim-obsession'  " Saner session management
 
 " Custom text objects
 Plug 'kana/vim-textobj-user'  " Library for custom text objects
-Plug 'kana/vim-textobj-indent'  " Indentation based ai/ii
 Plug 'kana/vim-textobj-line'  " Entire line al/il
 Plug 'kana/vim-textobj-entire'  " Entire file ae/ie
 
