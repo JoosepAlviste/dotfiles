@@ -43,7 +43,6 @@ Plug 'vim-scripts/argtextobj.vim'  " Function arguments with aa/ia
 " Useful small mapping improvements
 Plug 'tpope/vim-unimpaired'  " Bunch of small useful mappings
 Plug 'tpope/vim-projectionist'  " Easily move between alternate files
-Plug 'andymass/vim-matchup'  " Improved %
 Plug 'romainl/vim-cool'
 Plug 'mcchrish/info-window.nvim'  " Improved <C-g>
 
