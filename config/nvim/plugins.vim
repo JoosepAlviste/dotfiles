@@ -64,14 +64,10 @@ Plug 'nvim-treesitter/playground'
 
 " Smarts
 Plug 'neovim/nvim-lspconfig'  " Configurations for the built-in LSP client
-Plug 'nvim-lua/completion-nvim'  " Autocomplete
+Plug 'hrsh7th/nvim-compe'  " Autocomplete
 
 " Snippets
 Plug 'SirVer/ultisnips'
-
-" Handle autocompletion snippets from the LSP
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 
 " FZF - fuzzy search everything - files, lines, commits, etc. This is 
 " installed from the Zinit directory because my Zinit set up automatically 
