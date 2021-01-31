@@ -1,4 +1,12 @@
 local lspconfig = require'lspconfig'
+local saga = require 'lspsaga'
+
+saga.init_lsp_saga{
+  error_sign = '',
+  warn_sign = '',
+  hint_sign = '',
+  infor_sign = '',
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Configure that we accept snippets so that the server would send us snippet 
@@ -16,22 +24,22 @@ local on_attach = function(client, bufnr)
   buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-  buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  buf_map('n', 'K', '<cmd>lua require("lspsaga.hover").render_hover_doc()<cr>', opts)
   buf_map('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', opts)
   buf_map('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', opts)
 
-  buf_map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_map('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
 
-  buf_map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  buf_map('n', '<leader>ca', '<cmd>lua require("lspsaga.codeaction").code_action()<cr>', opts)
 
-  buf_map('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+  buf_map('i', '<C-k>', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>', opts)
 
   -- Navigate diagnostics
   buf_map('n', '[g', '<cmd> lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
   buf_map('n', ']g', '<cmd> lua vim.lsp.diagnostic.goto_next()<cr>', opts)
 
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
+  buf_map('n', '<leader>d', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
 
   -- Format on save
   if client.resolved_capabilities.document_formatting then
@@ -68,14 +76,6 @@ vim.lsp.handlers['textDocument/formatting'] = function(err, _, result, _, bufnr)
     end
   end
 end
-
--- Customize diagnostics
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = false,
-    underline = true,
-  }
-)
 
 -- Setting up specific language servers
 

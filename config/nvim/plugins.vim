@@ -64,6 +64,7 @@ Plug 'nvim-treesitter/playground'
 " Smarts
 Plug 'neovim/nvim-lspconfig'  " Configurations for the built-in LSP client
 Plug 'hrsh7th/nvim-compe'  " Autocomplete
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }  " Improved LSP features
 
 " Snippets
 Plug 'SirVer/ultisnips'
