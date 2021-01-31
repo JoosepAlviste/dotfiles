@@ -79,7 +79,7 @@ Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser
 
 " External programs
-Plug 'skywind3000/vim-terminal-help'  " Use alt+= to toggle a small terminal
+Plug 'kassio/neoterm'  " Use Ctrl+Q to toggle a terminal
 Plug 'metakirby5/codi.vim'  " Fast scratchpad like Numi
 " Use Ctrl+h/j/k/l to move between Kitty windows AND Vim splits
 Plug 'knubie/vim-kitty-navigator'
