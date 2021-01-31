@@ -18,7 +18,6 @@ call plug#begin(stdpath('data') . '/plugged')
 "
 
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-" Plug 'NLKNguyen/papercolor-theme'
 
 
 "
