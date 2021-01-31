@@ -6,9 +6,6 @@
 let g:python_host_prog = $HOME . '/.config/pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.config/pyenv/versions/neovim3/bin/python'
 
-" Use 24-bit (true-color) mode
-let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-
 " Nvim terminal keybindings
 tnoremap <M-[> <Esc>
 tnoremap jk <C-\><C-n>
