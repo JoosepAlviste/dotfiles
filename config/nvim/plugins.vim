@@ -98,7 +98,6 @@ Plug 'JoosepAlviste/scoro.vim', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'  " Git integration
 Plug 'tpope/vim-rhubarb'  " GitHub integration - use `hub` cli instead of `git`
 Plug 'shumphrey/fugitive-gitlab.vim'  " GitLab integration for Fugitive
-Plug 'tpope/vim-git'  " Git related files' syntax
 Plug 'airblade/vim-gitgutter'  " Git hunks in the sign column
 
 Plug 'editorconfig/editorconfig-vim'  " Read .editorconfig file for settings
