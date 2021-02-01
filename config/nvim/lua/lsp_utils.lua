@@ -41,13 +41,14 @@ local on_attach = function(client, bufnr)
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
 
+  vim.api.nvim_command [[augroup LspUtils]]
+  vim.api.nvim_command [[autocmd! * <buffer>]]
+  vim.api.nvim_command [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
   -- Format on save
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
     vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-    vim.api.nvim_command [[augroup END]]
   end
+  vim.api.nvim_command [[augroup END]]
 
   -- Set the LSP omnifunc
   vim.api.nvim_command('setlocal omnifunc=v:lua.vim.lsp.omnifunc')
