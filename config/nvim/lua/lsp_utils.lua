@@ -41,13 +41,18 @@ local on_attach = function(client, bufnr)
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
 
+  -- Format on save
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_command [[augroup LspFormatting]]
+    vim.api.nvim_command [[autocmd! * <buffer>]]
+    vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
+    vim.api.nvim_command [[augroup END]]
+  end
+
+  -- Show a lightbulb if there are any code actions available
   vim.api.nvim_command [[augroup LspUtils]]
   vim.api.nvim_command [[autocmd! * <buffer>]]
   vim.api.nvim_command [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-  -- Format on save
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-  end
   vim.api.nvim_command [[augroup END]]
 
   -- Set the LSP omnifunc
@@ -97,7 +102,13 @@ lspconfig.vimls.setup{on_attach = on_attach, capabilities = capabilities}
 
 -- https://github.com/vuejs/vetur/tree/master/server
 lspconfig.vuels.setup{
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- Disable the document formatting for vuels because we want to use efm 
+    -- with ESLint
+    client.resolved_capabilities.document_formatting = false
+
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   settings = {
     vetur = {
@@ -201,6 +212,7 @@ local eslint = {
   lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
+  lintFormats = {'%f:%l:%c: %m'},
   formatCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --fix-to-stdout',
   formatStdin = true,
 }
