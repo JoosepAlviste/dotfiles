@@ -209,10 +209,10 @@ lspconfig.yamlls.setup{
 
 -- https://github.com/mattn/efm-langserver
 local eslint = {
-  lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
+  lintCommand = 'eslint_d -f ~/dotfiles/resources/eslint-formatter-vim.js --stdin --stdin-filename ${INPUT}',
   lintIgnoreExitCode = true,
   lintStdin = true,
-  lintFormats = {'%f:%l:%c: %m'},
+  lintFormats = {'%f:%l:%c:%t: %m'},
   formatCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --fix-to-stdout',
   formatStdin = true,
 }
