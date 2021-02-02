@@ -109,6 +109,8 @@ Plug 'JoosepAlviste/vim-context-commentstring'
 
 Plug 'AndrewRadev/tagalong.vim'  " Automatically change tags
 
+Plug 'vim-test/vim-test'
+
 
 " Typescript
 
