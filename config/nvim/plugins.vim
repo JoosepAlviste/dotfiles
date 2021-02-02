@@ -131,7 +131,7 @@ Plug 'jparise/vim-graphql'
 
 " Vue
 
-Plug 'posva/vim-vue'
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Terraform
 

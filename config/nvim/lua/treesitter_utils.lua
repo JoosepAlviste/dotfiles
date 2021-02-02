@@ -11,6 +11,6 @@ require'nvim-treesitter.configs'.setup {
   },
   ensure_installed = {
     'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php', 
-    'python', 'html', 'graphql', 'lua', 'vue', 'yaml',
+    'python', 'html', 'graphql', 'lua', 'yaml',
   },
 }
