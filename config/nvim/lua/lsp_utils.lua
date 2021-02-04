@@ -177,6 +177,18 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+-- https://intelephense.com
+lspconfig.intelephense.setup{
+  on_attach = on_attach,
+  settings = {
+    intelephense = {
+      environment = {
+        shortOpenTag = true,
+      },
+    },
+  },
+}
+
 -- https://github.com/vscode-langservers/vscode-json-languageserver
 lspconfig.jsonls.setup{
   on_attach = on_attach,
