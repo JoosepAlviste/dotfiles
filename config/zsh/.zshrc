@@ -33,6 +33,7 @@ bindkey ';3C' forward-word
 bindkey ';3D' backward-word
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+bindkey "^o" clear-screen
 
 autoload -z edit-command-line
 zle -N edit-command-line
