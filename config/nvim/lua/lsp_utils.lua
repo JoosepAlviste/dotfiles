@@ -155,15 +155,11 @@ lspconfig.sumneko_lua.setup {
         path = {
           '?.lua',
           '?/init.lua',
-          vim.fn.expand'~/.luarocks/share/lua/5.3/?.lua',
-          vim.fn.expand'~/.luarocks/share/lua/5.3/?/init.lua',
-          '/usr/share/5.3/?.lua',
-          '/usr/share/lua/5.3/?/init.lua'
         }
       },
       diagnostics = {
         globals = { 'vim' },
-        disable = { '' },
+        disable = { 'trailing-space' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
