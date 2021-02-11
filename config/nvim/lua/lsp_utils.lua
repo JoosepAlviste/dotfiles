@@ -49,6 +49,8 @@ local on_attach = function(client, bufnr)
 
   -- Set the LSP omnifunc
   vim.api.nvim_command('setlocal omnifunc=v:lua.vim.lsp.omnifunc')
+
+  vim.api.nvim_command'command! LspStop lua vim.lsp.stop_client(vim.lsp.get_active_clients())'
 end
 
 -- Setting up specific language servers
