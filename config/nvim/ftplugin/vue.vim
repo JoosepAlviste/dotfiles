@@ -5,6 +5,8 @@ setlocal softtabstop=2
 
 setlocal iskeyword+=-
 
+setlocal commentstring=<!--\ %s\ -->
+
 
 "
 " Mappings
