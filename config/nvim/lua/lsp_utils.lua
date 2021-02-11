@@ -41,14 +41,6 @@ local on_attach = function(client, bufnr)
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
 
-  -- Format on save
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup LspFormatting]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-    vim.api.nvim_command [[augroup END]]
-  end
-
   -- Show a lightbulb if there are any code actions available
   vim.api.nvim_command [[augroup LspUtils]]
   vim.api.nvim_command [[autocmd! * <buffer>]]
@@ -57,30 +49,6 @@ local on_attach = function(client, bufnr)
 
   -- Set the LSP omnifunc
   vim.api.nvim_command('setlocal omnifunc=v:lua.vim.lsp.omnifunc')
-end
-
--- Handle formatting in a smarter way
--- If the buffer has been edited before formatting has completed, do not try to 
--- apply the changes
-vim.lsp.handlers['textDocument/formatting'] = function(err, _, result, _, bufnr)
-  if err ~= nil or result == nil then
-    return
-  end
-
-  -- If the buffer hasn't been modified before the formatting has finished, 
-  -- update the buffer
-  if not vim.api.nvim_buf_get_option(bufnr, 'modified') then
-    local view = vim.fn.winsaveview()
-    vim.lsp.util.apply_text_edits(result, bufnr)
-    vim.fn.winrestview(view)
-    if bufnr == vim.api.nvim_get_current_buf() then
-      vim.api.nvim_command('noautocmd :update')
-
-      -- Trigger post-formatting autocommand which can be used to refresh 
-      -- gitgutter
-      vim.api.nvim_command('silent doautocmd <nomodeline> User FormatterPost')
-    end
-  end
 end
 
 -- Setting up specific language servers
@@ -230,7 +198,7 @@ lspconfig.efm.setup {
   root_dir = lspconfig.util.root_pattern('package.json'),
   filetypes = {'typescript', 'typescriptreact', 'vue', 'javascript'},
   init_options = {
-    documentFormatting = true,
+    documentFormatting = false,
   },
   settings = {
     rootMarkers = {'package.json'},

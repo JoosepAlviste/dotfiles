@@ -39,6 +39,7 @@ lua << EOF
 require('treesitter_utils')
 require('lsp_utils')
 require('completion_setup')
+require('formatting_setup')
 EOF
 
 
