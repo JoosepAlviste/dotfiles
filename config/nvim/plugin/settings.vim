@@ -162,7 +162,7 @@ set guicursor+=r-cr-o:hor20-Cursor/lCursor
 set pumblend=9
 
 " Improve completion UX a bit
-set completeopt=menu,menuone,noselect
+set completeopt=menuone,noselect
 
 
 "
