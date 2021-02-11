@@ -36,10 +36,10 @@ source ~/.config/nvim/plugins.vim
 "
 
 lua << EOF
-require('treesitter_utils')
-require('lsp_utils')
-require('completion_setup')
-require('formatting_setup')
+require('j.treesitter')
+require('j.lsp')
+require('j.completion')
+require('j.formatting')
 EOF
 
 
