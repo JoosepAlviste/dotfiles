@@ -62,6 +62,6 @@ let g:projectionist_heuristics = {
 " Mappings
 "
 
-nnoremap <leader>av :AV<CR>
-nnoremap <leader>as :AS<CR>
-nnoremap <leader>ae :A<CR>
+nnoremap <silent> <leader>av :AV<CR>
+nnoremap <silent> <leader>as :AS<CR>
+nnoremap <silent> <leader>ae :A<CR>
