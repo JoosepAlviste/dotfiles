@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   buf_map('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', opts)
   buf_map('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', opts)
 
-  buf_map('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
+  buf_map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
   buf_map('n', '<leader>ca', '<cmd>lua require("lspsaga.codeaction").code_action()<cr>', opts)
 
