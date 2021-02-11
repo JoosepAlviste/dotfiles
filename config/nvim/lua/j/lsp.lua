@@ -1,11 +1,19 @@
 local lspconfig = require'lspconfig'
 local saga = require 'lspsaga'
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      prefix = "»",
+      spacing = 4,
+    },
+    signs = false,
+    update_in_insert = false,
+  }
+)
+
 saga.init_lsp_saga{
-  error_sign = '',
-  warn_sign = '',
-  hint_sign = '',
-  infor_sign = '',
+  use_saga_diagnostic_sign = false,
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -35,8 +43,8 @@ local on_attach = function(client, bufnr)
   buf_map('i', '<C-k>', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<cr>', opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', '<cmd> lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-  buf_map('n', ']g', '<cmd> lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+  buf_map('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
+  buf_map('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
 
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', '<cmd>lua require"lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
