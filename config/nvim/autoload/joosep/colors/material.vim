@@ -317,11 +317,13 @@ function! joosep#colors#material#ModifyColorscheme()
   call <sid>hi('cssFontAttr', s:fg, '', '', '')
   call <sid>hi('cssBackgroundAttr', s:fg, '', '', '')
   call <sid>hi('cssBraces', s:blue, '', '', '')
+  call <sid>hi('cssScssDefinition', s:yellow, '', '', '')
 
   " SCSS
   call <sid>hi('scssSelectorName', s:yellow, '', '', '')
   call <sid>hi('scssVariable', s:blue, '', '', '')
   call <sid>hi('scssAttribute', s:cyan, '', '', '')
+  call <sid>hi('sassAmpersand', s:orange, '', '', '')
 
   " YAML
   call <sid>hi('yamlBlockMappingKey', s:blue, '', '', '')
