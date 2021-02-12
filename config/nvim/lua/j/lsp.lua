@@ -14,6 +14,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 saga.init_lsp_saga{
   use_saga_diagnostic_sign = false,
+  code_action_keys = { quit = '<esc>', exec = '<cr>' },
+  finder_action_keys = {
+    open = 'o',
+    vsplit = 's',
+    split = 'i',
+    quit = '<esc>',
+    scroll_down = '<C-f>',
+    scroll_up = '<C-b>',
+  },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
