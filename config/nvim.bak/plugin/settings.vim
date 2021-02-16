@@ -84,7 +84,7 @@ set suffixesadd=.md,.js,.ts,.tsx  " File extensions not required when opening wi
 
 "
 " Vim UI
-"
+"  TODO: Here
 
 " Show relative line numbers and current line's absolute number
 set number

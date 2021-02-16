@@ -77,6 +77,10 @@ Plug 'SirVer/ultisnips'
 Plug $ZDOTDIR . '/.zinit/plugins/junegunn---fzf'
 Plug 'junegunn/fzf.vim'  " FZF Vim plugin for some configuration
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " UI extras
 Plug 'justinmk/vim-dirvish'  " Minimalistic file browser
 
