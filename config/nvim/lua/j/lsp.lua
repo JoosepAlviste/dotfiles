@@ -87,6 +87,9 @@ function M.setup()
     },
   }
 
+	-- https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-cli
+	lspconfig.graphql.setup{on_attach = on_attach, capabilities = capabilities}
+
   -- https://github.com/mattn/efm-langserver
   local eslint = {
     lintCommand = 'eslint_d -f ~/dotfiles/resources/eslint-formatter-vim.js --stdin --stdin-filename ${INPUT}',
