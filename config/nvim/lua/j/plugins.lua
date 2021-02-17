@@ -19,6 +19,7 @@ return require('packer').startup(function()
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/playground'
 
   -- Programming
   --------------
@@ -27,7 +28,4 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
-
-  -- Vue
-  use 'posva/vim-vue'
 end)

@@ -11,9 +11,15 @@ function M.setup()
     indent = {
       enable = true,
     },
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false -- Whether the query persists across vim sessions
+    },
     ensure_installed = {
       'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php',
-      'python', 'html', 'graphql', 'lua', 'yaml',
+      'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css',
     },
   }
 end
