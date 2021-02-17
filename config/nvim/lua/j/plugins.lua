@@ -28,9 +28,6 @@ return require('packer').startup(function()
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
 
-  -- Git
-  use 'tpope/vim-fugitive'
-
   -- Vue
   use 'posva/vim-vue'
 end)

@@ -141,7 +141,6 @@ require('j.mappings')
 require('j.lsp').setup()
 require('j.fzf').setup()
 require('j.autopairs').setup()
-require('j.fugitive').setup()
 require('j.material').setup()
 require('j.treesitter').setup()
 
