@@ -17,6 +17,9 @@ return require('packer').startup(function()
   use 'vijaymarupudi/nvim-fzf'
   use 'vijaymarupudi/nvim-fzf-commands'
 
+  -- Advanced highlighting
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
   -- Programming
   --------------
 
