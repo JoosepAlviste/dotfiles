@@ -37,7 +37,13 @@ opt('grepformat', '%f:%l:%c:%m,%f:%l:%m')
 
 opt('path', '**') -- temp
 -- Ignore some folders and files with find
-opt('wildignore', '**/node_modules/**,**/coverage/**,**/.idea/**,**/.git/**,**/.nuxt/**')
+opt('wildignore', {
+  '**/node_modules/**',
+  '**/coverage/**',
+  '**/.idea/**',
+  '**/.git/**',
+  '**/.nuxt/**',
+})
 
 -- UI
 opt('wrap', false, window)
@@ -131,21 +137,12 @@ opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that histo
 -- Require files
 require('j.plugins')
 require('j.mappings')
-require('j.lsp').setup()
 
+require('j.lsp').setup()
 require('j.fzf').setup()
 require('j.autopairs').setup()
 require('j.fugitive').setup()
 require('j.material').setup()
-
-
--- Colorscheme
-
-o.termguicolors = true
-
-g.material_terminal_italics = true
-g.material_theme_style = 'palenight'
-cmd [[colorscheme material]]
 
 
 -- Autocommands
