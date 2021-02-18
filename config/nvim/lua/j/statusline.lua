@@ -61,7 +61,7 @@ function _G.statusline(winnr)
     table.insert(segments, lsp_status())
   end
 
-  return ' ' .. table.concat(segments, ' ') .. ' '
+  return '  ' .. table.concat(segments, ' ') .. '  '
 end
 
 function M.setup()
