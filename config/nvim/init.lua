@@ -1,6 +1,5 @@
 local g = vim.g
 local o = vim.o
-local cmd = vim.cmd
 
 local utils = require('j.utils')
 local opt = utils.opt
@@ -152,5 +151,6 @@ require('j.gitsigns').setup()
 create_augroups({
   setup = {
     {'BufWritePost', 'plugins.lua', 'PackerCompile'},
+    {'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'Substitute', timeout = 200 })]]},
   },
 })
