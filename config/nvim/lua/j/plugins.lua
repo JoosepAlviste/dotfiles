@@ -18,7 +18,6 @@ return require('packer').startup(function()
 
   -- Fuzzy finder
   use 'vijaymarupudi/nvim-fzf'
-  use 'vijaymarupudi/nvim-fzf-commands'
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

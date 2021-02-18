@@ -1,20 +1,40 @@
-local fzf = require('fzf')
+local fzf = require('fzf').fzf
 
-local utils = require('j.utils')
-local map = utils.map
+local map = require('j.utils').map
 
 local M = {}
 
 function M.setup()
-  map('n', '<c-p>', [[<cmd>lua require('fzf-commands').files()<cr>]])
+  map('n', '<c-p>', [[<cmd>lua require('j.fzf').files()<cr>]])
 end
 
 function M.files()
-  coroutine.wrap(function()
-    local result = fzf.fzf({'choice 1', 'choice 2'}, '--ansi')  
-    -- result is a list of lines that fzf returns, if the user has chosen
-    if result then
-      print(result[1])
+  local command = 'fd --color always -t f -L --hidden'
+  local preview = 'bat --line-range=:$($FZF_PREVIEW_LINES) --color always -- {}'
+
+  coroutine.wrap(function ()
+    local choices = fzf(
+      command,
+      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+        vim.fn.shellescape(preview)
+      )
+    )
+
+    if not choices then return end
+
+    local vimcmd
+    if choices[1] == 'ctrl-t' then
+      vimcmd = 'tabnew'
+    elseif choices[1] == 'ctrl-v' then
+      vimcmd = 'vnew'
+    elseif choices[1] == 'ctrl-s' then
+      vimcmd = 'new'
+    else
+      vimcmd = 'e'
+    end
+
+    for i=2,#choices do
+      vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(choices[i]))
     end
   end)()
 end
