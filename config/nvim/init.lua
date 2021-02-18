@@ -5,6 +5,7 @@ local cmd = vim.cmd
 local utils = require('j.utils')
 local opt = utils.opt
 local map = utils.map
+local create_augroups = utils.create_augroups
 
 -- Can save global functions to this table
 _G.MUtils = {}
@@ -148,7 +149,8 @@ require('j.gitsigns').setup()
 
 -- Autocommands
 
-cmd [[augroup JoosepAutocmds]]
-cmd [[autocmd!]]
-cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
-cmd [[augroup END]]
+create_augroups({
+  setup = {
+    {'BufWritePost', 'plugins.lua', 'PackerCompile'},
+  },
+})

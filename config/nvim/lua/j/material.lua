@@ -1,5 +1,7 @@
 local cmd = vim.cmd
 
+local create_augroups = require('j.utils').create_augroups
+
 local M = {}
 
 local bg = '#292d3e'
@@ -357,11 +359,12 @@ function M.setup()
   vim.g.material_terminal_italics = true
   vim.g.material_theme_style = 'palenight'
 
-  cmd [[augroup JColors]]
-  cmd [[autocmd!]]
-  cmd [[autocmd ColorScheme * lua require('j.material').configure_colorscheme()]]
-  cmd [[autocmd ColorScheme * lua require('j.material').modify_highlights()]]
-  cmd [[augroup END]]
+  create_augroups({
+    colors = {
+      {'ColorScheme', '*', [[lua require('j.material').configure_colorscheme()]]},
+      {'ColorScheme', '*', [[lua require('j.material').modify_highlights()]]},
+    },
+  })
 
   cmd [[colorscheme material]]
 end

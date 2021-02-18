@@ -48,10 +48,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/joosep.alviste/.local/share/nvim/site/pack/packer/start/nvim-fzf"
   },
-  ["nvim-fzf-commands"] = {
-    loaded = true,
-    path = "/Users/joosep.alviste/.local/share/nvim/site/pack/packer/start/nvim-fzf-commands"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/joosep.alviste/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
