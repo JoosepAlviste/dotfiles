@@ -7,6 +7,9 @@ return require('packer').startup(function()
   -- Colorscheme
   use {'kaicataldo/material.vim', branch = 'main'}
 
+  -- Core utilities
+  use 'nvim-lua/plenary.nvim'
+
   -- Mapping improvements
   use 'windwp/nvim-autopairs'
 
@@ -28,4 +31,7 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
+
+  -- Git
+  use 'lewis6991/gitsigns.nvim'
 end)

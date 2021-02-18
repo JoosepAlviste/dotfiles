@@ -268,6 +268,10 @@ function M.configure_colorscheme()
   hi('phpInclude', purple)
   hi('phpType',    purple)
 
+  hi('GitsignsAdd', green)
+  hi('GitsignsChange', orange)
+  hi('GitsignsDelete', red)
+
   -- Custom colors
   hi('StatuslineAccent',  cyan,   statusline)
   hi('StatuslineBoolean', orange, statusline)
@@ -278,75 +282,73 @@ function M.configure_colorscheme()
 end
 
 function M.modify_highlights()
-    -- Generic modifications to highlights -- not really related to a 
-    -- colorscheme
+  -- Generic modifications to highlights -- not really related to a colorscheme
 
-    -- Make some backgrounds transparent
-    cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
-    cmd [[ hi! NonText ctermbg=NONE guibg=NONE ]]
-    cmd [[ hi! LineNr ctermbg=NONE guibg=NONE ]]
-    cmd [[ hi! CursorLineNr ctermbg=NONE guibg=NONE ]]
-    cmd [[ hi! SignColumn ctermfg=NONE guibg=NONE ]]
+  -- Make some backgrounds transparent
+  cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+  cmd [[ hi! NonText ctermbg=NONE guibg=NONE ]]
+  cmd [[ hi! LineNr ctermbg=NONE guibg=NONE ]]
+  cmd [[ hi! CursorLineNr ctermbg=NONE guibg=NONE ]]
+  cmd [[ hi! SignColumn ctermfg=NONE guibg=NONE ]]
 
-    cmd [[ hi! GitGutterAdd ctermfg=NONE guibg=NONE ]]
-    cmd [[ hi! GitGutterChange ctermfg=NONE guibg=NONE ]]
-    cmd [[ hi! GitGutterDelete ctermfg=NONE guibg=NONE ]]
-    cmd [[ hi! GitGutterChangeDelete ctermfg=NONE guibg=NONE ]]
+  cmd [[ hi! DiffAdd ctermfg=NONE guibg=NONE ]]
+  cmd [[ hi! DiffChange ctermfg=NONE guibg=NONE ]]
+  cmd [[ hi! DiffDelete ctermfg=NONE guibg=NONE ]]
 
-    cmd [[ hi link jsonBraces Function ]]
+  cmd [[ hi link jsonBraces Function ]]
 
-    -- GraphQL
-    cmd [[ hi link graphqlTemplateString Normal ]]
-    cmd [[ hi link graphqlConstant Normal ]]
-    cmd [[ hi link graphqlVariable Constant ]]
-    cmd [[ hi link graphqlBraces Special ]]
-    cmd [[ hi link graphqlOperator Special ]]
-    cmd [[ hi link graphqlName Function ]]
+  -- GraphQL
+  cmd [[ hi link graphqlTemplateString Normal ]]
+  cmd [[ hi link graphqlConstant Normal ]]
+  cmd [[ hi link graphqlVariable Constant ]]
+  cmd [[ hi link graphqlBraces Special ]]
+  cmd [[ hi link graphqlOperator Special ]]
+  cmd [[ hi link graphqlName Function ]]
 
-    -- YATS
-    cmd [[ hi link tsxIntrinsicTagName Identifier ]]
-    cmd [[ hi link tsxTagName Identifier ]]
-    cmd [[ hi link typescriptExport Include ]]
-    cmd [[ hi link typescriptImport Include ]]
-    cmd [[ hi link typescriptDefault Include ]]
-    cmd [[ hi link typescriptSymbols Operator ]]
-    cmd [[ hi link typescriptTypeReference Type ]]
-    cmd [[ hi link typescriptTypeParameter Type ]]
-    cmd [[ hi link typescriptAliasDeclaration Type ]]
-    cmd [[ hi link typescriptObjectLabel Normal ]]
-    cmd [[ hi link typescriptArrowFunc Keyword ]]
-    cmd [[ hi link typescriptTypeBrackets Noise ]]
-    cmd [[ hi link typescriptTypeBraces Noise ]]
-    cmd [[ hi link typescriptBinaryOp Noise ]]
-    cmd [[ hi link typescriptTernaryOp Noise ]]
+  -- YATS
+  cmd [[ hi link tsxIntrinsicTagName Identifier ]]
+  cmd [[ hi link tsxTagName Identifier ]]
+  cmd [[ hi link typescriptExport Include ]]
+  cmd [[ hi link typescriptImport Include ]]
+  cmd [[ hi link typescriptDefault Include ]]
+  cmd [[ hi link typescriptSymbols Operator ]]
+  cmd [[ hi link typescriptTypeReference Type ]]
+  cmd [[ hi link typescriptTypeParameter Type ]]
+  cmd [[ hi link typescriptAliasDeclaration Type ]]
+  cmd [[ hi link typescriptObjectLabel Normal ]]
+  cmd [[ hi link typescriptArrowFunc Keyword ]]
+  cmd [[ hi link typescriptTypeBrackets Noise ]]
+  cmd [[ hi link typescriptTypeBraces Noise ]]
+  cmd [[ hi link typescriptBinaryOp Noise ]]
+  cmd [[ hi link typescriptTernaryOp Noise ]]
 
-    -- YAJS
-    cmd [[ hi link javascriptArrowFunc Type ]]
-    cmd [[ hi link javascriptOpSymbol Operator ]]
+  -- YAJS
+  cmd [[ hi link javascriptArrowFunc Type ]]
+  cmd [[ hi link javascriptOpSymbol Operator ]]
 
-    -- JSX
-    cmd [[ hi link jsxComponentName Identifier ]]
+  -- JSX
+  cmd [[ hi link jsxComponentName Identifier ]]
 
-    -- vim-jsx-improve
-    cmd [[ hi link jsStorageClass Identifier ]]
-    cmd [[ hi link jsClassMethodType Keyword ]]
-    cmd [[ hi link jsxTagName Identifier ]]
-    cmd [[ hi link jsxEndComponentName Identifier ]]
-    cmd [[ hi link jsxEndString Identifier ]]
-    cmd [[ hi link jsFunction Keyword ]]
-    cmd [[ hi link jsExportDefault Include ]]
-    cmd [[ hi link jsLabel Conditional ]]
+  -- vim-jsx-improve
+  cmd [[ hi link jsStorageClass Identifier ]]
+  cmd [[ hi link jsClassMethodType Keyword ]]
+  cmd [[ hi link jsxTagName Identifier ]]
+  cmd [[ hi link jsxEndComponentName Identifier ]]
+  cmd [[ hi link jsxEndString Identifier ]]
+  cmd [[ hi link jsFunction Keyword ]]
+  cmd [[ hi link jsExportDefault Include ]]
+  cmd [[ hi link jsLabel Conditional ]]
 
-    -- Python
-    cmd [[ hi link pythonInclude Include ]]
-    cmd [[ hi link pythonStatement Keyword ]]
+  -- Python
+  cmd [[ hi link pythonInclude Include ]]
+  cmd [[ hi link pythonStatement Keyword ]]
 
-    -- Markdown
-    cmd [[ hi link mkdBold htmlBold ]]
-    cmd [[ hi link mkdItalic htmlItalic ]]
+  -- Markdown
+  cmd [[ hi link mkdBold htmlBold ]]
+  cmd [[ hi link mkdItalic htmlItalic ]]
 
-    -- YAML
-    cmd [[ hi link yamlBool Boolean ]]
+  -- YAML
+  cmd [[ hi link yamlBool Boolean ]]
 end
 
 function M.setup()

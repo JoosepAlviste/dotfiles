@@ -143,6 +143,7 @@ require('j.fzf').setup()
 require('j.autopairs').setup()
 require('j.material').setup()
 require('j.treesitter').setup()
+require('j.gitsigns').setup()
 
 
 -- Autocommands
