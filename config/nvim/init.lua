@@ -137,6 +137,7 @@ opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that histo
 -- Require files
 require('j.plugins')
 require('j.mappings')
+require('j.statusline').setup()
 
 require('j.lsp').setup()
 require('j.fzf').setup()

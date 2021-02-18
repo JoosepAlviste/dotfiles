@@ -10,7 +10,7 @@ end
 
 function M.files()
   local command = 'fd --color always -t f -L --hidden'
-  local preview = 'bat --line-range=:$($FZF_PREVIEW_LINES) --color always -- {}'
+  local preview = 'bat --line-range=:$(($FZF_PREVIEW_LINES)) --color always -- {}'
 
   coroutine.wrap(function ()
     local choices = fzf(
