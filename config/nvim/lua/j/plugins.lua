@@ -12,6 +12,7 @@ return require('packer').startup(function()
 
   -- Mapping improvements
   use 'windwp/nvim-autopairs'
+  use 'b3nj5m1n/kommentary'  -- Commenting
 
   -- External programs
   use 'knubie/vim-kitty-navigator'
