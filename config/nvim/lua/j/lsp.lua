@@ -145,7 +145,7 @@ function M.setup()
           }
         },
         diagnostics = {
-          globals = {'vim'},
+          globals = {'vim', 'use'},
           disable = {'trailing-space'},
         },
         workspace = {

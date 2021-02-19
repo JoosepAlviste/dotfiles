@@ -8,7 +8,8 @@ return require('packer').startup(function()
   use {'kaicataldo/material.vim', branch = 'main'}
 
   -- Core utilities
-  use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/plenary.nvim'  -- Useful Lua utilities
+  use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
 
   -- Mapping improvements
   use 'windwp/nvim-autopairs'

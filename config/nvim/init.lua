@@ -139,6 +139,7 @@ require('j.plugins')
 require('j.mappings')
 require('j.statusline').setup()
 require('j.tabline').setup()
+require('j.file_info').setup()
 
 require('j.lsp').setup()
 require('j.fzf').setup()
