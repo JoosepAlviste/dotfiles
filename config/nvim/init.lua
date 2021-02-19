@@ -134,13 +134,15 @@ opt('undoreload', 10000)
 opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that history is longer
 
 
--- Require files
+-- My custom configurations
 require('j.plugins')
 require('j.mappings')
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info').setup()
 
+
+-- Plugin configurations
 require('j.lsp').setup()
 require('j.fzf').setup()
 require('j.autopairs').setup()

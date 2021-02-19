@@ -12,7 +12,7 @@ local right_margin = 2
 function M.file_info()
   local width = api.nvim_get_option('columns')
 
-  local filename = vim.fn.expand('%:p:h:t') .. '/' .. vim.fn.expand('%:p:t')
+  local filename = vim.fn.expand('%')
   local type = vim.bo.ft
   local branch = vim.b.gitsigns_head
   local lsp_client_names = table.concat(vim.tbl_map(function (client)
