@@ -31,6 +31,7 @@ return require('packer').startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'  -- Autocompletion
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
 

@@ -144,6 +144,7 @@ require('j.file_info').setup()
 
 -- Plugin configurations
 require('j.lsp').setup()
+require('j.completion').setup()
 require('j.fzf').setup()
 require('j.autopairs').setup()
 require('j.kommentary').setup()
