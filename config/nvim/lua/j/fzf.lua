@@ -34,14 +34,14 @@ function M.files()
       vimcmd = 'e'
     end
 
-    for i=2,#choices do
+    for i = 2, #choices do
       vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(choices[i]))
     end
   end)()
 end
 
 function M.grep()
-  local command = 'rg --column --line-number --no-heading --color=always --smart-case -- ""'
+  local command = 'rg --line-number --no-heading --color=always --smart-case -- ""'
   local preview = 'fzf-preview {}'
 
   coroutine.wrap(function ()
@@ -65,8 +65,12 @@ function M.grep()
       vimcmd = 'e'
     end
 
-    for i=2,#choices do
-      vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(vim.gsplit(choices[i], ':')()))
+    for i = 2, #choices do
+      local  iterator = vim.gsplit(choices[i], ':')
+      local filename = iterator()
+      local line_nr = iterator()
+      -- Open the file at the specified line nr
+      vim.cmd(vimcmd .. ' +' .. line_nr .. ' ' .. vim.fn.fnameescape(filename))
     end
   end)()
 end
