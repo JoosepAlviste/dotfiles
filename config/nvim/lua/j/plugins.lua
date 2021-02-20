@@ -24,7 +24,7 @@ return require('packer').startup(function()
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'nvim-treesitter/playground'
+  use {'nvim-treesitter/playground', disable = true}
 
   -- Snippets
   use 'hrsh7th/vim-vsnip'
