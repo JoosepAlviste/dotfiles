@@ -152,6 +152,7 @@ require('j.material').setup()
 require('j.treesitter').setup()
 require('j.gitsigns').setup()
 require('j.vsnip').setup()
+require('j.dirvish').setup()
 
 
 -- Autocommands

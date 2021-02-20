@@ -15,29 +15,28 @@ return require('packer').startup(function()
   use 'windwp/nvim-autopairs'
   use 'b3nj5m1n/kommentary'  -- Commenting
   use 'tpope/vim-surround'  -- Surround stuff with things
-
-  -- External programs
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
   -- Fuzzy finder
   use 'vijaymarupudi/nvim-fzf'
 
+  -- File explorer
+  use 'justinmk/vim-dirvish'
+
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use {'nvim-treesitter/playground', disable = true}
-
-  -- Snippets
-  use 'hrsh7th/vim-vsnip'
 
   -- Programming
   --------------
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
+  use 'neovim/nvim-lspconfig'  -- Built-in LSP configurations
   use 'hrsh7th/nvim-compe'  -- Autocompletion
+  use 'hrsh7th/vim-vsnip'  -- Snippets
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
 
   -- Git
-  use 'lewis6991/gitsigns.nvim'
+  use 'lewis6991/gitsigns.nvim'  -- Git status signs in the gutter
 end)
