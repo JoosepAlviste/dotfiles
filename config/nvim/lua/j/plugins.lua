@@ -17,7 +17,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'  -- Surround stuff with things
 
   -- External programs
-  use 'knubie/vim-kitty-navigator'
+  use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
   -- Fuzzy finder
   use 'vijaymarupudi/nvim-fzf'
@@ -25,6 +25,9 @@ return require('packer').startup(function()
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/playground'
+
+  -- Snippets
+  use 'hrsh7th/vim-vsnip'
 
   -- Programming
   --------------

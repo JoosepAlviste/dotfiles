@@ -10,7 +10,7 @@ function M.setup()
       path = true,
       buffer = true,
       nvim_lsp = true,
-      ultisnips = true,
+      vsnip = true,
     },
   }
 

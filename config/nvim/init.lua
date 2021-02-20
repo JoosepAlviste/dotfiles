@@ -151,6 +151,7 @@ require('j.kommentary').setup()
 require('j.material').setup()
 require('j.treesitter').setup()
 require('j.gitsigns').setup()
+require('j.vsnip').setup()
 
 
 -- Autocommands
