@@ -87,33 +87,50 @@ function M.setup()
     },
   }
 
+  -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
+  lspconfig.cssls.setup{on_attach = on_attach, capabilities = capabilities}
+
 	-- https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-cli
 	lspconfig.graphql.setup{on_attach = on_attach, capabilities = capabilities}
 
-  -- https://github.com/mattn/efm-langserver
-  local eslint = {
-    lintCommand = 'eslint_d -f ~/dotfiles/resources/eslint-formatter-vim.js --stdin --stdin-filename ${INPUT}',
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {'%f:%l:%c:%t: %m'},
-    formatCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --fix-to-stdout',
-    formatStdin = true,
+  -- https://intelephense.com
+  lspconfig.intelephense.setup{
+    on_attach = on_attach,
+    settings = {
+      intelephense = {
+        environment = {
+          shortOpenTag = true,
+        },
+      },
+    },
   }
 
-  lspconfig.efm.setup {
+  -- https://github.com/vscode-langservers/vscode-json-languageserver
+  lspconfig.jsonls.setup{
     on_attach = on_attach,
-    root_dir = lspconfig.util.root_pattern('package.json'),
-    filetypes = {'typescript', 'typescriptreact', 'vue', 'javascript'},
-    init_options = {
-      documentFormatting = true,
-    },
     settings = {
-      rootMarkers = {'package.json'},
-      languages = {
-        typescript = {eslint},
-        typescriptreact = {eslint},
-        javascript = {eslint},
-        vue = {eslint},
+      json = {
+        schemas = {
+          { fileMatch = { 'jsconfig.json' }; url = 'https://json.schemastore.org/jsconfig' },
+          { fileMatch = { 'tsconfig.json' }; url = 'https://json.schemastore.org/tsconfig' },
+          { fileMatch = { 'package.json' }; url = 'https://json.schemastore.org/package' },
+        },
+      },
+    },
+    capabilities = capabilities,
+  }
+
+  -- https://github.com/redhat-developer/yaml-language-server
+  lspconfig.yamlls.setup{
+    on_attach = on_attach,
+    settings = {
+      yaml = {
+        schemas = {
+          ['http://json.schemastore.org/gitlab-ci'] = '.gitlab-ci.yml',
+          ['http://json.schemastore.org/composer'] = 'composer.yaml',
+          ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = 'docker-compose*.yml',
+          ['https://raw.githubusercontent.com/kamilkisiela/graphql-config/v3.0.3/config-schema.json'] = '.graphqlrc*',
+        },
       },
     },
   }
@@ -158,6 +175,34 @@ function M.setup()
       },
     },
     capabilities = capabilities,
+  }
+
+  -- https://github.com/mattn/efm-langserver
+  local eslint = {
+    lintCommand = 'eslint_d -f ~/dotfiles/resources/eslint-formatter-vim.js --stdin --stdin-filename ${INPUT}',
+    lintIgnoreExitCode = true,
+    lintStdin = true,
+    lintFormats = {'%f:%l:%c:%t: %m'},
+    formatCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT} --fix-to-stdout',
+    formatStdin = true,
+  }
+
+  lspconfig.efm.setup {
+    on_attach = on_attach,
+    root_dir = lspconfig.util.root_pattern('package.json'),
+    filetypes = {'typescript', 'typescriptreact', 'vue', 'javascript'},
+    init_options = {
+      documentFormatting = true,
+    },
+    settings = {
+      rootMarkers = {'package.json'},
+      languages = {
+        typescript = {eslint},
+        typescriptreact = {eslint},
+        javascript = {eslint},
+        vue = {eslint},
+      },
+    },
   }
 end
 
