@@ -1,4 +1,13 @@
-vim.cmd [[packadd packer.nvim]]
+local fn = vim.fn
+local cmd = vim.cmd
+
+-- Automatically install packer.nvim
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
   -- Packer itself
