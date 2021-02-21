@@ -39,6 +39,11 @@ map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>
 map('n', ']n', [[/\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
 map('n', '[n', [[?\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
 
+-- Open the file under the cursor with the default file handler for that file 
+-- type (e.g., Firefox for `http` links, etc.)
+-- This mapping normally comes from `netrw`, but since we disable that (for 
+-- dirvish), then we need to manually configure the mapping again
+map('n', 'gx', [[:call system('open ' . expand('<cWORD>'))<cr>]])
 
 -- Leader mappings
 
@@ -78,4 +83,3 @@ map('c', '<c-a>', '<home>')
 -- Visual shifting does not exit Visual mode
 map('v', '<', '<gv')
 map('v', '>', '>gv')
-

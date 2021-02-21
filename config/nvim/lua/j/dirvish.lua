@@ -3,6 +3,9 @@ local map = require('j.utils').map
 local M = {}
 
 function M.setup()
+  -- Disable netrw
+  vim.g.loaded_netrwPlugin = 1
+
   -- Sort directories first
   vim.g.dirvish_mode = ':sort ,^.*[\\/], '
   -- Ignore turds left behind by macOS, Git, and a few other things
