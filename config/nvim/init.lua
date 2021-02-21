@@ -82,9 +82,6 @@ opt('splitbelow')  -- Open new split below
 opt('whichwrap', 'b,s,h,l,<,>,[,]')  -- Backspace and cursor keys wrap lines
 opt('joinspaces', false)  -- Prevent inserting two spaces with J
 
-opt('foldmethod', 'indent', window)
-opt('foldlevelstart', 99)
-
 opt('completeopt', {'menuone', 'noselect'})  -- Completion menu
 
 --  Autoformatting
@@ -142,6 +139,7 @@ require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info').setup()
 require('j.terminal').setup()
+require('j.folding').setup()
 
 
 -- Plugin configurations
