@@ -16,7 +16,8 @@ brew install \
     koekeishiya/formulae/yabai \
     koekeishiya/formulae/skhd \
     jq \
-    efm-langserver
+    efm-langserver \
+    ffmpegthumbnailer
 ```
 
 

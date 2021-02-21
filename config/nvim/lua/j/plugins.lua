@@ -36,6 +36,7 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip'  -- Snippets
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
+  use 'editorconfig/editorconfig-vim'  -- Project-specific settings
 
   -- Git
   use 'lewis6991/gitsigns.nvim'  -- Git status signs in the gutter
