@@ -4,6 +4,10 @@ local M = {}
 
 function M.setup()
   vim.g.vsnip_snippet_dir = '~/.config/nvim/vsnip'
+  vim.g.vsnip_filetypes = {
+    typescript = {'javascript'},
+    typescriptreact = {'javascript', 'typescript'},
+  }
 
   -- Expand or jump
   map('i', '<tab>', [[vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<tab>']], {expr = true, noremap = false})
