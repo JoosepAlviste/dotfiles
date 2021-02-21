@@ -42,6 +42,7 @@ function M.setup()
   map('n', '<c-p>',      [[<cmd>lua require('j.fzf').files()<cr>]])
   map('n', '<leader>ff', [[<cmd>lua require('j.fzf').grep()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.fzf').history()<cr>]])
+  map('n', '<leader>fx', [[<cmd>lua require('j.fzf').git_status()<cr>]])
 end
 
 function M.files()
@@ -101,6 +102,32 @@ function M.history()
         vim.fn.shellescape(preview)
       )
     )
+
+    handle_selected_files(choices)
+  end)()
+end
+
+-- View modified or added Git files
+function M.git_status()
+  -- Preview Git diff if the file is changed, otherwise the whole file
+  local preview = [=["sh -c \"if [ \"{1}\" = \"M\" ]; then git diff --color=always {-1}; else bat --color=always {-1}; fi\""]=]
+
+  coroutine.wrap(function ()
+    local choices = fzf(
+      'git -c color.status=always status --short --untracked-files=all',
+      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(preview)
+    )
+
+    local first = true
+    choices = vim.tbl_map(function (choice)
+      if first then
+        first = false
+        return choice
+      end
+
+      -- The choice includes the Git status (' M foobar.txt')
+      return vim.split(vim.trim(choice), ' ')[2]
+    end, choices)
 
     handle_selected_files(choices)
   end)()
