@@ -30,8 +30,9 @@ return require('packer').startup(function()
   -- Programming
   --------------
 
-  -- LSP
+  -- Smarts
   use 'neovim/nvim-lspconfig'  -- Built-in LSP configurations
+  use 'glepnir/lspsaga.nvim'  -- LSP UI improvements
   use 'hrsh7th/nvim-compe'  -- Autocompletion
   use 'hrsh7th/vim-vsnip'  -- Snippets
 

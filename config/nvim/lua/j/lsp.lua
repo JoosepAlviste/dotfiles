@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local saga = require('lspsaga')
 
 local M = {}
 
@@ -14,15 +15,15 @@ local function on_attach(client, bufnr)
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
 
-  buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-  buf_map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  buf_map('n', 'K', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]], opts)
+  buf_map('n', '<space>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
+  buf_map('n', '<leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]], opts)
 
   -- Navigate diagnostics
   buf_map('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
   buf_map('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
+  buf_map('n', '<leader>d', [[<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<cr>]], opts)
 
   -- Formatting
   buf_map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
@@ -32,15 +33,23 @@ end
 
 function M.setup()
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = "»",
-      spacing = 4,
-    },
-    signs = false,
-    update_in_insert = false,
-  }
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = "»",
+        spacing = 4,
+      },
+      signs = false,
+      update_in_insert = false,
+    }
   )
+
+  saga.init_lsp_saga {
+    use_saga_diagnostic_sign = false,
+    code_action_keys = {
+      quit = '<esc>',
+      exec = '<cr>',
+    },
+  }
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   -- Configure that we accept snippets so that the server would send us snippet 
