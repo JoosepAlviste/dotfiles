@@ -16,8 +16,10 @@ brew install \
     koekeishiya/formulae/yabai \
     koekeishiya/formulae/skhd \
     jq \
+    jesseduffield/lazygit/lazygit \
+    ffmpegthumbnailer \
     efm-langserver \
-    ffmpegthumbnailer
+    hashicorp/tap/terraform-ls
 ```
 
 
@@ -29,7 +31,14 @@ node modules.
 ```bash
 npm i -g \
     bash-language-server \
-    typescript-language-server
+    typescript-language-server \
+    vls \
+    graphql-language-service-cli \
+    intelephense \
+    vscode-css-languageserver-bin \
+    vscode-json-languageserver \
+    yaml-language-server \
+    eslint_d
 ```
 
 

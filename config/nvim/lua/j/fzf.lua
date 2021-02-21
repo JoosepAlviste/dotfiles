@@ -1,6 +1,8 @@
 local fzf = require('fzf').fzf
 
-local map = require('j.utils').map
+local utils = require('j.utils')
+local map = utils.map
+local create_augroups = utils.create_augroups
 
 local M = {}
 
@@ -43,6 +45,12 @@ function M.setup()
   map('n', '<leader>ff', [[<cmd>lua require('j.fzf').grep()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.fzf').history()<cr>]])
   map('n', '<leader>fx', [[<cmd>lua require('j.fzf').git_status()<cr>]])
+
+  create_augroups({
+    fzf = {
+      {'FileType', 'fzf', [[tunmap <buffer> <esc>]]},
+    },
+  })
 end
 
 function M.files()

@@ -140,6 +140,7 @@ require('j.mappings')
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info').setup()
+require('j.terminal').setup()
 
 
 -- Plugin configurations

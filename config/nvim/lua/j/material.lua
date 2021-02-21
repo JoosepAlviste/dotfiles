@@ -287,7 +287,7 @@ function M.modify_highlights()
   -- Generic modifications to highlights -- not really related to a colorscheme
 
   -- Make some backgrounds transparent
-  cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+  cmd [[ hi! Normal ctermbg=NONE guibg=NONE]]
   cmd [[ hi! NonText ctermbg=NONE guibg=NONE ]]
   cmd [[ hi! LineNr ctermbg=NONE guibg=NONE ]]
   cmd [[ hi! CursorLineNr ctermbg=NONE guibg=NONE ]]
