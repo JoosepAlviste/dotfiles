@@ -161,7 +161,35 @@ require('j.dirvish').setup()
 
 create_augroups({
   setup = {
+    -- Automatically compile packer when saving the plugins' file
     {'BufWritePost', 'plugins.lua', 'PackerCompile'},
+    -- Highlight text after yanking
     {'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'Substitute', timeout = 200 })]]},
+  },
+  detect_filetypes = {
+    -- dockerfile
+    {'BufRead,BufNewFile', 'Dockerfile-*', 'setfiletype dockerfile'},
+    -- gitconfig
+    {'BufRead,BufNewFile', '*config/git/config', 'setfiletype gitconfig'},
+    -- graphql
+    {'BufRead,BufNewFile', '*.graphql', 'setfiletype graphql'},
+    {'BufRead,BufNewFile', '*.prisma', 'setfiletype graphql'},
+    -- image
+    {'BufRead,BufNewFile', '*.png', 'setfiletype image'},
+    {'BufRead,BufNewFile', '*.jpg', 'setfiletype image'},
+    {'BufRead,BufNewFile', '*.jpeg', 'setfiletype image'},
+    {'BufRead,BufNewFile', '*.gif', 'setfiletype image'},
+    -- json
+    {'BufRead,BufNewFile', '*.babelrc', 'setfiletype json'},
+    {'BufRead,BufNewFile', '.eslintrc', 'setfiletype json'},
+    {'BufRead,BufNewFile', '.prettierrc', 'setfiletype json'},
+    {'BufRead,BufNewFile', '.stylelintrc', 'setfiletype json'},
+    {'BufRead,BufNewFile', '.svgrrc', 'setfiletype json'},
+    -- sh
+    {'BufRead,BufNewFile', '.env*', 'setfiletype sh'},
+    -- yaml
+    {'BufRead,BufNewFile', '*.graphqlrc', 'setfiletype yaml'},
+    -- zsh
+    {'BufRead,BufNewFile', 'zprofile', 'setfiletype zsh'},
   },
 })
