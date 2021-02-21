@@ -137,6 +137,7 @@ opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that histo
 -- My custom configurations
 require('j.plugins')
 require('j.mappings')
+require('j.abbreviations')
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info').setup()
