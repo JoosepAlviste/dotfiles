@@ -7,6 +7,9 @@ local M = {}
 local default_preview = 'bat --color always -- {}'
 local ripgrep_preview = 'fzf-preview {}'  -- fzf-preview is a script in my dotfiles
 
+-- Open the given list of selected files
+-- The first element of `choices` is the key that the user pressed (e.g., 
+-- "ctrl-t") and the rest of the table is the files that were selected.
 local function handle_selected_files(choices)
   if not choices then return end
 
@@ -64,7 +67,7 @@ function M.grep()
   coroutine.wrap(function ()
     local choices = fzf(
       command,
-      ('--ansi --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
+      ('--ansi --delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -75,7 +78,7 @@ end
 
 function M.history()
   local preview = default_preview
-  local cwd = vim.fn.getcwd()
+  local cwd = vim.loop.cwd()
 
   coroutine.wrap(function ()
     -- A filename can include some symbols that mess with filtering, escape 
@@ -88,7 +91,7 @@ function M.history()
         return vim.fn.fnamemodify(file, ':~:.')
       end,
       vim.tbl_filter(function (file)
-        return string.match(file, escaped_cwd) and vim.fn.filereadable(file)
+        return string.match(file, escaped_cwd) and vim.fn.filereadable(file) ~= 0
       end, oldfiles)
     )
 
