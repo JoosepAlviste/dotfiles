@@ -131,8 +131,10 @@ opt('undoreload', 10000)
 opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that history is longer
 
 
+-- Commands
 
 
+vim.cmd [[command! -nargs=0 W call mkdir(expand("%:p:h"), "p")]]
 
 
 -- Autocommands
