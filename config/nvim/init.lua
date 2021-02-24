@@ -131,28 +131,8 @@ opt('undoreload', 10000)
 opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that history is longer
 
 
--- My custom configurations
-require('j.plugins')
-require('j.mappings')
-require('j.abbreviations')
-require('j.statusline').setup()
-require('j.tabline').setup()
-require('j.file_info').setup()
-require('j.terminal').setup()
-require('j.folding').setup()
 
 
--- Plugin configurations
-require('j.lsp').setup()
-require('j.completion').setup()
-require('j.fzf').setup()
-require('j.autopairs').setup()
-require('j.kommentary').setup()
-require('j.material').setup()
-require('j.treesitter').setup()
-require('j.gitsigns').setup()
-require('j.vsnip').setup()
-require('j.dirvish').setup()
 
 
 -- Autocommands
@@ -190,4 +170,38 @@ create_augroups({
     -- zsh
     {'BufRead,BufNewFile', 'zprofile', 'setfiletype zsh'},
   },
+  -- Simple one-liner filetype specific things that I don't really want to put 
+  -- into ftplugin files for whatever reason
+  simple_filetypes = {
+    -- The `typescriptreact` FileType autocmd gets executed BEFORE the 
+    -- `ftplugin` file. However, we need to set the commentstring before any 
+    -- other FileType autocmds
+    {'FileType', 'typescriptreact', [[setlocal commentstring=//\ %s]]},
+    {'FileType', 'vue', [[setlocal commentstring=<!--\ %s\ -->]]},
+  },
 })
+
+
+-- My custom configurations
+require('j.plugins')
+require('j.mappings')
+require('j.abbreviations')
+require('j.statusline').setup()
+require('j.tabline').setup()
+require('j.file_info').setup()
+require('j.terminal').setup()
+require('j.folding').setup()
+require('j.context_commentstring').setup()
+
+
+-- Plugin configurations
+require('j.lsp').setup()
+require('j.completion').setup()
+require('j.fzf').setup()
+require('j.autopairs').setup()
+require('j.kommentary').setup()
+require('j.material').setup()
+require('j.treesitter').setup()
+require('j.gitsigns').setup()
+require('j.vsnip').setup()
+require('j.dirvish').setup()
