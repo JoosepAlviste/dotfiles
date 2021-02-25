@@ -193,7 +193,6 @@ require('j.tabline').setup()
 require('j.file_info').setup()
 require('j.terminal').setup()
 require('j.folding').setup()
-require('j.context_commentstring').setup()
 
 
 -- Plugin configurations
@@ -202,6 +201,7 @@ require('j.completion').setup()
 require('j.fzf').setup()
 require('j.autopairs').setup()
 require('j.kommentary').setup()
+require('ts_context_commentstring').setup()
 require('j.material').setup()
 require('j.treesitter').setup()
 require('j.gitsigns').setup()

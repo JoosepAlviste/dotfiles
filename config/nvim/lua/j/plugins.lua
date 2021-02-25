@@ -23,6 +23,8 @@ return require('packer').startup(function()
   -- Mapping improvements
   use 'windwp/nvim-autopairs'
   use 'b3nj5m1n/kommentary'  -- Commenting
+  -- Dynamically set commentstring based on cursor location in file
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'tpope/vim-surround'  -- Surround stuff with things
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
