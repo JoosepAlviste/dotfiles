@@ -28,7 +28,7 @@ local function handle_selected_files(choices)
     -- Split the selected item to filename + line nr. E.g., ripgrep outputs 
     -- "/my/file.txt:1: file content here" where we want "/my/file.txt" and 
     -- "1". Shouldn't break if no line number is output.
-    local  iterator = vim.gsplit(choices[i], ':')
+    local iterator = vim.gsplit(choices[i], ':')
     local filename = iterator()
     local line_nr = iterator()
     if line_nr then
@@ -43,7 +43,7 @@ end
 function M.setup()
   map('n', '<c-p>',      [[<cmd>lua require('j.fzf').files()<cr>]])
   map('n', '<leader>ff', [[<cmd>lua require('j.fzf').grep()<cr>]])
-  map('v', '<space>ff', [[<cmd>lua require('j.fzf').grep_selected()<cr>]])
+  map('v', '<space>ff',  [[<cmd>lua require('j.fzf').grep_selected()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.fzf').history()<cr>]])
   map('n', '<leader>fx', [[<cmd>lua require('j.fzf').git_status()<cr>]])
 
@@ -97,6 +97,26 @@ end
 
 function M.grep_selected()
   return M.grep(get_selection())
+end
+
+function M.grep_folder(folder)
+  local glob = vim.endswith(folder, '/') and folder .. '**/*' or folder
+  local command = (
+    [[rg --line-number --no-heading --color=always --smart-case -g '%s' -- ""]]
+  ):format(glob)
+  local preview = ripgrep_preview
+
+  coroutine.wrap(function ()
+    local choices = fzf(
+      command,
+      ('--ansi --delimiter : --nth 3.. --prompt "%s > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
+        folder,
+        vim.fn.shellescape(preview)
+      )
+    )
+
+    handle_selected_files(choices)
+  end)()
 end
 
 function M.history()
