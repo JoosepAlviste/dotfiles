@@ -1,0 +1,2 @@
+setlocal nocursorline
+setlocal colorcolumn=
