@@ -43,6 +43,7 @@ end
 function M.setup()
   map('n', '<c-p>',      [[<cmd>lua require('j.fzf').files()<cr>]])
   map('n', '<leader>ff', [[<cmd>lua require('j.fzf').grep()<cr>]])
+  map('v', '<space>ff', [[<cmd>lua require('j.fzf').grep_selected()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.fzf').history()<cr>]])
   map('n', '<leader>fx', [[<cmd>lua require('j.fzf').git_status()<cr>]])
 
@@ -69,8 +70,9 @@ function M.files()
   end)()
 end
 
-function M.grep()
-  local command = 'rg --line-number --no-heading --color=always --smart-case -- ""'
+function M.grep(search)
+  search = search or ''
+  local command = 'rg --line-number --no-heading --color=always --smart-case -- "' .. search .. '"'
   local preview = ripgrep_preview
 
   coroutine.wrap(function ()
@@ -85,6 +87,18 @@ function M.grep()
   end)()
 end
 
+local function get_selection()
+    local old_reg = vim.fn.getreg("v")
+    vim.cmd [[normal! "vy]]
+    local raw_search = vim.fn.getreg("v")
+    vim.fn.setreg('v', old_reg)
+    return vim.fn.substitute(vim.fn.escape(raw_search, '\\/.*$^~[]{}'), '\n', '\\n', 'g')
+end
+
+function M.grep_selected()
+  return M.grep(get_selection())
+end
+
 function M.history()
   local preview = default_preview
   local cwd = vim.loop.cwd()
@@ -92,7 +106,7 @@ function M.history()
   coroutine.wrap(function ()
     -- A filename can include some symbols that mess with filtering, escape 
     -- them
-    local escaped_cwd = string.gsub(cwd, '%-', '%%%1')
+    local escaped_cwd = vim.pesc(cwd)
     local oldfiles = vim.v.oldfiles
 
     local cwd_oldfiles = vim.tbl_map(
