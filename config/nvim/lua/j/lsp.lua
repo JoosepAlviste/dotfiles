@@ -43,6 +43,26 @@ function M.setup()
     }
   )
 
+  -- Handle formatting in a smarter way
+  -- If the buffer has been edited before formatting has completed, do not try 
+  -- to apply the changes
+  vim.lsp.handlers['textDocument/formatting'] = function(err, _, result, _, bufnr)
+    if err ~= nil or result == nil then
+      return
+    end
+
+    -- If the buffer hasn't been modified before the formatting has finished, 
+    -- update the buffer
+    if not vim.api.nvim_buf_get_option(bufnr, 'modified') then
+      local view = vim.fn.winsaveview()
+      vim.lsp.util.apply_text_edits(result, bufnr)
+      vim.fn.winrestview(view)
+      if bufnr == vim.api.nvim_get_current_buf() then
+        vim.api.nvim_command('noautocmd :update')
+      end
+    end
+  end
+
   saga.init_lsp_saga {
     use_saga_diagnostic_sign = false,
     code_action_keys = {
