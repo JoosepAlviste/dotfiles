@@ -72,6 +72,8 @@ opt('showmatch')  -- Highlight matching parenthesis, etc.
 
 opt('lazyredraw')  -- Redraw only when need to
 
+opt('showmode', false)  -- Do not show mode in command line
+
 -- UX
 opt('confirm')
 opt('updatetime', 100)  -- Trigger cursorhold faster
@@ -199,6 +201,7 @@ require('j.tabline').setup()
 require('j.file_info').setup()
 require('j.terminal').setup()
 require('j.folding').setup()
+require('j.session').setup()
 
 
 -- Plugin configurations
