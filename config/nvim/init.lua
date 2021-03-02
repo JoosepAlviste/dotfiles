@@ -146,6 +146,11 @@ create_augroups({
     {'BufWritePost', 'plugins.lua', 'PackerCompile'},
     -- Highlight text after yanking
     {'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'Substitute', timeout = 200 })]]},
+    -- Hide cursorline in insert mode
+    {'InsertLeave,WinEnter', '*', 'set cursorline'},
+    {'InsertEnter,WinLeave', '*', 'set nocursorline'},
+    -- Automatically close Vim if the quickfix window is the only one open
+    {'WinEnter', '*', [[if winnr('$') == 1 && &buftype == 'quickfix' | q | endif]]},
   },
   detect_filetypes = {
     -- dockerfile
