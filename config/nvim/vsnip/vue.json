@@ -1,0 +1,42 @@
+{
+  "component": {
+    "prefix": ["comp"],
+    "body": [
+      "<template>",
+      "\t<div />",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { defineComponent } from '@vue/composition-api';",
+      "",
+      "export default defineComponent({",
+      "\tsetup() {",
+      "\t},",
+      "});",
+      "</script>",
+      "",
+      "<style lang=\"scss\" scoped>",
+      "</style>"
+    ]
+  },
+  "class component": {
+    "prefix": ["componentclass"],
+    "body": [
+      "<template>",
+      "\t<div />",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { Component, Vue } from 'vue-property-decorator';",
+      "",
+      "@Component({})",
+      "export default class $TM_FILENAME_BASE extends Vue {",
+      "\t$0",
+      "}",
+      "</script>",
+      "",
+      "<style lang=\"scss\">",
+      "</style>"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "stories": {
+    "prefix": ["stories"],
+    "body": [
+      "import { Meta, Story } from '@storybook/vue';",
+      "import $TM_FILENAME_BASE from './$TM_FILENAME_BASE.vue';",
+      "",
+      "export default {",
+      "\ttitle: '$TM_FILENAME_BASE',",
+      "\tcomponent: $TM_FILENAME_BASE,",
+      "} as Meta;",
+      "",
+      "export const Default: Story = (_, { argTypes }) => ({",
+      "\tcomponents: { $TM_FILENAME_BASE },",
+      "\ttemplate: '<$TM_FILENAME_BASE></$TM_FILENAME_BASE>',",
+      "\tprops: Object.keys(argTypes),",
+      "});",
+      "Default.storyName = '$TM_FILENAME_BASE';"
+    ],
+    "description": "A Storybook stories file for a Vue component"
+  },
+  "describe": {
+    "prefix": ["describe"],
+    "body": [
+      "describe('${1:$TM_FILENAME_BASE}', () => {",
+      "\t$0",
+      "});"
+    ]
+  },
+  "it": {
+    "prefix": ["it"],
+    "body": [
+      "it('$1', () => {",
+      "\t$0",
+      "});"
+    ]
+  }
+}
