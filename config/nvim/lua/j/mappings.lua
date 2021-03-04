@@ -55,7 +55,7 @@ map('n', '<leader>q', ':quit<cr>', silent)
 -- Quit Vim without closing windows (useful for keeping a session)
 map('n', '<leader>x', ':quitall<cr>', silent)
 -- Save
-map('n', '<leader>w', ':w!<cr>', silent)
+map('n', '<leader>w', ':silent w!<cr>', silent)
 
 -- Clear search highlight
 map('n', '<localleader>x', ':nohlsearch<cr>', silent)
