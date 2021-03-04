@@ -102,7 +102,7 @@ opt('formatoptions', {
 -- Messages
 local short_mess = 'filnxtToOF'
 short_mess = short_mess .. 'I'  -- No splash screen
-short_mess = short_mess .. 'W'  -- Don't pring "written" when editing
+short_mess = short_mess .. 'W'  -- Don't print "written" when editing
 short_mess = short_mess .. 'a'  -- Use abbreviations in messages ([RO] intead of [readonly])
 short_mess = short_mess .. 'c'  -- Do not show ins-completion-menu messages (match 1 of 2)
 opt('shortmess', short_mess)
@@ -216,3 +216,4 @@ require('j.treesitter').setup()
 require('j.gitsigns').setup()
 require('j.vsnip').setup()
 require('j.dirvish').setup()
+require('j.editorconfig').setup()
