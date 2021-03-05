@@ -41,11 +41,11 @@ local function handle_selected_files(choices)
 end
 
 function M.setup()
-  map('n', '<c-p>',      [[<cmd>lua require('j.fzf').files()<cr>]])
-  map('n', '<leader>ff', [[<cmd>lua require('j.fzf').grep()<cr>]])
-  map('v', '<space>ff',  [[<cmd>lua require('j.fzf').grep_selected()<cr>]])
-  map('n', '<leader>fr', [[<cmd>lua require('j.fzf').history()<cr>]])
-  map('n', '<leader>fx', [[<cmd>lua require('j.fzf').git_status()<cr>]])
+  map('n', '<c-p>',      [[<cmd>lua require('j.plugins.fzf').files()<cr>]])
+  map('n', '<leader>ff', [[<cmd>lua require('j.plugins.fzf').grep()<cr>]])
+  map('v', '<space>ff',  [[<cmd>lua require('j.plugins.fzf').grep_selected()<cr>]])
+  map('n', '<leader>fr', [[<cmd>lua require('j.plugins.fzf').history()<cr>]])
+  map('n', '<leader>fx', [[<cmd>lua require('j.plugins.fzf').git_status()<cr>]])
 
   create_augroups({
     fzf = {

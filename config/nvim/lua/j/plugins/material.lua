@@ -361,8 +361,8 @@ function M.setup()
 
   create_augroups({
     colors = {
-      {'ColorScheme', '*', [[lua require('j.material').configure_colorscheme()]]},
-      {'ColorScheme', '*', [[lua require('j.material').modify_highlights()]]},
+      {'ColorScheme', '*', [[lua require('j.plugins.material').configure_colorscheme()]]},
+      {'ColorScheme', '*', [[lua require('j.plugins.material').modify_highlights()]]},
     },
   })
 
