@@ -137,7 +137,8 @@ opt('shada', '!,\'1000,<50,s10,h')  -- Increase the shadafile size so that histo
 -- Commands
 
 
-vim.cmd [[command! -nargs=0 W call mkdir(expand("%:p:h"), "p")]]
+vim.cmd [[command! -nargs=1 NewFile call joosep#filesystem#create_file_or_folder(<f-args>)]]
+vim.cmd [[command! -nargs=+ Move call joosep#filesystem#move(<f-args>)]]
 
 
 -- Autocommands
