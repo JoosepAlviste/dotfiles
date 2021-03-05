@@ -148,6 +148,22 @@ create_augroups({
     {'InsertEnter,WinLeave', '*', 'set nocursorline'},
     -- Automatically close Vim if the quickfix window is the only one open
     {'WinEnter', '*', [[if winnr('$') == 1 && &buftype == 'quickfix' | q | endif]]},
+    -- Automatically update changed file in Vim
+    -- Triger `autoread` when files changes on disk
+    -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+    -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+    {
+      'FocusGained,BufEnter,CursorHold,CursorHoldI',
+      '*',
+      [[silent! if mode() != 'c' | checktime | endif]],
+    },
+    -- Notification after file change
+    -- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+    {
+      'FileChangedShellPost',
+      '*',
+      [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
+    },
   },
   detect_filetypes = {
     -- dockerfile
@@ -183,6 +199,8 @@ create_augroups({
     -- other FileType autocmds
     {'FileType', 'typescriptreact', [[setlocal commentstring=//\ %s]]},
     {'FileType', 'vue', [[setlocal commentstring=<!--\ %s\ -->]]},
+    -- Open images automatically
+    {'FileType', 'image', [[lua require('j.filesystem').open_special_file()]]},
   },
 })
 
