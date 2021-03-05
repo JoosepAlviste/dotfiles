@@ -52,5 +52,6 @@ return require('packer').startup(function()
   use 'editorconfig/editorconfig-vim'  -- Project-specific settings
 
   -- Git
+  use 'tpope/vim-fugitive'  -- I only use the "blame" feature from this
   use 'lewis6991/gitsigns.nvim'  -- Git status signs in the gutter
 end)
