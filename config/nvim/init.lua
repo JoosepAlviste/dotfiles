@@ -108,13 +108,7 @@ short_mess = short_mess .. 'c'  -- Do not show ins-completion-menu messages (mat
 opt('shortmess', short_mess)
 
 -- Integration with the system clipboard
-if vim.fn.has('unnamedplus') == 1 then
-  -- When possible, use the + register for copy/paste
-  opt('clipboard', 'unnamed,unnamedplus')
-else
-  -- On Mac and Windows, use the * register
-  opt('clipboard', 'unnamed')
-end
+opt('clipboard', 'unnamed,unnamedplus')
 
 -- Navigation
 opt('scrolloff', 3)  -- Lines to scroll when cursor leaves screen

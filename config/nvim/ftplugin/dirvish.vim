@@ -12,11 +12,14 @@ setlocal colorcolumn=
 
 " Move the currently hovered file/folder
 nnoremap <expr><buffer> <leader>m <SID>Move()
+" Create a new file or folder (trailing `/` means folder)
+nnoremap <buffer> <leader>n :NewFile 
 " Delete a file or folder
-execute 'nnoremap <expr><buffer> <leader>d ":<C-u>silent !trash ".shellescape(fnamemodify(getline("."),":."))'
+nnoremap <expr><buffer> <leader>d ":<C-u>silent !trash ".shellescape(fnamemodify(getline("."),":."))
 " Override the default Dirvish preview keybind
 nnoremap <buffer> <c-p> <cmd>lua require('j.fzf').files()<cr>
-nnoremap <buffer> <leader>n :e %
+
+" Grep inside the hovered folder
 nnoremap <buffer> <leader>ff <cmd>lua require('j.fzf').grep_folder(vim.fn.fnamemodify(vim.fn.getline('.'), ':.'))<cr>
 
 " Show a prompt to move the file that the cursor is currently on
