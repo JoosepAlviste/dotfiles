@@ -3,6 +3,8 @@ local create_augroups = require('j.utils').create_augroups
 local M = {}
 
 function M.setup()
+  vim.cmd [[set sessionoptions-=buffers]]
+
   if vim.fn.argc() == 0 then
     create_augroups({
       session = {
