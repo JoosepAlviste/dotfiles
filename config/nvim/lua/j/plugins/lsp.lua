@@ -1,8 +1,6 @@
 local lspconfig = require('lspconfig')
 local saga = require('lspsaga')
 
-local create_augroups = require('j.utils').create_augroups
-
 local M = {}
 
 local function on_attach(client, bufnr)
@@ -78,6 +76,13 @@ function M.setup()
     code_action_keys = {
       quit = '<esc>',
       exec = '<cr>',
+    },
+    code_action_icon = '💡',
+    code_action_prompt = {
+      enable = true,
+      sign = true,
+      sign_priority = 20,
+      virtual_text = false,
     },
   }
 
