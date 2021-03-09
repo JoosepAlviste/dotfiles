@@ -29,11 +29,10 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'  -- Surround stuff with things
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
-  -- Fuzzy finder
-  use 'vijaymarupudi/nvim-fzf'
-
-  -- File explorer
-  use 'justinmk/vim-dirvish'
+  -- Navigation
+  use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
+  use 'justinmk/vim-dirvish'  -- File explorer
+  use 'tpope/vim-projectionist'  -- Alternative files
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
