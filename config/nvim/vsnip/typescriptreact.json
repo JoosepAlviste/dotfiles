@@ -1,0 +1,14 @@
+{
+  "function component file": {
+    "prefix": ["fc"],
+    "body": [
+      "import React from 'react';",
+      "",
+      "const $TM_FILENAME_BASE = () => {",
+      "\t$0",
+      "};",
+      "",
+      "export default $TM_FILENAME_BASE"
+    ]
+  }
+}
