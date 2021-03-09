@@ -17,10 +17,10 @@ nnoremap <buffer> <leader>n :NewFile
 " Delete a file or folder
 nnoremap <expr><buffer> <leader>d ":<C-u>silent !trash ".shellescape(fnamemodify(getline("."),":."))
 " Override the default Dirvish preview keybind
-nnoremap <buffer> <c-p> <cmd>lua require('j.fzf').files()<cr>
+nnoremap <buffer> <c-p> <cmd>lua require('j.plugins.fzf').files()<cr>
 
 " Grep inside the hovered folder
-nnoremap <buffer> <leader>ff <cmd>lua require('j.fzf').grep_folder(vim.fn.fnamemodify(vim.fn.getline('.'), ':.'))<cr>
+nnoremap <buffer> <leader>ff <cmd>lua require('j.plugins.fzf').grep_folder(vim.fn.fnamemodify(vim.fn.getline('.'), ':.'))<cr>
 
 " Show a prompt to move the file that the cursor is currently on
 function! s:Move()
