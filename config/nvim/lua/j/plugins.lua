@@ -23,6 +23,7 @@ return require('packer').startup(function()
 
   -- Mapping improvements
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
   use 'b3nj5m1n/kommentary'  -- Commenting
   -- Dynamically set commentstring based on cursor location in file
   use 'JoosepAlviste/nvim-ts-context-commentstring'
