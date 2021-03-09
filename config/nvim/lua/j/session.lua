@@ -4,6 +4,7 @@ local M = {}
 
 function M.setup()
   vim.cmd [[set sessionoptions-=buffers]]
+  vim.cmd [[set sessionoptions-=folds]]
 
   if vim.fn.argc() == 0 then
     create_augroups({
