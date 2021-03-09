@@ -1,6 +1,8 @@
 local lspconfig = require('lspconfig')
 local saga = require('lspsaga')
 
+local create_augroups = require('j.utils').create_augroups
+
 local M = {}
 
 local function on_attach(client, bufnr)
@@ -29,6 +31,14 @@ local function on_attach(client, bufnr)
   buf_map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd [[augroup LspFormatting]]
+    vim.cmd [[autocmd! * <buffer>]]
+    vim.cmd [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
+    vim.cmd [[augroup END]]
+  end
 end
 
 function M.setup()
