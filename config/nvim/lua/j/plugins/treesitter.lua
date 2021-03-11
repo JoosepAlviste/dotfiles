@@ -17,6 +17,9 @@ function M.setup()
       updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false -- Whether the query persists across vim sessions
     },
+    autotag = {
+      enable = true,
+    },
     ensure_installed = {
       'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php',
       'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css',
