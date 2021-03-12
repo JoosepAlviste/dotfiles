@@ -165,32 +165,6 @@ create_augroups({
       [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
     },
   },
-  detect_filetypes = {
-    -- dockerfile
-    {'BufRead,BufNewFile', 'Dockerfile-*', 'setfiletype dockerfile'},
-    -- gitconfig
-    {'BufRead,BufNewFile', '*config/git/config', 'setfiletype gitconfig'},
-    -- graphql
-    {'BufRead,BufNewFile', '*.graphql', 'setfiletype graphql'},
-    {'BufRead,BufNewFile', '*.prisma', 'setfiletype graphql'},
-    -- image
-    {'BufRead,BufNewFile', '*.png', 'setfiletype image'},
-    {'BufRead,BufNewFile', '*.jpg', 'setfiletype image'},
-    {'BufRead,BufNewFile', '*.jpeg', 'setfiletype image'},
-    {'BufRead,BufNewFile', '*.gif', 'setfiletype image'},
-    -- json
-    {'BufRead,BufNewFile', '*.babelrc', 'setfiletype json'},
-    {'BufRead,BufNewFile', '.eslintrc', 'setfiletype json'},
-    {'BufRead,BufNewFile', '.prettierrc', 'setfiletype json'},
-    {'BufRead,BufNewFile', '.stylelintrc', 'setfiletype json'},
-    {'BufRead,BufNewFile', '.svgrrc', 'setfiletype json'},
-    -- sh
-    {'BufRead,BufNewFile', '.env*', 'setfiletype sh'},
-    -- yaml
-    {'BufRead,BufNewFile', '*.graphqlrc', 'setfiletype yaml'},
-    -- zsh
-    {'BufRead,BufNewFile', 'zprofile', 'setfiletype zsh'},
-  },
   -- Simple one-liner filetype specific things that I don't really want to put 
   -- into ftplugin files for whatever reason
   simple_filetypes = {
