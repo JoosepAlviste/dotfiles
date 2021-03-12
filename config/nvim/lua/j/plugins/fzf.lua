@@ -26,16 +26,22 @@ local function handle_selected_files(choices)
 
   for i = 2, #choices do
     -- Split the selected item to filename + line nr. E.g., ripgrep outputs 
-    -- "/my/file.txt:1: file content here" where we want "/my/file.txt" and 
+    -- "/my/file.txt:1:2: file content here" where we want "/my/file.txt" and 
     -- "1". Shouldn't break if no line number is output.
-    local iterator = vim.gsplit(choices[i], ':')
-    local filename = iterator()
-    local line_nr = iterator()
+    local tokens = vim.split(choices[i], ':')
+    local filename = tokens[1]
+    local line_nr = tokens[2]
+    local column_nr = tokens[3]
     if line_nr then
       -- Open the file at the specified line nr
       vim.cmd(vimcmd .. ' +' .. line_nr .. ' ' .. vim.fn.fnameescape(filename))
     else
       vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(filename))
+    end
+
+    if column_nr then
+      vim.cmd('normal! ' .. column_nr .. '|')
+      vim.cmd('normal! zz')
     end
   end
 end
@@ -184,6 +190,37 @@ function M.directories()
     local choices = fzf(
       command,
       ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+        vim.fn.shellescape(preview)
+      )
+    )
+
+    handle_selected_files(choices)
+  end)()
+end
+
+function M.lsp_references_handler(_, _, results)
+  local preview = 'fzf-preview {}'
+
+  local files = vim.tbl_map(
+    function (res)
+      local filename = vim.fn.fnamemodify(string.sub(res.uri, 8), ":~:.")
+      local line_nr = res.range.start.line + 1 -- res is 0-indexed, line numbers should be 1-indexed
+      local column_nr = res.range.start.character + 1
+      return filename .. ':' .. line_nr .. ':' .. column_nr
+    end,
+    vim.tbl_filter(
+      function (res)
+        -- TODO: Handle `.template` postfix
+        return vim.fn.filereadable(string.sub(res.uri, 8)) ~= 0
+      end,
+      results
+    )
+  )
+
+  coroutine.wrap(function ()
+    local choices = fzf(
+      files,
+      ('--ansi --delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )

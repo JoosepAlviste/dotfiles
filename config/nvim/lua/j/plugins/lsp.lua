@@ -51,6 +51,9 @@ function M.setup()
     }
   )
 
+  -- Use FZF to find references
+  vim.lsp.handlers['textDocument/references'] = require('j.plugins.fzf').lsp_references_handler
+
   -- Handle formatting in a smarter way
   -- If the buffer has been edited before formatting has completed, do not try 
   -- to apply the changes
