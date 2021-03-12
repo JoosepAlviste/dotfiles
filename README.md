@@ -5,13 +5,14 @@
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
-    * See [`config/nvim/plugins.vim`](./config/nvim/plugins.vim) for the used 
-        plugins
+    * Configured in Lua
+    * See [`config/nvim/lua/j/plugins.lua`](./config/nvim/lua/j/plugins.lua) for 
+      the used plugins
     * Slightly modified [Material Palenight color 
-        scheme](https://github.com/kaicataldo/material.vim/)
+      scheme](https://github.com/kaicataldo/material.vim/)
     * Neovim's built-in LSP client
     * [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/) 
-        for highlighting
+      for highlighting
     * [`fzf`](https://github.com/junegunn/fzf) for navigation
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org)
@@ -36,8 +37,8 @@ This will symlink all of the files and folders inside `dots/` into your home
 folder prefixed by `.` and everything from `config/` to your `~/.config/` 
 folder.
 
-The next time you start `vim`, it will automatically install Plug. You might 
-need to manually run `:PlugInstall` in order to install plugins.
+The next time you start `vim`, it will automatically install Packer. You might 
+need to manually run `:PackerUpdate` in order to install plugins.
 
 The utility scripts in `bin/` are automatically added to the Zsh path so you can 
 run `makesymlinks` anywhere.
@@ -87,34 +88,22 @@ Just useful utilities that aren't aliased:
 * [noti](https://github.com/variadico/noti) - notifications when processes end
 
 
-## Vim configuration structure
+## Neovim configuration structure
 
-The neovim configuration is split into many files since there is quite a bit of 
-configuration and it would be crazy to have it all in one file. I try to 
-leverage as much of Vims built-in logic for splitting files.
+The Neovim configuration is split into many files since there is quite a bit of 
+configuration and it would be crazy to have it all in one file.
 
 Neovim configuration is located in [`config/nvim/`](./config/nvim).
 
-* `after/` - overriding configuration related to plugins (settings, mappings, 
-    etc.)
-* `autoload/` - functions that are used in other files and can be autoloaded
-    * `joosep/colors/` - custom color schemes (improving plugin color schemes)
-* `ftdetect/` - logic for detecting file types
-* `ftplugin/` - configuration for specific file types
-* `plugin/` - configuration split into files, kind of like *"my own plugins"*. 
-    File names should be pretty descriptive
-    * Also includes configuring some external plugins if the `after/` directory 
-        does not work for some reason
-    * `mappings/` - mappings not related to any plugins
-    * `autocmds.vim` + `autoload/joosep/autocmds.vim` - generic useful 
-        autocommands
-    * `highlight.vim` - some non-color-scheme-related highlighting syntax 
-        improvements (linking highlight groups in a more logical way)
-    * `settings.vim` - most global `set XYZ` calls are here. I would like to 
-        split this even more but it works OK for now
-* `plugins.vim` - declaring used plugins using `Plug`
-* `init.vim` - settings that don't really fit into anywhere else (aim is to have 
-    as little as possible here)
+* [`autoload/`](./config/nvim/autoload): functions that are used in other files 
+  and can be autoloaded. I still have a few functions here that I haven't 
+  converted to Lua.
+* [`ftdetect/`](./config/nvim/ftdetect): logic for detecting file types
+* [`ftplugin/`](./config/nvim/ftplugin): configuration for specific file types
+* [`lua/j/`](./config/nvim/lua/j): Lua files for settings, mappings, and my own 
+  "plugins"
+* [`lua/j/plugins/`](./config/nvim/lua/j/plugins): configuration of plugins
+* `init.lua`: basic settings and autocommands
 
 
 ## Packages
