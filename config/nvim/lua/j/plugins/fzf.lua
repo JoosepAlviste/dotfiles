@@ -46,6 +46,7 @@ function M.setup()
   map('v', '<space>ff',  [[<cmd>lua require('j.plugins.fzf').grep_selected()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.plugins.fzf').history()<cr>]])
   map('n', '<leader>fx', [[<cmd>lua require('j.plugins.fzf').git_status()<cr>]])
+  map('n', '<leader>fd', [[<cmd>lua require('j.plugins.fzf').directories()<cr>]])
 
   create_augroups({
     fzf = {
@@ -170,6 +171,22 @@ function M.git_status()
       -- The choice includes the Git status (' M foobar.txt')
       return vim.split(vim.trim(choice), ' ')[2]
     end, choices)
+
+    handle_selected_files(choices)
+  end)()
+end
+
+function M.directories()
+  local command = 'fd --color always -t d -L --hidden'
+  local preview = 'exa -aTR --color=always --group-directories-first --icons {}'
+
+  coroutine.wrap(function ()
+    local choices = fzf(
+      command,
+      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+        vim.fn.shellescape(preview)
+      )
+    )
 
     handle_selected_files(choices)
   end)()
