@@ -1,6 +1,8 @@
 local lspconfig = require('lspconfig')
 local saga = require('lspsaga')
 
+local create_augroups = require('j.utils').create_augroups
+
 local M = {}
 
 local function on_attach(client, bufnr)
@@ -251,6 +253,16 @@ function M.setup()
       },
     },
   }
+
+  create_augroups({
+    lsp = {
+      {'BufWrite,BufEnter,InsertLeave', '*', [[lua require('j.plugins.lsp').add_diagnostics_to_loclist()]]},
+    },
+  })
+end
+
+function M.add_diagnostics_to_loclist()
+  vim.lsp.diagnostic.set_loclist({open_loclist = false})
 end
 
 return M
