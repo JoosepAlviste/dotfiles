@@ -62,3 +62,6 @@ Libraries
 # Minified files
 *.min.js
 *.min.css
+
+# There's not much point in finding media files (in FZF)
+*.png
