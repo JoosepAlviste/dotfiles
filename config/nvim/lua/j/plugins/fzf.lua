@@ -59,6 +59,9 @@ function M.setup()
       {'FileType', 'fzf', [[tunmap <buffer> <esc>]]},
     },
   })
+
+  -- Grep in files with the given extension
+  vim.cmd [[command! -nargs=1 GrepFT lua require('j.plugins.fzf').grep_folder('**/*.<args>')]]
 end
 
 function M.files()
