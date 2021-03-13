@@ -39,6 +39,10 @@ map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>
 map('n', ']n', [[/\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
 map('n', '[n', [[?\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
 
+-- Navigate loclist
+map('n', ']l', ':lnext<cr>', {silent = true})
+map('n', '[l', ':lprev<cr>', {silent = true})
+
 -- Open the file under the cursor with the default file handler for that file 
 -- type (e.g., Firefox for `http` links, etc.)
 -- This mapping normally comes from `netrw`, but since we disable that (for 
