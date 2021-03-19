@@ -24,28 +24,43 @@ local function handle_selected_files(choices)
     vimcmd = 'new'
   end
 
-  -- TODO: If Enter is pressed and multiple files are selected, add them to 
-  -- quickfix list
-
-  for i = 2, #choices do
+  local qf_items = vim.tbl_map(function (choice)
     -- Split the selected item to filename + line nr. E.g., ripgrep outputs 
     -- "/my/file.txt:1:2: file content here" where we want "/my/file.txt" and 
-    -- "1". Shouldn't break if no line number is output.
-    local tokens = vim.split(choices[i], ':')
-    local filename = tokens[1]
-    local line_nr = tokens[2]
-    local column_nr = tokens[3]
-    if line_nr then
-      -- Open the file at the specified line nr
-      vim.cmd(vimcmd .. ' +' .. line_nr .. ' ' .. vim.fn.fnameescape(filename))
-    else
-      vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(filename))
-    end
+    -- "1". Shouldn't break if no line number or column nr is output.
 
-    -- If a column number is given
-    if tonumber(column_nr) then
-      vim.cmd('normal! ' .. column_nr .. '|')
-      vim.cmd('normal! zz')
+    local tokens = vim.split(choice, ':')
+    local filename = tokens[1]
+    local line_nr = tonumber(tokens[2])
+    local column_nr = tonumber(tokens[3])
+
+    return {filename = filename, lnum = line_nr, col = column_nr}
+  end, {unpack(choices, 2)})
+
+  if vimcmd == 'e' and #qf_items > 1 then
+    -- If <cr> is pressed and multiple file are selected, add them all to the 
+    -- quickfix list
+
+    vim.fn.setqflist({}, ' ', {id = 'fzf', items = qf_items})
+    vim.cmd [[copen]]
+    vim.cmd [[cfirst]]
+  else
+    for i = 1, #qf_items do
+      local filename = qf_items[i].filename
+      local line_nr = qf_items[i].lnum
+      local column_nr = qf_items[i].col
+      if line_nr then
+        -- Open the file at the specified line nr
+        vim.cmd(vimcmd .. ' +' .. line_nr .. ' ' .. vim.fn.fnameescape(filename))
+      else
+        vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(filename))
+      end
+
+      -- If a column number is given
+      if column_nr then
+        vim.cmd('normal! ' .. column_nr .. '|')
+        vim.cmd('normal! zz')
+      end
     end
   end
 end
