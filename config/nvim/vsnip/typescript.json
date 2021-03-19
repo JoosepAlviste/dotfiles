@@ -38,8 +38,15 @@
   "indexport": {
     "prefix": ["indexport"],
     "body": [
-      "export { default as $TM_DIRECTORY } from './$TM_DIRECTORY';"
+      "export { default } from './$TM_DIRECTORY';"
     ],
     "description": "export the current directory's component"
+  },
+  "export": {
+    "prefix": ["export"],
+    "body": [
+      "export { default as $2 } from './$1';$0"
+    ],
+    "description": "export a component"
   }
 }
