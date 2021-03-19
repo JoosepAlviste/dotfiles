@@ -24,6 +24,9 @@ local function handle_selected_files(choices)
     vimcmd = 'new'
   end
 
+  -- TODO: If Enter is pressed and multiple files are selected, add them to 
+  -- quickfix list
+
   for i = 2, #choices do
     -- Split the selected item to filename + line nr. E.g., ripgrep outputs 
     -- "/my/file.txt:1:2: file content here" where we want "/my/file.txt" and 
@@ -39,7 +42,8 @@ local function handle_selected_files(choices)
       vim.cmd(vimcmd .. ' ' .. vim.fn.fnameescape(filename))
     end
 
-    if column_nr then
+    -- If a column number is given
+    if tonumber(column_nr) then
       vim.cmd('normal! ' .. column_nr .. '|')
       vim.cmd('normal! zz')
     end
@@ -49,6 +53,7 @@ end
 function M.setup()
   map('n', '<c-p>',      [[<cmd>lua require('j.plugins.fzf').files()<cr>]])
   map('n', '<leader>ff', [[<cmd>lua require('j.plugins.fzf').grep()<cr>]])
+  map('n', '<leader>fa', [[<cmd>lua require('j.plugins.fzf').grep()<cr>]])
   map('v', '<space>ff',  [[<cmd>lua require('j.plugins.fzf').grep_selected()<cr>]])
   map('n', '<leader>fr', [[<cmd>lua require('j.plugins.fzf').history()<cr>]])
   map('n', '<leader>fx', [[<cmd>lua require('j.plugins.fzf').git_status()<cr>]])
