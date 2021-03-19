@@ -20,6 +20,9 @@ function M.setup()
     autotag = {
       enable = true,
     },
+    context_commentstring = {
+      enable = true,
+    },
     ensure_installed = {
       'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php',
       'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css',
