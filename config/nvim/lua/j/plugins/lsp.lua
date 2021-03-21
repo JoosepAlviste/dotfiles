@@ -142,6 +142,9 @@ function M.setup()
 	-- https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-cli
 	lspconfig.graphql.setup{on_attach = on_attach, capabilities = capabilities}
 
+  -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
+	lspconfig.dockerls.setup{on_attach = on_attach, capabilities = capabilities}
+
   -- https://intelephense.com
   lspconfig.intelephense.setup{
     on_attach = on_attach,

@@ -38,6 +38,7 @@ npm i -g \
     vscode-css-languageserver-bin \
     vscode-json-languageserver \
     yaml-language-server \
+    dockerfile-language-server-nodejs \
     eslint_d
 ```
 
