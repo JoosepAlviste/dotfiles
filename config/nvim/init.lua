@@ -53,6 +53,7 @@ opt('linebreak', true, window)  -- Break lines by spaces or tabs
 opt('number', true, window)
 opt('relativenumber', true, window)
 opt('signcolumn', 'yes', window)
+opt('showmode', false)
 
 opt('list', true, window)
 opt('listchars', {
