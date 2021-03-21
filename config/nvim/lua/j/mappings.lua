@@ -49,6 +49,8 @@ map('n', '[l', ':lprev<cr>', {silent = true})
 -- dirvish), then we need to manually configure the mapping again
 map('n', 'gx', [[:call system('open ' . expand('<cWORD>'))<cr>]])
 
+map('n', '<F10>', [[:call joosep#syntax#PrintSyntax()<cr>]], {silent = true})
+
 -- Leader mappings
 
 -- Open last buffer
