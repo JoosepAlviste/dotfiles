@@ -25,7 +25,7 @@ function M.setup()
     },
     ensure_installed = {
       'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php',
-      'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css',
+      'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css', 'bash',
     },
   }
 end
