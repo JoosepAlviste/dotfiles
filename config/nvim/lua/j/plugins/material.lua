@@ -137,6 +137,7 @@ function M.configure_colorscheme()
   hi('TSVariable',        fg)
   hi('TSKeywordOperator', purple)
   hi('TSTag',             yellow)
+  hi('TSTagDelimiter',    darker_fg)
 
   -- tpope/vim-fugitive
   hi('diffAdded',    green, 'NONE', 'NONE')
