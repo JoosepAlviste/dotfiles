@@ -115,7 +115,9 @@ function M.configure_colorscheme()
 
   -- Markdown
   hi('markdownCode',     darker_fg)
-  hi('markdownItalic',   blue,       nil, 'italic')
+  hi('markdownItalic',   blue,      nil, 'italic')
+  hi('markdownBold',     yellow,    nil, 'bold')
+  hi('markdownUrl',      blue)
   hi('mkdHeading',       green)
   hi('mkdCode',          darker_fg)
   hi('mkdCodeDelimiter', darker_fg)
