@@ -9,7 +9,9 @@ function _G.confirm()
 end
 
 function M.setup()
-  autopairs.setup()
+  autopairs.setup({
+    check_line_pair = false,
+  })
 
   map('i', '<cr>', [[v:lua.confirm()]], {expr = true, noremap = true})
 end
