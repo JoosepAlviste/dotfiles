@@ -67,6 +67,8 @@ export LC_ALL='en_US.UTF-8'
 # Paths
 #
 
+export GOPATH="$HOME/Programs/go"
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -88,6 +90,7 @@ path=(
   $HOME/.cargo/bin
   $HOME/.poetry/bin
   "$(ruby -r rubygems -e 'puts Gem.dir')/bin"
+  $GOPATH/bin
   $path
 )
 
