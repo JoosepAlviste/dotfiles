@@ -12,12 +12,12 @@ local right_margin = 2
 function M.file_info()
   local width = api.nvim_get_option('columns')
 
-  local filename = vim.fn.expand('%')
+  local filename =  vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
   local type = vim.bo.ft
   local branch = vim.b.gitsigns_head
   local lsp_client_names = table.concat(vim.tbl_map(function (client)
     return client.name
-  end, vim.lsp.buf_get_clients(0)), ', ')
+  end, vim.tbl_values(vim.lsp.buf_get_clients(0))), ', ')
 
   -- Each line consists of a label and a text.
   local lines = {{'name', filename}}
