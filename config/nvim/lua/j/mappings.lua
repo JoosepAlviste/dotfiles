@@ -47,7 +47,7 @@ map('n', '[l', ':lprev<cr>', {silent = true})
 -- type (e.g., Firefox for `http` links, etc.)
 -- This mapping normally comes from `netrw`, but since we disable that (for 
 -- dirvish), then we need to manually configure the mapping again
-map('n', 'gx', [[:call system('open ' . expand('<cWORD>'))<cr>]])
+map('n', 'gx', [[:call joosep#open#open_url_under_cursor()<cr>]], {silent = true})
 
 map('n', '<F10>', [[:call joosep#syntax#PrintSyntax()<cr>]], {silent = true})
 
