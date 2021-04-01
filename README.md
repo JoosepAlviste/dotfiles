@@ -1,6 +1,6 @@
 # My dotfiles
 
-![Busy](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Busy.png)
+![Main](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Main.png)
 
 Some of the configuration includes:
 
@@ -159,6 +159,6 @@ The location of this virtualenv is configured in `nvim/init.vim`.
 
 ## More screenshots
 
-![Split](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Split.png)
+![Busy](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Busy.png)
 
 ![FZF](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/FZF.png)
