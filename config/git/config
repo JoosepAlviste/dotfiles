@@ -53,7 +53,7 @@
     name = Joosep Alviste
     email = joosep.alviste@gmail.com
 [core]
-    excludesfile = ~/.config/gitignore_global
+    excludesfile = ~/.config/git/gitignore_global
     quotepath = false # Better display of some UTF-8 filenames
 [pager]
     diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
