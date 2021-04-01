@@ -9,6 +9,41 @@ function M.setup()
         color = '#0db7ed',
         name = 'Dockerfile',
       },
+      ['.dockerignore'] = {
+        icon = '',
+        color = '#0db7ed',
+        name = 'Dockerfile',
+      },
+      ['git'] = {
+        icon = '',
+        color = '#F1502F',
+        name = 'GitLogo'
+      };
+      ['.gitattributes'] = {
+        icon = '',
+        color = '#F1502F',
+        name = 'GitAttributes'
+      };
+      ['.gitconfig'] = {
+        icon = '',
+        color = '#F1502F',
+        name = 'GitConfig'
+      };
+      ['.gitignore'] = {
+        icon = '',
+        color = '#F1502F',
+        name = 'GitIgnore'
+      };
+      ['.gitmodules'] = {
+        icon = '',
+        color = '#F1502F',
+        name = 'GitIgnore'
+      };
+      ['.prettierrc'] = {
+        icon = '',
+        color = '#cbcb41',
+        name = 'Json',
+      },
       graphql = {
         icon = '',
         color = '#e535ab',
@@ -34,14 +69,24 @@ function M.setup()
         color = '#519aba',
         name = 'Md',
       },
+      NvimTree = {
+        icon = '',
+        color = '#519aba',
+        name = 'NvimTree',
+      },
+      ['package.json'] = {
+        icon = '',
+        color = '#CC3534',
+        name = 'Npm',
+      },
       ts = {
         icon = '',
-        color = '#519aba',
+        color = '#007acc',
         name = 'Ts',
       },
       tsx = {
         icon = '',
-        color = '#519aba',
+        color = '#007acc',
         name = 'Tsx',
       },
       ['vim'] = {
@@ -58,6 +103,11 @@ function M.setup()
         icon = '',
         color = '#cbcb41',
         name = 'Yaml'
+      },
+      ['yarn.lock'] = {
+        icon = '',
+        color = '#2187b6',
+        name = 'Yarn',
       },
       ['yml'] = {
         icon = '',
