@@ -179,6 +179,15 @@ create_augroups({
   },
 })
 
+require('nvim-web-devicons').setup({
+  override = {
+    graphql = {
+      icon = '',
+      color = '#e535ab',
+      name = 'GraphQL',
+    },
+  },
+})
 
 -- My custom configurations
 require('j.plugins')

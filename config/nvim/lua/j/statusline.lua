@@ -38,9 +38,14 @@ function _G.statusline(winnr)
   local segments = {}
 
   -- File name
-  local filename = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
+  local file_name = vim.fn.expand('#' .. bufnum .. ':p:t')
+  local extension = vim.fn.expand('#' .. bufnum .. ':e')
+  local icon, highlight = require('nvim-web-devicons').get_icon(file_name, extension)
+
+  local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
   table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '»' or '«'))
-  table.insert(segments, '%<' .. filename)
+  local icon_statusline = icon and color(is_active, 'Statusline' .. highlight, icon) .. ' ' or ''
+  table.insert(segments, '%<' .. icon_statusline .. file_path)
   table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '«' or '»'))
 
   -- File modified
