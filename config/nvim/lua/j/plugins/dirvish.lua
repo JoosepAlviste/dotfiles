@@ -8,7 +8,6 @@ function M.setup()
   vim.g.dirvish_mode = ':sort ,^.*[\\/], '
   -- Ignore turds left behind by macOS, Git, and a few other things
   vim.g.dirvish_hidden_files = {
-    'tags',
     '\\.git\\/',
     '\\.DS_Store',
     '\\.localized',

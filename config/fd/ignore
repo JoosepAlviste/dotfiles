@@ -1,8 +1,5 @@
 .idea/
 .git/
-tags
-tags.temp
-tags.lock
 .DS_Store
 tmux-*.log
 .nvimlog
