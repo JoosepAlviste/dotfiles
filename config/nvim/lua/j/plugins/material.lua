@@ -88,7 +88,7 @@ function M.configure_colorscheme()
   hi('Error',        red,            'NONE')
   hi('TabLine',      fg,             statusline,      'NONE')
   hi('TabLineFill',  fg,             statusline)
-  hi('TabLineSel',   cyan,           bg)
+  hi('TabLineSel',   cyan,           background)
 
   -- LSP
   hi('LspDiagnosticsDefaultError',         red,       'NONE')
@@ -273,6 +273,7 @@ function M.configure_colorscheme()
   hi('phpInclude', purple)
   hi('phpType',    purple)
 
+  -- Git gutter signs
   hi('GitsignsAdd', green)
   hi('GitsignsChange', orange)
   hi('GitsignsDelete', red)
