@@ -34,6 +34,7 @@ return require('packer').startup(function()
   use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
   use 'justinmk/vim-dirvish'  -- File explorer
   use 'tpope/vim-projectionist'  -- Alternative files
+  use 'kyazdani42/nvim-tree.lua'
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

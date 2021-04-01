@@ -35,7 +35,7 @@ local darker_fg = '#7982B4'  -- Some text should be a bit darker than normal fg
 local symbol_highlight = '#2B2F40'  -- Highlighting of the symbol under the cursor
 
 local function hi(group, fg, bg, attr, attrsp)
-  local attr = attr or 'none'
+  attr = attr or 'none'
 
   if fg then
     cmd(string.format('hi %s guifg=%s', group, fg))

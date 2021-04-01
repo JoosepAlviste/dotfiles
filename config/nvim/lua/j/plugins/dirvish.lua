@@ -1,5 +1,3 @@
-local map = require('j.utils').map
-
 local M = {}
 
 function M.setup()
@@ -17,8 +15,6 @@ function M.setup()
   }
 
   vim.g.dirvish_mode = vim.g.dirvish_mode .. '| silent keeppatterns g/\\v\\/(' .. table.concat(vim.g.dirvish_hidden_files, '|') .. ')/d _'
-
-  map('n', '<c-n>', ':leftabove 40vsplit | silent Dirvish<cr>')
 end
 
 return M
