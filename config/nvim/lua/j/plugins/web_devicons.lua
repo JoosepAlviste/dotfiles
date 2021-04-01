@@ -44,10 +44,20 @@ function M.setup()
         color = '#cbcb41',
         name = 'Json',
       },
+      css = {
+        icon = '',
+        color = '#563d7c',
+        name = 'Css',
+      };
       graphql = {
         icon = '',
         color = '#e535ab',
         name = 'GraphQL',
+      },
+      html = {
+        icon = '',
+        color = '#e34c26',
+        name = 'HTML',
       },
       json = {
         icon = '',
@@ -78,6 +88,21 @@ function M.setup()
         icon = '',
         color = '#CC3534',
         name = 'Npm',
+      },
+      php = {
+        icon = '',
+        color = '#a074c4',
+        name = 'Php'
+      },
+      png = {
+        icon = '',
+        color = '#a074c4',
+        name = 'Png'
+      },
+      svg = {
+        icon = '',
+        color = '#FFB13B',
+        name = 'Svg',
       },
       ts = {
         icon = '',
