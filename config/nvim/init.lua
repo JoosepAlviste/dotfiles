@@ -209,7 +209,10 @@ require('j.plugins.autopairs').setup()
 require('j.plugins.kommentary').setup()
 require('j.plugins.material').setup()
 require('j.plugins.treesitter').setup()
-require('colorizer').setup()
+require('colorizer').setup({
+  '*',
+  '!packer',
+})
 require('j.plugins.gitsigns').setup()
 require('j.plugins.vsnip').setup()
 require('j.plugins.dirvish').setup()
