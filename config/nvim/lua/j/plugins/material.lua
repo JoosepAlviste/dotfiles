@@ -102,6 +102,10 @@ function M.configure_colorscheme()
   hi('LspReferenceText',                   nil,       line_numbers)
   hi('LspReferenceRead',                   nil,       line_numbers)
   hi('LspReferenceWrite',                  nil,       line_numbers)
+  hi('LspDiagnosticsLineNrError',          red,       '#312a34', 'bold')
+  hi('LspDiagnosticsLineNrWarning',        orange,    '#312e3a', 'bold')
+  hi('LspDiagnosticsVirtualTextError',     '#b6455d')
+  hi('LspDiagnosticsVirtualTextWarning',   '#b16b5a')
 
   -- Git
   hi('gitcommitOverflow', red)

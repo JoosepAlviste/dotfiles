@@ -42,13 +42,19 @@ local function on_attach(client, bufnr)
 end
 
 function M.setup()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.fn.sign_define('LspDiagnosticsSignError', {numhl = 'LspDiagnosticsLineNrError', text = ''})
+  vim.fn.sign_define('LspDiagnosticsSignWarning', {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
+  vim.fn.sign_define('LspDiagnosticsSignInformation', {text = ''})
+  vim.fn.sign_define('LspDiagnosticsSignHint', {text = ''})
+
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = {
-        prefix = "»",
+        prefix = '»',
         spacing = 4,
+        severity_limit = 'Warning',
       },
-      signs = false,
+      signs = true,
       update_in_insert = false,
     }
   )
@@ -82,9 +88,8 @@ function M.setup()
       quit = '<esc>',
       exec = '<cr>',
     },
-    code_action_icon = '💡',
     code_action_prompt = {
-      enable = true,
+      enable = false,
       sign = true,
       sign_priority = 20,
       virtual_text = false,
