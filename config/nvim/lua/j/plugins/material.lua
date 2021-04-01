@@ -280,7 +280,6 @@ function M.configure_colorscheme()
   -- nvim-web-devicons
   -- Create highlights for statusline
   local icons = require('nvim-web-devicons').get_icons()
-  print(vim.inspect(icons))
   for _, icon_data in pairs(icons) do
     if icon_data.color and icon_data.name then
       local hl_group = icon_data.name and 'StatuslineDevIcon' .. icon_data.name
