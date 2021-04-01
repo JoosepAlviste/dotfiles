@@ -179,20 +179,11 @@ create_augroups({
   },
 })
 
-require('nvim-web-devicons').setup({
-  override = {
-    graphql = {
-      icon = '',
-      color = '#e535ab',
-      name = 'GraphQL',
-    },
-  },
-})
-
 -- My custom configurations
 require('j.plugins')
 require('j.mappings')
 require('j.abbreviations')
+require('j.plugins.web_devicons').setup() -- Set up icons before statusline
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info').setup()
