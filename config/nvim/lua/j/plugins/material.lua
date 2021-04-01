@@ -282,6 +282,14 @@ function M.configure_colorscheme()
   hi('GitsignsChange', orange)
   hi('GitsignsDelete', red)
 
+  -- Tree
+  hi('NvimTreeGitDirty', orange)
+  hi('NvimTreeGitStaged', green)
+  hi('NvimTreeGitMerge', red)
+  hi('NvimTreeGitRenamed', blue)
+  hi('NvimTreeGitNew', green)
+  hi('NvimTreeGitDeleted', red)
+
   -- nvim-web-devicons
   -- Create highlights for statusline
   local icons = require('nvim-web-devicons').get_icons()
