@@ -19,6 +19,7 @@ return require('packer').startup(function()
   -- Core utilities
   use 'nvim-lua/plenary.nvim'  -- Useful Lua utilities
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
+  use 'tpope/vim-repeat'  -- Make repeat (.) command smarter
   use 'tpope/vim-obsession'  -- Nicer session management
 
   -- Mapping improvements
