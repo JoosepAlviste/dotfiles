@@ -89,3 +89,18 @@ map('c', '<c-a>', '<home>')
 -- Visual shifting does not exit Visual mode
 map('v', '<', '<gv')
 map('v', '>', '>gv')
+
+
+-- Custom text objects
+
+-- Around line: with leading and trailing whitespace
+map('v', 'al', ':<c-u>silent! normal! 0v$<cr>', {silent = true})
+map('o', 'al', ':normal val<cr>', {noremap = false, silent = true})
+
+-- Inner line: without leading or trailing whitespace
+map('v', 'il', ':<c-u>silent! normal! ^vg_<cr>', {silent = true})
+map('o', 'il', ':normal vil<cr>', {noremap = false, silent = true})
+
+-- Whole file, jump back with <c-o>
+map('v', 'ae', [[:<c-u>silent! normal! m'gg0VG$<cr>]], {silent = true})
+map('o', 'ae', ':normal Vae<cr>', {noremap = false, silent = true})
