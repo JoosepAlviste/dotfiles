@@ -56,7 +56,7 @@ end
 
 function M.configure_colorscheme()
   -- General
-  hi('Normal',       fg,             'NONE')
+  hi('Normal',       fg,             background)
   hi('IncSearch',    'NONE',         line_numbers,    'NONE')
   hi('Search',       'NONE',         line_numbers,    'NONE')
   hi('VertSplit',    bg,             background,      'NONE')
@@ -313,14 +313,6 @@ end
 
 function M.modify_highlights()
   -- Generic modifications to highlights -- not really related to a colorscheme
-
-  -- Make some backgrounds transparent
-  cmd [[ hi! Normal ctermbg=NONE guibg=NONE]]
-  cmd [[ hi! NonText ctermbg=NONE guibg=NONE ]]
-  cmd [[ hi! LineNr ctermbg=NONE guibg=NONE ]]
-  cmd [[ hi! CursorLineNr ctermbg=NONE guibg=NONE ]]
-  cmd [[ hi! SignColumn ctermfg=NONE guibg=NONE ]]
-
   cmd [[ hi! DiffAdd ctermfg=NONE guibg=NONE ]]
   cmd [[ hi! DiffChange ctermfg=NONE guibg=NONE ]]
   cmd [[ hi! DiffDelete ctermfg=NONE guibg=NONE ]]
