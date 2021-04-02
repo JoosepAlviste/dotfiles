@@ -41,7 +41,7 @@ return require('packer').startup(function()
   use {'nvim-treesitter/playground', disable = true}
 
   -- Misc
-  use 'JoosepAlviste/nvim-web-devicons'
+  use 'kyazdani42/nvim-web-devicons'
 
   -- Programming
   --------------
