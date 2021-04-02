@@ -38,7 +38,7 @@ return require('packer').startup(function()
 
   -- Advanced highlighting
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use {'nvim-treesitter/playground', disable = true}
+  use 'nvim-treesitter/playground'
 
   -- Misc
   use 'kyazdani42/nvim-web-devicons'
