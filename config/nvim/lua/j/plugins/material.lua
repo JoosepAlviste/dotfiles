@@ -129,13 +129,6 @@ function M.configure_colorscheme()
   -- Fix weird linebreaks in LSP hover docs
   hi('mkdLineBreak',     background)
 
-  -- HTML
-  hi('htmlLink',    blue,   nil, 'underline', blue)
-  hi('htmlTagName', yellow)
-  hi('htmlArg',     fg)
-  hi('htmlItalic',  blue,   nil, 'italic')
-  hi('htmlBold',    yellow, nil, 'bold')
-
   -- Treesitter
   hi('TSConstructor',     yellow)
   hi('TSVariableBuiltin', orange)
@@ -149,93 +142,6 @@ function M.configure_colorscheme()
   hi('diffAdded',    green, 'NONE', 'NONE')
   hi('diffRemoved',  red,   'NONE', 'NONE')
   hi('fugitiveHash', orange)
-
-  -- YATS
-  hi('typescriptMember',              fg)
-  hi('typescriptAssign',              purple)
-  hi('typescriptTypeAnnotation',      purple)
-  hi('typescriptMemberOptionality',   purple)
-  hi('typescriptVariableDeclaration', blue)
-  hi('typescriptVariable',            purple)
-  hi('typescriptDestructureVariable', fg)
-  hi('typescriptIdentifier',          purple)
-  hi('typescriptCall',                fg)
-  hi('typescriptParens',              blue)
-  hi('typescriptUnaryOp',             cyan)
-  hi('typescriptArrowFuncArg',        fg)
-  hi('typescriptDotNotation',         cyan)
-  hi('typescriptFuncType',            fg)
-  hi('typescriptDestructureComma',    cyan)
-  hi('typescriptDestructureAs',       cyan)
-  hi('typescriptObjectColon',         cyan)
-  hi('typescriptDestructureLabel',    fg)
-  hi('typescriptTemplateSB',          violet)
-  hi('typescriptDefaultParam',        purple)
-  hi('typescriptEnumKeyword',         purple)
-  hi('typescriptOperator',            purple)
-  hi('typescriptCastKeyword',         purple)
-  hi('typescriptEnum',                yellow)
-  hi('typescriptClassName',           yellow)
-  hi('typescriptClassHeritage',       yellow)
-
-  hi('typescriptDateMethod',    blue)
-  hi('typescriptConsoleMethod', blue)
-  hi('typescriptBOM',           fg)
-
-  hi('tsxTagName',          yellow)
-  hi('tsxIntrinsicTagName', yellow)
-  hi('tsxCloseString',      cyan)
-  hi('tsxAttrib',           fg)
-  hi('tsxEqual',            purple)
-
-  -- JavaScript with vim-js
-  hi('jsTemplateBraces',        purple)
-  hi('jsTemplateExpression',    'NONE')
-  hi('jsNoise',                 cyan)
-  hi('jsFuncArgCommas',         cyan)
-  hi('jsOperatorKeyword',       purple)
-  hi('jsThis',                  purple)
-  hi('jsDocTypeBrackets',       cyan)
-  hi('jsDocParam',              yellow)
-  hi('jsDocTags',               purple, nil, 'italic')
-  hi('jsImport',                purple)
-  hi('jsModuleAs',              purple)
-  hi('jsFrom',                  purple)
-  hi('jsExport',                purple)
-  hi('jsVariableType',          purple)
-  hi('jsTry',                   purple)
-  hi('jsCatch',                 purple)
-  hi('jsFinally',               purple)
-  hi('jsReturn',                purple)
-  hi('jsObjectKey',             fg)
-  hi('jsNewClassParens',        blue)
-  hi('jsExceptionBraces',       blue)
-  hi('jsObjectBraces',          blue)
-  hi('jsAccessorBrackets',      blue)
-  hi('jsFunctionBraces',        blue)
-  hi('jsParens',                blue)
-  hi('jsModuleBraces',          blue)
-  hi('jsSwitchBraces',          blue)
-  hi('jsDestructuringBrackets', blue)
-  hi('jsDestructuringBraces',   blue)
-  hi('jsClassBraces',           blue)
-  hi('jsLoopBraces',            blue)
-  hi('jsIfBraces',              blue)
-  hi('jsBrackets',              blue)
-  hi('jsBuiltinFunctions',      blue)
-  hi('jsDocIdentifier',         comments)
-  hi('jsDocTypeBlock',          comments)
-
-  -- JSX
-  hi('jsxTagName',          yellow)
-  hi('jsxComponentName',    yellow)
-  hi('jsxEndComponentName', yellow)
-  hi('jsxEndString',        yellow)
-  hi('jsxAttrib',           fg)
-
-  -- Python
-  hi('pythonDecorator', violet)
-  hi('pythonDot', cyan)
 
   -- Vimscript
   hi('vimVar',      paleblue)
@@ -257,25 +163,12 @@ function M.configure_colorscheme()
   hi('scssAttribute',    cyan)
   hi('sassAmpersand',    orange)
 
-  -- YAML
-  hi('yamlBlockMappingKey',   blue)
-  hi('yamlKeyValueDelimiter', cyan)
-
-  -- JSON
-  hi('jsonQuote',        cyan)
-  hi('jsonKeywordMatch', cyan)
-  hi('jsonBraces',       cyan)
-
   -- Shell
   hi('shVariable', blue)
 
   -- LaTeX
   hi('texSection', purple)
   hi('texZone',    darker_fg)
-
-  -- PHP
-  hi('phpInclude', purple)
-  hi('phpType',    purple)
 
   -- Git gutter signs
   hi('GitsignsAdd', green)
@@ -317,60 +210,9 @@ function M.modify_highlights()
   cmd [[ hi! DiffChange ctermfg=NONE guibg=NONE ]]
   cmd [[ hi! DiffDelete ctermfg=NONE guibg=NONE ]]
 
-  cmd [[ hi link jsonBraces Function ]]
-
-  -- GraphQL
-  cmd [[ hi link graphqlTemplateString Normal ]]
-  cmd [[ hi link graphqlConstant Normal ]]
-  cmd [[ hi link graphqlVariable Constant ]]
-  cmd [[ hi link graphqlBraces Special ]]
-  cmd [[ hi link graphqlOperator Special ]]
-  cmd [[ hi link graphqlName Function ]]
-
-  -- YATS
-  cmd [[ hi link tsxIntrinsicTagName Identifier ]]
-  cmd [[ hi link tsxTagName Identifier ]]
-  cmd [[ hi link typescriptExport Include ]]
-  cmd [[ hi link typescriptImport Include ]]
-  cmd [[ hi link typescriptDefault Include ]]
-  cmd [[ hi link typescriptSymbols Operator ]]
-  cmd [[ hi link typescriptTypeReference Type ]]
-  cmd [[ hi link typescriptTypeParameter Type ]]
-  cmd [[ hi link typescriptAliasDeclaration Type ]]
-  cmd [[ hi link typescriptObjectLabel Normal ]]
-  cmd [[ hi link typescriptArrowFunc Keyword ]]
-  cmd [[ hi link typescriptTypeBrackets Noise ]]
-  cmd [[ hi link typescriptTypeBraces Noise ]]
-  cmd [[ hi link typescriptBinaryOp Noise ]]
-  cmd [[ hi link typescriptTernaryOp Noise ]]
-
-  -- YAJS
-  cmd [[ hi link javascriptArrowFunc Type ]]
-  cmd [[ hi link javascriptOpSymbol Operator ]]
-
-  -- JSX
-  cmd [[ hi link jsxComponentName Identifier ]]
-
-  -- vim-jsx-improve
-  cmd [[ hi link jsStorageClass Identifier ]]
-  cmd [[ hi link jsClassMethodType Keyword ]]
-  cmd [[ hi link jsxTagName Identifier ]]
-  cmd [[ hi link jsxEndComponentName Identifier ]]
-  cmd [[ hi link jsxEndString Identifier ]]
-  cmd [[ hi link jsFunction Keyword ]]
-  cmd [[ hi link jsExportDefault Include ]]
-  cmd [[ hi link jsLabel Conditional ]]
-
-  -- Python
-  cmd [[ hi link pythonInclude Include ]]
-  cmd [[ hi link pythonStatement Keyword ]]
-
   -- Markdown
   cmd [[ hi link mkdBold htmlBold ]]
   cmd [[ hi link mkdItalic htmlItalic ]]
-
-  -- YAML
-  cmd [[ hi link yamlBool Boolean ]]
 end
 
 function M.setup()
