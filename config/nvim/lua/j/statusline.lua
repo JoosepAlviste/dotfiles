@@ -1,9 +1,5 @@
-local create_augroups = require('j.utils').create_augroups
-
 -- My minimal custom statusline with lots of help from 
--- https://jip.dev/posts/a-simpler-vim-statusline/
-
-local M = {}
+  -- https://jip.dev/posts/a-simpler-vim-statusline/
 
 -- Output the content colored by the supplied highlight group. Only color the 
 -- input if the window is the currently focused one.
@@ -69,12 +65,8 @@ function _G.statusline(winnr)
   return '  ' .. table.concat(segments, ' ') .. '  '
 end
 
-function M.setup()
-  create_augroups({
-    statusline = {
-      {'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']]},
-    },
-  })
-end
-
-return M
+require('j.utils').create_augroups({
+  statusline = {
+    {'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']]},
+  },
+})

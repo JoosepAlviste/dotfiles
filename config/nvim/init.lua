@@ -184,7 +184,7 @@ require('j.plugins')
 require('j.mappings')
 require('j.abbreviations')
 require('j.plugins.web_devicons') -- Set up icons before statusline
-require('j.statusline').setup()
+require('j.statusline')
 require('j.tabline').setup()
 require('j.file_info')
 require('j.terminal')
