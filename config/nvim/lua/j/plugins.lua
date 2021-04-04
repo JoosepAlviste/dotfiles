@@ -14,7 +14,7 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
 
   -- Colorscheme
-  use {'kaicataldo/material.vim', branch = 'main'}
+  use 'kaicataldo/material.vim'
 
   -- Core utilities
   use 'nvim-lua/plenary.nvim'  -- Useful Lua utilities
