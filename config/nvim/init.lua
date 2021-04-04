@@ -193,7 +193,7 @@ require('j.session').setup()
 
 
 -- Plugin configurations
-require('j.plugins.lsp').setup()
+require('j.plugins.lsp')
 require('j.plugins.completion')
 require('j.plugins.fzf')
 require('j.plugins.autopairs')
