@@ -204,7 +204,7 @@ require('colorizer').setup({
   '*',
   '!packer',
 })
-require('j.plugins.gitsigns').setup()
+require('j.plugins.gitsigns')
 require('j.plugins.vsnip').setup()
 require('j.plugins.dirvish')
 require('j.plugins.editorconfig')
