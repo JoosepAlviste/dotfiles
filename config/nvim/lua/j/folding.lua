@@ -2,17 +2,6 @@ local fn = vim.fn
 
 local opt = require('j.utils').opt
 
-local M = {}
-
-function M.setup()
-  local window = {vim.o, vim.wo}
-
-  opt('foldmethod', 'expr', window)
-  opt('foldexpr', 'nvim_treesitter#foldexpr()', window)
-  opt('foldtext', 'v:lua.foldtext()', window)
-  opt('foldlevelstart', 99)
-end
-
 local middot = '·'
 local raquo = '»'
 local small_l = 'ℓ'
@@ -30,4 +19,9 @@ function _G.foldtext()
   return indent .. raquo .. ' ' .. first .. ' ' .. before_lines .. lines .. dashes
 end
 
-return M
+local window = {vim.o, vim.wo}
+
+opt('foldmethod', 'expr', window)
+opt('foldexpr', 'nvim_treesitter#foldexpr()', window)
+opt('foldtext', 'v:lua.foldtext()', window)
+opt('foldlevelstart', 99)

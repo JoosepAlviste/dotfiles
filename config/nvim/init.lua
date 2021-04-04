@@ -188,7 +188,7 @@ require('j.statusline')
 require('j.tabline')
 require('j.file_info')
 require('j.terminal')
-require('j.folding').setup()
+require('j.folding')
 require('j.session').setup()
 
 
