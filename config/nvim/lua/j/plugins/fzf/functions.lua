@@ -1,15 +1,9 @@
-local runtimepaths = vim.api.nvim_list_runtime_paths()
-
 local fzf = require('fzf').fzf
-
-local utils = require('j.utils')
-local map = utils.map
-local create_augroups = utils.create_augroups
-
-local M = {}
 
 local default_preview = 'bat --color always -- {}'
 local ripgrep_preview = 'fzf-preview {}'  -- fzf-preview is a script in my dotfiles
+
+local M = {}
 
 -- Open the given list of selected files
 -- The first element of `choices` is the key that the user pressed (e.g., 
@@ -67,25 +61,6 @@ local function handle_selected_files(choices)
   end
 end
 
-function M.setup()
-  map('n', '<c-p>',      [[<cmd>lua require('j.plugins.fzf').files()<cr>]])
-  map('n', '<leader>ff', [[<cmd>lua require('j.plugins.fzf').grep()<cr>]])
-  map('n', '<leader>fa', [[<cmd>lua require('j.plugins.fzf').grep()<cr>]])
-  map('v', '<space>ff',  [[<cmd>lua require('j.plugins.fzf').grep_selected()<cr>]])
-  map('n', '<leader>fr', [[<cmd>lua require('j.plugins.fzf').history()<cr>]])
-  map('n', '<leader>fx', [[<cmd>lua require('j.plugins.fzf').git_status()<cr>]])
-  map('n', '<leader>fd', [[<cmd>lua require('j.plugins.fzf').directories()<cr>]])
-  map('n', '<leader>fh', [[<cmd>lua require('j.plugins.fzf').help_tags()<cr>]])
-
-  create_augroups({
-    fzf = {
-      {'FileType', 'fzf', [[tunmap <buffer> <esc>]]},
-    },
-  })
-
-  -- Grep in files with the given extension
-  vim.cmd [[command! -nargs=1 GrepFT lua require('j.plugins.fzf').grep_folder('**/*.<args>')]]
-end
 
 function M.files()
   local command = 'fd --color always -t f -L --hidden'
@@ -315,6 +290,8 @@ local function deal_with_tags(tagfile, cb)
 end
 
 local function fzf_function(cb)
+  local runtimepaths = vim.api.nvim_list_runtime_paths()
+
   local total_done = 0
   for i, rtp in ipairs(runtimepaths) do
     local tagfile = table.concat({rtp, 'doc', 'tags'}, '/')
