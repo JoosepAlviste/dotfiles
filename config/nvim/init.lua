@@ -199,7 +199,7 @@ require('j.plugins.fzf')
 require('j.plugins.autopairs')
 require('j.plugins.kommentary')
 require('j.plugins.material').setup()
-require('j.plugins.treesitter').setup()
+require('j.plugins.treesitter')
 require('colorizer').setup({
   '*',
   '!packer',
