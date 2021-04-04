@@ -1,12 +1,9 @@
 local api = vim.api
-local popup = require('ui.popup')
 
-local map = require('j.utils').map
+local TOP_MARGIN = 2
+local RIGHT_MARGIN = 2
 
 local M = {}
-
-local top_margin = 2
-local right_margin = 2
 
 -- Show a simple popup with some basic file information
 function M.file_info()
@@ -56,17 +53,13 @@ function M.file_info()
   end, lines_texts)
   local max_line_length = math.max(unpack(line_lengths))
 
-  popup.create(lines_texts, {
-    col = width - right_margin - max_line_length - 2,
-    line = top_margin,
+  require('ui.popup').create(lines_texts, {
+    col = width - RIGHT_MARGIN - max_line_length - 2,
+    line = TOP_MARGIN,
     enter = false,
     time = 3000,
     padding = {0, 1, 0, 1},
   })
-end
-
-function M.setup()
-  map('n', '<c-g>', [[<cmd>lua require('j.file_info').file_info()<cr>]])
 end
 
 return M
