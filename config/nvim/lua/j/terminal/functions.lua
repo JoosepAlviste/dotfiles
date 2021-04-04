@@ -1,17 +1,6 @@
 local cmd = vim.cmd
 
-local utils = require('j.utils')
-local create_augroups = utils.create_augroups
-
 local M = {}
-
-function M.setup()
-  create_augroups({
-    terminal = {
-      {'TermOpen', '*', [[lua require('j.terminal').configure()]]},
-    },
-  })
-end
 
 function M.configure()
   cmd [[setlocal nonumber]]

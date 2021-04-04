@@ -187,7 +187,7 @@ require('j.plugins.web_devicons').setup() -- Set up icons before statusline
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info')
-require('j.terminal').setup()
+require('j.terminal')
 require('j.folding').setup()
 require('j.session').setup()
 
