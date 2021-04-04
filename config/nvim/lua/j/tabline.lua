@@ -1,5 +1,3 @@
-local M = {}
-
 function _G.tabline()
   local tabs = {}
 
@@ -28,8 +26,4 @@ function _G.tabline()
   return table.concat(tabs, '')
 end
 
-function M.setup()
-  vim.cmd [[set tabline=%!v:lua.tabline()]]
-end
-
-return M
+vim.cmd [[set tabline=%!v:lua.tabline()]]
