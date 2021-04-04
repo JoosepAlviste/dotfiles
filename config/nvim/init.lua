@@ -207,5 +207,5 @@ require('colorizer').setup({
 require('j.plugins.gitsigns').setup()
 require('j.plugins.vsnip').setup()
 require('j.plugins.dirvish')
-require('j.plugins.editorconfig').setup()
+require('j.plugins.editorconfig')
 require('j.plugins.tree').setup()
