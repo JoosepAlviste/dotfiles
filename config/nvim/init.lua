@@ -183,7 +183,7 @@ create_augroups({
 require('j.plugins')
 require('j.mappings')
 require('j.abbreviations')
-require('j.plugins.web_devicons').setup() -- Set up icons before statusline
+require('j.plugins.web_devicons') -- Set up icons before statusline
 require('j.statusline').setup()
 require('j.tabline').setup()
 require('j.file_info')
