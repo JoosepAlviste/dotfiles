@@ -33,7 +33,6 @@ require('j.plugins.lsp')
 require('j.plugins.completion')
 require('j.plugins.fzf')
 require('j.plugins.autopairs')
-require('j.plugins.kommentary')
 require('j.plugins.material').setup()
 require('j.plugins.treesitter')
 require('colorizer').setup({
