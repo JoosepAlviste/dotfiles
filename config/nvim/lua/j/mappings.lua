@@ -49,7 +49,7 @@ map('n', '[l', ':lprev<cr>', {silent = true})
 -- dirvish), then we need to manually configure the mapping again
 map('n', 'gx', [[:call joosep#open#open_url_under_cursor()<cr>]], {silent = true})
 
-map('n', '<F10>', [[:call joosep#syntax#PrintSyntax()<cr>]], {silent = true})
+map('n', '<F10>', [[<cmd>lua require('j.syntax').print_syntax()<cr>]], {silent = true})
 
 -- Leader mappings
 

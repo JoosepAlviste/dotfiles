@@ -32,4 +32,11 @@ function M.create_augroups(definitions)
   end
 end
 
+-- Useful function for debugging
+-- Print the given items
+function _G.dump(...)
+    local objects = vim.tbl_map(vim.inspect, {...})
+    print(unpack(objects))
+end
+
 return M
