@@ -2,10 +2,6 @@ local g = vim.g
 
 local map = require('j.utils').map
 
--- Can save global functions to this table
-_G.MUtils = {}
-
-
 -- Map space to leader
 map('n', '<space>', '<nop>')
 map('v', '<space>', '<nop>')
@@ -26,7 +22,6 @@ require('j.file_info')
 require('j.terminal')
 require('j.folding')
 require('j.session').setup()
-
 
 -- Plugin configurations
 require('j.plugins.lsp')
