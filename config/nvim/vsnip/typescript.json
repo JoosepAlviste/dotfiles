@@ -48,5 +48,17 @@
       "export { default as $2 } from './$1';$0"
     ],
     "description": "export a component"
+  },
+  "service": {
+    "prefix": ["service"],
+    "body": [
+      "import { Injectable } from '@nestjs/common'",
+      "",
+      "@Injectable()",
+      "export class $1Service {",
+      "\t$0",
+      "}"
+    ],
+    "description": "A Nest.js service"
   }
 }
