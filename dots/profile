@@ -153,6 +153,9 @@ export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
 
 #
 # Package configurations
