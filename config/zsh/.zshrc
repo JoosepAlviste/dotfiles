@@ -86,7 +86,7 @@ zinit ice wait lucid as'command' from'gh-r' mv'bat* -> bat' pick'bat/bat'
 zinit light sharkdp/bat
 
 # ogham/exa, replacement for ls
-zinit ice wait lucid as'program' from'gh-r' mv'exa* -> exa'
+zinit ice wait lucid as'program' from'gh-r' pick'bin/exa'
 zinit light ogham/exa
 
 # denilsonsa/prettyping
