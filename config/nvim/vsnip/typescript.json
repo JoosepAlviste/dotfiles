@@ -60,5 +60,19 @@
       "}"
     ],
     "description": "A Nest.js service"
+  },
+  "entity": {
+    "prefix": ["entity"],
+    "body": [
+      "import { Entity, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'",
+      "",
+      "@Entity()",
+      "export class $1 extends BaseEntity {",
+      "\t@PrimaryGeneratedColumn()",
+      "\tid!: number",
+      "",
+      "\t$0"
+      "}"
+    ]
   }
 }
