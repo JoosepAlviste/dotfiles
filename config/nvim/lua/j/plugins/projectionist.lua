@@ -35,6 +35,6 @@ vim.g.projectionist_heuristics = {
   },
 }
 
-map('n', '<leader>av', [[:AV<cr>]])
-map('n', '<leader>as', [[:AS<cr>]])
-map('n', '<leader>ae', [[:A<cr>]])
+map('n', '<leader>av', [[:AV<cr>]], {silent = true})
+map('n', '<leader>as', [[:AS<cr>]], {silent = true})
+map('n', '<leader>ae', [[:A<cr>]], {silent = true})

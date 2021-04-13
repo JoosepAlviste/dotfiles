@@ -33,7 +33,7 @@ map('n', '<down>', ':cnext<cr>', silent)
 map('n', 'Q', '@@')
 
 -- Split line with X
-map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>')
+map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {silent = true})
 
 -- Navigate merge conflict markers
 map('n', ']n', [[/\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
