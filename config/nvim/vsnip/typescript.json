@@ -71,7 +71,7 @@
       "\t@PrimaryGeneratedColumn()",
       "\tid!: number",
       "",
-      "\t$0"
+      "\t$0",
       "}"
     ]
   }
