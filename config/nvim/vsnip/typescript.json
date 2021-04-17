@@ -73,6 +73,28 @@
       "",
       "\t$0",
       "}"
-    ]
+    ],
+    "description": "A Nest.js GraphQL entity class"
+  },
+  "GraphQL type": {
+    "prefix": ["gqltype"],
+    "body": [
+      "import { ObjectType, Field, Int } from '@nestjs/graphql'",
+      "",
+      "@ObjectType('$1')",
+      "export class $1Type {",
+      "\t@Field((type) => Int)",
+      "\tid!: number$0",
+      "}"
+    ],
+    "description": "A Nest.js GraphQL type class"
+  },
+  "GraphQL field": {
+    "prefix": ["gqlfield"],
+    "body": [
+      "@Field((type) => $1)",
+      "$2!: $0"
+    ],
+    "description": "A Nest.js GraphQL field"
   }
 }
