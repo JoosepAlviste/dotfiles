@@ -32,6 +32,44 @@ function M.create_augroups(definitions)
   end
 end
 
+-- Bust the cache of all required Lua files.
+-- After running this, each require() would re-run the file.
+local function unload_all_modules()
+  -- Lua patterns for the modules to unload
+  local unload_modules = {
+    '^j.',
+  }
+
+  for k,_ in pairs(package.loaded) do
+    for _,v in ipairs(unload_modules) do
+      if k:match(v) then
+        package.loaded[k] = nil
+        break
+      end
+    end
+  end
+end
+
+function M.reload()
+  -- Stop LSP
+  cmd('LspStop')
+
+  -- Unload all already loaded modules
+  unload_all_modules()
+
+  -- Source init.lua
+  cmd('luafile $MYVIMRC')
+end
+
+-- Restart Vim without having to close and run again
+function M.restart()
+  -- Reload config
+  M.reload()
+
+  -- Manually run VimEnter autocmd to emulate a new run of Vim
+  cmd('doautocmd VimEnter')
+end
+
 -- Useful function for debugging
 -- Print the given items
 function _G.dump(...)

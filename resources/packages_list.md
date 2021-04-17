@@ -8,11 +8,9 @@ just for my own reference.
 
 ```bash
 brew install \
-    hub \
     dash \
     htop \
     neovim \
-    yarn \
     koekeishiya/formulae/yabai \
     koekeishiya/formulae/skhd \
     jq \
