@@ -38,5 +38,13 @@
       "<style lang=\"scss\">",
       "</style>"
     ]
+  },
+  "debug": {
+    "prefix": ["debug"],
+    "body": [
+      "watchEffect(() => {",
+      "\tconsole.log({ $0 })",
+      "});"
+    ]
   }
 }
