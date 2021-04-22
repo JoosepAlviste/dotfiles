@@ -94,6 +94,9 @@ saga.init_lsp_saga {
     sign_priority = 20,
     virtual_text = false,
   },
+  rename_action_keys = {
+    quit = '<esc>',
+  },
 }
 
 create_augroups({
