@@ -32,6 +32,10 @@ function M.create_augroups(definitions)
   end
 end
 
+function M.termcode(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 -- Bust the cache of all required Lua files.
 -- After running this, each require() would re-run the file.
 local function unload_all_modules()

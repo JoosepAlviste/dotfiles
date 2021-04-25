@@ -56,6 +56,7 @@ return require('packer').startup(function()
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
   use 'editorconfig/editorconfig-vim'  -- Project-specific settings
 
+  -- Web dev
   use 'norcalli/nvim-colorizer.lua'  -- Preview hex colors
 
   -- Git
