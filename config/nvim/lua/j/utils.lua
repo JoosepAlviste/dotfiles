@@ -58,6 +58,9 @@ function M.reload()
   -- Stop LSP
   cmd('LspStop')
 
+  -- Stop eslint_d
+  vim.fn.execute('silent !pkill -9 eslint_d')
+
   -- Unload all already loaded modules
   unload_all_modules()
 
