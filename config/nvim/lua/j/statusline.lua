@@ -38,6 +38,12 @@ function _G.statusline(winnr)
   local extension = vim.fn.expand('#' .. bufnum .. ':e')
   local icon, highlight = require('nvim-web-devicons').get_icon(file_name, extension)
 
+  if not icon and #file_name == 0 then
+    -- Is in a folder
+    icon = ''
+    highlight = 'Accent'
+  end
+
   local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
   table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '»' or '«'))
   local icon_statusline = icon and color(is_active, 'Statusline' .. highlight, icon) .. ' ' or ''
