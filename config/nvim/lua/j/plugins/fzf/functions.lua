@@ -5,6 +5,10 @@ local ripgrep_preview = 'fzf-preview {}'  -- fzf-preview is a script in my dotfi
 
 local M = {}
 
+local function fzf_args(name)
+  return '--ansi --multi --expect=ctrl-s,ctrl-t,ctrl-v --history=/tmp/fzf-' .. name .. ' '
+end
+
 -- Open the given list of selected files
 -- The first element of `choices` is the key that the user pressed (e.g., 
 -- "ctrl-t") and the rest of the table is the files that were selected.
@@ -69,7 +73,7 @@ function M.files()
   coroutine.wrap(function ()
     local choices = fzf(
       command,
-      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+      (fzf_args('files') .. '--preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -86,7 +90,7 @@ function M.grep(search)
   coroutine.wrap(function ()
     local choices = fzf(
       command,
-      ('--ansi --delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
+      (fzf_args('grep') .. '--delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -117,7 +121,7 @@ function M.grep_folder(folder)
   coroutine.wrap(function ()
     local choices = fzf(
       command,
-      ('--ansi --delimiter : --nth 3.. --prompt "%s > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
+      (fzf_args('grep-folder') .. '--delimiter : --nth 3.. --prompt "%s > " --delimiter : --preview-window "+{2}-/2" --preview=%s'):format(
         folder,
         vim.fn.shellescape(preview)
       )
@@ -148,7 +152,7 @@ function M.history()
 
     local choices = fzf(
       cwd_oldfiles,
-      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+      (fzf_args('history') .. '--preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -165,7 +169,7 @@ function M.git_status()
   coroutine.wrap(function ()
     local choices = fzf(
       'git -c color.status=always status --short --untracked-files=all',
-      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(preview)
+      (fzf_args('git-status') .. '--preview=%s'):format(preview)
     )
 
     local first = true
@@ -190,7 +194,7 @@ function M.directories()
   coroutine.wrap(function ()
     local choices = fzf(
       command,
-      ('--ansi --preview=%s --expect=ctrl-s,ctrl-t,ctrl-v --multi'):format(
+      (fzf_args('directories') .. '--preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -221,7 +225,7 @@ function M.lsp_references_handler(_, _, results)
   coroutine.wrap(function ()
     local choices = fzf(
       files,
-      ('--ansi --delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --expect=ctrl-s,ctrl-t,ctrl-v --multi --preview=%s'):format(
+      (fzf_args('lsp-references') .. '--delimiter : --nth 3.. --prompt "Grep > " --delimiter : --preview-window "+{2}-/2" --preview=%s'):format(
         vim.fn.shellescape(preview)
       )
     )
@@ -308,7 +312,7 @@ end
 
 function M.help_tags()
   coroutine.wrap(function ()
-    local result = fzf(fzf_function, '--nth 1 --ansi --expect=ctrl-t,ctrl-s,ctrl-v')
+    local result = fzf(fzf_function, fzf_args('help-tags') .. '--nth 1')
     if not result then
       return
     end
