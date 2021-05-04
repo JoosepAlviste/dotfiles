@@ -1,3 +1,5 @@
+local actions = require('telescope.actions')
+
 local map = require('j.utils').map
 
 map('n', '<c-p>',      [[<cmd>Telescope find_files<cr>]])
@@ -13,7 +15,13 @@ map('n', '<leader>fc', [[<cmd>lua require'telescope.builtin'.git_commits()<cr>]]
 
 require('telescope').setup({
   defaults = {
-    prompt_prefix = ' ❯ ',
+    prompt_prefix = ' ➤ ',
+    selection_caret = '➤ ',
+    mappings = {
+      i = {
+        ['<esc>'] = actions.close,
+      }
+    }
   },
 })
 

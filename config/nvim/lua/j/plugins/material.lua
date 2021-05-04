@@ -158,6 +158,9 @@ function M.configure_colorscheme()
   -- Telescope
   hi('TelescopeSelection', nil, bg)
   hi('TelescopeMatching',  cyan)
+  hi('TelescopeBorder', invisibles)
+  hi('TelescopeSelectionCaret', cyan)
+  hi('TelescopePromptPrefix', green)
 
   -- tpope/vim-fugitive
   hi('diffAdded',    green, 'NONE', 'NONE')
