@@ -141,6 +141,10 @@ function M.configure_colorscheme()
   hi('TSTag',             yellow)
   hi('TSTagDelimiter',    darker_fg)
 
+  -- Telescope
+  hi('TelescopeSelection', nil, bg)
+  hi('TelescopeMatching',  cyan)
+
   -- tpope/vim-fugitive
   hi('diffAdded',    green, 'NONE', 'NONE')
   hi('diffRemoved',  red,   'NONE', 'NONE')

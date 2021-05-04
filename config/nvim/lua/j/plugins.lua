@@ -18,6 +18,7 @@ return require('packer').startup(function()
 
   -- Core utilities
   use 'nvim-lua/plenary.nvim'  -- Useful Lua utilities
+  use 'nvim-lua/popup.nvim'
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
   use 'tpope/vim-repeat'  -- Make repeat (.) command smarter
   use 'tpope/vim-obsession'  -- Nicer session management
@@ -32,7 +33,9 @@ return require('packer').startup(function()
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
   -- Navigation
-  use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
+  -- use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
+  use 'nvim-telescope/telescope.nvim'  -- Fuzzy finder
+  use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'tamago324/lir.nvim'  -- File explorer
   use 'tpope/vim-projectionist'  -- Alternative files
   use 'kyazdani42/nvim-tree.lua'

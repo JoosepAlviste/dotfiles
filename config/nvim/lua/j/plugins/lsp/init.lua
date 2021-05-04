@@ -9,11 +9,11 @@ local function on_attach(client, bufnr)
 
   -- Set up keymaps
   local opts = {noremap = true, silent = true}
-  buf_map('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  buf_map('n', '<c-]>', '<cmd>Telescope lsp_definitions<cr>', opts)
   buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-  buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  buf_map('n', 'gr', [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]], opts)
 
   buf_map('n', 'K', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]], opts)
   buf_map('n', '<space>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
@@ -59,7 +59,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 -- Use FZF to find references
-vim.lsp.handlers['textDocument/references'] = require('j.plugins.fzf.functions').lsp_references_handler
+-- vim.lsp.handlers['textDocument/references'] = require('j.plugins.fzf.functions').lsp_references_handler
 
 -- Handle formatting in a smarter way
 -- If the buffer has been edited before formatting has completed, do not try to 
