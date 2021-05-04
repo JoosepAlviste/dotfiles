@@ -36,7 +36,7 @@ require('colorizer').setup({
 })
 require('j.plugins.gitsigns')
 require('j.plugins.vsnip')
-require('j.plugins.dirvish')
+require('j.plugins.lir')
 require('j.plugins.editorconfig')
 require('j.plugins.projectionist')
 require('j.plugins.tree')

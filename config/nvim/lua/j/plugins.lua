@@ -33,7 +33,7 @@ return require('packer').startup(function()
 
   -- Navigation
   use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
-  use 'justinmk/vim-dirvish'  -- File explorer
+  use 'tamago324/lir.nvim'  -- File explorer
   use 'tpope/vim-projectionist'  -- Alternative files
   use 'kyazdani42/nvim-tree.lua'
 

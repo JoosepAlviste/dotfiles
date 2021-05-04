@@ -1,6 +1,11 @@
 -- Override some icons to nonicons (https://github.com/yamatsum/nonicons)
 require('nvim-web-devicons').setup({
   override = {
+    default_icon = {
+      icon = "",
+      color = "#6d8086",
+      name = "Default",
+    },
     ['Dockerfile'] = {
       icon = '',
       color = '#0db7ed',
@@ -65,6 +70,11 @@ require('nvim-web-devicons').setup({
       icon = '',
       color = '#cbcb41',
       name = 'Js',
+    },
+    lir_folder_icon = {
+      icon = "",
+      color = "#82aaff",
+      name = "LirFolderNode"
     },
     lua = {
       icon = '',

@@ -51,6 +51,10 @@ map('n', 'gx', [[:call joosep#open#open_url_under_cursor()<cr>]], {silent = true
 
 map('n', '<F10>', [[<cmd>lua require('j.syntax').print_syntax()<cr>]], {silent = true})
 
+-- Open the current file's directory
+map('n', '-', [[:e %:h<cr>]])
+map('n', 'H', [[:e %:h<cr>]])
+
 -- Leader mappings
 
 -- Open last buffer
