@@ -110,6 +110,20 @@ function M.configure_colorscheme()
   hi('LspDiagnosticsVirtualTextError',     '#9e4057')
   hi('LspDiagnosticsVirtualTextWarning',   '#9a6054')
 
+  -- LSPSaga
+  hi('LspFloatWinBorder', invisibles)
+  hi('LspSagaHoverBorder', invisibles)
+
+  hi('ProviderTruncateLine', invisibles)
+  hi('LspSagaShTruncateLine', invisibles)
+  hi('LspSagaDocTruncateLine', invisibles)
+  hi('LspSagaCodeActionTruncateTitleLine', invisibles)
+  hi('LspSagaCodeActionTruncateLine', invisibles)
+  hi('LspSagaCodeActionBorder', invisibles)
+
+  hi('LspSagaDiagnosticBorder', purple)
+  hi('LspSagaDiagnosticTruncateLine', purple)
+
   -- Git
   hi('gitcommitOverflow', red)
   hi('DiffFile',    green,   'NONE')
