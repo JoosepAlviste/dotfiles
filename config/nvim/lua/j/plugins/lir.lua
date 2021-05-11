@@ -4,6 +4,9 @@ local clipboard_actions = require('lir.clipboard.actions')
 
 local create_augroups = require('j.utils').create_augroups
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require('lir').setup ({
   show_hidden_files = true,
   devicons_enable = true,
