@@ -33,9 +33,18 @@ return require('packer').startup(function()
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
   -- Navigation
-  -- use 'vijaymarupudi/nvim-fzf'  -- Fuzzy finder
-  use 'nvim-telescope/telescope.nvim'  -- Fuzzy finder
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use {
+    -- Fuzzy finder
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+      {
+        'nvim-telescope/telescope-frecency.nvim',
+        config = function() require('telescope').load_extension('frecency') end,
+        requires = {'tami5/sql.nvim'},
+      },
+    },
+  }
   use 'tamago324/lir.nvim'  -- File explorer
   use 'tpope/vim-projectionist'  -- Alternative files
   use 'kyazdani42/nvim-tree.lua'
