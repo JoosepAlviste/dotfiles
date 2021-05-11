@@ -3,7 +3,7 @@ local actions = require('telescope.actions')
 local map = require('j.utils').map
 
 map('n', '<c-p>',      [[<cmd>Telescope find_files<cr>]])
-map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope'.live_grep<cr>]])
+map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope'.live_grep()<cr>]])
 
 map('n', '<leader>fb', [[<cmd>Telescope buffers<cr>]])
 map('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]])

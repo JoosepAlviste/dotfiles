@@ -14,7 +14,10 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
 
   -- Colorscheme
-  use 'kaicataldo/material.vim'
+  use {
+    'kaicataldo/material.vim',
+    config = function() require('j.plugins.material').setup() end,
+  }
 
   -- Core utilities
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
@@ -22,7 +25,10 @@ return require('packer').startup(function()
   use 'tpope/vim-obsession'  -- Nicer session management
 
   -- Mapping improvements
-  use 'windwp/nvim-autopairs'
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require('j.plugins.autopairs') end,
+  }
   use 'tpope/vim-commentary'  -- Commenting
   use 'tpope/vim-surround'  -- Surround stuff with things
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
@@ -31,6 +37,7 @@ return require('packer').startup(function()
   use {
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
+    config = function() require('j.plugins.telescope') end,
     requires = {
       'nvim-lua/plenary.nvim',  -- Useful Lua utilities
       'nvim-lua/popup.nvim',
@@ -45,14 +52,25 @@ return require('packer').startup(function()
       },
     },
   }
-  use 'tamago324/lir.nvim'  -- File explorer
-  use 'tpope/vim-projectionist'  -- Alternative files
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'tamago324/lir.nvim',  -- File explorer
+    config = function() require('j.plugins.lir') end,
+  }
+  use {
+    'tpope/vim-projectionist',  -- Alternative files
+    config = function() require('j.plugins.projectionist') end,
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    disable = true,
+    config = function() require('j.plugins.tree') end,
+  }
 
   -- Advanced highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
+    config = function() require('j.plugins.treesitter') end,
     requires = {
       'windwp/nvim-ts-autotag',  -- Automatically end & rename tags
       -- Dynamically set commentstring based on cursor location in file
@@ -70,20 +88,42 @@ return require('packer').startup(function()
   -- Smarts
   use {
     'neovim/nvim-lspconfig',  -- Built-in LSP configurations
+    config = function() require('j.plugins.lsp') end,
     requires = {
       'glepnir/lspsaga.nvim',  -- LSP UI improvements
-      'hrsh7th/nvim-compe',  -- Autocompletion
-      'hrsh7th/vim-vsnip',  -- Snippets
+      {
+        'hrsh7th/nvim-compe',  -- Autocompletion
+        config = function() require('j.plugins.completion') end,
+      },
+      {
+        'hrsh7th/vim-vsnip',  -- Snippets
+        config = function() require('j.plugins.vsnip') end,
+      },
     },
   }
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
-  use 'editorconfig/editorconfig-vim'  -- Project-specific settings
+  use {
+    'editorconfig/editorconfig-vim',  -- Project-specific settings
+    config = function() vim.g.EditorConfig_preserve_formatoptions = 1 end,
+  }
 
   -- Web dev
-  use 'norcalli/nvim-colorizer.lua'  -- Preview hex colors
+  use {
+    'norcalli/nvim-colorizer.lua',  -- Preview hex colors
+    config = function()
+      require('colorizer').setup({
+        '*',
+        '!packer',
+      })
+    end,
+    after = 'material.vim',
+  }
 
   -- Git
   use 'tpope/vim-fugitive'  -- I only use the "blame" feature from this
-  use 'lewis6991/gitsigns.nvim'  -- Git status signs in the gutter
+  use {
+    'lewis6991/gitsigns.nvim',  -- Git status signs in the gutter
+    config = function() require('j.plugins.gitsigns') end,
+  }
 end)

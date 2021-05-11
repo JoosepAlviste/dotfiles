@@ -22,21 +22,3 @@ require('j.file_info')
 require('j.terminal')
 require('j.folding')
 require('j.session').setup()
-
--- Plugin configurations
-require('j.plugins.lsp')
-require('j.plugins.completion')
-require('j.plugins.telescope')
-require('j.plugins.autopairs')
-require('j.plugins.material').setup()
-require('j.plugins.treesitter')
-require('colorizer').setup({
-  '*',
-  '!packer',
-})
-require('j.plugins.gitsigns')
-require('j.plugins.vsnip')
-require('j.plugins.lir')
-require('j.plugins.editorconfig')
-require('j.plugins.projectionist')
-require('j.plugins.tree')
