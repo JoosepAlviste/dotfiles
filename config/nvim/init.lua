@@ -26,7 +26,6 @@ require('j.session').setup()
 -- Plugin configurations
 require('j.plugins.lsp')
 require('j.plugins.completion')
--- require('j.plugins.fzf')
 require('j.plugins.telescope')
 require('j.plugins.autopairs')
 require('j.plugins.material').setup()
