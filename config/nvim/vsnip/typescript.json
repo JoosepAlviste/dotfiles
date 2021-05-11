@@ -96,5 +96,10 @@
       "$2!: $0"
     ],
     "description": "A Nest.js GraphQL field"
+  },
+  "Testing Library screen.debug()": {
+    "prefix": ["sd"],
+    "body": ["screen.debug()$0"],
+    "description": "Debug a Testing Library screen"
   }
 }
