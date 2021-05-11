@@ -7,7 +7,7 @@ map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope'.live_grep()<cr>]]
 
 map('n', '<leader>fb', [[<cmd>Telescope buffers<cr>]])
 map('n', '<leader>fh', [[<cmd>Telescope help_tags<cr>]])
-map('n', '<leader>fr', [[<cmd>lua require('telescope').extensions.frecency.frecency()<cr>]])
+map('n', '<leader>fr', [[<cmd>lua require('telescope.builtin').oldfiles()<cr>]])
 map('n', '<leader>fq', [[<cmd>lua require'telescope.builtin'.quickfix()<cr>]])
 
 map('n', '<leader>fx', [[<cmd>lua require'telescope.builtin'.git_status()<cr>]])

@@ -44,12 +44,6 @@ return require('packer').startup(function()
 
       -- FZF sorter for Telescope
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-      {
-        -- Improved editing history
-        'nvim-telescope/telescope-frecency.nvim',
-        config = function() require('telescope').load_extension('frecency') end,
-        requires = {'tami5/sql.nvim'},
-      },
     },
   }
   use {
