@@ -17,18 +17,13 @@ return require('packer').startup(function()
   use 'kaicataldo/material.vim'
 
   -- Core utilities
-  use 'nvim-lua/plenary.nvim'  -- Useful Lua utilities
-  use 'nvim-lua/popup.nvim'
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
   use 'tpope/vim-repeat'  -- Make repeat (.) command smarter
   use 'tpope/vim-obsession'  -- Nicer session management
 
   -- Mapping improvements
   use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'  -- Automatically end & rename tags
   use 'tpope/vim-commentary'  -- Commenting
-  -- Dynamically set commentstring based on cursor location in file
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'tpope/vim-surround'  -- Surround stuff with things
   use 'knubie/vim-kitty-navigator'  -- Move between Vim & Kitty windows easily
 
@@ -37,8 +32,13 @@ return require('packer').startup(function()
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
     requires = {
+      'nvim-lua/plenary.nvim',  -- Useful Lua utilities
+      'nvim-lua/popup.nvim',
+
+      -- FZF sorter for Telescope
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
       {
+        -- Improved editing history
         'nvim-telescope/telescope-frecency.nvim',
         config = function() require('telescope').load_extension('frecency') end,
         requires = {'tami5/sql.nvim'},
@@ -50,8 +50,16 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-tree.lua'
 
   -- Advanced highlighting
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'nvim-treesitter/playground'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    requires = {
+      'windwp/nvim-ts-autotag',  -- Automatically end & rename tags
+      -- Dynamically set commentstring based on cursor location in file
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/playground',
+    },
+  }
 
   -- Misc
   use 'kyazdani42/nvim-web-devicons'
@@ -60,10 +68,14 @@ return require('packer').startup(function()
   --------------
 
   -- Smarts
-  use 'neovim/nvim-lspconfig'  -- Built-in LSP configurations
-  use 'glepnir/lspsaga.nvim'  -- LSP UI improvements
-  use 'hrsh7th/nvim-compe'  -- Autocompletion
-  use 'hrsh7th/vim-vsnip'  -- Snippets
+  use {
+    'neovim/nvim-lspconfig',  -- Built-in LSP configurations
+    requires = {
+      'glepnir/lspsaga.nvim',  -- LSP UI improvements
+      'hrsh7th/nvim-compe',  -- Autocompletion
+      'hrsh7th/vim-vsnip',  -- Snippets
+    },
+  }
 
   use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
   use 'editorconfig/editorconfig-vim'  -- Project-specific settings
