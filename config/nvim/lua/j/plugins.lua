@@ -9,7 +9,7 @@ end
 
 cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer itself
   use {'wbthomason/packer.nvim', opt = true}
 
@@ -82,7 +82,19 @@ return require('packer').startup(function()
   -- Smarts
   use {
     'neovim/nvim-lspconfig',  -- Built-in LSP configurations
-    config = function() require('j.plugins.lsp') end,
+    config = function()
+      require('j.plugins.lsp')
+      require('j.plugins.lsp.css_ls')
+      require('j.plugins.lsp.docker_ls')
+      require('j.plugins.lsp.graphql_ls')
+      require('j.plugins.lsp.json_ls')
+      require('j.plugins.lsp.php_ls')
+      require('j.plugins.lsp.tsserver_ls')
+      require('j.plugins.lsp.vue_ls')
+      require('j.plugins.lsp.yaml_ls')
+      require('j.plugins.lsp.lua_ls')
+      require('j.plugins.lsp.efm_ls')
+    end,
     requires = {
       'glepnir/lspsaga.nvim',  -- LSP UI improvements
       {
