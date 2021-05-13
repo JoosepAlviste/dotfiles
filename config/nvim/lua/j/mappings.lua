@@ -36,8 +36,8 @@ map('n', 'Q', '@@')
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', {silent = true})
 
 -- Navigate merge conflict markers
-map('n', ']n', [[/\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
-map('n', '[n', [[?\(<<<<<<<\|=======\|>>>>>>>\)<cr>]], {silent = true})
+map('n', ']n', [[call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'W')]], {silent = true})
+map('n', '[n', [[call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'bW')]], {silent = true})
 
 -- Navigate loclist
 map('n', ']l', ':lnext<cr>', {silent = true})
