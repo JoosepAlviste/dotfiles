@@ -25,6 +25,7 @@ require('j.utils').create_augroups({
       '*',
       [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
     },
+    {'VimEnter', '*', [[lua require('j.utils').update_plugins_every_day()]]},
   },
   -- Simple one-liner filetype specific things that I don't really want to put 
   -- into ftplugin files for whatever reason

@@ -77,6 +77,31 @@ function M.restart()
   cmd('doautocmd VimEnter')
 end
 
+-- Execute `PackerUpdate` every day automatically so that we are always up to 
+-- date!
+-- I run `PackerUpdate` manually anyways, so it makes sense to run it 
+-- automatically.
+--
+-- The last saved date is saved into `XDG_CACHE_HOME/.plugins_updated_at`.
+function M.update_plugins_every_day()
+  local plugin_updated_at_filename = vim.env.XDG_CACHE_HOME .. '/.plugins_updated_at'
+  local file = io.open(plugin_updated_at_filename)
+  if not file then
+    vim.fn.writefile({}, plugin_updated_at_filename)
+  end
+
+  local today = os.date('%Y-%m-%d')
+
+  file = io.open(plugin_updated_at_filename)
+  local contents = file:read('*a')
+  if not contents == today then
+    vim.fn.execute('PackerUpdate')
+
+    file = io.open(plugin_updated_at_filename, 'w')
+    file:write(today)
+  end
+end
+
 -- Useful function for debugging
 -- Print the given items
 function _G.dump(...)
