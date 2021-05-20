@@ -7,3 +7,6 @@
 [submodule "config/kitty/kitty_grab"]
 	path = config/kitty/kitty_grab
 	url = https://github.com/yurikhan/kitty_grab.git
+[submodule "config/hammerspoon/stackline"]
+	path = config/hammerspoon/stackline
+	url = https://github.com/AdamWagner/stackline.git
