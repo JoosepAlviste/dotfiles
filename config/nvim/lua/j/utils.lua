@@ -88,18 +88,21 @@ function M.update_plugins_every_day()
   local file = io.open(plugin_updated_at_filename)
   if not file then
     vim.fn.writefile({}, plugin_updated_at_filename)
+    file:close()
   end
 
   local today = os.date('%Y-%m-%d')
 
   file = io.open(plugin_updated_at_filename)
   local contents = file:read('*a')
-  if not contents == today then
+  if contents ~= today then
     vim.fn.execute('PackerUpdate')
 
     file = io.open(plugin_updated_at_filename, 'w')
     file:write(today)
   end
+
+  file:close()
 end
 
 -- Useful function for debugging
