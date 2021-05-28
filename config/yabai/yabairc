@@ -71,4 +71,6 @@ yabai -m rule --add app="^IINA$" border=off
 yabai -m rule --add app="PhpStorm" manage=off
 yabai -m rule --add app="PhpStorm" title="scoro-base" manage=on
 
+yabai -m rule --add app="Dash" manage=off
+
 echo "yabai configuration loaded.."
