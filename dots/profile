@@ -194,6 +194,7 @@ path=(
 # NVM
 #
 
+export USE_NVM=1
 export NVM_DIR=$XDG_CONFIG_HOME/nvm
 # Only set this source in Arch Linux
 if [[ -d "/usr/share/nvm" ]]; then

@@ -149,16 +149,6 @@ zinit snippet PZT::modules/completion
 zinit ice depth=1 atload'!source $ZDOTDIR/p10k.zsh' nocd lucid
 zinit light romkatv/powerlevel10k
 
-# Apply NVM when moving around
-precmd() {
-    if [ "$PWD" != "$PREV_PWD" ]; then
-        PREV_PWD="$PWD";
-        if [ -e ".nvmrc" ]; then
-            nvm use &> /dev/null;
-        fi
-    fi
-}
-
 # Completion for Docker
 zinit ice wait lucid as'completion'
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
@@ -343,16 +333,29 @@ setup_nvm() {
       unset nvm_prefix
     fi
 }
+
 # NVM is not loaded on shell startup since it's slow. Also, loading it in turbo 
 # mode freezes the command prompt for a bit. So, we need to set up NVM only 
 # when actually required -- when the `nvm` command is used or any other Node 
 # commands.
-declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-NODE_GLOBALS+=("node")
-NODE_GLOBALS+=("nvm")
-for cmd in "${NODE_GLOBALS[@]}"; do
-    eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
-done
+if [ $USE_NVM = 1 ]; then
+  declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+  NODE_GLOBALS+=("node")
+  NODE_GLOBALS+=("nvm")
+  for cmd in "${NODE_GLOBALS[@]}"; do
+      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
+  done
+
+  # Apply NVM when moving around
+  precmd() {
+    if [ "$PWD" != "$PREV_PWD" ]; then
+      PREV_PWD="$PWD";
+      if [ -e ".nvmrc" ]; then
+        nvm use &> /dev/null;
+      fi
+    fi
+  }
+fi
 
 # Cleaning up ~
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
