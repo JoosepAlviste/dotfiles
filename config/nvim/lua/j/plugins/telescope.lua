@@ -2,7 +2,7 @@ local actions = require('telescope.actions')
 
 local map = require('j.utils').map
 
-map('n', '<c-p>',      [[<cmd>Telescope find_files<cr>]])
+map('n', '<c-p>',      [[<cmd>lua require'j.plugins.telescope'.find_files()<cr>]])
 map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope'.live_grep()<cr>]])
 
 map('n', '<leader>fb', [[<cmd>Telescope buffers<cr>]])
@@ -40,6 +40,12 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 
 local M = {}
+
+function M.find_files()
+  require('telescope.builtin').find_files({
+    hidden = true,
+  })
+end
 
 function M.live_grep()
   require('telescope.builtin').live_grep({
