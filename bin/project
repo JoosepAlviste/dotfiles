@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+local kitty_path=${kitty_path:-kitty}
+local jq_path=${jq_path:-jq}
+local docker_path=${docker_path:-docker}
+
+local tabs=($($kitty_path @ --to unix:/tmp/mykitty ls | $jq_path -r '.[0].tabs[].title'))
+
+if [ "$1" = "glutton" ]; then
+  local tab_name="glutton"
+  if (($tabs[(Ie)$tab_name])); then
+    echo 'Already exists'
+  else
+    # Does not exist
+    $kitty_path @ --to unix:/tmp/mykitty launch --title "glutton" --type tab --tab-title glutton --cwd "$HOME/Code/glutton" -- zsh -c "nvim; zsh -i"
+    local server_window="$($kitty_path @ --to unix:/tmp/mykitty launch --tab-title server --type tab --cwd "$HOME/Code/glutton")"
+
+    if $docker_path ps | grep -q glutton_api_1; then
+      local docker_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$HOME/Code/glutton" -- zsh -c "docker compose logs --follow api; zsh -i")"
+    else
+      local docker_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$HOME/Code/glutton" -- zsh -c "docker compose up -d; docker compose logs --follow api; zsh -i")"
+    fi
+
+    local metro_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$HOME/Code/glutton/mobile-app" --match "id:$docker_window" --location hsplit -- zsh -c "yarn start; zsh -i")"
+    local simulator_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$HOME/Code/glutton/mobile-app" --match "id:$metro_window" --location hsplit -- zsh -c "yarn ios; zsh -i")"
+
+    $kitty_path @ --to unix:/tmp/mykitty resize-window --match id:$docker_window --axis vertical --increment -5
+  fi
+fi
