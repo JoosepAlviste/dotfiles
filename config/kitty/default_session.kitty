@@ -1,11 +1,3 @@
 cd ~/dotfiles
 title dotfiles
 launch
-
-new_tab code
-cd ~/Code
-launch
-
-new_tab server
-cd ~/Code
-launch
