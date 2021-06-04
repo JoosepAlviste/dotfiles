@@ -27,3 +27,18 @@ if [ "$1" = "glutton" ]; then
     $kitty_path @ --to unix:/tmp/mykitty resize-window --match id:$docker_window --axis vertical --increment -5
   fi
 fi
+
+if [ "$1" = "spa" ]; then
+  local tab_name="spa"
+  if (($tabs[(Ie)$tab_name])); then
+    echo 'Already exists'
+  else
+    local app_path="$HOME/Code/Scoro/scoro-localdev-setup/scoro-base/app"
+
+    $kitty_path @ --to unix:/tmp/mykitty launch --title "$tab_name" --type tab --tab-title "$tab_name" --cwd "$app_path"
+    local server_window="$($kitty_path @ --to unix:/tmp/mykitty launch --tab-title server --type tab --cwd "$app_path")"
+
+    local dev_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$app_path" -- zsh -c "npm run dev; zsh -i")"
+    local term_window="$($kitty_path @ --to unix:/tmp/mykitty launch --cwd "$app_path" --match "id:$dev_window" --location hsplit)"
+  fi
+fi
