@@ -39,6 +39,7 @@ opt.showmode = false
 opt.list = true
 opt.listchars = {
   nbsp = '⦸',  -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+  tab = '  ',
   extends = '»',  -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
   precedes = '«',  -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
   trail = '·',  -- Dot Operator (U+22C5)
