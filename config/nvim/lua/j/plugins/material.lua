@@ -92,6 +92,8 @@ function M.configure_colorscheme()
   hi('TabLine',      fg,             statusline,      'NONE')
   hi('TabLineFill',  fg,             statusline)
   hi('TabLineSel',   cyan,           background)
+  hi('FloatBorder',  invisibles)
+  hi('NormalFloat',  nil,            'NONE')
 
   -- LSP
   hi('LspDiagnosticsDefaultError',         red,       'NONE')
