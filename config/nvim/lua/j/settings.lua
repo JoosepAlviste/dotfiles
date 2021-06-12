@@ -111,3 +111,6 @@ opt.undofile = true
 opt.undolevels = 1000
 opt.undoreload = 10000
 opt.shada = {'!', '\'1000', '<50', 's10', 'h'}  -- Increase the shadafile size so that history is longer
+
+-- Sesssions
+opt.sessionoptions:remove({'buffers', 'folds'})
