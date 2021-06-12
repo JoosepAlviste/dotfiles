@@ -89,10 +89,10 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]], opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-  buf_map('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+  buf_map('n', '[g', [[<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
+  buf_map('n', ']g', [[<cmd>lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', [[<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<cr>]], opts)
+  buf_map('n', '<leader>d', [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
 
   -- Formatting
   buf_map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
