@@ -1,5 +1,5 @@
 -- My minimal custom statusline with lots of help from 
-  -- https://jip.dev/posts/a-simpler-vim-statusline/
+--   https://jip.dev/posts/a-simpler-vim-statusline/
 
 -- Output the content colored by the supplied highlight group. Only color the 
 -- input if the window is the currently focused one.
@@ -46,8 +46,7 @@ function _G.statusline(winnr)
 
   local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
   table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '»' or '«'))
-  local icon_statusline = icon and color(is_active, 'Statusline' .. highlight, icon) .. ' ' or ''
-  table.insert(segments, '%<' .. icon_statusline .. file_path)
+  table.insert(segments, '%<' .. file_path)
   table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '«' or '»'))
 
   -- File modified
@@ -68,7 +67,8 @@ function _G.statusline(winnr)
     table.insert(segments, lsp_status())
   end
 
-  return '  ' .. table.concat(segments, ' ') .. '  '
+  local icon_statusline = color(is_active, 'Statusline' .. (highlight or 'Accent'), icon or '●') .. ' '
+  return color(is_active, 'StatuslineAccent', '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
 end
 
 require('j.utils').create_augroups({
