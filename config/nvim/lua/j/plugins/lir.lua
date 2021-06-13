@@ -46,8 +46,8 @@ require('lir').setup ({
 function _G.LirSettings()
   vim.api.nvim_buf_set_keymap(0, 'x', 'J', [[:<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>]], {noremap = true, silent = true})
   vim.api.nvim_buf_set_keymap(0, 'n', '-', [[:<C-u>lua require'lir.actions'.up()<CR>]], {noremap = true, silent = true})
-  vim.cmd [[setlocal nonumber]]
-  vim.cmd [[setlocal norelativenumber]]
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
 
   -- echo cwd
   vim.api.nvim_echo({{vim.fn.expand('%:p'), 'Normal'}}, false, {})
@@ -56,5 +56,9 @@ end
 create_augroups({
   lir_settings = {
     {'Filetype', 'lir', ':lua LirSettings()'},
+    -- Reload lir once a session has been loaded. Otherwise, lir might load 
+    -- after the session and if a folder was active, then the buffer would 
+    -- break.
+    {'SessionLoadPost', '*', [[lua require('lir').init()]]},
   },
 })

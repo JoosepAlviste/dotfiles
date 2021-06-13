@@ -22,16 +22,8 @@ return require('packer').startup(function(use)
   -- Core utilities
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
   use 'tpope/vim-repeat'  -- Make repeat (.) command smarter
-  use {
-    'rmagatti/auto-session',  -- Automatic sessions
-    config = function()
-      -- After restoring a session, restart Lir so that it correctly picks up 
-      -- if the restored buffer is a folder.
-      require('auto-session').setup({
-        post_restore_cmds = {[[lua require('lir').init()]]},
-      })
-    end,
-  }
+  use 'rmagatti/auto-session'  -- Automatic sessions
+
 
   -- Mapping improvements
   use {
