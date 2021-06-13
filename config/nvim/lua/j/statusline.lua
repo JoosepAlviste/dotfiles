@@ -1,6 +1,8 @@
 -- My minimal custom statusline with lots of help from 
 --   https://jip.dev/posts/a-simpler-vim-statusline/
 
+local termcode = require('j.utils').termcode
+
 -- Output the content colored by the supplied highlight group. Only color the 
 -- input if the window is the currently focused one.
 local function color(active, highlight_group, content)
@@ -27,9 +29,27 @@ local function lsp_status()
   return table.concat(messages, ' ')
 end
 
+local mode_colors = {
+  n = 'Normal',
+  i = 'Insert',
+  R = 'Replace',
+  v = 'Visual',
+  V = 'Visual',
+  [termcode('<c-v>')] = 'Visual',
+  c = 'Command',
+
+  s = 'Normal',
+  S = 'Normal',
+  [termcode('<c-s>')] = 'Normal',
+  t = 'Normal',
+}
+
 function _G.statusline(winnr)
   local is_active = winnr == vim.fn.winnr()
   local bufnum = vim.fn.winbufnr(winnr)
+
+  local mode = vim.fn.mode()
+  local mode_color = 'Statusline' .. (mode_colors[mode] or 'Normal')
 
   local segments = {}
 
@@ -68,7 +88,7 @@ function _G.statusline(winnr)
   end
 
   local icon_statusline = color(is_active, 'Statusline' .. (highlight or 'Accent'), icon or '●') .. ' '
-  return color(is_active, 'StatuslineAccent', '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
+  return color(is_active, mode_color, '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
 end
 
 require('j.utils').create_augroups({

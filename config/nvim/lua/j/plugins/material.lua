@@ -231,6 +231,11 @@ function M.configure_colorscheme()
   hi('StatuslineWarning', orange, statusline)
   hi('StatuslineSuccess', green,  statusline)
   hi('StatuslinePending', yellow, statusline)
+  hi('StatuslineNormal',  cyan,   statusline)
+  hi('StatuslineInsert',  green,  statusline)
+  hi('StatuslineReplace', orange, statusline)
+  hi('StatuslineVisual',  purple, statusline)
+  hi('StatuslineCommand', yellow, statusline)
 end
 
 function M.modify_highlights()
