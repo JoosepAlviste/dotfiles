@@ -126,6 +126,9 @@ function M.configure_colorscheme()
   hi('LspSagaDiagnosticBorder', purple)
   hi('LspSagaDiagnosticTruncateLine', purple)
 
+  -- Compe
+  hi('CompeDocumentation', nil, cursorline)
+
   -- Git
   hi('gitcommitOverflow', red)
   hi('DiffFile',    green,   'NONE')

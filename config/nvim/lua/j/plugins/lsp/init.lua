@@ -1,5 +1,3 @@
-local saga = require('lspsaga')
-
 local create_augroups = require('j.utils').create_augroups
 
 -- Highlight line numbers for diagnostics
@@ -44,23 +42,13 @@ vim.lsp.handlers['textDocument/formatting'] = function(err, _, result, _, bufnr)
   end
 end
 
--- Configure LSP Saga (UI improvements for LSP actions)
-saga.init_lsp_saga {
-  use_saga_diagnostic_sign = false,
-  code_action_keys = {
-    quit = '<esc>',
-    exec = '<cr>',
-  },
-  code_action_prompt = {
-    enable = false,
-    sign = true,
-    sign_priority = 20,
-    virtual_text = false,
-  },
-  rename_action_keys = {
-    quit = '<esc>',
-  },
-}
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = "single"
+  }
+)
 
 create_augroups({
   lsp = {
@@ -74,7 +62,6 @@ local M = {}
 
 function M.on_attach(client, bufnr)
   local function buf_map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Set up keymaps
   local opts = {noremap = true, silent = true}
@@ -84,21 +71,15 @@ function M.on_attach(client, bufnr)
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   buf_map('n', 'gr', [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]], opts)
 
-  buf_map('n', 'K', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]], opts)
-  buf_map('n', '<space>rn', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
-  buf_map('n', '<leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]], opts)
+  buf_map('n', 'K', [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts)
+  buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename()<CR>]], opts)
+  buf_map('n', '<leader>ca', [[<cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
 
   -- Navigate diagnostics
   buf_map('n', '[g', [[<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
   buf_map('n', ']g', [[<cmd>lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
-
-  -- Formatting
-  buf_map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[augroup LspFormatting]]

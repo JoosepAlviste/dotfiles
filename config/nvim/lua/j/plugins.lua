@@ -97,7 +97,6 @@ return require('packer').startup(function(use)
       require('j.plugins.lsp.efm_ls')
     end,
     requires = {
-      'glepnir/lspsaga.nvim',  -- LSP UI improvements
       {
         'hrsh7th/nvim-compe',  -- Autocompletion
         config = function() require('j.plugins.completion') end,
