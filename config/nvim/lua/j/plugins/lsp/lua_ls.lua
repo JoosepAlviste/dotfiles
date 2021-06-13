@@ -13,7 +13,7 @@ elseif vim.fn.has('win32') == 1 then
 else
   print('Unsupported system for sumneko')
 end
-local sumneko_root_path = vim.fn.expand('$HOME') .. '/Programs/lua-language-server'
+local sumneko_root_path = vim.fn.expand('$HOME') .. '/Code/Programs/lua-language-server'
 local sumneko_binary = sumneko_root_path..'/bin/' .. system_name .. '/lua-language-server'
 
 -- Calculate paths to add for the language server to analyse
