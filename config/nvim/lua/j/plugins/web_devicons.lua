@@ -3,10 +3,10 @@ require('nvim-web-devicons').setup({
   override = {
     default_icon = {
       icon = "",
-      color = "#6d8086",
+      color = "#7982B4",
       name = "Default",
     },
-    ['Dockerfile'] = {
+    Dockerfile = {
       icon = '',
       color = '#0db7ed',
       name = 'Dockerfile',
@@ -48,9 +48,19 @@ require('nvim-web-devicons').setup({
     },
     css = {
       icon = '',
-      color = '#563d7c',
+      color = '#42a5f5',
       name = 'Css',
     };
+    ['.eslintignore'] = {
+      icon = '',
+      color = '#7986cb',
+      name = 'ESLintIgnore',
+    },
+    ['.eslintrc.js'] = {
+      icon = '',
+      color = '#7986cb',
+      name = 'ESLint',
+    },
     graphql = {
       icon = '',
       color = '#e535ab',
@@ -71,8 +81,18 @@ require('nvim-web-devicons').setup({
       color = '#cbcb41',
       name = 'Js',
     },
+    jpg = {
+      icon = '',
+      color = "#a074c4",
+      name = "Jpg",
+    },
+    LICENSE = {
+      icon = '',
+      color = '#cbcb41',
+      name = 'License',
+    },
     lir_folder_icon = {
-      icon = "",
+      icon = "",
       color = "#82aaff",
       name = "LirFolderNode"
     },
@@ -83,7 +103,7 @@ require('nvim-web-devicons').setup({
     },
     md = {
       icon = '',
-      color = '#519aba',
+      color = '#42a5f5',
       name = 'Md',
     },
     NvimTree = {
@@ -113,15 +133,15 @@ require('nvim-web-devicons').setup({
     },
     ts = {
       icon = '',
-      color = '#007acc',
+      color = '#0288d1',
       name = 'Ts',
     },
     tsx = {
       icon = '',
-      color = '#007acc',
+      color = '#0288d1',
       name = 'Tsx',
     },
-    ['vim'] = {
+    vim = {
       icon = '',
       color = '#019833',
       name = 'Vim'
@@ -131,17 +151,17 @@ require('nvim-web-devicons').setup({
       color = '#8dc149',
       name = 'Vue',
     },
-    ['yaml'] = {
+    yaml = {
       icon = '',
       color = '#cbcb41',
       name = 'Yaml'
     },
     ['yarn.lock'] = {
       icon = '',
-      color = '#2187b6',
+      color = '#2c8ebb',
       name = 'Yarn',
     },
-    ['yml'] = {
+    yml = {
       icon = '',
       color = '#cbcb41',
       name = 'Yml'
