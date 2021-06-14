@@ -36,7 +36,6 @@ require('j.utils').create_augroups({
     -- `ftplugin` file. However, we need to set the commentstring before any 
     -- other FileType autocmds
     {'FileType', 'typescriptreact', [[setlocal commentstring=//\ %s]]},
-    {'FileType', 'vue', [[setlocal commentstring=<!--\ %s\ -->]]},
     -- Open images automatically
     {'FileType', 'image', [[lua require('j.filesystem').open_special_file()]]},
   },
