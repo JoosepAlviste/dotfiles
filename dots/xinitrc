@@ -1,0 +1,5 @@
+xset r rate 150 30
+
+picom --config ~/.config/picom/picom.conf --experimental-backends &
+
+exec awesome
