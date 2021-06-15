@@ -61,6 +61,11 @@ require('nvim-web-devicons').setup({
       color = '#7986cb',
       name = 'ESLint',
     },
+    gif = {
+      icon = '',
+      color = '#a074c4',
+      name = 'Gif'
+    },
     graphql = {
       icon = '',
       color = '#e535ab',
