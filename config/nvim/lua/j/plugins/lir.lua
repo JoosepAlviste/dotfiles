@@ -46,8 +46,8 @@ require('lir').setup ({
 function _G.LirSettings()
   vim.api.nvim_buf_set_keymap(0, 'x', 'J', [[:<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>]], {noremap = true, silent = true})
   vim.api.nvim_buf_set_keymap(0, 'n', '-', [[:<C-u>lua require'lir.actions'.up()<CR>]], {noremap = true, silent = true})
-  vim.opt_local.number = false
-  vim.opt_local.relativenumber = false
+  vim.cmd [[setlocal nonumber]]
+  vim.cmd [[setlocal norelativenumber]]
 
   -- echo cwd
   vim.api.nvim_echo({{vim.fn.expand('%:p'), 'Normal'}}, false, {})
