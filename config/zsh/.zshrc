@@ -206,9 +206,10 @@ if type /Applications/love.app/Contents/MacOS/love > /dev/null; then
     alias love='/Applications/love.app/Contents/MacOS/love'
 fi
 
-alias up='docker-compose up'
-alias down='docker-compose down'
-alias build='docker-compose build'
+alias up='docker compose up'
+alias down='docker compose down'
+alias build='docker compose build'
+alias logs='docker compose logs --follow'
 alias dps='docker ps'
 
 # Add `--directory XYZ` if needed
