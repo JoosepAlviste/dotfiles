@@ -1,3 +1,8 @@
+local finders = require('telescope.finders')
+local pickers = require('telescope.pickers')
+local make_entry = require('telescope.make_entry')
+local conf = require('telescope.config').values
+
 local create_augroups = require('j.utils').create_augroups
 
 -- Highlight line numbers for diagnostics
@@ -44,11 +49,11 @@ end
 
 vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.with(
-  vim.lsp.handlers.hover,
-  {
-    border = "single"
-  }
-)
+    vim.lsp.handlers.hover,
+    {
+      border = "single"
+    }
+  )
 
 create_augroups({
   lsp = {
@@ -65,7 +70,7 @@ function M.on_attach(client, bufnr)
 
   -- Set up keymaps
   local opts = {noremap = true, silent = true}
-  buf_map('n', '<c-]>', '<cmd>Telescope lsp_definitions<cr>', opts)
+  buf_map('n', '<c-]>', [[<cmd>lua require('j.plugins.lsp').definitions()<cr>]], opts)
   buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
@@ -104,6 +109,73 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 function M.add_diagnostics_to_loclist()
   vim.lsp.diagnostic.set_loclist({open_loclist = false})
+end
+
+-- If the LSP response includes any `node_modules`, then try to remove them and 
+-- see if there are any options left. We probably want to navigate to the code 
+-- in OUR codebase, not inside `node_modules`.
+--
+-- This can happen if a type is used to explicitly type a variable:
+-- ```ts
+-- const MyComponent: React.FC<Props> = () => <div />
+-- ````
+--
+-- Running "Go to definition" on `MyComponent` would give the `React.FC` 
+-- definition in `node_modules/react` as the first result, but we don't want 
+-- that.
+local function filter_out_libraries_from_lsp_items(results)
+  local without_node_modules = vim.tbl_filter(function(item)
+    return not string.match(item.uri, 'node_modules')
+  end, results)
+
+  if #without_node_modules > 0 then
+    return without_node_modules
+  end
+
+  return results
+end
+
+-- This function is mostly copied from Telescope, I only added the 
+-- `node_modules` filtering.
+local function list_or_jump(action, title, opts)
+  opts = opts or {}
+
+  local params = vim.lsp.util.make_position_params()
+  local result, err = vim.lsp.buf_request_sync(0, action, params, opts.timeout or 10000)
+  if err then
+    vim.api.nvim_err_writeln("Error when executing " .. action .. " : " .. err)
+    return
+  end
+  local flattened_results = {}
+  for _, server_results in pairs(result) do
+    if server_results.result then
+      vim.list_extend(flattened_results, server_results.result)
+    end
+  end
+
+  -- This is the only added step to the Telescope function
+  flattened_results = filter_out_libraries_from_lsp_items(flattened_results)
+
+  if #flattened_results == 0 then
+    return
+  elseif #flattened_results == 1 then
+    vim.lsp.util.jump_to_location(flattened_results[1])
+  else
+    local locations = vim.lsp.util.locations_to_items(flattened_results)
+    pickers.new(opts, {
+      prompt_title = title,
+      finder = finders.new_table {
+        results = locations,
+        entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
+      },
+      previewer = conf.qflist_previewer(opts),
+      sorter = conf.generic_sorter(opts),
+    }):find()
+  end
+end
+
+function M.definitions(opts)
+  return list_or_jump('textDocument/definition', 'LSP Definitions', opts)
 end
 
 return M
