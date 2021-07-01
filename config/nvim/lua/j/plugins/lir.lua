@@ -36,9 +36,7 @@ require('lir').setup ({
     ['P'] = clipboard_actions.paste,
   },
   float = {
-    size_percentage = 0.5,
-    winblend = 15,
-    shadow = true,
+    winblend = 0,
   },
   hide_cursor = true,
 })
