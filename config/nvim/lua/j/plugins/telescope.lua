@@ -49,13 +49,13 @@ end
 
 function M.live_grep()
   require('telescope.builtin').live_grep({
-    shorten_path = true,
+    path_display = 'shorten',
   })
 end
 
 function M.grep_string()
   require("telescope.builtin").grep_string({
-    shorten_path = true,
+    path_display = 'shorten',
     search = vim.fn.input("Grep > "),
   })
 end
