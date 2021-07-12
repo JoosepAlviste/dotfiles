@@ -23,6 +23,20 @@ local stylelint = {
   lintFormats = {'%f:%l:%c: %m [%trror]'}
 }
 
+local function file_exists(name)
+  local f = io.open(name, 'r')
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+local eslint_or_prettier_format = file_exists('.eslintrc.js')
+  and eslint_format
+  or prettier
+
 require('lspconfig').efm.setup {
   on_attach = require('j.plugins.lsp').on_attach,
   root_dir = require('lspconfig').util.root_pattern('package.json'),
@@ -33,9 +47,9 @@ require('lspconfig').efm.setup {
   settings = {
     rootMarkers = {'package.json'},
     languages = {
-      typescript = {eslint_lint, eslint_format},
-      typescriptreact = {eslint_lint, eslint_format},
-      javascript = {eslint_lint, eslint_format},
+      typescript = {eslint_lint, eslint_or_prettier_format},
+      typescriptreact = {eslint_lint, eslint_or_prettier_format},
+      javascript = {eslint_lint, eslint_or_prettier_format},
       vue = {eslint_lint, stylelint, prettier},
       scss = {stylelint, prettier},
     },
