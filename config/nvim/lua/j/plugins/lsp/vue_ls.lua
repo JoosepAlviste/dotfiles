@@ -18,6 +18,8 @@ require('lspconfig').vuels.setup{
       },
       completion = {
         tagCasing = 'initial',
+        autoImport = true,
+        useScaffoldSnippets = true,
       },
     },
   },
