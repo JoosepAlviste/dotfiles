@@ -109,7 +109,7 @@ return require('packer').startup(function(use)
     },
   }
 
-  use {'git@github.com:JoosepAlviste/scoro.vim.git', branch = 'main'}
+  use 'git@github.com:JoosepAlviste/scoro.vim.git'
   use {
     'editorconfig/editorconfig-vim',  -- Project-specific settings
     config = function() vim.g.EditorConfig_preserve_formatoptions = 1 end,
