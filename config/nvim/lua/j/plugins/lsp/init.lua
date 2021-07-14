@@ -125,7 +125,7 @@ end
 -- that.
 local function filter_out_libraries_from_lsp_items(results)
   local without_node_modules = vim.tbl_filter(function(item)
-    return not string.match(item.uri, 'node_modules')
+    return item.uri and not string.match(item.uri, 'node_modules')
   end, results)
 
   if #without_node_modules > 0 then
