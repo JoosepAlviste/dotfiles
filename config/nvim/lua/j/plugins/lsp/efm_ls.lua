@@ -39,6 +39,7 @@ local eslint_or_prettier_format = file_exists('.eslintrc.js')
 
 require('lspconfig').efm.setup {
   on_attach = require('j.plugins.lsp').on_attach,
+  capabilities = require('j.plugins.lsp').capabilities,
   root_dir = require('lspconfig').util.root_pattern('package.json'),
   filetypes = {'typescript', 'typescriptreact', 'vue', 'javascript', 'scss'},
   init_options = {
@@ -53,5 +54,8 @@ require('lspconfig').efm.setup {
       vue = {eslint_lint, stylelint, prettier},
       scss = {stylelint, prettier},
     },
+  },
+  flags = {
+    debounce_text_changes = 150,
   },
 }

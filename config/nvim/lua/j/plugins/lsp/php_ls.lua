@@ -5,6 +5,7 @@ require('lspconfig').intelephense.setup{
     client.resolved_capabilities.document_formatting = false
     require('j.plugins.lsp').on_attach(client, bufnr)
   end,
+  capabilities = require('j.plugins.lsp').capabilities,
   settings = {
     intelephense = {
       environment = {
@@ -14,5 +15,8 @@ require('lspconfig').intelephense.setup{
         enable = false,
       },
     },
+  },
+  flags = {
+    debounce_text_changes = 150,
   },
 }

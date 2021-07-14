@@ -8,4 +8,7 @@ require('lspconfig').tsserver.setup{
     require('j.plugins.lsp').on_attach(client, bufnr)
   end,
   capabilities = require('j.plugins.lsp').capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
 }

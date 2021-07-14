@@ -23,4 +23,7 @@ require('lspconfig').vuels.setup{
       },
     },
   },
+  flags = {
+    debounce_text_changes = 150,
+  },
 }

@@ -72,4 +72,7 @@ require('lspconfig').sumneko_lua.setup {
     config.settings.Lua.workspace.library = libs
     return config
   end,
+  flags = {
+    debounce_text_changes = 150,
+  },
 }
