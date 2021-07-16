@@ -111,8 +111,8 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<leader>ca', [[<cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', [[<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
-  buf_map('n', ']g', [[<cmd>lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
+  buf_map('n', '[g', [[<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = 'single'}})<cr>]], opts)
+  buf_map('n', ']g', [[<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = 'single'}})<cr>]], opts)
   -- Show diagnostics popup with <leader>d
   buf_map('n', '<leader>d', [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
 
