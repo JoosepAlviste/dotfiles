@@ -55,6 +55,36 @@ vim.lsp.handlers["textDocument/hover"] =
     }
   )
 
+local icons = {
+  Text = '',
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Variable = '',
+  Class = '',
+  Interface = '',
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Field = '',
+  TypeParameter = ''
+}
+
+local kinds = vim.lsp.protocol.CompletionItemKind
+for i, kind in ipairs(kinds) do
+  kinds[i] = icons[kind] or kind
+end
+
 create_augroups({
   lsp = {
     {'BufWrite,BufEnter,InsertLeave', '*', [[lua require('j.plugins.lsp').add_diagnostics_to_loclist()]]},
