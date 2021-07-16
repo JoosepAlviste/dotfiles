@@ -7,7 +7,8 @@ function _G.confirm()
 end
 
 autopairs.setup({
-  check_line_pair = false,
+  check_ts = true,
+  enable_moveright = true,
 })
 
 map('i', '<cr>', [[v:lua.confirm()]], {expr = true, noremap = true})
