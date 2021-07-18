@@ -1,209 +1,199 @@
-# Setup {{{
+# Z4H setup {{{
+# Personal Zsh configuration file. It is strongly recommended to keep all
+# shell customization and configuration (including exported environment
+# variables such as PATH) in this file or in files source by it.
+#
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of 
-# ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Periodic auto-update on Zsh startup: 'ask' or 'no'.
+# You can manually run `z4h update` to update everything.
+zstyle ':z4h:' auto-update      'no'
+# Ask whether to auto-update this often; has no effect if auto-update is 'no'.
+zstyle ':z4h:' auto-update-days '28'
 
-### Added by Zinit's installer
-if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
-    print -P '%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f'
-    command mkdir -p $ZINIT_HOME
-    command git clone https://github.com/zdharma/zinit $ZINIT_HOME/bin && \
-        print -P '%F{33}▓▒░ %F{34}Installation successful.%f' || \
-        print -P '%F{160}▓▒░ The clone has failed.%f'
-fi
-source "$ZINIT_HOME/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
+# Automaticaly wrap TTY with a transparent tmux ('integrated'), or start a
+# full-fledged tmux ('system'), or disable features that require tmux ('no').
+zstyle ':z4h:' start-tmux       'no'
+# Move prompt to the bottom when zsh starts up so that it's always in the
+# same position. Has no effect if start-tmux is 'no'.
+zstyle ':z4h:' prompt-at-bottom 'no'
 
+# Keyboard type: 'mac' or 'pc'.
+zstyle ':z4h:bindkey' keyboard  'mac'
+
+# Right-arrow key accepts one character ('partial-accept') from
+# command autosuggestions or the whole thing ('accept')?
+zstyle ':z4h:autosuggestions' forward-char 'accept'
+
+# Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
+
+# Enable ('yes') or disable ('no') automatic teleportation of z4h over
+# ssh when connecting to these hosts.
+# zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
+# zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
+# The default value if none of the overrides above match the hostname.
+zstyle ':z4h:ssh:*'                   enable 'no'
+
+# Send these files over to the remote host when connecting over ssh to the
+# enabled hosts.
+# zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
+
+# Clone additional Git repositories from GitHub.
+#
+# This doesn't do anything apart from cloning the repository and keeping it
+# up-to-date. Cloned files can be used after `z4h init`. This is just an
+# example. If you don't plan to use Oh My Zsh, delete this line.
+# z4h install ohmyzsh/ohmyzsh || return
+z4h install docker/cli || return
+z4h install docker/compose || return
+z4h install agkozak/zsh-z || return
+
+# Install or update core components (fzf, zsh-autosuggestions, etc.) and
+# initialize Zsh. After this point console I/O is unavailable until Zsh
+# is fully initialized. Everything that requires user interaction or can
+# perform network I/O must be done above. Everything else is best done below.
+z4h init || return
 # }}}
-# Settings {{{
+# Environment {{{
+# Export environment variables.
+export GPG_TTY=$TTY
 
-bindkey -e  # Use emacs mode
+export BROWSER='open'
+export TERMINAL='kitty'
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
 
-bindkey '\^U' backward-kill-line
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey ';3C' forward-word
-bindkey ';3D' backward-word
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
-bindkey "^o" clear-screen
+# Clean up ~
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
+    XDG_RUNTIME_DIR=/tmp
+fi
+export XDG_RUNTIME_DIR
 
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+export JUPYTER_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/jupyter
+export MPLCONFIGDIR=${XDG_CONFIG_HOME:-$HOME/.config}/matplotlib
+
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export npm_config_devdir=$XDG_CONFIG_HOME/node-gyp
+
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+# Z
+export ZSHZ_DATA="$XDG_DATA_HOME/z/z"
+
+# Android
+export ANDROID_SDK_ROOT="$XDG_CONFIG_HOME/android"
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME/android/"
+export ANDROID_AVD_HOME="$XDG_DATA_HOME/android/avd/"
+export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
+
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+export LESSHISTFILE="-"
+
+# Use a better command for searching with fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
+
+# Java
+if [[ -d "/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home" ]]; then
+    export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
+fi
+
+# Android
+if [[ -d "$HOME/Library/Android/sdk" ]]; then
+    export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+    export ANDROID_HOME=$HOME/Library/Android/sdk
+fi
+
+# Extend PATH.
+path=(
+  /usr/local/{bin,sbin}
+  $HOME/dotfiles/bin
+  $ANDROID_SDK_ROOT/emulator
+  $ANDROID_SDK_ROOT/tools
+  $ANDROID_SDK_ROOT/tools/bin
+  $ANDROID_SDK_ROOT/platform-tools
+  $path
+)
+
+# Source additional local files if they exist.
+z4h source ~/.env.zsh
+# }}}
+# Bindings {{{
+
+# Use additional Git repositories pulled in with `z4h install`.
+#
+# This is just an example that you should delete. It does nothing useful.
+# z4h source $Z4H/ohmyzsh/ohmyzsh/lib/diagnostics.zsh
+# z4h source $Z4H/ohmyzsh/ohmyzsh/plugins/emoji-clock/emoji-clock.plugin.zsh
+z4h source $Z4H/agkozak/zsh-z/zsh-z.plugin.zsh
+fpath+=(
+  $Z4H/docker/cli/contrib/completion/zsh
+  $Z4H/docker/compose/contrib/completion/zsh
+)
+
+# Define key bindings.
+z4h bindkey undo Ctrl+/  # undo the last command line change
+z4h bindkey redo Alt+/   # redo the last undone command line change
+
+z4h bindkey z4h-cd-back    Shift+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward Shift+Right  # cd into the next directory
+z4h bindkey z4h-cd-up      Shift+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down    Shift+Down   # cd into a child directory
+
+# Clear screen with ctrl+o (ctrl+l is used to navigate Vim splits)
+z4h bindkey clear-screen Ctrl+O
+
+# Edit command with Vim
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-export KEYTIMEOUT=1
-
-# Save commands to the history
-HISTFILE=$ZDOTDIR/zsh_history
-HISTSIZE=1000000000
-SAVEHIST=1000000000
-setopt EXTENDED_HISTORY        # Write timestamps to history
-setopt HIST_EXPIRE_DUPS_FIRST  # If history needs to be trimmed, evict dups first
-setopt HIST_FIND_NO_DUPS       # Don't show dups when searching history
-setopt HIST_IGNORE_DUPS        # Don't add consecutive dups to history
-setopt HIST_IGNORE_SPACE       # Don't add commands starting with space to history
-setopt HIST_VERIFY             # If a command triggers history expansion, show it instead of running
-setopt SHARE_HISTORY           # Write and import history on every command
-
-zstyle ':completion:*' menu select
-
-# Suspend and foreground vim
+# Suspend and foreground vim with ctrl+z
 foreground-nvim() {
   fg %nvim
 }
 zle -N foreground-nvim
 bindkey '^Z' foreground-nvim
-
-# Set word boundaries to `/` and `.` so that C-w can delete until folder
-autoload -U select-word-style
-select-word-style bash
-
-if [ -e "$NVIM_LISTEN_ADDRESS" ]; then
-	export EDITOR=nvr
-else
-	export EDITOR=nvim
-fi
-
 # }}}
-# Programs {{{
 
-# Allows setting up shims & stuff for Pyenv
-zinit light zinit-zsh/z-a-bin-gem-node
+# Autoload functions.
+autoload -Uz zmv
 
-# Use Zinit to automatically install some useful programs (might not be such a 
-# good idea but eeh)
+# Define functions and completions.
+function touch() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+compdef _directories touch
 
-# sharkdp/bat
-zinit ice wait lucid as'command' from'gh-r' mv'bat* -> bat' pick'bat/bat'
-zinit light sharkdp/bat
+# Define named directories: ~w <=> Windows home directory on WSL.
+# [[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
 
-# ogham/exa, replacement for ls
-zinit ice wait lucid as'program' from'gh-r' pick'bin/exa'
-zinit light ogham/exa
-
-# denilsonsa/prettyping
-zinit ice wait lucid as'program' mv'prettyping* -> prettyping' \
-    atload'alias ping=prettyping'
-zinit light denilsonsa/prettyping
-
-# Pyenv
-zinit ice wait as'null' lucid \
-    atclone'./bin/pyenv-virtualenv-init init - > zpyenv-virtualenv.zsh' \
-    atpull'%atclone' src'zpyenv-virtualenv.zsh' nocompile'!' sbin'bin/*'
-zinit light pyenv/pyenv-virtualenv
-zinit ice wait as'command' lucid \
-    atinit'export PYENV_ROOT="$PWD"' \
-    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atpull'%atclone' src'zpyenv.zsh' nocompile'!' pick'bin/pyenv'
-zinit light pyenv/pyenv
-
-# FZF
-zinit ice wait lucid as'program' pick"$ZPFX/bin/(fzf|fzf-tmux)" \
-    atclone"cp shell/completion.zsh _fzf_completion; \
-      cp bin/(fzf|fzf-tmux) $ZPFX/bin; \
-      PREFIX=$ZPFX ./install --xdg --no-update-rc --key-bindings --completion" \
-    atload"source $HOME/.config/fzf/fzf.zsh"
-zinit light junegunn/fzf
-
-# diff-so-fancy
-zinit ice wait lucid as'program' pick'bin/git-dsf'
-zinit load zdharma/zsh-diff-so-fancy
-
-# fd
-zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
-zinit light sharkdp/fd
-
-# BurntSushi/ripgrep
-zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
-zinit light BurntSushi/ripgrep
-
-# }}}
-# Plugins {{{
-# Use Zinit's way of installing plugins (in  T U R B O  mode)
-
-# Zinit annexes (plugins)...
-
-# Actual Zsh plugins...
-
-# Some Prezto modules to improve misc stuff
-zinit ice svn wait lucid
-zinit snippet PZT::modules/environment
-zinit ice svn wait lucid
-zinit snippet PZT::modules/helper
-zinit ice svn wait lucid
-zinit snippet PZT::modules/spectrum
-zinit ice svn wait lucid
-zinit snippet PZT::modules/directory
-zinit ice svn wait lucid
-zinit snippet PZT::modules/completion
-
-# Do not load the prompt asynchronously since it's super fast anyways!
-zinit ice depth=1 atload'!source $ZDOTDIR/p10k.zsh' nocd lucid
-zinit light romkatv/powerlevel10k
-
-# Completion for Docker
-zinit ice wait lucid as'completion'
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-# Docker Compose
-zinit ice wait lucid as'completion'
-zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
-
-# Completion for Pipenv
-zinit ice wait lucid atclone"cp pipenv.plugin.zsh _pipenv"
-zinit snippet https://github.com/gangleri/pipenv/blob/master/pipenv.plugin.zsh
-
-zinit ice wait lucid blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
-
-zinit ice wait lucid atinit'zpcompinit; zpcdreplay' nocd
-zinit light zdharma/fast-syntax-highlighting
-
-# history-substring-search for smarter up/down arrow
-# MUST be after fast-syntax-highlighting
-zinit ice wait lucid atload'setup_history_substring_search' nocd
-zinit light zsh-users/zsh-history-substring-search
-setup_history_substring_search() {
-    export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
-}
-
-zinit ice wait lucid atload'_zsh_autosuggest_start' nocd
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice wait lucid
-zinit light MichaelAquilina/zsh-autoswitch-virtualenv
-
-zinit ice wait lucid
-zinit light agkozak/zsh-z
-
-zinit ice wait lucid src"manydots-magic"
-zinit light knu/zsh-manydots-magic
-
-
-# }}}
 # Aliases {{{
 
 # Base
 alias sudo='sudo -E'  # Use current user configs
 alias grep='grep  --color=auto --exclude-dir={.git}'
 alias c='clear'
+alias tree='tree -a -I .git'
 
 # Programs
 alias vim='nvim'
 alias v='nvim'
 alias r='ranger'
 if type /Applications/love.app/Contents/MacOS/love > /dev/null; then
-    alias love='/Applications/love.app/Contents/MacOS/love'
+  alias love='/Applications/love.app/Contents/MacOS/love'
 fi
 
 alias up='docker compose up'
@@ -217,43 +207,24 @@ alias server='python -m http.server 3030'
 
 alias tree='tree -aC -I .git -I node_modules'
 
-take() {
-    # Create a directory and cd into it
-    mkdir -p $@ && cd ${@:$#}
-}
-
 # Git
 alias g='git'
-
 alias ga='git add'
 alias gaa='git add --all'
-
 alias gb='git branch'
-
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
 alias gca='git commit -v -a'
 alias gca!='git commit -v -a --amend'
 alias gco='git checkout'
-
 alias gd='git diff'
-
 alias gl='git pull'
 alias glg='git log --stat'
 alias glog='git log --oneline --decorate --graph'
-
 alias gm='git merge'
-
 alias gp='git push'
-
 alias gst='git status'
-
 alias lg='lazygit'
-
-# Transmission
-alias tsm-start='transmission-daemon'
-alias tsm='transmission-remote -l'
-tsm-add() { transmission-remote -a "$1" ;}
 
 
 # Utils & alternatives
@@ -268,105 +239,32 @@ alias cat='bat'
 alias ping='prettyping --nolegend'
 
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-THEME="material-palenight"
-if [ "$THEME" = "OceanicNext" ]; then
-    export FZF_DEFAULT_OPTS="
-        --bind='ctrl-o:execute(nvim {})+abort' 
-        --inline-info
-        --color=bg+:#1b2b34,bg:#16242c,spinner:#c594c5,hl:#6699cc
-        --color=fg:#c0c5ce,header:#586e75,info:#fac863,pointer:#c594c5
-        --color=marker:#fac863,fg+:#c0c5ce,prompt:#c594c5,hl+:#c594c5
-    "
-elif [ "$THEME" = "material-palenight" ]; then
-    export FZF_DEFAULT_OPTS="
-        --bind='ctrl-o:execute(nvim {})+abort' 
-        --inline-info
-        --color=bg+:#212331,bg:#252837,spinner:#c594c5,hl:#82aaff
-        --color=fg:#a6accd,header:#7982B4,info:#ffcb6b,pointer:#c792ea
-        --color=marker:#ffcb6b,fg+:#a6accd,prompt:#c792ea,hl+:#c792ea
-    "
-elif [ "$THEME" = "tender" ]; then
-    export FZF_DEFAULT_OPTS="
-        --bind='ctrl-o:execute(nvim {})+abort' 
-        --inline-info
-    "
-fi
+export FZF_DEFAULT_OPTS="
+--bind='ctrl-o:execute(nvim {})+abort' 
+--inline-info
+--color=bg+:#212331,bg:#252837,spinner:#c594c5,hl:#82aaff
+--color=fg:#a6accd,header:#7982B4,info:#ffcb6b,pointer:#c792ea
+--color=marker:#ffcb6b,fg+:#a6accd,prompt:#c792ea,hl+:#c792ea
+"
 if type tldr > /dev/null; then
-    alias help='tldr'
+  alias help='tldr'
 fi
 if type hub > /dev/null; then
-    alias git='hub'
+  alias git='hub'
 fi
 # `trash-put` can be installed from `trash-cli`
 if type trash-put > /dev/null; then
-    alias trash='trash-put'
-fi
-
-# Codi
-# Usage: codi [filetype] [filename]
-codi() {
-  local syntax="${1:-javascript}"
-  shift
-  vim -c \
-    "let g:startify_disable_at_vimenter = 1 |\
-    set bt=nofile ls=0 noru nonu nornu |\
-    hi ColorColumn ctermbg=NONE |\
-    hi VertSplit ctermbg=NONE |\
-    hi NonText ctermfg=0 |\
-    Codi $syntax" "$@"
-}
-
-# NVM
-# Function to set up NVM
-setup_nvm() {
-    # On Arch Linux, NVM gets installed here
-    if [[ -f "/usr/share/nvm/init-nvm.sh" ]]; then
-        source "/usr/share/nvm/init-nvm.sh"
-
-    # Load manually installed NVM into the shell session.
-    elif [[ -s "${NVM_DIR:=$HOME/.nvm}/nvm.sh" ]]; then
-        source "${NVM_DIR}/nvm.sh"
-
-    # Load Homebrew installed NVM into the shell session.
-    elif (( $+commands[brew] )) && \
-      [[ -d "${nvm_prefix::="$(brew --prefix 2> /dev/null)"/opt/nvm}" ]]; then
-      source "$(brew --prefix nvm)/nvm.sh"
-      unset nvm_prefix
-    fi
-}
-
-# NVM is not loaded on shell startup since it's slow. Also, loading it in turbo 
-# mode freezes the command prompt for a bit. So, we need to set up NVM only 
-# when actually required -- when the `nvm` command is used or any other Node 
-# commands.
-if [ $USE_NVM = 1 ]; then
-  declare -a NODE_GLOBALS=(`find ~/.config/nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-  NODE_GLOBALS+=("node")
-  NODE_GLOBALS+=("nvm")
-  for cmd in "${NODE_GLOBALS[@]}"; do
-      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; setup_nvm; ${cmd} \$@ }"
-  done
-
-  # Apply NVM when moving around
-  precmd() {
-    if [ "$PWD" != "$PREV_PWD" ]; then
-      PREV_PWD="$PWD";
-      if [ -e ".nvmrc" ]; then
-        nvm use &> /dev/null;
-      fi
-    fi
-  }
+  alias trash='trash-put'
 fi
 
 # Cleaning up ~
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 
 # }}}
-# Startup {{{
 
-(( ! ${+functions[p10k]} )) || p10k finalize
-
-# }}}
+# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+setopt glob_dots     # no special treatment for file names with a leading dot
+setopt no_auto_menu  # require an extra TAB press to open the completion menu
 # Overview {{{
 set modelines=3
 # Custom folding for this file
