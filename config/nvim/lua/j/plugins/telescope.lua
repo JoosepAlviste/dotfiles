@@ -30,6 +30,7 @@ require('telescope').setup({
   },
   extensions = {
     fzf = {
+      fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = 'smart_case',
@@ -49,13 +50,13 @@ end
 
 function M.live_grep()
   require('telescope.builtin').live_grep({
-    path_display = 'shorten',
+    path_display = {'shorten'},
   })
 end
 
 function M.grep_string()
   require("telescope.builtin").grep_string({
-    path_display = 'shorten',
+    path_display = {'shorten'},
     search = vim.fn.input("Grep > "),
   })
 end
