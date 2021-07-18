@@ -11,6 +11,7 @@ config/zsh/.zcompdump
 config/zsh/.zcompcache
 config/zsh/.zinit
 config/zsh/.zsh_sessions
+config/zsh/.p10k.zsh.zwc
 
 config/kitty/kitty.local.conf
 

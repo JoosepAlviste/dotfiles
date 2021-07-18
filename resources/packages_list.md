@@ -17,7 +17,13 @@ brew install \
     jesseduffield/lazygit/lazygit \
     ffmpegthumbnailer \
     efm-langserver \
-    hashicorp/tap/terraform-ls
+    hashicorp/tap/terraform-ls \
+    bat \
+    exa \
+    prettyping \
+    diff-so-fancy \
+    fd \
+    ripgrep
 ```
 
 
