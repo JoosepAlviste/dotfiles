@@ -8,7 +8,6 @@ require'gitsigns'.setup({
   },
   keymaps = {
     noremap = true,
-    buffer = true,
 
     ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"},
     ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"},
