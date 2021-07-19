@@ -39,6 +39,9 @@ zstyle ':z4h:ssh:*'                   enable 'no'
 # enabled hosts.
 # zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 
+# Override the terminal tab title to show the current directory name
+zstyle ':z4h:term-title:*' precmd '$(basename $(pwd))'
+
 # Clone additional Git repositories from GitHub.
 #
 # This doesn't do anything apart from cloning the repository and keeping it
