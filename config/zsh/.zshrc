@@ -41,6 +41,7 @@ zstyle ':z4h:ssh:*'                   enable 'no'
 
 # Override the terminal tab title to show the current directory name
 zstyle ':z4h:term-title:*' precmd '$(basename $(pwd))'
+zstyle ':z4h:term-title:*' preexec '$(basename $(pwd))'
 
 # Clone additional Git repositories from GitHub.
 #
