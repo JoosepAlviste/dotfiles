@@ -128,7 +128,11 @@ return require('packer').startup(function(use)
   }
 
   -- Git
-  use 'tpope/vim-fugitive'  -- I only use the "blame" feature from this
+  -- I only use the "blame" feature from this
+  use {
+    'tpope/vim-fugitive',
+    cmd = { 'Git', 'G', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' },
+  }
   use {
     'lewis6991/gitsigns.nvim',  -- Git status signs in the gutter
     config = function() require('j.plugins.gitsigns') end,
