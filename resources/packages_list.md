@@ -39,8 +39,7 @@ npm i -g \
     vls \
     graphql-language-service-cli \
     intelephense \
-    vscode-css-languageserver-bin \
-    vscode-json-languageserver \
+    vscode-langservers-extracted \
     yaml-language-server \
     dockerfile-language-server-nodejs \
     eslint_d
