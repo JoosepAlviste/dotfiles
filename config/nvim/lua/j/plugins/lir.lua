@@ -1,11 +1,60 @@
+local lir = require('lir')
 local actions = require('lir.actions')
 local mark_actions = require('lir.mark.actions')
 local clipboard_actions = require('lir.clipboard.actions')
+local Path = require('plenary.path')
 
 local create_augroups = require('j.utils').create_augroups
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+local lcd = function(path)
+  vim.cmd(string.format([[silent execute (haslocaldir() ? 'lcd' : 'cd') '%s']], path))
+end
+
+-- A smarter function to create a new file or folder
+local function new_file()
+  -- Temporarily CD into the currently active directory so that completion 
+  -- works nicely
+  local save_curdir = vim.fn.getcwd()
+  lcd(lir.get_context().dir)
+  local name = vim.fn.input('New file: ', '', 'file')
+  lcd(save_curdir)
+
+  if name == '' then
+    return
+  end
+
+  local is_folder = string.match(name, '/$')
+
+  local path = Path:new(lir.get_context().dir .. name)
+  if is_folder then
+    -- Create a new directory
+    name = name:gsub('/$', '')
+    path:mkdir({
+      parents = true,
+      mode = tonumber('700', 8),
+      exists_ok = false,
+    })
+
+    actions.reload()
+
+    -- Jump to a line in the parent directory of the file you created.
+    local lnum = lir.get_context():indexof(name:match('^[^/]+'))
+    if lnum then
+      vim.cmd(tostring(lnum))
+    end
+  else
+    -- Create a new file
+    path:touch({
+      parents = true,
+      mode = tonumber('644', 8),
+    })
+
+    vim.cmd(':e ' .. path:expand())
+  end
+end
 
 require('lir').setup ({
   show_hidden_files = true,
@@ -19,8 +68,7 @@ require('lir').setup ({
     ['h'] = actions.up,
     ['q'] = actions.quit,
 
-    ['K'] = actions.mkdir,
-    ['N'] = actions.newfile,
+    ['N'] = new_file,
     ['R'] = actions.rename,
     ['@'] = actions.cd,
     ['Y'] = actions.yank_path,
