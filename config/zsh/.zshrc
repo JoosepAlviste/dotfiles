@@ -183,8 +183,7 @@ autoload -Uz zmv
 function touch() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories touch
 
-# Define named directories: ~w <=> Windows home directory on WSL.
-# [[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+source <(npm completion)
 
 # Aliases {{{
 
