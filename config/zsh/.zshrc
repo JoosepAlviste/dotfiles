@@ -271,6 +271,9 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
+
+# Source local zsh config file if it has been created
+ [[ -f ~/.config/zsh/zprofile.local ]] && source ~/.config/zsh/zprofile.local
 # Overview {{{
 set modelines=3
 # Custom folding for this file
