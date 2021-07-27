@@ -180,8 +180,8 @@ bindkey '^Z' foreground-nvim
 autoload -Uz zmv
 
 # Define functions and completions.
-function touch() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
-compdef _directories touch
+function take() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+compdef _directories take
 
 source <(npm completion)
 
