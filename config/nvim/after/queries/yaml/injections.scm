@@ -12,3 +12,11 @@
     (block_sequence
       (block_sequence_item
         (flow_node) @bash))))
+
+(block_mapping_pair
+  key: (_) @_script (#eq? @_script "script")
+  value: (block_node
+    (block_sequence
+      (block_sequence_item
+        (block_node
+          (block_scalar) @bash)))))
