@@ -99,12 +99,18 @@ return require('packer').startup(function(use)
     end,
     requires = {
       {
-        'hrsh7th/nvim-compe',  -- Autocompletion
-        config = function() require('j.plugins.completion') end,
-      },
-      {
         'hrsh7th/vim-vsnip',  -- Snippets
         config = function() require('j.plugins.vsnip') end,
+      },
+      {
+        'hrsh7th/nvim-cmp',
+        requires = {
+          'hrsh7th/cmp-nvim-lsp',
+          'hrsh7th/cmp-buffer',
+          'hrsh7th/cmp-path',
+          'hrsh7th/cmp-vsnip',
+        },
+        config = function() require('j.plugins.cmp') end,
       },
     },
   }
