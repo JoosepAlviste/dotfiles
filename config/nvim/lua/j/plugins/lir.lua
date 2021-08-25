@@ -96,7 +96,7 @@ function _G.LirSettings()
   vim.cmd [[setlocal norelativenumber]]
 
   -- echo cwd
-  vim.api.nvim_echo({{vim.fn.expand('%:p'), 'Normal'}}, false, {})
+  vim.api.nvim_echo({{vim.fn.expand('%'), 'Normal'}}, false, {})
 end
 
 create_augroups({
