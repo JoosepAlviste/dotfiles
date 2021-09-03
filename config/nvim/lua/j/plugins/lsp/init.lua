@@ -3,8 +3,6 @@ local pickers = require('telescope.pickers')
 local make_entry = require('telescope.make_entry')
 local conf = require('telescope.config').values
 
-local create_augroups = require('j.utils').create_augroups
-
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('LspDiagnosticsSignError', {numhl = 'LspDiagnosticsLineNrError', text = ''})
 vim.fn.sign_define('LspDiagnosticsSignWarning', {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
@@ -81,12 +79,6 @@ for i, kind in ipairs(kinds) do
   kinds[i] = icons[kind] or kind
 end
 
-create_augroups({
-  lsp = {
-    {'BufWrite,BufEnter,InsertLeave', '*', [[lua require('j.plugins.lsp').add_diagnostics_to_loclist()]]},
-  },
-})
-
 -- Construct some utilities that are needed for setting up the LSP servers
 
 local M = {}
@@ -138,10 +130,6 @@ M.capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
 M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-
-function M.add_diagnostics_to_loclist()
-  vim.lsp.diagnostic.set_loclist({open_loclist = false})
-end
 
 -- If the LSP response includes any `node_modules`, then try to remove them and 
 -- see if there are any options left. We probably want to navigate to the code 
