@@ -200,9 +200,9 @@ function M.configure_colorscheme()
   hi('texZone',    darker_fg)
 
   -- Git gutter signs
-  hi('GitsignsAdd', green)
-  hi('GitsignsChange', orange)
-  hi('GitsignsDelete', red)
+  hi('GitSignsAdd', green)
+  hi('GitSignsChange', orange)
+  hi('GitSignsDelete', red)
 
   -- Tree
   hi('NvimTreeGitDirty', orange)
