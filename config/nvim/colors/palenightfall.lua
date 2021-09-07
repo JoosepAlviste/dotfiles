@@ -45,19 +45,30 @@ local groups = {
   LineNr       = { fg = c.line_numbers },
   CursorLine   = { bg = c.background_darker },
   CursorLineNr = { fg = c.foreground_darker },
+  CursorColumn = { bg = c.background_darker },
   ColorColumn  = { bg = c.background_darker },
   Search       = { bg = c.highlight },
   IncSearch    = { bg = c.highlight },
   Visual       = { bg = c.selection },
   MatchParen   = { bg = c.line_numbers },
   SignColumn   = { bg = 'NONE' },
+  FoldColumn   = { fg = c.line_numbers, bg = 'NONE' },
+  Folded       = { fg = c.comments, bg = c.background_darker },
   VertSplit    = { fg = c.highlight, bg = c.background },
   Statusline   = { fg = c.foreground, bg = c.statusline },
   StatuslineNC = { fg = c.foreground_darker, bg = c.statusline },
+  TabLine      = { fg = c.foreground, bg = c.statusline },
+  TabLineFill  = { fg = c.foreground, bg = c.statusline },
+  TabLineSel   = { fg = c.foreground, bg = c.background },
   PMenu        = { bg = c.background_darker },
   PMenuSBar    = { bg = c.background_darker },
   PMenuThumb   = { bg = c.background },
   PMenuSel     = { fg = c.cyan, bg = c.background },
+  NormalFloat  = { bg = c.background },
+  Question     = { fg = c.green },
+  MoreMsg      = { fg = c.green },
+  ErrorMsg     = { fg = c.red },
+  WarningMsg   = { fg = c.orange },
 
   -- Syntax
   Normal      = { fg = c.foreground },
@@ -81,6 +92,21 @@ local groups = {
   Type        = { fg = c.yellow },
   SpellBad    = { style = 'undercurl', sp = c.orange },
 
+  -- Git
+  DiffAdd                = { bg = '#1e3d27' },
+  DiffDelete             = { bg = '#59222c' },
+  DiffChange             = { bg = '#0a2e72' },
+  DiffText               = { bg = '#0e43a5' },
+  gitcommitHeader        = { fg = c.purple },
+  gitcommitOverflow      = { fg = c.red },
+  gitcommitUnmerged      = { fg = c.green },
+  gitcommitSelectedFile  = { fg = c.green },
+  gitcommitDiscardedFile = { fg = c.red },
+  gitcommitUnmergedFile  = { fg = c.yellow },
+  gitcommitSelectdType   = { fg = c.green },
+  gitcommitSummary       = { fg = c.blue },
+  gitcommitDiscardedType = { fg = c.red },
+
   -- LSP
   LspDiagnosticsDefaultError       = { fg = c.red },
   LspDiagnosticsUnderlineError     = { fg = 'NONE', style = 'undercurl', sp = c.red },
@@ -99,9 +125,10 @@ local groups = {
   LspDiagnosticsVirtualTextWarning = { fg = '#9a6054' },
 
   -- Treesitter
-  TSConstructor = { fg = c.yellow },
-  TSTag         = { fg = c.yellow },
-  TSTagDelimiter = { fg = c.foreground_darker },
+  TSConstructor     = { fg = c.yellow },
+  TSTag             = { fg = c.yellow },
+  TSTagDelimiter    = { fg = c.foreground_darker },
+  TSVariableBuiltin = { fg = c.orange },
 
   -- Custom colors
   StatuslineAccent  = { fg = c.cyan,   bg = c.statusline },
@@ -125,15 +152,40 @@ local groups = {
   GitSignsAdd    = { fg = c.green },
   GitSignsChange = { fg = c.orange },
   GitSignsDelete = { fg = c.red },
+
+  -- tpope/vim-fugitive
+  diffAdded   = { fg = c.green },
+  diffRemoved = { fg = c.red },
+
+  -- hrsh7th/nvim-cmp
+  CmpDocumentation = { bg = c.background_darker },
+
+  -- nvim-telescope/telescope.nvim
+  TelescopeMatching       = { fg = c.blue },
+  TelescopeBorder         = { fg = c.foreground_darker },
+  TelescopePromptPrefix   = { fg = c.blue },
+  TelescopeSelectionCaret = { fg = c.blue, bg = c.highlight },
 }
 
 local function init()
+  link('TSVariable', 'Identifier')
   link('TSKeywordOperator', 'Keyword')
   link('TSConstBuiltin', 'Constant')
   link('TSFuncBuiltin', 'Function')
-  link('TSVariableBuiltin', 'Identifier')
 
   link('mkdCodeDelimiter', 'mkdCode')
+
+  -- Git
+  link('gitcommitNoBranch', 'gitcommitBranch') 
+  link('gitcommitUntracked', 'gitcommitComment') 
+  link('gitcommitDiscarded', 'gitcommitComment') 
+  link('gitcommitSelected', 'gitcommitComment') 
+  link('gitcommitDiscardedArrow', 'gitcommitDiscardedFile') 
+  link('gitcommitSelectedArrow', 'gitcommitSelectedFile') 
+  link('gitcommitUnmergedArrow', 'gitcommitUnmergedFile') 
+
+  -- nvim-telescope/telescope.nvim
+  link('TelescopeSelection', 'Search')
 
   for group, highlights in pairs(groups) do
     highlight(group, highlights)
