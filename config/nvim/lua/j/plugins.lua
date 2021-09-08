@@ -14,9 +14,13 @@ return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
 
   -- Colorscheme
+  -- use {
+  --   'kaicataldo/material.vim',
+  --   config = function() require('j.plugins.material').setup() end,
+  -- }
   use {
-    'kaicataldo/material.vim',
-    config = function() require('j.plugins.material').setup() end,
+    'JoosepAlviste/palenightfall.nvim',
+    config = function() require('j.plugins.palenightfall') end,
   }
 
   -- Core utilities
@@ -130,7 +134,7 @@ return require('packer').startup(function(use)
         '!packer',
       })
     end,
-    after = 'material.vim',
+    -- after = 'material.vim',
   }
 
   -- Git
