@@ -134,7 +134,7 @@ return require('packer').startup(function(use)
         '!packer',
       })
     end,
-    -- after = 'material.vim',
+    after = 'palenightfall.nvim',
   }
 
   -- Git
