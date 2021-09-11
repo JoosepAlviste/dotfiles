@@ -1,6 +1,6 @@
 # My dotfiles
 
-![Main](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Main.png)
+![Main](https://user-images.githubusercontent.com/9450943/132948362-f8a47d32-05ef-4cbe-a592-e97ac933bf42.png)
 
 Some of the configuration includes:
 
@@ -8,8 +8,8 @@ Some of the configuration includes:
     * Configured in Lua
     * See [`config/nvim/lua/j/plugins.lua`](./config/nvim/lua/j/plugins.lua) for 
       the used plugins
-    * Slightly modified [Material Palenight color 
-      scheme](https://github.com/kaicataldo/material.vim/)
+    * [Palenightfall color 
+      scheme](https://github.com/JoosepAlviste/palenightfall.nvim)
     * Neovim's built-in LSP client
     * [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/) 
       for highlighting
@@ -54,7 +54,7 @@ folder.
 The touch bar looks like so:
 
 ![Touch Bar 
-preset](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/TouchBar.png)
+preset](https://user-images.githubusercontent.com/9450943/132948524-382bb735-c90a-4c92-aa9e-410b375b5e22.png)
 
 
 ## Update
@@ -86,6 +86,8 @@ The Neovim configuration is split into many files and is located in
 
 ## More screenshots
 
-![Busy](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/Busy.png)
+![Busy](https://user-images.githubusercontent.com/9450943/132948366-4ae42714-2c3c-4ba5-a2fb-7bfc685764dd.png)
 
-![FZF](https://raw.githubusercontent.com/JoosepAlviste/dotfiles/master/img/FZF.png)
+![Finder](https://user-images.githubusercontent.com/9450943/132948367-beb6b50e-29b9-4d0c-afc5-8d82e468e9dc.png)
+
+![Completion](https://user-images.githubusercontent.com/9450943/132948371-e1c92844-ed43-4b30-a360-e8e284b4cf13.png)
