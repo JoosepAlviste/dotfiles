@@ -1,4 +1,5 @@
--- Override some icons to nonicons (https://github.com/yamatsum/nonicons)
+-- Override some icons to nonicons 
+-- (https://github.com/yamatsum/nonicons)
 require('nvim-web-devicons').setup({
   override = {
     default_icon = {
@@ -85,6 +86,11 @@ require('nvim-web-devicons').setup({
       icon = '',
       color = '#cbcb41',
       name = 'Js',
+    },
+    es6 = {
+      icon = '',
+      color = '#cbcb41',
+      name = 'ES6',
     },
     jpg = {
       icon = '',
