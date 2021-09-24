@@ -4,10 +4,10 @@ local make_entry = require('telescope.make_entry')
 local conf = require('telescope.config').values
 
 -- Highlight line numbers for diagnostics
-vim.fn.sign_define('LspDiagnosticsSignError', {numhl = 'LspDiagnosticsLineNrError', text = ''})
-vim.fn.sign_define('LspDiagnosticsSignWarning', {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
-vim.fn.sign_define('LspDiagnosticsSignInformation', {text = ''})
-vim.fn.sign_define('LspDiagnosticsSignHint', {text = ''})
+vim.fn.sign_define('DiagnosticSignError', {numhl = 'LspDiagnosticsLineNrError', text = ''})
+vim.fn.sign_define('DiagnosticSignWarn', {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
+vim.fn.sign_define('DiagnosticSignInfo', {text = ''})
+vim.fn.sign_define('DiagnosticSignHint', {text = ''})
 
 -- Configure diagnostics displaying
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
@@ -99,10 +99,10 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<leader>ca', [[<cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', [[<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = 'single'}})<cr>]], opts)
-  buf_map('n', ']g', [[<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = 'single'}})<cr>]], opts)
+  buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = 'single'}})<cr>]], opts)
+  buf_map('n', ']g', [[<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = 'single'}})<cr>]], opts)
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
+  buf_map('n', '<leader>d', [[<cmd>lua vim.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[augroup LspFormatting]]

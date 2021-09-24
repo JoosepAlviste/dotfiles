@@ -15,15 +15,15 @@ end
 
 -- Get the statusline segment showing the LSP diagnostics' count
 local function lsp_status()
-  local errors = vim.lsp.diagnostic.get_count(0, [[Error]])
-  local warnings = vim.lsp.diagnostic.get_count(0, [[Warning]])
+  local errors = vim.diagnostic.get(0, {severity=[[Error]]})
+  local warnings = vim.diagnostic.get(0, {severity = [[Warning]]})
 
   local messages = {}
-  if errors ~= 0 then
-    table.insert(messages, color(true, 'StatuslineError', 'E' .. errors))
+  if #errors ~= 0 then
+    table.insert(messages, color(true, 'StatuslineError', 'E' .. #errors))
   end
-  if warnings ~= 0 then
-    table.insert(messages, color(true, 'StatuslineWarning', 'W' .. warnings))
+  if #warnings ~= 0 then
+    table.insert(messages, color(true, 'StatuslineWarning', 'W' .. #warnings))
   end
 
   return table.concat(messages, ' ')
