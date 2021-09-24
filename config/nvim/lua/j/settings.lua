@@ -84,12 +84,11 @@ opt.formatoptions = table.concat({
 })
 
 -- Messages
-opt.shortmess = table.concat({
-  'f', 'i', 'l', 'n', 'x', 't', 'T', 'o', 'O', 'F',  -- Defaults
-  'I',  -- No splash screen
-  'W',  -- Don't print "written" when editing
-  'a',  -- Use abbreviations in messages ([RO] intead of [readonly])
-  'c',  -- Do not show ins-completion-menu messages (match 1 of 2)
+opt.shortmess:append({
+  I = true,  -- No splash screen
+  W = true,  -- Don't print "written" when editing
+  a = true,  -- Use abbreviations in messages ([RO] intead of [readonly])
+  c = true,  -- Do not show ins-completion-menu messages (match 1 of 2)
 })
 
 -- Integration with the system clipboard
