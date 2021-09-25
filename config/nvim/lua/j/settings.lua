@@ -46,7 +46,10 @@ opt.listchars = {
 }
 -- Show cool character on line wrap
 opt.showbreak = '↳ '  -- DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
-opt.fillchars = {eob = ' '}  -- Suppress ~ at EndOfBuffer
+opt.fillchars = {
+  eob = ' ',  -- Suppress ~ at EndOfBuffer
+  fold = ' ',  -- Hide trailing folding characters
+}
 
 opt.cursorline = true  -- Highlight current line
 opt.colorcolumn = {81, 121}  -- Highlight columns
