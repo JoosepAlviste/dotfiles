@@ -1,3 +1,4 @@
+require('nvim-treesitter.install').compilers = { 'gcc' }
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
@@ -24,5 +25,6 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'query', 'javascript', 'jsdoc', 'typescript', 'tsx', 'json', 'php',
     'python', 'html', 'graphql', 'lua', 'vue', 'yaml', 'css', 'bash', 'scss',
+    'haskell',
   },
 }

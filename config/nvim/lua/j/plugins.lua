@@ -101,6 +101,7 @@ return require('packer').startup(function(use)
       require('j.plugins.lsp.lua_ls')
       require('j.plugins.lsp.efm_ls')
       require('j.plugins.lsp.terraform_ls')
+      require('j.plugins.lsp.haskell_ls')
     end,
     requires = {
       {
