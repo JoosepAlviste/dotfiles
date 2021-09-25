@@ -26,7 +26,18 @@ return require('packer').startup(function(use)
   -- Core utilities
   use 'mjlbach/neovim-ui'  -- Useful UI utilities (might be merged into Neovim)
   use 'tpope/vim-repeat'  -- Make repeat (.) command smarter
-  use 'rmagatti/auto-session'  -- Automatic sessions
+  use {  -- Automatic sessions
+    'rmagatti/auto-session',
+    config = function()
+      require('auto-session').setup({
+        -- Resize Neovim after it is started, otherwise the cmdheight might be 
+        -- super large when restoring the session
+        -- https://github.com/rmagatti/auto-session/issues/64
+        -- https://github.com/neovim/neovim/issues/11330
+        post_restore_cmds = {'silent !kill -s SIGWINCH $PPID'},
+      })
+    end,
+  }
 
 
   -- Mapping improvements
