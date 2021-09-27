@@ -24,18 +24,18 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 -- Handle formatting in a smarter way
 -- If the buffer has been edited before formatting has completed, do not try to 
 -- apply the changes
-vim.lsp.handlers['textDocument/formatting'] = function(err, _, result, _, bufnr)
+vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
   if err ~= nil or result == nil then
     return
   end
 
   -- If the buffer hasn't been modified before the formatting has finished, 
   -- update the buffer
-  if not vim.api.nvim_buf_get_option(bufnr, 'modified') then
+  if not vim.api.nvim_buf_get_option(ctx.bufnr, 'modified') then
     local view = vim.fn.winsaveview()
-    vim.lsp.util.apply_text_edits(result, bufnr)
+    vim.lsp.util.apply_text_edits(result, ctx.bufnr)
     vim.fn.winrestview(view)
-    if bufnr == vim.api.nvim_get_current_buf() or not bufnr then
+    if ctx.bufnr == vim.api.nvim_get_current_buf() or not ctx.bufnr then
       vim.api.nvim_command('noautocmd :update')
     end
   end
