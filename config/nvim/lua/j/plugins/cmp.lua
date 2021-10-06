@@ -24,4 +24,8 @@ cmp.setup {
     { name = 'path' },
     { name = 'vsnip' },
   },
+
+  documentation = {
+    winhighlight = 'NormalFloat:CmpDocumentation',
+  },
 }
