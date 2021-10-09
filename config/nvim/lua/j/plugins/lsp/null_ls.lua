@@ -14,11 +14,13 @@ null_ls.config {
     end),
 
     b.diagnostics.stylelint.with {
+      filetypes = { 'css', 'scss', 'vue' },
       condition = function(utils)
         return utils.root_has_file '.stylelintrc'
       end,
     },
     b.formatting.stylelint.with {
+      filetypes = { 'css', 'scss', 'vue' },
       condition = function(utils)
         return utils.root_has_file '.stylelintrc'
       end,
