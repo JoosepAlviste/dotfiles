@@ -22,7 +22,7 @@ g.nvim_tree_icons = {
     symlink_open = '',
   },
 }
-g.nvim_tree_ignore = {'.git', '.DS_Store'}
+g.nvim_tree_ignore = { '.git', '.DS_Store' }
 
 -- Mappings
-map('n', '<c-n>', ':NvimTreeToggle<cr>', {silent = true})
+map('n', '<c-n>', ':NvimTreeToggle<cr>', { silent = true })

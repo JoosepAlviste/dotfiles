@@ -1,9 +1,9 @@
--- My minimal custom statusline with lots of help from 
+-- My minimal custom statusline with lots of help from
 --   https://jip.dev/posts/a-simpler-vim-statusline/
 
 local termcode = require('j.utils').termcode
 
--- Output the content colored by the supplied highlight group. Only color the 
+-- Output the content colored by the supplied highlight group. Only color the
 -- input if the window is the currently focused one.
 local function color(active, highlight_group, content)
   if active then
@@ -15,8 +15,8 @@ end
 
 -- Get the statusline segment showing the LSP diagnostics' count
 local function lsp_status()
-  local errors = vim.diagnostic.get(0, {severity=[[Error]]})
-  local warnings = vim.diagnostic.get(0, {severity = [[Warning]]})
+  local errors = vim.diagnostic.get(0, { severity = [[Error]] })
+  local warnings = vim.diagnostic.get(0, { severity = [[Warning]] })
 
   local messages = {}
   if #errors ~= 0 then
@@ -35,12 +35,12 @@ local mode_colors = {
   R = 'Replace',
   v = 'Visual',
   V = 'Visual',
-  [termcode('<c-v>')] = 'Visual',
+  [termcode '<c-v>'] = 'Visual',
   c = 'Command',
 
   s = 'Normal',
   S = 'Normal',
-  [termcode('<c-s>')] = 'Normal',
+  [termcode '<c-s>'] = 'Normal',
   t = 'Normal',
 }
 
@@ -91,8 +91,8 @@ function _G.statusline(winnr)
   return color(is_active, mode_color, '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
 end
 
-require('j.utils').create_augroups({
+require('j.utils').create_augroups {
   statusline = {
-    {'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']]},
+    { 'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']] },
   },
-})
+}

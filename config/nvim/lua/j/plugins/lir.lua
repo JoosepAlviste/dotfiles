@@ -1,8 +1,8 @@
-local lir = require('lir')
-local actions = require('lir.actions')
-local mark_actions = require('lir.mark.actions')
-local clipboard_actions = require('lir.clipboard.actions')
-local Path = require('plenary.path')
+local lir = require 'lir'
+local actions = require 'lir.actions'
+local mark_actions = require 'lir.mark.actions'
+local clipboard_actions = require 'lir.clipboard.actions'
+local Path = require 'plenary.path'
 
 local create_augroups = require('j.utils').create_augroups
 
@@ -15,7 +15,7 @@ end
 
 -- A smarter function to create a new file or folder
 local function new_file()
-  -- Temporarily CD into the currently active directory so that completion 
+  -- Temporarily CD into the currently active directory so that completion
   -- works nicely
   local save_curdir = vim.fn.getcwd()
   lcd(lir.get_context().dir)
@@ -32,35 +32,35 @@ local function new_file()
   if is_folder then
     -- Create a new directory
     name = name:gsub('/$', '')
-    path:mkdir({
+    path:mkdir {
       parents = true,
       mode = tonumber('700', 8),
       exists_ok = false,
-    })
+    }
 
     actions.reload()
 
     -- Jump to a line in the parent directory of the file you created.
-    local lnum = lir.get_context():indexof(name:match('^[^/]+'))
+    local lnum = lir.get_context():indexof(name:match '^[^/]+')
     if lnum then
       vim.cmd(tostring(lnum))
     end
   else
     -- Create a new file
-    path:touch({
+    path:touch {
       parents = true,
       mode = tonumber('644', 8),
-    })
+    }
 
     vim.cmd(':e ' .. path:expand())
   end
 end
 
-require('lir').setup ({
+require('lir').setup {
   show_hidden_files = true,
   devicons_enable = true,
   mappings = {
-    ['l']     = actions.edit,
+    ['l'] = actions.edit,
     ['<C-s>'] = actions.split,
     ['<C-v>'] = actions.vsplit,
     ['<C-t>'] = actions.tabedit,
@@ -77,7 +77,7 @@ require('lir').setup ({
 
     ['J'] = function()
       mark_actions.toggle_mark()
-      vim.cmd('normal! j')
+      vim.cmd 'normal! j'
     end,
     ['C'] = clipboard_actions.copy,
     ['X'] = clipboard_actions.cut,
@@ -87,24 +87,36 @@ require('lir').setup ({
     winblend = 0,
   },
   hide_cursor = true,
-})
+}
 
 function _G.LirSettings()
-  vim.api.nvim_buf_set_keymap(0, 'x', 'J', [[:<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>]], {noremap = true, silent = true})
-  vim.api.nvim_buf_set_keymap(0, 'n', '-', [[:<C-u>lua require'lir.actions'.up()<CR>]], {noremap = true, silent = true})
+  vim.api.nvim_buf_set_keymap(
+    0,
+    'x',
+    'J',
+    [[:<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>]],
+    { noremap = true, silent = true }
+  )
+  vim.api.nvim_buf_set_keymap(
+    0,
+    'n',
+    '-',
+    [[:<C-u>lua require'lir.actions'.up()<CR>]],
+    { noremap = true, silent = true }
+  )
   vim.cmd [[setlocal nonumber]]
   vim.cmd [[setlocal norelativenumber]]
 
   -- echo cwd
-  vim.api.nvim_echo({{vim.fn.expand('%'), 'Normal'}}, false, {})
+  vim.api.nvim_echo({ { vim.fn.expand '%', 'Normal' } }, false, {})
 end
 
-create_augroups({
+create_augroups {
   lir_settings = {
-    {'Filetype', 'lir', ':lua LirSettings()'},
-    -- Reload lir once a session has been loaded. Otherwise, lir might load 
-    -- after the session and if a folder was active, then the buffer would 
+    { 'Filetype', 'lir', ':lua LirSettings()' },
+    -- Reload lir once a session has been loaded. Otherwise, lir might load
+    -- after the session and if a folder was active, then the buffer would
     -- break.
-    {'SessionLoadPost', '*', [[lua require('lir').init()]]},
+    { 'SessionLoadPost', '*', [[lua require('lir').init()]] },
   },
-})
+}

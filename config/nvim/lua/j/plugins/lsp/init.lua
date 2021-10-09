@@ -1,53 +1,47 @@
-local finders = require('telescope.finders')
-local pickers = require('telescope.pickers')
-local make_entry = require('telescope.make_entry')
+local finders = require 'telescope.finders'
+local pickers = require 'telescope.pickers'
+local make_entry = require 'telescope.make_entry'
 local conf = require('telescope.config').values
 
 -- Highlight line numbers for diagnostics
-vim.fn.sign_define('DiagnosticSignError', {numhl = 'LspDiagnosticsLineNrError', text = ''})
-vim.fn.sign_define('DiagnosticSignWarn', {numhl = 'LspDiagnosticsLineNrWarning', text = ''})
-vim.fn.sign_define('DiagnosticSignInfo', {text = ''})
-vim.fn.sign_define('DiagnosticSignHint', {text = ''})
+vim.fn.sign_define('DiagnosticSignError', { numhl = 'LspDiagnosticsLineNrError', text = '' })
+vim.fn.sign_define('DiagnosticSignWarn', { numhl = 'LspDiagnosticsLineNrWarning', text = '' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '' })
 
 -- Configure diagnostics displaying
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  }
-)
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+})
 
 -- Use FZF to find references
 -- vim.lsp.handlers['textDocument/references'] = require('j.plugins.fzf.functions').lsp_references_handler
 
 -- Handle formatting in a smarter way
--- If the buffer has been edited before formatting has completed, do not try to 
+-- If the buffer has been edited before formatting has completed, do not try to
 -- apply the changes
 vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
   if err ~= nil or result == nil then
     return
   end
 
-  -- If the buffer hasn't been modified before the formatting has finished, 
+  -- If the buffer hasn't been modified before the formatting has finished,
   -- update the buffer
   if not vim.api.nvim_buf_get_option(ctx.bufnr, 'modified') then
     local view = vim.fn.winsaveview()
     vim.lsp.util.apply_text_edits(result, ctx.bufnr)
     vim.fn.winrestview(view)
     if ctx.bufnr == vim.api.nvim_get_current_buf() or not ctx.bufnr then
-      vim.api.nvim_command('noautocmd :update')
+      vim.api.nvim_command 'noautocmd :update'
     end
   end
 end
 
-vim.lsp.handlers["textDocument/hover"] =
-  vim.lsp.with(
-    vim.lsp.handlers.hover,
-    {
-      border = "single"
-    }
-  )
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'single',
+})
 
 local icons = {
   Text = '',
@@ -71,7 +65,7 @@ local icons = {
   Constant = '',
   Struct = '',
   Field = '',
-  TypeParameter = ''
+  TypeParameter = '',
 }
 
 local kinds = vim.lsp.protocol.CompletionItemKind
@@ -84,10 +78,12 @@ end
 local M = {}
 
 function M.on_attach(client, bufnr)
-  local function buf_map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_map(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
 
   -- Set up keymaps
-  local opts = {noremap = true, silent = true}
+  local opts = { noremap = true, silent = true }
   buf_map('n', '<c-]>', [[<cmd>lua require('j.plugins.lsp').definitions()<cr>]], opts)
   buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -113,8 +109,8 @@ function M.on_attach(client, bufnr)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
--- Configure that we accept snippets so that the server would send us snippet 
--- completion items. Snippets are not supported by default, but 
+-- Configure that we accept snippets so that the server would send us snippet
+-- completion items. Snippets are not supported by default, but
 -- `vim-vsnip-integ` adds support for them.
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -122,7 +118,7 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
     'documentation',
     'detail',
     'additionalTextEdits',
-  }
+  },
 }
 M.capabilities.textDocument.completion.completionItem.preselectSupport = true
 M.capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
@@ -131,8 +127,8 @@ M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 
--- If the LSP response includes any `node_modules`, then try to remove them and 
--- see if there are any options left. We probably want to navigate to the code 
+-- If the LSP response includes any `node_modules`, then try to remove them and
+-- see if there are any options left. We probably want to navigate to the code
 -- in OUR codebase, not inside `node_modules`.
 --
 -- This can happen if a type is used to explicitly type a variable:
@@ -140,8 +136,8 @@ M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = 
 -- const MyComponent: React.FC<Props> = () => <div />
 -- ````
 --
--- Running "Go to definition" on `MyComponent` would give the `React.FC` 
--- definition in `node_modules/react` as the first result, but we don't want 
+-- Running "Go to definition" on `MyComponent` would give the `React.FC`
+-- definition in `node_modules/react` as the first result, but we don't want
 -- that.
 local function filter_out_libraries_from_lsp_items(results)
   local without_node_modules = vim.tbl_filter(function(item)
@@ -155,7 +151,7 @@ local function filter_out_libraries_from_lsp_items(results)
   return results
 end
 
--- This function is mostly copied from Telescope, I only added the 
+-- This function is mostly copied from Telescope, I only added the
 -- `node_modules` filtering.
 local function list_or_jump(action, title, opts)
   opts = opts or {}
@@ -163,7 +159,7 @@ local function list_or_jump(action, title, opts)
   local params = vim.lsp.util.make_position_params()
   local result, err = vim.lsp.buf_request_sync(0, action, params, opts.timeout or 10000)
   if err then
-    vim.api.nvim_err_writeln("Error when executing " .. action .. " : " .. err)
+    vim.api.nvim_err_writeln('Error when executing ' .. action .. ' : ' .. err)
     return
   end
   local flattened_results = {}

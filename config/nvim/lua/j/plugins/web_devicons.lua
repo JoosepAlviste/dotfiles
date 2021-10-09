@@ -1,11 +1,11 @@
--- Override some icons to nonicons 
+-- Override some icons to nonicons
 -- (https://github.com/yamatsum/nonicons)
-require('nvim-web-devicons').setup({
+require('nvim-web-devicons').setup {
   override = {
     default_icon = {
-      icon = "",
-      color = "#7982B4",
-      name = "Default",
+      icon = '',
+      color = '#7982B4',
+      name = 'Default',
     },
     Dockerfile = {
       icon = '',
@@ -20,28 +20,28 @@ require('nvim-web-devicons').setup({
     ['git'] = {
       icon = '',
       color = '#F1502F',
-      name = 'GitLogo'
-    };
+      name = 'GitLogo',
+    },
     ['.gitattributes'] = {
       icon = '',
       color = '#F1502F',
-      name = 'GitAttributes'
-    };
+      name = 'GitAttributes',
+    },
     ['.gitconfig'] = {
       icon = '',
       color = '#F1502F',
-      name = 'GitConfig'
-    };
+      name = 'GitConfig',
+    },
     ['.gitignore'] = {
       icon = '',
       color = '#F1502F',
-      name = 'GitIgnore'
-    };
+      name = 'GitIgnore',
+    },
     ['.gitmodules'] = {
       icon = '',
       color = '#F1502F',
-      name = 'GitIgnore'
-    };
+      name = 'GitIgnore',
+    },
     ['.prettierrc'] = {
       icon = '',
       color = '#cbcb41',
@@ -51,7 +51,7 @@ require('nvim-web-devicons').setup({
       icon = '',
       color = '#42a5f5',
       name = 'Css',
-    };
+    },
     ['.eslintignore'] = {
       icon = '',
       color = '#7986cb',
@@ -65,7 +65,7 @@ require('nvim-web-devicons').setup({
     gif = {
       icon = '',
       color = '#a074c4',
-      name = 'Gif'
+      name = 'Gif',
     },
     graphql = {
       icon = '',
@@ -94,8 +94,8 @@ require('nvim-web-devicons').setup({
     },
     jpg = {
       icon = '',
-      color = "#a074c4",
-      name = "Jpg",
+      color = '#a074c4',
+      name = 'Jpg',
     },
     LICENSE = {
       icon = '',
@@ -103,9 +103,9 @@ require('nvim-web-devicons').setup({
       name = 'License',
     },
     lir_folder_icon = {
-      icon = "",
-      color = "#82aaff",
-      name = "LirFolderNode"
+      icon = '',
+      color = '#82aaff',
+      name = 'LirFolderNode',
     },
     lua = {
       icon = '',
@@ -130,12 +130,12 @@ require('nvim-web-devicons').setup({
     php = {
       icon = '',
       color = '#a074c4',
-      name = 'Php'
+      name = 'Php',
     },
     png = {
       icon = '',
       color = '#a074c4',
-      name = 'Png'
+      name = 'Png',
     },
     svg = {
       icon = '',
@@ -155,7 +155,7 @@ require('nvim-web-devicons').setup({
     vim = {
       icon = '',
       color = '#019833',
-      name = 'Vim'
+      name = 'Vim',
     },
     vue = {
       icon = '',
@@ -165,7 +165,7 @@ require('nvim-web-devicons').setup({
     yaml = {
       icon = '',
       color = '#cbcb41',
-      name = 'Yaml'
+      name = 'Yaml',
     },
     ['yarn.lock'] = {
       icon = '',
@@ -175,7 +175,7 @@ require('nvim-web-devicons').setup({
     yml = {
       icon = '',
       color = '#cbcb41',
-      name = 'Yml'
+      name = 'Yml',
     },
   },
-})
+}

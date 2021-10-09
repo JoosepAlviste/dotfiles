@@ -7,9 +7,10 @@ null_ls.config {
     require('null-ls.helpers').conditional(function(utils)
       local have_prettier = utils.root_has_file 'node_modules/.bin/prettier'
       return utils.root_has_file '.eslintrc.js' and b.formatting.eslint_d
-        or have_prettier and b.formatting.prettier.with {
-          command = './node_modules/.bin/prettier',
-        }
+        or have_prettier
+          and b.formatting.prettier.with {
+            command = './node_modules/.bin/prettier',
+          }
     end),
 
     b.diagnostics.stylelint.with {

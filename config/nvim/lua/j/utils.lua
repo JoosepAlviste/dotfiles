@@ -5,19 +5,23 @@ local M = {}
 function M.map(modes, lhs, rhs, opts)
   opts = opts or {}
   opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == 'string' then modes = {modes} end
-  for _, mode in ipairs(modes) do vim.api.nvim_set_keymap(mode, lhs, rhs, opts) end
+  if type(modes) == 'string' then
+    modes = { modes }
+  end
+  for _, mode in ipairs(modes) do
+    vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+  end
 end
 
 function M.create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     cmd('augroup ' .. group_name)
-    cmd('autocmd!')
+    cmd 'autocmd!'
     for _, def in ipairs(definition) do
-      local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+      local command = table.concat(vim.tbl_flatten { 'autocmd', def }, ' ')
       cmd(command)
     end
-    cmd('augroup END')
+    cmd 'augroup END'
   end
 end
 
@@ -33,8 +37,8 @@ local function unload_all_modules()
     '^j.',
   }
 
-  for k,_ in pairs(package.loaded) do
-    for _,v in ipairs(unload_modules) do
+  for k, _ in pairs(package.loaded) do
+    for _, v in ipairs(unload_modules) do
       if k:match(v) then
         package.loaded[k] = nil
         break
@@ -45,16 +49,16 @@ end
 
 function M.reload()
   -- Stop LSP
-  cmd('LspStop')
+  cmd 'LspStop'
 
   -- Stop eslint_d
-  vim.fn.execute('silent !pkill -9 eslint_d')
+  vim.fn.execute 'silent !pkill -9 eslint_d'
 
   -- Unload all already loaded modules
   unload_all_modules()
 
   -- Source init.lua
-  cmd('luafile $MYVIMRC')
+  cmd 'luafile $MYVIMRC'
 end
 
 -- Restart Vim without having to close and run again
@@ -63,12 +67,12 @@ function M.restart()
   M.reload()
 
   -- Manually run VimEnter autocmd to emulate a new run of Vim
-  cmd('doautocmd VimEnter')
+  cmd 'doautocmd VimEnter'
 end
 
--- Execute `PackerUpdate` every day automatically so that we are always up to 
+-- Execute `PackerUpdate` every day automatically so that we are always up to
 -- date!
--- I run `PackerUpdate` manually anyways, so it makes sense to run it 
+-- I run `PackerUpdate` manually anyways, so it makes sense to run it
 -- automatically.
 --
 -- The last saved date is saved into `XDG_CACHE_HOME/.plugins_updated_at`.
@@ -80,12 +84,12 @@ function M.update_plugins_every_day()
     file:close()
   end
 
-  local today = os.date('%Y-%m-%d')
+  local today = os.date '%Y-%m-%d'
 
   file = io.open(plugin_updated_at_filename)
-  local contents = file:read('*a')
+  local contents = file:read '*a'
   if contents ~= today then
-    vim.fn.execute('PackerUpdate')
+    vim.fn.execute 'PackerUpdate'
 
     file = io.open(plugin_updated_at_filename, 'w')
     file:write(today)
@@ -97,8 +101,8 @@ end
 -- Useful function for debugging
 -- Print the given items
 function _G.dump(...)
-    local objects = vim.tbl_map(vim.inspect, {...})
-    print(unpack(objects))
+  local objects = vim.tbl_map(vim.inspect, { ... })
+  print(unpack(objects))
 end
 
 return M

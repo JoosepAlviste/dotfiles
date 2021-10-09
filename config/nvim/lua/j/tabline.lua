@@ -1,7 +1,7 @@
 function _G.tabline()
   local tabs = {}
 
-  for i = 1,vim.fn.tabpagenr('$') do
+  for i = 1, vim.fn.tabpagenr '$' do
     local tabnr = i
     local winnr = vim.fn.tabpagewinnr(tabnr)
     local buflist = vim.fn.tabpagebuflist(tabnr)
@@ -16,11 +16,21 @@ function _G.tabline()
     local tab_highlight = is_selected and '%#TabLineSel#' or '%#TabLine#'
     local tab_text_prefix = vim.fn.empty(bufname) == 1 and ' [No Name]' or ' '
 
-    local icon, icon_highlight = require('nvim-web-devicons').get_icon(bufname, buffer_extension, {default = true})
+    local icon, icon_highlight = require('nvim-web-devicons').get_icon(bufname, buffer_extension, { default = true })
     local tab_icon_highlight = is_selected and '%#' .. icon_highlight .. '#' or '%#Statusline' .. icon_highlight .. '#'
     local tab_icon = tab_icon_highlight .. icon
 
-    table.insert(tabs, tab_highlight .. '  ' .. tab_icon .. tab_highlight .. tab_text_prefix .. bufname .. ' ' .. (bufmodified and '+  ' or ' '))
+    table.insert(
+      tabs,
+      tab_highlight
+        .. '  '
+        .. tab_icon
+        .. tab_highlight
+        .. tab_text_prefix
+        .. bufname
+        .. ' '
+        .. (bufmodified and '+  ' or ' ')
+    )
   end
 
   return table.concat(tabs, '')

@@ -1,5 +1,5 @@
 -- https://github.com/theia-ide/typescript-language-server
-require('lspconfig').tsserver.setup{
+require('lspconfig').tsserver.setup {
   on_attach = function(client, bufnr)
     -- Disable the document formatting for tsserver because we want to use
     -- null-ls with ESLint

@@ -1,5 +1,5 @@
 -- https://intelephense.com
-require('lspconfig').intelephense.setup{
+require('lspconfig').intelephense.setup {
   on_attach = function(client, bufnr)
     -- Do not autoformat PHP
     client.resolved_capabilities.document_formatting = false

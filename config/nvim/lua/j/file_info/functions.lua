@@ -7,34 +7,37 @@ local M = {}
 
 -- Show a simple popup with some basic file information
 function M.file_info()
-  local width = api.nvim_get_option('columns')
+  local width = api.nvim_get_option 'columns'
 
-  local filename =  vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+  local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
   local type = vim.bo.ft
   local branch = vim.b.gitsigns_head
-  local lsp_client_names = table.concat(vim.tbl_map(function (client)
-    return client.name
-  end, vim.tbl_values(vim.lsp.buf_get_clients(0))), ', ')
+  local lsp_client_names = table.concat(
+    vim.tbl_map(function(client)
+      return client.name
+    end, vim.tbl_values(vim.lsp.buf_get_clients(0))),
+    ', '
+  )
 
   -- Each line consists of a label and a text.
-  local lines = {{'name', filename}}
+  local lines = { { 'name', filename } }
   if #type > 1 then
-    table.insert(lines, {'type', type})
+    table.insert(lines, { 'type', type })
   end
   if branch then
-    table.insert(lines, {'branch', branch})
+    table.insert(lines, { 'branch', branch })
   end
   if #lsp_client_names > 1 then
-    table.insert(lines, {'lsp', lsp_client_names})
+    table.insert(lines, { 'lsp', lsp_client_names })
   end
 
-  local label_lengths = vim.tbl_map(function (line)
+  local label_lengths = vim.tbl_map(function(line)
     return #line[1]
   end, lines)
   local max_label_length = math.max(unpack(label_lengths))
 
   -- Pad labels of lines and convert each line to a string
-  local lines_texts = vim.tbl_map(function (line)
+  local lines_texts = vim.tbl_map(function(line)
     local label = line[1]
     local text = line[2]
 
@@ -48,7 +51,7 @@ function M.file_info()
   end, lines)
 
   -- The popup should be as wide as the length of the longest line
-  local line_lengths = vim.tbl_map(function (line)
+  local line_lengths = vim.tbl_map(function(line)
     return #line
   end, lines_texts)
   local max_line_length = math.max(unpack(line_lengths))
@@ -58,7 +61,7 @@ function M.file_info()
     line = TOP_MARGIN,
     enter = false,
     time = 3000,
-    padding = {0, 1, 0, 1},
+    padding = { 0, 1, 0, 1 },
   })
 end
 
