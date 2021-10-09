@@ -16,7 +16,6 @@ brew install \
     jq \
     jesseduffield/lazygit/lazygit \
     ffmpegthumbnailer \
-    efm-langserver \
     hashicorp/tap/terraform-ls \
     bat \
     exa \

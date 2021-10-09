@@ -1,7 +1,7 @@
 -- https://github.com/johnsoncodehk/volar
 require'lspconfig'.volar.setup{
   on_attach = function(client, bufnr)
-    -- Disable the document formatting for vuels because we want to use efm 
+    -- Disable the document formatting for vuels because we want to use null-ls
     -- with ESLint
     client.resolved_capabilities.document_formatting = false
 

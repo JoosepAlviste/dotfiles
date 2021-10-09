@@ -95,20 +95,20 @@ return require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',  -- Built-in LSP configurations
     config = function()
-      require('j.plugins.lsp')
-      require('j.plugins.lsp.css_ls')
-      require('j.plugins.lsp.docker_ls')
-      require('j.plugins.lsp.graphql_ls')
-      require('j.plugins.lsp.json_ls')
-      require('j.plugins.lsp.php_ls')
-      require('j.plugins.lsp.tsserver_ls')
-      require('j.plugins.lsp.vue_ls')
-      require('j.plugins.lsp.volar_ls')
-      require('j.plugins.lsp.yaml_ls')
-      require('j.plugins.lsp.lua_ls')
-      require('j.plugins.lsp.efm_ls')
-      require('j.plugins.lsp.terraform_ls')
-      require('j.plugins.lsp.haskell_ls')
+      require 'j.plugins.lsp'
+      require 'j.plugins.lsp.css_ls'
+      require 'j.plugins.lsp.docker_ls'
+      require 'j.plugins.lsp.graphql_ls'
+      require 'j.plugins.lsp.json_ls'
+      require 'j.plugins.lsp.php_ls'
+      require 'j.plugins.lsp.tsserver_ls'
+      require 'j.plugins.lsp.vue_ls'
+      require 'j.plugins.lsp.volar_ls'
+      require 'j.plugins.lsp.yaml_ls'
+      require 'j.plugins.lsp.lua_ls'
+      require 'j.plugins.lsp.emmet_ls'
+      require 'j.plugins.lsp.terraform_ls'
+      require 'j.plugins.lsp.haskell_ls'
     end,
     requires = {
       {
@@ -124,6 +124,12 @@ return require('packer').startup(function(use)
           'hrsh7th/cmp-vsnip',
         },
         config = function() require('j.plugins.cmp') end,
+      },
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function()
+          require 'j.plugins.lsp.null_ls'
+        end,
       },
     },
   }
