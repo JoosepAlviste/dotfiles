@@ -15,8 +15,8 @@ end
 
 -- Get the statusline segment showing the LSP diagnostics' count
 local function lsp_status()
-  local errors = vim.diagnostic.get(0, { severity = [[Error]] })
-  local warnings = vim.diagnostic.get(0, { severity = [[Warning]] })
+  local errors = vim.diagnostic.get(0, { severity = 1 })
+  local warnings = vim.diagnostic.get(0, { severity = 2 })
 
   local messages = {}
   if #errors ~= 0 then
