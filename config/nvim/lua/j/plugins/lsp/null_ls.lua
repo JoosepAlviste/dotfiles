@@ -1,3 +1,4 @@
+local util = require 'lspconfig.util'
 local null_ls = require 'null-ls'
 local b = null_ls.builtins
 
@@ -16,14 +17,16 @@ null_ls.config {
     b.diagnostics.stylelint.with {
       filetypes = { 'css', 'scss', 'vue' },
       condition = function(utils)
-        return utils.root_has_file '.stylelintrc'
+        return utils.root_has_file '.stylelintrc.json'
       end,
+      command = './node_modules/.bin/stylelint',
     },
     b.formatting.stylelint.with {
       filetypes = { 'css', 'scss', 'vue' },
       condition = function(utils)
-        return utils.root_has_file '.stylelintrc'
+        return utils.root_has_file '.stylelintrc.json'
       end,
+      command = './node_modules/.bin/stylelint',
     },
 
     b.formatting.stylua.with {
@@ -39,4 +42,5 @@ null_ls.config {
 
 require('lspconfig')['null-ls'].setup {
   on_attach = require('j.plugins.lsp').on_attach,
+  root_dir = util.root_pattern('.eslintrc.js', '.git'),
 }
