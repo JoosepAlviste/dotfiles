@@ -119,7 +119,6 @@ return require('packer').startup(function(use)
       require 'j.plugins.lsp.volar_ls'
       require 'j.plugins.lsp.yaml_ls'
       require 'j.plugins.lsp.lua_ls'
-      require 'j.plugins.lsp.emmet_ls'
       require 'j.plugins.lsp.terraform_ls'
       require 'j.plugins.lsp.haskell_ls'
     end,
