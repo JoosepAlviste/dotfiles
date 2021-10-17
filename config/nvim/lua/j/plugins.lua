@@ -44,7 +44,16 @@ return require('packer').startup(function(use)
       require 'j.plugins.autopairs'
     end,
   }
-  use 'tpope/vim-commentary' -- Commenting
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        pre_hook = function()
+          return require('ts_context_commentstring.internal').calculate_commentstring()
+        end,
+      }
+    end,
+  }
   use 'tpope/vim-surround' -- Surround stuff with things
   use 'knubie/vim-kitty-navigator' -- Move between Vim & Kitty windows easily
 
