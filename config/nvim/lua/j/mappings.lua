@@ -104,7 +104,3 @@ map('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
 -- Whole file, jump back with <c-o>
 map('v', 'ae', [[:<c-u>silent! normal! m'gg0VG$<cr>]], { silent = true })
 map('o', 'ae', ':normal Vae<cr>', { noremap = false, silent = true })
-
--- Mouse mappings for easily navigating code
-map('n', '<LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover({border = "single"})<CR>', { silent = true })
-map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
