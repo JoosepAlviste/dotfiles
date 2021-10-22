@@ -22,10 +22,14 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
-    { name = 'buffer' },
+    { name = 'buffer', keyword_length = 5 },
   },
 
   documentation = {
     winhighlight = 'NormalFloat:CmpDocumentation',
+  },
+
+  experimental = {
+    ghost_text = true,
   },
 }
