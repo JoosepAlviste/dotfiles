@@ -7,7 +7,9 @@ null_ls.config {
     b.diagnostics.eslint_d,
     require('null-ls.helpers').conditional(function(utils)
       local have_prettier = utils.root_has_file 'node_modules/.bin/prettier'
-      return utils.root_has_file '.eslintrc.js' and b.formatting.eslint_d
+      local have_eslint = utils.root_has_file '.eslintrc.js'
+
+      return have_eslint and b.formatting.eslint_d
         or have_prettier
           and b.formatting.prettier.with {
             command = './node_modules/.bin/prettier',
@@ -42,5 +44,5 @@ null_ls.config {
 
 require('lspconfig')['null-ls'].setup {
   on_attach = require('j.plugins.lsp').on_attach,
-  root_dir = util.root_pattern('.eslintrc.js', '.git'),
+  root_dir = util.root_pattern('package.json', '.git'),
 }
