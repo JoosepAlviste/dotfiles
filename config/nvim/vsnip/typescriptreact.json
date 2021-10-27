@@ -1,6 +1,8 @@
 {
   "function component file": {
-    "prefix": ["fc"],
+    "prefix": [
+      "fc"
+    ],
     "body": [
       "import React from 'react';",
       "",
@@ -9,6 +11,16 @@
       "};",
       "",
       "export default $TM_FILENAME_BASE"
+    ]
+  },
+  "react debugging": {
+    "prefix": [
+      "debug"
+    ],
+    "body": [
+      "useEffect(() => {",
+      "\tconsole.log({ $1 });",
+      "}, [$1])"
     ]
   }
 }
