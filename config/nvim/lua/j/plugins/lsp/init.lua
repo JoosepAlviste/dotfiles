@@ -101,8 +101,12 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<leader>d', [[<cmd>lua vim.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
 
   -- Mouse mappings for easily navigating code
-  buf_map('n', '<LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover({border = "single"})<CR>', { silent = true })
-  buf_map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+  if client.resolved_capabilities.hover then
+    buf_map('n', '<LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover({border = "single"})<CR>', { silent = true })
+  end
+  if client.resolved_capabilities.goto_defintion then
+    buf_map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+  end
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[augroup LspFormatting]]
