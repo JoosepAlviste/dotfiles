@@ -16,6 +16,11 @@ null_ls.config {
     --       }
     -- end),
 
+    b.formatting.prettier.with {
+      filetypes = { 'graphql' },
+      command = './node_modules/.bin/prettier',
+    },
+
     b.diagnostics.stylelint.with {
       filetypes = { 'css', 'scss', 'vue' },
       condition = function(utils)
