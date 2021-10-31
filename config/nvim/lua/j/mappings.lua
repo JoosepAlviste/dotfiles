@@ -91,6 +91,9 @@ map('c', '<c-a>', '<home>')
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
+map('x', '.', ':normal .<cr>')
+map('x', '@', [[:<c-u>echo "@".getcmdline() | execute ":'<,'>normal @" . nr2char(getchar())<cr>]])
+
 -- Custom text objects
 
 -- Around line: with leading and trailing whitespace
