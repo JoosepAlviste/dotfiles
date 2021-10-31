@@ -91,6 +91,12 @@ return require('packer').startup(function(use)
       require 'j.plugins.tree'
     end,
   }
+  use {
+    'ThePrimeagen/harpoon',
+    config = function()
+      require 'j.plugins.harpoon'
+    end,
+  }
 
   -- Advanced highlighting
   use {
