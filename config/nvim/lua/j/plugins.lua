@@ -48,8 +48,12 @@ return require('packer').startup(function(use)
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup {
-        pre_hook = function()
-          return require('ts_context_commentstring.internal').calculate_commentstring()
+        pre_hook = function(ctx)
+          local U = require 'Comment.utils'
+          local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
+          return require('ts_context_commentstring.internal').calculate_commentstring {
+            key = type,
+          }
         end,
       }
     end,
