@@ -118,6 +118,7 @@ return require('packer').startup(function(use)
       require 'j.plugins.harpoon'
     end,
   }
+  use 'ggandor/lightspeed.nvim'
 
   -- Advanced highlighting
   use {
