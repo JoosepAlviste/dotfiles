@@ -40,7 +40,7 @@ vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
 end
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'single',
+  border = 'rounded',
 })
 
 local icons = {
@@ -100,14 +100,24 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename.float()<CR>]], opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = 'single'}})<cr>]], opts)
-  buf_map('n', ']g', [[<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = 'single'}})<cr>]], opts)
+  buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<cr>]], opts)
+  buf_map('n', ']g', [[<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<cr>]], opts)
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', [[<cmd>lua vim.diagnostic.show_line_diagnostics({ border = 'single' })<cr>]], opts)
+  buf_map(
+    'n',
+    '<leader>d',
+    [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'cursor', border = 'rounded' })<cr>]],
+    opts
+  )
 
   -- Mouse mappings for easily navigating code
   if client.resolved_capabilities.hover then
-    buf_map('n', '<LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover({border = "single"})<CR>', { silent = true })
+    buf_map(
+      'n',
+      '<LeftMouse>',
+      [[<LeftMouse><cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>]],
+      { silent = true }
+    )
   end
   if client.resolved_capabilities.goto_defintion then
     buf_map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
