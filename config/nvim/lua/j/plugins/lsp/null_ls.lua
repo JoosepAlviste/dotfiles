@@ -18,6 +18,9 @@ null_ls.config {
 
     b.formatting.prettier.with {
       filetypes = { 'graphql' },
+      condition = function(utils)
+        return utils.root_has_file '.prettierrc.json'
+      end,
       command = './node_modules/.bin/prettier',
     },
 
