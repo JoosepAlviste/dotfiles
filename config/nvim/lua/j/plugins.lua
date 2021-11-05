@@ -36,6 +36,16 @@ return require('packer').startup(function(use)
       }
     end,
   }
+  use {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('notify').setup {
+        background_colour = 'NormalFloat',
+      }
+
+      vim.notify = require 'notify'
+    end,
+  }
 
   -- Mapping improvements
   use {
