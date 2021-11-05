@@ -119,7 +119,7 @@ function M.on_attach(client, bufnr)
       { silent = true }
     )
   end
-  if client.resolved_capabilities.goto_defintion then
+  if client.resolved_capabilities.goto_definition then
     buf_map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
 
