@@ -91,8 +91,8 @@ function M.on_attach(client, bufnr)
   buf_map('n', 'gr', [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]], opts)
 
   buf_map('n', 'K', [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts)
-  buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename()<CR>]], opts)
   buf_map('n', '<leader>ca', [[<cmd>CodeAction<cr>]], opts)
+  buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename.float()<CR>]], opts)
 
   -- Navigate diagnostics
   buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = 'single'}})<cr>]], opts)
@@ -185,5 +185,80 @@ end
 function M.definitions(opts)
   return list_or_jump('textDocument/definition', 'LSP Definitions', opts)
 end
+
+vim.lsp.handlers['textDocument/rename'] = function(err, result)
+  if err then
+    vim.notify(("Error running lsp query 'rename': " .. err), vim.log.levels.ERROR)
+  end
+
+  if result and result.changes then
+    local new_name = ''
+    local old_name = vim.fn.expand '<cword>'
+
+    local msg = ''
+    for f, c in pairs(result.changes) do
+      new_name = c[1].newText
+      msg = msg .. ('%d changes -> %s'):format(#c, f:gsub('file://', ''):gsub(vim.pesc(vim.loop.cwd()), '.')) .. '\n'
+    end
+    -- Remove the last new line
+    msg = msg:sub(1, #msg - 1)
+
+    vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(old_name, new_name) })
+  end
+  vim.lsp.util.apply_workspace_edit(result)
+end
+
+vim.lsp.buf.rename = {
+  float = function()
+    local curr_name = vim.fn.expand '<cword>'
+    local tshl = require('nvim-treesitter-playground.hl-info').get_treesitter_hl()
+    if tshl and #tshl > 0 then
+      local ind = tshl[#tshl]:match '^.*()%*%*.*%*%*'
+      tshl = tshl[#tshl]:sub(ind + 2, -3)
+    end
+
+    local win = require('plenary.popup').create(curr_name, {
+      title = 'New Name',
+      style = 'minimal',
+      borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+      relative = 'cursor',
+      borderhighlight = 'FloatBorder',
+      titlehighlight = 'Title',
+      highlight = tshl,
+      focusable = true,
+      width = 25,
+      height = 1,
+      line = 'cursor+2',
+      col = 'cursor-1',
+    })
+
+    local map_opts = { noremap = true, silent = true }
+    vim.api.nvim_buf_set_keymap(0, 'i', '<Esc>', '<cmd>stopinsert | q!<CR>', map_opts)
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Esc>', '<cmd>stopinsert | q!<CR>', map_opts)
+    vim.api.nvim_buf_set_keymap(
+      0,
+      'i',
+      '<CR>',
+      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. ',' .. win .. "')<CR>",
+      map_opts
+    )
+    vim.api.nvim_buf_set_keymap(
+      0,
+      'n',
+      '<CR>',
+      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. ',' .. win .. "')<CR>",
+      map_opts
+    )
+  end,
+  apply = function(curr, win)
+    local newName = vim.trim(vim.api.nvim_get_current_line())
+    vim.api.nvim_win_close(win, true)
+    if #newName > 0 and newName ~= curr then
+      local params = vim.lsp.util.make_position_params()
+      params.newName = newName
+      vim.lsp.buf_request(0, 'textDocument/rename', params)
+    end
+  end,
+}
 
 return M
