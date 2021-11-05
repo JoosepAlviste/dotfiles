@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   }
 
   -- Core utilities
-  use 'mjlbach/neovim-ui' -- Useful UI utilities (might be merged into Neovim)
   use 'tpope/vim-repeat' -- Make repeat (.) command smarter
   use { -- Automatic sessions
     'rmagatti/auto-session',

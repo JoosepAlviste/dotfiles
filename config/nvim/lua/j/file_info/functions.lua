@@ -1,15 +1,9 @@
-local api = vim.api
-
-local TOP_MARGIN = 2
-local RIGHT_MARGIN = 2
-
 local M = {}
 
 -- Show a simple popup with some basic file information
 function M.file_info()
-  local width = api.nvim_get_option 'columns'
+  local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.')
 
-  local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
   local type = vim.bo.ft
   local branch = vim.b.gitsigns_head
   local lsp_client_names = table.concat(
@@ -50,18 +44,8 @@ function M.file_info()
     return label .. ': ' .. padding .. text
   end, lines)
 
-  -- The popup should be as wide as the length of the longest line
-  local line_lengths = vim.tbl_map(function(line)
-    return #line
-  end, lines_texts)
-  local max_line_length = math.max(unpack(line_lengths))
-
-  require('ui.popup').create(lines_texts, {
-    col = width - RIGHT_MARGIN - max_line_length - 2,
-    line = TOP_MARGIN,
-    enter = false,
-    time = 3000,
-    padding = { 0, 1, 0, 1 },
+  vim.notify(lines_texts, vim.log.levels.INFO, {
+    title = 'File info',
   })
 end
 
