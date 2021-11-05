@@ -91,7 +91,12 @@ function M.on_attach(client, bufnr)
   buf_map('n', 'gr', [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]], opts)
 
   buf_map('n', 'K', [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts)
-  buf_map('n', '<leader>ca', [[<cmd>CodeAction<cr>]], opts)
+  buf_map(
+    'n',
+    '<leader>ca',
+    [[<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor())<cr>]],
+    opts
+  )
   buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename.float()<CR>]], opts)
 
   -- Navigate diagnostics

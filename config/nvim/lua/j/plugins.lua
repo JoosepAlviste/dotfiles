@@ -184,10 +184,6 @@ return require('packer').startup(function(use)
           require 'j.plugins.lsp.null_ls'
         end,
       },
-      {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
-      },
     },
   }
 
