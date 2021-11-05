@@ -39,7 +39,7 @@ return require('packer').startup(function(use)
     'rcarriga/nvim-notify',
     config = function()
       require('notify').setup {
-        background_colour = 'NormalFloat',
+        background_colour = require('palenightfall').colors.background,
       }
 
       vim.notify = require 'notify'
