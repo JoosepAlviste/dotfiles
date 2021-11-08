@@ -185,6 +185,7 @@ return require('packer').startup(function(use)
           require 'j.plugins.lsp.null_ls'
         end,
       },
+      'folke/lua-dev.nvim',
     },
   }
 

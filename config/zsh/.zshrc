@@ -128,6 +128,7 @@ fi
 path=(
   /usr/local/{bin,sbin}
   $HOME/dotfiles/bin
+  $HOME/Code/Programs/lua-language-server/bin/macOS
   $ANDROID_SDK_ROOT/emulator
   $ANDROID_SDK_ROOT/tools
   $ANDROID_SDK_ROOT/tools/bin
