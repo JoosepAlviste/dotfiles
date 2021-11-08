@@ -96,7 +96,7 @@ opt.shortmess:append {
 opt.clipboard = { 'unnamed', 'unnamedplus' }
 
 -- Navigation
-opt.scrolloff = 3 -- Lines to scroll when cursor leaves screen
+opt.scrolloff = 5 -- Lines to scroll when cursor leaves screen
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.suffixesadd = { '.md', '.js', '.ts', '.tsx' } -- File extensions not required when opening with `gf`
 
