@@ -68,7 +68,7 @@ map('n', '<leader>x', ':quitall<cr>', silent)
 map('n', '<leader>w', ':silent w!<cr>', silent)
 
 -- Clear search highlight
-map('n', '<localleader>x', ':nohlsearch<cr>', silent)
+map('n', '<localleader>x', [[:nohlsearch <bar>lua require('notify').dismiss()<cr>]], silent)
 
 -- Search & replace word under cursor
 map('n', '<leader>sr', ':%s/\\<<c-r><c-w>\\>/')

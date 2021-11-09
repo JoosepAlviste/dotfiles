@@ -44,6 +44,8 @@ function M.file_info()
     return label .. ': ' .. padding .. text
   end, lines)
 
+  require('notify').dismiss()
+
   vim.notify(lines_texts, vim.log.levels.INFO, {
     title = 'File info',
   })
