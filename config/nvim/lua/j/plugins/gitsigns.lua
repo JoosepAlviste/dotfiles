@@ -21,4 +21,7 @@ require('gitsigns').setup {
     ['o ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>',
     ['x ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>',
   },
+  preview_config = {
+    border = 'rounded',
+  },
 }
