@@ -2,7 +2,7 @@ local M = {}
 
 -- Show a simple popup with some basic file information
 function M.file_info()
-  local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.')
+  local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.'):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
 
   local type = vim.bo.ft
   local branch = vim.b.gitsigns_head

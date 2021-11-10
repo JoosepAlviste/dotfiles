@@ -108,7 +108,8 @@ function _G.LirSettings()
   vim.cmd [[setlocal norelativenumber]]
 
   -- echo cwd
-  vim.api.nvim_echo({ { vim.fn.expand '%', 'Normal' } }, false, {})
+  local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.'):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
+  vim.api.nvim_echo({ { filename, 'Normal' } }, false, {})
 end
 
 create_augroups {
