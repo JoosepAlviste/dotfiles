@@ -103,12 +103,7 @@ function M.on_attach(client, bufnr)
   buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<cr>]], opts)
   buf_map('n', ']g', [[<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<cr>]], opts)
   -- Show diagnostics popup with <leader>d
-  buf_map(
-    'n',
-    '<leader>d',
-    [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'cursor', border = 'rounded' })<cr>]],
-    opts
-  )
+  buf_map('n', '<leader>d', [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'line', border = 'rounded' })<cr>]], opts)
 
   -- Mouse mappings for easily navigating code
   if client.resolved_capabilities.hover then
