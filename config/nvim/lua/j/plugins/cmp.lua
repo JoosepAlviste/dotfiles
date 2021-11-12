@@ -26,7 +26,7 @@ cmp.setup {
   },
 
   documentation = {
-    winhighlight = 'NormalFloat:CmpDocumentation',
+    border = 'rounded',
   },
 
   experimental = {
