@@ -118,7 +118,18 @@ return require('packer').startup(function(use)
       require 'j.plugins.harpoon'
     end,
   }
-  use 'ggandor/lightspeed.nvim'
+  use {
+    'ggandor/lightspeed.nvim',
+    config = function()
+      require('lightspeed').setup {
+        exit_after_idle_msecs = {
+          labeled = 1500,
+          -- Increase timeout for f/t keys
+          unlabeled = 3000,
+        },
+      }
+    end,
+  }
 
   -- Advanced highlighting
   use {
