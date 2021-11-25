@@ -42,5 +42,6 @@ require('nvim-treesitter.configs').setup {
     'scss',
     'haskell',
     'hcl',
+    'vim',
   },
 }
