@@ -11,7 +11,7 @@
 # $ did | pbcopy
 function did()
 {
-    local containerId=$(docker ps --format 'table {{.ID}}\t{{.Image}}' | eval "fzf -m --header='docker:containerId' --layout=reverse --height=40%" | awk '{print $1}')
+    local containerId=$(docker ps --format 'table {{.ID}}\t{{.Names}}' | eval "fzf -m --header='docker:containerId' --layout=reverse --height=40%" | awk '{print $1}')
 
     if [ "$containerId" != "CONTAINER" ] && [ "x$containerId" != "x" ]
     then
