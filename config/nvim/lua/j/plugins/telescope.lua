@@ -1,9 +1,10 @@
 local actions = require 'telescope.actions'
 
 local map = require('j.utils').map
+local custom_pickers = require 'j.plugins.telescope_custom_pickers'
 
 map('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]])
-map('n', '<leader>ff', [[<cmd>lua require'telescope.builtin'.live_grep()<cr>]])
+map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope_custom_pickers'.live_grep()<cr>]])
 
 map('n', '<leader>fb', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]])
 map('n', '<leader>fh', [[<cmd>lua require'telescope.builtin'.help_tags()<cr>]])
@@ -47,6 +48,12 @@ require('telescope').setup {
     },
     live_grep = {
       path_display = { 'shorten' },
+      mappings = {
+        i = {
+          ['<c-f>'] = custom_pickers.actions.set_extension,
+          ['<c-l>'] = custom_pickers.actions.set_folders,
+        },
+      },
     },
   },
 }
