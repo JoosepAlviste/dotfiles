@@ -19,6 +19,7 @@ cmp.setup {
   },
 
   sources = {
+    { name = 'cmp_git' },
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
@@ -33,3 +34,5 @@ cmp.setup {
     ghost_text = true,
   },
 }
+
+require('cmp_git').setup()
