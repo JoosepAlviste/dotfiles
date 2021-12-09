@@ -1,8 +1,7 @@
 tmux*.log
 
 config/nvim/spell/*.spl
-config/nvim/plugin/packer_compiled.vim
-config/nvim/plugin/packer_compiled.lua
+config/nvim/lua/packer_compiled.lua
 
 config/zsh/zprofile.local
 config/zsh/zsh_history

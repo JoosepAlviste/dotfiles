@@ -1,3 +1,6 @@
+require 'impatient'
+require 'packer_compiled'
+
 local g = vim.g
 
 local map = require('j.utils').map
