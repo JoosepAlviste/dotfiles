@@ -1,5 +1,4 @@
 require 'impatient'
-require 'packer_compiled'
 
 local g = vim.g
 
@@ -16,6 +15,7 @@ require 'j.settings'
 require 'j.commands'
 require 'j.autocmds'
 require 'j.plugins'
+require 'packer_compiled'
 require 'j.mappings'
 require 'j.abbreviations'
 require 'j.plugins.web_devicons' -- Set up icons before statusline
