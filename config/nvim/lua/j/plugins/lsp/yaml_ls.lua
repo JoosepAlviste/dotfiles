@@ -5,7 +5,7 @@ require('lspconfig').yamlls.setup {
   settings = {
     yaml = {
       schemas = {
-        ['http://json.schemastore.org/gitlab-ci'] = '.gitlab-ci.yml',
+        ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '.gitlab-ci.yml',
         ['http://json.schemastore.org/composer'] = 'composer.yaml',
         ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = 'docker-compose*.yml',
         ['https://raw.githubusercontent.com/kamilkisiela/graphql-config/v3.0.3/config-schema.json'] = '.graphqlrc*',
