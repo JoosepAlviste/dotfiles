@@ -211,6 +211,14 @@ return require('packer').startup {
       },
     }
 
+    use {
+      'rcarriga/nvim-dap-ui',
+      requires = { 'mfussenegger/nvim-dap' },
+      config = function()
+        require 'j.plugins.dap'
+      end,
+    }
+
     use 'git@github.com:JoosepAlviste/scoro.vim.git'
     use {
       'editorconfig/editorconfig-vim', -- Project-specific settings
