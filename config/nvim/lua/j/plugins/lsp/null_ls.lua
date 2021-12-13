@@ -2,7 +2,7 @@ local util = require 'lspconfig.util'
 local null_ls = require 'null-ls'
 local b = null_ls.builtins
 
-null_ls.config {
+null_ls.setup {
   sources = {
     -- b.diagnostics.eslint_d,
     -- require('null-ls.helpers').conditional(function(utils)
@@ -15,6 +15,14 @@ null_ls.config {
     --         command = './node_modules/.bin/prettier',
     --       }
     -- end),
+
+    b.formatting.prettier.with {
+      filetypes = { 'typescriptreact', 'typescript' },
+      condition = function(utils)
+        return utils.root_has_file '.prettierrc.json' and not utils.root_has_file '.eslintrc.js'
+      end,
+      command = './node_modules/.bin/prettier',
+    },
 
     b.formatting.prettier.with {
       filetypes = { 'graphql' },
@@ -48,9 +56,4 @@ null_ls.config {
     b.code_actions.gitsigns,
   },
   diagnostics_format = '#{m} [#{c}]',
-}
-
-require('lspconfig')['null-ls'].setup {
-  on_attach = require('j.plugins.lsp').on_attach,
-  root_dir = util.root_pattern('package.json', '.git'),
 }
