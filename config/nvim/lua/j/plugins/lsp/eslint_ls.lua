@@ -6,5 +6,5 @@ require('lspconfig').eslint.setup {
 
     require('j.plugins.lsp').on_attach(client, bufnr)
   end,
-  root_dir = util.root_pattern('package.json', '.git'),
+  root_dir = util.root_pattern '.eslintrc.js',
 }
