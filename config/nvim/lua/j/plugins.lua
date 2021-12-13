@@ -53,7 +53,7 @@ return require('packer').startup {
         vim.notify = require 'notify'
       end,
     }
-    use { 'lewis6991/impatient.nvim' }
+    use 'lewis6991/impatient.nvim'
 
     -- Mapping improvements
     use {
@@ -100,6 +100,7 @@ return require('packer').startup {
 
         -- FZF sorter for Telescope
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        'nvim-telescope/telescope-ui-select.nvim',
       },
     }
     use {
