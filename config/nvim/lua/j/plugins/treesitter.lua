@@ -43,5 +43,6 @@ require('nvim-treesitter.configs').setup {
     'haskell',
     'hcl',
     'vim',
+    'markdown',
   },
 }
