@@ -27,6 +27,10 @@ require('telescope').setup {
 
         ['<s-up>'] = actions.cycle_history_prev,
         ['<s-down>'] = actions.cycle_history_next,
+
+        ['<C-w>'] = function()
+          vim.api.nvim_input '<c-s-w>'
+        end,
       },
     },
   },
