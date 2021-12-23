@@ -1,7 +1,7 @@
 require('j.utils').create_augroups {
   setup = {
     -- Automatically compile packer when saving the plugins' file
-    { 'BufWritePost', 'plugins.lua', 'PackerCompile' },
+    { 'BufWritePost', 'plugins.lua', 'source <afile> | PackerCompile' },
     -- Highlight text after yanking
     { 'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'Substitute', timeout = 200 })]] },
     -- Hide cursorline in insert mode
