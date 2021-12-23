@@ -157,7 +157,12 @@ return require('packer').startup {
     }
 
     -- Misc
-    use 'kyazdani42/nvim-web-devicons'
+    use {
+      'kyazdani42/nvim-web-devicons',
+      config = function()
+        require 'j.plugins.web_devicons'
+      end,
+    }
 
     -- Programming
     --------------

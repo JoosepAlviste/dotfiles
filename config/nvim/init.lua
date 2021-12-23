@@ -18,7 +18,6 @@ require 'j.plugins'
 require 'packer_compiled'
 require 'j.mappings'
 require 'j.abbreviations'
-require 'j.plugins.web_devicons' -- Set up icons before statusline
 require 'j.statusline'
 require 'j.tabline'
 require 'j.file_info'
