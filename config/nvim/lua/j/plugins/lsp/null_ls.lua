@@ -1,4 +1,3 @@
-local util = require 'lspconfig.util'
 local null_ls = require 'null-ls'
 local b = null_ls.builtins
 
@@ -56,4 +55,5 @@ null_ls.setup {
     b.code_actions.gitsigns,
   },
   diagnostics_format = '#{m} [#{c}]',
+  on_attach = require('j.plugins.lsp').on_attach,
 }
