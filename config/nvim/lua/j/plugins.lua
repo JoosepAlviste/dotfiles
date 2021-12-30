@@ -258,6 +258,15 @@ return require('packer').startup {
       end,
     }
 
+    -- Notes
+    use {
+      'mickael-menu/zk-nvim',
+      requires = { 'neovim/nvim-lspconfig' },
+      config = function()
+        require 'j.plugins.zk'
+      end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
       require('packer').sync()
