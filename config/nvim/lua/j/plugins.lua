@@ -52,6 +52,7 @@ return require('packer').startup {
 
         vim.notify = require 'notify'
       end,
+      requires = { 'palenightfall.nvim' },
     }
     use 'lewis6991/impatient.nvim'
 
