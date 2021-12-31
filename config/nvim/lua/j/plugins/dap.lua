@@ -30,18 +30,18 @@ dap.configurations.javascript = {
 
 require('dapui').setup()
 
-map('n', '<F5>', [[:lua require'dap'.continue()<cr>]], { silent = true })
-map('n', '<F6>', [[:lua require'dap'.step_over()<cr>]], { silent = true })
-map('n', '<F7>', [[:lua require'dap'.step_into()<cr>]], { silent = true })
-map('n', '<F8>', [[:lua require'dap'.step_out()<cr>]], { silent = true })
-
-map('n', '<leader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], { silent = true })
-map(
-  'n',
-  '<leader>dB',
-  [[:lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>]],
-  { silent = true }
-)
-map('n', '<leader>dr', [[:lua require('dap').repl_open()<cr>]], { silent = true })
-
-map('n', '<leader>du', [[:lua require('dapui').toggle()<cr>]], { silent = true })
+map('n', '<F5>', dap.continue, { silent = true })
+map('n', '<F6>', dap.step_over, { silent = true })
+map('n', '<F7>', dap.step_into, { silent = true })
+map('n', '<F8>', dap.step_out, { silent = true })
+--
+-- map('n', '<leader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], { silent = true })
+-- map(
+--   'n',
+--   '<leader>dB',
+--   [[:lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>]],
+--   { silent = true }
+-- )
+-- map('n', '<leader>dr', [[:lua require('dap').repl_open()<cr>]], { silent = true })
+--
+-- map('n', '<leader>du', [[:lua require('dapui').toggle()<cr>]], { silent = true })

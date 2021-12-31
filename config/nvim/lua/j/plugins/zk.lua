@@ -1,6 +1,8 @@
+local zk = require 'zk'
+
 local map = require('j.utils').map
 
-require('zk').setup {
+zk.setup {
   lsp = {
     config = {
       on_attach = require('j.plugins.lsp').on_attach,
@@ -11,6 +13,6 @@ require('zk').setup {
 require('telescope').load_extension 'zk'
 
 map('n', '<leader>zn', [[:lua require('zk').new(nil, {title=''})<left><left><left>]])
-map('x', '<leader>zn', [[<cmd>lua require('zk').new_link()<cr>]])
-map('n', '<leader>zl', [[<cmd>lua require('telescope').extensions.zk.notes()<cr>]])
-map('n', '<leader>zt', [[<cmd>lua require('telescope').extensions.zk.tags()<cr>]])
+map('x', '<leader>zn', zk.new_link)
+map('n', '<leader>zl', require('telescope').extensions.zk.notes)
+map('n', '<leader>zt', require('telescope').extensions.zk.tags)

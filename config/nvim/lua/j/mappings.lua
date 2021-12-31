@@ -49,7 +49,9 @@ map('n', '[l', ':lprev<cr>', { silent = true })
 -- dirvish), then we need to manually configure the mapping again
 map('n', 'gx', [[:call joosep#open#open_url_under_cursor()<cr>]], { silent = true })
 
-map('n', '<F10>', [[<cmd>lua require('j.syntax').print_syntax()<cr>]], { silent = true })
+map('n', '<F10>', function()
+  require('j.syntax').print_syntax()
+end, { silent = true })
 
 -- Open the current file's directory
 map('n', '-', [[expand('%') == '' ? ':e ' . getcwd() . '<cr>' : ':e %:h<cr>']], { expr = true })

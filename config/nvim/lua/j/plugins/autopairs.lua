@@ -2,7 +2,7 @@ local autopairs = require 'nvim-autopairs'
 
 local map = require('j.utils').map
 
-function _G.confirm()
+local function confirm()
   return autopairs.check_break_line_char()
 end
 
@@ -11,4 +11,4 @@ autopairs.setup {
   enable_moveright = true,
 }
 
-map('i', '<cr>', [[v:lua.confirm()]], { expr = true, noremap = true })
+map('i', '<cr>', confirm, { expr = true, noremap = true })

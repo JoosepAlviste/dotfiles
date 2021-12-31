@@ -2,6 +2,9 @@ local finders = require 'telescope.finders'
 local pickers = require 'telescope.pickers'
 local make_entry = require 'telescope.make_entry'
 local conf = require('telescope.config').values
+local builtin = require 'telescope.builtin'
+
+local buf_map = require('j.utils').buf_map
 
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('DiagnosticSignError', { numhl = 'LspDiagnosticsLineNrError', text = '' })
@@ -78,36 +81,36 @@ end
 local M = {}
 
 function M.on_attach(client, bufnr)
-  local function buf_map(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-
   -- Set up keymaps
   local opts = { noremap = true, silent = true }
-  buf_map('n', '<c-]>', [[<cmd>lua require('j.plugins.lsp').definitions()<cr>]], opts)
-  buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-  buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-  buf_map('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-  buf_map('n', 'gr', [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]], opts)
+  buf_map(bufnr, 'n', '<c-]>', M.definitions, opts)
+  buf_map(bufnr, 'n', 'gd', vim.lsp.buf.declaration, opts)
+  buf_map(bufnr, 'n', 'gi', vim.lsp.buf.implementation, opts)
+  buf_map(bufnr, 'n', 'gD', vim.lsp.buf.type_definition, opts)
+  buf_map(bufnr, 'n', 'gr', builtin.lsp_references, opts)
 
-  buf_map('n', 'K', [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts)
-  buf_map(
-    'n',
-    '<leader>ca',
-    [[<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor())<cr>]],
-    opts
-  )
-  buf_map('n', '<space>rn', [[<cmd>lua vim.lsp.buf.rename.float()<CR>]], opts)
+  buf_map(bufnr, 'n', 'K', vim.lsp.buf.hover, opts)
+  buf_map(bufnr, 'n', '<leader>ca', function()
+    builtin.lsp_code_actions(require('telescope.themes').get_cursor())
+  end, opts)
+  buf_map(bufnr, 'n', '<space>rn', vim.lsp.buf.rename.float, opts)
 
   -- Navigate diagnostics
-  buf_map('n', '[g', [[<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<cr>]], opts)
-  buf_map('n', ']g', [[<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<cr>]], opts)
+  buf_map(bufnr, 'n', '[g', function()
+    vim.diagnostic.goto_prev { float = { border = 'rounded' } }
+  end, opts)
+  buf_map(bufnr, 'n', ']g', function()
+    vim.diagnostic.goto_next { float = { border = 'rounded' } }
+  end, opts)
   -- Show diagnostics popup with <leader>d
-  buf_map('n', '<leader>d', [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'line', border = 'rounded' })<cr>]], opts)
+  buf_map(bufnr, 'n', '<leader>d', function()
+    vim.diagnostic.open_float(0, { scope = 'line', border = 'rounded' })
+  end, opts)
 
   -- Mouse mappings for easily navigating code
   if client.resolved_capabilities.hover then
     buf_map(
+      bufnr,
       'n',
       '<LeftMouse>',
       [[<LeftMouse><cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>]],
@@ -115,7 +118,7 @@ function M.on_attach(client, bufnr)
     )
   end
   if client.resolved_capabilities.goto_definition then
-    buf_map('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
+    buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
 
   if client.resolved_capabilities.document_formatting then

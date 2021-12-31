@@ -1,18 +1,19 @@
 local actions = require 'telescope.actions'
+local builtin = require 'telescope.builtin'
 
 local map = require('j.utils').map
 local custom_pickers = require 'j.plugins.telescope_custom_pickers'
 
-map('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]])
-map('n', '<leader>ff', [[<cmd>lua require'j.plugins.telescope_custom_pickers'.live_grep()<cr>]])
+map('n', '<c-p>', builtin.find_files)
+map('n', '<leader>ff', custom_pickers.live_grep)
 
-map('n', '<leader>fb', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]])
-map('n', '<leader>fh', [[<cmd>lua require'telescope.builtin'.help_tags()<cr>]])
-map('n', '<leader>fr', [[<cmd>lua require'telescope.builtin'.oldfiles()<cr>]])
-map('n', '<leader>fq', [[<cmd>lua require'telescope.builtin'.quickfix()<cr>]])
+map('n', '<leader>fb', builtin.buffers)
+map('n', '<leader>fh', builtin.help_tags)
+map('n', '<leader>fr', builtin.oldfiles)
+map('n', '<leader>fq', builtin.quickfix)
 
-map('n', '<leader>fx', [[<cmd>lua require'telescope.builtin'.git_status()<cr>]])
-map('n', '<leader>fc', [[<cmd>lua require'telescope.builtin'.git_commits()<cr>]])
+map('n', '<leader>fx', builtin.git_status)
+map('n', '<leader>fc', builtin.git_commits)
 
 require('telescope').setup {
   defaults = {

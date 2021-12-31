@@ -5,6 +5,7 @@ local clipboard_actions = require 'lir.clipboard.actions'
 local Path = require 'plenary.path'
 
 local create_augroups = require('j.utils').create_augroups
+local buf_map = require('j.utils').buf_map
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -91,20 +92,13 @@ require('lir').setup {
 }
 
 function _G.LirSettings()
-  vim.api.nvim_buf_set_keymap(
-    0,
-    'x',
-    'J',
-    [[:<C-u>lua require'lir.mark.actions'.toggle_mark('v')<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    0,
-    'n',
-    '-',
-    [[:<C-u>lua require'lir.actions'.up()<CR>]],
-    { noremap = true, silent = true }
-  )
+  buf_map(0, 'x', 'J', function()
+    mark_actions.toggle_mark 'v'
+  end, {
+    noremap = true,
+    silent = true,
+  })
+  buf_map(0, 'n', '-', actions.up, { noremap = true, silent = true })
   vim.cmd [[setlocal nonumber]]
   vim.cmd [[setlocal norelativenumber]]
 
