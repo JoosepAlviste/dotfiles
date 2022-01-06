@@ -86,7 +86,8 @@ return require('packer').startup {
       end,
     }
     use 'tpope/vim-surround' -- Surround stuff with things
-    use 'knubie/vim-kitty-navigator' -- Move between Vim & Kitty windows easily
+    -- Move between Vim & Kitty windows easily
+    use { 'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' }
 
     -- Navigation
     use {
