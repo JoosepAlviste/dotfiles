@@ -21,11 +21,13 @@ g.nvim_tree_icons = {
     symlink_open = '',
   },
 }
-g.nvim_tree_ignore = { '.git', '.DS_Store' }
 
 -- Mappings
 map('n', '<c-n>', ':NvimTreeToggle<cr>', { silent = true })
 
 require('nvim-tree').setup {
   auto_close = true,
+  filters = {
+    custom = { '.git', '.DS_Store' },
+  },
 }
