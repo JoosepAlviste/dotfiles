@@ -3,6 +3,7 @@ local zk = require 'zk'
 local map = require('j.utils').map
 
 zk.setup {
+  picker = 'telescope',
   lsp = {
     config = {
       on_attach = require('j.plugins.lsp').on_attach,
@@ -13,6 +14,6 @@ zk.setup {
 require('telescope').load_extension 'zk'
 
 map('n', '<leader>zn', [[:lua require('zk').new(nil, {title=''})<left><left><left>]])
-map('x', '<leader>zn', [[:ZkNewFromTitleSelection<cr>]])
-map('n', '<leader>zl', require('telescope').extensions.zk.notes)
-map('n', '<leader>zt', require('telescope').extensions.zk.tags)
+map('x', '<leader>zn', [[:ZkNewFromTitleSelection<cr>]], { silent = true })
+map('n', '<leader>zl', [[:ZkNotes<cr>]], { silent = true })
+map('n', '<leader>zt', [[:ZkTags<cr>]], { silent = true })
