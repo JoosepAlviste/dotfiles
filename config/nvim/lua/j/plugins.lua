@@ -187,6 +187,7 @@ return require('packer').startup {
         require 'j.plugins.lsp.terraform_ls'
         require 'j.plugins.lsp.haskell_ls'
         require 'j.plugins.lsp.eslint_ls'
+        require 'j.plugins.lsp.ltex_ls'
       end,
       requires = {
         {
