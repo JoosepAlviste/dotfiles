@@ -17,6 +17,9 @@ brew install \
     jesseduffield/lazygit/lazygit \
     ffmpegthumbnailer \
     hashicorp/tap/terraform-ls \
+    lua-language-server \
+    stylua \
+    zk \
     bat \
     exa \
     prettyping \
@@ -41,7 +44,8 @@ npm i -g \
     vscode-langservers-extracted \
     yaml-language-server \
     dockerfile-language-server-nodejs \
-    eslint_d
+    eslint_d \
+    @volar/server
 ```
 
 
