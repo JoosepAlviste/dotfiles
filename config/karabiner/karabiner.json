@@ -646,6 +646,203 @@
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
                     "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 834,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "d"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "s"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "e"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "f"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "t"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "g"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "d"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "i"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "u"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "j"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "n"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "k"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "e"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "l"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "i"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "n"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "k"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "o"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "y"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "p"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "semicolon"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "r"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "p"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "s"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "r"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "semicolon"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "o"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "t"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "g"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "u"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "l"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "y"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "j"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 49970,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -1030,6 +1227,19 @@
                         "is_keyboard": true,
                         "is_pointing_device": false,
                         "product_id": 832,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 834,
                         "vendor_id": 1452
                     },
                     "ignore": false,
