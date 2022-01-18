@@ -3,18 +3,6 @@ local b = null_ls.builtins
 
 null_ls.setup {
   sources = {
-    -- b.diagnostics.eslint_d,
-    -- require('null-ls.helpers').conditional(function(utils)
-    --   local have_prettier = utils.root_has_file 'node_modules/.bin/prettier'
-    --   local have_eslint = utils.root_has_file '.eslintrc.js'
-    --
-    --   return have_eslint and b.formatting.eslint_d
-    --     or have_prettier
-    --       and b.formatting.prettier.with {
-    --         command = './node_modules/.bin/prettier',
-    --       }
-    -- end),
-
     b.formatting.prettier.with {
       filetypes = { 'typescriptreact', 'typescript' },
       condition = function(utils)
@@ -39,7 +27,7 @@ null_ls.setup {
       command = './node_modules/.bin/stylelint',
     },
     b.formatting.stylelint.with {
-      filetypes = { 'css', 'scss', 'vue' },
+      filetypes = { 'css', 'scss' },
       condition = function(utils)
         return utils.root_has_file '.stylelintrc.json'
       end,
