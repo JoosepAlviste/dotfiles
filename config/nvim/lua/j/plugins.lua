@@ -269,6 +269,9 @@ return require('packer').startup {
       end,
     }
 
+    -- Testing
+    use 'kassio/neoterm' -- Use Ctrl+Q to toggle a terminal
+    use 'vim-test/vim-test' -- Run tests easily
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
       require('packer').sync()
