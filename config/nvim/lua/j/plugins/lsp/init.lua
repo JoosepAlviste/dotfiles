@@ -108,15 +108,6 @@ function M.on_attach(client, bufnr)
   end, opts)
 
   -- Mouse mappings for easily navigating code
-  if client.resolved_capabilities.hover then
-    buf_map(
-      bufnr,
-      'n',
-      '<LeftMouse>',
-      [[<LeftMouse><cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>]],
-      { silent = true }
-    )
-  end
   if client.resolved_capabilities.goto_definition then
     buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
