@@ -91,3 +91,5 @@
     fixup = !sha=$( git -c color.ui=always log --oneline -n 1000 | fzf +s --no-multi --prompt 'Fixup> ' ) && git commit --fixup "${sha%% *}"
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
