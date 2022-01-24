@@ -191,7 +191,7 @@ function M.definitions(opts)
   return list_or_jump('textDocument/definition', 'LSP Definitions', opts)
 end
 
-vim.lsp.handlers['textDocument/rename'] = function(err, result)
+vim.lsp.handlers['textDocument/rename'] = function(err, result, ctx)
   if err then
     vim.notify(("Error running lsp query 'rename': " .. err), vim.log.levels.ERROR)
   end
@@ -210,7 +210,9 @@ vim.lsp.handlers['textDocument/rename'] = function(err, result)
 
     vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(old_name, new_name) })
   end
-  vim.lsp.util.apply_workspace_edit(result)
+
+  local client = vim.lsp.get_client_by_id(ctx.client_id)
+  vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
 end
 
 vim.lsp.buf.rename = {
@@ -244,14 +246,14 @@ vim.lsp.buf.rename = {
       0,
       'i',
       '<CR>',
-      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. ',' .. win .. "')<CR>",
+      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. "'," .. win .. ')<CR>',
       map_opts
     )
     vim.api.nvim_buf_set_keymap(
       0,
       'n',
       '<CR>',
-      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. ',' .. win .. "')<CR>",
+      "<cmd>stopinsert | lua vim.lsp.buf.rename.apply('" .. curr_name .. "'," .. win .. ')<CR>',
       map_opts
     )
   end,
