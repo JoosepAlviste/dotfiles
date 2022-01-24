@@ -45,7 +45,8 @@ npm i -g \
     yaml-language-server \
     dockerfile-language-server-nodejs \
     eslint_d \
-    @volar/server
+    @volar/server \
+    @prisma/language-server
 ```
 
 
