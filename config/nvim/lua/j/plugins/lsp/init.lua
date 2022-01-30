@@ -154,37 +154,50 @@ local function list_or_jump(action, title, opts)
   opts = opts or {}
 
   local params = vim.lsp.util.make_position_params()
-  local result, err = vim.lsp.buf_request_sync(0, action, params, opts.timeout or 10000)
-  if err then
-    vim.api.nvim_err_writeln('Error when executing ' .. action .. ' : ' .. err)
-    return
-  end
-  local flattened_results = {}
-  for _, server_results in pairs(result) do
-    if server_results.result then
-      vim.list_extend(flattened_results, server_results.result)
+  vim.lsp.buf_request(0, action, params, function(err, result, ctx, _config)
+    if err then
+      vim.api.nvim_err_writeln('Error when executing ' .. action .. ' : ' .. err.message)
+      return
     end
-  end
+    local flattened_results = {}
+    if result then
+      -- textDocument/definition can return Location or Location[]
+      if not vim.tbl_islist(result) then
+        flattened_results = { result }
+      end
 
-  -- This is the only added step to the Telescope function
-  flattened_results = filter_out_libraries_from_lsp_items(flattened_results)
+      vim.list_extend(flattened_results, result)
+    end
 
-  if #flattened_results == 0 then
-    return
-  elseif #flattened_results == 1 then
-    vim.lsp.util.jump_to_location(flattened_results[1])
-  else
-    local locations = vim.lsp.util.locations_to_items(flattened_results)
-    pickers.new(opts, {
-      prompt_title = title,
-      finder = finders.new_table {
-        results = locations,
-        entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
-      },
-      previewer = conf.qflist_previewer(opts),
-      sorter = conf.generic_sorter(opts),
-    }):find()
-  end
+    -- This is the only added step to the Telescope function
+    flattened_results = filter_out_libraries_from_lsp_items(flattened_results)
+
+    local offset_encoding = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
+
+    if #flattened_results == 0 then
+      return
+    elseif #flattened_results == 1 and opts.jump_type ~= 'never' then
+      if opts.jump_type == 'tab' then
+        vim.cmd 'tabedit'
+      elseif opts.jump_type == 'split' then
+        vim.cmd 'new'
+      elseif opts.jump_type == 'vsplit' then
+        vim.cmd 'vnew'
+      end
+      vim.lsp.util.jump_to_location(flattened_results[1], offset_encoding)
+    else
+      local locations = vim.lsp.util.locations_to_items(flattened_results, offset_encoding)
+      pickers.new(opts, {
+        prompt_title = title,
+        finder = finders.new_table {
+          results = locations,
+          entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
+        },
+        previewer = conf.qflist_previewer(opts),
+        sorter = conf.generic_sorter(opts),
+      }):find()
+    end
+  end)
 end
 
 function M.definitions(opts)
