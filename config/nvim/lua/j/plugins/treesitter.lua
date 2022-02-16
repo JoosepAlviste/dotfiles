@@ -45,5 +45,6 @@ require('nvim-treesitter.configs').setup {
     'vim',
     'markdown',
     'prisma',
+    'svelte',
   },
 }
