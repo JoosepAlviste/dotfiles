@@ -187,6 +187,7 @@ return require('packer').startup {
         require 'j.plugins.lsp.prisma_ls'
         require 'j.plugins.lsp.html_ls'
         require 'j.plugins.lsp.svelte_ls'
+        require 'j.plugins.lsp.tailwind_ls'
       end,
       requires = {
         {
