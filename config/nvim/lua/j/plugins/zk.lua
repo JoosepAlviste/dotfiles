@@ -13,7 +13,7 @@ zk.setup {
 }
 require('telescope').load_extension 'zk'
 
-map('n', '<leader>zn', [[:lua require('zk').new(nil, {title=''})<left><left><left>]])
+map('n', '<leader>zn', [[:ZkNew {title=''}<left><left>]])
 map('x', '<leader>zn', [[:ZkNewFromTitleSelection<cr>]], { silent = true })
 map('n', '<leader>zl', [[:ZkNotes<cr>]], { silent = true })
 map('n', '<leader>zt', [[:ZkTags<cr>]], { silent = true })
