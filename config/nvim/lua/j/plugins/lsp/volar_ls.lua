@@ -1,5 +1,6 @@
 -- https://github.com/johnsoncodehk/volar
 require('lspconfig').volar.setup {
+  cmd = { 'volar-server', '--stdio' },
   on_attach = function(client, bufnr)
     -- Disable the document formatting for vuels because we want to use null-ls
     -- with ESLint
