@@ -96,3 +96,6 @@ require('j.utils').create_augroups {
     { 'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']] },
   },
 }
+
+-- Use a global statusline for all windows
+vim.opt.laststatus = 3
