@@ -188,6 +188,9 @@ compdef _directories take
 
 source <(npm completion)
 
+# tabtab source for packages
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
 # Aliases {{{
 
 # Base
