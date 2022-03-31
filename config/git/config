@@ -93,3 +93,6 @@
 	rebase = false
 [init]
 	defaultBranch = main
+
+[includeIf "gitdir:~/Code/Scoro/"]
+  path = ~/.config/git/config-scoro
