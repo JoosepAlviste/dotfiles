@@ -16,7 +16,7 @@ require('j.utils').create_augroups {
     {
       'FocusGained,BufEnter,CursorHold,CursorHoldI',
       '*',
-      [[silent! if mode() != 'c' | checktime | endif]],
+      [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
     },
     -- Notification after file change
     -- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
