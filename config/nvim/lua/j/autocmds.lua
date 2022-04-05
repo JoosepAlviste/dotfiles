@@ -1,40 +1,54 @@
-require('j.utils').create_augroups {
-  setup = {
-    -- Automatically compile packer when saving the plugins' file
-    { 'BufWritePost', 'plugins.lua', 'source <afile> | PackerCompile' },
-    -- Highlight text after yanking
-    { 'TextYankPost', '*', [[lua require('vim.highlight').on_yank({ higroup = 'Substitute', timeout = 200 })]] },
-    -- Hide cursorline in insert mode
-    { 'InsertLeave,WinEnter', '*', 'set cursorline' },
-    { 'InsertEnter,WinLeave', '*', 'set nocursorline' },
-    -- Automatically close Vim if the quickfix window is the only one open
-    { 'WinEnter', '*', [[if winnr('$') == 1 && &buftype == 'quickfix' | q | endif]] },
-    -- Automatically update changed file in Vim
-    -- Triger `autoread` when files changes on disk
-    -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-    -- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-    {
-      'FocusGained,BufEnter,CursorHold,CursorHoldI',
-      '*',
-      [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
-    },
-    -- Notification after file change
-    -- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-    {
-      'FileChangedShellPost',
-      '*',
-      [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
-    },
-    { 'VimEnter', '*', [[lua require('j.utils').update_plugins_every_day()]] },
-  },
-  -- Simple one-liner filetype specific things that I don't really want to put
-  -- into ftplugin files for whatever reason
-  simple_filetypes = {
-    -- The `typescriptreact` FileType autocmd gets executed BEFORE the
-    -- `ftplugin` file. However, we need to set the commentstring before any
-    -- other FileType autocmds
-    { 'FileType', 'typescriptreact', [[setlocal commentstring=//\ %s]] },
-    -- Open images automatically
-    { 'FileType', 'image', [[lua require('j.filesystem').open_special_file()]] },
-  },
-}
+local group = vim.api.nvim_create_augroup('Setup', {})
+
+-- Automatically compile packer when saving the plugins' file
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = group,
+  pattern = 'plugins.lua',
+  command = 'source <afile> | PackerCompile',
+})
+
+-- Highlight text after yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = group,
+  callback = function()
+    require('vim.highlight').on_yank { higroup = 'Substitute', timeout = 200 }
+  end,
+})
+
+-- Hide cursorline in insert mode
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, { command = 'set cursorline', group = group })
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { command = 'set nocursorline', group = group })
+
+-- Automatically close Vim if the quickfix window is the only one open
+vim.api.nvim_create_autocmd('WinEnter', {
+  group = group,
+  callback = function()
+    if vim.fn.winnr '$' == 1 and vim.fn.win_gettype() == 'quickfix' then
+      vim.cmd [[q]]
+    end
+  end,
+})
+
+-- Automatically update changed file in Vim
+-- Triger `autoread` when files changes on disk
+-- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+-- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  group = group,
+  command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
+})
+
+-- Notification after file change
+-- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  group = group,
+  command = [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
+})
+
+-- Update plugins automatically periodically
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = group,
+  callback = function()
+    require('j.utils').update_plugins_every_day()
+  end,
+})

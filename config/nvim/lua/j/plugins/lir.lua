@@ -4,7 +4,6 @@ local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require 'lir.clipboard.actions'
 local Path = require 'plenary.path'
 
-local create_augroups = require('j.utils').create_augroups
 local buf_map = require('j.utils').buf_map
 
 vim.g.loaded_netrw = 1
@@ -91,28 +90,32 @@ require('lir').setup {
   hide_cursor = true,
 }
 
-function _G.LirSettings()
-  buf_map(0, 'x', 'J', function()
-    mark_actions.toggle_mark 'v'
-  end, {
-    noremap = true,
-    silent = true,
-  })
-  buf_map(0, 'n', '-', actions.up, { noremap = true, silent = true })
-  vim.cmd [[setlocal nonumber]]
-  vim.cmd [[setlocal norelativenumber]]
+local group = vim.api.nvim_create_augroup('LirSettings', {})
+vim.api.nvim_create_autocmd('FileType', {
+  group = group,
+  pattern = 'lir',
+  callback = function()
+    buf_map(0, 'x', 'J', function()
+      mark_actions.toggle_mark 'v'
+    end, {
+      noremap = true,
+      silent = true,
+    })
+    buf_map(0, 'n', '-', actions.up, { noremap = true, silent = true })
+    vim.cmd [[setlocal nonumber]]
+    vim.cmd [[setlocal norelativenumber]]
 
-  -- echo cwd
-  local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.'):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
-  vim.api.nvim_echo({ { filename, 'Normal' } }, false, {})
-end
+    -- echo cwd
+    local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.'):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
+    vim.api.nvim_echo({ { filename, 'Normal' } }, false, {})
+  end,
+})
 
-create_augroups {
-  lir_settings = {
-    { 'Filetype', 'lir', ':lua LirSettings()' },
-    -- Reload lir once a session has been loaded. Otherwise, lir might load
-    -- after the session and if a folder was active, then the buffer would
-    -- break.
-    { 'SessionLoadPost', '*', [[lua require('lir').init()]] },
-  },
-}
+-- Reload lir once a session has been loaded. Otherwise, lir might load after
+-- the session and if a folder was active, then the buffer would break.
+vim.api.nvim_create_autocmd('SessionLoadPost', {
+  group = group,
+  callback = function()
+    require('lir').init()
+  end,
+})

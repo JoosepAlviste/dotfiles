@@ -91,11 +91,13 @@ function _G.statusline(winnr)
   return color(is_active, mode_color, '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
 end
 
-require('j.utils').create_augroups {
-  statusline = {
-    { 'BufWinEnter,WinEnter', '*', [[lua vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')']] },
-  },
-}
+local group = vim.api.nvim_create_augroup('Statusline', {})
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
+  group = group,
+  callback = function()
+    vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')'
+  end,
+})
 
 -- Use a global statusline for all windows
 vim.opt.laststatus = 3

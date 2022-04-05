@@ -74,8 +74,6 @@ opt.completeopt = { 'menuone', 'noselect' } -- Completion menu
 --  TODO: Might need to use concat because of
 --  https://github.com/neovim/neovim/issues/14669
 opt.formatoptions = table.concat {
-  'c', -- Auto-wrap comments
-  'a', -- Auto format paragraph
   '2', -- Use the second line's indent vale when indenting (allows indented first line)
   'q', -- Formatting comments with `gq`
   'w', -- Trailing whitespace indicates a paragraph
