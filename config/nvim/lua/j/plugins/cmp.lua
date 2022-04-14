@@ -7,11 +7,8 @@ cmp.setup {
     end,
   },
 
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+  mapping = cmp.mapping.preset.insert {
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
     ['<C-y>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
@@ -26,8 +23,8 @@ cmp.setup {
     { name = 'buffer', keyword_length = 5 },
   },
 
-  documentation = {
-    border = 'rounded',
+  window = {
+    documentation = cmp.config.window.bordered(),
   },
 
   experimental = {
