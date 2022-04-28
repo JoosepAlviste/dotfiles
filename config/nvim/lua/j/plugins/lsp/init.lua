@@ -92,7 +92,7 @@ function M.on_attach(client, bufnr)
 
   buf_map(bufnr, 'n', 'K', vim.lsp.buf.hover, opts)
   buf_map(bufnr, 'n', '<leader>ca', function()
-    builtin.lsp_code_actions(require('telescope.themes').get_cursor())
+    vim.lsp.buf.code_action()
   end, opts)
   buf_map(bufnr, 'n', '<space>rn', vim.lsp.buf.rename.float, opts)
 
