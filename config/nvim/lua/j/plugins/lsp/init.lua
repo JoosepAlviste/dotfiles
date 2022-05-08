@@ -79,6 +79,8 @@ end
 
 -- Construct some utilities that are needed for setting up the LSP servers
 
+local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
 local M = {}
 
 function M.on_attach(client, bufnr)
@@ -109,15 +111,19 @@ function M.on_attach(client, bufnr)
   end, opts)
 
   -- Mouse mappings for easily navigating code
-  if client.resolved_capabilities.goto_definition then
+  if client.server_capabilities.definitionProvider then
     buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
 
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd [[augroup LspFormatting]]
-    vim.cmd [[autocmd! * <buffer>]]
-    vim.cmd [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-    vim.cmd [[augroup END]]
+  if client.supports_method 'textDocument/formatting' then
+    vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = formatting_augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format {}
+      end,
+    })
   end
 end
 

@@ -8,6 +8,13 @@ local luadev = require('lua-dev').setup {
     flags = {
       debounce_text_changes = 150,
     },
+    settings = {
+      Lua = {
+        format = {
+          enable = false,
+        },
+      },
+    },
   },
 }
 
