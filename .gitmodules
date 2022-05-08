@@ -10,3 +10,18 @@
 [submodule "config/hammerspoon/stackline"]
 	path = config/hammerspoon/stackline
 	url = https://github.com/AdamWagner/stackline.git
+[submodule "config/zsh/.packages/zsh-z"]
+	path = config/zsh/.packages/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
+[submodule "config/zsh/.packages/fast-syntax-highlighting"]
+	path = config/zsh/.packages/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+[submodule "config/zsh/.packages/zsh-autosuggestions"]
+	path = config/zsh/.packages/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "config/zsh/.packages/fzf-tab"]
+	path = config/zsh/.packages/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
+[submodule "config/zsh/.packages/ohmyzsh"]
+	path = config/zsh/.packages/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git

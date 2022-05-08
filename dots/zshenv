@@ -1,47 +1,94 @@
-# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
-#
-# Do not modify this file unless you know exactly what you are doing.
-# It is strongly recommended to keep all shell customization and configuration
-# (including exported environment variables such as PATH) in ~/.zshrc or in
-# files sourced from ~/.zshrc. If you are certain that you must export some
-# environment variables in ~/.zshenv, do it where indicated by comments below.
+# Set up simple environment variables
 
-if [ -n "${ZSH_VERSION-}" ]; then
-  : ${ZDOTDIR:=~/.config/zsh}
-  setopt no_global_rcs
-  if [[ -o no_interactive && -z "${Z4H_BOOTSTRAPPING-}" ]]; then
-    return
-  fi
-  setopt no_rcs
-  unset Z4H_BOOTSTRAPPING
+# Set up XDG paths
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
+    XDG_RUNTIME_DIR=/tmp
+fi
+export XDG_RUNTIME_DIR
 
-  # If you are certain that you must export some environment variables
-  # in ~/.zshenv (see comments at the top!), do it here:
-  #
-  #   export GOPATH=$HOME/go
-  #
-  # Do not change anything else in this file.
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
+export GPG_TTY=$TTY
+
+# Applications
+export BROWSER='open'
+export TERMINAL='kitty'
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+
+export ZK_NOTEBOOK_DIR="$HOME/Dropbox/notes"
+
+# Clean up ~
+
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+export JUPYTER_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/jupyter
+export MPLCONFIGDIR=${XDG_CONFIG_HOME:-$HOME/.config}/matplotlib
+
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export npm_config_devdir=$XDG_CONFIG_HOME/node-gyp
+
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+# Z
+export ZSHZ_DATA="$XDG_DATA_HOME/z/z"
+
+# Android
+export ANDROID_SDK_ROOT="$XDG_CONFIG_HOME/android"
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME/android/"
+export ANDROID_AVD_HOME="$XDG_DATA_HOME/android/avd/"
+export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
+
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+export LESSHISTFILE="-"
+
+# Use a better command for searching with fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --ignore-file ~/.config/ripgrep/ignore'
+
+# FZF styles
+export FZF_DEFAULT_OPTS="
+--bind='ctrl-o:execute(nvim {})+abort' 
+--inline-info
+--color=bg+:#212331,bg:#252837,spinner:#c594c5,hl:#82aaff
+--color=fg:#a6accd,header:#7982B4,info:#ffcb6b,pointer:#c792ea
+--color=marker:#ffcb6b,fg+:#a6accd,prompt:#c792ea,hl+:#c792ea
+"
+
+# Java
+if [[ -d "/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home" ]]; then
+    export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
 fi
 
-Z4H_URL="https://raw.githubusercontent.com/romkatv/zsh4humans/v5"
-: "${Z4H:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh4humans/v5}"
-
-umask o-w
-
-if [ ! -e "$Z4H"/z4h.zsh ]; then
-  mkdir -p -- "$Z4H" || return
-  >&2 printf '\033[33mz4h\033[0m: fetching \033[4mz4h.zsh\033[0m\n'
-  if command -v curl >/dev/null 2>&1; then
-    curl -fsSL -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
-  elif command -v wget >/dev/null 2>&1; then
-    wget -O-   -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
-  else
-    >&2 printf '\033[33mz4h\033[0m: please install \033[32mcurl\033[0m or \033[32mwget\033[0m\n'
-    return 1
-  fi
-  mv -- "$Z4H"/z4h.zsh.$$ "$Z4H"/z4h.zsh || return
+# Android
+if [[ -d "$HOME/Library/Android/sdk" ]]; then
+    export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+    export ANDROID_HOME=$HOME/Library/Android/sdk
 fi
 
-. "$Z4H"/z4h.zsh || return
-
-setopt rcs
+# Extend PATH.
+typeset -U path
+path=(
+  /usr/local/{bin,sbin}
+  $HOME/dotfiles/bin
+  $HOME/Code/Programs/lua-language-server/bin/macOS
+  /opt/homebrew/bin
+  $ANDROID_SDK_ROOT/emulator
+  $ANDROID_SDK_ROOT/tools
+  $ANDROID_SDK_ROOT/tools/bin
+  $ANDROID_SDK_ROOT/platform-tools
+  $path
+)
