@@ -88,6 +88,7 @@ opt.shortmess:append {
   W = true, -- Don't print "written" when editing
   a = true, -- Use abbreviations in messages ([RO] intead of [readonly])
   c = true, -- Do not show ins-completion-menu messages (match 1 of 2)
+  F = true, -- Do not print file name when opening a file
 }
 
 -- Integration with the system clipboard

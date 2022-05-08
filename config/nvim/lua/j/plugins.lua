@@ -34,13 +34,7 @@ return require('packer').startup {
     use { -- Automatic sessions
       'rmagatti/auto-session',
       config = function()
-        require('auto-session').setup {
-          -- Resize Neovim after it is started, otherwise the cmdheight might be
-          -- super large when restoring the session
-          -- https://github.com/rmagatti/auto-session/issues/64
-          -- https://github.com/neovim/neovim/issues/11330
-          post_restore_cmds = { 'silent !kill -s SIGWINCH $PPID' },
-        }
+        require 'j.plugins.auto_session'
       end,
     }
     use {
