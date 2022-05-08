@@ -9,12 +9,6 @@ endif
 setlocal wrap
 setlocal textwidth=80
 
-" Autoformatting
-setlocal formatoptions-=c
-if expand('%:t') =~# '^keyword-'
-  setlocal formatoptions-=a
-end
-
 " Disable some weird autoindenting
 " https://github.com/plasticboy/vim-markdown/issues/126
 setlocal indentexpr=
