@@ -16,7 +16,7 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'cmp_git' },
+    { name = 'git' },
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
