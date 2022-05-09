@@ -28,7 +28,7 @@ parse_git_dirty() {
   if (! command git rev-parse --is-inside-work-tree > /dev/null 2>&1) || (command git diff-index --quiet HEAD 2> /dev/null); then
     echo ""
   else
-    echo "%F{red}*%f "
+    echo "%F{red}✱%f "
   fi
 }
 
