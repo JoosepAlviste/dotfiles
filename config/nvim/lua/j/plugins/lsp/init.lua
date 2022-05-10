@@ -115,13 +115,20 @@ function M.on_attach(client, bufnr)
     buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
 
-  if client.supports_method 'textDocument/formatting' then
+  local formatting_disabled_ls = { 'volar', 'intelephense' }
+  if client.supports_method 'textDocument/formatting' and not vim.tbl_contains(formatting_disabled_ls, client.name) then
     vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = formatting_augroup,
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.format {}
+        vim.lsp.buf.format {
+          filter = function(clients)
+            return vim.tbl_filter(function(buf_client)
+              return not vim.tbl_contains(formatting_disabled_ls, buf_client.name)
+            end, clients)
+          end,
+        }
       end,
     })
   end
