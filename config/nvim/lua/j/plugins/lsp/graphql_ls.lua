@@ -6,7 +6,4 @@ require('lspconfig').graphql.setup {
   capabilities = require('j.plugins.lsp').capabilities,
   root_dir = util.root_pattern('.graphqlrc.yml', '.graphqlrc'),
   filetypes = { 'graphql' },
-  flags = {
-    debounce_text_changes = 150,
-  },
 }
