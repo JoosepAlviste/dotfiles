@@ -1,7 +1,7 @@
 # My custom, minimal prompt
 
 # Options
-setopt PROMPT_SUBST
+setopt PROMPT_SUBST NO_PROMPT_BANG PROMPT_PERCENT
 
 # Dependency on oh-my-zsh shrink-path script. Could probably copy the useful 
 # parts for myself, but it's easy to just add a dependency. We're not using the 
@@ -100,9 +100,6 @@ gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 # On every prompt, fetch git status and set GITSTATUS_PROMPT.
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd gitstatus_prompt_update
-
-# Enable/disable the right prompt options.
-setopt no_prompt_bang prompt_percent prompt_subst
 
 STARTTIME='0'
 ELAPSED='0'
