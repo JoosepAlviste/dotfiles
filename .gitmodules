@@ -25,3 +25,6 @@
 [submodule "config/zsh/.packages/ohmyzsh"]
 	path = config/zsh/.packages/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "config/zsh/.packages/zsh-completions"]
+	path = config/zsh/.packages/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
