@@ -28,3 +28,6 @@
 [submodule "config/zsh/.packages/zsh-completions"]
 	path = config/zsh/.packages/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "config/zsh/.packages/gitstatus"]
+	path = config/zsh/.packages/gitstatus
+	url = https://github.com/romkatv/gitstatus.git
