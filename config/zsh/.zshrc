@@ -37,6 +37,7 @@ precmd_functions+=(tab_title_precmd)
 # Includes
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
+source $ZDOTDIR/completion.zsh
 
 # Keybindings
 
@@ -66,33 +67,15 @@ bindkey "^[[1;3D" backward-word
 
 # Plugins
 
-source $ZDOTDIR/.packages/zsh-z/zsh-z.plugin.zsh
-source $ZDOTDIR/.packages/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source $ZDOTDIR/.packages/zsh-autosuggestions/zsh-autosuggestions.zsh
 # FZF
 BREW_PREFIX="$(brew --prefix)"
 source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
 source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
+source $ZDOTDIR/.packages/zsh-z/zsh-z.plugin.zsh
+source $ZDOTDIR/.packages/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $ZDOTDIR/.packages/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/.packages/fzf-tab/fzf-tab.plugin.zsh
-
-# Completion
-if type brew &>/dev/null
-then
-  fpath+="$BREW_PREFIX/share/zsh/site-functions"
-fi
-
-fpath+="$ZDOTDIR/.packages/zsh-completions/src"
-
-autoload -U compinit; compinit
-_comp_options+=(globdots)  # With hidden files
-
-# tabtab source for packages
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-zstyle ':completion:*' menu select  # Nice styling for completion
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'  # Case insensitive completion
-zstyle ':completion:*' expand prefix suffix  # Do not require typing beginning of filename for completion
 
 # Extra functions
 
