@@ -88,7 +88,6 @@ return require('packer').startup {
       end,
       requires = {
         'nvim-lua/plenary.nvim', -- Useful Lua utilities
-        'nvim-lua/popup.nvim',
 
         -- FZF sorter for Telescope
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
