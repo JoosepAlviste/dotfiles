@@ -28,3 +28,6 @@
 [submodule "config/zsh/.packages/gitstatus"]
 	path = config/zsh/.packages/gitstatus
 	url = https://github.com/romkatv/gitstatus.git
+[submodule "config/zsh/.packages/zsh-manydots-magic"]
+	path = config/zsh/.packages/zsh-manydots-magic
+	url = https://github.com/knu/zsh-manydots-magic.git

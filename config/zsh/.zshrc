@@ -76,6 +76,7 @@ source $ZDOTDIR/.packages/zsh-z/zsh-z.plugin.zsh
 source $ZDOTDIR/.packages/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $ZDOTDIR/.packages/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/.packages/fzf-tab/fzf-tab.plugin.zsh
+source $ZDOTDIR/.packages/zsh-manydots-magic/manydots-magic
 
 # Extra functions
 
