@@ -263,7 +263,12 @@ return require('packer').startup {
     }
 
     -- Testing
-    use 'kassio/neoterm' -- Use Ctrl+Q to toggle a terminal
+    use { -- Use Ctrl+Q to toggle a terminal
+      'kassio/neoterm',
+      config = function()
+        require('j.plugins.neoterm').setup()
+      end,
+    }
     use 'vim-test/vim-test' -- Run tests easily
     -- Automatically set up your configuration after cloning packer.nvim
     if packer_bootstrap then
