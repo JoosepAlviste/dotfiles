@@ -184,18 +184,12 @@ return require('packer').startup {
       end,
       requires = {
         {
-          'hrsh7th/vim-vsnip', -- Snippets
-          config = function()
-            require 'j.plugins.vsnip'
-          end,
-        },
-        {
           'hrsh7th/nvim-cmp',
           requires = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-vsnip',
+            'saadparwaiz1/cmp_luasnip',
             'petertriho/cmp-git',
           },
           config = function()
@@ -210,6 +204,13 @@ return require('packer').startup {
         },
         'folke/lua-dev.nvim',
       },
+    }
+
+    use {
+      'L3MON4D3/LuaSnip',
+      config = function()
+        require 'j.plugins.luasnip'
+      end,
     }
 
     use {
