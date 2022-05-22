@@ -18,7 +18,7 @@ local rep = require('luasnip.extras').rep
 ---@param id_node {} Stands for "interface declaration node"
 ---@return string[]
 local function get_prop_names(id_node)
-  local object_type_node = id_node:child(2)
+  local object_type_node = id_node:child(3)
   if object_type_node:type() ~= 'object_type' then
     return {}
   end
@@ -96,11 +96,10 @@ ls.add_snippets('typescriptreact', {
             return ''
           end
 
-          -- `node` is now surely of type "interface_declaration"
+          -- `node` is now surely of type "type_alias_declaration"
           local prop_names = get_prop_names(node)
 
-          -- Does this lua->vimscript->lua thing cause a slow down? Dunno.
-          return vim.fn.join(prop_names, ', ')
+          return table.concat(prop_names, ', ')
         end, { 3 }),
         rep(2),
         i(4, 'return <div></div>'),
