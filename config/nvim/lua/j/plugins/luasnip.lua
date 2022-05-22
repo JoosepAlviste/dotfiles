@@ -1,4 +1,5 @@
 local ls = require 'luasnip'
+local types = require 'luasnip.util.types'
 local t = require('j.utils').termcode
 
 ls.config.set_config {
@@ -7,6 +8,19 @@ ls.config.set_config {
   update_events = 'TextChanged,TextChangedI',
 
   -- enable_autosnippets = true,
+
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { '●', 'LuasnipChoice' } },
+      },
+    },
+    [types.insertNode] = {
+      active = {
+        virt_text = { { '●', 'LuasnipInsert' } },
+      },
+    },
+  },
 }
 
 -- Mappings

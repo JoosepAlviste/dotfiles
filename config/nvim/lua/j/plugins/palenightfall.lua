@@ -18,6 +18,9 @@ require('palenightfall').setup {
 
     LspDiagnosticsLineNrError = { fg = c.red, bg = '#312a34', style = 'bold' },
     LspDiagnosticsLineNrWarning = { fg = c.orange, bg = '#312e3a', style = 'bold' },
+
+    LuasnipChoice = { fg = c.orange },
+    LuasnipInsert = { fg = c.cyan },
   },
 }
 
