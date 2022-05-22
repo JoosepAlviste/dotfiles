@@ -25,30 +25,23 @@ ls.config.set_config {
 
 -- Mappings
 
-local check_back_space = function()
-  local col = vim.fn.col '.' - 1
-  if col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' then
-    return true
-  else
-    return false
-  end
-end
-
 _G.tab_complete = function()
   if ls and ls.expand_or_jumpable() then
     return t '<Plug>luasnip-expand-or-jump'
-  elseif check_back_space() then
-    return t '<Tab>'
+  else
+    return t '<tab>'
   end
 end
-
 vim.keymap.set({ 'i', 's' }, '<tab>', 'v:lua.tab_complete()', { expr = true })
 
-vim.keymap.set({ 'i', 's' }, '<s-tab>', function()
+_G.shift_tab_jump = function()
   if ls.jumpable(-1) then
-    ls.jump(-1)
+    return t '<Plug>luasnip-jump-prev'
+  else
+    return t '<s-tab>'
   end
-end, { silent = true })
+end
+vim.keymap.set({ 'i', 's' }, '<s-tab>', 'v:lua.shift_tab_jump()', { expr = true })
 
 vim.keymap.set({ 'i', 's' }, '<c-k>', function()
   if ls.choice_active() then
