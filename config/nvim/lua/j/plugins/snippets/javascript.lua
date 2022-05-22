@@ -9,12 +9,15 @@ local c = ls.choice_node
 local t = ls.text_node
 
 ls.add_snippets('javascript', {
+  -- console.log statement
   s(
     'log',
     fmt('console.log({});', {
       i(1),
     })
   ),
+
+  -- Function declaration
   s(
     'f',
     fmt(
@@ -31,6 +34,8 @@ ls.add_snippets('javascript', {
       }
     )
   ),
+
+  -- If statement
   s(
     'if',
     fmt(
@@ -42,6 +47,34 @@ if ({}) {{
       { i(1), i(2) }
     )
   ),
+
+  -- Export statement
+  s(
+    'export',
+    fmt([[export {{ {} }} from './{}';]], {
+      d(2, function(args)
+        return sn(nil, {
+          i(1, args[1][1]),
+        })
+      end, { 1 }),
+      i(1),
+    })
+  ),
+
+  -- Component index file export
+  s(
+    'indexport',
+    fmt([[export {{ default }} from './{}';]], {
+      d(1, function()
+        local folder_name = vim.fn.expand '%:h:t'
+        return sn(nil, {
+          c(1, { i(nil, folder_name), i(nil, folder_name .. '.vue') }),
+        })
+      end),
+    })
+  ),
+
+  -- Test describe block
   s(
     'desc',
     fmt(
@@ -68,6 +101,8 @@ describe('{}', () => {{
       }
     )
   ),
+
+  -- Test case
   s(
     'it',
     fmt(

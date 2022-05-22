@@ -39,6 +39,7 @@ end
 ls.filetype_extend('typescriptreact', { 'javascript', 'typescript' })
 
 ls.add_snippets('typescriptreact', {
+  -- React component
   -- Snippet with small modifications from
   -- https://gist.github.com/davidatsurge/9873d9cb1781f1a37c0f25d24cb1b3ab
   s(

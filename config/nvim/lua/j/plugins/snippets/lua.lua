@@ -6,6 +6,7 @@ local i = ls.insert_node
 local f = ls.function_node
 
 ls.add_snippets('lua', {
+  -- Require statement
   s(
     'req',
     fmt([[local {} = require('{}')]], {
@@ -15,5 +16,31 @@ ls.add_snippets('lua', {
       end, { 1 }),
       i(1),
     })
+  ),
+
+  -- Function declaration
+  s(
+    'f',
+    fmt(
+      [[
+function({})
+  {}
+end
+  ]],
+      { i(1), i(2) }
+    )
+  ),
+
+  -- If statement
+  s(
+    'lf',
+    fmt(
+      [[
+local {} = function({})
+  {}
+end
+  ]],
+      { i(1), i(2), i(3) }
+    )
   ),
 })
