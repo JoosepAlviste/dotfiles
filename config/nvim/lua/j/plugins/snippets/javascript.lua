@@ -85,7 +85,6 @@ describe('{}', () => {{
 ]],
       {
         d(1, function(_, snip)
-          P(snip.env.TM_DIRECTORY:gsub(vim.pesc(vim.loop.cwd()), '.'))
           local filename, _ = (snip.env.TM_DIRECTORY .. '/' .. snip.env.TM_FILENAME_BASE):gsub(
             vim.pesc(vim.loop.cwd() .. '/'),
             ''
@@ -112,6 +111,25 @@ it('{}', {}() => {{
 }});
 ]],
       { i(1), c(2, { t 'async ', t '' }), i(3) }
+    )
+  ),
+
+  -- Computed variable
+  -- TODO: Can we somehow automatically import `computed` if it's not imported?
+  s(
+    'computed',
+    fmt(
+      [[
+const {} = computed(() => {});
+  ]],
+      { i(1), c(2, { fmt(
+        [[
+{{
+  return {}
+}}
+]],
+        { i(1) }
+      ), i(nil, '') }) }
     )
   ),
 })
