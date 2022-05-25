@@ -1,4 +1,5 @@
 local null_ls = require 'null-ls'
+local Path = require 'plenary.path'
 local b = null_ls.builtins
 
 null_ls.setup {
@@ -6,7 +7,19 @@ null_ls.setup {
     b.formatting.prettier.with {
       filetypes = { 'typescriptreact', 'typescript' },
       condition = function(utils)
-        return utils.root_has_file '.prettierrc.json' and not utils.root_has_file '.eslintrc.js'
+        local has_prettier = utils.root_has_file '.prettierrc.json' 
+        if not has_prettier then
+          return false
+        end
+
+        local package_json_path = Path:new 'package.json'
+        local package_json_contents = package_json_path:read()
+        local package_json = vim.fn.json_decode(package_json_contents)
+
+        local has_eslint_prettier_integration = package_json['devDependencies']['@developers/eslint-config-scoro']
+          ~= nil
+
+        return not has_eslint_prettier_integration
       end,
       command = './node_modules/.bin/prettier',
     },
