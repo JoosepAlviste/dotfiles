@@ -1,3 +1,5 @@
+local Path = require 'plenary.path'
+
 local cmd = vim.cmd
 
 local M = {}
@@ -105,6 +107,14 @@ function M.update_plugins_every_day()
   end
 
   file:close()
+end
+
+function M.read_package_json()
+  local package_json_path = Path:new 'package.json'
+  local package_json_contents = package_json_path:read()
+  local package_json = vim.fn.json_decode(package_json_contents)
+
+  return package_json
 end
 
 -- Useful function for debugging
