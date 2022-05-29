@@ -89,11 +89,14 @@ describe('{}', () => {{
             vim.pesc(vim.loop.cwd() .. '/'),
             ''
           )
-          local filename_without_test, _ = filename:gsub('^test/', '')
-          local filename_without_extension, _ = filename_without_test:gsub('.spec$', '')
+          local filename_without_junk, _ = filename
+            :gsub('^test/', '')
+            :gsub('^src/', '')
+            :gsub('.spec$', '')
+            :gsub('.test$', '')
 
           return sn(nil, {
-            i(1, filename_without_extension),
+            i(1, filename_without_junk),
           })
         end, { 1 }),
         i(2),
