@@ -94,6 +94,7 @@ describe('{}', () => {{
             :gsub('^src/', '')
             :gsub('.spec$', '')
             :gsub('.test$', '')
+            :gsub('__tests__/', '')
 
           return sn(nil, {
             i(1, filename_without_junk),
