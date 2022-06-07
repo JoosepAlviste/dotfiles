@@ -13,6 +13,6 @@ require('auto-session').setup {
   -- https://github.com/rmagatti/auto-session/issues/64
   -- https://github.com/neovim/neovim/issues/11330
   post_restore_cmds = { 'silent !kill -s SIGWINCH $PPID' },
-  pre_save_cmds = { close_all_floating_wins },
+  pre_save_cmds = { close_all_floating_wins, 'cclose' },
   log_level = 'error',
 }
