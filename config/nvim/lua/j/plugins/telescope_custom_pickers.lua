@@ -9,6 +9,9 @@ local make_entry = require 'telescope.make_entry'
 local os_sep = Path.path.sep
 local pickers = require 'telescope.pickers'
 local scan = require 'plenary.scandir'
+local entry_display = require 'telescope.pickers.entry_display'
+local read_package_json = require('j.utils').read_package_json
+local termcode = require('j.utils').termcode
 
 local M = {}
 
@@ -86,7 +89,7 @@ M.actions = transform_mod {
           end
           live_grep_filters.directories = dirs
 
-          actions._close(prompt_bufnr, current_picker.initial_mode == 'insert')
+          actions.close(prompt_bufnr)
           run_live_grep(current_input)
         end)
         return true
@@ -101,6 +104,86 @@ M.live_grep = function()
   live_grep_filters.directories = nil
 
   require('telescope.builtin').live_grep()
+end
+
+M.scripts = function(opts)
+  opts = opts or {}
+
+  local use_pnpm = Path:new('../pnpm-lock.yaml'):exists()
+  local use_npm = Path:new('package-lock.json'):exists()
+
+  local package_json = read_package_json()
+  if not package_json then
+    return vim.notify 'No package.json found!'
+  end
+
+  local npm_scripts = vim.tbl_keys(package_json.scripts)
+
+  if #npm_scripts == 0 then
+    return vim.notify 'No scripts found!'
+  end
+
+  local mapped_scripts = vim.tbl_map(function(script)
+    local executable = use_pnpm and 'pnpm' or use_npm and 'npm run' or ''
+
+    return { script, executable, package_json.scripts[script] }
+  end, npm_scripts)
+
+  local longest_script_name = math.max(unpack(vim.tbl_map(function(script)
+    return #script[1]
+  end, mapped_scripts)))
+  local longest_executable_name = math.max(unpack(vim.tbl_map(function(script)
+    return #script[2]
+  end, mapped_scripts)))
+
+  local displayer = entry_display.create {
+    separator = ' ',
+    items = {
+      { width = longest_executable_name },
+      { width = longest_script_name },
+      { remaining = true },
+    },
+  }
+
+  local make_display = function(entry)
+    return displayer {
+      { entry.executable, 'TelescopeResultsIdentifier' },
+      { entry.value, 'TelescopeResultsIdentifier' },
+      { entry.cmd, 'TelescopeResultsComment' },
+    }
+  end
+
+  pickers.new(opts, {
+    prompt_title = 'Scripts',
+
+    finder = finders.new_table {
+      results = mapped_scripts,
+      entry_maker = function(entry)
+        return {
+          value = entry[1],
+          display = make_display,
+          ordinal = entry[2] .. entry[1] .. ' ' .. entry[3],
+          cmd = entry[3],
+          executable = entry[2],
+        }
+      end,
+    },
+
+    sorter = conf.generic_sorter(opts),
+
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+
+        local script = selection.value
+
+        vim.cmd(termcode(':T ' .. selection.executable .. ' run ' .. script .. '<cr>'))
+        vim.cmd ':Topen'
+      end)
+      return true
+    end,
+  }):find()
 end
 
 return M

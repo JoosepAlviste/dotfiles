@@ -111,6 +111,10 @@ end
 
 function M.read_package_json()
   local package_json_path = Path:new 'package.json'
+  if not package_json_path:exists() then
+    return nil
+  end
+
   local package_json_contents = package_json_path:read()
   local package_json = vim.fn.json_decode(package_json_contents)
 

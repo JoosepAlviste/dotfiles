@@ -14,6 +14,11 @@ map('n', '<leader>fq', builtin.quickfix)
 
 map('n', '<leader>fx', builtin.git_status)
 map('n', '<leader>fc', builtin.git_commits)
+map('n', '<leader>fg', builtin.git_branches)
+
+map('n', '<leader>fs', function()
+  custom_pickers.scripts(require('telescope.themes').get_dropdown {})
+end)
 
 require('telescope').setup {
   defaults = {

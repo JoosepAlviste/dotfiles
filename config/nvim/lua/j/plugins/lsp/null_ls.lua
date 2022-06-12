@@ -1,5 +1,4 @@
 local null_ls = require 'null-ls'
-local Path = require 'plenary.path'
 local read_package_json = require('j.utils').read_package_json
 local b = null_ls.builtins
 
