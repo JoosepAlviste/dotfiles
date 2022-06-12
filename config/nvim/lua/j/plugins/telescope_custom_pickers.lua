@@ -112,32 +112,49 @@ M.scripts = function(opts)
   local use_pnpm = Path:new('../pnpm-lock.yaml'):exists()
   local use_npm = Path:new('package-lock.json'):exists()
 
-  local package_json = read_package_json()
-  if not package_json then
-    return vim.notify 'No package.json found!'
+  local package_json = read_package_json() or {}
+  local npm_scripts = vim.tbl_keys(package_json.scripts or {})
+
+  local make_scripts = {}
+  local makefile_path = Path:new 'Makefile'
+  if makefile_path:exists() then
+    local makefile = makefile_path:read()
+    local makefile_lines = vim.split(makefile, '\n')
+
+    make_scripts = vim.tbl_map(
+      function(line)
+        return string.match(line, '^(%a.*):')
+      end,
+      vim.tbl_filter(function(line)
+        return string.match(line, '^%a.*:')
+      end, makefile_lines)
+    )
   end
 
-  local npm_scripts = vim.tbl_keys(package_json.scripts)
-
-  if #npm_scripts == 0 then
+  if #npm_scripts == 0 and #make_scripts == 0 then
     return vim.notify 'No scripts found!'
   end
 
-  local mapped_scripts = vim.tbl_map(function(script)
-    local executable = use_pnpm and 'pnpm' or use_npm and 'npm run' or ''
+  local mapped_scripts = vim.list_extend(
+    vim.tbl_map(function(script)
+      return { script, 'make', nil }
+    end, make_scripts or {}),
+    vim.tbl_map(function(script)
+      local executable = use_pnpm and 'pnpm' or use_npm and 'npm run' or ''
 
-    return { script, executable, package_json.scripts[script] }
-  end, npm_scripts)
+      return { script, executable, package_json.scripts[script] }
+    end, npm_scripts or {})
+  )
 
-  local longest_script_name = math.max(unpack(vim.tbl_map(function(script)
-    return #script[1]
-  end, mapped_scripts)))
   local longest_executable_name = math.max(unpack(vim.tbl_map(function(script)
     return #script[2]
   end, mapped_scripts)))
+  local longest_script_name = math.max(unpack(vim.tbl_map(function(script)
+    return #script[1]
+  end, mapped_scripts)))
 
   local displayer = entry_display.create {
-    separator = ' ',
+    separator = '  ',
     items = {
       { width = longest_executable_name },
       { width = longest_script_name },
@@ -149,7 +166,7 @@ M.scripts = function(opts)
     return displayer {
       { entry.executable, 'TelescopeResultsIdentifier' },
       { entry.value, 'TelescopeResultsIdentifier' },
-      { entry.cmd, 'TelescopeResultsComment' },
+      { entry.cmd or '', 'TelescopeResultsComment' },
     }
   end
 
@@ -162,7 +179,7 @@ M.scripts = function(opts)
         return {
           value = entry[1],
           display = make_display,
-          ordinal = entry[2] .. entry[1] .. ' ' .. entry[3],
+          ordinal = entry[3] and (entry[2] .. ' ' .. entry[1] .. ' ' .. entry[3]) or (entry[2] .. ' ' .. entry[1]),
           cmd = entry[3],
           executable = entry[2],
         }
@@ -178,7 +195,7 @@ M.scripts = function(opts)
 
         local script = selection.value
 
-        vim.cmd(termcode(':T ' .. selection.executable .. ' run ' .. script .. '<cr>'))
+        vim.cmd(termcode(':T ' .. selection.executable .. ' ' .. script .. '<cr>'))
         vim.cmd ':Topen'
       end)
       return true
