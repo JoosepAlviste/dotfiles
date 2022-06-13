@@ -10,6 +10,7 @@ local os_sep = Path.path.sep
 local pickers = require 'telescope.pickers'
 local scan = require 'plenary.scandir'
 local entry_display = require 'telescope.pickers.entry_display'
+local read_json_file = require('j.utils').read_json_file
 local read_package_json = require('j.utils').read_package_json
 local termcode = require('j.utils').termcode
 
@@ -131,6 +132,9 @@ M.scripts = function(opts)
     )
   end
 
+  local composer_json = read_json_file 'composer.json' or {}
+  local composer_scripts = vim.tbl_keys(composer_json.scripts or {})
+
   if #npm_scripts == 0 and #make_scripts == 0 then
     return vim.notify 'No scripts found!'
   end
@@ -144,6 +148,12 @@ M.scripts = function(opts)
 
       return { script, executable, package_json.scripts[script] }
     end, npm_scripts or {})
+  )
+  mapped_scripts = vim.list_extend(
+    mapped_scripts,
+    vim.tbl_map(function(script)
+      return { script, 'composer', composer_json.scripts[script] }
+    end, composer_scripts or {})
   )
 
   local longest_executable_name = math.max(unpack(vim.tbl_map(function(script)

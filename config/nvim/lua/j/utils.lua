@@ -109,16 +109,20 @@ function M.update_plugins_every_day()
   file:close()
 end
 
-function M.read_package_json()
-  local package_json_path = Path:new 'package.json'
-  if not package_json_path:exists() then
+function M.read_json_file(filename)
+  local path = Path:new(filename)
+  if not path:exists() then
     return nil
   end
 
-  local package_json_contents = package_json_path:read()
-  local package_json = vim.fn.json_decode(package_json_contents)
+  local json_contents = path:read()
+  local package_json = vim.fn.json_decode(json_contents)
 
   return package_json
+end
+
+function M.read_package_json()
+  return M.read_json_file 'package.json'
 end
 
 -- Useful function for debugging
