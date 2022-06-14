@@ -123,10 +123,8 @@ function M.on_attach(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format {
-          filter = function(clients)
-            return vim.tbl_filter(function(buf_client)
-              return not vim.tbl_contains(formatting_disabled_ls, buf_client.name)
-            end, clients)
+          filter = function(buf_client)
+            return not vim.tbl_contains(formatting_disabled_ls, buf_client.name)
           end,
         }
       end,
