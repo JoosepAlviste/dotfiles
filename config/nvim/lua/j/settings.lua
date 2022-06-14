@@ -57,6 +57,8 @@ opt.lazyredraw = true -- Redraw only when need to
 
 opt.showmode = false -- Do not show mode in command line
 
+opt.cmdheight = 0
+
 -- UX
 opt.confirm = true
 opt.updatetime = 100 -- Trigger cursorhold faster

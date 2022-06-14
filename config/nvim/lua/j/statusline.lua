@@ -82,6 +82,11 @@ function _G.statusline(winnr)
   -- Right side
   table.insert(segments, '%=')
 
+  local searchcount = vim.fn.searchcount()
+  if vim.v.hlsearch > 0 and searchcount.total > 0 then
+    table.insert(segments, color(true, 'StatuslineSuccess', searchcount.current .. '/' .. searchcount.total .. ' '))
+  end
+
   -- LSP diagnostics
   if is_active then
     table.insert(segments, lsp_status())
