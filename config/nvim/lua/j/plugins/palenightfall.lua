@@ -23,6 +23,8 @@ require('palenightfall').setup {
     LuasnipInsert = { fg = c.cyan },
 
     CursorLineLir = { bg = c.highlight },
+
+    WinBar = { style = 'NONE' },
   },
 }
 
