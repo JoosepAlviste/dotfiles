@@ -83,6 +83,15 @@ require('lir').setup {
     ['C'] = clipboard_actions.copy,
     ['X'] = clipboard_actions.cut,
     ['P'] = clipboard_actions.paste,
+
+    -- Go to Git root
+    ['H'] = function()
+      local dir = require('lspconfig.util').find_git_ancestor(vim.fn.getcwd())
+      if dir == nil or dir == '' then
+        return
+      end
+      vim.cmd('e ' .. dir)
+    end,
   },
   float = {
     winblend = 0,
