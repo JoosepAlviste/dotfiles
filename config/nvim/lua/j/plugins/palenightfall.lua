@@ -21,6 +21,8 @@ require('palenightfall').setup {
 
     LuasnipChoice = { fg = c.orange },
     LuasnipInsert = { fg = c.cyan },
+
+    CursorLineLir = { bg = c.highlight },
   },
 }
 

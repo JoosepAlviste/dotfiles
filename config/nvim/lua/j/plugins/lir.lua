@@ -102,12 +102,12 @@ vim.api.nvim_create_autocmd('FileType', {
       silent = true,
     })
     buf_map(0, 'n', '-', actions.up, { noremap = true, silent = true })
-    vim.cmd [[setlocal nonumber]]
-    vim.cmd [[setlocal norelativenumber]]
 
-    -- echo cwd
-    local filename = vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd()), '.'):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
-    vim.api.nvim_echo({ { filename, 'Normal' } }, false, {})
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+
+    vim.opt_local.colorcolumn = nil
+    vim.opt_local.winhl = 'CursorLine:CursorLineLir,CursorLineSign:CursorLineLir'
   end,
 })
 
@@ -117,5 +117,6 @@ vim.api.nvim_create_autocmd('SessionLoadPost', {
   group = group,
   callback = function()
     require('lir').init()
+    require('j.winbar').set_winbar()
   end,
 })
