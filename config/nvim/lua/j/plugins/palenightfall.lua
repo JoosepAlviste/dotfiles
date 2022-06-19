@@ -25,6 +25,8 @@ require('palenightfall').setup {
     CursorLineLir = { bg = c.highlight },
 
     WinBar = { style = 'NONE' },
+
+    LirEmptyDirText = { bg = c.highlight },
   },
 }
 

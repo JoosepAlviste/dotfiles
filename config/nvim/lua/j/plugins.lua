@@ -99,6 +99,7 @@ return require('packer').startup {
       config = function()
         require 'j.plugins.lir'
       end,
+      after = { 'nvim-web-devicons' },
     }
     use {
       'tpope/vim-projectionist', -- Alternative files
