@@ -203,6 +203,7 @@ return require('packer').startup {
             require 'j.plugins.lsp.null_ls'
           end,
         },
+        'jose-elias-alvarez/typescript.nvim',
         'folke/lua-dev.nvim',
       },
     }
