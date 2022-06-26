@@ -127,6 +127,11 @@ require('nvim-web-devicons').setup {
       color = '#CC3534',
       name = 'Npm',
     },
+    ['package-lock.json'] = {
+      icon = '',
+      color = '#CC3534',
+      name = 'Npm',
+    },
     php = {
       icon = '',
       color = '#a074c4',
