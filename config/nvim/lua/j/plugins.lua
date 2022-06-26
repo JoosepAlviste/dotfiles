@@ -1,5 +1,4 @@
 local fn = vim.fn
-local cmd = vim.cmd
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
@@ -14,7 +13,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   }
 end
 
-cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup {
   function(use)
@@ -277,6 +276,13 @@ return require('packer').startup {
     if packer_bootstrap then
       require('packer').sync()
     end
+
+    use {
+      'ThePrimeagen/refactoring.nvim',
+      config = function()
+        require 'j.plugins.refactoring'
+      end,
+    }
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
