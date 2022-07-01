@@ -44,6 +44,7 @@ require('nvim-treesitter.configs').setup {
     'hcl',
     'vim',
     'markdown',
+    'markdown_inline',
     'prisma',
     'svelte',
   },
