@@ -10,6 +10,8 @@ tags.lock
 Session.vim
 .vim
 
+.projections.json
+
 .DS_Store
 
 celerybeat.pid
