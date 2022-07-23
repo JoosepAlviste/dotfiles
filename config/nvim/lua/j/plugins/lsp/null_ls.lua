@@ -7,7 +7,7 @@ null_ls.setup {
     b.formatting.prettier.with {
       filetypes = { 'typescriptreact', 'typescript' },
       condition = function(utils)
-        local has_prettier = utils.root_has_file '.prettierrc.json'
+        local has_prettier = utils.root_has_file('.prettierrc.json', '.prettierrc')
         if not has_prettier then
           return false
         end
