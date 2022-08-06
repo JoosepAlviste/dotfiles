@@ -116,9 +116,9 @@ function M.read_json_file(filename)
   end
 
   local json_contents = path:read()
-  local package_json = vim.fn.json_decode(json_contents)
+  local json = vim.fn.json_decode(json_contents)
 
-  return package_json
+  return json
 end
 
 function M.read_package_json()
