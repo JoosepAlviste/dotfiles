@@ -74,7 +74,12 @@ return require('packer').startup {
         }
       end,
     }
-    use 'tpope/vim-surround' -- Surround stuff with things
+    use {
+      'kylechui/nvim-surround',
+      config = function()
+        require('nvim-surround').setup()
+      end,
+    }
     -- Move between Vim & Kitty windows easily
     use { 'knubie/vim-kitty-navigator', run = 'cp ./*.py ~/.config/kitty/' }
 
