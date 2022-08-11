@@ -251,7 +251,7 @@ return require('packer').startup {
     -- I only use the "blame" feature from this
     use {
       'tpope/vim-fugitive',
-      cmd = { 'Git', 'G', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' },
+      cmd = { 'Git', 'G', 'Gstatus', 'Gblame', 'Gpush', 'Gpull', 'Gdiff' },
     }
     use {
       'lewis6991/gitsigns.nvim', -- Git status signs in the gutter
