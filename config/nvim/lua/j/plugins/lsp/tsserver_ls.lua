@@ -1,9 +1,7 @@
 -- https://github.com/theia-ide/typescript-language-server
-local read_package_json = require('j.utils').read_package_json
+local is_npm_package_installed = require('j.utils').is_npm_package_installed
 
-local package_json = read_package_json()
-
-local have_vue = package_json and package_json.dependencies.vue
+local have_vue = is_npm_package_installed 'vue'
 
 if not have_vue then
   require('typescript').setup {

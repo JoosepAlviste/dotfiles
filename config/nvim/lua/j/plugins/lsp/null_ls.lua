@@ -1,5 +1,5 @@
 local null_ls = require 'null-ls'
-local read_package_json = require('j.utils').read_package_json
+local is_npm_package_installed = require('j.utils').is_npm_package_installed
 local b = null_ls.builtins
 
 null_ls.setup {
@@ -12,9 +12,7 @@ null_ls.setup {
           return false
         end
 
-        local package_json = read_package_json()
-        local has_eslint_prettier_integration = package_json['devDependencies']['@developers/eslint-config-scoro']
-          ~= nil
+        local has_eslint_prettier_integration = is_npm_package_installed '@developers/eslint-config-scoro'
 
         return not has_eslint_prettier_integration
       end,
