@@ -57,6 +57,20 @@ end, { silent = true })
 map('n', '-', [[expand('%') == '' ? ':e ' . getcwd() . '<cr>' : ':e %:h<cr>']], { expr = true, silent = true })
 map('n', 'H', [[:echo 'Use - instead!'<cr>]])
 
+-- Close floating windows, clear highlights, etc.
+map('n', '<esc>', function()
+  require('notify').dismiss()
+  vim.lsp.buf.clear_references()
+  vim.cmd [[nohlsearch]]
+
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= '' then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end)
+
 -- Leader mappings
 
 -- Open last buffer
@@ -69,18 +83,8 @@ map('n', '<leader>x', ':quitall<cr>', silent)
 -- Save
 map('n', '<leader>w', ':silent w!<cr>', silent)
 
--- Clear search highlight
-map('n', '<localleader>x', [[:nohlsearch <bar>lua require('notify').dismiss()<cr>]], silent)
-
 -- Search & replace word under cursor
 map('n', '<leader>sr', ':%s/\\<<c-r><c-w>\\>/')
-
--- Insert mode
-
--- More comfortable way to exit insert mode
-map('i', 'jk', '<esc>')
-map('i', 'Jk', '<esc>')
-map('i', 'JK', '<esc>')
 
 -- Command mode
 
