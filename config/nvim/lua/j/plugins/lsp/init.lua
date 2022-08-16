@@ -159,6 +159,20 @@ local function filter_out_libraries_from_lsp_items(results)
   return results
 end
 
+local function filter_out_same_location_from_lsp_items(results)
+  return vim.tbl_filter(function(item)
+    local from = item.originSelectionRange
+    local to = item.targetSelectionRange
+
+    return not (
+        from.start.character == to.start.character
+        and from.start.line == to.start.line
+        and from['end'].character == to['end'].character
+        and from['end'].line == to['end'].line
+      )
+  end, results)
+end
+
 -- This function is mostly copied from Telescope, I only added the
 -- `node_modules` filtering.
 local function list_or_jump(action, title, opts)
@@ -181,7 +195,7 @@ local function list_or_jump(action, title, opts)
     end
 
     -- This is the only added step to the Telescope function
-    flattened_results = filter_out_libraries_from_lsp_items(flattened_results)
+    flattened_results = filter_out_same_location_from_lsp_items(filter_out_libraries_from_lsp_items(flattened_results))
 
     local offset_encoding = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
 
