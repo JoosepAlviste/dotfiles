@@ -115,6 +115,28 @@ function M.on_attach(client, bufnr)
     buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
   end
 
+  -- Highlight symbol references on hover
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_create_augroup('LspDocumentHighlight', {
+      clear = false,
+    })
+    vim.api.nvim_clear_autocmds {
+      buffer = bufnr,
+      group = 'LspDocumentHighlight',
+    }
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = 'LspDocumentHighlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = 'LspDocumentHighlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+
+  -- Autoformatting
   local formatting_disabled_ls = { 'volar', 'intelephense', 'tsserver' }
   if client.supports_method 'textDocument/formatting' and not vim.tbl_contains(formatting_disabled_ls, client.name) then
     vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
