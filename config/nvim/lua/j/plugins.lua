@@ -44,6 +44,12 @@ return require('packer').startup {
       requires = { 'palenightfall.nvim' },
     }
     use 'lewis6991/impatient.nvim'
+    use {
+      'antoinemadec/FixCursorHold.nvim',
+      config = function()
+        vim.g.cursorhold_updatetime = 250
+      end,
+    }
 
     -- Mapping improvements
     use {
