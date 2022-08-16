@@ -58,6 +58,14 @@ require('telescope').setup {
     },
     find_files = {
       hidden = true,
+      find_command = {
+        'rg',
+        '--files',
+        '--color',
+        'never',
+        '--ignore-file',
+        vim.env.XDG_CONFIG_HOME .. '/ripgrep/ignore',
+      },
     },
     live_grep = {
       path_display = { 'shorten' },
