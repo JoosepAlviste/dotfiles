@@ -1,6 +1,5 @@
 local ls = require 'luasnip'
 local types = require 'luasnip.util.types'
-local t = require('j.utils').termcode
 
 ls.config.set_config {
   -- history = true,
@@ -27,18 +26,18 @@ ls.config.set_config {
 
 _G.tab_complete = function()
   if ls and ls.expand_or_jumpable() then
-    return t '<Plug>luasnip-expand-or-jump'
+    return '<Plug>luasnip-expand-or-jump'
   else
-    return t '<tab>'
+    return '<tab>'
   end
 end
 vim.keymap.set({ 'i', 's' }, '<tab>', 'v:lua.tab_complete()', { expr = true })
 
 _G.shift_tab_jump = function()
   if ls.jumpable(-1) then
-    return t '<Plug>luasnip-jump-prev'
+    return '<Plug>luasnip-jump-prev'
   else
-    return t '<s-tab>'
+    return '<s-tab>'
   end
 end
 vim.keymap.set({ 'i', 's' }, '<s-tab>', 'v:lua.shift_tab_jump()', { expr = true })
