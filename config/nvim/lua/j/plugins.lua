@@ -50,6 +50,12 @@ return require('packer').startup {
         vim.g.cursorhold_updatetime = 250
       end,
     }
+    use {
+      'andymass/vim-matchup',
+      config = function()
+        vim.g.matchup_matchparen_offscreen = {}
+      end,
+    }
 
     -- Mapping improvements
     use {

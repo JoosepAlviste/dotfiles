@@ -23,6 +23,9 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     enable_autocmd = false,
   },
+  matchup = {
+    enable = true,
+  },
   ensure_installed = {
     'query',
     'javascript',
