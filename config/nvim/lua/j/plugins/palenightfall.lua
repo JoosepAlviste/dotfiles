@@ -16,15 +16,15 @@ require('palenightfall').setup {
     StatuslineVisual = { fg = c.purple, bg = c.statusline },
     StatuslineCommand = { fg = c.yellow, bg = c.statusline },
 
-    LspDiagnosticsLineNrError = { fg = c.red, bg = '#312a34', style = 'bold' },
-    LspDiagnosticsLineNrWarning = { fg = c.orange, bg = '#312e3a', style = 'bold' },
+    LspDiagnosticsLineNrError = { fg = c.red, bg = '#312a34', bold = true },
+    LspDiagnosticsLineNrWarning = { fg = c.orange, bg = '#312e3a', bold = true },
 
     LuasnipChoice = { fg = c.orange },
     LuasnipInsert = { fg = c.cyan },
 
     CursorLineLir = { bg = c.highlight },
 
-    WinBar = { style = 'NONE' },
+    WinBar = { bold = false },
 
     LirEmptyDirText = { bg = c.highlight },
   },
