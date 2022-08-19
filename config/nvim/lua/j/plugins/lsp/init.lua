@@ -13,11 +13,25 @@ vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '' })
 
 -- Configure diagnostics displaying
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.config {
   virtual_text = false,
-  signs = true,
-  update_in_insert = false,
-})
+  float = {
+    border = 'rounded',
+    format = function(diagnostic)
+      if diagnostic.source == 'eslint' then
+        return string.format(
+          '%s [%s]',
+          diagnostic.message,
+          -- shows the name of the rule
+          diagnostic.user_data.lsp.code
+        )
+      end
+      return string.format('%s [%s]', diagnostic.message, diagnostic.source)
+    end,
+    severity_sort = true,
+    close_events = { 'CursorMoved', 'InsertEnter' },
+  },
+}
 
 -- Use FZF to find references
 -- vim.lsp.handlers['textDocument/references'] = require('j.plugins.fzf.functions').lsp_references_handler
@@ -93,22 +107,14 @@ function M.on_attach(client, bufnr)
   buf_map(bufnr, 'n', 'gr', builtin.lsp_references, opts)
 
   buf_map(bufnr, 'n', 'K', vim.lsp.buf.hover, opts)
-  buf_map(bufnr, 'n', '<leader>ca', function()
-    vim.lsp.buf.code_action()
-  end, opts)
+  buf_map(bufnr, 'n', '<leader>ca', vim.lsp.buf.code_action, opts)
   buf_map(bufnr, 'n', '<space>rn', vim.lsp.buf.rename.float, opts)
 
   -- Navigate diagnostics
-  buf_map(bufnr, 'n', '[g', function()
-    vim.diagnostic.goto_prev { float = { border = 'rounded' } }
-  end, opts)
-  buf_map(bufnr, 'n', ']g', function()
-    vim.diagnostic.goto_next { float = { border = 'rounded' } }
-  end, opts)
-  -- Show diagnostics popup with <leader>d
-  buf_map(bufnr, 'n', '<leader>d', function()
-    vim.diagnostic.open_float(0, { scope = 'line', border = 'rounded' })
-  end, opts)
+  buf_map(bufnr, 'n', '[g', vim.diagnostic.goto_prev, opts)
+  buf_map(bufnr, 'n', ']g', vim.diagnostic.goto_next, opts)
+  -- Diagnostics popup
+  buf_map(bufnr, 'n', '<leader>d', vim.diagnostic.open_float, opts)
 
   -- Mouse mappings for easily navigating code
   if client.server_capabilities.definitionProvider then
@@ -117,9 +123,7 @@ function M.on_attach(client, bufnr)
 
   -- Highlight symbol references on hover
   if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_augroup('LspDocumentHighlight', {
-      clear = false,
-    })
+    vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
     vim.api.nvim_clear_autocmds {
       buffer = bufnr,
       group = 'LspDocumentHighlight',
