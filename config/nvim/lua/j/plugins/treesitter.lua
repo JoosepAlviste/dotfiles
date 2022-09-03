@@ -50,5 +50,6 @@ require('nvim-treesitter.configs').setup {
     'markdown_inline',
     'prisma',
     'svelte',
+    'sql',
   },
 }
