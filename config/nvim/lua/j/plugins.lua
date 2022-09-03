@@ -274,11 +274,14 @@ return require('packer').startup {
         require('j.plugins.neoterm').setup()
       end,
     }
-    use 'vim-test/vim-test' -- Run tests easily
-    -- Automatically set up your configuration after cloning packer.nvim
-    if packer_bootstrap then
-      require('packer').sync()
-    end
+
+    use {
+      'nvim-neotest/neotest',
+      requires = { 'KaiSpencer/neotest-vitest', 'haydenmeade/neotest-jest' },
+      config = function()
+        require 'j.plugins.neotest'
+      end,
+    }
 
     use {
       'ThePrimeagen/refactoring.nvim',
@@ -286,6 +289,10 @@ return require('packer').startup {
         require 'j.plugins.refactoring'
       end,
     }
+    -- Automatically set up your configuration after cloning packer.nvim
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

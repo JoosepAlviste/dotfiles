@@ -2,6 +2,7 @@
 --   https://jip.dev/posts/a-simpler-vim-statusline/
 
 local termcode = require('j.utils').termcode
+local neotest_state = require('neotest').statusline
 
 -- Output the content colored by the supplied highlight group. Only color the
 -- input if the window is the currently focused one.
@@ -44,6 +45,18 @@ local mode_colors = {
   t = 'Normal',
 }
 
+local test_status_symbols = {
+  running = '…',
+  pass = '✔',
+  fail = '✖',
+}
+
+local test_status_colors = {
+  running = 'StatuslinePending',
+  pass = 'StatuslineSuccess',
+  fail = 'StatuslineError',
+}
+
 function _G.statusline(winnr)
   local is_active = winnr == vim.fn.winnr()
   local bufnum = vim.fn.winbufnr(winnr)
@@ -82,6 +95,19 @@ function _G.statusline(winnr)
   -- Right side
   table.insert(segments, '%=')
 
+  -- Test status
+  if neotest_state and neotest_state.test_status ~= 'idle' then
+    table.insert(
+      segments,
+      color(
+        is_active,
+        test_status_colors[neotest_state.test_status],
+        test_status_symbols[neotest_state.test_status] .. ' '
+      )
+    )
+  end
+
+  -- Search count
   local searchcount = vim.fn.searchcount()
   if vim.v.hlsearch > 0 and searchcount.total > 0 then
     table.insert(segments, color(true, 'StatuslineSuccess', searchcount.current .. '/' .. searchcount.total .. ' '))
