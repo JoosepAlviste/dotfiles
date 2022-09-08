@@ -191,7 +191,8 @@ local function filter_out_same_location_from_lsp_items(results)
     local to = item.targetSelectionRange
 
     return not (
-        from.start.character == to.start.character
+        from
+        and from.start.character == to.start.character
         and from.start.line == to.start.line
         and from['end'].character == to['end'].character
         and from['end'].line == to['end'].line
