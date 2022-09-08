@@ -15,21 +15,24 @@ ls.add_snippets('typescript', {
     'story',
     fmt(
       [[
+import {{ Meta, Story }} from '@storybook/vue';
 import {} from './{}.vue';
 
 export default {{
 	title: '{}',
 	component: {},
 	argTypes: {{
-    {}
-  }}
+		{}
+	}},
 }} as Meta;
 
-export const Default: Story = (_, {{ argTypes }}) => ({{
+export const Default: Story = (args) => ({{
 	components: {{ {} }},
-	props: Object.keys(argTypes),
+	setup() {{
+		return {{ args }};
+  }},
 	template: `
-		<{} v-bind="$props" />
+		<{} v-bind="args" />
 	`,
 }});
 ]],
