@@ -1,25 +1,38 @@
 local neotest = require 'neotest'
 
 local map = require('j.utils').map
+local is_npm_package_installed = require('j.utils').is_npm_package_installed
 
-neotest.setup {
-  consumers = {
-    statusline = require 'j.plugins.neotest_consumer_statusline',
-  },
-
-  adapters = {
+local adapters = {}
+if is_npm_package_installed 'jest' then
+  table.insert(
+    adapters,
     require 'neotest-jest' {
       jestCommand = 'npm test --',
       env = { CI = true },
       cwd = function()
         return vim.fn.getcwd()
       end,
-    },
+    }
+  )
+end
+
+if is_npm_package_installed 'vitest' then
+  table.insert(
+    adapters,
     require 'neotest-vitest' {
       vitestCommand = 'pnpm test --',
       env = { CI = true },
-    },
+    }
+  )
+end
+
+neotest.setup {
+  consumers = {
+    statusline = require 'j.plugins.neotest_consumer_statusline',
   },
+
+  adapters = adapters,
 
   output = {
     enabled = true,
@@ -38,4 +51,7 @@ map('n', '<leader>ta', function()
 end)
 map('n', '<leader>tl', function()
   neotest.run.run_last()
+end)
+map('n', '<leader>ts', function()
+  neotest.summary.toggle()
 end)
