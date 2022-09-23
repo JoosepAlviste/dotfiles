@@ -62,6 +62,11 @@ require('nvim-web-devicons').setup {
       color = '#7986cb',
       name = 'ESLint',
     },
+    ['.eslintrc.cjs'] = {
+      icon = '',
+      color = '#7986cb',
+      name = 'ESLint',
+    },
     gif = {
       icon = '',
       color = '#a074c4',
@@ -148,6 +153,11 @@ require('nvim-web-devicons').setup {
       name = 'Svg',
     },
     ts = {
+      icon = '',
+      color = '#0288d1',
+      name = 'Ts',
+    },
+    mts = {
       icon = '',
       color = '#0288d1',
       name = 'Ts',

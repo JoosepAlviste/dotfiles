@@ -6,6 +6,7 @@ vim.filetype.add {
     jpeg = 'image',
     gif = 'image',
     es6 = 'javascript',
+    mts = 'typescript',
   },
   filename = {
     ['.eslintrc'] = 'json',
