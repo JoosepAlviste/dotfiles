@@ -6,5 +6,18 @@ if have_tailwindish_styling then
   require('lspconfig').tailwindcss.setup {
     on_attach = require('j.plugins.lsp').on_attach,
     capabilities = require('j.plugins.lsp').capabilities,
+    settings = {
+      tailwindCSS = {
+        classAttributes = {
+          'class',
+          'className',
+          'classList',
+          'enterActiveClass',
+          'exitActiveClass',
+          'enterClass',
+          'exitToClass',
+        },
+      },
+    },
   }
 end
