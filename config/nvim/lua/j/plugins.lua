@@ -235,11 +235,15 @@ return require('packer').startup {
 
     -- Web dev
     use {
-      'norcalli/nvim-colorizer.lua', -- Preview hex colors
+      'NvChad/nvim-colorizer.lua', -- Preview colors
       config = function()
         require('colorizer').setup {
-          '*',
-          '!packer',
+          filetypes = { '*', '!packer' },
+          user_default_options = {
+            tailwind = 'lsp',
+            names = false,
+            sass = { enable = true, parsers = { css = true } },
+          },
         }
       end,
       after = 'palenightfall.nvim',
