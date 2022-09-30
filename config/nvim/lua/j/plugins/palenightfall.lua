@@ -27,6 +27,14 @@ require('palenightfall').setup {
     WinBar = { bold = false },
 
     LirEmptyDirText = { bg = c.highlight },
+
+    -- Custom Telescope look
+    TelescopeBorder = { fg = c.background_darker, bg = c.background_darker },
+    TelescopeNormal = { bg = c.background_darker },
+    TelescopeSelection = { bg = c.references },
+    TelescopePromptNormal = { bg = c.references },
+    TelescopePromptBorder = { fg = c.references, bg = c.references },
+    TelescopePromptTitle = { bg = c.references },
   },
 }
 
