@@ -123,15 +123,9 @@ return require('packer').startup {
       end,
     }
     use {
-      'ggandor/lightspeed.nvim',
+      'ggandor/leap.nvim',
       config = function()
-        require('lightspeed').setup {
-          exit_after_idle_msecs = {
-            labeled = 1500,
-            -- Increase timeout for f/t keys
-            unlabeled = 3000,
-          },
-        }
+        require('leap').set_default_keymaps()
       end,
     }
 
