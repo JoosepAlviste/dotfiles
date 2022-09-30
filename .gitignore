@@ -16,6 +16,8 @@ config/kitty/kitty.local.conf
 
 config/git/config-scoro
 
+config/lazygit/state.yml
+
 dots/emacs.d/elpa/
 .netrwhist
 
