@@ -55,7 +55,9 @@ cmp.setup {
   },
 
   window = {
-    documentation = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered {
+      winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+    },
     completion = {
       side_padding = 0,
       col_offset = -3,
