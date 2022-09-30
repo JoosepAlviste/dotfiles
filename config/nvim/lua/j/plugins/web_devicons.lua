@@ -3,7 +3,7 @@
 require('nvim-web-devicons').setup {
   override = {
     default_icon = {
-      icon = '',
+      icon = '',
       color = '#7982B4',
       name = 'Default',
     },
@@ -17,28 +17,33 @@ require('nvim-web-devicons').setup {
       color = '#0db7ed',
       name = 'Dockerfile',
     },
+    ['docker-compose.yml'] = {
+      icon = '',
+      color = '#0db7ed',
+      name = 'Dockerfile',
+    },
     ['git'] = {
-      icon = '',
+      icon = '',
       color = '#F1502F',
       name = 'GitLogo',
     },
     ['.gitattributes'] = {
-      icon = '',
+      icon = '',
       color = '#F1502F',
       name = 'GitAttributes',
     },
     ['.gitconfig'] = {
-      icon = '',
+      icon = '',
       color = '#F1502F',
       name = 'GitConfig',
     },
     ['.gitignore'] = {
-      icon = '',
+      icon = '',
       color = '#F1502F',
       name = 'GitIgnore',
     },
     ['.gitmodules'] = {
-      icon = '',
+      icon = '',
       color = '#F1502F',
       name = 'GitIgnore',
     },
@@ -46,6 +51,11 @@ require('nvim-web-devicons').setup {
       icon = '',
       color = '#cbcb41',
       name = 'Json',
+    },
+    conf = {
+      icon = '',
+      color = '#6d8086',
+      name = 'Conf',
     },
     css = {
       icon = '',
@@ -147,10 +157,25 @@ require('nvim-web-devicons').setup {
       color = '#a074c4',
       name = 'Png',
     },
+    py = {
+      icon = '',
+      color = '#ffbc03',
+      name = 'Py',
+    },
+    sql = {
+      icon = '',
+      color = '#dad8d8',
+      name = 'Sql',
+    },
     svg = {
       icon = '',
       color = '#FFB13B',
       name = 'Svg',
+    },
+    toml = {
+      icon = '',
+      color = '#6d8086',
+      name = 'Toml',
     },
     ts = {
       icon = '',
@@ -176,6 +201,16 @@ require('nvim-web-devicons').setup {
       icon = '',
       color = '#8dc149',
       name = 'Vue',
+    },
+    zsh = {
+      icon = '',
+      color = '#89e051',
+      name = 'Zsh',
+    },
+    ['.zshrc'] = {
+      icon = '',
+      color = '#89e051',
+      name = 'Zshrc',
     },
     yaml = {
       icon = '',
