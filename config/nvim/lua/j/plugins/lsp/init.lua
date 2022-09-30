@@ -61,36 +61,6 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = 'rounded',
 })
 
-local icons = {
-  Text = '',
-  Method = '',
-  Function = '',
-  Constructor = '',
-  Variable = '',
-  Class = '',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = '',
-  Field = '',
-  TypeParameter = '',
-}
-
-local kinds = vim.lsp.protocol.CompletionItemKind
-for i, kind in ipairs(kinds) do
-  kinds[i] = icons[kind] or kind
-end
-
 -- Construct some utilities that are needed for setting up the LSP servers
 
 local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})

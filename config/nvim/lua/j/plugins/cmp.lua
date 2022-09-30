@@ -1,5 +1,36 @@
 local cmp = require 'cmp'
 
+-- Codicons, download from
+-- https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf and
+-- using FontForge, move down by 60
+local icons = {
+  Text = ' ',
+  Method = ' ',
+  Function = ' ',
+  Constructor = ' ',
+  Field = ' ',
+  Variable = ' ',
+  Class = ' ',
+  Interface = ' ',
+  Module = ' ',
+  Property = ' ',
+  Unit = ' ',
+  Value = ' ',
+  Enum = ' ',
+  Keyword = ' ',
+  Snippet = ' ',
+  Color = ' ',
+  File = ' ',
+  Reference = ' ',
+  Folder = ' ',
+  EnumMember = ' ',
+  Constant = ' ',
+  Struct = ' ',
+  Event = ' ',
+  Operator = ' ',
+  TypeParameter = ' ',
+}
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -25,10 +56,26 @@ cmp.setup {
 
   window = {
     documentation = cmp.config.window.bordered(),
+    completion = {
+      side_padding = 0,
+      col_offset = -3,
+    },
   },
 
-  experimental = {
-    ghost_text = true,
+  formatting = {
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(_, vim_item)
+      local kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
+
+      -- Move the icon to be on the left side
+      local strings = vim.split(kind, '%s', { trimempty = true })
+      vim_item.kind = ' ' .. strings[1] .. ' '
+      if #strings[3] > 0 then
+        vim_item.menu = '    (' .. string.lower(strings[3]) .. ')'
+      end
+
+      return vim_item
+    end,
   },
 }
 
