@@ -200,11 +200,11 @@ local function list_or_jump(action, title, opts)
       return
     elseif #flattened_results == 1 and opts.jump_type ~= 'never' then
       if opts.jump_type == 'tab' then
-        vim.cmd 'tabedit'
+        vim.cmd.tabedit()
       elseif opts.jump_type == 'split' then
-        vim.cmd 'new'
+        vim.cmd.new()
       elseif opts.jump_type == 'vsplit' then
-        vim.cmd 'vnew'
+        vim.cmd.vnew()
       end
       vim.lsp.util.jump_to_location(flattened_results[1], offset_encoding)
     else

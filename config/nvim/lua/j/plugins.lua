@@ -13,7 +13,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   }
 end
 
-vim.cmd [[packadd packer.nvim]]
+vim.cmd.packadd 'packer.nvim'
 
 return require('packer').startup {
   function(use)

@@ -52,7 +52,7 @@ local function new_file()
       mode = tonumber('644', 8),
     }
 
-    vim.cmd(':e ' .. path:expand())
+    vim.cmd.e(path:expand())
   end
 end
 
@@ -78,7 +78,7 @@ require('lir').setup {
 
     ['J'] = function()
       mark_actions.toggle_mark()
-      vim.cmd 'normal! j'
+      vim.cmd.normal { 'j', bang = true }
     end,
     ['C'] = clipboard_actions.copy,
     ['X'] = clipboard_actions.cut,
@@ -90,7 +90,7 @@ require('lir').setup {
       if dir == nil or dir == '' then
         return
       end
-      vim.cmd('e ' .. dir)
+      vim.cmd.e(dir)
     end,
   },
   float = {

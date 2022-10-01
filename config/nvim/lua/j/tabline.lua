@@ -1,4 +1,6 @@
-function _G.tabline()
+local M = {}
+
+function M.tabline()
   local tabs = {}
 
   for i = 1, vim.fn.tabpagenr '$' do
@@ -36,4 +38,6 @@ function _G.tabline()
   return table.concat(tabs, '')
 end
 
-vim.cmd [[set tabline=%!v:lua.tabline()]]
+vim.o.tabline = '%!v:lua.require("j.tabline").tabline()'
+
+return M

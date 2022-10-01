@@ -205,8 +205,8 @@ M.scripts = function(opts)
 
         local script = selection.value
 
-        vim.cmd(termcode(':T ' .. selection.executable .. ' ' .. script .. '<cr>'))
-        vim.cmd ':Topen'
+        vim.cmd.T(selection.executable .. ' ' .. script)
+        vim.cmd.Topen()
       end)
       return true
     end,

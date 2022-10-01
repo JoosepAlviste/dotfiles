@@ -1,7 +1,5 @@
 local Path = require 'plenary.path'
 
-local cmd = vim.cmd
-
 local M = {}
 
 function M.map(modes, lhs, rhs, opts)
@@ -60,7 +58,7 @@ end
 
 function M.reload()
   -- Stop LSP
-  cmd 'LspStop'
+  vim.cmd.LspStop()
 
   -- Stop eslint_d
   vim.fn.execute 'silent !pkill -9 eslint_d'
@@ -69,7 +67,7 @@ function M.reload()
   unload_all_modules()
 
   -- Source init.lua
-  cmd 'luafile $MYVIMRC'
+  vim.cmd.luafile '$MYVIMRC'
 end
 
 -- Restart Vim without having to close and run again
@@ -78,7 +76,7 @@ function M.restart()
   M.reload()
 
   -- Manually run VimEnter autocmd to emulate a new run of Vim
-  cmd 'doautocmd VimEnter'
+  vim.cmd.doautocmd 'VimEnter'
 end
 
 -- Execute `PackerUpdate` every day automatically so that we are always up to

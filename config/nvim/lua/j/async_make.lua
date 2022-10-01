@@ -2,7 +2,7 @@ local M = {}
 
 function M.make(compiler, open_quickfix)
   if compiler then
-    vim.cmd('compiler ' .. compiler)
+    vim.cmd.compiler(compiler)
   end
 
   local lines = { '' }
@@ -36,7 +36,8 @@ function M.make(compiler, open_quickfix)
         })
         vim.api.nvim_command 'doautocmd QuickFixCmdPost'
         if open_quickfix then
-          vim.cmd [[copen | wincmd p]]
+          vim.cmd.copen()
+          vim.cmd.wincmd 'p'
         end
       else
         print 'No errors'
