@@ -1,5 +1,6 @@
 local actions = require 'telescope.actions'
 local builtin = require 'telescope.builtin'
+local layout_strategies = require 'telescope.pickers.layout_strategies'
 
 local map = require('j.utils').map
 local custom_pickers = require 'j.plugins.telescope_custom_pickers'
@@ -19,6 +20,17 @@ map('n', '<leader>fg', builtin.git_branches)
 map('n', '<leader>fs', function()
   custom_pickers.scripts(require('telescope.themes').get_dropdown {})
 end)
+
+-- Add an extra line between the prompt and results so that the theme looks OK
+local original_center = layout_strategies.center
+layout_strategies.center = function(picker, columns, lines, layout_config)
+  local res = original_center(picker, columns, lines, layout_config)
+
+  -- Move results down one line so that the prompt bottom border is visible
+  res.results.line = res.results.line + 1
+
+  return res
+end
 
 require('telescope').setup {
   defaults = {
@@ -48,7 +60,7 @@ require('telescope').setup {
       case_mode = 'smart_case',
     },
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown {},
+      require('telescope.themes').get_cursor {},
     },
   },
   pickers = {
