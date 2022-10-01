@@ -64,7 +64,6 @@ opt.confirm = true
 opt.updatetime = 100 -- Trigger cursorhold faster
 opt.inccommand = 'nosplit' -- Show preview of ex commands
 
-opt.mouse = 'a' -- Enable mouse usage
 opt.splitright = true -- Open new split to the right
 opt.splitbelow = true -- Open new split below
 opt.whichwrap = opt.whichwrap + 'h,l,<,>,[,]'
