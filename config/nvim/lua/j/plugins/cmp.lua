@@ -72,8 +72,12 @@ cmp.setup {
       -- Move the icon to be on the left side
       local strings = vim.split(kind, '%s', { trimempty = true })
       vim_item.kind = ' ' .. strings[1] .. ' '
-      if #strings[3] > 0 then
-        vim_item.menu = '    (' .. string.lower(strings[3]) .. ')'
+
+      if vim_item.menu and #vim_item.menu > 25 then
+        local first_slash = string.find(vim_item.menu, '/')
+        local last_slash = string.find(vim_item.menu, '/[^/]*$')
+
+        vim_item.menu = string.sub(vim_item.menu, 1, first_slash) .. '…' .. string.sub(vim_item.menu, last_slash)
       end
 
       return vim_item
