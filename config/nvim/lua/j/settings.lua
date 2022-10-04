@@ -70,6 +70,7 @@ opt.whichwrap = opt.whichwrap + 'h,l,<,>,[,]'
 opt.joinspaces = false -- Prevent inserting two spaces with J
 
 opt.completeopt = { 'menuone', 'noselect' } -- Completion menu
+opt.pumheight = 13
 
 --  Autoformatting
 --  TODO: Might need to use concat because of
