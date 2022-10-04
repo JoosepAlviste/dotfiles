@@ -9,7 +9,7 @@ function M.print_syntax()
     return fn.synIDattr(elem, 'name')
   end, syn_stack)
 
-  dump(syn_names)
+  P(syn_names)
 end
 
 return M
