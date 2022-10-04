@@ -35,6 +35,8 @@ require('palenightfall').setup {
     TelescopePromptNormal = { bg = c.references },
     TelescopePromptBorder = { fg = c.references, bg = c.references },
     TelescopePromptTitle = { bg = c.references },
+
+    DapBreakpoint = { fg = c.red },
   },
 }
 

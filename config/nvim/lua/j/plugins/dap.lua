@@ -28,20 +28,58 @@ dap.configurations.javascript = {
   },
 }
 
+dap.adapters.firefox = {
+  type = 'executable',
+  command = 'node',
+  args = { os.getenv 'HOME' .. '/Code/Programs/vscode-firefox-debug/dist/adapter.bundle.js' },
+}
+
+dap.configurations.typescript = {
+  {
+    name = 'Debug with Firefox',
+    type = 'firefox',
+    request = 'launch',
+    reAttach = true,
+    url = 'http://localhost:3000',
+    webRoot = '${workspaceFolder}',
+  },
+}
+
+dap.adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { os.getenv 'HOME' .. '/Code/Programs/vscode-php-debug/out/phpDebug.js' },
+}
+
+dap.configurations.php = {
+  {
+    type = 'php',
+    request = 'launch',
+    name = 'Listen for Xdebug',
+    hostname = 'localhost.scoro.ee',
+    port = 9003,
+    pathMappings = {
+      ['/var/www/scoro'] = os.getenv 'SCORO_PATH' .. '/scoro-base',
+    },
+  },
+}
+
 require('dapui').setup()
 
-map('n', '<F5>', dap.continue, { silent = true })
-map('n', '<F6>', dap.step_over, { silent = true })
-map('n', '<F7>', dap.step_into, { silent = true })
-map('n', '<F8>', dap.step_out, { silent = true })
---
--- map('n', '<leader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], { silent = true })
--- map(
---   'n',
---   '<leader>dB',
---   [[:lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>]],
---   { silent = true }
--- )
--- map('n', '<leader>dr', [[:lua require('dap').repl_open()<cr>]], { silent = true })
---
--- map('n', '<leader>du', [[:lua require('dapui').toggle()<cr>]], { silent = true })
+vim.fn.sign_define('DapBreakpoint', { text = '⬤', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+
+map('n', '<localleader>dc', dap.continue, { silent = true })
+map('n', '<localleader>do', dap.step_over, { silent = true })
+map('n', '<localleader>di', dap.step_into, { silent = true })
+map('n', '<localleader>dt', dap.step_out, { silent = true })
+
+map('n', '<localleader>db', [[:lua require('dap').toggle_breakpoint()<cr>]], { silent = true })
+map(
+  'n',
+  '<localleader>dB',
+  [[:lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>]],
+  { silent = true }
+)
+map('n', '<localleader>dr', [[:lua require('dap').repl_open()<cr>]], { silent = true })
+
+map('n', '<localleader>du', [[:lua require('dapui').toggle()<cr>]], { silent = true })
