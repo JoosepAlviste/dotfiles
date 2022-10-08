@@ -1,33 +1,13 @@
 -- My minimal custom statusline with lots of help from
 --   https://jip.dev/posts/a-simpler-vim-statusline/
+--   https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 
 local termcode = require('j.utils').termcode
 local neotest_state = require('neotest').statusline
 
--- Output the content colored by the supplied highlight group. Only color the
--- input if the window is the currently focused one.
-local function color(active, highlight_group, content)
-  if active then
-    return '%#' .. highlight_group .. '#' .. content .. '%*'
-  else
-    return content
-  end
-end
-
--- Get the statusline segment showing the LSP diagnostics' count
-local function lsp_status()
-  local errors = vim.diagnostic.get(0, { severity = 1 })
-  local warnings = vim.diagnostic.get(0, { severity = 2 })
-
-  local messages = {}
-  if #errors ~= 0 then
-    table.insert(messages, color(true, 'StatuslineError', 'E' .. #errors))
-  end
-  if #warnings ~= 0 then
-    table.insert(messages, color(true, 'StatuslineWarning', 'W' .. #warnings))
-  end
-
-  return table.concat(messages, ' ')
+-- Output the content colored by the supplied highlight group.
+local function color(highlight_group, content)
+  return string.format('%%#%s#%s%%*', highlight_group, content)
 end
 
 local mode_colors = {
@@ -45,6 +25,49 @@ local mode_colors = {
   t = 'Normal',
 }
 
+local function mode()
+  local current_mode = vim.api.nvim_get_mode().mode
+  local mode_color = string.format('Statusline%s', (mode_colors[current_mode] or 'Normal'))
+  return color(mode_color, '▎ ')
+end
+
+local function icon()
+  local file_name = vim.fn.expand '%:p:t'
+  local extension = vim.fn.expand '%:e'
+
+  local the_icon, highlight = require('nvim-web-devicons').get_icon(file_name, extension)
+
+  if not the_icon and #file_name == 0 then
+    -- Is in a folder
+    the_icon = ''
+    highlight = 'Accent'
+  end
+
+  return color(string.format('Statusline%s', highlight or 'Accent'), the_icon or '●')
+end
+
+local function file_name()
+  local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
+
+  return string.format('%s %%<%s %s', color('StatuslineAccent', '»'), file_path, color('StatuslineAccent', '«'))
+end
+
+local function file_modified()
+  if vim.bo.modified then
+    return color('StatuslineBoolean', ' +')
+  end
+
+  return ''
+end
+
+local function file_read_only()
+  if vim.bo.readonly then
+    return color('StatuslineBoolean', ' ‼')
+  end
+
+  return ''
+end
+
 local test_status_symbols = {
   running = '…',
   pass = '✔',
@@ -57,78 +80,59 @@ local test_status_colors = {
   fail = 'StatuslineError',
 }
 
-function _G.statusline(winnr)
-  local is_active = winnr == vim.fn.winnr()
-  local bufnum = vim.fn.winbufnr(winnr)
-
-  local mode = vim.fn.mode()
-  local mode_color = 'Statusline' .. (mode_colors[mode] or 'Normal')
-
-  local segments = {}
-
-  -- File name
-  local file_name = vim.fn.expand('#' .. bufnum .. ':p:t')
-  local extension = vim.fn.expand('#' .. bufnum .. ':e')
-  local icon, highlight = require('nvim-web-devicons').get_icon(file_name, extension)
-
-  if not icon and #file_name == 0 then
-    -- Is in a folder
-    icon = ''
-    highlight = 'Accent'
-  end
-
-  local file_path = '%{expand("%:p:h:t")}/%{expand("%:p:t")}'
-  table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '»' or '«'))
-  table.insert(segments, '%<' .. file_path)
-  table.insert(segments, color(is_active, 'StatuslineAccent', is_active and '«' or '»'))
-
-  -- File modified
-  if vim.fn.getbufvar(bufnum, '&modified') == 1 then
-    table.insert(segments, color(is_active, 'StatuslineBoolean', '+'))
-  end
-
-  -- Read only
-  if vim.fn.getbufvar(bufnum, '&readonly') == 1 then
-    table.insert(segments, color(is_active, 'StatuslineBoolean', '‼'))
-  end
-
-  -- Right side
-  table.insert(segments, '%=')
-
-  -- Test status
+local function test_status()
   if neotest_state and neotest_state.test_status ~= 'idle' then
-    table.insert(
-      segments,
-      color(
-        is_active,
-        test_status_colors[neotest_state.test_status],
-        test_status_symbols[neotest_state.test_status] .. ' '
-      )
+    return color(
+      test_status_colors[neotest_state.test_status],
+      string.format('%s ', test_status_symbols[neotest_state.test_status])
     )
   end
 
-  -- Search count
-  local searchcount = vim.fn.searchcount()
-  if vim.v.hlsearch > 0 and searchcount.total > 0 then
-    table.insert(segments, color(true, 'StatuslineSuccess', searchcount.current .. '/' .. searchcount.total .. ' '))
-  end
-
-  -- LSP diagnostics
-  if is_active then
-    table.insert(segments, lsp_status())
-  end
-
-  local icon_statusline = color(is_active, 'Statusline' .. (highlight or 'Accent'), icon or '●') .. ' '
-  return color(is_active, mode_color, '▎ ') .. icon_statusline .. '  ' .. table.concat(segments, ' ') .. '  '
+  return ''
 end
 
-local group = vim.api.nvim_create_augroup('Statusline', {})
-vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
-  group = group,
-  callback = function()
-    vim.wo.statusline = '%!v:lua.statusline(' .. vim.fn.winnr() .. ')'
-  end,
-})
+local function search_count()
+  local searchcount = vim.fn.searchcount()
+  if vim.v.hlsearch > 0 and searchcount.total > 0 then
+    return color('StatuslineSuccess', string.format('%s/%s ', searchcount.current, searchcount.total))
+  end
+
+  return ''
+end
+
+local function lsp_status()
+  local errors = vim.diagnostic.get(0, { severity = 1 })
+  local warnings = vim.diagnostic.get(0, { severity = 2 })
+
+  local messages = {}
+  if #errors ~= 0 then
+    table.insert(messages, color('StatuslineError', string.format('E%s', #errors)))
+  end
+  if #warnings ~= 0 then
+    table.insert(messages, color('StatuslineWarning', string.format('W%s', #warnings)))
+  end
+
+  return table.concat(messages, ' ')
+end
+
+function _G.statusline()
+  return table.concat {
+    mode(),
+    icon(),
+    '  ',
+    file_name(),
+    file_modified(),
+    file_read_only(),
+    -- Right side
+    '%=',
+    test_status(),
+    search_count(),
+    lsp_status(),
+    '  ',
+  }
+end
+
+vim.o.statusline = '%!v:lua.statusline()'
 
 -- Use a global statusline for all windows
 vim.opt.laststatus = 3
