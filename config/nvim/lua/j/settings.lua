@@ -66,6 +66,7 @@ opt.inccommand = 'nosplit' -- Show preview of ex commands
 
 opt.splitright = true -- Open new split to the right
 opt.splitbelow = true -- Open new split below
+opt.splitkeep = 'screen'
 opt.whichwrap = opt.whichwrap + 'h,l,<,>,[,]'
 opt.joinspaces = false -- Prevent inserting two spaces with J
 
