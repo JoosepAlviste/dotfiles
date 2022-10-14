@@ -200,7 +200,7 @@ return require('packer').startup {
           end,
         },
         'jose-elias-alvarez/typescript.nvim',
-        'folke/lua-dev.nvim',
+        'folke/neodev.nvim',
       },
     }
 
