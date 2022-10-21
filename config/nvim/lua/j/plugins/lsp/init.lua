@@ -128,8 +128,7 @@ function M.on_attach(client, bufnr)
   end
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)
+M.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- If the LSP response includes any `node_modules`, then try to remove them and
 -- see if there are any options left. We probably want to navigate to the code
