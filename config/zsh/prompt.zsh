@@ -60,7 +60,7 @@ function gitstatus_prompt_update() {
     where=${VCS_STATUS_COMMIT[1,8]}
   fi
 
-  (( $#where > 32 )) && where[13,-13]="…"  # truncate long branch names and tags
+  (( $#where > 18 )) && where[17,-1]="…"  # truncate long branch names and tags
   p+="${clean}${where//\%/%%}"             # escape %
 
   # ⇣42 if behind the remote.
