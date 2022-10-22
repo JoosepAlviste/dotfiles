@@ -102,6 +102,11 @@ require('nvim-web-devicons').setup {
       color = '#cbcb41',
       name = 'Js',
     },
+    cjs = {
+      icon = '',
+      color = '#cbcb41',
+      name = 'Js',
+    },
     es6 = {
       icon = '',
       color = '#cbcb41',
