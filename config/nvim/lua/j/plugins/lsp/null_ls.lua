@@ -20,9 +20,9 @@ null_ls.setup {
     },
 
     b.formatting.prettier.with {
-      filetypes = { 'graphql' },
+      filetypes = { 'graphql', 'css' },
       condition = function(utils)
-        return utils.root_has_file '.prettierrc.json'
+        return utils.root_has_file { '.prettierrc.json', 'prettier.config.js' }
       end,
       command = './node_modules/.bin/prettier',
     },
@@ -52,4 +52,5 @@ null_ls.setup {
   },
   diagnostics_format = '#{m} [#{c}]',
   on_attach = require('j.plugins.lsp').on_attach,
+  root_dir = require('null-ls.utils').root_pattern('.null-ls-root', 'Makefile', '.git', 'package.json'),
 }
