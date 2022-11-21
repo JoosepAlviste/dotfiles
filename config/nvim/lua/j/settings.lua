@@ -47,6 +47,7 @@ opt.showbreak = '↳ ' -- DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2
 opt.fillchars = {
   eob = ' ', -- Suppress ~ at EndOfBuffer
   fold = ' ', -- Hide trailing folding characters
+  diff = '╱',
 }
 
 opt.cursorline = true -- Highlight current line
