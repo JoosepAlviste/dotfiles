@@ -74,6 +74,8 @@ opt.joinspaces = false -- Prevent inserting two spaces with J
 opt.completeopt = { 'menuone', 'noselect' } -- Completion menu
 opt.pumheight = 13
 
+opt.diffopt = { 'internal', 'filler', 'closeoff', 'linematch:60' }
+
 --  Autoformatting
 --  TODO: Might need to use concat because of
 --  https://github.com/neovim/neovim/issues/14669
