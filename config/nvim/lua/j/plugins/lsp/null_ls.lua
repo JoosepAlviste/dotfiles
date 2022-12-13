@@ -5,7 +5,7 @@ local b = null_ls.builtins
 null_ls.setup {
   sources = {
     b.formatting.prettier.with {
-      filetypes = { 'typescriptreact', 'typescript', 'vue' },
+      filetypes = { 'typescriptreact', 'typescript', 'vue', 'javascript' },
       condition = function(utils)
         local has_prettier = utils.root_has_file('.prettierrc.json', '.prettierrc')
         if not has_prettier then
