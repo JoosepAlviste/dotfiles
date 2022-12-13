@@ -243,6 +243,20 @@ return require('packer').startup {
       after = 'palenightfall.nvim',
     }
 
+    use {
+      'axelvc/template-string.nvim',
+      config = function()
+        require('template-string').setup {
+          filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
+          remove_template_string = true,
+          restore_quotes = {
+            normal = [[']],
+            jsx = [["]],
+          },
+        }
+      end,
+    }
+
     -- Git
     -- I only use the "blame" feature from this
     use {
