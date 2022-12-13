@@ -1,3 +1,5 @@
+; inherits: php
+
 (assignment_expression
   left: (variable_name
           (name) @_name (#eq? @_name "q"))
