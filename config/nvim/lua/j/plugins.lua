@@ -151,6 +151,17 @@ return require('packer').startup {
         require 'j.plugins.web_devicons'
       end,
     }
+    use {
+      'nvim-zh/colorful-winsep.nvim',
+      config = function()
+        local c = require('palenightfall').colors
+        require('colorful-winsep').setup {
+          highlight = {
+            guifg = c.line_numbers,
+          },
+        }
+      end,
+    }
 
     -- Programming
     --------------
