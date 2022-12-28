@@ -18,6 +18,10 @@ vim.diagnostic.config {
   float = {
     border = 'rounded',
     format = function(diagnostic)
+      if diagnostic.source == '' then
+        return diagnostic.message
+      end
+
       if diagnostic.source == 'eslint' then
         return string.format(
           '%s [%s]',
@@ -26,6 +30,7 @@ vim.diagnostic.config {
           diagnostic.user_data.lsp.code
         )
       end
+
       return string.format('%s [%s]', diagnostic.message, diagnostic.source)
     end,
     severity_sort = true,
