@@ -126,6 +126,12 @@ function M.on_attach(client, bufnr)
       end,
     })
   end
+
+  -- Disable semantic token highlighting, it is worse in some cases than
+  -- treesitter (e.g., SCREAMING_SNAKE_CASE constants or builtin variables)
+  -- I think that "modifiers" is what we need in order to be able to have a bit
+  -- nicer highlighting with LSP?
+  client.server_capabilities.semanticTokensProvider = nil
 end
 
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
