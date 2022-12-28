@@ -1,5 +1,3 @@
-local Path = require 'plenary.path'
-
 local M = {}
 
 function M.map(modes, lhs, rhs, opts)
@@ -108,6 +106,8 @@ function M.update_plugins_every_day()
 end
 
 function M.read_json_file(filename)
+  local Path = require 'plenary.path'
+
   local path = Path:new(filename)
   if not path:exists() then
     return nil
