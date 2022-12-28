@@ -1,4 +1,4 @@
-require 'impatient'
+pcall(require, 'impatient')
 
 local g = vim.g
 
