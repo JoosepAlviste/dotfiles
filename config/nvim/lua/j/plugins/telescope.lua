@@ -94,3 +94,6 @@ require('telescope').setup {
 require('telescope').load_extension 'fzf'
 require('telescope').load_extension 'notify'
 require('telescope').load_extension 'ui-select'
+
+-- New filetypes
+require('plenary.filetype').add_file 'filetypes'
