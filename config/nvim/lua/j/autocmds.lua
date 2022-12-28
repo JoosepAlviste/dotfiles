@@ -37,11 +37,3 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   group = group,
   command = [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
 })
-
--- Update plugins automatically periodically
-vim.api.nvim_create_autocmd('VimEnter', {
-  group = group,
-  callback = function()
-    require('j.utils').update_plugins_every_day()
-  end,
-})

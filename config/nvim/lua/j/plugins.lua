@@ -317,4 +317,8 @@ require('lazy').setup({
   install = {
     colorscheme = { 'palenightfall' },
   },
+  checker = {
+    enabled = true,
+    frequency = 3600 * 12, -- Every 12 hours
+  },
 })
