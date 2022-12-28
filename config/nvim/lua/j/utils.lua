@@ -98,7 +98,7 @@ function M.update_plugins_every_day()
   file = io.open(plugin_updated_at_filename)
   local contents = file:read '*a'
   if contents ~= today then
-    vim.fn.execute 'PackerUpdate'
+    vim.fn.execute 'Lazy sync'
 
     file = io.open(plugin_updated_at_filename, 'w')
     file:write(today)

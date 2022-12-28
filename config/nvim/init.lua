@@ -1,5 +1,3 @@
-pcall(require, 'impatient')
-
 local g = vim.g
 
 local map = require('j.utils').map
@@ -15,7 +13,6 @@ require 'j.settings'
 require 'j.commands'
 require 'j.autocmds'
 require 'j.plugins'
-require 'packer_compiled'
 require 'j.mappings'
 require 'j.abbreviations'
 require 'j.statusline'
