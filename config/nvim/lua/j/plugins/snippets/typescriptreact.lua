@@ -119,4 +119,34 @@ ls.add_snippets('typescriptreact', {
       i(2),
     })
   ),
+
+  -- SolidJS component
+  s(
+    'sc',
+    fmt(
+      [[
+import type {{ Component }} from 'solid-js'
+
+type {}Props = {{
+  {}
+}}
+
+export const {}: Component<{}Props> = ({}) => {{
+  return {}
+}}
+]],
+      {
+        d(1, function(_, snip)
+          return sn(nil, {
+            i(1, vim.fn.substitute(snip.env.TM_FILENAME, '\\..*$', '', 'g')),
+          })
+        end),
+        i(2, '// Props'),
+        rep(1),
+        rep(1),
+        i(3),
+        i(4, '<div>Children</div>'),
+      }
+    )
+  ),
 })
