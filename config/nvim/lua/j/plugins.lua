@@ -157,7 +157,7 @@ return require('packer').startup {
         local c = require('palenightfall').colors
         require('colorful-winsep').setup {
           highlight = {
-            guifg = c.line_numbers,
+            fg = c.line_numbers,
           },
         }
       end,
