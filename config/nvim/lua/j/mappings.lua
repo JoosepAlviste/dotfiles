@@ -4,12 +4,6 @@ local silent = { silent = true }
 
 -- Normal mode
 
--- Better pane movements
-map('n', '<c-h>', '<c-w>h')
-map('n', '<c-j>', '<c-w>j')
-map('n', '<c-k>', '<c-w>k')
-map('n', '<c-l>', '<c-w>l')
-
 -- Store relative line number jumps in the jumplist if they exceed a threshold.
 map('n', 'k', '(v:count > 5 ? "m\'" . v:count : "") . "k"', { expr = true })
 map('n', 'j', '(v:count > 5 ? "m\'" . v:count : "") . "j"', { expr = true })

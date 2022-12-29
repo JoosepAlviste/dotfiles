@@ -35,7 +35,7 @@ require('lazy').setup({
     config = function()
       require 'j.plugins.notify'
     end,
-    dependencies = { 'palenightfall.nvim' },
+    event = 'VeryLazy',
   },
   {
     'andymass/vim-matchup',
@@ -53,12 +53,16 @@ require('lazy').setup({
   -- Mapping improvements
   {
     'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     config = function()
       require 'j.plugins.autopairs'
     end,
   },
   {
     'numToStr/Comment.nvim',
+    keys = {
+      { 'gc', mode = { 'n', 'v' }, 'gcc' },
+    },
     config = function()
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
@@ -67,6 +71,7 @@ require('lazy').setup({
   },
   {
     'kylechui/nvim-surround',
+    keys = { 'ys', 'cs', 'ds' },
     config = function()
       require('nvim-surround').setup()
     end,
@@ -75,11 +80,12 @@ require('lazy').setup({
   {
     'knubie/vim-kitty-navigator',
     build = 'cp ./*.py ~/.config/kitty/',
-    event = 'VimEnter',
+    keys = { '<c-h>', '<c-j>', '<c-k>', '<c-l>' },
   },
   {
     'JoosepAlviste/cinnamon.nvim',
     branch = 'feature/skip-lines-when-scrolling',
+    event = 'BufEnter',
     config = function()
       require('cinnamon').setup {
         extra_keymaps = true,
@@ -95,6 +101,7 @@ require('lazy').setup({
   {
     -- Fuzzy finder
     'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
     config = function()
       require 'j.plugins.telescope'
     end,
@@ -195,19 +202,6 @@ require('lazy').setup({
     end,
     dependencies = {
       {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-          'hrsh7th/cmp-nvim-lsp',
-          'hrsh7th/cmp-buffer',
-          'hrsh7th/cmp-path',
-          'saadparwaiz1/cmp_luasnip',
-          'petertriho/cmp-git',
-        },
-        config = function()
-          require 'j.plugins.cmp'
-        end,
-      },
-      {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
           require 'j.plugins.lsp.null_ls'
@@ -218,7 +212,22 @@ require('lazy').setup({
     },
   },
   {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'petertriho/cmp-git',
+    },
+    config = function()
+      require 'j.plugins.cmp'
+    end,
+  },
+  {
     'L3MON4D3/LuaSnip',
+    event = 'InsertEnter',
     config = function()
       require 'j.plugins.luasnip'
     end,
@@ -238,6 +247,16 @@ require('lazy').setup({
   {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap' },
+    keys = {
+      '<localleader>dc',
+      '<localleader>do',
+      '<localleader>di',
+      '<localleader>dt',
+      '<localleader>db',
+      '<localleader>dB',
+      '<localleader>dr',
+      '<localleader>du',
+    },
     config = function()
       require 'j.plugins.dap'
     end,
@@ -270,6 +289,7 @@ require('lazy').setup({
         },
       }
     end,
+    event = 'InsertEnter',
     ft = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
   },
 
@@ -290,6 +310,7 @@ require('lazy').setup({
   {
     'mickael-menu/zk-nvim',
     dependencies = { 'neovim/nvim-lspconfig' },
+    ft = 'markdown',
     config = function()
       require 'j.plugins.zk'
     end,
@@ -308,6 +329,13 @@ require('lazy').setup({
   },
   {
     'nvim-neotest/neotest',
+    keys = {
+      '<leader>tn',
+      '<leader>tf',
+      '<leader>ta',
+      '<leader>tl',
+      '<leader>ts',
+    },
     dependencies = { 'KaiSpencer/neotest-vitest', 'haydenmeade/neotest-jest' },
     config = function()
       require 'j.plugins.neotest'
