@@ -33,6 +33,9 @@ vim.diagnostic.config {
 
       return string.format('%s [%s]', diagnostic.message, diagnostic.source)
     end,
+    suffix = function()
+      return ''
+    end,
     severity_sort = true,
     close_events = { 'CursorMoved', 'InsertEnter' },
   },
@@ -171,12 +174,12 @@ local function filter_out_same_location_from_lsp_items(results)
     local to = item.targetSelectionRange
 
     return not (
-        from
-        and from.start.character == to.start.character
-        and from.start.line == to.start.line
-        and from['end'].character == to['end'].character
-        and from['end'].line == to['end'].line
-      )
+      from
+      and from.start.character == to.start.character
+      and from.start.line == to.start.line
+      and from['end'].character == to['end'].character
+      and from['end'].line == to['end'].line
+    )
   end, results)
 end
 
@@ -219,15 +222,17 @@ local function list_or_jump(action, title, opts)
       vim.lsp.util.jump_to_location(flattened_results[1], offset_encoding)
     else
       local locations = vim.lsp.util.locations_to_items(flattened_results, offset_encoding)
-      pickers.new(opts, {
-        prompt_title = title,
-        finder = finders.new_table {
-          results = locations,
-          entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
-        },
-        previewer = conf.qflist_previewer(opts),
-        sorter = conf.generic_sorter(opts),
-      }):find()
+      pickers
+        .new(opts, {
+          prompt_title = title,
+          finder = finders.new_table {
+            results = locations,
+            entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts),
+          },
+          previewer = conf.qflist_previewer(opts),
+          sorter = conf.generic_sorter(opts),
+        })
+        :find()
     end
   end)
 end
