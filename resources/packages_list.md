@@ -13,10 +13,6 @@ brew install \
     jq \
     jesseduffield/lazygit/lazygit \
     ffmpegthumbnailer \
-    hashicorp/tap/terraform-ls \
-    lua-language-server \
-    stylua \
-    zk \
     bat \
     exa \
     prettyping \
@@ -24,25 +20,4 @@ brew install \
     fd \
     ripgrep
 brew install --HEAD neovim
-```
-
-
-## Global NPM packages
-
-Some packages that are useful and should probably be installed into the global 
-node modules.
-
-```bash
-npm i -g \
-    bash-language-server \
-    typescript-language-server \
-    vls \
-    graphql-language-service-cli \
-    intelephense \
-    vscode-langservers-extracted \
-    yaml-language-server \
-    dockerfile-language-server-nodejs \
-    eslint_d \
-    @volar/vue-language-server \
-    @prisma/language-server
 ```

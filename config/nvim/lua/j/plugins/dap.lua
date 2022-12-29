@@ -5,7 +5,7 @@ local map = require('j.utils').map
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
-  args = { os.getenv 'HOME' .. '/Code/Programs/vscode-node-debug2/out/src/nodeDebug.js' },
+  args = { vim.fn.stdpath 'data' .. '/mason/vscode-node-debug2/out/src/nodeDebug.js' },
 }
 
 dap.configurations.javascript = {
@@ -31,7 +31,7 @@ dap.configurations.javascript = {
 dap.adapters.firefox = {
   type = 'executable',
   command = 'node',
-  args = { os.getenv 'HOME' .. '/Code/Programs/vscode-firefox-debug/dist/adapter.bundle.js' },
+  args = { vim.fn.stdpath 'data' .. '/mason/firefox-debug-adapter/dist/adapter.bundle.js' },
 }
 
 dap.configurations.typescript = {
@@ -48,7 +48,7 @@ dap.configurations.typescript = {
 dap.adapters.php = {
   type = 'executable',
   command = 'node',
-  args = { os.getenv 'HOME' .. '/Code/Programs/vscode-php-debug/out/phpDebug.js' },
+  args = { vim.fn.stdpath 'data' .. '/mason/php-debug-adapter/out/phpDebug.js' },
 }
 
 dap.configurations.php = {

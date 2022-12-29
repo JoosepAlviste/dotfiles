@@ -34,22 +34,14 @@ This will symlink all of the files and folders inside `dots/` into your home
 folder prefixed by `.` and everything from `config/` to your `~/.config/` 
 folder.
 
-The next time you start `vim`, it will automatically install Packer. You should 
-run `:PackerSync` in order to install plugins.
+The next time you start `vim`, it will automatically install `lazy.nvim` and Vim 
+plugins. You should run `:MasonInstallAll` in order to install the required 
+external programs. Also, check out 
+[`packages_list.md`](./resources/packages_list.md) for extra programs to 
+install.
 
 The utility scripts in `bin/` are automatically added to the Zsh path, so you 
 can run `makesymlinks` anywhere.
-
-
-### BetterTouchTool
-
-This repository also includes my BetterTouchTool presets in the `resources/` 
-folder.
-
-The touch bar looks like so:
-
-![Touch Bar 
-preset](https://user-images.githubusercontent.com/9450943/132948524-382bb735-c90a-4c92-aa9e-410b375b5e22.png)
 
 
 ## Update
