@@ -11,6 +11,9 @@ require('lspconfig').sumneko_lua.setup {
       format = {
         enable = false,
       },
+      workspace = {
+        checkThirdParty = false,
+      },
     },
   },
 }
