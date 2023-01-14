@@ -51,5 +51,6 @@ require('nvim-treesitter.configs').setup {
     'prisma',
     'svelte',
     'sql',
+    'regex',
   },
 }
