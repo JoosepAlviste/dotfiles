@@ -22,11 +22,7 @@ require('palenightfall').setup {
     LuasnipChoice = { fg = c.orange },
     LuasnipInsert = { fg = c.cyan },
 
-    CursorLineLir = { bg = c.highlight },
-
     WinBar = { bold = false },
-
-    LirEmptyDirText = { bg = c.highlight },
 
     -- Custom Telescope look
     TelescopeBorder = { fg = c.background_darker, bg = c.background_darker },
