@@ -46,7 +46,7 @@ function M.file_info()
 
   require('notify').dismiss()
 
-  vim.notify(lines_texts, vim.log.levels.INFO, {
+  vim.notify(table.concat(lines_texts, '\n'), vim.log.levels.INFO, {
     title = 'File info',
   })
 end
