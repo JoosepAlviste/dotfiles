@@ -57,12 +57,9 @@ map('n', '<esc>', function()
   vim.lsp.buf.clear_references()
   vim.cmd.nohlsearch()
 
-  local winsep_windows = require('colorful-winsep.view').wins
-
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
-    local is_winsep_window = vim.tbl_contains(vim.tbl_values(winsep_windows), win)
-    if config.relative ~= '' and not is_winsep_window then
+    if config.relative ~= '' then
       vim.api.nvim_win_close(win, false)
     end
   end

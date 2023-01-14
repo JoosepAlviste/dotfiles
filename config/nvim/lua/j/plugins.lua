@@ -161,17 +161,6 @@ require('lazy').setup({
       require 'j.plugins.web_devicons'
     end,
   },
-  {
-    'nvim-zh/colorful-winsep.nvim',
-    config = function()
-      local c = require('palenightfall').colors
-      require('colorful-winsep').setup {
-        highlight = {
-          fg = c.line_numbers,
-        },
-      }
-    end,
-  },
 
   -- Programming
   --------------
