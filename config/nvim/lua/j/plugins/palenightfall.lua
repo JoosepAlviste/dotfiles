@@ -19,18 +19,7 @@ require('palenightfall').setup {
     LspDiagnosticsLineNrError = { fg = c.red, bg = '#312a34', bold = true },
     LspDiagnosticsLineNrWarning = { fg = c.orange, bg = '#312e3a', bold = true },
 
-    LuasnipChoice = { fg = c.orange },
-    LuasnipInsert = { fg = c.cyan },
-
     WinBar = { bold = false },
-
-    -- Custom Telescope look
-    TelescopeBorder = { fg = c.background_darker, bg = c.background_darker },
-    TelescopeNormal = { bg = c.background_darker },
-    TelescopeSelection = { bg = c.references },
-    TelescopePromptNormal = { bg = c.references },
-    TelescopePromptBorder = { fg = c.references, bg = c.references },
-    TelescopePromptTitle = { bg = c.references },
 
     DapBreakpoint = { fg = c.red },
   },
