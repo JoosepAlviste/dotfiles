@@ -3,7 +3,6 @@
 --   https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 
 local termcode = require('j.utils').termcode
-local neotest_state = require('neotest').statusline
 
 -- Output the content colored by the supplied highlight group.
 local function color(highlight_group, content)
@@ -28,7 +27,7 @@ local mode_colors = {
 local function mode()
   local current_mode = vim.api.nvim_get_mode().mode
   local mode_color = string.format('Statusline%s', (mode_colors[current_mode] or 'Normal'))
-  return color(mode_color, '▎ ')
+  return color(mode_color, '▎')
 end
 
 local function icon()
@@ -54,18 +53,18 @@ end
 
 local function file_modified()
   if vim.bo.modified then
-    return color('StatuslineBoolean', ' +')
+    return color('StatuslineBoolean', '+')
   end
 
-  return ''
+  return nil
 end
 
 local function file_read_only()
   if vim.bo.readonly then
-    return color('StatuslineBoolean', ' ‼')
+    return color('StatuslineBoolean', '‼')
   end
 
-  return ''
+  return nil
 end
 
 local test_status_symbols = {
@@ -81,23 +80,22 @@ local test_status_colors = {
 }
 
 local function test_status()
+  local neotest_state = require('neotest').statusline
+
   if neotest_state and neotest_state.test_status ~= 'idle' then
-    return color(
-      test_status_colors[neotest_state.test_status],
-      string.format('%s ', test_status_symbols[neotest_state.test_status])
-    )
+    return color(test_status_colors[neotest_state.test_status], test_status_symbols[neotest_state.test_status])
   end
 
-  return ''
+  return nil
 end
 
 local function search_count()
   local searchcount = vim.fn.searchcount()
   if vim.v.hlsearch > 0 and searchcount.total > 0 then
-    return color('StatuslineSuccess', string.format('%s/%s ', searchcount.current, searchcount.total))
+    return color('StatuslineSuccess', string.format('%s/%s', searchcount.current, searchcount.total))
   end
 
-  return ''
+  return nil
 end
 
 local function lsp_status()
@@ -116,10 +114,10 @@ local function lsp_status()
 end
 
 function _G.statusline()
-  return table.concat {
+  local sections = {
     mode(),
     icon(),
-    '  ',
+    '',
     file_name(),
     file_modified(),
     file_read_only(),
@@ -128,8 +126,15 @@ function _G.statusline()
     test_status(),
     search_count(),
     lsp_status(),
-    '  ',
+    ' ',
   }
+
+  return table.concat(
+    vim.tbl_filter(function(section)
+      return section
+    end, sections),
+    ' '
+  )
 end
 
 vim.o.statusline = '%!v:lua.statusline()'
