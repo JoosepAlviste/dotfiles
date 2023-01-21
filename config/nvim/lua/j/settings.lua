@@ -32,6 +32,7 @@ opt.linebreak = true -- Break lines by spaces or tabs
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = 'yes'
+opt.statuscolumn = "%C%=%4{&nu ? (&rnu ? (v:lnum == line('.') ? v:lnum . ' ' : v:relnum) : v:lnum) : ''}%=%s"
 opt.showmode = false
 
 opt.list = true
