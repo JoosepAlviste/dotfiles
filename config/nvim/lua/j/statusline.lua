@@ -98,6 +98,14 @@ local function search_count()
   return nil
 end
 
+local function plugin_updates()
+  if require('lazy.status').has_updates() then
+    return color('StatuslineBlue', require('lazy.status').updates())
+  end
+
+  return nil
+end
+
 local function lsp_status()
   local errors = vim.diagnostic.get(0, { severity = 1 })
   local warnings = vim.diagnostic.get(0, { severity = 2 })
@@ -125,6 +133,7 @@ function _G.statusline()
     '%=',
     test_status(),
     search_count(),
+    plugin_updates(),
     lsp_status(),
     ' ',
   }

@@ -15,6 +15,7 @@ require('palenightfall').setup {
     StatuslineReplace = { fg = c.orange, bg = c.statusline },
     StatuslineVisual = { fg = c.purple, bg = c.statusline },
     StatuslineCommand = { fg = c.yellow, bg = c.statusline },
+    StatuslineBlue = { fg = c.blue, bg = c.statusline },
 
     LspDiagnosticsLineNrError = { fg = c.red, bg = '#312a34', bold = true },
     LspDiagnosticsLineNrWarning = { fg = c.orange, bg = '#312e3a', bold = true },

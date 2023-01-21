@@ -378,6 +378,7 @@ require('lazy').setup({
   },
   checker = {
     enabled = true,
-    frequency = 3600 * 12, -- Every 12 hours
+    frequency = 3600 * 60 * 12, -- Every 12 hours
+    notify = false,
   },
 })
