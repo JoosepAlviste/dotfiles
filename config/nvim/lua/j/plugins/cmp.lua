@@ -77,6 +77,10 @@ cmp.setup {
         local first_slash = string.find(vim_item.menu, '/')
         local last_slash = string.find(vim_item.menu, '/[^/]*$')
 
+        if not first_slash then
+          return vim_item
+        end
+
         vim_item.menu = string.sub(vim_item.menu, 1, first_slash) .. '…' .. string.sub(vim_item.menu, last_slash)
       end
 
