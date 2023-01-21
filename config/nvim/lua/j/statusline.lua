@@ -98,6 +98,14 @@ local function search_count()
   return nil
 end
 
+local function macro_recording()
+  if require('noice').api.statusline.mode.has() then
+    return color('StatuslineNormal', require('noice').api.statusline.mode.get())
+  end
+
+  return nil
+end
+
 local function plugin_updates()
   if require('lazy.status').has_updates() then
     return color('StatuslineBlue', require('lazy.status').updates())
@@ -132,7 +140,7 @@ function _G.statusline()
     -- Right side
     '%=',
     test_status(),
-    search_count(),
+    macro_recording(),
     plugin_updates(),
     lsp_status(),
     ' ',

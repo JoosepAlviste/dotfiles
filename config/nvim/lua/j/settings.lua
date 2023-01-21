@@ -34,6 +34,7 @@ opt.relativenumber = true
 opt.signcolumn = 'yes'
 opt.statuscolumn = "%C%=%4{&nu ? (&rnu ? (v:lnum == line('.') ? v:lnum . ' ' : v:relnum) : v:lnum) : ''}%=%s"
 opt.showmode = false
+opt.cmdheight = 0
 
 opt.list = true
 opt.listchars = {
@@ -54,8 +55,6 @@ opt.fillchars = {
 opt.cursorline = true -- Highlight current line
 opt.colorcolumn = { 81, 121 } -- Highlight columns
 opt.showmatch = true -- Highlight matching parenthesis, etc.
-
-opt.lazyredraw = true -- Redraw only when need to
 
 opt.showmode = false -- Do not show mode in command line
 
@@ -92,6 +91,7 @@ opt.shortmess:append {
   a = true, -- Use abbreviations in messages ([RO] intead of [readonly])
   c = true, -- Do not show ins-completion-menu messages (match 1 of 2)
   F = true, -- Do not print file name when opening a file
+  s = true, -- Do not show "Search hit BOTTOM" message
 }
 
 -- Integration with the system clipboard

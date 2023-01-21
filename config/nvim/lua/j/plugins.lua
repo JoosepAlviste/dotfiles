@@ -97,6 +97,17 @@ require('lazy').setup({
     end,
   },
 
+  -- UI
+  {
+    'folke/noice.nvim',
+    config = function()
+      require 'j.plugins.noice'
+    end,
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
+
   -- Navigation
   {
     -- Fuzzy finder
