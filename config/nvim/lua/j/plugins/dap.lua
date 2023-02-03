@@ -48,7 +48,7 @@ dap.configurations.typescript = {
 dap.adapters.php = {
   type = 'executable',
   command = 'node',
-  args = { vim.fn.stdpath 'data' .. '/mason/php-debug-adapter/out/phpDebug.js' },
+  args = { vim.fn.stdpath 'data' .. '/mason/packages/php-debug-adapter/extension/out/phpDebug.js' },
 }
 
 dap.configurations.php = {
