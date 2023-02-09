@@ -65,10 +65,6 @@ vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
   end
 end
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'rounded',
-})
-
 -- Construct some utilities that are needed for setting up the LSP servers
 
 local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
