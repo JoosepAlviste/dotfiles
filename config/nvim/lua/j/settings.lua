@@ -50,6 +50,8 @@ opt.fillchars = {
   eob = ' ', -- Suppress ~ at EndOfBuffer
   fold = ' ', -- Hide trailing folding characters
   diff = '╱',
+  foldopen = '',
+  foldclose = '',
 }
 
 opt.cursorline = true -- Highlight current line

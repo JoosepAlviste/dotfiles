@@ -139,6 +139,10 @@ function M.on_attach(client, bufnr)
 end
 
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
+M.capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 
 -- If the LSP response includes any `node_modules`, then try to remove them and
 -- see if there are any options left. We probably want to navigate to the code
