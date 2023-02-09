@@ -90,10 +90,3 @@ cmp.setup {
 }
 
 require('cmp_git').setup()
-
--- For some reason, setting the highlights right away after loading the plugin
--- does not work (cmp default highlights are used). A workaround is to load the
--- highlights after everything has initialized
-vim.defer_fn(function()
-  require 'j.plugins.cmp_highlights'
-end, 0)
