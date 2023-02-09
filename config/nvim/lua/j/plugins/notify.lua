@@ -1,8 +1,6 @@
 vim.opt.termguicolors = true
 
-require('notify').setup {
-  background_colour = require('palenightfall').colors.background,
-}
+require('notify').setup()
 
 vim.notify = require 'notify'
 
