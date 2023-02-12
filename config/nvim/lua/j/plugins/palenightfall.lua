@@ -3,6 +3,7 @@ local highlight = require('palenightfall.internal').highlight
 local c = require('palenightfall').colors
 
 require('palenightfall').setup {
+  transparent = true,
   highlight_overrides = {
     StatuslineAccent = { fg = c.cyan, bg = c.statusline },
     StatuslineBoolean = { fg = c.orange, bg = c.statusline },
