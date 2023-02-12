@@ -43,3 +43,18 @@ vim.keymap.set('i', '/', function()
 
   return '/'
 end, { expr = true, buffer = true })
+
+-- Inside an attribute: <button type| pressing = -> <button type="|"
+vim.keymap.set('i', '=', function()
+  local ts_utils = require 'j.ts_utils'
+
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
+
+  local node = ts_utils.get_node_at_location(left_of_cursor_range)
+  if not node or not vim.tbl_contains({ 'attribute_name', 'directive_argument', 'directive_name' }, node:type()) then
+    return '='
+  end
+
+  return '=""<left>'
+end, { expr = true, buffer = true })
