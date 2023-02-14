@@ -20,6 +20,7 @@ require('lazy').setup({
     config = function()
       require 'j.plugins.palenightfall'
     end,
+    dev = false,
   },
 
   -- Core utilities
@@ -167,7 +168,7 @@ require('lazy').setup({
     dependencies = {
       'windwp/nvim-ts-autotag', -- Automatically end & rename tags
       -- Dynamically set commentstring based on cursor location in file
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      { 'JoosepAlviste/nvim-ts-context-commentstring', dev = false },
       'nvim-treesitter/playground',
     },
   },
@@ -398,5 +399,8 @@ require('lazy').setup({
     enabled = true,
     frequency = 3600 * 60 * 12, -- Every 12 hours
     notify = false,
+  },
+  dev = {
+    path = '~/Code/Projects',
   },
 })
