@@ -25,3 +25,5 @@ dots/emacs.d/elpa/
 *.pyc
 
 .vim
+
+.luarc.json
