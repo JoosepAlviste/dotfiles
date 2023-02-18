@@ -8,9 +8,6 @@ local silent = { silent = true }
 map('n', 'k', '(v:count > 5 ? "m\'" . v:count : "") . "k"', { expr = true })
 map('n', 'j', '(v:count > 5 ? "m\'" . v:count : "") . "j"', { expr = true })
 
--- Yank from the cursor to the end of the line, like C and D
-map('n', 'Y', 'y$')
-
 -- Faster scrolling
 map('n', '<c-e>', '3<c-e>')
 map('n', '<c-y>', '3<c-y>')
