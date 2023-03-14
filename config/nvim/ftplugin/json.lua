@@ -7,4 +7,4 @@ vim.keymap.set('n', 'o', function()
   vim.cmd [[silent! keeppatterns substitute/\(.*[^{[][^,{[]\)$/\1,/g]]
   -- And add the new line
   vim.fn.feedkeys(termcode 'A<cr>')
-end)
+end, { buffer = true })
