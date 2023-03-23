@@ -13,6 +13,7 @@ null_ls.setup {
         end
 
         local has_eslint_prettier_integration = is_npm_package_installed '@developers/eslint-config-scoro'
+          or is_npm_package_installed 'eslint-plugin-prettier'
 
         return not has_eslint_prettier_integration
       end,
