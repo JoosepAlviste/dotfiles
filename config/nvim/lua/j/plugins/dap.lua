@@ -61,6 +61,9 @@ dap.configurations.php = {
     pathMappings = {
       ['/var/www/scoro'] = os.getenv 'SCORO_PATH' .. '/scoro-base',
     },
+    xdebugSettings = {
+      max_data = 10000,
+    },
   },
 }
 
