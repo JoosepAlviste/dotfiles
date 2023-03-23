@@ -24,6 +24,7 @@ require('palenightfall').setup {
     WinBar = { bold = false },
 
     DapBreakpoint = { fg = c.red },
+    DapStopped = { fg = c.cyan },
   },
 }
 

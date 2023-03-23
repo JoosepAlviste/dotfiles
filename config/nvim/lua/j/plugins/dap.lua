@@ -67,6 +67,7 @@ dap.configurations.php = {
 require('dapui').setup()
 
 vim.fn.sign_define('DapBreakpoint', { text = '⬤', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '→', texthl = 'DapStopped', linehl = '', numhl = '' })
 
 map('n', '<localleader>dc', dap.continue, { silent = true })
 map('n', '<localleader>do', dap.step_over, { silent = true })
