@@ -92,6 +92,11 @@ require('noice').setup {
             kind = 'progress',
             find = 'Checking document',
           },
+          {
+            event = 'lsp',
+            kind = 'progress',
+            find = 'formatting',
+          },
         },
       },
       skip = true,
