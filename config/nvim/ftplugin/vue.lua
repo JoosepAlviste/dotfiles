@@ -14,9 +14,7 @@ end)
 
 -- Automatically end a self-closing tag when pressing /
 vim.keymap.set('i', '/', function()
-  local ts_utils = require 'nvim-treesitter.ts_utils'
-
-  local node = ts_utils.get_node_at_cursor()
+  local node = vim.treesitter.get_node()
   if not node then
     return '/'
   end
@@ -31,7 +29,7 @@ vim.keymap.set('i', '/', function()
 
   local is_start_tag = first_sibling_node:type() == 'start_tag'
 
-  local start_tag_text = vim.treesitter.query.get_node_text(first_sibling_node, 0)
+  local start_tag_text = vim.treesitter.get_node_text(first_sibling_node, 0)
   local tag_is_already_terminated = string.match(start_tag_text, '>$')
 
   if is_tag_writing_in_progress and is_start_tag and not tag_is_already_terminated then
@@ -46,14 +44,12 @@ end, { expr = true, buffer = true })
 
 -- Inside an attribute: <button type| pressing = -> <button type="|"
 vim.keymap.set('i', '=', function()
-  local ts_utils = require 'j.ts_utils'
-
   local cursor = vim.api.nvim_win_get_cursor(0)
   local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
 
   -- The cursor location does not give us the correct node in this case, so we
   -- need to get the node to the left of the cursor
-  local node = ts_utils.get_node_at_location(left_of_cursor_range)
+  local node = vim.treesitter.get_node { pos = left_of_cursor_range }
   local nodes_active_in = { 'attribute_name', 'directive_argument', 'directive_name' }
   if not node or not vim.tbl_contains(nodes_active_in, node:type()) then
     return '='
