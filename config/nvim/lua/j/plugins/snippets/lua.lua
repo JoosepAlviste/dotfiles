@@ -31,7 +31,7 @@ end
     )
   ),
 
-  -- If statement
+  -- Local function declaration
   s(
     'lf',
     fmt(
@@ -43,4 +43,21 @@ end
       { i(1), i(2), i(3) }
     )
   ),
+})
+
+ls.add_snippets('lua', {
+  -- If statement
+  s(
+    'if',
+    fmt(
+      [[
+if {} then
+  {}
+end
+  ]],
+      { i(1), i(2) }
+    )
+  ),
+}, {
+  type = 'autosnippets',
 })
