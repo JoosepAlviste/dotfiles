@@ -54,6 +54,14 @@ cmp.setup {
     { name = 'buffer', keyword_length = 5 },
   },
 
+  matching = {
+    disallow_fuzzy_matching = true,
+    disallow_fullfuzzy_matching = true,
+    disallow_partial_fuzzy_matching = true,
+    disallow_partial_matching = true,
+    disallow_prefix_unmatching = false,
+  },
+
   window = {
     documentation = cmp.config.window.bordered {
       winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
