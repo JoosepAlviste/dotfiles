@@ -74,12 +74,22 @@ cmp.setup {
 
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
       local kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
 
       -- Move the icon to be on the left side
       local strings = vim.split(kind, '%s', { trimempty = true })
       vim_item.kind = ' ' .. strings[1] .. ' '
+
+      local detail = entry:get_completion_item().detail
+      local detail_path = detail and (string.match(detail, "Auto import from '([^']+)'"))
+      if not vim_item.menu or #vim_item.menu == 0 then
+        if detail and not detail_path then
+          vim_item.menu = detail
+        elseif detail_path then
+          vim_item.menu = detail_path
+        end
+      end
 
       if vim_item.menu and #vim_item.menu > 25 then
         local first_slash = string.find(vim_item.menu, '/')
