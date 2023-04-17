@@ -97,6 +97,11 @@ require('noice').setup {
             kind = 'progress',
             find = 'formatting',
           },
+          {
+            event = 'lsp',
+            kind = 'progress',
+            find = 'ltex',
+          },
         },
       },
       skip = true,
