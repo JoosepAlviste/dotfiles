@@ -6,7 +6,7 @@ local map = require('j.utils').map
 map('n', '<space>', '<nop>')
 map('v', '<space>', '<nop>')
 g.mapleader = ' '
-g.maplocalleader = '\\'
+g.maplocalleader = ','
 
 -- My custom configurations
 require 'j.settings'
