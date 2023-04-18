@@ -54,9 +54,13 @@ map('n', '<esc>', function()
   vim.lsp.buf.clear_references()
   vim.cmd.nohlsearch()
 
+  local ignored_filetypes = { 'incline', 'noice' }
+
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local status, config = pcall(vim.api.nvim_win_get_config, win)
-    if config and config.relative ~= '' then
+    local bufnr = vim.fn.winbufnr(win)
+    local buf_filetype = vim.fn.getbufvar(bufnr, '&filetype')
+    if config and config.relative ~= '' and not vim.tbl_contains(ignored_filetypes, buf_filetype) then
       vim.api.nvim_win_close(win, false)
     end
   end

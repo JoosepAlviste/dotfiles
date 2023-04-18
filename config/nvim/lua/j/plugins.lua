@@ -115,6 +115,12 @@ require('lazy').setup({
       'MunifTanjim/nui.nvim',
     },
   },
+  {
+    'b0o/incline.nvim',
+    config = function()
+      require 'j.plugins.incline'
+    end,
+  },
 
   -- Navigation
   {

@@ -25,6 +25,9 @@ require('palenightfall').setup {
 
     DapBreakpoint = { fg = c.red },
     DapStopped = { fg = c.cyan },
+
+    InclineNormal = { bg = c.selection },
+    InclineNormalNC = { bg = c.highlight },
   },
 }
 
