@@ -292,12 +292,6 @@ require('lazy').setup({
     'scoro.vim',
     url = 'git@github.com:JoosepAlviste/scoro.vim',
   },
-  {
-    'editorconfig/editorconfig-vim', -- Project-specific settings
-    config = function()
-      vim.g.EditorConfig_preserve_formatoptions = 1
-    end,
-  },
 
   -- Debugging
   {
