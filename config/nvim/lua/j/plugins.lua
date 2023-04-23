@@ -121,6 +121,7 @@ require('lazy').setup({
       require 'j.plugins.incline'
     end,
   },
+  'xiyaowong/virtcolumn.nvim',
 
   -- Navigation
   {

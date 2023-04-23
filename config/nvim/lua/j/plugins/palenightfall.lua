@@ -28,6 +28,8 @@ require('palenightfall').setup {
 
     InclineNormal = { bg = c.selection },
     InclineNormalNC = { bg = c.highlight },
+
+    ColorColumn = { bg = c.statusline },
   },
 }
 
