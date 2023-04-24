@@ -6,7 +6,6 @@ zk.setup {
   picker = 'telescope',
   lsp = {
     config = {
-      on_attach = require('j.plugins.lsp').on_attach,
       capabilities = require('j.plugins.lsp').capabilities,
     },
   },

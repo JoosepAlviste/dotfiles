@@ -1,6 +1,5 @@
 -- https://github.com/redhat-developer/yaml-language-server
 require('lspconfig').yamlls.setup {
-  on_attach = require('j.plugins.lsp').on_attach,
   capabilities = require('j.plugins.lsp').capabilities,
   settings = {
     yaml = {

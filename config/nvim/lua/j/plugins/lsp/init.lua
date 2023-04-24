@@ -71,72 +71,77 @@ local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local M = {}
 
-function M.on_attach(client, bufnr)
-  -- Set up keymaps
-  local opts = { noremap = true, silent = true }
-  buf_map(bufnr, 'n', '<c-]>', M.definitions, opts)
-  buf_map(bufnr, 'n', 'gd', vim.lsp.buf.declaration, opts)
-  buf_map(bufnr, 'n', 'gi', vim.lsp.buf.implementation, opts)
-  buf_map(bufnr, 'n', 'gD', vim.lsp.buf.type_definition, opts)
-  buf_map(bufnr, 'n', 'gr', builtin.lsp_references, opts)
+-- Navigate diagnostics
+vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
+-- Diagnostics popup
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 
-  buf_map(bufnr, 'n', 'K', vim.lsp.buf.hover, opts)
-  buf_map(bufnr, 'n', '<leader>ca', vim.lsp.buf.code_action, opts)
-  buf_map(bufnr, 'n', '<space>rn', vim.lsp.buf.rename.float, opts)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(event)
+    -- Set up keymaps
+    local opts = { buffer = event.buf, silent = true }
+    vim.keymap.set('n', '<c-]>', M.definitions, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gr', builtin.lsp_references, opts)
 
-  -- Navigate diagnostics
-  buf_map(bufnr, 'n', '[g', vim.diagnostic.goto_prev, opts)
-  buf_map(bufnr, 'n', ']g', vim.diagnostic.goto_next, opts)
-  -- Diagnostics popup
-  buf_map(bufnr, 'n', '<leader>d', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename.float, opts)
 
-  -- Mouse mappings for easily navigating code
-  if client.server_capabilities.definitionProvider then
-    buf_map(bufnr, 'n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', { silent = true })
-  end
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-  -- Highlight symbol references on hover
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
-    vim.api.nvim_clear_autocmds {
-      buffer = bufnr,
-      group = 'LspDocumentHighlight',
-    }
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-      group = 'LspDocumentHighlight',
-      buffer = bufnr,
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd('CursorMoved', {
-      group = 'LspDocumentHighlight',
-      buffer = bufnr,
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
+    -- Mouse mappings for easily navigating code
+    if client.server_capabilities.definitionProvider then
+      vim.keymap.set('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    end
 
-  -- Autoformatting
-  local formatting_disabled_ls = { 'volar', 'intelephense', 'tsserver' }
-  if client.supports_method 'textDocument/formatting' and not vim.tbl_contains(formatting_disabled_ls, client.name) then
-    vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = formatting_augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format {
-          filter = function(buf_client)
-            return not vim.tbl_contains(formatting_disabled_ls, buf_client.name)
-          end,
-        }
-      end,
-    })
-  end
+    -- Highlight symbol references on hover
+    if client.server_capabilities.documentHighlightProvider then
+      vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
+      vim.api.nvim_clear_autocmds {
+        buffer = event.buf,
+        group = 'LspDocumentHighlight',
+      }
+      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        group = 'LspDocumentHighlight',
+        buffer = event.buf,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd('CursorMoved', {
+        group = 'LspDocumentHighlight',
+        buffer = event.buf,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
 
-  -- Disable semantic token highlighting, it is worse in some cases than
-  -- treesitter (e.g., SCREAMING_SNAKE_CASE constants or builtin variables)
-  -- I think that "modifiers" is what we need in order to be able to have a bit
-  -- nicer highlighting with LSP?
-  client.server_capabilities.semanticTokensProvider = nil
-end
+    -- Autoformatting
+    local formatting_disabled_ls = { 'volar', 'intelephense', 'tsserver' }
+    if client.supports_method 'textDocument/formatting' then
+      vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = event.buf }
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = formatting_augroup,
+        buffer = event.buf,
+        callback = function()
+          vim.lsp.buf.format {
+            filter = function(buf_client)
+              return not vim.tbl_contains(formatting_disabled_ls, buf_client.name)
+            end,
+          }
+        end,
+      })
+    end
+
+    -- Disable semantic token highlighting, it is worse in some cases than
+    -- treesitter (e.g., SCREAMING_SNAKE_CASE constants or builtin variables)
+    -- I think that "modifiers" is what we need in order to be able to have a bit
+    -- nicer highlighting with LSP?
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
 
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
 M.capabilities.textDocument.foldingRange = {

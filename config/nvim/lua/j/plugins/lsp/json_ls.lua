@@ -1,6 +1,5 @@
 -- https://github.com/vscode-langservers/vscode-json-languageserver
 require('lspconfig').jsonls.setup {
-  on_attach = require('j.plugins.lsp').on_attach,
   settings = {
     json = {
       schemas = {

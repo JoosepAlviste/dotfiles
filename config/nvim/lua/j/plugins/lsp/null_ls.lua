@@ -52,6 +52,5 @@ null_ls.setup {
     b.code_actions.gitsigns,
   },
   diagnostics_format = '#{m} [#{c}]',
-  on_attach = require('j.plugins.lsp').on_attach,
   root_dir = require('null-ls.utils').root_pattern('.null-ls-root', 'Makefile', '.git', 'package.json'),
 }
