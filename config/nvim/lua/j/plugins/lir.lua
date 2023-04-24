@@ -4,8 +4,6 @@ local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require 'lir.clipboard.actions'
 local Path = require 'plenary.path'
 
-local buf_map = require('j.utils').buf_map
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -108,13 +106,14 @@ vim.api.nvim_create_autocmd('FileType', {
   group = group,
   pattern = 'lir',
   callback = function()
-    buf_map(0, 'x', 'J', function()
+    vim.keymap.set('x', 'J', function()
       mark_actions.toggle_mark 'v'
     end, {
+      buffer = true,
       noremap = true,
       silent = true,
     })
-    buf_map(0, 'n', '-', actions.up, { noremap = true, silent = true })
+    vim.keymap.set('n', '-', actions.up, { noremap = true, silent = true, buffer = true })
 
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false

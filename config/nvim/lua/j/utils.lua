@@ -16,22 +16,6 @@ function M.map(modes, lhs, rhs, opts)
   end
 end
 
-function M.buf_map(buffer, modes, lhs, rhs, opts)
-  opts = opts or {}
-  opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == 'string' then
-    modes = { modes }
-  end
-  for _, mode in ipairs(modes) do
-    if type(rhs) == 'string' then
-      vim.api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts)
-    else
-      opts.callback = rhs
-      vim.api.nvim_buf_set_keymap(buffer, mode, lhs, '', opts)
-    end
-  end
-end
-
 function M.termcode(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
