@@ -46,7 +46,6 @@ end, { silent = true })
 
 -- Open the current file's directory
 map('n', '-', [[expand('%') == '' ? ':e ' . getcwd() . '<cr>' : ':e %:h<cr>']], { expr = true, silent = true })
-map('n', 'H', [[:echo 'Use - instead!'<cr>]])
 
 -- Close floating windows, clear highlights, etc.
 map('n', '<esc>', function()
