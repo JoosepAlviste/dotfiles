@@ -1,4 +1,5 @@
 local cmp = require 'cmp'
+local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
 
 -- Codicons, download from
 -- https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf and
@@ -108,3 +109,5 @@ cmp.setup {
 }
 
 require('cmp_git').setup()
+
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
