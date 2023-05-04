@@ -61,7 +61,7 @@ ls.add_snippets('typescriptreact', {
           local parser = vim.treesitter.get_parser(bufnr, 'tsx')
           local tree = parser:parse()[1]
 
-          local query = vim.treesitter.query.parse_query('tsx', '((identifier) @hello (#eq? @hello "React"))')
+          local query = vim.treesitter.query.parse('tsx', '((identifier) @hello (#eq? @hello "React"))')
           local has_match = false
           for _, _ in query:iter_matches(tree:root(), bufnr) do
             has_match = true
