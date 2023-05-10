@@ -9,12 +9,19 @@ ls.add_snippets('lua', {
   -- Require statement
   s(
     'req',
-    fmt([[local {} = require('{}')]], {
-      f(function(import_name)
-        local parts = vim.split(import_name[1][1], '.', true)
+    fmt([[local {} = require('{}'){}]], {
+      f(function(args)
+        local imported_variable = args[2][1]
+        if #imported_variable > 0 then
+          return string.sub(imported_variable, 2)
+        end
+
+        local import_name = args[1][1]
+        local parts = vim.split(import_name, '.', true)
         return parts[#parts] or ''
-      end, { 1 }),
+      end, { 1, 2 }),
       i(1),
+      i(2),
     })
   ),
 
