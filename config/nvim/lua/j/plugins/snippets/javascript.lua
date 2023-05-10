@@ -89,17 +89,20 @@ describe('{}', () => {{
             vim.pesc(vim.loop.cwd() .. '/'),
             ''
           )
+          local filename_without_extension = vim.fn.fnamemodify(snip.env.TM_FILENAME_BASE, ':r:r')
+
           local filename_without_junk, _ = filename
             :gsub('^test/', '')
             :gsub('^src/', '')
             :gsub('.spec$', '')
             :gsub('.test$', '')
             :gsub('__tests__/', '')
+            :gsub(filename_without_extension .. '/' .. filename_without_extension .. '$', filename_without_extension)
 
           return sn(nil, {
             i(1, filename_without_junk),
           })
-        end, { 1 }),
+        end),
         i(2),
       }
     )
