@@ -2,9 +2,9 @@ local ls = require 'luasnip'
 local types = require 'luasnip.util.types'
 
 ls.config.set_config {
-  -- history = true,
-
   update_events = { 'TextChanged', 'TextChangedI' },
+  delete_check_events = { 'InsertLeave' },
+  region_check_events = { 'InsertEnter' },
 
   enable_autosnippets = true,
 
