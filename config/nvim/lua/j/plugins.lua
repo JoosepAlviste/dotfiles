@@ -80,9 +80,7 @@ require('lazy').setup({
   {
     'kylechui/nvim-surround',
     keys = { 'ys', 'cs', 'ds' },
-    config = function()
-      require('nvim-surround').setup()
-    end,
+    opts = {},
   },
   -- Move between Vim & Kitty windows easily
   {
@@ -94,15 +92,14 @@ require('lazy').setup({
     'JoosepAlviste/cinnamon.nvim',
     branch = 'feature/skip-lines-when-scrolling',
     event = 'BufEnter',
-    config = function()
-      require('cinnamon').setup {
-        extra_keymaps = true,
-        default_delay = 2,
-        max_length = 60,
-        hide_cursor = true,
-        scroll_limit = -1,
-      }
-    end,
+    opts = {
+      extra_keymaps = true,
+      default_delay = 2,
+      max_length = 60,
+      hide_cursor = true,
+      scroll_limit = -1,
+      smallest_delay_per_frame = 1,
+    },
   },
 
   -- UI
@@ -317,30 +314,26 @@ require('lazy').setup({
   -- Web dev
   {
     'NvChad/nvim-colorizer.lua', -- Preview colors
-    config = function()
-      require('colorizer').setup {
-        filetypes = { '*', '!packer' },
-        user_default_options = {
-          tailwind = 'lsp',
-          names = false,
-          sass = { enable = true, parsers = { css = true } },
-        },
-      }
-    end,
+    opts = {
+      filetypes = { '*', '!packer', '!yaml' },
+      user_default_options = {
+        tailwind = 'lsp',
+        names = false,
+        sass = { enable = true, parsers = { css = true } },
+      },
+    },
   },
 
   {
     'axelvc/template-string.nvim',
-    config = function()
-      require('template-string').setup {
-        filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
-        remove_template_string = true,
-        restore_quotes = {
-          normal = [[']],
-          jsx = [["]],
-        },
-      }
-    end,
+    opts = {
+      filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
+      remove_template_string = true,
+      restore_quotes = {
+        normal = [[']],
+        jsx = [["]],
+      },
+    },
     event = 'InsertEnter',
     ft = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
   },
