@@ -265,6 +265,7 @@ require('lazy').setup({
         end,
       },
       'jose-elias-alvarez/typescript.nvim',
+      'pmizio/typescript-tools.nvim',
       'folke/neodev.nvim',
     },
   },

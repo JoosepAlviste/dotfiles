@@ -4,9 +4,5 @@ local is_npm_package_installed = require('j.utils').is_npm_package_installed
 local have_vue = is_npm_package_installed 'vue'
 
 if not have_vue then
-  require('typescript').setup {
-    server = {
-      capabilities = require('j.plugins.lsp').capabilities,
-    },
-  }
+  require('typescript-tools').setup()
 end

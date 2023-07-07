@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     -- Autoformatting
-    local formatting_disabled_ls = { 'volar', 'intelephense', 'tsserver' }
+    local formatting_disabled_ls = { 'volar', 'intelephense', 'tsserver', 'typescript-tools' }
     if client.supports_method 'textDocument/formatting' then
       vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = event.buf }
       vim.api.nvim_create_autocmd('BufWritePre', {
