@@ -36,6 +36,12 @@ require('noice').setup {
   routes = {
     {
       filter = {
+        find = 'Format request failed, no matching language servers.',
+      },
+      opts = { skip = true },
+    },
+    {
+      filter = {
         any = {
           {
             event = 'msg_show',
