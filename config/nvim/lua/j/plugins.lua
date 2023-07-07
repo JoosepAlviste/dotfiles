@@ -213,6 +213,7 @@ require('lazy').setup({
         'svelte-language-server',
         'tailwindcss-language-server',
         'zk',
+        'buf-language-server',
 
         -- Linting and formatting
         'eslint_d',
@@ -253,6 +254,7 @@ require('lazy').setup({
       require 'j.plugins.lsp.html_ls'
       require 'j.plugins.lsp.svelte_ls'
       require 'j.plugins.lsp.tailwind_ls'
+      require 'j.plugins.lsp.buf_ls'
     end,
     dependencies = {
       {

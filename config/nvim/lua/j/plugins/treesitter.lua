@@ -52,5 +52,6 @@ require('nvim-treesitter.configs').setup {
     'svelte',
     'sql',
     'regex',
+    'proto',
   },
 }
