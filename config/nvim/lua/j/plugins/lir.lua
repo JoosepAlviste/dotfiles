@@ -98,7 +98,7 @@ require('lir').setup {
   float = {
     winblend = 0,
   },
-  hide_cursor = true,
+  hide_cursor = false,
 }
 
 local group = vim.api.nvim_create_augroup('LirSettings', {})
