@@ -53,4 +53,22 @@ export const Default: Story = (args) => ({{
       }
     )
   ),
+
+  s(
+    'factory',
+    fmt(
+      [[
+import {{ Factory }} from 'fishery';
+
+export const {}Factory = Factory.define<{}>(({{ sequence }}) => ({{
+  id: sequence,{}
+}}));
+    ]],
+      {
+        i(1),
+        i(2),
+        i(3),
+      }
+    )
+  ),
 })
