@@ -49,7 +49,7 @@ alias ls='exa --group-directories-first'
 alias ll='ls -la'
 alias l='ls -1'
 
-alias p='sudo pacman'
+alias p='pnpm'
 
 alias cat='bat'
 alias ping='prettyping --nolegend'
