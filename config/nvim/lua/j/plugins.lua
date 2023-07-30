@@ -373,6 +373,7 @@ require('lazy').setup({
       { '<c-q>', [[:Ttoggle<cr>]], silent = true },
       { '<c-q>', [[<c-\><c-n>:Ttoggle<cr>]], mode = 't', silent = true },
     },
+    cmd = { 'T' },
   },
   {
     'nvim-neotest/neotest',
