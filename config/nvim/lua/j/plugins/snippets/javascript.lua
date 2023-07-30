@@ -74,6 +74,14 @@ if ({}) {{
     })
   ),
 
+  -- Export all statement
+  s(
+    'exportall',
+    fmt([[export * from './{}';]], {
+      i(1),
+    })
+  ),
+
   -- Test describe block
   s(
     'desc',
