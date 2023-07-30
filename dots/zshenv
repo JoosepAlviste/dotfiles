@@ -79,6 +79,9 @@ if [[ -d "$HOME/Library/Android/sdk" ]]; then
     export ANDROID_HOME=$HOME/Library/Android/sdk
 fi
 
+# XDebug
+export XDEBUG_CONFIG="idekey=VSCODE"
+
 # Extend PATH.
 typeset -U path
 path=(
