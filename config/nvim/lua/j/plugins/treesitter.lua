@@ -1,8 +1,13 @@
+local check_file_size = function(lang, bufnr)
+  return vim.api.nvim_buf_line_count(bufnr) > 50000
+end
+
 require('nvim-treesitter.install').compilers = { 'gcc' }
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
     use_languagetree = true,
+    disable = check_file_size,
   },
   indent = {
     enable = true,
@@ -15,6 +20,7 @@ require('nvim-treesitter.configs').setup {
   },
   autotag = {
     enable = true,
+    disable = check_file_size,
   },
   autopairs = {
     enable = true,
