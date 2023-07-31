@@ -1,4 +1,5 @@
 local ls = require 'luasnip'
+local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
 
 local fmt = require('luasnip.extras.fmt').fmt
 local s = ls.snippet
@@ -7,6 +8,7 @@ local d = ls.dynamic_node
 local sn = ls.snippet_node
 local c = ls.choice_node
 local t = ls.text_node
+local f = ls.function_node
 
 ls.add_snippets('javascript', {
   -- console.log statement
@@ -130,21 +132,57 @@ it('{}', {}() => {{
   ),
 
   -- Computed variable
-  -- TODO: Can we somehow automatically import `computed` if it's not imported?
   s(
     'computed',
     fmt(
       [[
-const {} = computed(() => {});
+{}const {} = computed(() => {});
   ]],
-      { i(1), c(2, { fmt(
-        [[
+      {
+        f(ensure_js_package_imported('computed', 'vue')),
+        i(1),
+        c(2, { fmt(
+          [[
 {{
   return {}
 }}
 ]],
-        { i(1) }
-      ), i(nil, '') }) }
+          { i(1) }
+        ), i(nil, '') }),
+      }
     )
   ),
+
+  -- Vanilla Extract style declaration
+  s(
+    'style',
+    fmt(
+      [[
+{}export const {} = style({{
+  {}
+}})
+  ]],
+      {
+        f(ensure_js_package_imported('style', '@vanilla-extract/css')),
+        i(1),
+        i(2),
+      }
+    )
+  ),
+
+  -- Debugging composables with watchEffect
+  s(
+    'debug',
+    fmt(
+      [[
+{}watchEffect(() => {{
+  console.log({{ {} }})
+}});
+]],
+      { f(ensure_js_package_imported('watchEffect', 'vue')), i(1) }
+    )
+  ),
+
+  -- Ref
+  s('r', fmt([[{}const {} = ref({})]], { f(ensure_js_package_imported('ref', 'vue')), i(1), i(2) })),
 })

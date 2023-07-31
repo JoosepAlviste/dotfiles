@@ -6,6 +6,7 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local sn = ls.snippet_node
 local rep = require('luasnip.extras').rep
+local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
 
 -- Get a list of  the property names given an `type_alias_declaration`
 -- treesitter *tsx* node.
@@ -111,7 +112,8 @@ ls.add_snippets('typescriptreact', {
   -- React `useState` declaration
   s(
     's',
-    fmt([[const [{}, set{}] = useState({});]], {
+    fmt([[{}const [{}, set{}] = useState({});]], {
+      f(ensure_js_package_imported('useState', 'react')),
       i(1, 'state'),
       f(function(args)
         return (args[1][1]:gsub('^%l', string.upper))
@@ -125,9 +127,7 @@ ls.add_snippets('typescriptreact', {
     'sc',
     fmt(
       [[
-import type {{ Component }} from 'solid-js'
-
-type {}Props = {{
+{}type {}Props = {{
   {}
 }}
 
@@ -136,6 +136,7 @@ export const {}: Component<{}Props> = ({}) => {{
 }}
 ]],
       {
+        f(ensure_js_package_imported('Component', 'solid-js')),
         d(1, function(_, snip)
           return sn(nil, {
             i(1, vim.fn.substitute(snip.env.TM_FILENAME, '\\..*$', '', 'g')),

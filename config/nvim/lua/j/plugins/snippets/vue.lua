@@ -20,19 +20,6 @@ const {} = ({}) => {{
     )
   ),
 
-  -- Debugging composables with watchEffect
-  s(
-    'debug',
-    fmt(
-      [[
-watchEffect(() => {{
-  console.log({{ {} }})
-}});
-]],
-      { i(1) }
-    )
-  ),
-
   -- Vue component
   s(
     'comp',
@@ -42,14 +29,8 @@ watchEffect(() => {{
   <div />
 </template>
 
-<script lang="ts">
-import {{ defineComponent }} from '@vue/composition-api';
-
-export default defineComponent({{
-  setup() {{
-    {}
-  }},
-}});
+<script lang="ts" setup>
+{}
 </script>
 
 <style lang="scss" scoped>
