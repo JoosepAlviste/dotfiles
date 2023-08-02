@@ -297,7 +297,16 @@ require('lazy').setup({
   -- Debugging
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap' },
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'theHamsta/nvim-dap-virtual-text',
+      'mxsdev/nvim-dap-vscode-js',
+      {
+        'microsoft/vscode-js-debug',
+        version = '1.x',
+        build = 'npm ci && npm run compile vsDebugServerBundle && mv dist out',
+      },
+    },
     keys = {
       '<localleader>dc',
       '<localleader>do',
