@@ -1,6 +1,6 @@
 # My dotfiles
 
-![Main](https://user-images.githubusercontent.com/9450943/132948362-f8a47d32-05ef-4cbe-a592-e97ac933bf42.png)
+![Main](https://github.com/JoosepAlviste/dotfiles/assets/9450943/01d33a36-c8d5-44a2-815d-450100733da1)
 
 Some of the configuration includes:
 
@@ -17,7 +17,7 @@ Some of the configuration includes:
       navigation
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org) (custom configuration)
-* [Wallpaper](https://www.reddit.com/r/wallpapers/comments/d6jy5b/mount_palenight6000_3892/)
+* [Wallpaper](https://www.reddit.com/r/wallpaper/comments/pc8uq4/samurai_doge_3840x2160/)
 
 
 ## Installation
@@ -72,8 +72,8 @@ The Neovim configuration is split into many files and is located in
 
 ## More screenshots
 
-![Busy](https://user-images.githubusercontent.com/9450943/132948366-4ae42714-2c3c-4ba5-a2fb-7bfc685764dd.png)
+![Busy](https://github.com/JoosepAlviste/dotfiles/assets/9450943/4037709d-1637-4b7f-9598-6a3b6697f734)
 
-![Finder](https://user-images.githubusercontent.com/9450943/132948367-beb6b50e-29b9-4d0c-afc5-8d82e468e9dc.png)
+![Finder](https://github.com/JoosepAlviste/dotfiles/assets/9450943/211e152f-24ef-45ec-9bed-36ee61b95fd5)
 
-![Completion](https://user-images.githubusercontent.com/9450943/132948371-e1c92844-ed43-4b30-a360-e8e284b4cf13.png)
+![Completion](https://github.com/JoosepAlviste/dotfiles/assets/9450943/f2b877e1-dd52-4935-832b-7b6c4896328c)
