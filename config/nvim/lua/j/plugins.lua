@@ -304,7 +304,7 @@ require('lazy').setup({
       {
         'microsoft/vscode-js-debug',
         version = '1.x',
-        build = 'npm ci && npm run compile vsDebugServerBundle && mv dist out',
+        build = 'rm -rf out/dist && npm ci && npm run compile vsDebugServerBundle && mv dist out',
       },
     },
     keys = {
