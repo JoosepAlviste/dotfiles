@@ -273,11 +273,6 @@ end
 vim.lsp.buf.rename = {
   float = function()
     local curr_name = vim.fn.expand '<cword>'
-    local tshl = require('nvim-treesitter-playground.hl-info').get_treesitter_hl()
-    if tshl and #tshl > 0 then
-      local ind = tshl[#tshl]:match '^.*()%*%*.*%*%*'
-      tshl = tshl[#tshl]:sub(ind + 2, -3)
-    end
 
     local win = require('plenary.popup').create(curr_name, {
       title = 'New Name',
@@ -286,7 +281,6 @@ vim.lsp.buf.rename = {
       relative = 'cursor',
       borderhighlight = 'FloatBorder',
       titlehighlight = 'Title',
-      highlight = tshl,
       focusable = true,
       width = 25,
       height = 1,
