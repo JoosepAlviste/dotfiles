@@ -26,7 +26,6 @@ g.nvim_tree_icons = {
 map('n', '<c-n>', ':NvimTreeToggle<cr>', { silent = true })
 
 require('nvim-tree').setup {
-  auto_close = true,
   filters = {
     custom = { '.git', '.DS_Store' },
   },
