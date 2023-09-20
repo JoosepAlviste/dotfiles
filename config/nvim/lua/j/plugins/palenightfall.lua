@@ -29,6 +29,8 @@ require('palenightfall').setup {
     InclineNormal = { bg = c.selection },
     InclineNormalNC = { bg = c.highlight },
 
+    PackageInfoOutdatedVersion = { fg = c.orange },
+    PackageInfoUpToDateVersion = { fg = c.foreground_darker },
   },
 }
 
