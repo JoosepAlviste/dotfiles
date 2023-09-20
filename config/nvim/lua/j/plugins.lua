@@ -133,6 +133,11 @@ require('lazy').setup({
       -- FZF sorter for Telescope
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-ui-select.nvim',
+      {
+        'danielfalk/smart-open.nvim',
+        branch = '0.2.x',
+        dependencies = { 'kkharji/sqlite.lua' },
+      },
     },
   },
   {

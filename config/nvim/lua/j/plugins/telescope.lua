@@ -5,7 +5,9 @@ local layout_strategies = require 'telescope.pickers.layout_strategies'
 local map = require('j.utils').map
 local custom_pickers = require 'j.plugins.telescope_custom_pickers'
 
-map('n', '<c-p>', builtin.find_files)
+map('n', '<c-p>', function()
+  require('telescope').extensions.smart_open.smart_open { cwd_only = true }
+end)
 map('n', '<leader>ff', custom_pickers.live_grep)
 
 map('n', '<leader>fb', builtin.buffers)
@@ -67,6 +69,11 @@ require('telescope').setup {
     ['ui-select'] = {
       require('telescope.themes').get_cursor {},
     },
+    smart_open = {
+      show_scores = true,
+      match_algorithm = 'fzf',
+      ignore_patterns = { '*.git/*', '*/tmp/*', 'node_modules/*', 'dist/*' },
+    },
   },
   pickers = {
     oldfiles = {
@@ -100,6 +107,7 @@ require('telescope').load_extension 'fzf'
 require('telescope').load_extension 'notify'
 require('telescope').load_extension 'ui-select'
 require('telescope').load_extension 'noice'
+require('telescope').load_extension 'smart_open'
 
 -- New filetypes
 require('plenary.filetype').add_file 'filetypes'

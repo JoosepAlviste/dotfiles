@@ -31,6 +31,8 @@ require('palenightfall').setup {
 
     PackageInfoOutdatedVersion = { fg = c.orange },
     PackageInfoUpToDateVersion = { fg = c.foreground_darker },
+
+    Directory = { fg = c.comments, italic = true },
   },
 }
 
