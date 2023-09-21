@@ -12,7 +12,9 @@ map('n', '<leader>ff', custom_pickers.live_grep)
 
 map('n', '<leader>fb', builtin.buffers)
 map('n', '<leader>fh', builtin.help_tags)
-map('n', '<leader>fr', builtin.oldfiles)
+map('n', '<leader>fr', function()
+  require('j.plugins.telescope_pretty_pickers').pretty_files_picker { picker = 'oldfiles' }
+end)
 map('n', '<leader>fq', builtin.quickfix)
 
 map('n', '<leader>fx', builtin.git_status)
