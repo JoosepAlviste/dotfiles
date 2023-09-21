@@ -179,37 +179,39 @@ M.scripts = function(opts)
     }
   end
 
-  pickers.new(opts, {
-    prompt_title = 'Scripts',
+  pickers
+    .new(opts, {
+      prompt_title = 'Scripts',
 
-    finder = finders.new_table {
-      results = mapped_scripts,
-      entry_maker = function(entry)
-        return {
-          value = entry[1],
-          display = make_display,
-          ordinal = entry[3] and (entry[2] .. ' ' .. entry[1] .. ' ' .. entry[3]) or (entry[2] .. ' ' .. entry[1]),
-          cmd = entry[3],
-          executable = entry[2],
-        }
+      finder = finders.new_table {
+        results = mapped_scripts,
+        entry_maker = function(entry)
+          return {
+            value = entry[1],
+            display = make_display,
+            ordinal = entry[3] and (entry[2] .. ' ' .. entry[1] .. ' ' .. entry[3]) or (entry[2] .. ' ' .. entry[1]),
+            cmd = entry[3],
+            executable = entry[2],
+          }
+        end,
+      },
+
+      sorter = conf.generic_sorter(opts),
+
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+
+          local script = selection.value
+
+          vim.cmd.T(selection.executable .. ' ' .. script)
+          vim.cmd.Topen()
+        end)
+        return true
       end,
-    },
-
-    sorter = conf.generic_sorter(opts),
-
-    attach_mappings = function(prompt_bufnr)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-
-        local script = selection.value
-
-        vim.cmd.T(selection.executable .. ' ' .. script)
-        vim.cmd.Topen()
-      end)
-      return true
-    end,
-  }):find()
+    })
+    :find()
 end
 
 return M
