@@ -56,7 +56,12 @@ require('telescope').setup {
     path_display = function(_, path)
       local filename = path:gsub(vim.pesc(vim.loop.cwd()) .. '/', ''):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
       local tail = require('telescope.utils').path_tail(filename)
-      return string.format('%s  —  %s', tail, filename)
+      local folder = vim.fn.fnamemodify(filename, ':h')
+      if folder == '.' then
+        return tail
+      end
+
+      return string.format('%s  —  %s', tail, folder)
     end,
   },
   extensions = {
