@@ -25,6 +25,7 @@ local live_grep_filters = {
 }
 
 ---Run `live_grep` with the active filters (extension and folders)
+---@param current_input ?string
 local function run_live_grep(current_input)
   -- TODO: Resume old one with same options somehow
   require('telescope.builtin').live_grep {
@@ -39,7 +40,6 @@ end
 M.actions = transform_mod {
   ---Ask for a file extension and open a new `live_grep` filtering by it
   set_extension = function(prompt_bufnr)
-    local current_picker = action_state.get_current_picker(prompt_bufnr)
     local current_input = action_state.get_current_line()
 
     vim.ui.input({ prompt = '*.' }, function(input)
@@ -49,13 +49,12 @@ M.actions = transform_mod {
 
       live_grep_filters.extension = input
 
-      actions._close(prompt_bufnr, current_picker.initial_mode == 'insert')
+      actions.close(prompt_bufnr)
       run_live_grep(current_input)
     end)
   end,
   ---Ask the user for a folder and olen a new `live_grep` filtering by it
   set_folders = function(prompt_bufnr)
-    local current_picker = action_state.get_current_picker(prompt_bufnr)
     local current_input = action_state.get_current_line()
 
     local data = {}
@@ -69,7 +68,7 @@ M.actions = transform_mod {
     })
     table.insert(data, 1, '.' .. os_sep)
 
-    actions._close(prompt_bufnr, current_picker.initial_mode == 'insert')
+    actions.close(prompt_bufnr)
     pickers.new({}, {
       prompt_title = 'Folders for Live Grep',
       finder = finders.new_table { results = data, entry_maker = make_entry.gen_from_file {} },
@@ -104,7 +103,7 @@ M.live_grep = function()
   live_grep_filters.extension = nil
   live_grep_filters.directories = nil
 
-  require('telescope.builtin').live_grep()
+  run_live_grep()
 end
 
 M.scripts = function(opts)
