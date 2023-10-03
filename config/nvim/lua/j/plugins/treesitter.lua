@@ -1,5 +1,5 @@
 local check_file_size = function(lang, bufnr)
-  return vim.api.nvim_buf_line_count(bufnr) > 50000
+  return vim.api.nvim_buf_line_count(bufnr) > 100000
 end
 
 require('nvim-treesitter.install').compilers = { 'gcc' }
