@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local g = vim.g
 
 local map = require('j.utils').map
