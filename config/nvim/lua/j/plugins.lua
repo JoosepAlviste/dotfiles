@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+---@diagnostic disable: missing-fields
 require('lazy').setup({
   -- Colorscheme
   {
