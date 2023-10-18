@@ -45,7 +45,7 @@ alias lg='lazygit'
 
 # Utils & alternatives
 
-alias ls='exa --group-directories-first'
+alias ls='eza --group-directories-first'
 alias ll='ls -la'
 alias l='ls -1'
 
