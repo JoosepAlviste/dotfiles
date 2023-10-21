@@ -97,6 +97,7 @@ require('lazy').setup({
       default_delay = 2,
       max_length = 60,
       hide_cursor = true,
+      horizontal_scroll = false,
       scroll_limit = -1,
       smallest_delay_per_frame = 1,
     },
