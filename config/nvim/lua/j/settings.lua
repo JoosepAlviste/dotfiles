@@ -61,6 +61,15 @@ opt.showmatch = true -- Highlight matching parenthesis, etc.
 
 opt.showmode = false -- Do not show mode in command line
 
+-- Folds
+opt.foldcolumn = '0'
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
+
 -- UX
 opt.confirm = true
 opt.updatetime = 100 -- Trigger cursorhold faster

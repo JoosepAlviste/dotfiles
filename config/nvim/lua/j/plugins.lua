@@ -50,13 +50,6 @@ require('lazy').setup({
       vim.g.cursorhold_updatetime = 500
     end,
   },
-  { -- Improve folding
-    'kevinhwang91/nvim-ufo',
-    dependencies = { 'kevinhwang91/promise-async' },
-    config = function()
-      require 'j.plugins.ufo'
-    end,
-  },
 
   -- Mapping improvements
   {
