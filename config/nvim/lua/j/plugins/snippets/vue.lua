@@ -25,15 +25,15 @@ const {} = ({}) => {{
     'comp',
     fmt(
       [[
-<template>
-  <div />
-</template>
-
 <script lang="ts" setup>
 {}
 </script>
 
-<style lang="scss" scoped>
+<template>
+  <div />
+</template>
+
+<style lang="scss" module>
 </style>
 ]],
       { i(1) }
