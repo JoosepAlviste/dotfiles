@@ -257,7 +257,6 @@ require('lazy').setup({
           require 'j.plugins.lsp.null_ls'
         end,
       },
-      'jose-elias-alvarez/typescript.nvim',
       'pmizio/typescript-tools.nvim',
       'folke/neodev.nvim',
     },
