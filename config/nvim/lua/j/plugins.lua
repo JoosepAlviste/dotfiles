@@ -143,12 +143,6 @@ require('lazy').setup({
     end,
   },
   {
-    'tpope/vim-projectionist', -- Alternative files
-    config = function()
-      require 'j.plugins.projectionist'
-    end,
-  },
-  {
     'ggandor/leap.nvim',
     config = function()
       require('leap').set_default_keymaps()
