@@ -35,7 +35,6 @@ opt.signcolumn = 'yes'
 opt.statuscolumn =
   "%C%=%4{&nu && v:virtnum <= 0 ? (&rnu ? (v:lnum == line('.') ? v:lnum . ' ' : v:relnum) : v:lnum) : ''}%=%s"
 opt.showmode = false
-opt.cmdheight = 0
 
 opt.list = true
 opt.listchars = {

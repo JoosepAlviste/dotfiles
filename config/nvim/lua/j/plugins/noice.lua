@@ -15,6 +15,9 @@ require('noice').setup {
       enabled = false,
     },
   },
+  messages = {
+    view_search = false,
+  },
   presets = {
     command_palette = true,
     long_message_to_split = true,
@@ -22,6 +25,7 @@ require('noice').setup {
   },
   views = {
     mini = {
+      timeout = 3000,
       win_options = {
         winblend = 0,
       },

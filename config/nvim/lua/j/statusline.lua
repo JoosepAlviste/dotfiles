@@ -90,17 +90,16 @@ local function test_status()
 end
 
 local function search_count()
-  local searchcount = vim.fn.searchcount()
-  if vim.v.hlsearch > 0 and searchcount.total > 0 then
-    return color('StatuslineSuccess', string.format('%s/%s', searchcount.current, searchcount.total))
+  if require('noice').api.status.search.has() then
+    return color('StatuslineBlue', require('noice').api.status.search.get())
   end
 
   return nil
 end
 
 local function macro_recording()
-  if require('noice').api.statusline.mode.has() then
-    return color('StatuslineNormal', require('noice').api.statusline.mode.get())
+  if require('noice').api.status.mode.get() then
+    return color('StatuslineNormal', require('noice').api.status.mode.get())
   end
 
   return nil
@@ -140,6 +139,7 @@ function _G.statusline()
     -- Right side
     '%=',
     test_status(),
+    search_count(),
     macro_recording(),
     plugin_updates(),
     lsp_status(),
