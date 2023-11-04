@@ -32,13 +32,6 @@ require('lazy').setup({
     end,
   },
   {
-    'rcarriga/nvim-notify',
-    config = function()
-      require 'j.plugins.notify'
-    end,
-    event = 'VeryLazy',
-  },
-  {
     'andymass/vim-matchup',
     config = function()
       vim.g.matchup_matchparen_offscreen = {}

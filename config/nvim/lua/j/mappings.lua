@@ -49,7 +49,6 @@ map('n', '-', [[expand('%') == '' ? ':e ' . getcwd() . '<cr>' : ':e %:h<cr>']], 
 
 -- Close floating windows, clear highlights, etc.
 map('n', '<esc>', function()
-  require('notify').dismiss()
   vim.lsp.buf.clear_references()
   vim.cmd.nohlsearch()
 

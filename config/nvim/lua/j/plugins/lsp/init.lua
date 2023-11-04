@@ -260,7 +260,7 @@ vim.lsp.handlers['textDocument/rename'] = function(err, result, ctx)
     -- Remove the last new line
     msg = msg:sub(1, #msg - 1)
 
-    vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s'):format(old_name, new_name) })
+    vim.notify(msg, vim.log.levels.INFO, { title = ('Rename: %s -> %s\n'):format(old_name, new_name) })
   end
 
   local client = vim.lsp.get_client_by_id(ctx.client_id)
