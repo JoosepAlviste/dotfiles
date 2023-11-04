@@ -75,6 +75,15 @@ require('lazy').setup({
     keys = { '<c-h>', '<c-j>', '<c-k>', '<c-l>' },
   },
   {
+    'mikesmithgh/kitty-scrollback.nvim',
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+    event = { 'User KittyScrollbackLaunch' },
+    config = function()
+      require('kitty-scrollback').setup {}
+    end,
+  },
+  {
     'JoosepAlviste/cinnamon.nvim',
     branch = 'feature/skip-lines-when-scrolling',
     event = 'BufEnter',
