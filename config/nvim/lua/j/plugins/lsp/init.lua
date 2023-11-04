@@ -4,8 +4,6 @@ local make_entry = require 'telescope.make_entry'
 local conf = require('telescope.config').values
 local builtin = require 'telescope.builtin'
 
-local buf_map = require('j.utils').buf_map
-
 -- Highlight line numbers for diagnostics
 vim.fn.sign_define('DiagnosticSignError', { numhl = 'LspDiagnosticsLineNrError', text = '' })
 vim.fn.sign_define('DiagnosticSignWarn', { numhl = 'LspDiagnosticsLineNrWarning', text = '' })
@@ -88,19 +86,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', 'gr', builtin.lsp_references, opts)
 
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename.float, opts)
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
     -- Mouse mappings for easily navigating code
-    if client.server_capabilities.definitionProvider then
+    if client.supports_method 'definitionProvider' then
       vim.keymap.set('n', '<RightMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<CR>', opts)
     end
 
     -- Highlight symbol references on hover
-    if client.server_capabilities.documentHighlightProvider then
+    if client.supports_method 'documentHighlightProvider' then
       vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
       vim.api.nvim_clear_autocmds {
         buffer = event.buf,
