@@ -216,7 +216,6 @@ require('lazy').setup({
         -- DAP servers
         'node-debug2-adapter',
         'firefox-debug-adapter',
-        'php-debug-adapter',
       }
 
       vim.api.nvim_create_user_command('MasonInstallAll', function()
@@ -281,10 +280,6 @@ require('lazy').setup({
     config = function()
       require 'j.plugins.luasnip'
     end,
-  },
-  {
-    'scoro.vim',
-    url = 'git@github.com:JoosepAlviste/scoro.vim',
   },
 
   -- Debugging

@@ -3,28 +3,6 @@ local dapui = require 'dapui'
 
 local map = require('j.utils').map
 
-dap.adapters.php = {
-  type = 'executable',
-  command = 'node',
-  args = { vim.fn.stdpath 'data' .. '/mason/packages/php-debug-adapter/extension/out/phpDebug.js' },
-}
-
-dap.configurations.php = {
-  {
-    type = 'php',
-    request = 'launch',
-    name = 'Listen for Xdebug',
-    hostname = 'localhost.scoro.ee',
-    port = 9003,
-    pathMappings = {
-      ['/var/www/scoro'] = os.getenv 'SCORO_PATH' .. '/scoro-base',
-    },
-    xdebugSettings = {
-      max_data = 10000,
-    },
-  },
-}
-
 require('dapui').setup()
 require('nvim-dap-virtual-text').setup()
 require('dap-vscode-js').setup {
