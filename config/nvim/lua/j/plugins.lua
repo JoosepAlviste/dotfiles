@@ -165,10 +165,12 @@ require('lazy').setup({
     end,
     dependencies = {
       'windwp/nvim-ts-autotag', -- Automatically end & rename tags
-      -- Dynamically set commentstring based on cursor location in file
-      { 'JoosepAlviste/nvim-ts-context-commentstring', dev = false },
       'nvim-treesitter/playground',
     },
+  },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    opts = { enable_autocmd = false },
   },
 
   -- Misc
