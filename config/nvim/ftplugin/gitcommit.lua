@@ -42,6 +42,12 @@ local function parse_issue_key()
 end
 
 local function insert_issue_key()
+  local line = vim.fn.getline(1, '$')[1]
+  local is_empty_line = line and #line == 0
+  if is_empty_line then
+    return
+  end
+
   local issue_key = parse_issue_key()
   if issue_key then
     vim.api.nvim_feedkeys('o[' .. issue_key .. ']' .. termcode '<esc>' .. 'ggO', 'n', false)
