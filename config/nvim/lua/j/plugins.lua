@@ -282,6 +282,7 @@ require('lazy').setup({
     config = function()
       require 'j.plugins.luasnip'
     end,
+    build = 'make install_jsregexp',
   },
 
   -- Debugging
