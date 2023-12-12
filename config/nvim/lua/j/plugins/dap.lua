@@ -15,13 +15,11 @@ for _, language in ipairs { 'typescriptreact', 'typescript', 'javascript', 'vue'
     {
       type = 'pwa-node',
       request = 'attach',
-      processId = require('dap.utils').pick_process,
       name = 'Attach debugger to existing `node --inspect` process',
-      sourceMaps = true,
       resolveSourceMapLocations = { '${workspaceFolder}/**', '!**/node_modules/**' },
-      cwd = '${workspaceFolder}/src',
+      cwd = '${workspaceFolder}',
       -- we don't want to debug code inside node_modules, so skip it!
-      skipFiles = { '${workspaceFolder}/node_modules/**/*.js' },
+      skipFiles = { '<node_internals>/**', '${workspaceFolder}/node_modules/**' },
     },
     {
       type = 'pwa-chrome',
@@ -34,6 +32,40 @@ for _, language in ipairs { 'typescriptreact', 'typescript', 'javascript', 'vue'
       webRoot = '${workspaceFolder}/src',
       -- skip files from vite's hmr
       skipFiles = { '**/node_modules/**/*', '**/@vite/*', '**/src/client/*', '**/src/*' },
+    },
+
+    {
+      type = 'pwa-node',
+      name = 'Attach to testing',
+      port = 9232,
+      request = 'attach',
+      skipFiles = { '<node_internals>/**', '**/node_modules/**' },
+      outFiles = { '${workspaceFolder}/dist/**/*.js' },
+      cwd = '${workspaceFolder}',
+    },
+
+    {
+      type = 'pwa-node',
+      name = 'Attach Service Platform',
+      port = 9231,
+      request = 'attach',
+      skipFiles = { '<node_internals>/**', '**/node_modules/**' },
+      outFiles = { '${workspaceFolder}/service-platform/dist/**/*.js' },
+      -- localRoot DOES NOT WORK in Neovim for some reason, but it works in VSCode
+      localRoot = '${workspaceFolder}/service-platform',
+      remoteRoot = '${workspaceFolder}/service-platform',
+      cwd = '${workspaceFolder}/service-platform',
+    },
+    {
+      name = 'Attach Service SD',
+      port = 9230,
+      request = 'attach',
+      skipFiles = { '<node_internals>/**', '**/node_modules/**' },
+      type = 'pwa-node',
+      outFiles = { '${workspaceFolder}/service-sd/dist/**/*.js' },
+      localRoot = '${workspaceFolder}/service-sd',
+      remoteRoot = '${workspaceFolder}/service-sd',
+      cwd = '${workspaceFolder}/service-sd',
     },
   }
 end
