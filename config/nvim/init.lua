@@ -1,27 +1,30 @@
-if vim.g.vscode then
-  return
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  }
 end
+vim.opt.rtp:prepend(lazypath)
 
-local g = vim.g
-
-local map = require('j.utils').map
-
--- Map space to leader
-map('n', '<space>', '<nop>')
-map('v', '<space>', '<nop>')
-g.mapleader = ' '
-g.maplocalleader = ','
-
--- My custom configurations
-require 'j.settings'
-require 'j.commands'
-require 'j.autocmds'
-require 'j.plugins'
 require 'j.mappings'
-require 'j.abbreviations'
-require 'j.statusline'
-require 'j.winbar'
-require 'j.tabline'
-require 'j.file_info'
-require 'j.terminal'
+require 'j.autocmds'
+require 'j.settings'
+require 'j.file_explorer'
 require 'j.alternatives'
+require 'j.statusline'
+require 'j.tabline'
+
+require('lazy').setup {
+  import = 'j.plugins',
+  install = {
+    colorscheme = 'kanagawa',
+  },
+  dev = {
+    path = '~/Code/Projects',
+  },
+}

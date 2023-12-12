@@ -1,5 +1,5 @@
 local ls = require 'luasnip'
-local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
+local ensure_js_package_imported = require('j.treesitter_utils').ensure_js_package_imported
 local is_marketer_repo = require('j.modash').is_marketer_repo
 
 local fmt = require('luasnip.extras.fmt').fmt
@@ -146,14 +146,17 @@ it('{}', {}() => {{
           end
         end),
         i(1),
-        c(2, { fmt(
-          [[
+        c(2, {
+          fmt(
+            [[
 {{
   return {}
 }}
 ]],
-          { i(1) }
-        ), i(nil, '') }),
+            { i(1) }
+          ),
+          i(nil, ''),
+        }),
       }
     )
   ),

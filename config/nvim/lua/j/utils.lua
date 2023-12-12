@@ -1,64 +1,7 @@
 local M = {}
 
-function M.map(modes, lhs, rhs, opts)
-  opts = opts or {}
-  opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == 'string' then
-    modes = { modes }
-  end
-  for _, mode in ipairs(modes) do
-    if type(rhs) == 'string' then
-      vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-    else
-      opts.callback = rhs
-      vim.api.nvim_set_keymap(mode, lhs, '', opts)
-    end
-  end
-end
-
 function M.termcode(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
--- Bust the cache of all required Lua files.
--- After running this, each require() would re-run the file.
-local function unload_all_modules()
-  -- Lua patterns for the modules to unload
-  local unload_modules = {
-    '^j.',
-  }
-
-  for k, _ in pairs(package.loaded) do
-    for _, v in ipairs(unload_modules) do
-      if k:match(v) then
-        package.loaded[k] = nil
-        break
-      end
-    end
-  end
-end
-
-function M.reload()
-  -- Stop LSP
-  vim.cmd.LspStop()
-
-  -- Stop eslint_d
-  vim.fn.execute 'silent !pkill -9 eslint_d'
-
-  -- Unload all already loaded modules
-  unload_all_modules()
-
-  -- Source init.lua
-  vim.cmd.luafile '$MYVIMRC'
-end
-
--- Restart Vim without having to close and run again
-function M.restart()
-  -- Reload config
-  M.reload()
-
-  -- Manually run VimEnter autocmd to emulate a new run of Vim
-  vim.cmd.doautocmd 'VimEnter'
 end
 
 ---@param filename string
@@ -99,6 +42,39 @@ function M.is_npm_package_installed(package)
   end
 
   return false
+end
+
+---@param path string
+---@return string
+function M.shorten_path_relative(path)
+  return path
+    -- Remove CWD
+    :gsub(vim.pesc(vim.loop.cwd()) .. '/', '')
+    -- Remove home dir
+    :gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
+    -- Remove trailing slash
+    :gsub('/$', '')
+end
+
+---@param path string
+---@return string
+function M.shorten_path_absolute(path)
+  return path:gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
+end
+
+---@param ignored_filetypes? string[]
+function M.close_all_floating_windows(ignored_filetypes)
+  ignored_filetypes = ignored_filetypes or {}
+
+  for _, window in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(window)
+
+    local bufnr = vim.fn.winbufnr(window)
+    local buf_filetype = vim.fn.getbufvar(bufnr, '&filetype')
+    if config.relative ~= '' and not vim.tbl_contains(ignored_filetypes, buf_filetype) then
+      vim.api.nvim_win_close(window, false)
+    end
+  end
 end
 
 -- Useful function for debugging

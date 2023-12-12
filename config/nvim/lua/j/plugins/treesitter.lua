@@ -1,60 +1,50 @@
-local check_file_size = function(lang, bufnr)
+local check_file_size = function(_, bufnr)
   return vim.api.nvim_buf_line_count(bufnr) > 100000
 end
 
-require('nvim-treesitter.install').compilers = { 'gcc' }
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    use_languagetree = true,
-    disable = check_file_size,
-  },
-  indent = {
-    enable = true,
-  },
-  playground = {
-    enable = false,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-  },
-  autotag = {
-    enable = true,
-    disable = check_file_size,
-  },
-  autopairs = {
-    enable = true,
-  },
-  matchup = {
-    enable = true,
-  },
-  ensure_installed = {
-    'query',
-    'javascript',
-    'jsdoc',
-    'typescript',
-    'tsx',
-    'json',
-    'php',
-    'python',
-    'html',
-    'graphql',
-    'lua',
-    'vue',
-    'yaml',
-    'css',
-    'bash',
-    'scss',
-    'haskell',
-    'hcl',
-    'vim',
-    'vimdoc',
-    'markdown',
-    'markdown_inline',
-    'prisma',
-    'svelte',
-    'sql',
-    'regex',
-    'proto',
+return {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    -- dependencies = { 'windwp/nvim-ts-autotag' },
+    build = ':TSUpdate',
+    init = function(plugin)
+      require('lazy.core.loader').add_to_rtp(plugin)
+      require 'nvim-treesitter.query_predicates'
+    end,
+    main = 'nvim-treesitter.configs',
+    opts = {
+      ensure_installed = {
+        'lua',
+        'query',
+        'markdown',
+        'markdown_inline',
+        'javascript',
+        'jsdoc',
+        'typescript',
+        'tsx',
+        'json',
+        'html',
+        'graphql',
+        'vue',
+        'yaml',
+        'css',
+        'bash',
+        'scss',
+        'vim',
+        'vimdoc',
+        'sql',
+        'regex',
+      },
+      highlight = {
+        enable = true,
+        disable = check_file_size,
+      },
+      indent = {
+        enable = true,
+      },
+      autotag = {
+        enable = true,
+      },
+    },
   },
 }

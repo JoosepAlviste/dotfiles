@@ -1,16 +1,14 @@
-local map = require('j.utils').map
-
 -- CSS classes usually have dashes in them, so the whole class name should be
 -- considered as a word
 vim.opt_local.iskeyword:append '-'
 
 -- Mappings for navigating blocks
-map('n', ']]', function()
-  vim.fn.search('^<(template<bar>script<bar>style)', 'W')
-end)
-map('n', '[[', function()
-  vim.fn.search('^<(template<bar>script<bar>style)', 'bW')
-end)
+vim.keymap.set('n', ']]', function()
+  vim.fn.search('^<\\(template\\|script\\|style\\)', 'W')
+end, { buffer = true })
+vim.keymap.set('n', '[[', function()
+  vim.fn.search('^<\\(template\\|script\\|style\\)', 'bW')
+end, { buffer = true })
 
 -- Automatically end a self-closing tag when pressing /
 vim.keymap.set('i', '/', function()

@@ -1,7 +1,7 @@
 local ls = require 'luasnip'
 local fmt = require('luasnip.extras.fmt').fmt
 local rep = require('luasnip.extras').rep
-local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
+local ensure_js_package_imported = require('j.treesitter_utils').ensure_js_package_imported
 
 local s = ls.snippet
 local d = ls.dynamic_node

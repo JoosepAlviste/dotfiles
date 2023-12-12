@@ -6,7 +6,7 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local sn = ls.snippet_node
 local rep = require('luasnip.extras').rep
-local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
+local ensure_js_package_imported = require('j.treesitter_utils').ensure_js_package_imported
 
 -- Get a list of  the property names given an `type_alias_declaration`
 -- treesitter *tsx* node.
