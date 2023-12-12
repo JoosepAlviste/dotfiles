@@ -97,7 +97,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     -- Highlight symbol references on hover
-    if client.supports_method 'documentHighlightProvider' then
+    local document_highlight_disabled_ls = { 'zk', 'jsonls' }
+    if
+      client.supports_method 'documentHighlightProvider'
+      and not vim.tbl_contains(document_highlight_disabled_ls, client.name)
+    then
       vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
       vim.api.nvim_clear_autocmds {
         buffer = event.buf,
