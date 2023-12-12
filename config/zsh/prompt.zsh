@@ -60,7 +60,7 @@ function gitstatus_prompt_update() {
     where=${VCS_STATUS_COMMIT[1,8]}
   fi
 
-  (( $#where > 18 )) && where[17,-1]="…"  # truncate long branch names and tags
+  (( $#where > 28 )) && where[27,-1]="…"  # truncate long branch names and tags
   p+="${clean}${where//\%/%%}"             # escape %
 
   # ⇣42 if behind the remote.
@@ -131,5 +131,5 @@ myprompt_char() {
   echo '%F{%(?.green.red)}❯%f'
 }
 
-PROMPT='$(myprompt_path) ${GITSTATUS_PROMPT}${GITSTATUS_PROMPT:+ }$(myprompt_char) '
-RPROMPT='$(myprompt_previous_elapsed_time)'
+PROMPT='$(myprompt_path) $(myprompt_char) '
+RPROMPT='${GITSTATUS_PROMPT}${GITSTATUS_PROMPT:+ }$(myprompt_previous_elapsed_time)'
