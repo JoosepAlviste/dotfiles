@@ -61,6 +61,8 @@ function M.restart()
   vim.cmd.doautocmd 'VimEnter'
 end
 
+---@param filename string
+---@return table | nil
 function M.read_json_file(filename)
   local Path = require 'plenary.path'
 

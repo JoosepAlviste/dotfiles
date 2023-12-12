@@ -14,10 +14,11 @@ brew install \
     jesseduffield/lazygit/lazygit \
     ffmpegthumbnailer \
     bat \
-    exa \
+    eza \
     prettyping \
     diff-so-fancy \
     fd \
+    fzf \
     ripgrep
 brew install --HEAD neovim
 ```

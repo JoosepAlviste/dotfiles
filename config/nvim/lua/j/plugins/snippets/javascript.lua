@@ -1,5 +1,6 @@
 local ls = require 'luasnip'
 local ensure_js_package_imported = require('j.treesitter').ensure_js_package_imported
+local is_marketer_repo = require('j.modash').is_marketer_repo
 
 local fmt = require('luasnip.extras.fmt').fmt
 local s = ls.snippet
@@ -139,7 +140,11 @@ it('{}', {}() => {{
 {}const {} = computed(() => {});
   ]],
       {
-        f(ensure_js_package_imported('computed', 'vue')),
+        f(function()
+          if not is_marketer_repo() then
+            return ensure_js_package_imported('computed', 'vue')()
+          end
+        end),
         i(1),
         c(2, { fmt(
           [[
@@ -179,10 +184,28 @@ it('{}', {}() => {{
   console.log({{ {} }})
 }});
 ]],
-      { f(ensure_js_package_imported('watchEffect', 'vue')), i(1) }
+      {
+        f(function()
+          if not is_marketer_repo() then
+            return ensure_js_package_imported('watchEffect', 'vue')()
+          end
+        end),
+        i(1),
+      }
     )
   ),
 
   -- Ref
-  s('r', fmt([[{}const {} = ref({})]], { f(ensure_js_package_imported('ref', 'vue')), i(1), i(2) })),
+  s(
+    'r',
+    fmt([[{}const {} = ref({})]], {
+      f(function()
+        if not is_marketer_repo() then
+          return ensure_js_package_imported('ref', 'vue')()
+        end
+      end),
+      i(1),
+      i(2),
+    })
+  ),
 })
