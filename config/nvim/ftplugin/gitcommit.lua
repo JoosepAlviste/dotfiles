@@ -42,9 +42,9 @@ local function parse_issue_key()
 end
 
 local function insert_issue_key()
-  local line = vim.fn.getline(1, '$')[1]
-  local is_empty_line = line and #line == 0
-  if is_empty_line then
+  local lines = vim.fn.getline(1, '$')
+  local is_empty_line = #lines and #lines[1] == 0
+  if not is_empty_line then
     return
   end
 
