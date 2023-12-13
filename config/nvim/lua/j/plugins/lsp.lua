@@ -149,7 +149,9 @@ return {
         callback = function(event)
           local opts = { buffer = event.buf }
           vim.keymap.set('n', '<c-]>', definitions, opts)
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+          vim.keymap.set('n', 'gr', function()
+            require('telescope.builtin').lsp_references()
+          end, opts)
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
