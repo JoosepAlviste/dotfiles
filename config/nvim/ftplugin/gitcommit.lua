@@ -43,8 +43,9 @@ end
 
 local function insert_issue_key()
   local lines = vim.fn.getline(1, '$')
-  local is_empty_line = #lines and #lines[1] == 0
-  if not is_empty_line then
+  local is_empty_file = #lines == 0
+  local is_empty_line = not is_empty_file and #lines[1] == 0
+  if is_empty_file or not is_empty_line then
     return
   end
 
