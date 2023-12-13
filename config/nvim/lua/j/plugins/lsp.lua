@@ -235,8 +235,8 @@ return {
       require('telescope').load_extension 'zk'
     end,
     keys = {
-      { '<leader>zn', [[<cmd>ZkNew {title=''}<left><left>]] },
-      { '<leader>zn', [[<cmd>ZkNewFromTitleSelection<cr>]], 'x' },
+      { '<leader>zn', [[:ZkNew {title=''}<left><left>]], mode = 'n' },
+      { '<leader>zn', [[<cmd>ZkNewFromTitleSelection<cr>]], mode = 'x' },
       { '<leader>zl', [[<cmd>ZkNotes<cr>]] },
       { '<leader>zt', [[<cmd>ZkTags<cr>]] },
     },
