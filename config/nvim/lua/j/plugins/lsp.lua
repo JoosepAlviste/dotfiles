@@ -163,7 +163,7 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
           -- Highlight symbol references on hover
-          local document_highlight_disabled_ls = { 'zk', 'jsonls' }
+          local document_highlight_disabled_ls = { 'zk', 'jsonls', 'yamlls' }
           if
             client.supports_method 'documentHighlightProvider'
             and not vim.tbl_contains(document_highlight_disabled_ls, client.name)
