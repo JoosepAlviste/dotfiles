@@ -5,7 +5,6 @@ end
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    -- dependencies = { 'windwp/nvim-ts-autotag' },
     build = ':TSUpdate',
     init = function(plugin)
       require('lazy.core.loader').add_to_rtp(plugin)
@@ -40,9 +39,6 @@ return {
         disable = check_file_size,
       },
       indent = {
-        enable = true,
-      },
-      autotag = {
         enable = true,
       },
     },
