@@ -40,12 +40,9 @@ vim.keymap.set('n', '[l', '<cmd>lprev<cr>', silent)
 vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Open the current file's directory
-vim.keymap.set(
-  'n',
-  '-',
-  [[expand('%') == '' ? ':e ' . getcwd() . '<cr>' : ':e %:h<cr>']],
-  { expr = true, silent = true }
-)
+vim.keymap.set('n', '-', function()
+  require('j.file_explorer').open_parent_dir()
+end, { silent = true })
 
 -- Close floating windows, clear highlights, etc.
 vim.keymap.set('n', '<esc>', function()

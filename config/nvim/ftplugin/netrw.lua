@@ -15,6 +15,10 @@ vim.keymap.set('n', '<C-l>', function()
   require('smart-splits').move_cursor_right()
 end, { buffer = true })
 
+vim.keymap.set('n', '-', function()
+  require('j.file_explorer').open_parent_dir()
+end, { buffer = true })
+
 local function lcd(path)
   vim.cmd(string.format([[silent execute (haslocaldir() ? 'lcd' : 'cd') '%s']], path))
 end
