@@ -30,7 +30,15 @@ ls.add_snippets('javascript', {
 }};
 ]],
       {
-        i(1, 'export '),
+        d(1, function()
+          local node = vim.treesitter.get_node()
+          if node and node:type() == 'program' then
+            -- Only suggest adding `export` if  at the top level
+            return sn(nil, { i(1, 'export ') })
+          end
+
+          return sn(nil, { t '' })
+        end),
         i(2),
         i(3),
         i(4),
