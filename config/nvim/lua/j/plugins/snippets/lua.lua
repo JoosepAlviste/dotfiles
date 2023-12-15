@@ -43,7 +43,7 @@ end
     'lf',
     fmt(
       [[
-local {} = function({})
+local function {}({})
   {}
 end
   ]],
@@ -58,7 +58,7 @@ ls.add_snippets('lua', {
     {
       trig = 'if',
       condition = function()
-        local ignored_nodes = { 'string', 'comment' }
+        local ignored_nodes = { 'string', 'comment', 'comment_content' }
 
         local pos = vim.api.nvim_win_get_cursor(0)
         -- Use one column to the left of the cursor to avoid a "chunk" node
