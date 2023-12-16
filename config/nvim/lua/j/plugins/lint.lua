@@ -9,7 +9,7 @@ return {
       javascript = { 'eslint_d' },
     }
 
-    vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave', 'BufEnter' }, {
       callback = function()
         require('lint').try_lint()
       end,
