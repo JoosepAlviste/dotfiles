@@ -97,10 +97,7 @@ end, { buffer = true })
 vim.keymap.set('n', 'l', '<cr>', { buffer = true, remap = true })
 
 vim.keymap.set('n', 'h', function()
-  local current_dir = get_open_dir()
-  local parent_dir = vim.fn.fnamemodify(current_dir, ':h')
-
-  edit(parent_dir)
+  require('j.file_explorer').open_parent_dir()
 end, { buffer = true })
 
 vim.keymap.set('n', 'D', function()
