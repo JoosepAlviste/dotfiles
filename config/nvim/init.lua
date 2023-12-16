@@ -18,6 +18,7 @@ require 'j.file_explorer'
 require 'j.alternatives'
 require 'j.statusline'
 require 'j.tabline'
+require 'j.disable_lint_rule'
 
 require('lazy').setup {
   import = 'j.plugins',

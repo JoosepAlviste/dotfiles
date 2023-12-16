@@ -75,6 +75,10 @@ vim.keymap.set('n', '<c-g>', function()
   )
 end)
 
+vim.keymap.set('n', '<leader>cd', function()
+  require('j.disable_lint_rule').disable_current_line_lint_rule()
+end)
+
 -- Leader mappings
 
 -- Open last buffer
