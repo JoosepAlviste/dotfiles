@@ -102,16 +102,20 @@ end, { buffer = true })
 
 vim.keymap.set('n', 'D', function()
   local path_to_delete = get_selected_path()
-  local cmd = 'rm -rf ' .. path_to_delete
-
   local nice_path = shorten_path_relative(path_to_delete)
 
   local choice = vim.fn.confirm('Are you sure you want to delete ' .. nice_path .. '?', '&Yes\n&No', 'N', 'Warning')
-
-  if choice == 1 then
-    os.execute(cmd)
-    reload()
+  if choice ~= 1 then
+    return
   end
+
+  local current_line = vim.fn.line '.'
+
+  local cmd = 'rm -rf ' .. path_to_delete
+  os.execute(cmd)
+  reload()
+
+  vim.fn.execute(string.format('normal %sG', current_line))
 end, { buffer = true })
 
 vim.keymap.set('n', '<c-v>', function()
