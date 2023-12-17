@@ -94,5 +94,6 @@ path=(
   $ANDROID_SDK_ROOT/tools/bin
   $ANDROID_SDK_ROOT/platform-tools
   $HOME/.local/share/nvim/mason/bin
+  $HOME/.local/share/pnpm
   $path
 )
