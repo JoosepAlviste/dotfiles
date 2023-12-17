@@ -163,7 +163,7 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
           -- Highlight symbol references on hover
-          local document_highlight_disabled_ls = { 'zk', 'jsonls', 'yamlls' }
+          local document_highlight_disabled_ls = { 'zk', 'jsonls', 'yamlls', 'copilot' }
           if
             client.supports_method 'documentHighlightProvider'
             and not vim.tbl_contains(document_highlight_disabled_ls, client.name)
@@ -239,6 +239,17 @@ return {
       { '<leader>zn', [[<cmd>ZkNewFromTitleSelection<cr>]], mode = 'x' },
       { '<leader>zl', [[<cmd>ZkNotes<cr>]] },
       { '<leader>zt', [[<cmd>ZkTags<cr>]] },
+    },
+  },
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    opts = {
+      suggestion = {
+        accept = false,
+        auto_trigger = true,
+      },
     },
   },
 }

@@ -32,11 +32,14 @@ return {
 
     vim.keymap.set({ 'i', 's' }, '<tab>', function()
       if ls and ls.expand_or_jumpable() then
-        return '<Plug>luasnip-expand-or-jump'
+        ls.expand_or_jump()
+      elseif require('copilot.suggestion').is_visible() then
+        require('copilot.suggestion').accept()
       else
-        return '<tab>'
+        local termcode = require('j.utils').termcode
+        vim.api.nvim_feedkeys(termcode '<Tab>', 'n', false)
       end
-    end, { expr = true })
+    end)
     vim.keymap.set({ 'i', 's' }, '<s-tab>', function()
       if ls.jumpable(-1) then
         return '<Plug>luasnip-jump-prev'
