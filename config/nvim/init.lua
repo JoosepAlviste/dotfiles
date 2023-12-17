@@ -20,10 +20,9 @@ require 'j.statusline'
 require 'j.tabline'
 require 'j.disable_lint_rule'
 
-require('lazy').setup {
-  import = 'j.plugins',
+require('lazy').setup('j.plugins', {
   install = {
-    colorscheme = 'kanagawa',
+    colorscheme = { 'kanagawa' },
   },
   dev = {
     path = '~/Code/Projects',
@@ -31,4 +30,4 @@ require('lazy').setup {
   change_detection = {
     notify = false,
   },
-}
+})
