@@ -13,7 +13,7 @@ function M.open_parent_dir()
 
   vim.cmd.e(vim.fn.fnamemodify(current_file_path, ':h'))
 
-  vim.fn.search(string.format('^%s.$', basename))
+  vim.fn.search(string.format('^%s.\\?$', basename))
 end
 
 return M
