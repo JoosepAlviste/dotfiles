@@ -11,6 +11,8 @@ if w.config_builder then
   config = w.config_builder()
 end
 
+config.term = 'wezterm'
+
 -- Appearance
 
 -- Color scheme
