@@ -23,6 +23,8 @@ alias server='python -m http.server 3030'
 
 alias tree='tree -aC -I .git -I node_modules'
 
+alias a="source $HOME/dotfiles/bin/project"
+
 # Git
 alias g='git'
 alias ga='git add'

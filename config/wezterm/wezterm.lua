@@ -144,6 +144,17 @@ config.keys = {
 
   { key = 'x', mods = 'CMD', action = act.ActivateCopyMode },
 
+  {
+    key = 't',
+    mods = 'CMD',
+    action = w.action.SpawnCommandInNewTab {
+      args = { 'zsh', '-i' },
+      set_environment_variables = {
+        OPEN_PROJECT = '1',
+      },
+    },
+  },
+
   -- Open URLs with cmd+e
   {
     key = 'e',

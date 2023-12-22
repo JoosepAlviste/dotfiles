@@ -85,3 +85,7 @@ source $ZDOTDIR/.packages/zsh-manydots-magic/manydots-magic
 
 function take() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories take
+
+if [[ "$OPEN_PROJECT" == 1 ]]; then
+    source $HOME/dotfiles/bin/project
+fi
