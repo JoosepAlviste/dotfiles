@@ -29,6 +29,7 @@ return {
       sources = cmp.config.sources({
         { name = 'git' },
         { name = 'nvim_lsp' },
+      }, {
         { name = 'luasnip' },
       }, {
         { name = 'cmp-path' },
