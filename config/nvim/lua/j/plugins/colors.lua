@@ -67,5 +67,18 @@ return {
     }
 
     vim.cmd.colorscheme 'kanagawa'
+
+    local id = vim.api.nvim_create_augroup('ColorsChanged', {})
+    vim.api.nvim_create_autocmd('BufWritePost', {
+      group = id,
+      pattern = 'colors.lua',
+      callback = function()
+        vim.print 'hello there!'
+        vim.defer_fn(function()
+          require('lazy.core.loader').reload 'kanagawa.nvim'
+          vim.cmd.KanagawaCompile()
+        end, 2000)
+      end,
+    })
   end,
 }
