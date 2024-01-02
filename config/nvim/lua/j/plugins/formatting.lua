@@ -1,6 +1,6 @@
 return {
   'stevearc/conform.nvim',
-  ft = { 'lua', 'vue', 'typescript', 'typescriptreact', 'javascript' },
+  ft = { 'lua', 'vue', 'typescript', 'typescriptreact', 'javascript', 'json', 'jsonc' },
   opts = {
     formatters_by_ft = {
       lua = { 'stylua' },
@@ -8,6 +8,8 @@ return {
       typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
       javascript = { 'eslint_d' },
+      json = { 'prettier' },
+      jsonc = { 'prettier' },
     },
   },
   config = function(_, opts)
