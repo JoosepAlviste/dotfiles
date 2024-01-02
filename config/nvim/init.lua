@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require 'j.mappings'
 require 'j.autocmds'
+require 'j.commands'
 require 'j.settings'
 require 'j.file_explorer'
 require 'j.alternatives'
