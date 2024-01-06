@@ -10,7 +10,9 @@
 
 ########## Variables
 
-dir=~/dotfiles                  # dotfiles directory
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+
+dir=$(dirname -- "$script_dir")  # dotfiles directory
 olddir=~/.dotfiles_old           # old dotfiles backup directory
 
 ##########

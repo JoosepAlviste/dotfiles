@@ -26,8 +26,8 @@ Some of the configuration includes:
 git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 cd dotfiles
-chmod +x bin/makesymlinks.sh
-./bin/makesymlinks.sh
+chmod +x bin/makesymlinks
+./bin/makesymlinks
 ```
 
 This will symlink all of the files and folders inside `dots/` into your home 
@@ -50,7 +50,7 @@ can run `makesymlinks` anywhere.
 git pull
 ```
 
-Maybe run `./bin/makesymlinks.sh` again.
+Maybe run `./bin/makesymlinks` again.
 
 
 ## Neovim configuration structure
