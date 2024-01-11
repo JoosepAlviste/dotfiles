@@ -11,13 +11,20 @@ return {
         automatic_installation = true,
       }
 
-      vim.fn.sign_define('DiagnosticSignError', { numhl = 'LspDiagnosticsLineNrError', text = '' })
-      vim.fn.sign_define('DiagnosticSignWarn', { numhl = 'LspDiagnosticsLineNrWarning', text = '' })
-      vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
-      vim.fn.sign_define('DiagnosticSignHint', { text = '' })
-
       vim.diagnostic.config {
         virtual_text = false,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '',
+          },
+          numhl = {
+            [vim.diagnostic.severity.ERROR] = 'LspDiagnosticsLineNrError',
+            [vim.diagnostic.severity.WARN] = 'LspDiagnosticsLineNrWarning',
+          },
+        },
       }
 
       ---If the LSP response includes any `node_modules`, then try to remove them and
