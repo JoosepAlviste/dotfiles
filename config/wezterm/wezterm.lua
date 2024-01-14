@@ -98,6 +98,11 @@ config.colors = {
   },
 }
 
+config.inactive_pane_hsb = {
+  brightness = 0.7,
+  saturation = 0.8,
+}
+
 -- Keyboard shortcuts
 
 local direction_keys = {
@@ -190,6 +195,8 @@ config.mouse_bindings = {
 }
 
 --- Behaviour
+
+config.scrollback_lines = 10000
 
 config.adjust_window_size_when_changing_font_size = false
 
