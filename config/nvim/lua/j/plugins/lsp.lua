@@ -159,7 +159,6 @@ return {
           vim.keymap.set('n', 'gr', function()
             require('telescope.builtin').lsp_references()
           end, opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
@@ -170,21 +169,18 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
           -- Highlight symbol references on hover
-          if client.server_capabilities.documentHighlightProvider then
-            vim.api.nvim_create_augroup('LspDocumentHighlight', {
+          if client.supports_method 'textDocument/documentHighlight' then
+            local group = vim.api.nvim_create_augroup('LspDocumentHighlight', {
               clear = false,
             })
-            vim.api.nvim_clear_autocmds {
-              buffer = event.buf,
-              group = 'LspDocumentHighlight',
-            }
+            vim.api.nvim_clear_autocmds { buffer = event.buf, group = group }
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              group = 'LspDocumentHighlight',
+              group = group,
               buffer = event.buf,
               callback = vim.lsp.buf.document_highlight,
             })
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              group = 'LspDocumentHighlight',
+              group = group,
               buffer = event.buf,
               callback = vim.lsp.buf.clear_references,
             })
