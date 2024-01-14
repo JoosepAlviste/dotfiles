@@ -36,7 +36,11 @@ return {
           PmenuSbar = { bg = theme.ui.bg_m1 },
           PmenuThumb = { bg = theme.ui.bg_p2 },
 
+          FloatBorder = { bg = theme.ui.float.bg, fg = theme.ui.float.bg },
+
           Winbar = { fg = theme.syn.fun },
+
+          GitSignsAddInline = { bg = theme.syn.string, fg = theme.ui.float.bg },
 
           DiagnosticFloatingError = { fg = theme.diag.error, bg = 'NONE' },
           DiagnosticFloatingWarn = { fg = theme.diag.warning, bg = 'NONE' },
