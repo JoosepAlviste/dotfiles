@@ -22,3 +22,5 @@ yarn-error.log
 .python-version
 
 *=:memory
+
+.ignore
