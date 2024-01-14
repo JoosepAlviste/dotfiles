@@ -66,6 +66,19 @@ return {
       end,
     }
 
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      desc = 'Clear LSP highlight groups',
+      callback = function()
+        local groups_to_highlight = { '@lsp.type.function' }
+
+        for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
+          if not vim.tbl_contains(groups_to_highlight, group) then
+            vim.api.nvim_set_hl(0, group, {})
+          end
+        end
+      end,
+    })
+
     vim.cmd.colorscheme 'kanagawa'
 
     local id = vim.api.nvim_create_augroup('ColorsChanged', {})
