@@ -81,19 +81,3 @@ fi
 
 # XDebug
 export XDEBUG_CONFIG="idekey=VSCODE"
-
-# Extend PATH.
-typeset -U path
-path=(
-  /usr/local/{bin,sbin}
-  $HOME/dotfiles/bin
-  $HOME/Code/Programs/lua-language-server/bin/macOS
-  /opt/homebrew/bin
-  $ANDROID_SDK_ROOT/emulator
-  $ANDROID_SDK_ROOT/tools
-  $ANDROID_SDK_ROOT/tools/bin
-  $ANDROID_SDK_ROOT/platform-tools
-  $HOME/.local/share/nvim/mason/bin
-  $HOME/.local/share/pnpm
-  $path
-)

@@ -1,6 +1,22 @@
 # Source additional local files if they exist.
 [[ -f ~/.config/zsh/zprofile.local ]] && source ~/.config/zsh/zprofile.local
 
+# Extend PATH.
+typeset -U path
+path=(
+  /usr/local/{bin,sbin}
+  $HOME/dotfiles/bin
+  $HOME/Code/Programs/lua-language-server/bin/macOS
+  /opt/homebrew/bin
+  $ANDROID_SDK_ROOT/emulator
+  $ANDROID_SDK_ROOT/tools
+  $ANDROID_SDK_ROOT/tools/bin
+  $ANDROID_SDK_ROOT/platform-tools
+  $HOME/.local/share/nvim/mason/bin
+  $HOME/.local/share/pnpm
+  $path
+)
+
 # Options
 
 # Emacs mode in ZLE
