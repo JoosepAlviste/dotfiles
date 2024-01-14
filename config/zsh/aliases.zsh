@@ -18,6 +18,8 @@ alias build='docker compose build'
 alias logs='docker compose logs --follow'
 alias dps='docker ps'
 
+alias nx='pnpm exec nx'
+
 # Add `--directory XYZ` if needed
 alias server='python -m http.server 3030'
 
