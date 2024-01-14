@@ -2,7 +2,7 @@
 
 # Run with `source` to change directory
 function project() {
-    local folder="$(ls -d $HOME/*/ $HOME/Code/@modashio/*/ $HOME/Code/Projects/*/ | sed "s@$HOME/@@" | fzf)"
+    local folder="$(ls -d $HOME/*/ $HOME/Code/@modashio/*/ $HOME/Code/Projects/*/ "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes" | sed "s@$HOME/@@" | fzf | sed "s/'//g")"
     local absolute_folder="$HOME/$folder"
     if [ -z "$folder" ]; then
         return 1
