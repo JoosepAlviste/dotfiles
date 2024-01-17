@@ -121,3 +121,64 @@ vim.keymap.set('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
 -- Whole file, jump back with <c-o>
 vim.keymap.set('v', 'ae', [[:<c-u>silent! normal! m'gg0VG$<cr>]], { silent = true })
 vim.keymap.set('o', 'ae', ':normal Vae<cr>', { noremap = false, silent = true })
+
+vim.keymap.set('n', '<leader>ri', function()
+  ---@param type string
+  ---@param node TSNode|nil
+  ---@return TSNode|nil
+  local function find_node_ancestor(type, node)
+    if not node then
+      return nil
+    end
+    P('find_node_ancestor', node:type(), type, node:type() == type)
+
+    if node:type() == type then
+      return node
+    end
+
+    local parent = node:parent()
+
+    return find_node_ancestor(type, parent)
+  end
+
+  local cursor_position = vim.fn.getcurpos()
+  vim.api.nvim_buf_set_mark(0, 'G', cursor_position[2], cursor_position[3] - 1, {})
+
+  local params = vim.lsp.util.make_position_params()
+  vim.lsp.buf_request(0, 'textDocument/definition', params, function(err, result, ctx)
+    if err then
+      vim.api.nvim_err_writeln('Error when executing textDocument/definition: ' .. err.message)
+      return
+    end
+    local offset_encoding = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
+    vim.lsp.util.jump_to_location(result[1], offset_encoding)
+
+    local declaration_node = vim.treesitter.get_node({ ignore_injections = false }):parent()
+    vim.cmd.normal "'G"
+
+    if not declaration_node then
+      vim.print 'Could not find declaration :('
+      return
+    end
+
+    local lexical_declaration_node = find_node_ancestor('lexical_declaration', declaration_node)
+    if not lexical_declaration_node then
+      vim.print 'Could not find declaration :('
+      return
+    end
+
+    local declaration_value_node = declaration_node:child(2)
+    if not declaration_value_node then
+      vim.print 'Could not find declaration :('
+      return
+    end
+
+    local declaration_value = vim.treesitter.get_node_text(declaration_value_node, 0)
+    local start_row, start_col, end_row, end_col = vim.treesitter.get_node_range(lexical_declaration_node)
+    vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {})
+
+    local usage_node = vim.treesitter.get_node { ignore_injections = false }
+    start_row, start_col, end_row, end_col = vim.treesitter.get_node_range(usage_node)
+    vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, vim.split(declaration_value, '\n'))
+  end)
+end)
