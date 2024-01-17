@@ -31,6 +31,11 @@ require('lspconfig').volar.setup {
   filetypes = filetypes,
   settings = {
     vue = {
+      complete = {
+        casing = {
+          props = 'autoCamel',
+        },
+      },
       inlayHints = {
         missingProps = true,
         inlineHandlerLeading = true,
