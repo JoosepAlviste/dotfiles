@@ -19,6 +19,18 @@ return {
             ['<c-w>'] = function()
               vim.api.nvim_input '<c-s-w>'
             end,
+            ['<c-u>'] = function()
+              vim.api.nvim_input '<c-s-u>'
+            end,
+            ['<c-a>'] = function()
+              vim.api.nvim_input '<home>'
+            end,
+            ['<c-e>'] = function()
+              vim.api.nvim_input '<end>'
+            end,
+
+            ['<c-f>'] = actions.preview_scrolling_down,
+            ['<c-b>'] = actions.preview_scrolling_up,
           },
         },
       },
