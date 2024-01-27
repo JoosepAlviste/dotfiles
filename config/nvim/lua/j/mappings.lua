@@ -79,6 +79,15 @@ vim.keymap.set('n', '<leader>cd', function()
   require('j.disable_lint_rule').disable_current_line_lint_rule()
 end)
 
+vim.keymap.set('n', '<s-m-a>', 'mA')
+vim.keymap.set('n', '<m-a>', "'A")
+vim.keymap.set('n', '<s-m-r>', 'mR')
+vim.keymap.set('n', '<m-r>', "'R")
+vim.keymap.set('n', '<s-m-s>', 'mS')
+vim.keymap.set('n', '<m-s>', "'S")
+vim.keymap.set('n', '<s-m-t>', 'mT')
+vim.keymap.set('n', '<m-t>', "'T")
+
 -- Leader mappings
 
 -- Open last buffer
