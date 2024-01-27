@@ -57,8 +57,8 @@ config.color_schemes = {
 }
 config.color_scheme = 'My Kanagawa'
 
-config.font = w.font 'Fira Code'
-config.font_size = 16
+config.font = w.font 'Dank Mono'
+config.font_size = 16.5
 config.line_height = 1.6
 config.strikethrough_position = '0.5cell'
 
@@ -66,6 +66,8 @@ config.hide_tab_bar_if_only_one_tab = true
 
 config.window_decorations = 'RESIZE'
 config.use_fancy_tab_bar = false
+
+config.max_fps = 120
 
 config.colors = {
   tab_bar = {
@@ -138,17 +140,66 @@ local function split_nav(resize_or_move, key)
   }
 end
 
+config.disable_default_key_bindings = true
 config.keys = {
-  { key = 'a', mods = 'CMD', action = w.action.SplitHorizontal },
-  { key = 's', mods = 'CMD', action = w.action.SplitVertical },
-  { key = 'f', mods = 'CMD', action = w.action.TogglePaneZoomState },
+  { key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
+  { key = 'l', mods = 'CMD', action = act.ShowDebugOverlay },
+
+  { key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
+  { key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
+  { key = 'n', mods = 'CMD|SHIFT', action = act.SpawnWindow },
+  { key = '-', mods = 'CMD', action = act.DecreaseFontSize },
+  { key = '=', mods = 'CMD', action = act.IncreaseFontSize },
+  { key = '0', mods = 'CMD', action = act.ResetFontSize },
+
+  { key = 'w', mods = 'CMD', action = act.CloseCurrentTab { confirm = true } },
+  { key = '1', mods = 'CMD', action = act.ActivateTab(0) },
+  { key = '2', mods = 'CMD', action = act.ActivateTab(1) },
+  { key = '3', mods = 'CMD', action = act.ActivateTab(2) },
+  { key = '4', mods = 'CMD', action = act.ActivateTab(3) },
+  { key = '5', mods = 'CMD', action = act.ActivateTab(4) },
+  { key = '6', mods = 'CMD', action = act.ActivateTab(5) },
+  { key = '7', mods = 'CMD', action = act.ActivateTab(6) },
+  { key = '8', mods = 'CMD', action = act.ActivateTab(7) },
+  { key = '9', mods = 'CMD', action = act.ActivateTab(-1) },
+
+  { key = 'a', mods = 'CMD', action = act.SplitHorizontal },
+  { key = 's', mods = 'CMD', action = act.SplitVertical },
+  { key = 'f', mods = 'CMD', action = act.TogglePaneZoomState },
+  { key = '/', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
   { key = '[', mods = 'CMD', action = act.ActivateTabRelative(-1) },
   { key = ']', mods = 'CMD', action = act.ActivateTabRelative(1) },
+  { key = 'Tab', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+  { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+
+  { key = 'u', mods = 'CMD', action = act.ScrollByPage(-0.5) },
+  { key = 'd', mods = 'CMD', action = act.ScrollByPage(0.5) },
+  { key = 'y', mods = 'CMD', action = act.ScrollByLine(-3) },
+  { key = 'e', mods = 'CMD', action = act.ScrollByLine(3) },
+
+  { key = 'h', mods = 'CMD|SHIFT', action = act.AdjustPaneSize { 'Left', 1 } },
+  { key = 'l', mods = 'CMD|SHIFT', action = act.AdjustPaneSize { 'Right', 1 } },
+  { key = 'k', mods = 'CMD|SHIFT', action = act.AdjustPaneSize { 'Up', 1 } },
+  { key = 'j', mods = 'CMD|SHIFT', action = act.AdjustPaneSize { 'Down', 1 } },
 
   { key = 'p', mods = 'CMD', action = act.ScrollToPrompt(-1) },
   { key = 'n', mods = 'CMD', action = act.ScrollToPrompt(1) },
 
   { key = 'x', mods = 'CMD', action = act.ActivateCopyMode },
+
+  {
+    key = 'g',
+    mods = 'CMD',
+    action = w.action_callback(function(win, pane)
+      win:perform_action(
+        act.SplitHorizontal {
+          args = { 'zsh', '-ic', 'lazygit' },
+        },
+        pane
+      )
+      win:perform_action(act.SetPaneZoomState(true), pane)
+    end),
+  },
 
   {
     key = 't',
@@ -161,9 +212,9 @@ config.keys = {
     },
   },
 
-  -- Open URLs with cmd+e
+  -- Open URLs with cmd+o
   {
-    key = 'e',
+    key = 'o',
     mods = 'CMD',
     action = act.QuickSelectArgs {
       label = 'open url',
