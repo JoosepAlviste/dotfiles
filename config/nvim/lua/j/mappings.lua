@@ -174,3 +174,22 @@ vim.keymap.set('n', '<leader>ri', function()
     vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, vim.split(declaration_value, '\n'))
   end)
 end)
+
+-- Insert mode
+
+-- Add new lines when pressing Enter between parentheses
+vim.keymap.set('i', '<cr>', function()
+  local char_to_left = vim.fn.getline('.'):sub(vim.fn.col '.' - 1, vim.fn.col '.' - 1)
+  local char_to_right = vim.fn.getline('.'):sub(vim.fn.col '.', vim.fn.col '.')
+
+  local is_middle_of_braces = char_to_left == '{' and char_to_right == '}'
+  local is_middle_of_parentheses = char_to_left == '(' and char_to_right == ')'
+  local is_middle_of_brackets = char_to_left == '[' and char_to_right == ']'
+  local should_add_two_lines = is_middle_of_braces or is_middle_of_parentheses or is_middle_of_brackets
+
+  if should_add_two_lines then
+    return '<cr><esc>O'
+  end
+
+  return '<cr>'
+end, { expr = true })
