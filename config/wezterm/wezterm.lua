@@ -12,6 +12,7 @@ if w.config_builder then
 end
 
 config.term = 'wezterm'
+config.front_end = 'WebGpu'
 
 -- Appearance
 
@@ -57,8 +58,8 @@ config.color_schemes = {
 }
 config.color_scheme = 'My Kanagawa'
 
-config.font = w.font 'Dank Mono'
-config.font_size = 16.5
+config.font = w.font 'Maple Mono'
+config.font_size = 16
 config.line_height = 1.6
 config.strikethrough_position = '0.5cell'
 
@@ -142,6 +143,7 @@ end
 
 config.disable_default_key_bindings = true
 config.keys = {
+  { key = 'q', mods = 'CMD', action = act.QuitApplication },
   { key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
   { key = 'l', mods = 'CMD', action = act.ShowDebugOverlay },
 
