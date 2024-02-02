@@ -43,7 +43,10 @@ alias glg='git log --stat'
 alias glog='git log --oneline --decorate --graph'
 alias gm='git merge'
 alias gp='git push'
+alias gpf='git push --force'
 alias gst='git status'
+alias gs='git stash'
+alias gsp='git stash pop'
 alias lg='lazygit'
 
 
