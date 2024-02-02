@@ -132,24 +132,6 @@ vim.keymap.set('v', 'ae', [[:<c-u>silent! normal! m'gg0VG$<cr>]], { silent = tru
 vim.keymap.set('o', 'ae', ':normal Vae<cr>', { noremap = false, silent = true })
 
 vim.keymap.set('n', '<leader>ri', function()
-  ---@param type string
-  ---@param node TSNode|nil
-  ---@return TSNode|nil
-  local function find_node_ancestor(type, node)
-    if not node then
-      return nil
-    end
-    P('find_node_ancestor', node:type(), type, node:type() == type)
-
-    if node:type() == type then
-      return node
-    end
-
-    local parent = node:parent()
-
-    return find_node_ancestor(type, parent)
-  end
-
   local cursor_position = vim.fn.getcurpos()
   vim.api.nvim_buf_set_mark(0, 'G', cursor_position[2], cursor_position[3] - 1, {})
 
@@ -170,7 +152,8 @@ vim.keymap.set('n', '<leader>ri', function()
       return
     end
 
-    local lexical_declaration_node = find_node_ancestor('lexical_declaration', declaration_node)
+    local lexical_declaration_node =
+      require('j.treesitter_utils').find_node_ancestor({ 'lexical_declaration' }, declaration_node)
     if not lexical_declaration_node then
       vim.print 'Could not find declaration :('
       return
