@@ -38,7 +38,11 @@ local function parse_issue_key()
   local branch_without_prefix = branch:gsub('^feature', ''):gsub('^fix', '')
   local issue_key = branch_without_prefix:match(pattern)
 
-  return issue_key
+  if not issue_key then
+    return nil
+  end
+
+  return string.upper(issue_key)
 end
 
 local function insert_issue_key()
@@ -51,7 +55,7 @@ local function insert_issue_key()
 
   local issue_key = parse_issue_key()
   if issue_key then
-    vim.api.nvim_feedkeys('o[' .. issue_key .. ']' .. termcode '<esc>' .. 'ggO', 'n', false)
+    vim.api.nvim_feedkeys('o' .. issue_key .. termcode '<esc>' .. 'ggO', 'n', false)
   else
     vim.api.nvim_feedkeys('O', 'n', false)
   end
