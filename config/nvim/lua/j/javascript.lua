@@ -14,7 +14,7 @@ function M.add_async()
     return
   end
 
-  local current_node = vim.treesitter.get_node()
+  local current_node = vim.treesitter.get_node { ignore_injections = false }
   local function_node = require('j.treesitter_utils').find_node_ancestor(
     { 'arrow_function', 'function_declaration', 'function' },
     current_node
