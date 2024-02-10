@@ -4,8 +4,8 @@ return {
   config = function()
     require('kanagawa').setup {
       compile = true,
-      dimInactive = true,
       undercurl = true,
+      transparent = true,
 
       colors = {
         palette = {

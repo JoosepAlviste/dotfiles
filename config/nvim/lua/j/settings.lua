@@ -49,7 +49,6 @@ vim.opt.fillchars = {
   foldclose = '',
 }
 
-vim.opt.cursorline = true -- Highlight current line
 vim.opt.colorcolumn = { 81, 121 } -- Highlight columns
 
 vim.opt.showmode = false -- Do not show mode in command line

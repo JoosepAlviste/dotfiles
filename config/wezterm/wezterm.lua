@@ -106,6 +106,10 @@ config.inactive_pane_hsb = {
   saturation = 0.8,
 }
 
+config.window_background_opacity = 0.9
+config.text_background_opacity = 0.9
+config.macos_window_background_blur = 25
+
 -- Keyboard shortcuts
 
 local direction_keys = {
