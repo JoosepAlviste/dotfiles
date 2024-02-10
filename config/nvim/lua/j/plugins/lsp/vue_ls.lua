@@ -36,18 +36,6 @@ require('lspconfig').volar.setup {
           props = 'autoCamel',
         },
       },
-      inlayHints = {
-        missingProps = true,
-        inlineHandlerLeading = true,
-        optionsWrapper = true,
-      },
-    },
-    typescript = {
-      inlayHints = {
-        parameterNames = {
-          enabled = 'literals',
-        },
-      },
     },
   },
 

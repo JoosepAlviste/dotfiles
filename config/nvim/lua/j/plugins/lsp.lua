@@ -185,11 +185,6 @@ return {
               callback = vim.lsp.buf.clear_references,
             })
           end
-
-          if client.supports_method 'textDocument/inlayHint' then
-            -- warning: this api is not stable yet
-            vim.lsp.inlay_hint.enable(event.buf, true)
-          end
         end,
       })
 

@@ -9,9 +9,6 @@ if not have_vue and not is_marketer_repo() then
     settings = {
       expose_as_code_action = 'all',
       complete_function_calls = true,
-      tsserver_file_preferences = {
-        includeInlayParameterNameHints = 'literals',
-      },
     },
   }
 end
