@@ -41,6 +41,15 @@ return {
       indent = {
         enable = true,
       },
+      matchup = {
+        enable = true,
+      },
     },
+  },
+  {
+    'andymass/vim-matchup',
+    config = function()
+      vim.g.matchup_matchparen_offscreen = {}
+    end,
   },
 }
