@@ -2,9 +2,14 @@ return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.5',
   cmd = 'Telescope',
-  dependencies = { 'nvim-lua/plenary.nvim', 'natecraddock/telescope-zf-native.nvim' },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'natecraddock/telescope-zf-native.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
+  },
   opts = function()
     local actions = require 'telescope.actions'
+    local themes = require 'telescope.themes'
     local custom_pickers = require 'j.telescope_custom_pickers'
 
     return {
@@ -60,6 +65,11 @@ return {
           },
         },
       },
+      extensions = {
+        ['ui-select'] = {
+          themes.get_cursor {},
+        },
+      },
     }
   end,
 
@@ -67,6 +77,7 @@ return {
     require('telescope').setup(opts)
 
     require('telescope').load_extension 'zf-native'
+    require('telescope').load_extension 'ui-select'
   end,
 
   keys = {
@@ -91,5 +102,6 @@ return {
     },
     { '<leader>fx', '<cmd>Telescope git_status<cr>' },
     { '<leader>fc', '<cmd>Telescope git_commits<cr>' },
+    { '<leader>ca', vim.lsp.buf.code_action },
   },
 }

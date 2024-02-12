@@ -159,7 +159,6 @@ return {
           vim.keymap.set('n', 'gr', function()
             require('telescope.builtin').lsp_references()
           end, opts)
-          vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
           vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
