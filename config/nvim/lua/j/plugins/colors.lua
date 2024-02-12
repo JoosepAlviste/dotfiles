@@ -85,6 +85,10 @@ return {
 
     vim.cmd.colorscheme 'kanagawa'
 
+    -- Avoid a black flicker on Neovim startup
+    -- https://github.com/neovim/neovim/issues/19362#issuecomment-1924993842
+    vim.print ' '
+
     local id = vim.api.nvim_create_augroup('ColorsChanged', {})
     vim.api.nvim_create_autocmd('BufWritePost', {
       group = id,
