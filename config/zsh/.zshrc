@@ -2,6 +2,7 @@
 [[ -f ~/.config/zsh/zprofile.local ]] && source ~/.config/zsh/zprofile.local
 
 # Extend PATH.
+export PNPM_HOME="$HOME/.local/share/pnpm"
 typeset -U path
 path=(
   /usr/local/{bin,sbin}
@@ -13,7 +14,7 @@ path=(
   $ANDROID_SDK_ROOT/tools/bin
   $ANDROID_SDK_ROOT/platform-tools
   $HOME/.local/share/nvim/mason/bin
-  $HOME/.local/share/pnpm
+  $PNPM_HOME
   $path
 )
 
