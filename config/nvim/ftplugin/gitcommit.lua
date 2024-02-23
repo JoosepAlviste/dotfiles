@@ -55,10 +55,10 @@ local function insert_issue_key()
 
   local issue_key = parse_issue_key()
   if issue_key then
-    vim.api.nvim_feedkeys('o' .. issue_key .. termcode '<esc>' .. 'ggO', 'n', false)
-  else
-    vim.api.nvim_feedkeys('O', 'n', false)
+    vim.api.nvim_buf_set_text(0, 0, 0, 0, 0, { '', 'Ref ' .. issue_key, '' })
   end
+
+  vim.api.nvim_feedkeys('ggO', 'n', false)
 end
 
 insert_issue_key()
