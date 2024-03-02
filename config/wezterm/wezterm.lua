@@ -58,9 +58,9 @@ config.color_schemes = {
 }
 config.color_scheme = 'My Kanagawa'
 
-config.font = w.font 'Maple Mono'
+config.font = w.font('Victor Mono', { weight = 'Medium' })
 config.font_size = 16
-config.line_height = 1.6
+config.line_height = 1.55
 config.strikethrough_position = '0.5cell'
 
 config.hide_tab_bar_if_only_one_tab = true
