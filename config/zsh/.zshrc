@@ -2,18 +2,17 @@
 [[ -f ~/.config/zsh/zprofile.local ]] && source ~/.config/zsh/zprofile.local
 
 # Extend PATH.
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 typeset -U path
 path=(
   /usr/local/{bin,sbin}
   $HOME/dotfiles/bin
-  $HOME/Code/Programs/lua-language-server/bin/macOS
   /opt/homebrew/bin
   $ANDROID_SDK_ROOT/emulator
   $ANDROID_SDK_ROOT/tools
   $ANDROID_SDK_ROOT/tools/bin
   $ANDROID_SDK_ROOT/platform-tools
-  $HOME/.local/share/nvim/mason/bin
+  $XDG_DATA_HOME/nvim/mason/bin
   $PNPM_HOME
   $path
 )
