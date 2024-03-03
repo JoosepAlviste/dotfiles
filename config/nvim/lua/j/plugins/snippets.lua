@@ -33,8 +33,6 @@ return {
     vim.keymap.set({ 'i', 's' }, '<tab>', function()
       if ls and ls.expand_or_jumpable() then
         ls.expand_or_jump()
-      elseif require('copilot.suggestion').is_visible() then
-        require('copilot.suggestion').accept()
       else
         local termcode = require('j.utils').termcode
         vim.api.nvim_feedkeys(termcode '<Tab>', 'n', false)
