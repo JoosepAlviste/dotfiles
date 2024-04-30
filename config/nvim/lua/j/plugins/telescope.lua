@@ -36,6 +36,8 @@ return {
 
             ['<c-f>'] = actions.preview_scrolling_down,
             ['<c-b>'] = actions.preview_scrolling_up,
+
+            ['<c-p>'] = require('telescope.actions.layout').toggle_preview,
           },
         },
       },

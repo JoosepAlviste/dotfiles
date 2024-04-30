@@ -212,7 +212,7 @@ return {
     end,
   },
   {
-    'mickael-menu/zk-nvim',
+    'zk-org/zk-nvim',
     ft = 'markdown',
     config = function()
       require('zk').setup {
@@ -258,7 +258,7 @@ return {
   {
     'OlegGulevskyy/better-ts-errors.nvim',
     dependencies = { 'MunifTanjim/nui.nvim' },
-    config = {
+    opts = {
       keymaps = {
         toggle = '<leader>zd', -- default '<leader>dd'
         go_to_definition = '<leader>zx', -- default '<leader>dx'
