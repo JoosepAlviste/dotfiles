@@ -52,4 +52,10 @@ return {
       vim.g.matchup_matchparen_offscreen = {}
     end,
   },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
 }
