@@ -14,7 +14,10 @@ function M.add_async()
     return
   end
 
-  local current_node = vim.treesitter.get_node { ignore_injections = false }
+  local pos = vim.api.nvim_win_get_cursor(0)
+  -- Use one column to the left of the cursor to make sure we're on the `await` word
+  local row, col = pos[1] - 1, pos[2] - 1
+  local current_node = vim.treesitter.get_node { ignore_injections = false, pos = { row, col } }
   local function_node = require('j.treesitter_utils').find_node_ancestor(
     { 'arrow_function', 'function_declaration', 'function' },
     current_node
