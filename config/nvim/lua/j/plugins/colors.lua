@@ -36,6 +36,7 @@ return {
           PmenuSbar = { bg = theme.ui.bg_m1 },
           PmenuThumb = { bg = theme.ui.bg_p2 },
 
+          Folded = { bg = bit_lighter_than_bg },
           FloatBorder = { bg = theme.ui.float.bg, fg = theme.ui.float.bg },
 
           Winbar = { fg = theme.syn.fun },
