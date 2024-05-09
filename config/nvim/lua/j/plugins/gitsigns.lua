@@ -65,5 +65,5 @@ return {
       end,
     },
   },
-  'tpope/vim-fugitive',
+  { 'FabijanZulj/blame.nvim', opts = {} },
 }
