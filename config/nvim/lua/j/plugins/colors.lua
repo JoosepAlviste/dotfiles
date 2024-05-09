@@ -41,6 +41,8 @@ return {
 
           Winbar = { fg = theme.syn.fun },
 
+          Directory = { fg = theme.syn.comment, italic = true },
+
           GitSignsAddInline = { bg = theme.syn.string, fg = theme.ui.float.bg },
 
           DiagnosticFloatingError = { fg = theme.diag.error, bg = 'NONE' },

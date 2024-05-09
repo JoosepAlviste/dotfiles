@@ -4,8 +4,14 @@ return {
   cmd = 'Telescope',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'natecraddock/telescope-zf-native.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
+    {
+      'danielfalk/smart-open.nvim',
+      dependencies = {
+        'kkharji/sqlite.lua',
+        { 'nvim-telescope/telescope-fzy-native.nvim' },
+      },
+    },
   },
   opts = function()
     local actions = require 'telescope.actions'
@@ -78,7 +84,7 @@ return {
   config = function(_, opts)
     require('telescope').setup(opts)
 
-    require('telescope').load_extension 'zf-native'
+    require('telescope').load_extension 'smart_open'
     require('telescope').load_extension 'ui-select'
   end,
 
@@ -86,7 +92,7 @@ return {
     {
       '<c-p>',
       function()
-        require('j.telescope_pretty_pickers').pretty_files_picker { picker = 'find_files' }
+        require('telescope').extensions.smart_open.smart_open()
       end,
     },
     {
