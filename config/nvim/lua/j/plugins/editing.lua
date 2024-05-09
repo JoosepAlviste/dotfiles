@@ -41,4 +41,5 @@ return {
     event = 'InsertEnter',
     ft = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'vue' },
   },
+  { 'echasnovski/mini.pairs', version = false, opts = {} },
 }
