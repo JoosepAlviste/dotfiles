@@ -39,11 +39,6 @@ vim.keymap.set('n', '[l', '<cmd>lprev<cr>', silent)
 -- Paste without populating the yank register
 vim.keymap.set('x', '<leader>p', '"_dP')
 
--- Open the current file's directory
-vim.keymap.set('n', '-', function()
-  require('j.file_explorer').open_parent_dir()
-end, { silent = true })
-
 -- Close floating windows, clear highlights, etc.
 vim.keymap.set('n', '<esc>', function()
   local close_all_floating_windows = require('j.utils').close_all_floating_windows
