@@ -1,6 +1,5 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.5',
   cmd = 'Telescope',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -51,6 +50,7 @@ return {
         oldfiles = {
           sort_lastused = true,
           cwd_only = true,
+          path_display = { 'filename_first' },
         },
         find_files = {
           hidden = true,
@@ -92,7 +92,7 @@ return {
     {
       '<c-p>',
       function()
-        require('telescope').extensions.smart_open.smart_open()
+        require('telescope').extensions.smart_open.smart_open { cwd_only = true }
       end,
     },
     {
@@ -105,7 +105,7 @@ return {
     {
       '<leader>fr',
       function()
-        require('j.telescope_pretty_pickers').pretty_files_picker { picker = 'oldfiles' }
+        require('telescope.builtin').oldfiles()
       end,
     },
     { '<leader>fx', '<cmd>Telescope git_status<cr>' },

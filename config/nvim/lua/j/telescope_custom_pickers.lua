@@ -24,6 +24,7 @@ local live_grep_filters = {
 ---@param current_input ?string
 local function run_live_grep(current_input)
   -- TODO: Resume old one with same options somehow
+  -- TODO: Use path_display with default live_grep if possible here
   require('j.telescope_pretty_pickers').pretty_grep_picker {
     picker = 'live_grep',
     options = {
