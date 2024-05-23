@@ -147,10 +147,6 @@ return {
         return list_or_jump('textDocument/definition', 'LSP Definitions', opts)
       end
 
-      vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-      vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
-      vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
-
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(event)
