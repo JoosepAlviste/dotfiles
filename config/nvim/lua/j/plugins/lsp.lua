@@ -202,7 +202,7 @@ return {
   },
   {
     'pmizio/typescript-tools.nvim',
-    ft = { 'typescript', 'typescriptreact', 'javascript' },
+    ft = { 'typescript', 'typescriptreact', 'javascript', 'vue' },
     config = function()
       require 'j.plugins.lsp.typescript_ls'
     end,
