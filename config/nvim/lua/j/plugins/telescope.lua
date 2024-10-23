@@ -10,6 +10,17 @@ return {
         'kkharji/sqlite.lua',
         { 'nvim-telescope/telescope-fzy-native.nvim' },
       },
+      opts = {
+        mappings = {
+          i = {
+            -- Delete word backward, might be able to remove once this is resolved:
+            -- https://github.com/danielfalk/smart-open.nvim/issues/71
+            ['<C-w>'] = function()
+              vim.api.nvim_input '<c-s-w>'
+            end,
+          },
+        },
+      },
     },
   },
   opts = function()
