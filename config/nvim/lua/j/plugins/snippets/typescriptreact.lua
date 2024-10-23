@@ -75,8 +75,12 @@ ls.add_snippets('typescriptreact', {
         end),
         -- Initialize component name to file name
         d(2, function(_, snip)
+          local filename = vim.fn.substitute(snip.env.TM_FILENAME, '\\..*$', '', 'g')
+          -- Convert from kebab-case file names to PascalCase
+          local component_name = string.gsub('-' .. filename, '%W%l', string.upper):sub(2)
+
           return sn(nil, {
-            i(1, vim.fn.substitute(snip.env.TM_FILENAME, '\\..*$', '', 'g')),
+            i(1, component_name),
           })
         end, { 1 }),
         i(3, '// Props'),
