@@ -114,18 +114,6 @@ vim.keymap.set('x', '@', [[:<c-u>echo "@".getcmdline() | execute ":'<,'>normal @
 
 -- Custom text objects
 
--- Around line: with leading and trailing whitespace
-vim.keymap.set('v', 'al', ':<c-u>silent! normal! 0v$<cr>', { silent = true })
-vim.keymap.set('o', 'al', ':normal val<cr>', { noremap = false, silent = true })
-
--- Inner line: without leading or trailing whitespace
-vim.keymap.set('v', 'il', ':<c-u>silent! normal! ^vg_<cr>', { silent = true })
-vim.keymap.set('o', 'il', ':normal vil<cr>', { noremap = false, silent = true })
-
--- Whole file, jump back with <c-o>
-vim.keymap.set('v', 'ae', [[:<c-u>silent! normal! m'gg0VG$<cr>]], { silent = true })
-vim.keymap.set('o', 'ae', ':normal Vae<cr>', { noremap = false, silent = true })
-
 vim.keymap.set('n', '<leader>ri', function()
   local cursor_position = vim.fn.getcurpos()
   vim.api.nvim_buf_set_mark(0, 'G', cursor_position[2], cursor_position[3] - 1, {})
