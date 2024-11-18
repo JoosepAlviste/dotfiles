@@ -26,7 +26,7 @@ function M.add_async()
     return
   end
 
-  local start_row, start_col = vim.treesitter.get_node_range(function_node)
+  local start_row, start_col = function_node:start()
   vim.api.nvim_buf_set_text(0, start_row, start_col, start_row, start_col, { 'async ' })
 end
 
