@@ -103,7 +103,12 @@ return {
     {
       '<c-p>',
       function()
-        require('telescope').extensions.smart_open.smart_open { cwd_only = true }
+        local ignores = require('telescope._extensions.smart_open.default_config').ignore_patterns
+
+        require('telescope').extensions.smart_open.smart_open {
+          cwd_only = true,
+          ignore_patterns = vim.list_extend(ignores, { 'node_modules/*' }),
+        }
       end,
     },
     {
