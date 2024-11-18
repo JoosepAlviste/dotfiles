@@ -52,7 +52,8 @@ end)
 vim.keymap.set('n', '<c-g>', function()
   local shorten_path_relative = require('j.utils').shorten_path_relative
 
-  local short_path = shorten_path_relative(vim.fn.expand '%')
+  local path = string.gsub(vim.fn.expand '%', '^oil://', '')
+  local short_path = shorten_path_relative(path)
   local number_of_lines = vim.fn.line '$'
   local branch = vim.b.gitsigns_head
   local lsp_client_names = table.concat(
