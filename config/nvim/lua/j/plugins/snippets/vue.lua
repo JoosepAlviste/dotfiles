@@ -3,6 +3,8 @@ local ls = require 'luasnip'
 local s = ls.s
 local fmt = require('luasnip.extras.fmt').fmt
 local i = ls.insert_node
+local c = ls.choice_node
+local t = ls.text_node
 
 ls.filetype_extend('vue', { 'typescript', 'javascript' })
 
@@ -37,6 +39,30 @@ const {} = ({}) => {{
 </style>
 ]],
       { i(1) }
+    )
+  ),
+
+  s(
+    'p',
+    fmt(
+      [[
+{}defineProps<{{
+  {}
+}}>()
+  ]],
+      { c(2, { t 'const props = ', t '' }), i(1) }
+    )
+  ),
+
+  s(
+    'e',
+    fmt(
+      [[
+{}defineEmits<{{
+  {}
+}}>()
+  ]],
+      { c(2, { t 'const emit = ', t '' }), i(1) }
     )
   ),
 })
