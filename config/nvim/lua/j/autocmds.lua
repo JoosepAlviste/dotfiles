@@ -4,7 +4,7 @@ local group = vim.api.nvim_create_augroup('Setup', {})
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = group,
   callback = function()
-    require('vim.highlight').on_yank { higroup = 'Substitute', timeout = 200 }
+    require('vim.hl').on_yank { higroup = 'Substitute', timeout = 200 }
   end,
 })
 

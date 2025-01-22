@@ -119,14 +119,14 @@ vim.keymap.set('n', '<leader>ri', function()
   local cursor_position = vim.fn.getcurpos()
   vim.api.nvim_buf_set_mark(0, 'G', cursor_position[2], cursor_position[3] - 1, {})
 
-  local params = vim.lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params(0, 'utf-8')
   vim.lsp.buf_request(0, 'textDocument/definition', params, function(err, result, ctx)
     if err then
       vim.api.nvim_err_writeln('Error when executing textDocument/definition: ' .. err.message)
       return
     end
     local offset_encoding = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
-    vim.lsp.util.jump_to_location(result[1], offset_encoding)
+    vim.lsp.util.show_document(result[1], offset_encoding, { focus = true })
 
     local declaration_node = vim.treesitter.get_node({ ignore_injections = false }):parent()
     vim.cmd.normal "'G"
