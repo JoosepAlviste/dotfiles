@@ -29,8 +29,8 @@ vim.keymap.set('n', 'Q', '@@')
 vim.keymap.set('n', 'X', '<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', silent)
 
 -- Navigate merge conflict markers
-vim.keymap.set('n', ']n', [[<cmd>call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'W')<cr>]], silent)
-vim.keymap.set('n', '[n', [[<cmd>call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'bW')<cr>]], silent)
+vim.keymap.set({ 'n', 'v' }, ']n', [[<cmd>call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'W')<cr>]], silent)
+vim.keymap.set({ 'n', 'v' }, '[n', [[<cmd>call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'bW')<cr>]], silent)
 
 -- Navigate loclist
 vim.keymap.set('n', ']l', '<cmd>lnext<cr>', silent)
