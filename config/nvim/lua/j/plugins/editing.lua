@@ -11,22 +11,19 @@ return {
     end,
   },
   {
-    'numToStr/Comment.nvim',
-    keys = {
-      { 'gc', mode = { 'n', 'v' }, 'gcc' },
-    },
-    opts = {
-      pre_hook = function(ctx)
-        return require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()(ctx)
-      end,
-    },
-  },
-  {
     'JoosepAlviste/nvim-ts-context-commentstring',
     ft = { 'typescriptreact' },
-    opts = {
-      enable_autocmd = false,
-    },
+    config = function()
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+      }
+
+      local get_option = vim.filetype.get_option
+      vim.filetype.get_option = function(filetype, option)
+        return option == 'commentstring' and require('ts_context_commentstring.internal').calculate_commentstring()
+          or get_option(filetype, option)
+      end
+    end,
   },
   {
     'axelvc/template-string.nvim',
