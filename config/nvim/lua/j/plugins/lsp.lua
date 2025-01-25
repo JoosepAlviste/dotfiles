@@ -187,6 +187,10 @@ return {
         end,
       })
 
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+        silent = true,
+      })
+
       require 'j.plugins.lsp.css_ls'
       require 'j.plugins.lsp.docker_ls'
       require 'j.plugins.lsp.graphql_ls'
