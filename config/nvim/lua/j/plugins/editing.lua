@@ -12,7 +12,7 @@ return {
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    ft = { 'typescriptreact' },
+    ft = { 'typescriptreact', 'vue' },
     config = function()
       require('ts_context_commentstring').setup {
         enable_autocmd = false,
