@@ -238,28 +238,6 @@ return {
     },
   },
   {
-    'zbirenbaum/copilot.lua',
-    enabled = false,
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      suggestion = {
-        accept = false,
-        auto_trigger = true,
-      },
-    },
-  },
-  {
-    'Exafunction/codeium.vim',
-    config = function()
-      vim.g.codeium_no_map_tab = 1
-
-      vim.keymap.set('i', '<C-.>', function()
-        return vim.fn['codeium#Accept']()
-      end, { expr = true, silent = true })
-    end,
-  },
-  {
     'OlegGulevskyy/better-ts-errors.nvim',
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {
