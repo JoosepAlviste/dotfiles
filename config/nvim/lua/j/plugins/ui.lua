@@ -63,6 +63,16 @@ return {
               color = '#e8274b',
               name = 'PackageJson',
             },
+            ['package-lock.json'] = {
+              icon = '',
+              color = '#e8274b',
+              name = 'PackageJson',
+            },
+            ['.gitignore'] = {
+              icon = '󰊢',
+              color = '#f54d27',
+              name = 'Git',
+            },
             ['.eslintignore'] = {
               icon = '',
               color = '#4b32c3',
@@ -94,6 +104,7 @@ return {
     },
     config = function()
       require('oil').setup {
+        skip_confirm_for_simple_edits = false,
         keymaps = {
           ['<C-h>'] = false,
           ['<C-l>'] = false,
@@ -106,6 +117,9 @@ return {
         },
         view_options = {
           show_hidden = true,
+          is_always_hidden = function(name)
+            return (name == '..')
+          end,
         },
         columns = {
           { 'icon', directory = '' },
