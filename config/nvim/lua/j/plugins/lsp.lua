@@ -216,6 +216,18 @@ return {
     end,
   },
   {
+    'luckasRanarison/tailwind-tools.nvim',
+    name = 'tailwind-tools',
+    build = ':UpdateRemotePlugins',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-telescope/telescope.nvim',
+      'neovim/nvim-lspconfig',
+    },
+    ---@type TailwindTools.Option
+    opts = {},
+  },
+  {
     'zk-org/zk-nvim',
     ft = 'markdown',
     config = function()
