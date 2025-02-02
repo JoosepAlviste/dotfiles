@@ -55,9 +55,6 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/completion.zsh
 
-# Wezterm shell integration
-source /Applications/WezTerm.app/Contents/Resources/wezterm.sh
-
 # Keybindings
 
 # Search history more nicely with up/down
