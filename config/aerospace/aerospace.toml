@@ -1,0 +1,167 @@
+after-login-command = []
+
+after-startup-command = [
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+  'exec-and-forget sketchybar',
+]
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+on-focus-changed = [
+  'exec-and-forget sketchybar --trigger aerospace_focus_change',
+]
+
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+
+default-root-container-layout = 'tiles'
+
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = false
+
+
+[key-mapping]
+preset = 'qwerty'
+
+
+[gaps]
+inner.horizontal = 8
+inner.vertical =   8
+outer.left =       16
+outer.bottom =     8
+outer.top =        [{monitor.'built-in' = 18}, 48]
+outer.right =      8
+
+
+[mode.main.binding]
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 0'
+alt-t = 'workspace Terminal'
+alt-s = 'workspace Slack'
+alt-p = 'workspace Spotify'
+alt-b = 'workspace Browser'
+alt-f = 'workspace Figma'
+
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+alt-shift-0 = ['move-node-to-workspace 0', 'workspace 0']
+alt-shift-t = ['move-node-to-workspace Terminal', 'workspace Terminal']
+alt-shift-s = ['move-node-to-workspace Slack', 'workspace Slack']
+alt-shift-p = ['move-node-to-workspace Spotify', 'workspace Spotify']
+alt-shift-b = ['move-node-to-workspace Browser', 'workspace Browser']
+alt-shift-f = ['move-node-to-workspace Figma', 'workspace Figma']
+
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+alt-semicolon = 'mode service'
+
+
+
+
+[mode.service.binding]
+esc = [
+    'reload-config',
+    'exec-and-forget sketchybar --reload',
+    'exec-and-forget borders active_color=0x80ffffff inactive_color=0x20ffffff width=3.0',
+    'mode main',
+]
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+down = 'volume down'
+up = 'volume up'
+shift-down = ['volume set 0', 'mode main']
+
+
+# Avoid Ghostty tabs taking up extra spaces
+# Press alt+shift+semicolon f to un-float
+# https://ghostty.org/docs/help/macos-tiling-wms#workarounds
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.jagex.launcher'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace Spotify'
+
+[[on-window-detected]]
+if.app-id = 'com.linear'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace Figma'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace Browser'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace Slack'
+
+
+[workspace-to-monitor-force-assignment]
+Spotify = 'secondary'
+Slack = 'secondary'

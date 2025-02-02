@@ -1,0 +1,4 @@
+#!/usr/bin/env lua
+
+package.cpath = string.format('%s;%s/sketchybar_lua/?.so', package.cpath, os.getenv 'XDG_DATA_HOME')
+require 'init'
