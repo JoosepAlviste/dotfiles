@@ -73,6 +73,8 @@ if type trash-put > /dev/null; then
   alias trash='trash-put'
 fi
 
+alias rm-node-modules='rm -rf $(find . -type d -name "node_modules" | grep --invert-match "node_modules.*node_modules")'
+
 # Delete all node_modules folders in the current directory, recursively
 alias clean-node-modules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
