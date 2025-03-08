@@ -74,4 +74,17 @@ export const Default: Story = (args) => ({{
       }
     )
   ),
+
+  -- React `useState` declaration
+  s(
+    's',
+    fmt([[{}const [{}, set{}] = useState({});]], {
+      f(ensure_js_package_imported('useState', 'react')),
+      i(1, 'state'),
+      f(function(args)
+        return (args[1][1]:gsub('^%l', string.upper))
+      end, { 1 }),
+      i(2),
+    })
+  ),
 })
