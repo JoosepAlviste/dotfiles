@@ -43,7 +43,7 @@ end)
 
 vpn:subscribe('wifi_change', function()
   -- Make sure that the VPN connection is established before trying to update
-  sleep(1)
+  sleep(3)
   update_highlight()
 end)
 
