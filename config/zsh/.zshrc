@@ -17,6 +17,8 @@ path=(
   $path
 )
 
+eval "$(fnm env --use-on-cd --corepack-enabled --shell zsh)"
+
 # Options
 
 # Emacs mode in ZLE
