@@ -11,4 +11,8 @@ return {
   Linear = ':linear:',
   ['MongoDB Compass'] = ':mongodb:',
   ['Keynote'] = ':keynote:',
+  ['Xcode'] = ':xcode:',
+  ['Simulator'] = ':xcode:',
+  ['Zen'] = ':zen_browser:',
+  ['Cursor'] = ':cursor:',
 }
