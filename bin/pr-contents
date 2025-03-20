@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+
+# Print the commit messages of commits in the current branch.
+#
+# Usage examples:
+#
+# Get the commits compared to `dev`
+#   pr-contents
+#
+# Get the commits compared to another brnach
+#   pr-contents master
+#
+# Copy the commit messages to the clipboard
+#   pr-contents | pbcopy
+
+# Get task ID from the Git branch
+task="$(git rev-parse --abbrev-ref HEAD | grep -o '[a-z]\+-[0-9]\+' | head -n 1 | tr '[a-z]' '[A-Z]')"
+
+echo "TODO: Screenshot if applicable
+
+## Test cases
+
+- [ ] 
+
+## Commits
+"
+
+# Get all commits compared since `dev` (or the given branch argument)
+git log --reverse --format="* %s%n%b" ${1:-"dev"}.. |
+    # Filter out automatic/filler commits
+    grep -v "Create stack preview for stack" |
+    grep -v "fixup!" |
+    grep -v "Merge branch" |
+    # Remove the task IDs from the commit messages if the linked task is the 
+    # same as the branch
+    grep -v "Ref $task" |
+    # Remove unnecessary empty lines between commits
+    tail -r | awk '!(/^$/ && prev~/^(\* .+)?$/); {prev=$0}' | tail -r |
+    # Put the commit message body in a quote
+    sed "s/^\([^\*]\)/> \1/" |
+    # Also make empty lines inside the commit message bodies a part of the quote
+    sed "s/^$/>/"
+
+# Print the commit message footer with a reference to the task
+printf "\nRef $task\n"
