@@ -1,15 +1,15 @@
 # My dotfiles
 
-![Main](https://github.com/JoosepAlviste/dotfiles/assets/9450943/01d33a36-c8d5-44a2-815d-450100733da1)
+![Main](https://github.com/user-attachments/assets/3d183c91-0cc5-4c4a-a530-0e13d51fd927)
 
 Some of the configuration includes:
 
 * Editor - [neovim](https://neovim.io)
     * Configured in Lua
-    * See [`config/nvim/lua/j/plugins.lua`](./config/nvim/lua/j/plugins.lua) for 
+    * See [`config/nvim/lua/j/plugins/`](./config/nvim/lua/j/plugins) for 
       the used plugins
-    * [Palenightfall color 
-      scheme](https://github.com/JoosepAlviste/palenightfall.nvim)
+    * [Kanagawa color 
+      scheme](https://github.com/rebelot/kanagawa.nvim)
     * Neovim's built-in LSP client
     * [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/) 
       for highlighting
@@ -17,7 +17,7 @@ Some of the configuration includes:
       navigation
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org) (custom configuration)
-* [Wallpaper](https://www.reddit.com/r/wallpaper/comments/pc8uq4/samurai_doge_3840x2160/)
+* [Wallpaper](https://www.reddit.com/r/ghibli/comments/16scnnt/i_made_a_set_of_totoro_wallpaper_for_pc_and/)
 
 
 ## Installation
@@ -37,7 +37,7 @@ folder.
 The next time you start `vim`, it will automatically install `lazy.nvim` and Vim 
 plugins. You should run `:MasonInstallAll` in order to install the required 
 external programs. Also, check out 
-[`packages_list.md`](./resources/packages_list.md) for extra programs to 
+[`Brewfile`](./Brewfile) for extra programs to 
 install.
 
 The utility scripts in `bin/` are automatically added to the Zsh path, so you 
@@ -72,8 +72,8 @@ The Neovim configuration is split into many files and is located in
 
 ## More screenshots
 
-![Busy](https://github.com/JoosepAlviste/dotfiles/assets/9450943/4037709d-1637-4b7f-9598-6a3b6697f734)
+![Busy](https://github.com/user-attachments/assets/5e280aea-374c-4808-8f63-3d39d437e59b)
 
-![Finder](https://github.com/JoosepAlviste/dotfiles/assets/9450943/211e152f-24ef-45ec-9bed-36ee61b95fd5)
+![Finder](https://github.com/user-attachments/assets/30d8bde9-9be6-4216-abb2-b6eaf844b2d0)
 
-![Completion](https://github.com/JoosepAlviste/dotfiles/assets/9450943/f2b877e1-dd52-4935-832b-7b6c4896328c)
+![Completion](https://github.com/user-attachments/assets/e19e2f6e-b175-4424-a141-05d1235f0c6f)
