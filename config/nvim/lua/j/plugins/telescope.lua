@@ -139,6 +139,5 @@ return {
     },
     { '<leader>fx', '<cmd>Telescope git_status<cr>' },
     { '<leader>fc', '<cmd>Telescope git_commits<cr>' },
-    { '<leader>ca', vim.lsp.buf.code_action },
   },
 }

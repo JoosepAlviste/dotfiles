@@ -156,19 +156,17 @@ return {
         callback = function(event)
           local opts = { buffer = event.buf }
           vim.keymap.set('n', '<c-]>', definitions, opts)
-          vim.keymap.set('n', 'gr', function()
+          vim.keymap.set('n', 'grr', function()
             require('telescope.builtin').lsp_references()
           end, opts)
-          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
           vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
           vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts)
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
           -- Highlight symbol references on hover
-          if client.supports_method 'textDocument/documentHighlight' then
+          if client:supports_method 'textDocument/documentHighlight' then
             local group = vim.api.nvim_create_augroup('LspDocumentHighlight', {
               clear = false,
             })
@@ -185,10 +183,6 @@ return {
             })
           end
         end,
-      })
-
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-        silent = true,
       })
 
       require 'j.plugins.lsp.css_ls'
