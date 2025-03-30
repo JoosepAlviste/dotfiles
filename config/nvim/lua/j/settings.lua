@@ -53,6 +53,8 @@ vim.opt.colorcolumn = { 81, 121 } -- Highlight columns
 
 vim.opt.showmode = false -- Do not show mode in command line
 
+vim.opt.winborder = 'rounded'
+
 -- Folds
 vim.opt.foldcolumn = '0'
 vim.opt.foldlevel = 99
