@@ -13,7 +13,7 @@ Some of the configuration includes:
     * Neovim's built-in LSP client
     * [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/) 
       for highlighting
-    * [`telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim) for 
+    * [`snacks.nvim` picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md) for 
       navigation
 * Terminal emulator - [Kitty](https://sw.kovidgoyal.net/kitty)
 * Shell - [Zsh](https://www.zsh.org) (custom configuration)
