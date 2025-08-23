@@ -93,11 +93,15 @@ return {
     end,
   },
   {
-    'folke/neodev.nvim',
+    'folke/lazydev.nvim',
     ft = 'lua',
     config = function()
-      require('neodev').setup()
       require 'j.plugins.lsp.lua_ls'
+      require('lazydev').setup {
+        library = {
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
+      }
     end,
   },
   {

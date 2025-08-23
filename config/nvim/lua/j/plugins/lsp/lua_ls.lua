@@ -1,5 +1,5 @@
 -- https://github.com/sumneko/lua-language-server
-require('lspconfig').lua_ls.setup {
+vim.lsp.config('lua_ls', {
   capabilities = require 'j.plugins.lsp.capabilities',
   settings = {
     Lua = {
@@ -11,4 +11,4 @@ require('lspconfig').lua_ls.setup {
       },
     },
   },
-}
+})
