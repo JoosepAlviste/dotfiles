@@ -14,7 +14,7 @@ function M.add_async()
 
   local current_node = vim.treesitter.get_node { ignore_injections = false }
   local function_node = require('j.treesitter_utils').find_node_ancestor(
-    { 'arrow_function', 'function_declaration', 'function' },
+    { 'arrow_function', 'function_declaration', 'function', 'method_definition' },
     current_node
   )
   if not function_node then
