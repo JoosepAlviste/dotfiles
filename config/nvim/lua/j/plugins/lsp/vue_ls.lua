@@ -1,7 +1,6 @@
 -- https://github.com/johnsoncodehk/volar
-require('lspconfig').volar.setup {
+vim.lsp.config('vue_ls', {
   capabilities = require('j.plugins.lsp').capabilities,
-  filetypes = { 'vue' },
   settings = {
     vue = {
       complete = {
@@ -11,4 +10,5 @@ require('lspconfig').volar.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable 'vue_ls'

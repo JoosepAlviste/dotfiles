@@ -83,6 +83,7 @@ return {
         end,
       })
 
+      require 'j.plugins.lsp.typescript_ls'
       require 'j.plugins.lsp.css_ls'
       require 'j.plugins.lsp.docker_ls'
       require 'j.plugins.lsp.graphql_ls'
@@ -102,13 +103,6 @@ return {
           { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         },
       }
-    end,
-  },
-  {
-    'pmizio/typescript-tools.nvim',
-    ft = { 'typescript', 'typescriptreact', 'javascript', 'vue' },
-    config = function()
-      require 'j.plugins.lsp.typescript_ls'
     end,
   },
   {
