@@ -1,7 +1,6 @@
 after-login-command = []
 
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget sketchybar',
 ]
 
@@ -109,7 +108,6 @@ alt-semicolon = 'mode service'
 esc = [
     'reload-config',
     'exec-and-forget sketchybar --reload',
-    'exec-and-forget borders active_color=0x80ffffff inactive_color=0x20ffffff width=3.0',
     'mode main',
 ]
 r = ['flatten-workspace-tree', 'mode main'] # reset layout

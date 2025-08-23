@@ -15,7 +15,6 @@ cask "deskpad"
 tap "nikitabobko/tap"
 tap "felixkratz/formulae"
 cask "aerospace"
-brew "borders"
 brew "sketchybar"
 
 # Terminal
