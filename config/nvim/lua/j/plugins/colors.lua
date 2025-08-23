@@ -63,6 +63,8 @@ return {
           StatuslineBoolean = { fg = theme.diag.warning, bg = theme.ui.bg_m3 },
 
           OilDir = { fg = theme.syn.fun, italic = false },
+
+          BlinkCmpKind = { bg = theme.ui.bg_p1 },
         }
       end,
     }
