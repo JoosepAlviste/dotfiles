@@ -1,5 +1,5 @@
 -- https://github.com/vscode-langservers/vscode-json-languageserver
-require('lspconfig').jsonls.setup {
+vim.lsp.config('jsonls', {
   settings = {
     json = {
       schemas = {
@@ -15,4 +15,4 @@ require('lspconfig').jsonls.setup {
     },
   },
   capabilities = require 'j.plugins.lsp.capabilities',
-}
+})
