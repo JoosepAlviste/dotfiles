@@ -12,62 +12,16 @@ local f = ls.function_node
 ls.filetype_extend('typescript', { 'javascript' })
 
 ls.add_snippets('typescript', {
-  -- Storybook story
-  s(
-    'story',
-    fmt(
-      [[
-{}{}import {} from './{}.vue';
-
-export default {{
-	title: '{}',
-	component: {},
-	argTypes: {{
-		{}
-	}},
-}} as Meta;
-
-export const Default: Story = (args) => ({{
-	components: {{ {} }},
-	setup() {{
-		return {{ args }};
-  }},
-	template: `
-		<{} v-bind="args" />
-	`,
-}});
-]],
-      {
-        f(ensure_js_package_imported('Meta', '@storybook/vue')),
-        f(ensure_js_package_imported('Story', '@storybook/vue')),
-        d(1, function(_, snip)
-          local filename_without_extension, _ = snip.env.TM_FILENAME_BASE:gsub('.stories$', '')
-
-          return sn(nil, {
-            i(1, filename_without_extension),
-          })
-        end),
-        rep(1),
-        i(2),
-        rep(1),
-        i(3),
-        rep(1),
-        rep(1),
-      }
-    )
-  ),
-
   -- Fishery factory
   s(
     'factory',
     fmt(
       [[
-{}export const {}Factory = Factory.define<{}>(({{ sequence }}) => ({{
+export const {}Factory = Factory.define<{}>(({{ sequence }}) => ({{
   id: sequence,{}
 }}));
     ]],
       {
-        f(ensure_js_package_imported('Factory', 'fishery')),
         i(1),
         i(2),
         i(3),
@@ -78,8 +32,7 @@ export const Default: Story = (args) => ({{
   -- React `useState` declaration
   s(
     's',
-    fmt([[{}const [{}, set{}] = useState({});]], {
-      f(ensure_js_package_imported('useState', 'react')),
+    fmt([[const [{}, set{}] = useState({});]], {
       i(1, 'state'),
       f(function(args)
         return (args[1][1]:gsub('^%l', string.upper))

@@ -118,7 +118,7 @@ ls.add_snippets('typescriptreact', {
     'sc',
     fmt(
       [[
-{}type {}Props = {{
+type {}Props = {{
   {}
 }}
 
@@ -127,7 +127,6 @@ export const {}: Component<{}Props> = ({}) => {{
 }}
 ]],
       {
-        f(ensure_js_package_imported('Component', 'solid-js')),
         d(1, function(_, snip)
           return sn(nil, {
             i(1, vim.fn.substitute(snip.env.TM_FILENAME, '\\..*$', '', 'g')),

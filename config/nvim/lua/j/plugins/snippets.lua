@@ -58,5 +58,38 @@ return {
     require 'j.plugins.snippets.typescript'
     require 'j.plugins.snippets.typescriptreact'
     require 'j.plugins.snippets.vue'
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LuasnipPreExpand',
+      callback = function()
+        local ensure_js_package_imported = require('j.treesitter_utils').ensure_js_package_imported
+        local is_marketer_repo = require('j.modash').is_marketer_repo
+
+        local snippet = require('luasnip').session.event_node
+        local snippet_name = snippet.name
+
+        -- TODO: This kinda sucks, it would be better if auto-import logic was
+        -- next to snippet definition
+        if snippet_name == 'factory' then
+          return ensure_js_package_imported('Factory', 'fishery')()
+        elseif snippet_name == 's' then
+          return ensure_js_package_imported('useState', 'react')()
+        elseif snippet_name == 'computed' then
+          if not is_marketer_repo() then
+            return ensure_js_package_imported('computed', 'vue')()
+          end
+        elseif snippet_name == 'style' then
+          return ensure_js_package_imported('style', '@vanilla-extract/css')()
+        elseif snippet_name == 'debug' then
+          if not is_marketer_repo() then
+            return ensure_js_package_imported('watchEffect', 'vue')()
+          end
+        elseif snippet_name == 'r' then
+          if not is_marketer_repo() then
+            return ensure_js_package_imported('ref', 'vue')()
+          end
+        end
+      end,
+    })
   end,
 }

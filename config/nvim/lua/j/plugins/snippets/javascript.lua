@@ -145,14 +145,9 @@ it('{}', {}() => {{
     'computed',
     fmt(
       [[
-{}const {} = computed(() => {});
+const {} = computed(() => {});
   ]],
       {
-        f(function()
-          if not is_marketer_repo() then
-            return ensure_js_package_imported('computed', 'vue')()
-          end
-        end),
         i(1),
         c(2, {
           fmt(
@@ -174,12 +169,11 @@ it('{}', {}() => {{
     'style',
     fmt(
       [[
-{}export const {} = style({{
+export const {} = style({{
   {}
 }})
   ]],
       {
-        f(ensure_js_package_imported('style', '@vanilla-extract/css')),
         i(1),
         i(2),
       }
@@ -191,16 +185,11 @@ it('{}', {}() => {{
     'debug',
     fmt(
       [[
-{}watchEffect(() => {{
+watchEffect(() => {{
   console.log({{ {} }})
 }});
 ]],
       {
-        f(function()
-          if not is_marketer_repo() then
-            return ensure_js_package_imported('watchEffect', 'vue')()
-          end
-        end),
         i(1),
       }
     )
@@ -209,12 +198,7 @@ it('{}', {}() => {{
   -- Ref
   s(
     'r',
-    fmt([[{}const {} = ref({})]], {
-      f(function()
-        if not is_marketer_repo() then
-          return ensure_js_package_imported('ref', 'vue')()
-        end
-      end),
+    fmt([[const {} = ref({})]], {
       i(1),
       i(2),
     })
