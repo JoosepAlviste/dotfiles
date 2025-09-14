@@ -4,6 +4,7 @@ then
 fi
 
 fpath+="$ZDOTDIR/.packages/zsh-completions/src"
+fpath+="$ZDOTDIR/completions"
 
 autoload -U compinit; compinit
 _comp_options+=(globdots)  # With hidden files

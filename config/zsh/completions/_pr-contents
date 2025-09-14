@@ -1,0 +1,8 @@
+#compdef pr-contents
+
+local expl
+declare -a branch_names
+
+branch_names=($(git for-each-ref --format='%(refname:short)' refs/heads 2>/dev/null))
+
+_wanted branch-names expl branch-name compadd $* - $branch_names
