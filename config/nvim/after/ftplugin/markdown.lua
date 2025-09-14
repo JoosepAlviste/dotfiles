@@ -12,7 +12,7 @@ vim.opt_local.indentexpr = ''
 -- Mappings
 
 local function is_in_list()
-  return vim.fn.match(vim.fn.getline '.', '\\s*[*\\-+]\\s') ~= -1
+  return vim.fn.match(vim.fn.getline '.', '^\\s*[*\\-+]\\s') ~= -1
 end
 
 vim.keymap.set('i', '<cr>', function()
