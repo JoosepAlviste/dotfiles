@@ -16,3 +16,4 @@ vim.lsp.config('jsonls', {
   },
   capabilities = require 'j.plugins.lsp.capabilities',
 })
+vim.lsp.enable 'jsonls'

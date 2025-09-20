@@ -4,3 +4,4 @@ vim.lsp.config('graphql', {
   root_markers = { { '.graphqlrc.yml', '.graphqlrc' }, '.git' },
   filetypes = { 'graphql', 'typescriptreact' },
 })
+vim.lsp.enable 'graphql'
