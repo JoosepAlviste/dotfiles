@@ -2,16 +2,9 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
       'saghen/blink.cmp',
     },
     config = function()
-      require('mason').setup()
-      require('mason-lspconfig').setup {
-        automatic_installation = true,
-      }
-
       vim.diagnostic.config {
         virtual_text = false,
         signs = {

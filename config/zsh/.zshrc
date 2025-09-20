@@ -12,7 +12,6 @@ path=(
   $ANDROID_SDK_ROOT/tools
   $ANDROID_SDK_ROOT/tools/bin
   $ANDROID_SDK_ROOT/platform-tools
-  $XDG_DATA_HOME/nvim/mason/bin
   $PNPM_HOME
   $path
 )

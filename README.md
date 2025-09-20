@@ -26,19 +26,18 @@ Some of the configuration includes:
 git clone --recurse-submodules git@github.com:JoosepAlviste/dotfiles.git
 
 cd dotfiles
-chmod +x bin/makesymlinks
+chmod +x bin/*
 ./bin/makesymlinks
+./bin/install-packages
 ```
 
 This will symlink all of the files and folders inside `dots/` into your home 
 folder prefixed by `.` and everything from `config/` to your `~/.config/` 
-folder.
+folder. Then, `install-packages` will install all Homebrew and Node packages.
 
 The next time you start `vim`, it will automatically install `lazy.nvim` and Vim 
-plugins. You should run `:MasonInstallAll` in order to install the required 
-external programs. Also, check out 
-[`Brewfile`](./Brewfile) for extra programs to 
-install.
+plugins. Also, check out [`Brewfile`](./Brewfile) and the [global `pnpm` 
+modules](./pnpm-global/5/) for extra programs to install.
 
 The utility scripts in `bin/` are automatically added to the Zsh path, so you 
 can run `makesymlinks` anywhere.

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Install all brew packages
+brew bundle install
+
+# Install Node & PNPM
+fnm install 20
+npm install --global corepack@latest
+corepack enable pnpm
+
+# Install global PNPM packages
+pnpm install -g

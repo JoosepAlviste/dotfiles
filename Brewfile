@@ -1,6 +1,8 @@
 # Install with `brew bundle install`
 # Update with `brew bundle dump`
 
+cask_args appdir: "~/Applications"
+
 # Taps
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -15,7 +17,7 @@ cask "deskpad"
 tap "nikitabobko/tap"
 tap "felixkratz/formulae"
 cask "aerospace"
-brew "sketchybar"
+brew "sketchybar", restart_service: :changed
 
 # Terminal
 brew "cmake"
@@ -49,18 +51,18 @@ brew "presenterm"
 # Programming
 cask "insomnia"
 cask "kitty"
-cask "mongodb-compass"
 tap "getsentry/tools"
 brew "getsentry/tools/sentry-cli"
 cask "db-browser-for-sqlite"
 brew "watchman"
 brew "zk"
 brew "python-setuptools"
-brew "node@20", link: true
+brew "fnm"
 brew "lua"
 
 # Work
 cask "tunnelblick"
+cask "mongodb-compass"
 tap "azhuchkov/tools"
 brew "azhuchkov/tools/tunblkctl"
 tap "stripe/stripe-cli"
@@ -72,6 +74,8 @@ brew "awscli"
 # Neovim and friends
 brew "neovim", args: ["HEAD"]
 brew "stylua"
+brew "tree-sitter-cli"
+brew "lua-language-server"
 
 # Fonts
 cask "font-anonymous-pro"

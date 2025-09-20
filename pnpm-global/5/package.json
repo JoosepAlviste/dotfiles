@@ -1,0 +1,12 @@
+{
+	"dependencies": {
+		"@tailwindcss/language-server": "^0.14.26",
+		"@vtsls/language-server": "^0.2.9",
+		"@vue/language-server": "^3.0.7",
+		"@vue/typescript-plugin": "^3.0.7",
+		"dockerfile-language-server-nodejs": "^0.14.1",
+		"eslint_d": "^14.3.0",
+		"vscode-langservers-extracted": "^4.10.0",
+		"yaml-language-server": "^1.18.0"
+	}
+}
