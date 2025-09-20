@@ -1,5 +1,5 @@
 -- https://github.com/redhat-developer/yaml-language-server
-require('lspconfig').yamlls.setup {
+vim.lsp.config('yamlls', {
   capabilities = require 'j.plugins.lsp.capabilities',
   settings = {
     yaml = {
@@ -12,4 +12,4 @@ require('lspconfig').yamlls.setup {
       },
     },
   },
-}
+})

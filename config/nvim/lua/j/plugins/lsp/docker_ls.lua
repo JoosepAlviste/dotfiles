@@ -1,4 +1,4 @@
 -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
-require('lspconfig').dockerls.setup {
+vim.lsp.config('dockerls', {
   capabilities = require 'j.plugins.lsp.capabilities',
-}
+})

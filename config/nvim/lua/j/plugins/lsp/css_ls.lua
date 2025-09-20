@@ -1,5 +1,5 @@
 -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
-require('lspconfig').cssls.setup {
+vim.lsp.config('cssls', {
   capabilities = require 'j.plugins.lsp.capabilities',
   settings = {
     css = {
@@ -9,4 +9,4 @@ require('lspconfig').cssls.setup {
       },
     },
   },
-}
+})

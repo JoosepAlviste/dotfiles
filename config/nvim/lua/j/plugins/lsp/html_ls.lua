@@ -1,3 +1,3 @@
-require('lspconfig').html.setup {
+vim.lsp.config('html', {
   capabilities = require 'j.plugins.lsp.capabilities',
-}
+})
