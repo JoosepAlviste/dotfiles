@@ -13,6 +13,8 @@
 # Copy the commit messages to the clipboard
 #   pr-contents | pbcopy
 
+branch=${1:-"dev"}
+
 # Get task ID from the Git branch
 task="$(git rev-parse --abbrev-ref HEAD | grep -o '[a-z]\+-[0-9]\+' | head -n 1 | tr '[a-z]' '[A-Z]')"
 
@@ -26,7 +28,7 @@ echo "TODO: Screenshot if applicable
 "
 
 # Get all commits compared since `dev` (or the given branch argument)
-git log --reverse --format="* %s%n%b" ${1:-"dev"}.. |
+git log --reverse --format="* %s%n%b" ${branch}.. |
     # Filter out automatic/filler commits
     grep -v "Create stack preview for stack" |
     grep -v "fixup!" |
