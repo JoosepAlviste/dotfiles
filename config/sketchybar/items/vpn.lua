@@ -16,10 +16,11 @@ local vpn = sbar.add('item', constants.items.VPN, {
     padding_right = 12,
   },
 })
+local NETWORK_NAME = 'modash-dev'
 
 ---@param callback fun(is_connected: boolean): any
 local function get_is_connected(callback)
-  sbar.exec("tunblkctl status --strip | awk '{print $2}'", function(status)
+  sbar.exec("tunblkctl status --strip | grep CONNECTED | awk '{print $2}'", function(status)
     local status_trimmed = string.gsub(status, '%s+', '')
     callback(status_trimmed == 'CONNECTED')
   end)
@@ -51,7 +52,7 @@ vpn:subscribe('mouse.clicked', function()
   get_is_connected(function(is_connected)
     local command = is_connected and 'disconnect' or 'connect'
 
-    sbar.exec(string.format("tunblkctl %s $(tunblkctl status --strip | awk '{print $1}')", command), function()
+    sbar.exec(string.format('tunblkctl %s %s', command, NETWORK_NAME), function()
       update_highlight()
     end)
   end)
