@@ -9,6 +9,16 @@ return {
     init = function(plugin)
       require('lazy.core.loader').add_to_rtp(plugin)
       require 'nvim-treesitter.query_predicates'
+
+      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.vue = {
+        install_info = {
+          url = '~/Code/Projects/tree-sitter-vue',
+          -- url = 'https://github.com/JoosepAlviste/tree-sitter-vue/',
+          files = { 'src/parser.c', 'src/scanner.c' },
+          branch = 'feature/component-name-with-dot',
+        },
+      }
     end,
     main = 'nvim-treesitter.configs',
     opts = {
@@ -54,8 +64,6 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
+    opts = {},
   },
 }
