@@ -93,3 +93,6 @@ cask "font-monaspace"
 cask "font-roboto-mono-nerd-font"
 cask "font-source-code-pro"
 cask "font-victor-mono"
+
+# Tools
+brew "ansible"
