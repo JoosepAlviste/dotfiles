@@ -6,7 +6,7 @@ vim.api.nvim_create_user_command('GitOpen', function(opts)
   local has_selection = opts.range == 2
 
   local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
-  local file = vim.fn.expand('%:p'):gsub(vim.pesc(git_root .. '/'), '')
+  local file = vim.fn.expand('%:p'):gsub('^oil://', ''):gsub(vim.pesc(git_root .. '/'), '')
 
   -- Git repo things
   local repo_url = vim.fn.system('git -C ' .. git_root .. ' config --get remote.origin.url')
