@@ -462,6 +462,23 @@
                             "to": [{ "key_code": "j" }]
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                    },
+                    "ignore_vendor_events": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 8209,
+                        "vendor_id": 9610
+                    },
+                    "ignore_vendor_events": true
                 }
             ],
             "fn_function_keys": [
