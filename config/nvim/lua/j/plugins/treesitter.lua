@@ -1,28 +1,28 @@
-local check_file_size = function(_, bufnr)
+---@param bufnr integer
+---@return boolean
+local is_large_file = function(bufnr)
   return vim.api.nvim_buf_line_count(bufnr) > 100000
 end
 
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    init = function(plugin)
-      require('lazy.core.loader').add_to_rtp(plugin)
-      require 'nvim-treesitter.query_predicates'
+    init = function()
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'TSUpdate',
+        callback = function()
+          require('nvim-treesitter.parsers').vue = {
+            install_info = {
+              revision = 'd3a6a9b8170d93e05436ad792833a8b1e9995f5b',
+              url = 'https://github.com/JoosepAlviste/tree-sitter-vue',
+            },
+          }
+        end,
+      })
 
-      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-      parser_config.vue = {
-        install_info = {
-          url = '~/Code/Projects/tree-sitter-vue',
-          -- url = 'https://github.com/JoosepAlviste/tree-sitter-vue/',
-          files = { 'src/parser.c', 'src/scanner.c' },
-          branch = 'feature/component-name-with-dot',
-        },
-      }
-    end,
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = {
+      require('nvim-treesitter').install {
         'lua',
         'query',
         'markdown',
@@ -43,18 +43,36 @@ return {
         'vimdoc',
         'sql',
         'regex',
-      },
-      highlight = {
-        enable = true,
-        disable = check_file_size,
-      },
-      indent = {
-        enable = true,
-      },
-      matchup = {
-        enable = true,
-      },
-    },
+      }
+
+      local group = vim.api.nvim_create_augroup('MyTreesitterSetup', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        pattern = {
+          'vue',
+          'typescript',
+          'tsx',
+          'query',
+          'markdown',
+          'javascript',
+          'json',
+          'html',
+          'graphql',
+          'yaml',
+          'css',
+          'bash',
+          'scss',
+        },
+        callback = function(args)
+          if not is_large_file(args.buf) then
+            vim.treesitter.start()
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.wo[0][0].foldmethod = 'expr'
+            vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          end
+        end,
+      })
+    end,
   },
   {
     'andymass/vim-matchup',

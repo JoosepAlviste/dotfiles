@@ -108,7 +108,7 @@ return {
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      { 'nvim-treesitter/nvim-treesitter', branch = 'main' },
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
     },
