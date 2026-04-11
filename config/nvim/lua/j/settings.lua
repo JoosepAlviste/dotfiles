@@ -1,3 +1,5 @@
+require('vim._core.ui2').enable {}
+
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -9,6 +11,8 @@ vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- But sensitive if includes capital letter
 vim.opt.grepprg = 'rg --ignore-case --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+
+vim.opt.cmdheight = 0
 
 vim.opt.path = '**'
 -- Ignore some folders and files with find
