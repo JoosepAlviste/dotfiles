@@ -3,6 +3,11 @@ return {
   ---@type snacks.Config
   opts = {
     picker = {
+      main = {
+        file = false,
+        current = true,
+      },
+
       win = {
         input = {
           keys = {
