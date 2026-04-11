@@ -51,7 +51,7 @@ return {
         pattern = {
           'vue',
           'typescript',
-          'tsx',
+          'typescriptreact',
           'query',
           'markdown',
           'javascript',
