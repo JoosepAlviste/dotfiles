@@ -30,10 +30,13 @@ return {
         local current_file = vim.fn.expand '%'
 
         Snacks.picker.smart {
+          hidden = true,
           multi = {
             { finder = 'buffers', current = false },
             { finder = 'files', exclude = { current_file } },
           },
+          ignored = true,
+          exclude = { 'node_modules', 'coverage', 'dist', '.nx', 'playwright-report', 'test-results' },
         }
       end,
     },
