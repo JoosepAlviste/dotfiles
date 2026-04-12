@@ -18,6 +18,11 @@ vim.api.nvim_create_autocmd('WinEnter', {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold' }, {
+  group = group,
+  command = 'checktime',
+})
+
 vim.api.nvim_create_autocmd('BufReadPost', {
   desc = 'Open file at the last position it was edited earlier',
   group = group,

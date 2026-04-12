@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require 'j.mappings'
 require 'j.autocmds'
 require 'j.commands'
+require 'j.cursor_cli'
 require 'j.settings'
 require 'j.alternatives'
 require 'j.statusline'

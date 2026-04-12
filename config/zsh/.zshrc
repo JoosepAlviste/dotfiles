@@ -7,6 +7,7 @@ typeset -U path
 path=(
   /usr/local/{bin,sbin}
   $HOME/dotfiles/bin
+  $HOME/.local/bin
   /opt/homebrew/bin
   $ANDROID_SDK_ROOT/emulator
   $ANDROID_SDK_ROOT/tools
