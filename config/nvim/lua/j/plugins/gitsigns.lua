@@ -66,4 +66,25 @@ return {
     },
   },
   { 'FabijanZulj/blame.nvim', opts = {} },
+  {
+    'NeogitOrg/neogit',
+    lazy = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'esmuellert/codediff.nvim',
+        cmd = 'CodeDiff',
+        opts = {
+          explorer = {
+            view_mode = 'tree',
+          },
+        },
+      },
+      'folke/snacks.nvim',
+    },
+    cmd = 'Neogit',
+    keys = {
+      { '<leader>gg', '<cmd>Neogit<cr>' },
+    },
+  },
 }
