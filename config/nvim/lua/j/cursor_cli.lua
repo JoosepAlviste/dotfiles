@@ -101,21 +101,23 @@ local function format_diagnostics(diagnostics, file)
   return parts
 end
 
-local function line_to_cursor()
+vim.api.nvim_create_user_command('LineToCursor', function(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  local has_selection = opts.range == 2
+
   local root = get_project_root()
   local file = get_current_file_relative_path(root)
-  local start_line = vim.fn.line "'<"
-  local end_line = vim.fn.line "'>"
-  local mode = vim.fn.mode()
 
-  local text = (mode == 'v' or mode == 'V' or mode == '\22')
-      and string.format('%s:%d-%d ', file, start_line, end_line)
-    or string.format('%s:%d ', file, vim.fn.line '.')
+  local text = has_selection and string.format('%s:%d-%d ', file, start_line, end_line)
+    or string.format('%s:%d ', file, start_line)
 
   send_to_cursor(root, text)
-end
+end, {
+  range = true,
+})
 
-local function diag_to_cursor()
+vim.api.nvim_create_user_command('DiagToCursor', function()
   local root = get_project_root()
   local file = get_current_file_relative_path(root)
   local line = vim.api.nvim_win_get_cursor(0)[1]
@@ -127,9 +129,9 @@ local function diag_to_cursor()
   end
 
   send_to_cursor(root, table.concat(format_diagnostics(diagnostics, file), '\n') .. ' ')
-end
+end, {})
 
-local function file_diag_to_cursor()
+vim.api.nvim_create_user_command('FileDiagToCursor', function()
   local root = get_project_root()
   local file = get_current_file_relative_path(root)
   local diagnostics = vim.diagnostic.get(0)
@@ -140,8 +142,8 @@ local function file_diag_to_cursor()
   end
 
   send_to_cursor(root, table.concat(format_diagnostics(diagnostics, file), '\n') .. ' ')
-end
+end, {})
 
-vim.keymap.set({ 'n', 'x' }, '<leader>ao', line_to_cursor, { silent = true })
-vim.keymap.set({ 'n', 'x' }, '<leader>ad', diag_to_cursor, { silent = true })
-vim.keymap.set({ 'n', 'x' }, '<leader>aD', file_diag_to_cursor, { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ao', ':LineToCursor<cr>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ad', ':DiagToCursor<cr>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>aD', ':FileDiagToCursor<cr>', { silent = true })
