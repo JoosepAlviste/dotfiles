@@ -89,6 +89,12 @@
     lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(cyan)%aD%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
 
     fixup = !sha=$( git -c color.ui=always log --oneline -n 1000 | fzf +s --no-multi --prompt 'Fixup> ' ) && git commit --fixup "${sha%% *}"
+
+    wta = "!f() { git worktree add \"../$1\" \"$1\" && cd \"../$1\" && yarn; cp -r ../../marketer/.agents . && cp ../../marketer/opencode.json . && cp ../../marketer/BRAIN.md . && cp ../../marketer/tailwind.config.ts . && echo \"\ncd ../$1\" ; }; f"
+	wtan = "!f() { git worktree add -b \"$1\" \"../$1\" && cd \"../$1\" && yarn && cp -r ../../marketer/.agents . && cp ../../marketer/opencode.json . && cp ../../marketer/BRAIN.md . && cp ../../marketer/tailwind.config.ts . && echo \"\ncd ../$1\" ; }; f"
+	wtr = "!f() { git worktree remove \"../$1\"; }; f"
+	wtl = "!f() { git worktree list; }; f"
+    wtcd = "!f() { cd $(git wtl | fzf | cut -f1 -w); }; f"
 [pull]
 	rebase = false
 [init]
