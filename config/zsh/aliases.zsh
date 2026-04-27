@@ -76,5 +76,8 @@ fi
 # Delete all node_modules folders in the current directory, recursively
 alias clean-node-modules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 
+# Get an overview of all the tests in the given file
+alias tests-overview="grep -n 'describe\|^\t\tit\|^\tit'"
+
 # Cleaning up ~
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
