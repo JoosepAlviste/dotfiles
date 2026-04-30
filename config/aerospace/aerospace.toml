@@ -1,7 +1,7 @@
 after-login-command = []
 
 after-startup-command = [
-  'exec-and-forget sketchybar',
+  'exec-and-forget sketchybar --reload',
 ]
 
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -101,6 +101,14 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-semicolon = 'mode service'
 
+# Apps
+alt-ctrl-cmd-shift-t = 'exec-and-forget open /Users/joosep/Applications/kitty.app'
+alt-ctrl-cmd-shift-b = 'exec-and-forget open /Users/joosep/Applications/Zen.app'
+alt-ctrl-cmd-shift-s = 'exec-and-forget open /Users/joosep/Applications/Slack.app'
+alt-ctrl-cmd-shift-p = 'exec-and-forget open /Users/joosep/Applications/Spotify.app'
+alt-ctrl-cmd-shift-i = 'exec-and-forget open /Users/joosep/Applications/yaak.app'
+alt-ctrl-cmd-shift-m = 'exec-and-forget open /Users/joosep/Applications/MongoDB\ Compass.app'
+alt-ctrl-cmd-shift-f = 'exec-and-forget open /Users/joosep/Applications/Figma.app'
 
 
 
