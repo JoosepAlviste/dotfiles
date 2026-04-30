@@ -35,7 +35,7 @@ local function parse_issue_key()
   end
 
   local pattern = '^/(%a+%-%d+).*$'
-  local branch_without_prefix = branch:gsub('^feature', ''):gsub('^fix', '')
+  local branch_without_prefix = branch:gsub('^feature', ''):gsub('^fix', ''):gsub('^refactor', '')
   local issue_key = branch_without_prefix:match(pattern)
 
   if not issue_key then
