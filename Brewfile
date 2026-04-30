@@ -3,20 +3,24 @@
 
 cask_args appdir: "~/Applications"
 
-# Taps
-tap "homebrew/bundle"
-tap "homebrew/services"
-
 # Apps
 cask "keycastr"
 cask "mos"  # External mouse scroll
 cask "iina"
 cask "deskpad"
+cask "zen"
+cask "orion"
+cask "1password"
+cask "1password-cli"
+cask "shottr"
+cask "spotify"
+cask "raycast"
+cask "itouuuuuuuuu/tap/zmk-battery-bar"
 
 # Window management
 tap "nikitabobko/tap"
-tap "felixkratz/formulae"
-cask "aerospace"
+tap "FelixKratz/formulae"
+cask "nikitabobko/tap/aerospace"
 brew "sketchybar", restart_service: :changed
 
 # Terminal
@@ -41,6 +45,7 @@ brew "jq"
 brew "fzf"
 brew "imagemagick"
 brew "tree"
+brew "gh"
 
 # Terminal apps
 brew "vim"
@@ -49,7 +54,7 @@ brew "lazygit"
 brew "presenterm"
 
 # Programming
-cask "insomnia"
+cask "yaak"
 cask "kitty"
 tap "getsentry/tools"
 brew "getsentry/tools/sentry-cli"
@@ -70,6 +75,22 @@ brew "stripe/stripe-cli/stripe"
 brew "pulumi"
 brew "mongocli"
 brew "awscli"
+cask "slack"
+cask "figma"
+cask "cursor"
+brew "schpet/tap/linear"
+brew "chrome-devtools-mcp"
+# cask "cursor-cli"
+# Deps
+brew "pkg-config"
+brew "cairo"
+brew "pango"
+brew "libpng"
+brew "jpeg"
+brew "giflib"
+brew "librsvg"
+brew "pixman"
+brew "python-setuptools"
 
 # Neovim and friends
 brew "neovim", args: ["HEAD"]
@@ -93,6 +114,7 @@ cask "font-monaspace"
 cask "font-roboto-mono-nerd-font"
 cask "font-source-code-pro"
 cask "font-victor-mono"
+cask "font-lilex"
 
 # Tools
 brew "ansible"
