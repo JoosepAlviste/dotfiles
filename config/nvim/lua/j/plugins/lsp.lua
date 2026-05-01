@@ -89,6 +89,7 @@ return {
       require 'j.plugins.lsp.json_ls'
       require 'j.plugins.lsp.vue_ls'
       require 'j.plugins.lsp.yaml_ls'
+      require 'j.plugins.lsp.unocss_ls'
     end,
   },
   {
@@ -102,18 +103,6 @@ return {
         },
       }
     end,
-  },
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    name = 'tailwind-tools',
-    build = ':UpdateRemotePlugins',
-    dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', branch = 'main' },
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-    },
-    ---@type TailwindTools.Option
-    opts = {},
   },
   {
     'zk-org/zk-nvim',
