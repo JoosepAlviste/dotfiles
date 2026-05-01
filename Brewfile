@@ -16,6 +16,7 @@ cask "shottr"
 cask "spotify"
 cask "raycast"
 cask "itouuuuuuuuu/tap/zmk-battery-bar"
+cask "discord"
 
 # Window management
 tap "nikitabobko/tap"
