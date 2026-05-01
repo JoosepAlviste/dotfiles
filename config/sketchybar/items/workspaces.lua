@@ -1,6 +1,6 @@
 local colors = require 'colors'
 local settings = require 'settings'
-local app_icons = require 'app_icons'
+local app_icons = require 'helpers.icon_map'
 local constants = require 'constants'
 
 -- Add padding to the left
