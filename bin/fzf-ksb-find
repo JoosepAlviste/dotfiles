@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+# fzf-ksb-find - Fuzzy-find through Kitty scrollback buffer
+#
+# Launched by Kitty as an overlay window. Receives the scrollback buffer
+# (or last command output) on stdin, lets the user search it with fzf,
+# and copies the selected line to the system clipboard.
+#
+# Invocation (from kitty.conf):
+#   map kitty_mod+k launch --type=overlay \
+#       --stdin-source=@screen_scrollback --stdin-add-formatting \
+#       --env FZF_STDIN_SOURCE=@screen_scrollback \
+#       fzf_ksb_find.sh
+#
+#   map kitty_mod+j launch --type=overlay \
+#       --stdin-source=@last_cmd_output --stdin-add-formatting \
+#       --env FZF_STDIN_SOURCE=@last_cmd_output \
+#       fzf_ksb_find.sh
+#
+# Environment (set by Kitty before this script runs):
+#   FZF_STDIN_SOURCE  - "@screen_scrollback" or "@last_cmd_output"
+#   KITTY_WINDOW_ID   - numeric ID of the Kitty window
+#
+# Requires: fzf, bat
+#
+# Keybindings:
+#   Enter   - select line and copy to clipboard
+#   Ctrl-C  - abort (nothing copied)
+#   Esc     - abort (nothing copied)
+#   Ctrl-B  - scroll preview up (half page)
+#   Ctrl-F  - scroll preview down (half page)
+
+# --- Save stdin (scrollback buffer) to a temp file for bat preview ---
+# fzf reads from this file via --input redirect, and bat reads it for the
+# preview pane. The temp file is cleaned up on exit regardless of how the
+# script terminates.
+source=$(mktemp)
+trap 'rm -f "$source"' EXIT
+cat >"$source"
+
+# Build the label string shown in the preview border.
+# Both vars are set by Kitty before launching this script.
+label_str="$FZF_STDIN_SOURCE:$KITTY_WINDOW_ID"
+
+# --- Launch fzf ---
+# --ansi            : interpret ANSI color codes in scrollback input
+# --no-sort         : preserve original line order (don't rank by match score)
+# --exact           : use exact substring matching instead of fuzzy matching
+# --tac             : reverse input so newest lines appear first
+# --query ''        : start with an empty search query
+#
+# Preview: bat shows the full scrollback file with the selected line
+# highlighted. {n} is fzf's 0-indexed line number of the current selection,
+# so we add 1 for bat's 1-indexed --highlight-line.
+#
+# Preview scroll: +{n}+1/2 scrolls the preview so the highlighted line
+# (1-indexed) is centered vertically in the preview window.
+selected=$(/opt/homebrew/bin/fzf \
+        --ansi --no-sort --exact --tac \
+        --query '' \
+        --prompt 'Search Scrollback> ' \
+        --preview-label ' Scrollback Buffer ['"$label_str"'] ' \
+        --preview '/opt/homebrew/bin/bat \
+                    --color=always --decorations=never \
+                    --highlight-line $(( {n}+1 )) '"$source"'' \
+        --preview-window 'up,75%,+{n}+1/2' \
+        --bind 'result:transform-list-label:
+        if [[ -z $FZF_QUERY ]]; then
+          echo " $FZF_MATCH_COUNT items ($FZF_STDIN_SOURCE:$KITTY_WINDOW_ID) "
+        else
+          echo " $FZF_MATCH_COUNT matches for [$FZF_QUERY] ($FZF_STDIN_SOURCE:$KITTY_WINDOW_ID) "
+        fi
+        ' \
+        --input-border --color 'input-border:#996666,input-label:#ffcccc' \
+        --list-border --color 'list-border:#669966,list-label:#99cc99:bold' \
+        --preview-border --color 'preview-border:#9999cc,preview-label:#ccccff:bold' \
+        --bind 'ctrl-c,esc:abort' \
+        --bind 'ctrl-b:preview-half-page-up' \
+        --bind 'ctrl-f:preview-half-page-down' \
+        <"$source")
+
+# --- Copy selected line to clipboard ---
+# Only copy if fzf exited successfully (user made a selection).
+# On abort (Ctrl-C/Esc), fzf exits non-zero and we skip the copy
+# to avoid clearing the clipboard with empty input.
+if [[ -n $selected ]]; then
+        printf '%s' "$selected" | kitten clipboard
+fi
