@@ -22,7 +22,7 @@ export PAGER='less'
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
-export ZK_NOTEBOOK_DIR="$HOME/Dropbox/notes"
+export ZK_NOTEBOOK_DIR="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes"
 
 # Clean up ~
 
