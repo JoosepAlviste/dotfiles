@@ -46,9 +46,11 @@ end
 ---@param open_target AlternativeOpenTarget
 local select_file_to_open = function(message, paths, open_target)
   vim.ui.select(paths, {
-    prompt = 'Select a file to create:',
+    prompt = message,
   }, function(choice)
-    open_path(choice, open_target)
+    if choice ~= nil then
+      open_path(choice, open_target)
+    end
   end)
 end
 
@@ -129,11 +131,6 @@ local open_alternative = function(params)
   params = params or {}
   local open_target = params.target or 'edit'
   local open_type = params.type
-  local config = params.config
-  if not config and vim.fn.filereadable '.alternatives.json' then
-    -- local a = vim.uv_fs_open('.alternatives.json', 'r')
-    -- P(a)
-  end
 
   local current_file_path =
     vim.fn.expand('%'):gsub(vim.pesc(vim.loop.cwd() .. '/'), ''):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')

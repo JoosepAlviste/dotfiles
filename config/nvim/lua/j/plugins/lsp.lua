@@ -107,16 +107,15 @@ return {
   {
     'zk-org/zk-nvim',
     ft = 'markdown',
-    config = function()
-      require('zk').setup {
-        picker = 'snacks_picker',
-        lsp = {
-          config = {
-            capabilities = require 'j.plugins.lsp.capabilities',
-          },
+    main = 'zk',
+    opts = {
+      picker = 'snacks_picker',
+      lsp = {
+        config = {
+          capabilities = require 'j.plugins.lsp.capabilities',
         },
-      }
-    end,
+      },
+    },
     keys = {
       { '<leader>zn', [[:ZkNew {title=''}<left><left>]], mode = 'n' },
       { '<leader>zn', [[<cmd>ZkNewFromTitleSelection<cr>]], mode = 'x' },
