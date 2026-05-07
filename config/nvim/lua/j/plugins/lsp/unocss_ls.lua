@@ -1,4 +1,5 @@
 vim.lsp.config('unocss', {
+  filetypes = { 'vue' },
   on_init = function(client)
     -- Disable documentColor feature since my projects have CSS variables for
     -- UnoCSS colors, which won't work anyways
