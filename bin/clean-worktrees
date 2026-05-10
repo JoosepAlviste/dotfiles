@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Clean the stale worktrees of the current directory
+# With inspiration from https://brtkwr.com/posts/2026-03-06-bulk-cleaning-stale-git-worktrees/
+
+# Refresh Git branches from origin
+git -C "$pwd" fetch --prune --quiet 2>/dev/null || true
+
+git worktree list | grep -v "$(pwd)" | awk '{print $1}' | while read worktree_dir; do
+    # Check if the worktree exists
+    if ! git -C "$worktree_dir" rev-parse --git-dir &>/dev/null; then
+        echo "Removing non-existing worktree $worktree_dir"
+        git worktree remove "$worktree_dir"
+        continue
+    fi
+    branch=$(git -C "$worktree_dir" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "$worktree_dir")
+
+    # Skip if remote branch still exists
+    if git -C "$worktree_dir" rev-parse --verify "refs/remotes/origin/$branch" &>/dev/null; then
+        continue
+    fi
+
+    echo "Removing worktree $worktree_dir"
+
+    if ! git -C "$repo_dir" worktree remove "$worktree_dir" 2>/dev/null; then
+        # Force remove if dirty (branch is gone anyway)
+        git -C "$repo_dir" worktree remove --force "$worktree_dir" 2>/dev/null || {
+            # Last resort for corrupted worktree metadata
+            rm -rf "$worktree_dir"
+        }
+    fi
+done
