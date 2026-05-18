@@ -81,3 +81,25 @@ alias tests-overview="grep -n 'describe\|^\t\tit\|^\tit'"
 
 # Cleaning up ~
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+
+gwta() {
+    git worktree add \"../$1\" \"origin/$1\"
+    cd \"../$1\"
+    yarn
+    cp ../../marketer/BRAIN.md .
+}
+
+gwtan() {
+    git worktree add -b $1 ../$1
+    cd ../$1
+    yarn
+    cp ../../marketer/BRAIN.md .
+}
+
+gwtr() {
+    git worktree remove \"../$1\"
+}
+
+gwtcd() {
+    cd "$(git worktree list | grep -v "$(pwd)" | cut -f1 -w | fzf)"
+}
