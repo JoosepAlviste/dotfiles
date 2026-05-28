@@ -103,10 +103,10 @@ alt-semicolon = 'mode service'
 
 # Apps
 alt-ctrl-cmd-shift-t = 'exec-and-forget open /Users/joosep/Applications/kitty.app'
-alt-ctrl-cmd-shift-b = 'exec-and-forget open /Users/joosep/Applications/Zen.app'
+alt-ctrl-cmd-shift-b = 'exec-and-forget open /Users/joosep/Applications/Helium.app'
 alt-ctrl-cmd-shift-s = 'exec-and-forget open /Users/joosep/Applications/Slack.app'
 alt-ctrl-cmd-shift-p = 'exec-and-forget open /Users/joosep/Applications/Spotify.app'
-alt-ctrl-cmd-shift-i = 'exec-and-forget open /Users/joosep/Applications/yaak.app'
+alt-ctrl-cmd-shift-y = 'exec-and-forget open /Users/joosep/Applications/yaak.app'
 alt-ctrl-cmd-shift-m = 'exec-and-forget open /Users/joosep/Applications/MongoDB\ Compass.app'
 alt-ctrl-cmd-shift-f = 'exec-and-forget open /Users/joosep/Applications/Figma.app'
 
