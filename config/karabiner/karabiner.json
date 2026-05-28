@@ -583,6 +583,579 @@
                     {
                         "manipulators": [
                             {
+                                "description": "Change fn to Hyper Key",
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change Hyper + H/J/K/L to Arrow Keys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change Hyper + Backspace to Delete",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change Hyper + Space to Cmd + Space",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["control", "shift", "command", "option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to control. Escape if no other key used.",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 49978,
+                        "vendor_id": 1133
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 832,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "g" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "g" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 291,
+                        "vendor_id": 1046
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 4385,
+                        "vendor_id": 17498
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 1,
+                        "vendor_id": 18003
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 638,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "g" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "g" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 834,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "g" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "g" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "g" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "g" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                    },
+                    "ignore_vendor_events": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 8209,
+                        "vendor_id": 9610
+                    },
+                    "ignore_vendor_events": true
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f1" },
+                    "to": [{ "key_code": "display_brightness_decrement" }]
+                },
+                {
+                    "from": { "key_code": "f2" },
+                    "to": [{ "key_code": "display_brightness_increment" }]
+                },
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "key_code": "mission_control" }]
+                },
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "launchpad" }]
+                },
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "illumination_decrement" }]
+                },
+                {
+                    "from": { "key_code": "f6" },
+                    "to": [{ "key_code": "illumination_increment" }]
+                },
+                {
+                    "from": { "key_code": "f7" },
+                    "to": [{ "key_code": "rewind" }]
+                },
+                {
+                    "from": { "key_code": "f8" },
+                    "to": [{ "key_code": "play_or_pause" }]
+                },
+                {
+                    "from": { "key_code": "f9" },
+                    "to": [{ "key_code": "fastforward" }]
+                },
+                {
+                    "from": { "key_code": "f10" },
+                    "to": [{ "key_code": "mute" }]
+                },
+                {
+                    "from": { "key_code": "f11" },
+                    "to": [{ "key_code": "volume_decrement" }]
+                },
+                {
+                    "from": { "key_code": "f12" },
+                    "to": [{ "key_code": "volume_increment" }]
+                }
+            ],
+            "name": "Colemak (no Chocofi)",
+            "virtual_hid_keyboard": {
+                "caps_lock_delay_milliseconds": 0,
+                "country_code": 0,
+                "keyboard_type": "ansi",
+                "keyboard_type_v2": "ansi"
+            }
+        },
+        {
+            "complex_modifications": {
+                "parameters": { "basic.to_if_alone_timeout_milliseconds": 150 },
+                "rules": [
+                    {
+                        "manipulators": [
+                            {
                                 "description": "Change left_control to Hyper key.",
                                 "from": {
                                     "key_code": "left_control",
