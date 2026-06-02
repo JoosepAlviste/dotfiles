@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Watch for external camera status, trigger Home Assistant automation when 
+# camera turns on or off.
+#
+# Required environment variables:
+# CAMERA_UID: Find with `system_profiler SPCameraDataType`
+# HA_HOST
+# HA_CAMERA_ON_AUTOMATION_ID: Copy from Home Assistant automation Webhook trigger
+# HA_CAMERA_OFF_AUTOMATION_ID: Copy from Home Assistant automation Webhook trigger
+
+source $HOME/.config/zsh/zprofile.local
+
+if [[ -z "${CAMERA_UID}" ]]; then
+    echo "CAMERA_UID environment variable is required" >&2
+fi
+if [[ -z "${HA_HOST}" ]]; then
+    echo "HA_HOST environment variable is required" >&2
+fi
+if [[ -z "${HA_CAMERA_ON_AUTOMATION_ID}" ]]; then
+    echo "HA_CAMERA_ON_AUTOMATION_ID environment variable is required" >&2
+fi
+if [[ -z "${HA_CAMERA_OFF_AUTOMATION_ID}" ]]; then
+    echo "HA_CAMERA_OFF_AUTOMATION_ID environment variable is required" >&2
+fi
+
+log stream \
+  --predicate "subsystem == 'com.apple.cmio' AND eventMessage CONTAINS '$CAMERA_UID'" \
+  --info 2>/dev/null | \
+while read -r line; do
+  if echo "$line" | grep -q "_addSystemStatusAttributions"; then
+    echo "[$(date)] External camera ON"
+    curl -X POST "${HA_HOST}/api/webhook/${HA_CAMERA_ON_AUTOMATION_ID}"
+  elif echo "$line" | grep -q "_removeSystemStatusAttributions"; then
+    echo "[$(date)] External camera OFF"
+    curl -X POST "${HA_HOST}/api/webhook/${HA_CAMERA_OFF_AUTOMATION_ID}"
+  fi
+done

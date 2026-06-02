@@ -51,3 +51,16 @@ for file in ./config/*; do
         ln -s $dir/config/$filename ~/.config/$filename
     fi
 done
+
+for file in ./launchd/*; do
+    filename=$(echo $file | rev | cut -d'/' -f-1 | rev)
+    plist="$(basename $filename .plist)"
+
+    rm "$HOME/Library/LaunchAgents/$plist.plist"
+    ln -s $dir/launchd/$filename "$HOME/Library/LaunchAgents/$plist.plist"
+
+    launchctl unload "$HOME/Library/LaunchAgents/$plist.plist" 2>/dev/null
+    launchctl load "$HOME/Library/LaunchAgents/$plist.plist"
+
+    echo "Installed and started $plist launchd job"
+done
