@@ -568,7 +568,6 @@
                 }
             ],
             "name": "Colemak",
-            "selected": true,
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
@@ -1142,6 +1141,7 @@
                 }
             ],
             "name": "Colemak (no Chocofi)",
+            "selected": true,
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
