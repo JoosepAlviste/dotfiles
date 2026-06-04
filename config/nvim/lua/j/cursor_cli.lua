@@ -101,6 +101,29 @@ local function format_diagnostics(diagnostics, file)
   return parts
 end
 
+local function get_selection()
+  local mode = vim.fn.visualmode()
+  local s_start = vim.fn.getpos "'<"
+  local s_end = vim.fn.getpos "'>"
+  return table.concat(vim.fn.getregion(s_start, s_end, { type = mode }), '\n')
+end
+
+vim.api.nvim_create_user_command('SelectionToCursor', function(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  local has_selection = opts.range == 2
+
+  local selection = get_selection()
+
+  local root = get_project_root()
+  local file = get_current_file_relative_path(root)
+
+  local text = has_selection and string.format('%s:%d-%d\n%s\n', file, start_line, end_line, selection)
+    or string.format('%s:%d\n%s\n', file, start_line, selection)
+
+  send_to_cursor(root, text)
+end, { range = true })
+
 vim.api.nvim_create_user_command('LineToCursor', function(opts)
   local start_line = opts.line1
   local end_line = opts.line2
@@ -147,3 +170,4 @@ end, {})
 vim.keymap.set({ 'n', 'x' }, '<leader>ao', ':LineToCursor<cr>', { silent = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>ad', ':DiagToCursor<cr>', { silent = true })
 vim.keymap.set({ 'n', 'x' }, '<leader>aD', ':FileDiagToCursor<cr>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ap', ':SelectionToCursor<cr>', { silent = true })
