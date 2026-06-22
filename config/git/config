@@ -55,18 +55,27 @@
 [core]
     excludesfile = ~/.config/git/gitignore_global
     quotepath = false # Better display of some UTF-8 filenames
+[column]
+    ui = auto
+[commit]
+    verbose = true
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
 [pager]
     diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
     show = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+    helper = /usr/lib/git-core/git-credential-libsecret
 [merge]
     tool = vimdiff
+    conflictstyle = zdiff3
 [mergetool]
     prompt = true
 [mergetool "vimdiff"]
@@ -74,10 +83,13 @@
 [difftool]
     prompt = false
 [diff]
-	algorithm = patience
+    algorithm = histogram
+    colorMoved = true
+    mnemonicPrefix = true
+    renames = true
     tool = vimdiff
 [diff-so-fancy]
-	markEmptyLines = false
+    markEmptyLines = false
 [alias]
     patch = !git --no-pager diff --no-color
     push-this = push -u origin HEAD
@@ -90,9 +102,26 @@
 
     fixup = !sha=$( git -c color.ui=always log --oneline -n 1000 | fzf +s --no-multi --prompt 'Fixup> ' ) && git commit --fixup "${sha%% *}"
 [pull]
-	rebase = false
+    rebase = false
+[push]
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
 
 [includeIf "gitdir:~/Code/Scoro/"]
-  path = ~/.config/git/config-scoro
+    path = ~/.config/git/config-scoro
